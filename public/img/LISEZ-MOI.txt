@@ -1,0 +1,18 @@
+PHOTOS RÉELLES PCE
+==================
+
+Déposez ici les photos du client (JPEG ou WebP, 1600 px de large minimum).
+
+Ensuite, associez chaque fichier à son emplacement dans :
+    src/data/photos.js   ->   objet « clientPhotos »
+
+Exemple :
+    export const clientPhotos = {
+      231: '/img/salle-de-bains-lorgues.jpg',
+      628: '/img/tableau-electrique.jpg',
+    }
+
+La liste complète des emplacements disponibles (avec la page, la zone et le
+sujet attendu) se trouve juste au-dessus, dans l'objet « PHOTO_SLOTS ».
+
+Le chemin commence toujours par /img/ — jamais par public/.

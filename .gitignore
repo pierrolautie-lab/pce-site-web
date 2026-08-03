@@ -1,0 +1,24 @@
+# Dépendances et build
+node_modules/
+dist/
+
+# Fichiers locaux / environnement
+.DS_Store
+*.local
+
+# Matériel brut non versionné (code source du site uniquement) :
+# - photos/       : photos brutes du client (originaux non recadrés, non triés)
+# - explication/  : documents de référence fournis par le client (PDF tiers)
+# - l'archive zip d'origine
+# Les visuels réellement utilisés par le site vivent dans public/img/.
+photos/
+explication/
+*.zip
+
+# Éditeurs / outillage
+.vscode/
+.idea/
+
+# Configuration locale de session Claude Code (historique de permissions
+# propre à cette machine, sans intérêt pour le dépôt).
+.claude/settings.local.json

@@ -1,0 +1,78 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      colors: {
+        /* Bleu marine — en-tête, héros, pied de page, bandeaux */
+        navy: {
+          50: '#F4F7FA', // fond de page gris-bleu
+          100: '#E5EDF5',
+          200: '#C7D7E8',
+          300: '#9EB6D0',
+          400: '#6E8DB2',
+          500: '#456695',
+          600: '#1F4A82',
+          700: '#153567',
+          800: '#0E2547', // marine principal
+          900: '#0A1B35',
+          950: '#061223',
+        },
+        /* Bleu vif — titres de section, boutons primaires, liens */
+        azure: {
+          300: '#6FA9E8',
+          400: '#3E8BE0',
+          500: '#1B6FC4', // bleu vif principal
+          600: '#1459A4',
+          700: '#0F4380',
+        },
+        /* Or — accent des appels à l'action et de la signature */
+        gold: {
+          300: '#FFD87A',
+          400: '#FFC94A',
+          500: '#F5B21A', // or principal
+          600: '#DB9A0C',
+          700: '#B07A08',
+        },
+      },
+      fontFamily: {
+        sans: [
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
+      },
+      letterSpacing: {
+        wider: '.06em',
+        widest: '.18em',
+      },
+      spacing: {
+        4.5: '1.125rem',
+        5.5: '1.375rem',
+        18: '4.5rem',
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(14,37,71,.04), 0 12px 32px -14px rgba(14,37,71,.18)',
+        photo: '0 24px 60px -24px rgba(14,37,71,.5)',
+        header: '0 1px 0 rgba(14,37,71,.08), 0 10px 26px -20px rgba(14,37,71,.45)',
+        gold: '0 10px 24px -10px rgba(245,178,26,.55)',
+      },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(14px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up .6s cubic-bezier(.22,1,.36,1) both',
+      },
+    },
+  },
+  plugins: [],
+}
