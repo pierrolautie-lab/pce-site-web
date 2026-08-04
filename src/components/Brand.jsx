@@ -4,20 +4,18 @@ import { company } from '../data/site.js'
 /* -------------------------------------------------------------------------
    Identité PCE — UNE SEULE version du logo pour tout le site.
 
-   Le médaillon reprend fidèlement celui des supports de communication de
-   l'entreprise : ovale blanc cerclé de marine, « PCE » en capitales grasses
-   italiques dont le C est bleu, et la ligne de métiers en dessous.
+   Vrai logo du client (public/img/logo-pce.png) : ovale blanc cerclé de
+   marine, « PCE » en capitales grasses, « Depuis 2005 » en dessous — repris
+   du fichier fourni par le client (photo de l'enseigne lumineuse, détourée).
+
+   Le fond de l'image est transparent : on le pose systématiquement sur un
+   fond blanc (le <span> ci-dessous), y compris dans les sections à fond
+   marine du site, pour que le médaillon reste fidèle à l'original.
 
    ⚠️ Ne pas créer de variante. Toute évolution du logo se fait ICI, dans
    <Medallion />, pour rester cohérent partout (en-tête, pied de page,
    bandeaux marine, page 404).
-
-   ▸ Dès réception du logo vectoriel d'origine (.svg / .ai / PNG détouré),
-     remplacer le contenu de <Medallion /> par ce fichier.
 ---------------------------------------------------------------------------*/
-
-const NAVY = '#0E2547'
-const AZURE = '#1B6FC4'
 
 const SIZES = {
   sm: 'h-[52px] w-[92px]',
@@ -27,70 +25,13 @@ const SIZES = {
 
 function Medallion({ className = '' }) {
   return (
-    <svg
-      viewBox="0 0 260 150"
-      className={className}
-      role="img"
-      aria-label={`${company.name} — ${company.baselineShort}`}
-    >
-      {/* Ovale */}
-      <ellipse cx="130" cy="75" rx="126" ry="71" fill="#FFFFFF" stroke={NAVY} strokeWidth="4" />
-      <ellipse
-        cx="130"
-        cy="75"
-        rx="118"
-        ry="63.5"
-        fill="none"
-        stroke={NAVY}
-        strokeWidth="1.3"
-        opacity=".45"
+    <span className={`inline-flex items-center justify-center rounded-full bg-white ${className}`}>
+      <img
+        src="/img/logo-pce.png"
+        alt={`${company.name} — ${company.baselineShort}`}
+        className="h-full w-full object-contain"
       />
-
-      {/* Wordmark « PCE » — le C en bleu, comme sur les supports */}
-      <text
-        x="130"
-        y="72"
-        textAnchor="middle"
-        style={{
-          font: 'italic 800 56px/1 Inter, system-ui, sans-serif',
-          letterSpacing: '.01em',
-        }}
-      >
-        <tspan fill={NAVY}>P</tspan>
-        <tspan fill={AZURE}>C</tspan>
-        <tspan fill={NAVY}>E</tspan>
-      </text>
-
-      {/* Ligne de métiers */}
-      <text
-        x="130"
-        y="97"
-        textAnchor="middle"
-        fill={NAVY}
-        style={{ font: '700 11.5px/1 Inter, system-ui, sans-serif', letterSpacing: '.05em' }}
-      >
-        PLOMBERIE · CHAUFFAGE
-      </text>
-      <text
-        x="130"
-        y="112"
-        textAnchor="middle"
-        fill={NAVY}
-        style={{ font: '700 11.5px/1 Inter, system-ui, sans-serif', letterSpacing: '.05em' }}
-      >
-        ÉLECTRICITÉ · PISCINE
-      </text>
-      <text
-        x="130"
-        y="127"
-        textAnchor="middle"
-        fill={NAVY}
-        opacity=".75"
-        style={{ font: '600 10px/1 Inter, system-ui, sans-serif', letterSpacing: '.08em' }}
-      >
-        TOUT CORPS D'ÉTAT
-      </text>
-    </svg>
+    </span>
   )
 }
 
