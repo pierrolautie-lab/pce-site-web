@@ -57,14 +57,13 @@ jobs:
         # statique), ce qui résout un 403 dû à des permissions trop
         # restrictives sans risque de casser l'affichage du site.
         #
-        # Deux tentatives précédentes ont échoué différemment : interpoler
-        # le mot de passe dans une chaîne "-e "..."" cassait le parsing dès
-        # qu'un caractère spécial s'y trouvait, et "-p 21" comme option de
-        # ligne de commande a été lu comme une commande de script inconnue
-        # plutôt que comme une option. On met donc "-u"/"-p" DANS la
-        # commande "open" du script lftp (syntaxe documentée), via un
-        # heredoc à délimiteur NON quoté : bash y substitue les variables
-        # ligne à ligne sans qu'on ait à échapper le moindre guillemet.
+        # Trois tentatives précédentes ont échoué sur la façon de passer les
+        # identifiants (chaîne "-e" échappée, options -u/-p en ligne de
+        # commande, options -u/-p dans "open") : la combinaison de flags
+        # attendue par lftp n'a jamais correspondu à ce qui était envoyé.
+        # On revient donc à la forme la plus basique possible, sans le
+        # moindre flag : "open host:port" (un seul argument positionnel)
+        # puis la commande "user" séparée pour l'authentification.
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
@@ -76,7 +75,8 @@ jobs:
           set ftp:ssl-force true
           set net:timeout 15
           set net:max-retries 2
-          open -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_SERVER"
+          open "$FTP_SERVER:21"
+          user "$FTP_USERNAME" "$FTP_PASSWORD"
           cd domains/pcevar.fr/public_html
           chmod -R 755 .
           bye
