@@ -57,25 +57,26 @@ jobs:
         # statique), ce qui résout un 403 dû à des permissions trop
         # restrictives sans risque de casser l'affichage du site.
         #
-        # Identifiants passés en argument (-u), pas interpolés dans un
-        # texte de script : deux tentatives précédentes qui recollaient le
-        # mot de passe dans une chaîne "-e ..." ont cassé le parsing lftp
-        # dès qu'un caractère spécial du mot de passe s'y trouvait
-        # ("Unknown command", "Not connected"). En argument direct, bash
-        # transmet la valeur telle quelle sans repasser par un parseur de
-        # script. Les commandes elles-mêmes arrivent par un heredoc à
-        # délimiteur quoté ('EOF'), donc jamais réinterprétées par bash.
+        # Deux tentatives précédentes ont échoué différemment : interpoler
+        # le mot de passe dans une chaîne "-e "..."" cassait le parsing dès
+        # qu'un caractère spécial s'y trouvait, et "-p 21" comme option de
+        # ligne de commande a été lu comme une commande de script inconnue
+        # plutôt que comme une option. On met donc "-u"/"-p" DANS la
+        # commande "open" du script lftp (syntaxe documentée), via un
+        # heredoc à délimiteur NON quoté : bash y substitue les variables
+        # ligne à ligne sans qu'on ait à échapper le moindre guillemet.
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_SERVER" <<'EOF'
+          lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
           set net:timeout 15
           set net:max-retries 2
+          open -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_SERVER"
           cd domains/pcevar.fr/public_html
           chmod -R 755 .
           bye
