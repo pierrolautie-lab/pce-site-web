@@ -34,9 +34,11 @@ npm run preview   # prévisualise le build
 | `/` | Accueil |
 | `/plomberie` | Plomberie |
 | `/chauffage` | Chauffage |
+| `/chauffage/chaudiere-condensation` | Chaudière à condensation (sous-page) |
 | `/climatisation` | Climatisation |
 | `/electricite` | Électricité |
 | `/piscine` | Piscine |
+| `/traitement-de-l-eau` | Traitement de l'eau |
 | `/depannage` | Dépannage / Urgence |
 | `/realisations` | Réalisations |
 | `/a-propos` | À propos |
@@ -48,17 +50,17 @@ npm run preview   # prévisualise le build
 
 | Rôle | Couleur |
 |---|---|
-| Bleu marine principal | `#13293D` (`navy-800`) |
-| Bleu acier secondaire | `#2C4A63` (`navy-600`) |
-| Fond de page gris-bleu | `#F5F7F9` (`navy-50`) |
+| Bleu marine principal | `#0E2547` (`navy-800`) |
+| Bleu vif (titres, liens) | `#1B6FC4` (`azure-500`) |
+| Or (appels à l'action) | `#F5B21A` (`gold-500`) |
+| Fond de page gris-bleu | `#F4F7FA` (`navy-50`) |
 | Cartes | Blanc |
 
 Typographie : **Inter**, titres de page en capitales très grasses.
-Aucune teinte orange ni jaune.
 
-**Identité** : goutte d'eau + wordmark « PCE » (`src/components/Brand.jsx`),
-décliné en logo d'en-tête, filigrane de hero, sceau « depuis 2005 » et
-filigrane de pied de page.
+**Identité** : médaillon ovale « PCE » (`src/components/Brand.jsx`, une seule
+version dans tout le site), décliné en logo d'en-tête, filigrane de hero,
+et repris dans le pied de page.
 
 ---
 
@@ -134,3 +136,52 @@ confirmation, **mais n'envoie encore rien** : il n'y a pas de backend.
 Pour le mettre en service, remplacer le `setSent(true)` de la fonction `submit`
 par un appel vers votre backend, un service type Formspree / EmailJS, ou une
 fonction serverless.
+
+---
+
+## Déploiement automatique sur Hostinger
+
+Le site est un SPA statique (React + Vite) : il n'y a rien à exécuter côté
+serveur, seul le dossier `dist/` généré par `npm run build` doit être envoyé
+sur l'hébergement, dans `public_html/`.
+
+Le workflow **`.github/workflows/deploy.yml`** automatise cet envoi : à chaque
+`git push` sur `main`, GitHub Actions installe les dépendances, construit le
+site, puis dépose le contenu de `dist/` sur Hostinger par FTPS.
+
+### Mise en place (à faire une seule fois)
+
+1. **Récupérer les identifiants FTP dans hPanel**
+   Hostinger → votre site → *Fichiers* → *Comptes FTP*. Notez :
+   - l'hôte FTP (ex. `ftp.pcevar.fr` ou une adresse IP fournie par Hostinger)
+   - le nom d'utilisateur FTP
+   - le mot de passe (ou réinitialisez-le si vous ne l'avez plus)
+
+2. **Ajouter ces identifiants comme secrets GitHub** — jamais dans le code ni
+   dans un message. Sur la page du dépôt :
+   `Settings` → `Secrets and variables` → `Actions` → `New repository secret`,
+   et créez exactement ces trois secrets :
+
+   | Nom du secret | Valeur |
+   |---|---|
+   | `HOSTINGER_FTP_SERVER` | l'hôte FTP noté ci-dessus |
+   | `HOSTINGER_FTP_USERNAME` | le nom d'utilisateur FTP |
+   | `HOSTINGER_FTP_PASSWORD` | le mot de passe FTP |
+
+3. **Vérifier le dossier de destination.** Le workflow envoie vers
+   `./public_html/`. Si le site doit vivre dans un sous-dossier (domaine
+   additionnel, sous-domaine), ajustez la valeur `server-dir` dans
+   `.github/workflows/deploy.yml`.
+
+4. **Déclencher le premier déploiement** : poussez un commit sur `main`, ou
+   lancez-le manuellement depuis l'onglet **Actions** du dépôt GitHub
+   (bouton *Run workflow* sur « Déploiement Hostinger »).
+
+Le fichier **`public/.htaccess`** est indispensable : il redirige toutes les
+URL vers `index.html` pour que le routage React (React Router) fonctionne
+aussi quand une page est rechargée directement (ex. `pcevar.fr/chauffage`).
+
+> Si votre offre Hostinger inclut l'accès SSH (vérifiable dans hPanel →
+> *Avancé* → *SSH Access*), une alternative plus robuste est de remplacer
+> l'étape FTP par un envoi en SFTP/rsync — plus rapide et plus sûr qu'un FTP
+> classique. Dites-le-moi si c'est votre cas, j'adapterai le workflow.

@@ -1,0 +1,43 @@
+name: Déploiement Hostinger
+
+# Se déclenche à chaque envoi sur main, ou manuellement depuis l'onglet
+# Actions de GitHub ("Run workflow").
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Construire le site (npm run build)
+        run: npm run build
+
+      - name: Envoyer dist/ vers Hostinger par FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          # Dossier de destination sur Hostinger. À adapter si le site
+          # n'est pas à la racine du domaine (voir README pour le cas
+          # d'un sous-domaine ou domaine additionnel).
+          server-dir: ./public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
