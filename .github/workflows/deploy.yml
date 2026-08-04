@@ -8,43 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  diagnostic-chemins:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lister les chemins candidats côté Hostinger
-        env:
-          FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-        run: |
-          sudo apt-get update -y && sudo apt-get install -y lftp
-          FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
-          FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
-          FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
-          lftp <<EOF
-          set ssl:verify-certificate no
-          set ftp:ssl-force true
-          set net:timeout 15
-          set net:max-retries 2
-          open "$FTP_SERVER:21"
-          user "$FTP_USERNAME" "$FTP_PASSWORD"
-          echo "--- /home/u718469912 ---"
-          cd /home/u718469912
-          pwd
-          ls -la
-          echo "--- domains/pcevar.fr/public_html ---"
-          cd domains/pcevar.fr/public_html
-          pwd
-          ls -la
-          cat .ftp-deploy-sync-state.json 2>/dev/null || echo "(pas de fichier d'etat)"
-          echo "--- retour racine, home/public_html ---"
-          cd /home/public_html
-          pwd
-          ls -la
-          bye
-          EOF
-
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
@@ -63,85 +26,42 @@ jobs:
       - name: Construire le site (npm run build)
         run: npm run build
 
-      - name: Envoyer dist/ vers Hostinger par FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
-          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          port: 21
-          protocol: ftps
-          # Hostinger utilise un certificat que le client FTP ne valide pas
-          # toujours par défaut ; "loose" évite un blocage/timeout sur la
-          # négociation TLS du canal de contrôle.
-          security: loose
-          # Le fichier d'état distant (.ftp-deploy-sync-state.json) a menti :
-          # le dernier déploiement "réussi" n'a en réalité renvoyé que le
-          # .htaccess ("Uploading: 0 B"), l'action pensant à tort que tout le
-          # reste (index.html, assets/, img/) était déjà présent — alors que
-          # le dossier est vide côté serveur (confirmé par le support
-          # Hostinger). dangerous-clean-slate force un envoi complet réel en
-          # ignorant cet état corrompu.
-          dangerous-clean-slate: true
-          local-dir: ./dist/
-          # Dossier de destination sur Hostinger. Confirmé directement par
-          # le support Hostinger : le virtual host de pcevar.fr pointe sur
-          # /home/u718469912/domains/pcevar.fr/public_html — le chemin
-          # utilisé à l'origine. (Un chemin alternatif avait été testé sur
-          # la base d'une capture d'écran du Gestionnaire de fichiers qui
-          # montrait un public_html/ vide à la racine du compte, mais ce
-          # dossier-là n'a rien à voir avec le vrai document root.)
-          server-dir: /home/u718469912/domains/pcevar.fr/public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-
-      - name: Corriger les permissions sur Hostinger
-        # lftp n'a pas de commande "find -type" comme le find Unix : on ne
-        # peut pas distinguer fichiers/dossiers de façon fiable en un seul
-        # script FTP. On applique donc 755 à tout l'arborescence (dossiers
-        # ET fichiers) : les fichiers restent lisibles par tous (le bit
-        # d'exécution est simplement ignoré par Apache pour du HTML/CSS/JS
-        # statique), ce qui résout un 403 dû à des permissions trop
-        # restrictives sans risque de casser l'affichage du site.
+      - name: Envoyer dist/ et corriger les permissions via lftp
+        # L'action tierce SamKirkland/FTP-Deploy-Action a été abandonnée ici :
+        # malgré un server-dir absolu correct
+        # (/home/u718469912/domains/pcevar.fr/public_html/, confirmé par le
+        # support Hostinger comme le vrai document root), elle a rapporté un
+        # envoi réussi ("Sync complete") alors que les fichiers atterrissaient
+        # ailleurs sur le serveur (/home/public_html) — constaté par le
+        # support qui a dû les copier manuellement au bon endroit. lftp, lui,
+        # affiche `pwd` avant chaque envoi : on voit exactement où les
+        # fichiers partent, sans dépendre de la résolution de chemin interne
+        # d'une action tierce.
         #
-        # Trois tentatives précédentes ont échoué sur la façon de passer les
-        # identifiants (chaîne "-e" échappée, options -u/-p en ligne de
-        # commande, options -u/-p dans "open") : la combinaison de flags
-        # attendue par lftp n'a jamais correspondu à ce qui était envoyé.
-        # On revient donc à la forme la plus basique possible, sans le
-        # moindre flag : "open host:port" (un seul argument positionnel)
-        # puis la commande "user" séparée pour l'authentification.
+        # Nettoyage des variables (\r\n parasites) et forme d'authentification
+        # ("open host:port" puis "user" séparé) : voir historique du commit,
+        # plusieurs combinaisons de flags lftp ont échoué avant celle-ci.
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
-          # "Ambiguous command `'." observé en pratique : un retour à la
-          # ligne parasite (\r ou \n) collé à la fin d'un secret (copié-
-          # collé) coupe une ligne du script lftp en deux et laisse un
-          # guillemet orphelin sur sa propre ligne. On nettoie donc les
-          # variables avant de les utiliser, quelle que soit leur origine.
           FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
           FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
           FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
-          # Longueurs uniquement (jamais les valeurs) : sert à repérer un
-          # espace ou un caractère de fin de ligne resté collé au secret.
           echo "Longueurs — serveur: ${#FTP_SERVER}, utilisateur: ${#FTP_USERNAME}, mot de passe: ${#FTP_PASSWORD}"
           lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
-          set net:timeout 15
-          set net:max-retries 2
+          set net:timeout 20
+          set net:max-retries 3
+          set mirror:use-pget-n 1
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd /home/u718469912
+          cd /home/u718469912/domains/pcevar.fr/public_html
           pwd
-          chmod 755 .
-          chmod 755 domains
-          chmod 755 domains/pcevar.fr
-          cd domains/pcevar.fr/public_html
+          mirror --reverse --delete --verbose --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
           pwd
           ls -la
           chmod -R 755 .
