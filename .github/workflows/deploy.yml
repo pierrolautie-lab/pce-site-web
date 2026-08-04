@@ -38,6 +38,14 @@ jobs:
           # toujours par défaut ; "loose" évite un blocage/timeout sur la
           # négociation TLS du canal de contrôle.
           security: loose
+          # Le fichier d'état distant (.ftp-deploy-sync-state.json) a menti :
+          # le dernier déploiement "réussi" n'a en réalité renvoyé que le
+          # .htaccess ("Uploading: 0 B"), l'action pensant à tort que tout le
+          # reste (index.html, assets/, img/) était déjà présent — alors que
+          # le dossier est vide côté serveur (confirmé par le support
+          # Hostinger). dangerous-clean-slate force un envoi complet réel en
+          # ignorant cet état corrompu.
+          dangerous-clean-slate: true
           local-dir: ./dist/
           # Dossier de destination sur Hostinger. Confirmé directement par
           # le support Hostinger : le virtual host de pcevar.fr pointe sur
