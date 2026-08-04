@@ -39,19 +39,14 @@ jobs:
           # négociation TLS du canal de contrôle.
           security: loose
           local-dir: ./dist/
-          # Dossier de destination sur Hostinger. Le login FTP atterrit sur
-          # /home/u718469912/domains/pcevar.fr (racine "virtuelle" propre à
-          # ce compte FTP). Mais ce plan est un hébergement "Unique" (un
-          # seul domaine) : le dossier RÉELLEMENT servi par Apache pour
-          # pcevar.fr est le public_html/ à la racine du compte
-          # d'hébergement — pas celui sous domains/pcevar.fr/, qui n'était
-          # qu'un dossier parallèle non servi (confirmé : ce dernier
-          # contenait bien nos fichiers avec les bonnes permissions, mais
-          # le site continuait à renvoyer 403 ; le vrai public_html/ était
-          # vide, ce qui produit exactement un 403 en l'absence
-          # d'index.html). On utilise donc un chemin absolu plutôt qu'un
-          # ".." relatif, que certaines bibliothèques FTP n'autorisent pas.
-          server-dir: /home/u718469912/public_html/
+          # Dossier de destination sur Hostinger. Confirmé directement par
+          # le support Hostinger : le virtual host de pcevar.fr pointe sur
+          # /home/u718469912/domains/pcevar.fr/public_html — le chemin
+          # utilisé à l'origine. (Un chemin alternatif avait été testé sur
+          # la base d'une capture d'écran du Gestionnaire de fichiers qui
+          # montrait un public_html/ vide à la racine du compte, mais ce
+          # dossier-là n'a rien à voir avec le vrai document root.)
+          server-dir: /home/u718469912/domains/pcevar.fr/public_html/
           exclude: |
             **/.git*
             **/.git*/**
@@ -96,7 +91,12 @@ jobs:
           set net:max-retries 2
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd /home/u718469912/public_html
+          cd /home/u718469912
+          pwd
+          chmod 755 .
+          chmod 755 domains
+          chmod 755 domains/pcevar.fr
+          cd domains/pcevar.fr/public_html
           pwd
           ls -la
           chmod -R 755 .
