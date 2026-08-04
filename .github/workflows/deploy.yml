@@ -8,6 +8,43 @@ on:
   workflow_dispatch:
 
 jobs:
+  diagnostic-chemins:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lister les chemins candidats côté Hostinger
+        env:
+          FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y lftp
+          FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
+          FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
+          FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
+          lftp <<EOF
+          set ssl:verify-certificate no
+          set ftp:ssl-force true
+          set net:timeout 15
+          set net:max-retries 2
+          open "$FTP_SERVER:21"
+          user "$FTP_USERNAME" "$FTP_PASSWORD"
+          echo "--- /home/u718469912 ---"
+          cd /home/u718469912
+          pwd
+          ls -la
+          echo "--- domains/pcevar.fr/public_html ---"
+          cd domains/pcevar.fr/public_html
+          pwd
+          ls -la
+          cat .ftp-deploy-sync-state.json 2>/dev/null || echo "(pas de fichier d'etat)"
+          echo "--- retour racine, home/public_html ---"
+          cd /home/public_html
+          pwd
+          ls -la
+          bye
+          EOF
+
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
