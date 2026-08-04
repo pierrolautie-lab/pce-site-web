@@ -70,6 +70,17 @@ jobs:
           FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
+          # "Ambiguous command `'." observé en pratique : un retour à la
+          # ligne parasite (\r ou \n) collé à la fin d'un secret (copié-
+          # collé) coupe une ligne du script lftp en deux et laisse un
+          # guillemet orphelin sur sa propre ligne. On nettoie donc les
+          # variables avant de les utiliser, quelle que soit leur origine.
+          FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
+          FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
+          FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
+          # Longueurs uniquement (jamais les valeurs) : sert à repérer un
+          # espace ou un caractère de fin de ligne resté collé au secret.
+          echo "Longueurs — serveur: ${#FTP_SERVER}, utilisateur: ${#FTP_USERNAME}, mot de passe: ${#FTP_PASSWORD}"
           lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
@@ -78,6 +89,8 @@ jobs:
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
           cd domains/pcevar.fr/public_html
+          pwd
+          ls -la
           chmod -R 755 .
           bye
           EOF
