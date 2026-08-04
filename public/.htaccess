@@ -1,7 +1,14 @@
 # ModSecurity (Hostinger) bloquait toutes les requêtes vers pcevar.fr avec
 # un 403 muet (rien dans les journaux standards) à cause de deux règles
-# précises — confirmé et corrigé par le support Hostinger.
+# précises — confirmé et corrigé par le support Hostinger. Le nom exact du
+# module (mod_security.c vs mod_security2.c selon la version) n'étant pas
+# garanti sur LiteSpeed, on couvre les deux pour être sûr que le bloc
+# s'applique réellement.
 <IfModule mod_security.c>
+  SecRuleRemoveById 400011
+  SecRuleRemoveById 400012
+</IfModule>
+<IfModule mod_security2.c>
   SecRuleRemoveById 400011
   SecRuleRemoveById 400012
 </IfModule>
