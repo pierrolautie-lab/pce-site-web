@@ -47,3 +47,22 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+
+      - name: Corriger les permissions sur Hostinger
+        # lftp n'a pas de commande "find -type" comme le find Unix : on ne
+        # peut pas distinguer fichiers/dossiers de façon fiable en un seul
+        # script FTP. On applique donc 755 à tout l'arborescence (dossiers
+        # ET fichiers) : les fichiers restent lisibles par tous (le bit
+        # d'exécution est simplement ignoré par Apache pour du HTML/CSS/JS
+        # statique), ce qui résout un 403 dû à des permissions trop
+        # restrictives sans risque de casser l'affichage du site.
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y lftp
+          lftp -u "${{ secrets.HOSTINGER_FTP_USERNAME }},${{ secrets.HOSTINGER_FTP_PASSWORD }}" -e "
+            set ssl:verify-certificate no;
+            set ftp:ssl-force true;
+            open ${{ secrets.HOSTINGER_FTP_SERVER }};
+            cd domains/pcevar.fr/public_html;
+            chmod -R 755 .;
+            bye
+          "
