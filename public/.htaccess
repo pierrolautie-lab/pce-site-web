@@ -1,3 +1,11 @@
+# ModSecurity (Hostinger) bloquait toutes les requêtes vers pcevar.fr avec
+# un 403 muet (rien dans les journaux standards) à cause de deux règles
+# précises — confirmé et corrigé par le support Hostinger.
+<IfModule mod_security.c>
+  SecRuleRemoveById 400011
+  SecRuleRemoveById 400012
+</IfModule>
+
 # Site à page unique (React Router) : toute URL qui ne correspond pas à un
 # fichier réel doit être servie par index.html, pour que le routage côté
 # client prenne le relais (ex : /chauffage rechargé directement dans le
