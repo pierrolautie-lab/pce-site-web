@@ -39,11 +39,19 @@ jobs:
           # négociation TLS du canal de contrôle.
           security: loose
           local-dir: ./dist/
-          # Dossier de destination sur Hostinger. Le compte FTP atterrit sur
-          # /home/u718469912/ (racine du compte d'hébergement, pas du
-          # domaine) : le dossier réellement servi par Apache pour
-          # pcevar.fr est domains/pcevar.fr/public_html/.
-          server-dir: ./domains/pcevar.fr/public_html/
+          # Dossier de destination sur Hostinger. Le login FTP atterrit sur
+          # /home/u718469912/domains/pcevar.fr (racine "virtuelle" propre à
+          # ce compte FTP). Mais ce plan est un hébergement "Unique" (un
+          # seul domaine) : le dossier RÉELLEMENT servi par Apache pour
+          # pcevar.fr est le public_html/ à la racine du compte
+          # d'hébergement — pas celui sous domains/pcevar.fr/, qui n'était
+          # qu'un dossier parallèle non servi (confirmé : ce dernier
+          # contenait bien nos fichiers avec les bonnes permissions, mais
+          # le site continuait à renvoyer 403 ; le vrai public_html/ était
+          # vide, ce qui produit exactement un 403 en l'absence
+          # d'index.html). On utilise donc un chemin absolu plutôt qu'un
+          # ".." relatif, que certaines bibliothèques FTP n'autorisent pas.
+          server-dir: /home/u718469912/public_html/
           exclude: |
             **/.git*
             **/.git*/**
@@ -88,7 +96,7 @@ jobs:
           set net:max-retries 2
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd domains/pcevar.fr/public_html
+          cd /home/u718469912/public_html
           pwd
           ls -la
           chmod -R 755 .
