@@ -86,6 +86,7 @@ export const nav = [
   { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
   { label: 'Dépannage', to: '/depannage' },
   { label: 'Réalisations', to: '/realisations' },
+  { label: 'Conseils', to: '/conseils' },
   { label: 'À propos', to: '/a-propos' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -659,6 +660,44 @@ export const chaudiereCondensation = {
    un bouton « En savoir plus » depuis la page Traitement de l'eau, et sa
    propre route directe.
 ------------------------------------------------------------------------*/
+/* ================================================================ CONSEILS =
+   Contenu éducatif générique sur les cinq métiers, pensé pour répondre aux
+   questions les plus fréquentes avant même le premier appel. Renvoie vers
+   les pages métier et les deux sous-pages approfondies (adoucisseur,
+   chaudière à condensation). */
+export const conseils = [
+  {
+    icon: 'droplet',
+    title: 'Plomberie',
+    tip: "Une pression d'eau qui chute ou un bruit de coup de bélier dans les canalisations ne se règle presque jamais tout seul : cela vient souvent d'un réducteur de pression mal réglé ou d'une fixation de tuyauterie à reprendre.",
+    to: '/plomberie',
+  },
+  {
+    icon: 'flame',
+    title: 'Chauffage',
+    tip: "Une pompe à chaleur mal dimensionnée coûte plus cher à l'usage qu'une machine plus petite mais bien calculée : méfiez-vous d'un devis qui ne mentionne pas de bilan thermique préalable.",
+    to: '/chauffage',
+  },
+  {
+    icon: 'snowflake',
+    title: 'Climatisation',
+    tip: "Un split qui givre ou qui tourne en continu sans jamais atteindre la consigne signale presque toujours une charge de fluide frigorigène insuffisante — à faire contrôler avant que le compresseur ne s'use prématurément.",
+    to: '/climatisation',
+  },
+  {
+    icon: 'bolt',
+    title: 'Électricité',
+    tip: "Un tableau électrique sans différentiel 30 mA sur chaque circuit, ou sans aucune protection dans les pièces d'eau, doit être considéré comme prioritaire — c'est la première cause d'accident domestique évitable.",
+    to: '/electricite',
+  },
+  {
+    icon: 'waves',
+    title: 'Piscine',
+    tip: "Une eau qui verdit malgré un traitement suivi vient rarement du produit lui-même : vérifiez d'abord le temps de filtration et l'état du filtre avant d'augmenter les doses de traitement.",
+    to: '/piscine',
+  },
+]
+
 export const adoucisseur = {
   slug: 'traitement-de-l-eau/adoucisseur',
   title: "L'adoucisseur d'eau",

@@ -11,6 +11,7 @@ import TraitementEau from './pages/TraitementEau.jsx'
 import Adoucisseur from './pages/Adoucisseur.jsx'
 import Depannage from './pages/Depannage.jsx'
 import Realisations from './pages/Realisations.jsx'
+import Conseils from './pages/Conseils.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="traitement-de-l-eau/adoucisseur" element={<Adoucisseur />} />
         <Route path="depannage" element={<Depannage />} />
         <Route path="realisations" element={<Realisations />} />
+        <Route path="conseils" element={<Conseils />} />
         <Route path="a-propos" element={<APropos />} />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
