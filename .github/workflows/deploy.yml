@@ -39,12 +39,11 @@ jobs:
           # négociation TLS du canal de contrôle.
           security: loose
           local-dir: ./dist/
-          # Dossier de destination sur Hostinger. Sur un plan Single/Premium,
-          # le compte FTP pointe déjà directement sur public_html/ : la
-          # racine FTP ("/") EST public_html. Utiliser "./public_html/"
-          # créait donc un sous-dossier public_html/public_html/, jamais
-          # servi par Apache (d'où le fallback sur default.php constaté).
-          server-dir: ./
+          # Dossier de destination sur Hostinger. Le compte FTP atterrit sur
+          # /home/u718469912/ (racine du compte d'hébergement, pas du
+          # domaine) : le dossier réellement servi par Apache pour
+          # pcevar.fr est domains/pcevar.fr/public_html/.
+          server-dir: ./domains/pcevar.fr/public_html/
           exclude: |
             **/.git*
             **/.git*/**
