@@ -56,13 +56,20 @@ jobs:
         # d'exécution est simplement ignoré par Apache pour du HTML/CSS/JS
         # statique), ce qui résout un 403 dû à des permissions trop
         # restrictives sans risque de casser l'affichage du site.
+        #
+        # Tout passe par -e (pas de flag -u séparé, qui a provoqué une
+        # erreur de parsing et fait tomber lftp en mode interactif — donc
+        # bloqué indéfiniment sur un runner sans entrée clavier). Le
+        # redirect </dev/null et net:timeout empêchent tout blocage futur.
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
-          lftp -u "${{ secrets.HOSTINGER_FTP_USERNAME }},${{ secrets.HOSTINGER_FTP_PASSWORD }}" -e "
+          lftp -e "
             set ssl:verify-certificate no;
             set ftp:ssl-force true;
-            open ${{ secrets.HOSTINGER_FTP_SERVER }};
+            set net:timeout 15;
+            set net:max-retries 2;
+            open -u ${{ secrets.HOSTINGER_FTP_USERNAME }},${{ secrets.HOSTINGER_FTP_PASSWORD }} ${{ secrets.HOSTINGER_FTP_SERVER }};
             cd domains/pcevar.fr/public_html;
             chmod -R 755 .;
             bye
-          "
+          " < /dev/null

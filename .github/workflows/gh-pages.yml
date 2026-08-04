@@ -1,0 +1,62 @@
+name: Aperçu GitHub Pages
+
+# Aperçu de secours, en plus du déploiement Hostinger (voir deploy.yml).
+# Se déclenche à chaque envoi sur main, ou manuellement depuis l'onglet
+# Actions de GitHub ("Run workflow").
+#
+# ⚠️ GitHub Pages n'est disponible sur un dépôt PRIVÉ qu'avec un plan payant
+# (GitHub Pro/Team/Enterprise). Sur le plan gratuit, ce workflow échouera à
+# l'étape "deploy-pages" tant que le dépôt reste privé sur un compte gratuit.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Construire le site pour GitHub Pages
+        run: npm run build
+        env:
+          GITHUB_PAGES: true
+
+      - name: Repli SPA (404 -> index, pour le routage React Router)
+        run: cp dist/index.html dist/404.html
+
+      - name: Préparer l'artefact Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
