@@ -57,30 +57,26 @@ jobs:
         # statique), ce qui résout un 403 dû à des permissions trop
         # restrictives sans risque de casser l'affichage du site.
         #
-        # Tout passe par -e (pas de flag -u séparé, qui a provoqué une
-        # erreur de parsing et fait tomber lftp en mode interactif — donc
-        # bloqué indéfiniment sur un runner sans entrée clavier). Le
-        # redirect </dev/null et net:timeout empêchent tout blocage futur.
-        #
-        # Les identifiants passent par des variables d'environnement,
-        # jamais interpolés directement dans le texte du script : une
-        # interpolation directe de ${{ secrets.X }} colle le mot de passe
-        # tel quel dans le script lftp, et un caractère spécial (';', '"',
-        # etc.) casse alors le parsing de la commande "open" ("Unknown
-        # command", "Not connected" observés en pratique).
+        # Identifiants passés en argument (-u), pas interpolés dans un
+        # texte de script : deux tentatives précédentes qui recollaient le
+        # mot de passe dans une chaîne "-e ..." ont cassé le parsing lftp
+        # dès qu'un caractère spécial du mot de passe s'y trouvait
+        # ("Unknown command", "Not connected"). En argument direct, bash
+        # transmet la valeur telle quelle sans repasser par un parseur de
+        # script. Les commandes elles-mêmes arrivent par un heredoc à
+        # délimiteur quoté ('EOF'), donc jamais réinterprétées par bash.
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
-          lftp -e "
-            set ssl:verify-certificate no;
-            set ftp:ssl-force true;
-            set net:timeout 15;
-            set net:max-retries 2;
-            open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
-            cd domains/pcevar.fr/public_html;
-            chmod -R 755 .;
-            bye
-          " < /dev/null
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_SERVER" <<'EOF'
+          set ssl:verify-certificate no
+          set ftp:ssl-force true
+          set net:timeout 15
+          set net:max-retries 2
+          cd domains/pcevar.fr/public_html
+          chmod -R 755 .
+          bye
+          EOF
