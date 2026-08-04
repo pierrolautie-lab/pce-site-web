@@ -32,7 +32,12 @@ jobs:
           server: ${{ secrets.HOSTINGER_FTP_SERVER }}
           username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          port: 21
           protocol: ftps
+          # Hostinger utilise un certificat que le client FTP ne valide pas
+          # toujours par défaut ; "loose" évite un blocage/timeout sur la
+          # négociation TLS du canal de contrôle.
+          security: loose
           local-dir: ./dist/
           # Dossier de destination sur Hostinger. À adapter si le site
           # n'est pas à la racine du domaine (voir README pour le cas
