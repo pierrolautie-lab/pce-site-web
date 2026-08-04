@@ -61,6 +61,17 @@ jobs:
         # erreur de parsing et fait tomber lftp en mode interactif — donc
         # bloqué indéfiniment sur un runner sans entrée clavier). Le
         # redirect </dev/null et net:timeout empêchent tout blocage futur.
+        #
+        # Les identifiants passent par des variables d'environnement,
+        # jamais interpolés directement dans le texte du script : une
+        # interpolation directe de ${{ secrets.X }} colle le mot de passe
+        # tel quel dans le script lftp, et un caractère spécial (';', '"',
+        # etc.) casse alors le parsing de la commande "open" ("Unknown
+        # command", "Not connected" observés en pratique).
+        env:
+          FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get update -y && sudo apt-get install -y lftp
           lftp -e "
@@ -68,7 +79,7 @@ jobs:
             set ftp:ssl-force true;
             set net:timeout 15;
             set net:max-retries 2;
-            open -u ${{ secrets.HOSTINGER_FTP_USERNAME }},${{ secrets.HOSTINGER_FTP_PASSWORD }} ${{ secrets.HOSTINGER_FTP_SERVER }};
+            open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
             cd domains/pcevar.fr/public_html;
             chmod -R 755 .;
             bye
