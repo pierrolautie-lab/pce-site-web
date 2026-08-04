@@ -42,18 +42,28 @@ export const company = {
 }
 
 /* ---------------------------------------------------------------- Photos --
-   Service de photos d'illustration. loremflickr renvoie de vraies
-   photographies indexées par mots-clés ; `lock` fige l'image pour qu'elle
-   reste identique d'un chargement à l'autre.
-   Pour passer sur vos propres visuels : remplacez le corps de `photo()` par
-   `/img/${nom}.jpg` et déposez les fichiers dans `public/img/`.
+   Photo d'illustration générique, utilisée UNIQUEMENT tant qu'aucune vraie
+   photo client n'est encore assignée pour un emplacement (voir
+   `clientPhoto()` dans src/data/photos.js, qui a toujours priorité).
+   `lock` fige un rendu identique d'un chargement à l'autre.
+
+   ⚠️ Ne jamais utiliser un service qui choisit la photo par mot-clé
+   (type loremflickr) : cela revient à afficher en direct une photo prise
+   au hasard sur Internet sans aucun contrôle sur son contenu — un
+   emplacement resté sans vraie photo a ainsi affiché une image
+   inappropriée sur la page Piscine (slot 740, tag "pool"). picsum.photos
+   renvoie une image générique par graine (paysage/texture), sans lien
+   avec le mot-clé, donc sans ce risque.
+
+   Pour passer sur vos propres visuels : renseignez le slot dans
+   src/data/photos.js — pas besoin de toucher à ce fichier.
 ---------------------------------------------------------------------------*/
 export const photo = (tags, lock, w = 1200, h = 900) =>
-  `https://loremflickr.com/${w}/${h}/${tags}?lock=${lock}`
-
-/** Repli si loremflickr ne répond pas (voir composant <Photo />). */
-export const photoFallback = (lock, w = 1200, h = 900) =>
   `https://picsum.photos/seed/pce${lock}/${w}/${h}`
+
+/** Repli si la source ci-dessus ne répond pas (voir composant <Photo />). */
+export const photoFallback = (lock, w = 1200, h = 900) =>
+  `https://picsum.photos/seed/pcefallback${lock}/${w}/${h}`
 
 /* ------------------------------------------------------------ Navigation -*/
 export const trades = [

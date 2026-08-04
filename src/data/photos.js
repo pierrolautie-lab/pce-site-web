@@ -90,6 +90,13 @@ export const clientPhotos = {
   413: '/img/chauffage-chaudiere-neuve.jpg',
   414: '/img/chauffage-chaudiere-neuve.jpg',
   739: '/img/piscine-hero-bassin.jpg',
+  /* Pas encore de seconde photo réelle de local technique piscine (N14
+     est en attente d'original sans filigrane, voir plus bas) : on
+     réutilise la photo du bassin plutôt que de laisser cet emplacement
+     sans photo assignée — voir l'incident documenté sur `photo()` dans
+     src/data/site.js. À remplacer dès qu'une vraie photo de local
+     technique est disponible. */
+  740: '/img/piscine-hero-bassin.jpg',
 
   /* Climatisation — chantiers réels du client (gainable en combles et
      grille de diffusion finie). Remplace les visuels issus des flyers,
