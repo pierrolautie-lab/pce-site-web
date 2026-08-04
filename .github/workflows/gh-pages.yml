@@ -39,8 +39,6 @@ jobs:
 
       - name: Construire le site pour GitHub Pages
         run: npm run build
-        env:
-          GITHUB_PAGES: true
 
       - name: Repli SPA (404 -> index, pour le routage React Router)
         run: cp dist/index.html dist/404.html
