@@ -231,7 +231,7 @@ export const services = {
     process: [
       { title: "L'étude du logement", text: "Relevé des surfaces, de l'isolation, de l'orientation et des émetteurs en place. C'est cette étape qui détermine la puissance et le type de machine." },
       { title: 'Le comparatif chiffré', text: "Nous présentons deux à trois solutions avec, pour chacune, le coût d'installation, la consommation annuelle estimée et les aides mobilisables." },
-      { title: 'Le montage des aides', text: "MaPrimeRénov', certificats d'économie d'énergie, éco-PTZ : nous constituons le dossier avec vous et déduisons ce qui peut l'être du devis." },
+      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov', certificats d'économie d'énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l'être du devis. Pour une chaudière à gaz, seule la TVA à 5,5 % et l'éco-PTZ restent mobilisables." },
       { title: "L'installation", text: "Dépose de l'ancien système, pose, raccordements hydrauliques et frigorifiques, mise en service et équilibrage des émetteurs." },
       { title: 'Le suivi dans le temps', text: "Entretien annuel, relevé des performances, attestation remise à chaque passage et intervention prioritaire en cas de panne." },
     ],
@@ -253,7 +253,7 @@ export const services = {
       { q: 'Puis-je garder mes radiateurs existants ?', a: "Souvent oui, à condition qu'ils soient suffisamment dimensionnés. Nous le vérifions pendant l'étude. Si un ou deux radiateurs sont trop justes, il est presque toujours moins coûteux de les remplacer que de renoncer à la pompe à chaleur." },
       { q: "L'entretien annuel est-il obligatoire ?", a: "Oui pour les pompes à chaleur de plus de 4 kW et pour les chaudières gaz. Au-delà de l'obligation, c'est ce qui préserve le rendement et la garantie constructeur. Nous proposons un contrat avec passage programmé et intervention prioritaire." },
       { q: 'Le groupe extérieur est-il bruyant ?', a: "Les machines récentes tournent autour de 35 à 45 dB à quelques mètres. L'essentiel se joue à l'implantation : nous étudions la distance aux chambres, aux voisins et aux murs réfléchissants avant de fixer l'emplacement." },
-      { q: 'Quelles aides puis-je obtenir ?', a: "Selon vos revenus et la nature des travaux : MaPrimeRénov', prime CEE, TVA à 5,5 % et éco-PTZ. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
+      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov', prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov' et la prime CEE ne sont plus mobilisables depuis 2023-2024 : seules la TVA à 5,5 % et l'éco-PTZ restent disponibles. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
     ],
   },
 
@@ -651,6 +651,53 @@ export const chaudiereCondensation = {
       'Une consommation de combustible réduite, donc moins d’émissions pour un même besoin de chauffage.',
     ],
   },
+}
+
+/* ---------------------------------------------------------------------
+   SOUS-PAGE : ADOUCISSEUR D'EAU
+   Approfondit un point du métier « Traitement de l'eau ». Accessible via
+   un bouton « En savoir plus » depuis la page Traitement de l'eau, et sa
+   propre route directe.
+------------------------------------------------------------------------*/
+export const adoucisseur = {
+  slug: 'traitement-de-l-eau/adoucisseur',
+  title: "L'adoucisseur d'eau",
+  tagline: "Une eau plus douce, des équipements protégés, un entretien minimal.",
+  intro:
+    "L'eau du Var et de la Dracénie dépasse fréquemment 30 °f de dureté. L'adoucisseur reste la solution la plus efficace pour protéger durablement vos canalisations et vos équipements, tout en gagnant en confort au quotidien.",
+  hero: { tags: 'bathroom', lock: 300 },
+
+  avantages: {
+    heading: 'Les avantages d’une eau adoucie',
+    lead: "Au-delà du confort immédiat, l'eau adoucie change la donne sur la durée de vie de vos équipements et sur votre budget d'entretien.",
+    bullets: [
+      'Fini les dépôts de calcaire sur la robinetterie, les parois de douche et le carrelage.',
+      'Une durée de vie nettement allongée pour le chauffe-eau, le lave-linge et le lave-vaisselle.',
+      "Jusqu'à 30 % d'économies sur les produits d'entretien et les détergents.",
+      'Une eau plus douce pour la peau, les cheveux et la tenue du linge.',
+      'Un entretien minimal : quelques sacs de sel par an suffisent.',
+    ],
+  },
+
+  installation: {
+    heading: 'L’installation par PCE',
+    lead: "Nous ne posons jamais un adoucisseur au forfait : chaque appareil est dimensionné sur votre eau et votre consommation réelles.",
+    steps: [
+      { title: 'Étude personnalisée', text: "Analyse de votre eau, relevé de la dureté et du débit, examen du local technique et de vos usages." },
+      { title: 'La préconisation', text: "Nous ne proposons un adoucisseur que si c'est réellement la solution la plus adaptée à votre eau." },
+      { title: 'Installation professionnelle', text: "Pose en tête d'installation, by-pass, raccordement à l'évacuation et protection du réseau existant." },
+      { title: 'Réglages et mise en service', text: "Paramétrage de la régénération, contrôle de la dureté en sortie et explication du fonctionnement." },
+      { title: 'Suivi et entretien', text: "Contrôle annuel, réglage du sel et vérification des performances de l'appareil dans le temps." },
+    ],
+  },
+
+  faq: [
+    { q: "L'eau adoucie est-elle potable ?", a: "Oui. L'adoucisseur échange le calcium et le magnésium contre du sodium, en quantité très faible. Nous laissons systématiquement un point d'eau non adoucie pour la boisson et la cuisine, et nous pouvons y ajouter une filtration à charbon actif." },
+    { q: 'Quel entretien pour un adoucisseur ?', a: "Très peu : ajouter du sel quelques fois par an et faire contrôler l'appareil une fois par an. Nous vérifions la dureté en sortie, la régénération et l'état de la cuve et des joints." },
+    { q: 'Combien de sel consomme un adoucisseur ?', a: "Cela dépend de la dureté de l'eau et de votre consommation. Sur un foyer de quatre personnes dans notre secteur, comptez généralement quelques sacs par an. Un appareil à régénération intelligente en consomme sensiblement moins qu'un modèle à horloge." },
+    { q: 'Peut-on traiter une eau de forage ?', a: "Oui, mais rarement avec un adoucisseur seul. Un forage demande d'abord une filtration des particules (sable, boue, rouille), puis selon l'analyse un traitement du fer, un charbon actif et souvent une désinfection UV avant tout adoucissement." },
+    { q: 'Où installe-t-on l’appareil ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Il faut une évacuation à proximité et une prise électrique. Nous validons l'emplacement pendant la visite technique." },
+  ],
 }
 
 export const serviceList = [

@@ -324,6 +324,11 @@ export function ProductSpotlight({ product }) {
                 </li>
               ))}
             </ul>
+
+            <Link to="/traitement-de-l-eau/adoucisseur" className="btn-gold mt-8">
+              En savoir plus sur les adoucisseurs
+              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+            </Link>
           </div>
         </div>
       </div>

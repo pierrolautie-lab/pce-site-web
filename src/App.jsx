@@ -8,6 +8,7 @@ import Climatisation from './pages/Climatisation.jsx'
 import Electricite from './pages/Electricite.jsx'
 import Piscine from './pages/Piscine.jsx'
 import TraitementEau from './pages/TraitementEau.jsx'
+import Adoucisseur from './pages/Adoucisseur.jsx'
 import Depannage from './pages/Depannage.jsx'
 import Realisations from './pages/Realisations.jsx'
 import APropos from './pages/APropos.jsx'
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="electricite" element={<Electricite />} />
         <Route path="piscine" element={<Piscine />} />
         <Route path="traitement-de-l-eau" element={<TraitementEau />} />
+        <Route path="traitement-de-l-eau/adoucisseur" element={<Adoucisseur />} />
         <Route path="depannage" element={<Depannage />} />
         <Route path="realisations" element={<Realisations />} />
         <Route path="a-propos" element={<APropos />} />
