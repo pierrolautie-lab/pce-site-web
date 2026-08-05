@@ -4,9 +4,9 @@ import { company } from '../data/site.js'
 /* -------------------------------------------------------------------------
    Identité PCE — UNE SEULE version du logo pour tout le site.
 
-   Vrai logo du client (public/img/logo-pce.png) : ovale blanc cerclé de
-   marine, « PCE » en capitales grasses, « Depuis 2005 » en dessous — repris
-   du fichier fourni par le client (photo de l'enseigne lumineuse, détourée).
+   Vrai logo du client (public/img/logo-pce.png) : ovale chromé cerclé de
+   bleu clair, « PCE » en capitales marine — détourage officiel fourni par
+   le client (fond réellement transparent, pas une photo recadrée).
 
    Le fond de l'image est transparent : on le pose systématiquement sur un
    fond blanc (le <span> ci-dessous), y compris dans les sections à fond

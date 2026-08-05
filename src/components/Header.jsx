@@ -68,18 +68,20 @@ export default function Header() {
         </nav>
 
         {/* ------------------------------------------- Téléphone + devis */}
-        <div className="hidden shrink-0 flex-col items-end gap-2 lg:flex">
-          <a
-            href={company.phoneHref}
-            className="group flex items-center gap-2 text-navy-800 transition-colors hover:text-azure-500"
-          >
-            <Icon name="phone" className="h-4 w-4 text-azure-500" strokeWidth={2} />
-            <span className="text-[17px] font-black leading-none tracking-tight">
-              {company.phone}
-            </span>
-          </a>
-          <p className="text-[10.5px] leading-none text-navy-400">{company.hoursShort}</p>
-          <Link to="/contact" className="btn-gold btn-sm mt-0.5">
+        <div className="hidden shrink-0 items-center gap-5 lg:flex">
+          <div className="flex flex-col items-end gap-1.5">
+            <a
+              href={company.phoneHref}
+              className="group flex items-center gap-2 text-navy-800 transition-colors hover:text-azure-500"
+            >
+              <Icon name="phone" className="h-4 w-4 text-azure-500" strokeWidth={2} />
+              <span className="text-[17px] font-black leading-none tracking-tight">
+                {company.phone}
+              </span>
+            </a>
+            <p className="text-[10.5px] leading-none text-navy-400">{company.hoursShort}</p>
+          </div>
+          <Link to="/contact" className="btn-gold btn-sm">
             <Icon name="clipboard" className="h-3.5 w-3.5" strokeWidth={2} />
             Devis gratuit &amp; rapide
           </Link>
