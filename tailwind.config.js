@@ -30,7 +30,7 @@ export default {
         gold: {
           300: '#FFD87A',
           400: '#FFC94A',
-          500: '#F5B21A', // or principal
+          500: '#F5B400', // or principal
           600: '#DB9A0C',
           700: '#B07A08',
         },

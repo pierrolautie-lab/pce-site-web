@@ -6,7 +6,7 @@ import { company, guarantees, tvaCard } from '../data/site.js'
 
 /* -------------------------------------------------------------------------
    Blocs de section réutilisés par toutes les pages.
-   Charte : marine #0E2547, bleu vif #1B6FC4, or #F5B21A, fond gris-bleu.
+   Charte : marine #0E2547, bleu vif #1B6FC4, or #F5B400, fond gris-bleu.
 ---------------------------------------------------------------------------*/
 
 /** Titre de section : bleu vif, capitales, centré par défaut. */

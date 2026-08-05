@@ -52,7 +52,7 @@ npm run preview   # prévisualise le build
 |---|---|
 | Bleu marine principal | `#0E2547` (`navy-800`) |
 | Bleu vif (titres, liens) | `#1B6FC4` (`azure-500`) |
-| Or (appels à l'action) | `#F5B21A` (`gold-500`) |
+| Or (appels à l'action) | `#F5B400` (`gold-500`) |
 | Fond de page gris-bleu | `#F4F7FA` (`navy-50`) |
 | Cartes | Blanc |
 
