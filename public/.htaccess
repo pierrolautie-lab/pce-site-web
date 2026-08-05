@@ -47,3 +47,22 @@
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
 </IfModule>
+
+# Le cache pleine-page LiteSpeed (LSCache, activé par défaut sur Hostinger)
+# a été surpris en train de servir une version d'index.html vieille d'un
+# déploiement entier, ainsi qu'une réponse "page introuvable" mise en cache
+# pour robots.txt/manifest.json/sitemap-index.xml — probablement parce que
+# ces fichiers ont été explorés une première fois avant d'exister, et que la
+# réponse (SPA + 200 OK) a été mise en cache comme si elle était correcte.
+# On désactive donc entièrement ce cache pleine-page pour le site : une SPA
+# React n'a de toute façon rien à gagner à ce qu'index.html soit mis en
+# cache côté serveur, alors que les risques de contenu périmé sont réels.
+<IfModule LiteSpeed>
+  CacheDisable public /
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|txt|xml|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
