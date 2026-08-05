@@ -64,6 +64,8 @@ jobs:
           mirror --reverse --delete --verbose --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
           pwd
           ls -la
+          echo "--- img/ ---"
+          ls -la img/
           chmod -R 755 .
           bye
           EOF

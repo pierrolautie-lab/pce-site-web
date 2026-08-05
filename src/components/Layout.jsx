@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
+import FloatingCall from './FloatingCall.jsx'
 
 /** Remonte en haut de page à chaque navigation. */
 function ScrollToTop() {
@@ -21,6 +22,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <FloatingCall />
     </div>
   )
 }

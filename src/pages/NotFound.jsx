@@ -38,6 +38,10 @@ export default function NotFound() {
           <Link to="/contact" className="btn-outline-gold">
             Nous contacter
           </Link>
+          <a href={company.phoneHref} className="btn-outline-gold">
+            <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
+            {company.phone}
+          </a>
         </div>
 
         <ul className="mt-10 flex flex-wrap gap-2">

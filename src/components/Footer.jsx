@@ -152,19 +152,31 @@ export default function Footer() {
                   {company.domain}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-[13px] leading-relaxed text-white/70">
-                <Icon
-                  name="mapPin"
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-500"
-                  strokeWidth={2}
-                />
-                <span>
-                  {company.address.street}
-                  <br />
-                  {company.address.street2}
-                  <br />
-                  {company.address.zip} {company.address.city}
-                </span>
+              <li>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `PCE, ${company.address.street}, ${company.address.street2}, ${company.address.zip} ${company.address.city}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-2.5 text-[13px] leading-relaxed text-white/70 transition-colors hover:text-gold-400"
+                >
+                  <Icon
+                    name="mapPin"
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-500"
+                    strokeWidth={2}
+                  />
+                  <span>
+                    {company.address.street}
+                    <br />
+                    {company.address.street2}
+                    <br />
+                    {company.address.zip} {company.address.city}
+                    <span className="mt-1 block text-[11px] font-bold uppercase tracking-[.1em] text-white/40 group-hover:text-gold-400">
+                      Voir sur Google Maps
+                    </span>
+                  </span>
+                </a>
               </li>
             </ul>
 
