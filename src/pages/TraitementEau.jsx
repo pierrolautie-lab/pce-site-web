@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { ProductSpotlight } from '../components/Blocks.jsx'
 import { services } from '../data/site.js'
 
@@ -27,6 +27,7 @@ export default function TraitementEau() {
             { name: 'Accueil', path: '/' },
             { name: service.title, path: '/traitement-de-l-eau' },
           ]),
+          offerSchema({ name: service.title, path: '/traitement-de-l-eau' }),
         ]}
       />
       <ServicePage

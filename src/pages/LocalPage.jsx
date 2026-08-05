@@ -7,6 +7,11 @@ import { services, whyChooseUs } from '../data/site.js'
 import { localTrades, localCities, localCopy, localPath } from '../data/local.js'
 import { expertisePages } from '../data/expertise.js'
 
+/** Élision : "de plombier" mais "d'électricien" devant une voyelle. */
+function deTrade(label) {
+  return /^[aeiouéèêàâîAEIOUÉÈÊÀÂÎ]/.test(label) ? `d'${label.toLowerCase()}` : `de ${label.toLowerCase()}`
+}
+
 /**
  * Gabarit des pages locales SEO (un métier × une ville). Reprend les
  * prestations du métier correspondant depuis site.js — une seule source de
@@ -53,7 +58,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
 
       <Prestations
         items={service.prestations}
-        title={`Nos prestations de ${trade.label.toLowerCase()} à ${city.name}`}
+        title={`Nos prestations ${deTrade(trade.label)} à ${city.name}`}
         lead={`Ce que PCE prend en charge le plus souvent pour ce métier, à ${city.name} comme dans le reste de notre zone d'intervention.`}
       />
 
@@ -93,7 +98,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
       <GuaranteeBar />
 
       <CtaSection
-        title={`Un projet de ${trade.label.toLowerCase()} à ${city.name} ?`}
+        title={`Un projet ${deTrade(trade.label)} à ${city.name} ?`}
         text={`Décrivez-nous votre besoin : nous nous déplaçons à ${city.name} pour un relevé sur site et nous établissons un devis détaillé, gratuit et sans engagement.`}
       />
     </>

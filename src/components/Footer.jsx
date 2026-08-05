@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import { Wordmark } from './Brand.jsx'
 import { company, trades } from '../data/site.js'
+import { localPath } from '../data/local.js'
+
+const servedCities = [
+  { name: 'Lorgues', cityKey: 'Lorgues' },
+  { name: 'Draguignan', cityKey: 'Draguignan' },
+  { name: 'Fréjus', cityKey: 'Fréjus' },
+  { name: 'Saint-Raphaël', cityKey: 'Saint-Raphaël' },
+  { name: 'Sainte-Maxime', cityKey: 'Sainte-Maxime' },
+]
 
 const servicesLinks = [...trades, { label: 'Dépannage', to: '/depannage' }]
 
@@ -197,8 +206,27 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ------------------------------------------------ Villes desservies */}
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+            Villes desservies
+          </h3>
+          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+            {servedCities.map((c) => (
+              <li key={c.cityKey}>
+                <Link
+                  to={localPath('plombier', c.cityKey)}
+                  className="text-[13px] text-white/60 transition-colors hover:text-gold-400"
+                >
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* ------------------------------------------------ Bas de page */}
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[11.5px] text-white/40">
             © {year} {company.name} — {company.address.street}, {company.address.zip}{' '}
             {company.address.city}. Tous droits réservés.

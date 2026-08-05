@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
 export default function Climatisation() {
@@ -16,6 +16,7 @@ export default function Climatisation() {
             { name: 'Accueil', path: '/' },
             { name: service.title, path: '/climatisation' },
           ]),
+          offerSchema({ name: service.title, path: '/climatisation' }),
         ]}
       />
       <ServicePage service={service} />

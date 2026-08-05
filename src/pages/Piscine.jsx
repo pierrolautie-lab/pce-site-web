@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { ThreeColumns, TvaBanner } from '../components/Blocks.jsx'
 import { services } from '../data/site.js'
 
@@ -22,6 +22,7 @@ export default function Piscine() {
             { name: 'Accueil', path: '/' },
             { name: service.title, path: '/piscine' },
           ]),
+          offerSchema({ name: service.title, path: '/piscine' }),
         ]}
       />
       <ServicePage service={service}>

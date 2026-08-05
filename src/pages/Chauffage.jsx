@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import ServicePage from '../components/ServicePage.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import Icon from '../components/Icon.jsx'
 import { services } from '../data/site.js'
 
@@ -49,6 +49,7 @@ export default function Chauffage() {
             { name: 'Accueil', path: '/' },
             { name: service.title, path: '/chauffage' },
           ]),
+          offerSchema({ name: service.title, path: '/chauffage' }),
         ]}
       />
       <ServicePage service={service} before={<CondensationBanner />} />

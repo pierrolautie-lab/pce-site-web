@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
 export default function Electricite() {
@@ -16,6 +16,7 @@ export default function Electricite() {
             { name: 'Accueil', path: '/' },
             { name: service.title, path: '/electricite' },
           ]),
+          offerSchema({ name: service.title, path: '/electricite' }),
         ]}
       />
       <ServicePage service={service} />

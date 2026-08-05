@@ -3,7 +3,7 @@ import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
-import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
+import { CtaSection, GuaranteeBar, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
 import {
   areasDetail,
@@ -15,6 +15,7 @@ import {
   values,
   whyChooseUs,
 } from '../data/site.js'
+import { localCities, localPath } from '../data/local.js'
 
 export default function Accueil() {
   /* Les 4 premières cartes occupent la première ligne, les 2 dernières
@@ -401,6 +402,16 @@ export default function Accueil() {
           </div>
         </div>
       </section>
+
+      {/* ========================================= NOS VILLES D'INTERVENTION */}
+      <LinkGrid
+        title="Nos interventions par ville"
+        lead="Plombier, chauffagiste, climatisation, électricien, pisciniste : PCE intervient dans chacune de ces communes du Var, depuis notre atelier de Lorgues."
+        links={Object.keys(localCities).map((cityKey) => ({
+          to: localPath('plombier', cityKey),
+          label: localCities[cityKey].name,
+        }))}
+      />
 
       <CtaSection />
       <GuaranteeBar />

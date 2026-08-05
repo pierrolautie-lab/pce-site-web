@@ -11,8 +11,18 @@ import {
   CtaBand,
   CtaSection,
   OtherServices,
+  LinkGrid,
 } from './Blocks.jsx'
 import { serviceList } from '../data/site.js'
+import { localTrades, localPages, localCities, localPath } from '../data/local.js'
+
+/* Retrouve le métier local (plombier, chauffagiste...) qui correspond à ce
+   service — les sous-pages comme la chaudière à condensation partagent le
+   même `slug` racine et héritent donc du même maillage vers les villes. */
+function findLocalTrade(serviceSlug) {
+  const rootSlug = serviceSlug.split('/')[0]
+  return Object.entries(localTrades).find(([, t]) => t.serviceKey === rootSlug)
+}
 
 /**
  * Gabarit commun aux cinq pages métier.
@@ -31,6 +41,9 @@ import { serviceList } from '../data/site.js'
  * Piscine, qui lui substitue trois colonnes suivies d'un bandeau TVA.
  */
 export default function ServicePage({ service, children, before }) {
+  const localTradeEntry = findLocalTrade(service.slug)
+  const [tradeKey] = localTradeEntry ?? []
+
   return (
     <>
       {/* 2 — Hero */}
@@ -79,6 +92,19 @@ export default function ServicePage({ service, children, before }) {
       />
 
       <OtherServices current={service.slug} items={serviceList} />
+
+      {tradeKey && (
+        <LinkGrid
+          title="Nos interventions dans le Var"
+          lead={`PCE assure ${localTrades[tradeKey].verb} dans toutes ces communes, depuis notre atelier de Lorgues.`}
+          links={localPages
+            .filter((p) => p.tradeKey === tradeKey)
+            .map(({ cityKey }) => ({
+              to: localPath(tradeKey, cityKey),
+              label: localCities[cityKey].name,
+            }))}
+        />
+      )}
 
       <CtaSection
         title={`Un projet ${service.title.toLowerCase()} ?`}
