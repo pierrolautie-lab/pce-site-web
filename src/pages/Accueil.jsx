@@ -12,6 +12,7 @@ import {
   serviceList,
   stats,
   values,
+  whyChooseUs,
 } from '../data/site.js'
 
 export default function Accueil() {
@@ -146,6 +147,30 @@ export default function Accueil() {
               </span>
             </div>
           </Link>
+        </div>
+      </section>
+
+      {/* ============================================= POURQUOI CHOISIR PCE */}
+      <section className="section bg-navy-50">
+        <div className="container-pce">
+          <SectionTitle
+            title="Pourquoi choisir PCE ?"
+            lead="Six raisons concrètes, données par nos clients de Lorgues et de la Dracénie."
+          />
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChooseUs.map((w) => (
+              <div key={w.title} className="flex flex-col rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+                <span className="grid h-12 w-12 place-items-center rounded-full bg-navy-50 text-azure-500 ring-1 ring-navy-100">
+                  <Icon name={w.icon} className="h-5 w-5" strokeWidth={1.6} />
+                </span>
+                <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800">
+                  {w.title}
+                </h3>
+                <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500">{w.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

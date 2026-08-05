@@ -91,6 +91,16 @@ export const nav = [
   { label: 'Contact', to: '/contact' },
 ]
 
+/* Section « Pourquoi choisir PCE ? » de la page d'accueil. */
+export const whyChooseUs = [
+  { icon: 'award', title: "20 ans d'expérience", text: 'Une équipe qui connaît le bâti, l’eau et le climat du Var depuis 2005.' },
+  { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, rarement à plus de quarante minutes de chez vous.' },
+  { icon: 'clipboard', title: 'Devis gratuit', text: 'Détaillé poste par poste, sans engagement et sans surprise à la fin.' },
+  { icon: 'truck', title: 'Intervention rapide', text: 'Un créneau annoncé dès votre appel, y compris pour les urgences 7j/7.' },
+  { icon: 'wrench', title: 'Matériel professionnel', text: 'Des marques reconnues, choisies pour durer et rester réparables.' },
+  { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Garantie décennale et assurance RC Pro sur chaque chantier livré.' },
+]
+
 /* Bandeau de réassurance affiché sous chaque héros. */
 export const reassurance = [
   { icon: 'award', title: '+ de 20 ans', label: "d'expérience et de savoir-faire" },
