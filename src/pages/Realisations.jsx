@@ -11,6 +11,7 @@ const FILTERS = ['Tous', ...Array.from(new Set(projects.map((p) => p.trade)))]
 
 export default function Realisations() {
   const [filter, setFilter] = useState('Tous')
+  const [lightbox, setLightbox] = useState(null)
 
   const visible = useMemo(
     () => (filter === 'Tous' ? projects : projects.filter((p) => p.trade === filter)),
@@ -79,7 +80,8 @@ export default function Realisations() {
             {visible.map((p) => (
               <article
                 key={p.title}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
+                onClick={() => setLightbox(p)}
+                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative">
                   <Photo
@@ -124,6 +126,53 @@ export default function Realisations() {
         text="Décrivez-nous votre projet, même sommairement. Nous nous déplaçons pour un relevé sur site et nous établissons un devis détaillé, gratuit et sans engagement."
       />
       <GuaranteeBar />
+
+      {/* ------------------------------------------------------- Lightbox */}
+      {lightbox && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.title}
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-navy-900/90 p-4 sm:p-8"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            aria-label="Fermer"
+            className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-8 sm:top-8"
+          >
+            <Icon name="close" className="h-5 w-5" strokeWidth={2} />
+          </button>
+
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-3xl overflow-hidden rounded-2xl bg-white"
+          >
+            <Photo
+              tags={lightbox.tags}
+              lock={lightbox.lock}
+              alt={lightbox.title}
+              rounded=""
+              className="max-h-[70vh] w-full"
+              imgClassName="object-contain"
+              priority
+            />
+            <div className="p-6">
+              <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-400">
+                <Icon name="mapPin" className="h-3.5 w-3.5" strokeWidth={2} />
+                {lightbox.city}
+                <span className="h-1 w-1 rounded-full bg-navy-200" />
+                {lightbox.year}
+              </div>
+              <h3 className="mt-3 text-[17px] font-bold leading-snug text-navy-800">
+                {lightbox.title}
+              </h3>
+              <p className="mt-2.5 text-[13.5px] leading-[1.7] text-navy-500">{lightbox.text}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

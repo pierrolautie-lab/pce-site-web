@@ -163,8 +163,9 @@ export const clientPhotos = {
      N27, N31 (texte publicitaire intégré)
      N14 (piscine, filigrane centré)
 
-   INTÉGRÉES EN GALERIE SANS MÉTIER PRÉCIS (nature exacte encore à
-   confirmer avec le client — slots 930/931, voir `projects` dans site.js) :
+   RETIRÉES DE LA GALERIE RÉALISATIONS (nature du chantier, commune et date
+   non confirmées par le client — slots 930/931 encore mappés ci-dessus,
+   mais plus référencés dans `projects` de site.js) :
      N18 (regard béton enterré), N22 (composant Euroclima)
 
    ÉCARTÉES DÉFINITIVEMENT (hors métiers PCE) :

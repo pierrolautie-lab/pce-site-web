@@ -960,26 +960,11 @@ export const projects = [
     tags: 'airconditioner',
     lock: 923,
   },
-  {
-    /* Nature exacte du chantier encore à confirmer avec le client. */
-    title: 'Regard technique enterré',
-    trade: 'Autres travaux',
-    city: 'Var',
-    year: '2026',
-    text: "Pose d'un regard préfabriqué en fond de fouille, avant remblaiement.",
-    tags: 'construction',
-    lock: 930,
-  },
-  {
-    /* Nature exacte du composant encore à confirmer avec le client. */
-    title: 'Réception de matériel avant pose',
-    trade: 'Autres travaux',
-    city: 'Var',
-    year: '2026',
-    text: "Contrôle d'un composant technique de marque Euroclima, réceptionné avant installation.",
-    tags: 'tools',
-    lock: 931,
-  },
+  /* Deux chantiers retirés de la galerie : la nature exacte, la commune et
+     la date de ces deux photos (slots 930/931) ne sont pas confirmées par
+     le client — on ne publie pas de commune ou de date approximative. Les
+     photos restent disponibles en repli dans src/data/photos.js, à
+     réintégrer ici dès que le client confirme les détails du chantier. */
 ]
 
 /* ============================================================== À PROPOS ==*/
