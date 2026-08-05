@@ -4,12 +4,16 @@ import { company } from '../data/site.js'
 /* -------------------------------------------------------------------------
    Identité PCE — UNE SEULE version du logo pour tout le site.
 
-   Vrai logo du client (public/img/logo-pce.png) : ovale chromé cerclé de
+   Vrai logo du client (public/img/logo-pce.jpg) : ovale chromé cerclé de
    bleu clair, « PCE » en capitales marine — détourage officiel fourni par
-   le client (fond réellement transparent, pas une photo recadrée).
+   le client, aplati sur fond blanc et réencodé en JPEG.
+   (Le PNG à fond transparent d'origine était pourtant valide, mais
+   provoquait une erreur "Invalid source image" sur le CDN de Hostinger,
+   quel que soit l'encodeur PNG utilisé pour le réenregistrer — seul le
+   passage en JPEG a résolu le blocage.)
 
-   Le fond de l'image est transparent : on le pose systématiquement sur un
-   fond blanc (le <span> ci-dessous), y compris dans les sections à fond
+   Comme l'image est déjà aplatie sur blanc, elle est posée telle quelle
+   dans le <span> blanc ci-dessous, y compris dans les sections à fond
    marine du site, pour que le médaillon reste fidèle à l'original.
 
    ⚠️ Ne pas créer de variante. Toute évolution du logo se fait ICI, dans
@@ -27,7 +31,7 @@ function Medallion({ className = '' }) {
   return (
     <span className={`inline-flex items-center justify-center rounded-full bg-white ${className}`}>
       <img
-        src="/img/logo-pce.png"
+        src="/img/logo-pce.jpg"
         alt={`${company.name} — ${company.baselineShort}`}
         className="h-full w-full object-contain"
       />
