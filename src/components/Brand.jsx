@@ -4,7 +4,7 @@ import { company } from '../data/site.js'
 /* -------------------------------------------------------------------------
    Identité PCE — UNE SEULE version du logo pour tout le site.
 
-   Vrai logo du client (public/img/logo-pce.jpg) : ovale chromé cerclé de
+   Vrai logo du client (public/img/logo-pce-officiel.jpg) : ovale chromé cerclé de
    bleu clair, « PCE » en capitales marine — détourage officiel fourni par
    le client, aplati sur fond blanc et réencodé en JPEG.
    (Le PNG à fond transparent d'origine était pourtant valide, mais
@@ -31,7 +31,7 @@ function Medallion({ className = '' }) {
   return (
     <span className={`inline-flex items-center justify-center rounded-full bg-white ${className}`}>
       <img
-        src="/img/logo-pce.jpg"
+        src="/img/logo-pce-officiel.jpg"
         alt={`${company.name} — ${company.baselineShort}`}
         className="h-full w-full object-contain"
       />
