@@ -15,8 +15,12 @@ import Conseils from './pages/Conseils.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
 import LocalPage from './pages/LocalPage.jsx'
+import ExpertisePage from './pages/ExpertisePage.jsx'
+import ArticlePage from './pages/ArticlePage.jsx'
 import NotFound from './pages/NotFound.jsx'
-import { localPages, localTrades } from './data/local.js'
+import { localPages, localPath } from './data/local.js'
+import { expertiseSlugs } from './data/expertise.js'
+import { articleSlugs } from './data/articles.js'
 
 export default function App() {
   return (
@@ -41,9 +45,19 @@ export default function App() {
         {localPages.map(({ tradeKey, cityKey }) => (
           <Route
             key={`${tradeKey}-${cityKey}`}
-            path={`${localTrades[tradeKey].urlSlug}-${cityKey.toLowerCase()}`}
+            path={localPath(tradeKey, cityKey).slice(1)}
             element={<LocalPage tradeKey={tradeKey} cityKey={cityKey} />}
           />
+        ))}
+
+        {/* Pages « sous-expertise » longue traîne, ex. /installation-pompe-a-chaleur-var */}
+        {expertiseSlugs.map((slug) => (
+          <Route key={slug} path={slug} element={<ExpertisePage slug={slug} />} />
+        ))}
+
+        {/* Articles de conseils, ex. /conseils/comment-choisir-pompe-a-chaleur */}
+        {articleSlugs.map((slug) => (
+          <Route key={slug} path={`conseils/${slug}`} element={<ArticlePage slug={slug} />} />
         ))}
 
         <Route path="*" element={<NotFound />} />

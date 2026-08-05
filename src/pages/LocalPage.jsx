@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
-import { Prestations, GuaranteeBar, CtaSection, SectionTitle } from '../components/Blocks.jsx'
+import { Prestations, GuaranteeBar, CtaSection, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import { services, whyChooseUs } from '../data/site.js'
-import { localTrades, localCities, localCopy } from '../data/local.js'
+import { localTrades, localCities, localCopy, localPath } from '../data/local.js'
+import { expertisePages } from '../data/expertise.js'
 
 /**
  * Gabarit des pages locales SEO (un métier × une ville). Reprend les
@@ -18,7 +20,12 @@ export default function LocalPage({ tradeKey, cityKey }) {
   const service = services[trade.serviceKey]
   const { intro, metaDescription } = localCopy(tradeKey, cityKey)
   const title = `${trade.label} à ${city.name}`
-  const path = `/${trade.urlSlug}-${cityKey.toLowerCase()}`
+  const path = localPath(tradeKey, cityKey)
+  const expertise = expertisePages[trade.relatedExpertise]
+  const neighborLinks = city.neighbors.map((neighborKey) => ({
+    to: localPath(tradeKey, neighborKey),
+    label: `${trade.label} à ${localCities[neighborKey].name}`,
+  }))
 
   return (
     <>
@@ -37,7 +44,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
       />
 
       <PageHero
-        breadcrumb={title}
+        breadcrumb={[{ label: trade.label, to: `/${trade.serviceKey}` }, { label: city.name }]}
         title={title}
         subtitle={`${trade.label} à ${city.name} (83) — devis gratuit`}
         intro={intro}
@@ -72,6 +79,16 @@ export default function LocalPage({ tradeKey, cityKey }) {
           </div>
         </div>
       </section>
+
+      <LinkGrid
+        title="Pour aller plus loin"
+        lead={`Notre page ${trade.label.toLowerCase()} complète, un dossier technique et les villes voisines desservies par PCE.`}
+        links={[
+          { to: `/${trade.serviceKey}`, label: `Page ${trade.label.toLowerCase()}` },
+          ...(expertise ? [{ to: `/${trade.relatedExpertise}`, label: expertise.h1 }] : []),
+          ...neighborLinks,
+        ]}
+      />
 
       <GuaranteeBar />
 

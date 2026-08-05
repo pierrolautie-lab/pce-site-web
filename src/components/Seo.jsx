@@ -55,6 +55,40 @@ export function serviceSchema({ name, description, path }) {
   }
 }
 
+/** Construit la donnée structurée FAQPage (schema.org) à partir d'une liste de { q, a }. */
+export function faqPageSchema(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: it.a,
+      },
+    })),
+  }
+}
+
+/** Construit la donnée structurée Offer (schema.org) pour un devis gratuit sur une page métier. */
+export function offerSchema({ name, path }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Offer',
+    name: `Devis gratuit — ${name}`,
+    price: '0',
+    priceCurrency: 'EUR',
+    url: `${company.url}${path}`,
+    areaServed: ['Lorgues', 'Dracénie', 'Golfe de Saint-Tropez'],
+    seller: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: company.name,
+      url: company.url,
+    },
+  }
+}
+
 export default function Seo({
   title,
   description,
@@ -73,6 +107,7 @@ export default function Seo({
     document.title = fullTitle
     setMeta('meta[name="description"]', description)
     setLink('link[rel="canonical"]', url)
+    setLink('link[rel="alternate"][hreflang="fr"]', url)
     setMeta('meta[property="og:title"]', fullTitle)
     setMeta('meta[property="og:description"]', description)
     setMeta('meta[property="og:url"]', url)

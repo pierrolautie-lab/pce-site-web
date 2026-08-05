@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { conseils } from '../data/site.js'
+import { articles, articleSlugs } from '../data/articles.js'
 
 /**
  * Page éducative générique sur les cinq métiers PCE, pensée pour répondre
@@ -52,6 +53,44 @@ export default function Conseils() {
                 </Link>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------- Articles de fond */}
+      <section className="section bg-navy-50">
+        <div className="container-pce">
+          <SectionTitle
+            title="Nos derniers articles"
+            lead="Des dossiers plus complets pour préparer votre projet ou anticiper un entretien."
+          />
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {articleSlugs.map((slug) => {
+              const a = articles[slug]
+              return (
+                <Link
+                  key={slug}
+                  to={`/conseils/${slug}`}
+                  className="group flex flex-col rounded-2xl bg-white p-7 shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <h3 className="text-[14px] font-bold uppercase leading-snug tracking-[.05em] text-navy-800">
+                    {a.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-[13px] leading-[1.7] text-navy-500">
+                    {a.intro[0].slice(0, 120)}…
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500">
+                    Lire l'article
+                    <Icon
+                      name="arrowRight"
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                      strokeWidth={2.4}
+                    />
+                  </span>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

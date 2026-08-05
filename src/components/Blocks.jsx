@@ -542,6 +542,33 @@ export function CtaSection({
   )
 }
 
+/* ------------------------------------------- MAILLAGE INTERNE (liens ronds) */
+export function LinkGrid({ title, lead, links, tone = 'light' }) {
+  const dark = tone === 'dark'
+  return (
+    <section className={dark ? 'section bg-navy-900' : 'section bg-navy-50'}>
+      <div className="container-pce">
+        <SectionTitle title={title} lead={lead} tone={tone} />
+        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className={`rounded-full px-5 py-2.5 text-[12.5px] font-semibold transition-colors duration-200 ${
+                dark
+                  ? 'bg-white/10 text-white hover:bg-gold-500 hover:text-navy-800'
+                  : 'bg-white text-navy-700 ring-1 ring-navy-100 hover:bg-azure-500 hover:text-white'
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* -------------------------------------------- LIENS VERS LES AUTRES PAGES */
 export function OtherServices({ current, items }) {
   const others = items.filter((s) => s.slug !== current)

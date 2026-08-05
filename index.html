@@ -10,6 +10,7 @@
       content="PCE, artisan à Lorgues dans le Var depuis 2005 : plomberie, chauffage, climatisation, électricité et entretien de piscine. Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez."
     />
     <link rel="canonical" href="https://pcevar.fr/" />
+    <link rel="alternate" hreflang="fr" href="https://pcevar.fr/" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="PCE — Lorgues (83)" />
 
@@ -75,6 +76,53 @@
       }
     </script>
 
+    <!--
+      Données structurées Organization (schema.org), complémentaires au
+      LocalBusiness ci-dessus : logo, zone de couverture (rayon 50 km autour
+      de Lorgues) et certifications professionnelles.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PCE",
+        "legalName": "PCE — Plomberie, Chauffage, Électricité",
+        "url": "https://pcevar.fr/",
+        "logo": "https://pcevar.fr/img/logo-pce-officiel.jpg",
+        "telephone": "+33660129052",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "37 Clos de Lorgues, Rue Saint Honorat",
+          "postalCode": "83510",
+          "addressLocality": "Lorgues",
+          "addressRegion": "Var",
+          "addressCountry": "FR"
+        },
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 43.4956,
+            "longitude": 6.3614
+          },
+          "geoRadius": "50000"
+        },
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "certification",
+            "name": "Qualigaz"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "certification",
+            "name": "Qualipac"
+          }
+        ]
+      }
+    </script>
+
+    <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/jpeg" href="/img/logo-pce-officiel.jpg" />
     <link rel="apple-touch-icon" href="/img/logo-pce-officiel.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

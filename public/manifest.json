@@ -1,0 +1,17 @@
+{
+  "name": "PCE — Plomberie, chauffage, climatisation, électricité et piscine",
+  "short_name": "PCE",
+  "description": "Artisan à Lorgues (Var) depuis 2005 : plomberie, chauffage, climatisation, électricité, piscine et traitement de l'eau.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F7FA",
+  "theme_color": "#0E2547",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/img/logo-pce-officiel.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
