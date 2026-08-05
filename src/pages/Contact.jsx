@@ -37,11 +37,27 @@ export default function Contact() {
     if (Object.keys(found).length) return
 
     /* ------------------------------------------------------------------
-       Le formulaire est pour l'instant purement front-end : il valide et
-       affiche la confirmation, sans envoi réel. Pour le mettre en service,
-       remplacez cette ligne par un appel vers votre backend, un service
-       de type Formspree / EmailJS, ou une fonction serverless.
+       Pas de backend branché pour l'instant : plutôt que de valider un
+       formulaire qui n'envoie rien nulle part, on ouvre le client mail du
+       visiteur avec un message prérempli à destination de PCE. Ce n'est
+       qu'un palliatif — dès qu'un vrai backend (Formspree, EmailJS,
+       fonction serverless) est en place, remplacez ce bloc par l'appel
+       réseau correspondant et gardez le mailto en repli si l'appel échoue.
     ------------------------------------------------------------------- */
+    const subject = `Demande de devis — ${form.sujet}`
+    const body = [
+      `Nom : ${form.nom}`,
+      `E-mail : ${form.email}`,
+      form.tel && `Téléphone : ${form.tel}`,
+      form.ville && `Commune du chantier : ${form.ville}`,
+      `Sujet : ${form.sujet}`,
+      '',
+      form.message,
+    ]
+      .filter(Boolean)
+      .join('\n')
+    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
     setSent(true)
     setForm(EMPTY)
   }
@@ -182,8 +198,12 @@ export default function Contact() {
                       Merci, votre message est prêt à partir
                     </h2>
                     <p className="mt-4 max-w-lg text-[14.5px] leading-[1.8] text-navy-500">
-                      Votre demande a bien été enregistrée côté site. Pour une réponse immédiate, en
-                      particulier en cas d'urgence, appelez-nous directement au{' '}
+                      Votre messagerie va s'ouvrir avec votre demande déjà rédigée à destination de
+                      PCE : il ne reste qu'à l'envoyer. Si rien ne s'ouvre, écrivez-nous directement à{' '}
+                      <a href={`mailto:${company.email}`} className="font-bold text-navy-800 underline">
+                        {company.email}
+                      </a>
+                      . Pour une réponse immédiate, en particulier en cas d'urgence, appelez-nous au{' '}
                       <a href={company.phoneHref} className="font-bold text-navy-800 underline">
                         {company.phone}
                       </a>
