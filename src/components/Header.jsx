@@ -79,7 +79,7 @@ export default function Header() {
                 {company.phone}
               </span>
             </a>
-            <p className="text-[10.5px] leading-none text-navy-400">{company.hoursShort}</p>
+            <p className="text-[10.5px] leading-none text-navy-500">{company.hoursShort}</p>
           </div>
           <Link to="/contact" className="btn-gold btn-sm">
             <Icon name="clipboard" className="h-3.5 w-3.5" strokeWidth={2} />
@@ -156,7 +156,7 @@ export default function Header() {
               <Icon name="phone" className="h-4 w-4 text-azure-500" strokeWidth={2} />
               {company.phone}
             </span>
-            <span className="text-[11px] text-navy-400">{company.hoursShort}</span>
+            <span className="text-[11px] text-navy-500">{company.hoursShort}</span>
           </a>
         </nav>
       </div>

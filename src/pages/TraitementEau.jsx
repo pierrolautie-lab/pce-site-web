@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
 import { ProductSpotlight } from '../components/Blocks.jsx'
 import { services } from '../data/site.js'
 
@@ -13,7 +13,22 @@ export default function TraitementEau() {
 
   return (
     <>
-      <Seo title={service.title} description={service.metaDescription} path="/traitement-de-l-eau" />
+      <Seo
+        title={service.title}
+        description={service.metaDescription}
+        path="/traitement-de-l-eau"
+        jsonLd={[
+          serviceSchema({
+            name: service.title,
+            description: service.metaDescription,
+            path: '/traitement-de-l-eau',
+          }),
+          breadcrumbSchema([
+            { name: 'Accueil', path: '/' },
+            { name: service.title, path: '/traitement-de-l-eau' },
+          ]),
+        ]}
+      />
       <ServicePage
         service={service}
         before={<ProductSpotlight product={service.product} />}

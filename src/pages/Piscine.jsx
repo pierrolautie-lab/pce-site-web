@@ -1,5 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
-import Seo from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
 import { ThreeColumns, TvaBanner } from '../components/Blocks.jsx'
 import { services } from '../data/site.js'
 
@@ -12,7 +12,18 @@ export default function Piscine() {
 
   return (
     <>
-      <Seo title={service.title} description={service.metaDescription} path="/piscine" />
+      <Seo
+        title={service.title}
+        description={service.metaDescription}
+        path="/piscine"
+        jsonLd={[
+          serviceSchema({ name: service.title, description: service.metaDescription, path: '/piscine' }),
+          breadcrumbSchema([
+            { name: 'Accueil', path: '/' },
+            { name: service.title, path: '/piscine' },
+          ]),
+        ]}
+      />
       <ServicePage service={service}>
         <ThreeColumns
           columns={service.columns}

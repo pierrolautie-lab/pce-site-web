@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import ServicePage from '../components/ServicePage.jsx'
-import Seo from '../components/Seo.jsx'
+import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
 import Icon from '../components/Icon.jsx'
 import { services } from '../data/site.js'
 
@@ -39,7 +39,18 @@ export default function Chauffage() {
   const service = services.chauffage
   return (
     <>
-      <Seo title={service.title} description={service.metaDescription} path="/chauffage" />
+      <Seo
+        title={service.title}
+        description={service.metaDescription}
+        path="/chauffage"
+        jsonLd={[
+          serviceSchema({ name: service.title, description: service.metaDescription, path: '/chauffage' }),
+          breadcrumbSchema([
+            { name: 'Accueil', path: '/' },
+            { name: service.title, path: '/chauffage' },
+          ]),
+        ]}
+      />
       <ServicePage service={service} before={<CondensationBanner />} />
     </>
   )

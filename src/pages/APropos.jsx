@@ -73,7 +73,7 @@ export default function APropos() {
                     <p className="text-[26px] font-black leading-none tracking-tight text-navy-800">
                       {s.value}
                     </p>
-                    <p className="mt-2 text-[11.5px] leading-snug text-navy-400">{s.label}</p>
+                    <p className="mt-2 text-[11.5px] leading-snug text-navy-500">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -163,7 +163,7 @@ export default function APropos() {
                     <Icon name="mapPin" className="h-5 w-5" strokeWidth={1.6} />
                   </span>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-navy-400">
+                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-navy-500">
                       {a.lead}
                     </p>
                     <h3 className="text-[17px] font-black uppercase tracking-tight text-navy-800">

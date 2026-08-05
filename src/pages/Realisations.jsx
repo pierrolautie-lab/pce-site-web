@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
@@ -18,6 +18,13 @@ export default function Realisations() {
     () => (filter === 'Tous' ? projects : projects.filter((p) => p.trade === filter)),
     [filter]
   )
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => e.key === 'Escape' && setLightbox(null)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   return (
     <>
@@ -44,7 +51,7 @@ export default function Realisations() {
                 <p className="text-[30px] font-black leading-none tracking-tight text-navy-800">
                   {s.value}
                 </p>
-                <p className="mt-2 text-[11.5px] leading-snug text-navy-400">{s.label}</p>
+                <p className="mt-2 text-[11.5px] leading-snug text-navy-500">{s.label}</p>
               </div>
             ))}
           </div>
@@ -87,7 +94,16 @@ export default function Realisations() {
               <article
                 key={p.title}
                 onClick={() => setLightbox(p)}
-                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setLightbox(p)
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`Agrandir la photo : ${p.title}`}
+                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure-500"
               >
                 <div className="relative">
                   <Photo
@@ -104,7 +120,7 @@ export default function Realisations() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-400">
+                  <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-500">
                     <Icon name="mapPin" className="h-3.5 w-3.5" strokeWidth={2} />
                     {p.city}
                     <span className="h-1 w-1 rounded-full bg-navy-200" />
@@ -120,7 +136,7 @@ export default function Realisations() {
           </div>
 
           {visible.length === 0 && (
-            <p className="mt-10 text-center text-[14px] text-navy-400">
+            <p className="mt-10 text-center text-[14px] text-navy-500">
               Aucune réalisation dans cette catégorie pour le moment.
             </p>
           )}
@@ -165,7 +181,7 @@ export default function Realisations() {
               priority
             />
             <div className="p-6">
-              <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-400">
+              <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-500">
                 <Icon name="mapPin" className="h-3.5 w-3.5" strokeWidth={2} />
                 {lightbox.city}
                 <span className="h-1 w-1 rounded-full bg-navy-200" />

@@ -53,7 +53,7 @@ export function Prestations({ items, title = 'Nos prestations', lead }) {
               <h3 className="mt-4 text-[12.5px] font-bold uppercase leading-tight tracking-[.05em] text-navy-800">
                 {it.title}
               </h3>
-              <p className="mt-1.5 text-[11.5px] leading-snug text-navy-400">{it.label}</p>
+              <p className="mt-1.5 text-[11.5px] leading-snug text-navy-500">{it.label}</p>
             </div>
           ))}
         </div>
@@ -227,7 +227,7 @@ export function TrustBadges({ tone = 'light' }) {
       <div className="container-pce">
         <p
           className={`text-center text-[10.5px] font-bold uppercase tracking-[.16em] ${
-            dark ? 'text-white/45' : 'text-navy-400'
+            dark ? 'text-white/45' : 'text-navy-500'
           }`}
         >
           Nos qualifications et garanties

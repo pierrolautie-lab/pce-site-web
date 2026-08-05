@@ -14,7 +14,9 @@ import Realisations from './pages/Realisations.jsx'
 import Conseils from './pages/Conseils.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
+import LocalPage from './pages/LocalPage.jsx'
 import NotFound from './pages/NotFound.jsx'
+import { localPages, localTrades } from './data/local.js'
 
 export default function App() {
   return (
@@ -34,6 +36,16 @@ export default function App() {
         <Route path="conseils" element={<Conseils />} />
         <Route path="a-propos" element={<APropos />} />
         <Route path="contact" element={<Contact />} />
+
+        {/* Pages locales SEO : un métier × une ville, ex. /plombier-lorgues */}
+        {localPages.map(({ tradeKey, cityKey }) => (
+          <Route
+            key={`${tradeKey}-${cityKey}`}
+            path={`${localTrades[tradeKey].urlSlug}-${cityKey.toLowerCase()}`}
+            element={<LocalPage tradeKey={tradeKey} cityKey={cityKey} />}
+          />
+        ))}
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

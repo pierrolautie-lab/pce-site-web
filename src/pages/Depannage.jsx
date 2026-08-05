@@ -41,7 +41,7 @@ export default function Depannage() {
                 <h3 className="mt-5 text-[13px] font-bold uppercase leading-tight tracking-[.06em] text-navy-800">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-[12.5px] leading-snug text-navy-400">{s.label}</p>
+                <p className="mt-2 text-[12.5px] leading-snug text-navy-500">{s.label}</p>
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function Depannage() {
                 <h3 className="mt-4 text-[12.5px] font-bold uppercase tracking-[.07em] text-navy-800 transition-colors group-hover:text-white">
                   {d.title}
                 </h3>
-                <p className="mt-2 text-[11.5px] leading-snug text-navy-400 transition-colors group-hover:text-white/60">
+                <p className="mt-2 text-[11.5px] leading-snug text-navy-500 transition-colors group-hover:text-white/60">
                   {d.label}
                 </p>
               </Link>
@@ -125,13 +125,13 @@ export default function Depannage() {
                   <Icon name="phone" className="h-7 w-7" strokeWidth={1.7} />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[10px] font-bold uppercase tracking-[.18em] text-navy-400">
+                  <span className="block text-[10px] font-bold uppercase tracking-[.18em] text-navy-500">
                     Appelez-nous maintenant
                   </span>
                   <span className="mt-1.5 block text-[28px] font-black leading-none tracking-tight sm:text-[38px]">
                     {company.phone}
                   </span>
-                  <span className="mt-2 block text-[11.5px] text-navy-400">
+                  <span className="mt-2 block text-[11.5px] text-navy-500">
                     Urgences 7j/7 — {company.address.city} et tout le Var
                   </span>
                 </span>

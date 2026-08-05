@@ -246,7 +246,7 @@ export default function Accueil() {
                     <p className="text-[26px] font-black leading-none tracking-tight text-navy-800">
                       {s.value}
                     </p>
-                    <p className="mt-2 text-[11.5px] leading-snug text-navy-400">{s.label}</p>
+                    <p className="mt-2 text-[11.5px] leading-snug text-navy-500">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -386,7 +386,7 @@ export default function Accueil() {
                   imgClassName="transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-navy-400">
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-navy-500">
                     <span className="text-navy-700">{p.trade}</span>
                     <span className="h-1 w-1 rounded-full bg-navy-200" />
                     <span>
