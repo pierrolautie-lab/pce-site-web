@@ -1,6 +1,13 @@
 import ServicePage from '../components/ServicePage.jsx'
+import Seo from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
 export default function Plomberie() {
-  return <ServicePage service={services.plomberie} />
+  const service = services.plomberie
+  return (
+    <>
+      <Seo title={service.title} description={service.metaDescription} path="/plomberie" />
+      <ServicePage service={service} />
+    </>
+  )
 }

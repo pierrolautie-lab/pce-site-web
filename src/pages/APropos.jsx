@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
+import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
 import { areasDetail, company, milestones, serviceList, stats, values } from '../data/site.js'
@@ -9,6 +10,11 @@ import { areasDetail, company, milestones, serviceList, stats, values } from '..
 export default function APropos() {
   return (
     <>
+      <Seo
+        title="À propos"
+        description="PCE, artisan à Lorgues (83) depuis 2005 : vingt ans de chantiers, cinq métiers réunis sous le même toit et plus de 1 800 interventions dans le Var."
+        path="/a-propos"
+      />
       <PageHero
         breadcrumb="À propos"
         title="À propos"

@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero.jsx'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionTitle, GuaranteeBar, CtaSection } from '../components/Blocks.jsx'
 import { chaudiereCondensation as data } from '../data/site.js'
 
@@ -13,6 +14,11 @@ import { chaudiereCondensation as data } from '../data/site.js'
 export default function ChaudiereCondensation() {
   return (
     <>
+      <Seo
+        title={data.title}
+        description="Chaudière à condensation gaz, fioul ou bois/granulés : fonctionnement, économies de combustible et bénéfices écologiques. Installation par PCE à Lorgues (83)."
+        path="/chauffage/chaudiere-condensation"
+      />
       <PageHero
         breadcrumb={[{ label: 'Chauffage', to: '/chauffage' }, { label: data.title }]}
         title={data.title}

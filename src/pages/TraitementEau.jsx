@@ -1,4 +1,5 @@
 import ServicePage from '../components/ServicePage.jsx'
+import Seo from '../components/Seo.jsx'
 import { ProductSpotlight } from '../components/Blocks.jsx'
 import { services } from '../data/site.js'
 
@@ -11,9 +12,12 @@ export default function TraitementEau() {
   const service = services.traitementEau
 
   return (
-    <ServicePage
-      service={service}
-      before={<ProductSpotlight product={service.product} />}
-    />
+    <>
+      <Seo title={service.title} description={service.metaDescription} path="/traitement-de-l-eau" />
+      <ServicePage
+        service={service}
+        before={<ProductSpotlight product={service.product} />}
+      />
+    </>
   )
 }

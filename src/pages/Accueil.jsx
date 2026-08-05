@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
+import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
 import {
@@ -30,6 +31,12 @@ export default function Accueil() {
 
   return (
     <>
+      <Seo
+        standalone
+        title="PCE — Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83)"
+        description="PCE, artisan à Lorgues dans le Var depuis 2005 : plomberie, chauffage, climatisation, électricité et entretien de piscine. Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez."
+        path="/"
+      />
       {/* ====================================================== HERO ====== */}
       <PageHero
         title="Votre confort, notre métier"

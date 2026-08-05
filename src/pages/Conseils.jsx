@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import PageHero from '../components/PageHero.jsx'
+import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { conseils } from '../data/site.js'
 
@@ -12,6 +13,11 @@ import { conseils } from '../data/site.js'
 export default function Conseils() {
   return (
     <>
+      <Seo
+        title="Conseils"
+        description="Conseils pratiques de PCE sur la plomberie, le chauffage, la climatisation, l'électricité et la piscine, tirés de vingt ans de chantiers dans le Var."
+        path="/conseils"
+      />
       <PageHero
         breadcrumb="Conseils"
         title="Conseils"

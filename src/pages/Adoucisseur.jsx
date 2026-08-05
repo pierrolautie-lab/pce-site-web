@@ -1,4 +1,5 @@
 import PageHero from '../components/PageHero.jsx'
+import Seo from '../components/Seo.jsx'
 import {
   ProductSpotlight,
   InfoBlock,
@@ -17,6 +18,11 @@ import { adoucisseur as data, services } from '../data/site.js'
 export default function Adoucisseur() {
   return (
     <>
+      <Seo
+        title={data.title}
+        description="Adoucisseur d'eau Pentair Foleo : avantages d'une eau adoucie, installation par PCE et réponses aux questions fréquentes. Étude gratuite à Lorgues (83)."
+        path="/traitement-de-l-eau/adoucisseur"
+      />
       <PageHero
         breadcrumb={[{ label: "Traitement de l'eau", to: '/traitement-de-l-eau' }, { label: data.title }]}
         title={data.title}

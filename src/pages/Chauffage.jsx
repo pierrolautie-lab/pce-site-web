@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ServicePage from '../components/ServicePage.jsx'
+import Seo from '../components/Seo.jsx'
 import Icon from '../components/Icon.jsx'
 import { services } from '../data/site.js'
 
@@ -35,7 +36,11 @@ function CondensationBanner() {
 }
 
 export default function Chauffage() {
+  const service = services.chauffage
   return (
-    <ServicePage service={services.chauffage} before={<CondensationBanner />} />
+    <>
+      <Seo title={service.title} description={service.metaDescription} path="/chauffage" />
+      <ServicePage service={service} before={<CondensationBanner />} />
+    </>
   )
 }

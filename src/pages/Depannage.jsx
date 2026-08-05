@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Icon from '../components/Icon.jsx'
+import Seo from '../components/Seo.jsx'
 import { Expertise, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
 import { company, depannage } from '../data/site.js'
@@ -8,6 +9,11 @@ import { company, depannage } from '../data/site.js'
 export default function Depannage() {
   return (
     <>
+      <Seo
+        title={depannage.title}
+        description="Dépannage 7j/7 à Lorgues (83) : plomberie, chauffage, climatisation, électricité et piscine. Créneau donné dès l'appel, prix annoncé avant intervention."
+        path="/depannage"
+      />
       {/* -------------------------------------------- Hero sur fond marine */}
       <PageHero
         breadcrumb="Dépannage"

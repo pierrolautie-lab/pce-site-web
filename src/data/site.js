@@ -136,6 +136,7 @@ export const services = {
     intro:
       "Depuis 2005, PCE prend en charge l'ensemble de vos travaux de plomberie, de la création d'un réseau neuf à la rénovation complète d'une salle de bains. Recherche de fuite non destructive, remplacement de chauffe-eau, traitement de l'eau : un seul interlocuteur, du premier relevé jusqu'à la mise en service.",
     card: "Réseaux neufs, salles de bains, recherche de fuite et traitement de l'eau.",
+    metaDescription: "Plombier à Lorgues (83) : réseaux neufs, rénovation de salle de bains, recherche de fuite non destructive et chauffe-eau. Devis gratuit, intervention rapide dans le Var.",
     hero: { tags: 'bathroom', lock: 231 },
 
     prestations: [
@@ -203,6 +204,7 @@ export const services = {
     intro:
       "Nous dimensionnons chaque installation en fonction de votre logement, de son isolation et du climat provençal — jamais sur catalogue. Étude préalable, choix du matériel, pose et entretien annuel : PCE vous accompagne sur toute la durée de vie de votre système de chauffage.",
     card: "Pompes à chaleur, chaudières et installations gaz, plancher chauffant et entretien.",
+    metaDescription: "Chauffagiste à Lorgues (83) : pompe à chaleur, chaudière à gaz à condensation, plancher chauffant et entretien annuel. Étude thermique et devis gratuit dans le Var.",
     hero: { tags: 'airconditioner', lock: 412 },
 
     /* Rangée de bénéfices, reprise du support « PCE, votre expert chauffage & gaz » */
@@ -278,6 +280,7 @@ export const services = {
     intro:
       "Rafraîchir sans faire de bruit ni défigurer une façade, c'est tout l'enjeu d'une bonne installation. Nous étudions l'implantation des unités, l'acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l'entretien réglementaire de votre équipement.",
     card: 'Mono-split, multi-split, gainable et entretien des unités.',
+    metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
     hero: { tags: 'airconditioner', lock: 517 },
 
     /* Rangée de bénéfices, reprise des supports de communication PCE */
@@ -353,6 +356,7 @@ export const services = {
     intro:
       "Tableau vétuste, disjoncteur qui saute, projet d'extension ou borne de recharge : nous reprenons votre installation électrique dans le respect de la norme NF C 15-100. Chaque chantier est repéré, étiqueté et livré avec un schéma de tableau lisible par n'importe quel électricien après nous.",
     card: 'Tableaux, mise aux normes NF C 15-100, dépannage et bornes de recharge.',
+    metaDescription: "Électricien à Lorgues (83) : tableaux électriques, mise aux normes NF C 15-100, bornes de recharge et dépannage. Circuits étiquetés, devis gratuit dans le Var.",
     hero: { tags: 'electricity', lock: 628 },
 
     prestations: [
@@ -420,6 +424,7 @@ export const services = {
     intro:
       "Une eau limpide sans y passer ses week-ends, c'est d'abord une affaire de réglages et de bon matériel. PCE assure la mise en route, l'hivernage, la rénovation du local technique et l'automatisation complète de votre bassin, à Lorgues comme sur tout le Golfe de Saint-Tropez.",
     card: 'Filtration, traitement au sel, chauffage du bassin et automatisation.',
+    metaDescription: "Piscinier à Lorgues (83) : filtration, traitement au sel, pompe à chaleur et automatisation de bassin. Diagnostic du local technique, devis gratuit dans le Var.",
     hero: { tags: 'swimmingpool', lock: 739 },
 
     prestations: [
@@ -511,6 +516,7 @@ export const services = {
     intro:
       "L'eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : adoucissement, filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
     card: "Adoucisseurs, filtration, purification et désinfection de votre eau.",
+    metaDescription: "Traitement de l'eau à Lorgues (83) : adoucisseur Pentair Foleo, filtration fine, charbon actif et UV. Analyse de votre eau et devis gratuit dans le Var.",
     hero: { tags: 'bathroom', lock: 300 },
 
     prestations: [

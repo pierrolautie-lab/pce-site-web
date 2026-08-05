@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
+import Seo from '../components/Seo.jsx'
 import { Watermark, Wordmark } from '../components/Brand.jsx'
 import { company, trades } from '../data/site.js'
 
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden bg-navy-800 text-white">
+      <Seo
+        title="Page introuvable"
+        description="Cette page n'existe pas ou plus sur le site de PCE, artisan à Lorgues (83)."
+        path=""
+        noindex
+      />
       <Watermark className="left-[-.03em] top-6 text-[36vw] lg:text-[20rem]" />
 
       <div className="container-pce relative py-24 lg:py-32">

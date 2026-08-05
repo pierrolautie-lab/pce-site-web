@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import PageHero from '../components/PageHero.jsx'
+import Seo from '../components/Seo.jsx'
 import { GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { company, serviceList } from '../data/site.js'
 
@@ -69,6 +70,11 @@ export default function Contact() {
 
   return (
     <>
+      <Seo
+        title="Contact"
+        description="Demandez un devis gratuit à PCE, artisan à Lorgues (83) : plomberie, chauffage, climatisation, électricité, piscine et traitement de l'eau. Réponse rapide."
+        path="/contact"
+      />
       <PageHero
         breadcrumb="Contact"
         title="Contact"
