@@ -273,6 +273,7 @@ export function ProductSpotlight({ product }) {
                 className="aspect-[3/4] w-full bg-white shadow-photo"
                 imgClassName="object-contain p-6"
                 rounded="rounded-xl"
+                sizes="(min-width: 1024px) 42vw, 100vw"
               />
               <div className="absolute -bottom-4 left-4 flex items-center gap-3 rounded-lg bg-navy-800 px-5 py-3 text-white shadow-card">
                 <Icon name="shieldCheck" className="h-5 w-5 text-gold-500" strokeWidth={1.7} />
@@ -371,6 +372,7 @@ export function Expertise({ data }) {
               alt={data.heading}
               className="aspect-[4/5] w-full shadow-photo"
               rounded="rounded-xl"
+              sizes="(min-width: 1024px) 42vw, 100vw"
             />
           </div>
 

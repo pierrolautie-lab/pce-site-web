@@ -113,6 +113,7 @@ export default function Realisations() {
                     rounded=""
                     className="aspect-[4/3] w-full"
                     imgClassName="transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
                   <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800 backdrop-blur">
                     {p.trade}

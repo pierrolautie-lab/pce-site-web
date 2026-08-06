@@ -66,6 +66,7 @@ export default function APropos() {
                 lock={971}
                 alt="Lorgues, dans le Var"
                 className="aspect-[4/5] w-full shadow-photo"
+                sizes="(min-width: 1024px) 42vw, 100vw"
               />
               <div className="mt-5 grid grid-cols-2 gap-4">
                 {stats.slice(0, 2).map((s) => (

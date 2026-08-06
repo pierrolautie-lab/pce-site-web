@@ -90,6 +90,7 @@ export default function Accueil() {
                     rounded=""
                     className="aspect-[4/3] w-full"
                     imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/10 to-transparent" />
                   <span className="absolute bottom-4 left-4 grid h-11 w-11 place-items-center rounded-full bg-white text-azure-500 shadow-card">
@@ -328,6 +329,7 @@ export default function Accueil() {
                     rounded=""
                     className="aspect-[16/10] w-full"
                     imgClassName="transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
                   <div className="absolute bottom-4 left-5 text-white">
@@ -385,6 +387,7 @@ export default function Accueil() {
                   rounded=""
                   className="aspect-[4/3] w-full"
                   imgClassName="transition-transform duration-700 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="p-6">
                   <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-navy-500">

@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import { photo, photoFallback } from '../data/site.js'
-import { clientPhoto } from '../data/photos.js'
+import { clientPhotoMeta } from '../data/photos.js'
 
 /**
  * Photographie du site.
  *
  * Ordre de priorité de la source :
- *   1. la vraie photo du client, si le slot (`lock`) est renseigné
- *      dans src/data/photos.js ;
+ *   1. la vraie photo du client (WebP responsive, `srcset` 400/800/1200px),
+ *      si le slot (`lock`) est renseigné dans src/data/photos.js ;
  *   2. la photo d'illustration par mot-clé ;
  *   3. un service de repli, si la source précédente renvoie une erreur.
  *
@@ -15,6 +15,10 @@ import { clientPhoto } from '../data/photos.js'
  * décalage de mise en page. Le repli est déclenché par l'événement `error`
  * de l'image — et non par une minuterie, qui se déclencherait à tort sur les
  * images en chargement différé situées loin sous la ligne de flottaison.
+ *
+ * `sizes` doit refléter la largeur réelle d'affichage de l'image dans sa
+ * mise en page (ex. un tiers de la largeur d'écran dans une grille à 3
+ * colonnes) pour que le navigateur choisisse la bonne variante du `srcset`.
  */
 export default function Photo({
   tags,
@@ -26,10 +30,11 @@ export default function Photo({
   className = '',
   imgClassName = '',
   rounded = 'rounded-2xl',
+  sizes = '100vw',
 }) {
-  const real = clientPhoto(lock)
+  const real = clientPhotoMeta(lock)
 
-  const [src, setSrc] = useState(real || photo(tags, lock, w, h))
+  const [src, setSrc] = useState(real?.src || photo(tags, lock, w, h))
   const [loaded, setLoaded] = useState(false)
   const stage = useRef(real ? 'client' : 'primary')
 
@@ -43,6 +48,9 @@ export default function Photo({
     setSrc(photoFallback(lock, w, h))
   }
 
+  const intrinsicWidth = real?.width || w
+  const intrinsicHeight = real?.height || h
+
   return (
     <div className={`relative overflow-hidden ${rounded} bg-navy-100 ${className}`}>
       {!loaded && (
@@ -50,6 +58,10 @@ export default function Photo({
       )}
       <img
         src={src}
+        srcSet={stage.current === 'client' ? real?.srcSet : undefined}
+        sizes={stage.current === 'client' && real?.srcSet ? sizes : undefined}
+        width={intrinsicWidth}
+        height={intrinsicHeight}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : 'auto'}

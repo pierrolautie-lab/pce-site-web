@@ -1,3 +1,5 @@
+import { imageManifest } from './imageManifest.js'
+
 /* -------------------------------------------------------------------------
    PHOTOS DU CLIENT
    -------------------------------------------------------------------------
@@ -174,3 +176,31 @@ export const clientPhotos = {
 
 /** Renvoie la photo réelle associée à un slot, ou null. */
 export const clientPhoto = (slot) => clientPhotos[slot] || null
+
+/**
+ * Métadonnées d'affichage responsive pour une photo réelle : `srcSet` WebP
+ * (400/800/1200 px selon ce qui a été généré par scripts/optimize-images.js
+ * pour cette image précise — voir imageManifest.js), `src` de repli (la plus
+ * grande variante générée) et dimensions intrinsèques pour les attributs
+ * `width`/`height` de l'élément <img>, qui évitent le décalage de mise en
+ * page pendant le chargement.
+ */
+export function clientPhotoMeta(slot) {
+  const jpegPath = clientPhotos[slot]
+  if (!jpegPath) return null
+
+  const filename = jpegPath.split('/').pop()
+  const meta = imageManifest[filename]
+  if (!meta) return { src: jpegPath, srcSet: null, width: null, height: null }
+
+  const base = jpegPath.replace(/\.jpe?g$/i, '')
+  const srcSet = meta.widths.map((w) => `${base}-${w}w.webp ${w}w`).join(', ')
+  const largest = meta.widths[meta.widths.length - 1]
+
+  return {
+    src: `${base}-${largest}w.webp`,
+    srcSet,
+    width: meta.width,
+    height: meta.height,
+  }
+}
