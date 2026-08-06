@@ -50,7 +50,7 @@ export default function Footer() {
       <div className="container-pce relative py-14 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           {/* ------------------------------------------------ Identité */}
-          <div className="lg:col-span-4">
+          <div className="min-w-0 lg:col-span-4">
             <Wordmark size="lg" />
             <p className="mt-6 max-w-xs text-[10.5px] font-bold uppercase leading-[1.7] tracking-[.06em] text-white/70">
               {company.baseline}
@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* ------------------------------------------------ Services */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
               Nos services
             </h3>
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
 
           {/* ------------------------------------------------ Entreprise */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
               L'entreprise
             </h3>
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* ------------------------------------------------ Informations */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
               Informations
             </h3>
@@ -128,7 +128,7 @@ export default function Footer() {
           </div>
 
           {/* ------------------------------------------------ Contact */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
               Nous contacter
             </h3>
@@ -196,7 +196,7 @@ export default function Footer() {
                   <a
                     href={s.href}
                     aria-label={s.name}
-                    className="grid h-9 w-9 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
                   >
                     <Icon name={s.icon} className="h-4 w-4" strokeWidth={1.6} />
                   </a>

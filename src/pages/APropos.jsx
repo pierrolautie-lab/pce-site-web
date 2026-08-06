@@ -28,7 +28,7 @@ export default function APropos() {
       <section className="section bg-white">
         <div className="container-pce">
           <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-7">
+            <div className="min-w-0 lg:col-span-7">
               <SectionTitle align="left" title="Une entreprise née d'un constat de terrain" />
 
               <div className="mt-7 space-y-5">
@@ -60,7 +60,7 @@ export default function APropos() {
               <p className="signature mt-9 text-[16px]">{company.tagline}</p>
             </div>
 
-            <div className="lg:col-span-5">
+            <div className="min-w-0 lg:col-span-5">
               <Photo
                 tags="village"
                 lock={971}

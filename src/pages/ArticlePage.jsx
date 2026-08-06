@@ -66,15 +66,21 @@ export default function ArticlePage({ slug }) {
               </div>
             ))}
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link to={data.relatedService} className="btn-azure">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                to={data.relatedService}
+                className="btn-azure w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              >
                 Voir la page métier concernée
-                <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+                <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
               </Link>
               {expertise && (
-                <Link to={`/${data.relatedExpertise}`} className="btn-outline-gold">
+                <Link
+                  to={`/${data.relatedExpertise}`}
+                  className="btn-outline w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+                >
                   Approfondir : {expertise.h1}
-                  <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+                  <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
                 </Link>
               )}
             </div>

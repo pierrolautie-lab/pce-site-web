@@ -25,9 +25,12 @@ function CondensationBanner() {
             </div>
           </div>
 
-          <Link to="/chauffage/chaudiere-condensation" className="btn-azure shrink-0">
+          <Link
+            to="/chauffage/chaudiere-condensation"
+            className="btn-azure w-full whitespace-normal text-center sm:w-auto sm:shrink-0 sm:whitespace-nowrap"
+          >
             En savoir plus sur la chaudière à condensation
-            <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+            <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
           </Link>
         </div>
       </div>

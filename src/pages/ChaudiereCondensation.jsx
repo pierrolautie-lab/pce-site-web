@@ -31,7 +31,7 @@ export default function ChaudiereCondensation() {
       <section className="section bg-white">
         <div className="container-pce">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-7">
+            <div className="min-w-0 lg:col-span-7">
               <div className="rounded-xl bg-navy-50 p-8 ring-1 ring-navy-100 sm:p-10">
                 <div className="flex items-center gap-3">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-azure-500 text-white">
@@ -52,7 +52,7 @@ export default function ChaudiereCondensation() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
+            <div className="min-w-0 lg:col-span-5">
               <Photo
                 tags={data.hero.tags}
                 lock={data.hero.lock}

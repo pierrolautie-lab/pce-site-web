@@ -98,7 +98,7 @@ export function InfoBlock({ info }) {
     <section className="bg-navy-50 py-14 sm:py-16 lg:py-20">
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-5">
-          <div className="rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10 lg:col-span-3">
+          <div className="min-w-0 rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10 lg:col-span-3">
             <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500 sm:text-[19px]">
               {info.heading}
             </h2>
@@ -120,7 +120,7 @@ export function InfoBlock({ info }) {
             </ul>
           </div>
 
-          <TvaCard className="lg:col-span-2" />
+          <TvaCard className="min-w-0 lg:col-span-2" />
         </div>
       </div>
     </section>
@@ -264,7 +264,7 @@ export function ProductSpotlight({ product }) {
       <div className="container-pce">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Visuel produit + pastille garantie */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div className="relative">
               <Photo
                 tags={product.photo.tags}
@@ -285,7 +285,7 @@ export function ProductSpotlight({ product }) {
           </div>
 
           {/* Texte */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <p className="text-[11px] font-bold uppercase tracking-[.16em] text-azure-500">
               {product.brand} {product.model}
             </p>
@@ -301,7 +301,7 @@ export function ProductSpotlight({ product }) {
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
                     <Icon name={b.icon} className="h-5 w-5" strokeWidth={1.5} />
                   </span>
-                  <span>
+                  <span className="min-w-0 flex-1">
                     <span className="block text-[13px] font-bold uppercase tracking-[.05em] text-navy-800">
                       {b.title}
                     </span>
@@ -326,9 +326,12 @@ export function ProductSpotlight({ product }) {
               ))}
             </ul>
 
-            <Link to="/traitement-de-l-eau/adoucisseur" className="btn-gold mt-8">
+            <Link
+              to="/traitement-de-l-eau/adoucisseur"
+              className="btn-gold mt-8 w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+            >
               En savoir plus sur les adoucisseurs
-              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
             </Link>
           </div>
         </div>
@@ -365,7 +368,7 @@ export function Expertise({ data }) {
     <section className="section bg-white">
       <div className="container-pce">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-5 lg:sticky lg:top-32">
+          <div className="min-w-0 lg:col-span-5 lg:sticky lg:top-32">
             <Photo
               tags={data.photo.tags}
               lock={data.photo.lock}
@@ -376,7 +379,7 @@ export function Expertise({ data }) {
             />
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <SectionTitle title={data.heading} align="left" />
 
             <div className="mt-6 space-y-5">
@@ -444,7 +447,7 @@ export function Faq({ items, title = 'Questions fréquentes', lead }) {
     <section className="section bg-white">
       <div className="container-pce">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-4">
+          <div className="min-w-0 lg:col-span-4">
             <SectionTitle title={title} lead={lead} align="left" />
             <Link to="/contact" className="btn-azure mt-8">
               Poser votre question
@@ -452,7 +455,7 @@ export function Faq({ items, title = 'Questions fréquentes', lead }) {
             </Link>
           </div>
 
-          <div className="lg:col-span-8">
+          <div className="min-w-0 lg:col-span-8">
             <div className="divide-y divide-navy-100 overflow-hidden rounded-xl bg-navy-50 ring-1 ring-navy-100">
               {items.map((item) => (
                 <details key={item.q} className="group">
@@ -516,7 +519,7 @@ export function CtaSection({
 
       <div className="container-pce relative py-14 sm:py-16">
         <div className="grid items-center gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <Wordmark size="sm" />
             <h2 className="mt-6 text-[22px] font-black uppercase leading-[1.1] tracking-[-.01em] sm:text-[34px]">
               {title}
@@ -525,7 +528,7 @@ export function CtaSection({
             <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/65">{text}</p>
           </div>
 
-          <div className="flex flex-col gap-3 lg:col-span-5 lg:items-end">
+          <div className="flex min-w-0 flex-col gap-3 lg:col-span-5 lg:items-end">
             <Link to="/contact" className="btn-gold w-full justify-center lg:w-auto">
               {primaryLabel}
               <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
@@ -556,7 +559,7 @@ export function LinkGrid({ title, lead, links, tone = 'light' }) {
             <Link
               key={l.to}
               to={l.to}
-              className={`rounded-full px-5 py-2.5 text-[12.5px] font-semibold transition-colors duration-200 ${
+              className={`inline-flex items-center rounded-full px-5 py-3.5 text-[12.5px] font-semibold transition-colors duration-200 ${
                 dark
                   ? 'bg-white/10 text-white hover:bg-gold-500 hover:text-navy-800'
                   : 'bg-white text-navy-700 ring-1 ring-navy-100 hover:bg-azure-500 hover:text-white'

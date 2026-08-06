@@ -92,7 +92,7 @@ export default function Depannage() {
 
         <div className="container-pce relative py-16 sm:py-20 lg:py-24">
           <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
+            <div className="min-w-0 lg:col-span-6">
               <Wordmark size="sm" />
               <h2 className="mt-5 text-3xl font-black uppercase leading-[1.04] tracking-[-.02em] sm:text-[2.7rem]">
                 Besoin d'une intervention en urgence ?
@@ -116,7 +116,7 @@ export default function Depannage() {
             </div>
 
             {/* Gros bouton téléphone */}
-            <div className="lg:col-span-6 lg:justify-self-end">
+            <div className="min-w-0 lg:col-span-6 lg:justify-self-end">
               <a
                 href={company.phoneHref}
                 className="group flex w-full items-center gap-5 rounded-3xl bg-white p-6 text-navy-800 shadow-photo transition-transform duration-300 hover:-translate-y-1 sm:p-8"

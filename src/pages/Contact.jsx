@@ -88,7 +88,7 @@ export default function Contact() {
         <div className="container-pce">
           <div className="grid gap-6 lg:grid-cols-12">
             {/* -------------------------------------------- Colonne infos */}
-            <aside className="lg:col-span-4">
+            <aside className="min-w-0 lg:col-span-4">
               <div className="relative overflow-hidden rounded-2xl bg-navy-800 p-8 text-white">
                 <span
                   aria-hidden="true"
@@ -193,7 +193,7 @@ export default function Contact() {
             </aside>
 
             {/* -------------------------------------------- Formulaire */}
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8">
               <div className="rounded-2xl bg-navy-50 p-8 ring-1 ring-navy-100 sm:p-10">
                 {sent ? (
                   <div className="flex flex-col items-start py-8">
