@@ -41,6 +41,39 @@ export const company = {
   certifications: ['Qualigaz', 'Qualipac', 'Garantie décennale', 'Assurance RC Pro'],
 }
 
+/* ----------------------------------------------------------- Informations légales --
+   Identité juridique de la société exploitant PCE, pour les mentions
+   légales, la politique de confidentialité et les données structurées
+   Organization/LocalBusiness. Le siège social (Coubron, 93) est l'adresse
+   administrative de la SAS ; l'adresse de Lorgues (83) est le lieu
+   d'exploitation où l'activité est réellement exercée — les deux doivent
+   apparaître dans les mentions légales.
+---------------------------------------------------------------------------*/
+export const legal = {
+  denomination: 'TEAM TEX',
+  nomCommercial: 'PCE',
+  formeJuridique: 'SAS, société par actions simplifiée',
+  capital: '5 000,00 €',
+  siegeSocial: {
+    street: '33 Rue des Grands Champs',
+    zip: '93470',
+    city: 'Coubron',
+  },
+  siren: '482 121 498',
+  siret: '482 121 498 00026',
+  rcs: '482 121 498 R.C.S. Bobigny',
+  dateImmatriculation: '12/05/2005',
+  tva: 'FR28482121498',
+  directeurPublication: 'M. Yves Texier, Président',
+  activites: 'Plomberie, chauffage, électricité',
+  hebergeur: {
+    nom: 'Hostinger International Ltd',
+    adresse: '61 Lordou Vironos Street, Larnaca 6023, Chypre',
+    site: 'https://www.hostinger.fr',
+    siteLabel: 'www.hostinger.fr',
+  },
+}
+
 /* ---------------------------------------------------------------- Photos --
    Photo d'illustration générique, utilisée UNIQUEMENT tant qu'aucune vraie
    photo client n'est encore assignée pour un emplacement (voir

@@ -35,6 +35,10 @@ const staticRoutes = [
   { path: '/conseils', priority: '0.6', changefreq: 'monthly' },
   { path: '/a-propos', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.7', changefreq: 'yearly' },
+  { path: '/mentions-legales', priority: '0.2', changefreq: 'yearly' },
+  { path: '/politique-de-confidentialite', priority: '0.2', changefreq: 'yearly' },
+  { path: '/conditions-generales', priority: '0.2', changefreq: 'yearly' },
+  { path: '/plan-du-site', priority: '0.3', changefreq: 'monthly' },
 ]
 
 const localRoutes = localPages.map(({ tradeKey, cityKey }) => ({

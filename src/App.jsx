@@ -14,6 +14,10 @@ import Realisations from './pages/Realisations.jsx'
 import Conseils from './pages/Conseils.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
+import MentionsLegales from './pages/MentionsLegales.jsx'
+import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite.jsx'
+import ConditionsGenerales from './pages/ConditionsGenerales.jsx'
+import PlanDuSite from './pages/PlanDuSite.jsx'
 import LocalPage from './pages/LocalPage.jsx'
 import ExpertisePage from './pages/ExpertisePage.jsx'
 import ArticlePage from './pages/ArticlePage.jsx'
@@ -40,6 +44,10 @@ export default function App() {
         <Route path="conseils" element={<Conseils />} />
         <Route path="a-propos" element={<APropos />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="mentions-legales" element={<MentionsLegales />} />
+        <Route path="politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route path="conditions-generales" element={<ConditionsGenerales />} />
+        <Route path="plan-du-site" element={<PlanDuSite />} />
 
         {/* Pages locales SEO : un métier × une ville, ex. /plombier-lorgues */}
         {localPages.map(({ tradeKey, cityKey }) => (

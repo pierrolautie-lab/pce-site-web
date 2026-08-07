@@ -45,15 +45,15 @@ export default function Header() {
           grille garantit un centrage réel, quelle que soit la largeur du
           logo à gauche ou des actions à droite. */}
       <div className="container-pce grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 lg:gap-8">
-        <Logo size="sm" />
+        <Logo size="header" />
 
         {/* ------------------------------------------- Centre : navigation + téléphone/devis
             Le menu à plat compte dix entrées : il ne tient qu'à partir de
             1440 px. En dessous, on bascule sur le panneau déroulant, et seul
             le bloc téléphone/devis occupe le centre. */}
-        <div className="hidden items-center justify-center gap-x-6 lg:flex">
+        <div className="hidden min-w-0 items-center justify-center gap-x-6 lg:flex">
           <nav
-            className="hidden items-center justify-center gap-x-3 gap-y-1 min-[1440px]:flex"
+            className="hidden items-center justify-center gap-x-3 gap-y-1 min-[1500px]:flex"
             aria-label="Navigation principale"
           >
             {nav.map((item) => (
@@ -124,7 +124,7 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="hidden h-11 w-11 shrink-0 place-items-center rounded-lg text-navy-800 ring-1 ring-navy-200 transition-colors hover:bg-navy-50 lg:grid min-[1440px]:hidden"
+            className="hidden h-11 w-11 shrink-0 place-items-center rounded-lg text-navy-800 ring-1 ring-navy-200 transition-colors hover:bg-navy-50 lg:grid min-[1500px]:hidden"
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" strokeWidth={2} />
           </button>
@@ -133,7 +133,7 @@ export default function Header() {
 
       {/* ------------------------------------------------ Panneau mobile */}
       <div
-        className={`overflow-hidden border-t border-navy-100 bg-white transition-[max-height] duration-300 min-[1440px]:hidden ${
+        className={`overflow-hidden border-t border-navy-100 bg-white transition-[max-height] duration-300 min-[1500px]:hidden ${
           open ? 'max-h-[80vh] overflow-y-auto' : 'max-h-0'
         }`}
       >

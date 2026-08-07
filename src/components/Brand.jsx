@@ -25,6 +25,11 @@ const SIZES = {
   sm: 'h-[52px] w-[92px]',
   md: 'h-[64px] w-[112px]',
   lg: 'h-[84px] w-[148px]',
+  /* Logo du header : ~35 % plus grand que `sm`, demandé par le client pour
+     mieux équilibrer l'en-tête. Scindé de `sm` pour ne pas agrandir le
+     logo ailleurs (CtaSection, À propos, 404...) où la taille actuelle
+     reste correcte. */
+  header: 'h-[70px] w-[124px]',
 }
 
 function Medallion({ className = '' }) {

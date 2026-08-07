@@ -3,6 +3,7 @@ import Icon from '../components/Icon.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
 import { GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
+import { trackEvent } from '../components/Analytics.jsx'
 import { company, serviceList } from '../data/site.js'
 
 const SUBJECTS = [...serviceList.map((s) => s.title), 'Dépannage / urgence', 'Autre demande']
@@ -59,6 +60,7 @@ export default function Contact() {
       .join('\n')
     window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
+    trackEvent('form_submit', { form_subject: form.sujet })
     setSent(true)
     setForm(EMPTY)
   }
@@ -87,113 +89,8 @@ export default function Contact() {
       <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
         <div className="container-pce">
           <div className="grid gap-6 lg:grid-cols-12">
-            {/* -------------------------------------------- Colonne infos */}
-            <aside className="min-w-0 lg:col-span-4">
-              <div className="relative overflow-hidden rounded-2xl bg-navy-800 p-8 text-white">
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -right-5 -top-8 select-none text-[130px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
-                >
-                  {company.name}
-                </span>
-
-                <div className="relative">
-                  <h2 className="text-[17px] font-bold uppercase tracking-[.08em]">Nous joindre</h2>
-
-                  <ul className="mt-7 space-y-6">
-                    <li>
-                      <a href={company.phoneHref} className="group flex items-start gap-4">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 transition-colors group-hover:border-white/60">
-                          <Icon name="phone" className="h-4.5 w-4.5" strokeWidth={1.7} />
-                        </span>
-                        <span>
-                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
-                            Téléphone — urgences 7j/7
-                          </span>
-                          <span className="mt-1 block text-[22px] font-black leading-tight tracking-tight">
-                            {company.phone}
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href={`mailto:${company.email}`} className="group flex items-start gap-4">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 transition-colors group-hover:border-white/60">
-                          <Icon name="mail" className="h-4.5 w-4.5" strokeWidth={1.7} />
-                        </span>
-                        <span>
-                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
-                            E-mail
-                          </span>
-                          <span className="mt-1 block text-[14.5px] font-semibold">
-                            {company.email}
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-
-                    <li className="flex items-start gap-4">
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25">
-                        <Icon name="mapPin" className="h-4.5 w-4.5" strokeWidth={1.7} />
-                      </span>
-                      <span>
-                        <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
-                          Atelier
-                        </span>
-                        <span className="mt-1 block text-[14.5px] leading-relaxed">
-                          {company.address.street}
-                          <br />
-                          {company.address.street2}
-                          <br />
-                          {company.address.zip} {company.address.city}
-                        </span>
-                      </span>
-                    </li>
-                  </ul>
-
-                  <div className="mt-8 border-t border-white/12 pt-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
-                      Horaires d'ouverture
-                    </p>
-                    <ul className="mt-4 space-y-2.5">
-                      {company.hours.map((h) => (
-                        <li key={h.d} className="flex justify-between gap-4 text-[13px]">
-                          <span className="text-white/55">{h.d}</span>
-                          <span className="font-semibold">{h.h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <p className="signature mt-8 text-[15px]">{company.tagline}</p>
-                </div>
-              </div>
-
-              {/* Zone d'intervention */}
-              <div className="mt-5 rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100">
-                <h3 className="text-[12px] font-bold uppercase tracking-[.12em] text-navy-800">
-                  Zone d'intervention
-                </h3>
-                <p className="mt-3 text-[13.5px] leading-[1.7] text-navy-500">
-                  Nous intervenons depuis Lorgues sur tout le centre-Var et jusqu'au littoral, dans
-                  un rayon d'environ quarante minutes.
-                </p>
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {company.areas.map((a) => (
-                    <li
-                      key={a}
-                      className="rounded-full bg-white px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[.08em] text-navy-600 ring-1 ring-navy-100"
-                    >
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-
-            {/* -------------------------------------------- Formulaire */}
-            <div className="min-w-0 lg:col-span-8">
+            {/* -------------------------------------------- Formulaire (en premier : c'est ce que le visiteur doit voir sans scroller) */}
+            <div className="min-w-0 order-1 lg:order-2 lg:col-span-8">
               <div className="rounded-2xl bg-navy-50 p-8 ring-1 ring-navy-100 sm:p-10">
                 {sent ? (
                   <div className="flex flex-col items-start py-8">
@@ -361,6 +258,111 @@ export default function Contact() {
                 )}
               </div>
             </div>
+
+            {/* -------------------------------------------- Colonne infos (en dessous du formulaire) */}
+            <aside className="min-w-0 order-2 lg:order-1 lg:col-span-4">
+              <div className="relative overflow-hidden rounded-2xl bg-navy-800 p-8 text-white">
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-5 -top-8 select-none text-[130px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
+                >
+                  {company.name}
+                </span>
+
+                <div className="relative">
+                  <h2 className="text-[17px] font-bold uppercase tracking-[.08em]">Nous joindre</h2>
+
+                  <ul className="mt-7 space-y-6">
+                    <li>
+                      <a href={company.phoneHref} className="group flex items-start gap-4">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 transition-colors group-hover:border-white/60">
+                          <Icon name="phone" className="h-4.5 w-4.5" strokeWidth={1.7} />
+                        </span>
+                        <span>
+                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                            Téléphone — urgences 7j/7
+                          </span>
+                          <span className="mt-1 block text-[22px] font-black leading-tight tracking-tight">
+                            {company.phone}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href={`mailto:${company.email}`} className="group flex items-start gap-4">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 transition-colors group-hover:border-white/60">
+                          <Icon name="mail" className="h-4.5 w-4.5" strokeWidth={1.7} />
+                        </span>
+                        <span>
+                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                            E-mail
+                          </span>
+                          <span className="mt-1 block text-[14.5px] font-semibold">
+                            {company.email}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+
+                    <li className="flex items-start gap-4">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25">
+                        <Icon name="mapPin" className="h-4.5 w-4.5" strokeWidth={1.7} />
+                      </span>
+                      <span>
+                        <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                          Atelier
+                        </span>
+                        <span className="mt-1 block text-[14.5px] leading-relaxed">
+                          {company.address.street}
+                          <br />
+                          {company.address.street2}
+                          <br />
+                          {company.address.zip} {company.address.city}
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 border-t border-white/12 pt-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                      Horaires d'ouverture
+                    </p>
+                    <ul className="mt-4 space-y-2.5">
+                      {company.hours.map((h) => (
+                        <li key={h.d} className="flex justify-between gap-4 text-[13px]">
+                          <span className="text-white/55">{h.d}</span>
+                          <span className="font-semibold">{h.h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <p className="signature mt-8 text-[15px]">{company.tagline}</p>
+                </div>
+              </div>
+
+              {/* Zone d'intervention */}
+              <div className="mt-5 rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100">
+                <h3 className="text-[12px] font-bold uppercase tracking-[.12em] text-navy-800">
+                  Zone d'intervention
+                </h3>
+                <p className="mt-3 text-[13.5px] leading-[1.7] text-navy-500">
+                  Nous intervenons depuis Lorgues sur tout le centre-Var et jusqu'au littoral, dans
+                  un rayon d'environ quarante minutes.
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {company.areas.map((a) => (
+                    <li
+                      key={a}
+                      className="rounded-full bg-white px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[.08em] text-navy-600 ring-1 ring-navy-100"
+                    >
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

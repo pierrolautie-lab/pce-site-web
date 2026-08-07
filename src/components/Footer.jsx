@@ -23,10 +23,10 @@ const entrepriseLinks = [
 ]
 
 const infosLinks = [
-  { label: 'Mentions légales', to: '/contact' },
-  { label: 'Politique de confidentialité', to: '/contact' },
-  { label: 'Conditions générales', to: '/contact' },
-  { label: 'Plan du site', to: '/contact' },
+  { label: 'Mentions légales', to: '/mentions-legales' },
+  { label: 'Politique de confidentialité', to: '/politique-de-confidentialite' },
+  { label: 'Conditions générales', to: '/conditions-generales' },
+  { label: 'Plan du site', to: '/plan-du-site' },
 ]
 
 const socials = [
