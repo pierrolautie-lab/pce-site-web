@@ -128,26 +128,26 @@ export default function Accueil() {
                 lock={depannage.hero.lock}
                 alt="Dépannage PCE 7j/7"
                 rounded=""
-                className="aspect-[16/7] w-full lg:h-full lg:aspect-auto"
+                className="aspect-[21/9] w-full lg:h-full lg:aspect-auto"
                 imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-navy-900/40 to-navy-800/80 lg:to-navy-800" />
             </div>
 
-            <div className="flex min-w-0 flex-col justify-center p-7 sm:p-9 lg:col-span-7">
+            <div className="flex min-w-0 flex-col justify-center p-5 sm:p-7 lg:col-span-7">
               <span className="inline-flex w-fit items-center gap-2 rounded bg-gold-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800">
                 <Icon name="clock" className="h-3.5 w-3.5" strokeWidth={2.2} />
                 Urgence 7j/7
               </span>
-              <h3 className="mt-4 text-[20px] font-black uppercase tracking-[-.01em] sm:text-[26px]">
+              <h3 className="mt-3 text-[17px] font-black uppercase tracking-[-.01em] sm:text-[22px]">
                 Dépannage dans tout le Var
               </h3>
-              <p className="mt-3 max-w-xl text-[13.5px] leading-[1.7] text-white/65">
+              <p className="mt-2 max-w-xl text-[13.5px] leading-[1.6] text-white/65">
                 Fuite d'eau, panne de chauffage ou de climatisation, coupure électrique, filtration
                 de piscine à l'arrêt : un créneau vous est donné dès votre appel, et le prix est
                 annoncé avant toute intervention.
               </p>
-              <span className="mt-6 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-gold-400">
+              <span className="mt-4 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-gold-400">
                 Voir la page dépannage
                 <Icon
                   name="arrowRight"
