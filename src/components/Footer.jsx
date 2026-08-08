@@ -14,6 +14,8 @@ const servedCities = [
   { name: 'Grimaud', cityKey: 'Grimaud' },
   { name: 'Cogolin', cityKey: 'Cogolin' },
   { name: 'Roquebrune-sur-Argens', cityKey: 'Roquebrune-sur-Argens' },
+  { name: 'Puget-sur-Argens', cityKey: 'Puget-sur-Argens' },
+  { name: 'Les Issambres', cityKey: 'Les Issambres' },
 ]
 
 const servicesLinks = [...trades, { label: 'Dépannage', to: '/depannage' }]

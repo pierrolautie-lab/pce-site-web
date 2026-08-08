@@ -327,10 +327,24 @@ export const localCities = {
     intro: (t) =>
       `Aux confins du Golfe de Saint-Tropez, sur la Corniche des Maures, Rayol-Canadel-sur-Mer reste couverte par PCE pour ${t.verb} — ${t.detail}. Intervention planifiée à l'avance et devis gratuit, malgré la distance depuis Lorgues.`,
   },
+  'Puget-sur-Argens': {
+    name: 'Puget-sur-Argens',
+    distanceKm: 25,
+    neighbors: ['Roquebrune-sur-Argens', 'Fréjus'],
+    intro: (t) =>
+      `Sur l'axe qui relie Lorgues et Draguignan à Fréjus, Saint-Raphaël puis le Golfe de Saint-Tropez, Puget-sur-Argens marque une étape clé de notre zone d'intervention. PCE y assure ${t.verb} : ${t.detail}. Devis gratuit et intervention rapide, à mi-chemin entre la Dracénie et le littoral.`,
+  },
+  'La Bouverie': {
+    name: 'La Bouverie',
+    distanceKm: 27,
+    neighbors: ['Puget-sur-Argens', 'Roquebrune-sur-Argens'],
+    intro: (t) =>
+      `Entre Roquebrune-sur-Argens et Les Issambres, sur la route qui mène de Lorgues au Golfe de Saint-Tropez, La Bouverie bénéficie elle aussi des interventions de PCE pour ${t.verb} — ${t.detail}. Devis gratuit, intervention organisée depuis notre atelier de Lorgues jusqu'à Sainte-Maxime et au-delà.`,
+  },
   'Roquebrune-sur-Argens': {
     name: 'Roquebrune-sur-Argens',
     distanceKm: 28,
-    neighbors: ['Fréjus', 'Les Issambres'],
+    neighbors: ['Puget-sur-Argens', 'Les Issambres'],
     intro: (t) =>
       `Au carrefour de la Dracénie et du Golfe de Saint-Tropez, Roquebrune-sur-Argens et son rocher rouge caractéristique font partie de notre zone d'intervention pour ${t.verb} : ${t.detail}. Devis gratuit et délai d'intervention raisonnable depuis Lorgues.`,
   },
