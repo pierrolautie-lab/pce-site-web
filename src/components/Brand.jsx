@@ -9,6 +9,13 @@ import { company } from '../data/site.js'
    (public/img/logo-pce-officiel.png) — sans conteneur, cadre ni fond
    additionnel en CSS, y compris dans les sections à fond marine du site.
 
+   La mention « Depuis 2005 » est composée en CSS sous l'ovale, et non
+   incrustée dans le PNG : elle reste nette à toutes les tailles, se
+   traduit dans le texte de la page, et suit `company.signature` — un
+   seul endroit à changer le jour où la formulation évolue. Sa couleur
+   est héritée (`text-current`), pour rester lisible aussi bien sur fond
+   blanc (en-tête) que sur fond marine (pied de page, bandeaux CTA).
+
    ⚠️ Historique CDN : un PNG transparent avait déjà été tenté ici par le
    passé et provoquait une erreur "Invalid source image" sur le CDN de
    Hostinger (cause jamais identifiée avec certitude), ce qui avait motivé
@@ -34,19 +41,38 @@ const SIZES = {
   header: 'h-[70px] w-[124px]',
 }
 
-function Medallion({ className = '' }) {
+/* Mention « Depuis 2005 » sous l'ovale, en verrou avec le logo.
+   Le PNG contient une marge transparente d'environ 17 % de sa hauteur en
+   bas : la remontée négative compense ce vide pour que la mention reste
+   solidaire de l'ovale au lieu de flotter loin en dessous. */
+const SINCE_SIZES = {
+  sm: 'text-[7px] tracking-[.08em] -mt-1.5',
+  md: 'text-[8.5px] tracking-[.1em] -mt-2',
+  lg: 'text-[11px] tracking-[.12em] -mt-2.5',
+  header: 'text-[9px] tracking-[.12em] -mt-2',
+}
+
+function Medallion({ size = 'md', className = '' }) {
   return (
-    <img
-      src="/img/logo-pce-officiel.png"
-      alt={`${company.name} — ${company.baselineShort}`}
-      className={`object-contain ${className}`}
-    />
+    <span className={`inline-flex flex-col items-center ${className}`}>
+      <img
+        src="/img/logo-pce-officiel.png"
+        alt={`${company.name} — ${company.baselineShort}`}
+        className={`object-contain ${SIZES[size] || SIZES.md}`}
+      />
+      <span
+        className={`font-bold uppercase leading-none text-current
+                    ${SINCE_SIZES[size] || SINCE_SIZES.md}`}
+      >
+        {company.signature}
+      </span>
+    </span>
   )
 }
 
 /** Logo seul, non cliquable. */
 export function Wordmark({ size = 'md', className = '' }) {
-  return <Medallion className={`${SIZES[size] || SIZES.md} ${className}`} />
+  return <Medallion size={size} className={className} />
 }
 
 /** Logo cliquable renvoyant à l'accueil. */
@@ -57,7 +83,7 @@ export function Logo({ size = 'md' }) {
       aria-label={`${company.name} — accueil`}
       className="inline-flex shrink-0 transition-opacity hover:opacity-85"
     >
-      <Medallion className={SIZES[size] || SIZES.md} />
+      <Medallion size={size} />
     </Link>
   )
 }
