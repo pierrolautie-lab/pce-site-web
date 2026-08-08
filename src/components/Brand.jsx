@@ -12,9 +12,9 @@ import { company } from '../data/site.js'
    quel que soit l'encodeur PNG utilisé pour le réenregistrer — seul le
    passage en JPEG a résolu le blocage.)
 
-   Comme l'image est déjà aplatie sur blanc, elle est posée telle quelle
-   dans le <span> blanc ci-dessous, y compris dans les sections à fond
-   marine du site, pour que le médaillon reste fidèle à l'original.
+   Le fichier gère déjà son propre fond : posée telle quelle, sans aucun
+   conteneur, cadre ni fond additionnel en CSS (demande explicite du
+   client), y compris dans les sections à fond marine du site.
 
    ⚠️ Ne pas créer de variante. Toute évolution du logo se fait ICI, dans
    <Medallion />, pour rester cohérent partout (en-tête, pied de page,
@@ -34,13 +34,11 @@ const SIZES = {
 
 function Medallion({ className = '' }) {
   return (
-    <span className={`inline-flex items-center justify-center rounded-full bg-white ${className}`}>
-      <img
-        src="/img/logo-pce-officiel.jpg"
-        alt={`${company.name} — ${company.baselineShort}`}
-        className="h-full w-full object-contain"
-      />
-    </span>
+    <img
+      src="/img/logo-pce-officiel.jpg"
+      alt={`${company.name} — ${company.baselineShort}`}
+      className={`object-contain ${className}`}
+    />
   )
 }
 
