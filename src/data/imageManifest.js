@@ -112,7 +112,7 @@ export const imageManifest = {
   },
   "depannage-vehicule-pce.jpg": {
     "width": 900,
-    "height": 1600,
+    "height": 590,
     "widths": [
       400,
       800
