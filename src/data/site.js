@@ -167,18 +167,19 @@ export const services = {
       { icon: 'shower', title: 'Salle de bains', label: 'Rénovation clé en main' },
       { icon: 'search', title: 'Recherche de fuite', label: 'Détection non destructive' },
       { icon: 'flame', title: 'Chauffe-eau', label: 'Ballons et thermodynamique' },
-      { icon: 'filter', title: "Traitement de l'eau", label: 'Filtration et analyse' },
+      { icon: 'filter', title: "Traitement de l'eau", label: 'Adoucisseur et filtration' },
       { icon: 'gauge', title: 'Débit et pression', label: 'Réglage et mise aux normes' },
     ],
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
-      heading: 'Vingt ans de plomberie sur le bâti varois',
+      heading: 'De Paris au bâti varois, vingt ans de plomberie',
       photo: { tags: 'plumbing', lock: 232 },
       paragraphs: [
+        "Avant le Var, il y a eu Paris. L'entreprise s'est construite sur une forte expérience du chauffage en région parisienne, puis sur l'apprentissage du métier dans sa forme la plus exigeante : le cuivre cintré et brasé, le zinc, le plomb des réseaux anciens. Ce sont des chantiers de rénovation d'immeubles haussmanniens, menés avec des architectes, qui ont formé notre façon de travailler.",
         "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l'Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d'ouvrir une saignée.",
         "Notre parti pris est simple : nous ne posons que du matériel que nous saurons réparer dans dix ans. Multicouche à sertir pour les réseaux encastrés, laiton sur les points sensibles, robinetterie de marques distribuées en France dont les pièces détachées restent disponibles. Chaque installation est repérée, chaque vanne d'arrêt reste accessible, et chaque chantier est livré avec un plan de réseau que vous conservez.",
-        "L'eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C'est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer une solution de filtration adaptée à votre consommation réelle.",
+        "L'eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C'est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer un adoucisseur ou une solution de filtration adaptée à votre consommation réelle.",
       ],
       points: [
         'Réseaux repérés et plan remis en fin de chantier',
@@ -198,7 +199,7 @@ export const services = {
 
     info: {
       heading: "Pourquoi traiter l'eau de votre logement ?",
-      lead: "L'eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f de dureté. Un traitement adapté change le quotidien et protège durablement vos équipements.",
+      lead: "L'eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f de dureté. Un adoucisseur correctement dimensionné change le quotidien et protège durablement vos équipements.",
       bullets: [
         'Fini les dépôts de calcaire sur la robinetterie, les parois de douche et le carrelage.',
         'Une durée de vie nettement allongée pour le chauffe-eau, le lave-linge et le lave-vaisselle.',
@@ -206,6 +207,7 @@ export const services = {
         'Une eau plus douce pour la peau, les cheveux et la tenue du linge.',
         'Un entretien minimal selon la solution retenue.',
       ],
+      link: { to: '/traitement-de-l-eau', label: "Découvrir nos adoucisseurs et le traitement de l'eau" },
     },
 
     faq: [
@@ -301,7 +303,7 @@ export const services = {
     icon: 'snowflake',
     tagline: "Fraîcheur l'été, confort l'hiver.",
     intro:
-      "Rafraîchir sans faire de bruit ni défigurer une façade, c'est tout l'enjeu d'une bonne installation. Nous étudions l'implantation des unités, l'acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l'entretien réglementaire de votre équipement.",
+      "C'est en nous installant dans le Var que nous avons ajouté la climatisation à nos métiers, pour répondre à une demande que le climat local rend incontournable. Rafraîchir sans faire de bruit ni défigurer une façade, c'est tout l'enjeu d'une bonne installation. Nous étudions l'implantation des unités, l'acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l'entretien réglementaire de votre équipement.",
     card: 'Mono-split, multi-split, gainable et entretien des unités.',
     metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
     hero: { tags: 'airconditioner', lock: 517 },
@@ -325,10 +327,11 @@ export const services = {
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
-      heading: "Une climatisation qu'on n'entend pas et qu'on ne voit pas",
+      heading: "La climatisation, un métier né du climat varois",
       photo: { tags: 'livingroom', lock: 518 },
       paragraphs: [
-        "Détenteurs de l'attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011, principalement du matériel Daikin, Mitsubishi Electric et Midea, choisi pour sa fiabilité et la disponibilité des pièces détachées dans notre secteur. Avec le temps, nous avons développé une conviction : une bonne installation, c'est celle qu'on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d'une façade en pierre, ni goulotte plastique qui court le long d'un mur.",
+        "La climatisation n'était pas au programme. C'est l'installation dans le Var qui l'a imposée : des étés qui s'allongent, des bastides en pierre qui emmagasinent la chaleur, une clientèle qui demandait à rafraîchir des maisons conçues pour l'inverse. Le chauffage, nous le connaissions déjà — c'est le métier avec lequel l'entreprise s'est construite en région parisienne. La climatisation, nous sommes allés la chercher, ici, parce que le terrain la réclamait.",
+        "Détenteurs de l'attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011, année où nous avons passé la qualification pour répondre à cette demande, principalement du matériel Daikin, Mitsubishi Electric et Midea, choisi pour sa fiabilité et la disponibilité des pièces détachées dans notre secteur. Avec le temps, nous avons développé une conviction : une bonne installation, c'est celle qu'on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d'une façade en pierre, ni goulotte plastique qui court le long d'un mur.",
         "Cela demande du temps en amont. Nous étudions le tracé des liaisons pour les encastrer ou les dissimuler, nous calculons la distance acoustique aux pièces de nuit et aux limites de propriété, et nous intégrons le groupe extérieur derrière un claustra ou dans un renfoncement chaque fois que c'est possible. Sur les maisons de caractère de Lorgues, c'est souvent ce détail qui fait toute la différence.",
         "Techniquement, nous ne transigeons pas sur la mise sous vide et le contrôle d'étanchéité : ce sont les deux opérations que les poses bâclées suppriment, et la cause quasi systématique des pannes qui surviennent au bout de deux étés. Nous laissons également un accès de maintenance sur chaque unité, pour que l'entretien annuel ne se transforme pas en démontage.",
       ],
@@ -909,8 +912,8 @@ export const projects = [
 
 /* ============================================================== À PROPOS ==*/
 export const milestones = [
-  { year: '2005', title: "Création de l'entreprise", text: "PCE ouvre son atelier à Lorgues, d'abord centré sur la plomberie et le sanitaire." },
-  { year: '2011', title: 'Le chauffage et la climatisation', text: "Obtention de l'attestation de capacité fluides frigorigènes et premières pompes à chaleur." },
+  { year: '2005', title: "Création de l'entreprise", text: "PCE s'installe à Lorgues, d'abord centré sur la plomberie et le sanitaire." },
+  { year: '2011', title: 'La climatisation', text: "Le climat varois impose une nouvelle compétence : obtention de l'attestation de capacité fluides frigorigènes, premières pompes à chaleur et premiers splits." },
   { year: '2016', title: "L'électricité intégrée", text: "L'équipe s'étoffe pour livrer des chantiers complets, sans passer par la sous-traitance." },
   { year: '2020', title: 'Le pôle piscine', text: "Traitement de l'eau, filtration et automatisation viennent compléter les cinq métiers." },
   { year: '2025', title: 'Vingt ans de chantiers', text: 'Plus de 1 800 interventions réalisées entre Lorgues, la Dracénie et le Golfe.' },

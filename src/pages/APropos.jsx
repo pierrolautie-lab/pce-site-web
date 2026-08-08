@@ -24,6 +24,41 @@ export default function APropos() {
         primaryLabel="Travailler avec nous"
       />
 
+      {/* ------------------------------------------------------ Nos origines */}
+      <section className="section bg-navy-50">
+        <div className="container-pce">
+          <div className="max-w-3xl">
+            <p className="text-[11px] font-bold uppercase tracking-[.16em] text-azure-500">
+              Nos origines
+            </p>
+            <SectionTitle align="left" title="Le métier appris à Paris" className="mt-3" />
+
+            <div className="mt-7 space-y-5">
+              <p className="text-[15px] leading-[1.85] text-navy-600">
+                PCE n'est pas née dans le Var. Avant Lorgues, il y a eu la région parisienne, et
+                une spécialité : le chauffage. C'est cette expérience-là qui a fondé l'entreprise,
+                et c'est elle qui explique pourquoi nous avons toujours refusé de nous cantonner à
+                un seul corps d'état.
+              </p>
+              <p className="text-[15px] leading-[1.85] text-navy-600">
+                Paris reste l'école la plus exigeante du bâtiment. On y apprend le métier dans sa
+                forme la plus ancienne, celle qui se travaille à la main : le cuivre que l'on
+                cintre et que l'on brase, le zinc des couvertures, le plomb dont la plomberie tire
+                son nom et que les anciens façonnaient au chalumeau. Ces gestes ne s'apprennent pas
+                dans un catalogue. Ils s'acquièrent sur des chantiers où l'erreur se voit.
+              </p>
+              <p className="text-[15px] leading-[1.85] text-navy-600">
+                Nous avons contribué à la rénovation d'immeubles haussmanniens et de bâti ancien,
+                aux côtés d'architectes exigeants, sur des ouvrages où l'on ne casse pas une
+                moulure pour faire passer un tuyau. Ce sont ces contraintes-là qui forment un
+                artisan. Vingt ans plus tard, dans une bastide varoise aux murs de soixante
+                centimètres, c'est exactement le même raisonnement que nous appliquons.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --------------------------------------------------- Notre histoire */}
       <section className="section bg-white">
         <div className="container-pce">
@@ -33,7 +68,7 @@ export default function APropos() {
 
               <div className="mt-7 space-y-5">
                 <p className="text-[15px] leading-[1.85] text-navy-600">
-                  En 2005, PCE ouvre son atelier à Lorgues avec une activité de plomberie
+                  En 2005, PCE s'installe à Lorgues avec une activité de plomberie
                   traditionnelle : sanitaire, réseaux, chauffe-eau. Très vite, un constat s'impose
                   sur les chantiers. Sur presque chaque intervention un peu ambitieuse, il faut
                   faire venir un chauffagiste, puis un électricien — et c'est là que les délais
@@ -41,9 +76,12 @@ export default function APropos() {
                   malfaçon apparue à l'interface entre deux lots.
                 </p>
                 <p className="text-[15px] leading-[1.85] text-navy-600">
-                  Plutôt que de subir cette organisation, nous avons décidé de l'absorber. En 2011,
-                  l'obtention de l'attestation de capacité à la manipulation des fluides
-                  frigorigènes ouvre la porte du chauffage et de la climatisation. En 2016,
+                  Plutôt que de subir cette organisation, nous avons décidé de l'absorber. Le
+                  chauffage, nous l'avions déjà : c'est avec lui que l'entreprise s'est construite.
+                  Mais le Var a fait apparaître un besoin que la région parisienne ne connaissait
+                  pas — rafraîchir. En 2011, l'obtention de l'attestation de capacité à la
+                  manipulation des fluides frigorigènes ouvre la porte de la climatisation et des
+                  pompes à chaleur. En 2016,
                   l'électricité rejoint le périmètre et l'équipe se structure. En 2020, la demande
                   massive de nos clients du Golfe nous conduit à créer un pôle piscine, dédié au
                   traitement de l'eau, à la filtration et à l'automatisation.

@@ -130,6 +130,22 @@ export function InfoBlock({ info }) {
                 </li>
               ))}
             </ul>
+
+            {/* Renvoi optionnel vers une page métier : rien n'est rendu sur
+                les pages dont le bloc `info` ne définit pas de `link`. */}
+            {info.link && (
+              <Link
+                to={info.link.to}
+                className="group mt-7 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-azure-500"
+              >
+                {info.link.label}
+                <Icon
+                  name="arrowRight"
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  strokeWidth={2.4}
+                />
+              </Link>
+            )}
           </div>
 
           <TvaCard className="min-w-0 lg:col-span-2" />
