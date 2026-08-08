@@ -62,7 +62,7 @@ export default function Header() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `relative whitespace-nowrap py-2 text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
+                  `relative whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
                    after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
                    ${
                      isActive
@@ -144,7 +144,7 @@ export default function Header() {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `rounded-lg border-l-[3px] px-4 py-3.5 text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
                   isActive
                     ? 'border-gold-500 bg-navy-50 text-navy-800'
                     : 'border-transparent text-navy-600 hover:bg-navy-50'

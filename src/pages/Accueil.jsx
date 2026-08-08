@@ -103,8 +103,12 @@ function HomeHero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/40 lg:hidden" />
 
       <div className="container-pce relative py-10 sm:py-14 lg:py-20">
-        <div className="max-w-2xl">
-          <h1 className="font-black uppercase leading-[1.06] tracking-[-.02em] text-[8.5vw] sm:text-[42px] lg:text-[54px]">
+        {/* max-w-3xl et non 2xl : « Climatisation • Piscine » demande 674 px
+            à 54 px, soit plus que les 672 px d'un max-w-2xl — le titre
+            passait sur une 5e ligne. Archivo étant plus large qu'Inter, la
+            colonne doit garder de la marge. */}
+        <div className="max-w-3xl">
+          <h1 className="font-display font-black uppercase leading-[1.06] tracking-[-.025em] text-[7.4vw] sm:text-[36px] lg:text-[46px]">
             <span className="block">Votre expert</span>
             <span className="block">Plomberie • Chauffage</span>
             <span className="block text-azure-400">Climatisation • Piscine</span>
@@ -219,7 +223,7 @@ function ServiceCards() {
               </div>
 
               <div className="flex flex-1 flex-col px-4 pb-4 pt-7">
-                <h3 className="text-[12.5px] font-bold uppercase tracking-[.05em] text-navy-800">
+                <h3 className="font-display text-[12.5px] font-bold uppercase tracking-[.05em] text-navy-800">
                   {c.title}
                 </h3>
                 <p className="mt-2 line-clamp-2 flex-1 text-[11.5px] leading-[1.55] text-navy-500">

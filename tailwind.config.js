@@ -36,6 +36,19 @@ export default {
         },
       },
       fontFamily: {
+        /* Police d'affichage : titres, boutons et navigation. Inter reste
+           la police du corps de texte — ne pas toucher à `sans`. */
+        display: [
+          'Archivo',
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
         sans: [
           'Inter',
           'ui-sans-serif',

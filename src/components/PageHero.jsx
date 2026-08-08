@@ -14,7 +14,10 @@ import { company, reassurance } from '../data/site.js'
  */
 export default function PageHero({
   title,
-  titleClassName = 'text-[10vw] md:text-6xl lg:text-[4.4rem]',
+  /* Tailles réduites d'environ 18 % avec le passage à Archivo : à corps
+     égal elle rend ~8 % plus large qu'Inter, et « Traitement de l'eau »
+     débordait sur deux lignes. À 3.6rem il tient sur une seule. */
+  titleClassName = 'text-[8.6vw] md:text-5xl lg:text-[3.6rem]',
   subtitle,
   subtitleClassName = 'text-azure-300',
   intro,
@@ -76,7 +79,9 @@ export default function PageHero({
 
           <div className="grid items-center gap-6 pb-8 pt-6 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-10">
             <div className="min-w-0 lg:col-span-7">
-              <h1 className={`font-black uppercase leading-[1.12] tracking-[-.03em] md:leading-[.94] ${titleClassName}`}>
+              {/* Interlettrage laissé à -.03em : déjà plus serré que la
+                  cible -.025em, le desserrer irait contre l'objectif. */}
+              <h1 className={`font-display font-black uppercase leading-[1.12] tracking-[-.03em] md:leading-[.94] ${titleClassName}`}>
                 {title}
               </h1>
 
