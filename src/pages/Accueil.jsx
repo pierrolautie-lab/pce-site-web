@@ -84,10 +84,12 @@ function HomeHero() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
       {/* Photo de fond pleine largeur, en variantes WebP responsives.
-          Elle est panoramique (3,7:1) alors que le héros affiche du 2,2:1 :
-          object-cover en rogne 41 % de la largeur. Le cadrage est décalé à
-          78 % pour garder le flocage du fourgon lisible dans la zone claire,
-          alors qu'un cadrage centré le faisait tomber hors champ. */}
+          Elle est panoramique (3,7:1) alors que le héros affiche du 2,2:1.
+          À partir de `lg` on passe en `contain` calé en bas : la photo
+          s'affiche entière, en bande pleine largeur, pour qu'on voie les
+          trois véhicules floqués et le paysage — `cover` en rognait 41 %.
+          En dessous de `lg` la bande ne ferait qu'une centaine de pixels de
+          haut : on garde `cover`, cadré à 78 % sur le fourgon de droite. */}
       <img
         src={bg?.src}
         srcSet={bg?.srcSet || undefined}
@@ -97,7 +99,7 @@ function HomeHero() {
         alt=""
         aria-hidden="true"
         onError={() => fallback?.src && bg?.src !== fallback.src && setBg(fallback)}
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-[78%_50%]"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-[78%_50%] lg:object-contain lg:object-bottom"
         fetchpriority="high"
         decoding="async"
       />
@@ -105,8 +107,16 @@ function HomeHero() {
       {/* Dégradé marine : de la gauche vers la transparence à droite. Le second
           dégradé, vertical, garde le texte lisible en mobile où la colonne
           occupe toute la largeur. */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:to-transparent" />
+      {/* En desktop le titre est au-dessus de la bande photo, sur du marine
+          plein : le dégradé horizontal n'a plus à masquer la gauche de
+          l'image, seuls les boutons la recouvrent et portent leur propre
+          fond. On l'allège donc pour dégager le fourgon de gauche et le
+          paysage, que la version opaque escamotait. */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:from-navy-950/75 lg:via-navy-950/25 lg:to-transparent" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/40 lg:hidden" />
+      {/* En `contain`, le haut de la bande photo forme une arête franche
+          contre le marine : ce dégradé vertical l'estompe. */}
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-b from-navy-950 via-navy-950/55 to-transparent lg:block" />
 
       <div className="container-pce relative py-10 sm:py-14 lg:py-20">
         {/* max-w-3xl et non 2xl : « Climatisation • Piscine » demande 674 px
