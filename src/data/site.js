@@ -24,6 +24,11 @@ export const company = {
   domain: 'pcevar.fr',
   url: 'https://pcevar.fr',
   email: 'teamtex@hotmail.fr',
+  /* Carte de visite numérique (Wavecnct) du dirigeant, qui regroupe tous les
+     réseaux/contacts en un seul lien — décodée depuis le QR code fourni par
+     le client. Réutilisée à la fois pour le lien cliquable et pour l'image
+     du QR affichée sur le site (public/img/qr-reseaux-sociaux.png). */
+  socialHub: 'https://app.wavecnct.com/fr-CA/yves.texier.ryor',
   address: {
     street: '37 Clos de Lorgues',
     street2: 'Rue Saint Honorat',

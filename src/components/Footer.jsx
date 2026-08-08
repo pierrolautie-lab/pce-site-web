@@ -39,6 +39,7 @@ const socials = [
   { name: 'Facebook', icon: 'facebook', href: '#' },
   { name: 'Instagram', icon: 'instagram', href: '#' },
   { name: 'LinkedIn', icon: 'linkedin', href: '#' },
+  { name: 'Tous nos liens', icon: 'globe', href: company.socialHub },
 ]
 
 export default function Footer() {
@@ -201,6 +202,8 @@ export default function Footer() {
                 <li key={s.name}>
                   <a
                     href={s.href}
+                    target={s.href.startsWith('#') ? undefined : '_blank'}
+                    rel={s.href.startsWith('#') ? undefined : 'noopener noreferrer'}
                     aria-label={s.name}
                     className="grid h-11 w-11 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
                   >
