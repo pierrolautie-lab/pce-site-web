@@ -10,6 +10,15 @@ export const imageManifest = {
       1200
     ]
   },
+  "accueil-hero-vehicules.jpg": {
+    "width": 1264,
+    "height": 843,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "apropos-ancienne-tuyauterie.jpg": {
     "width": 900,
     "height": 1600,

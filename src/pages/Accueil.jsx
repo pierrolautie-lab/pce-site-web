@@ -17,11 +17,12 @@ const SHOW_GOOGLE_REVIEWS = false
 // À CONFIRMER — ne pas publier sans fiche Google Business réelle
 const GOOGLE_REVIEWS = { rating: '4,9/5', stars: 5, count: '+450 clients satisfaits', href: '/contact' }
 
-/* Photo de fond du héros. Le fichier définitif (véhicules devant une villa)
-   est encore à livrer : tant qu'il est absent, `onError` bascule sur la
-   photo d'accueil actuelle. Une fois le fichier déposé dans public/img/,
-   lancer `node scripts/optimize-images.js` pour générer ses variantes WebP. */
-const HERO_BG = '/img/accueil-hero-vehicules.jpg'
+/* Photo de fond du héros (slot 100, véhicules PCE devant une villa) et son
+   repli (slot 101, photo d'accueil précédente) si le fichier venait à
+   manquer. On ne passe pas par <Photo /> ici : son repli à lui est le logo
+   PCE, qui serait illisible étiré en fond de héros. */
+const HERO_SLOT = 100
+const HERO_FALLBACK_SLOT = 101
 
 /* Les 5 métiers mis en avant sous le titre du héros. */
 const HERO_TRADES = [
@@ -75,17 +76,21 @@ export default function Accueil() {
 
 /* ======================================================== HÉROS ========= */
 function HomeHero() {
-  const fallback = clientPhotoMeta(101)
-  const [bg, setBg] = useState(HERO_BG)
+  const fallback = clientPhotoMeta(HERO_FALLBACK_SLOT)
+  const [bg, setBg] = useState(() => clientPhotoMeta(HERO_SLOT) || fallback)
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Photo de fond pleine largeur */}
+      {/* Photo de fond pleine largeur, en variantes WebP responsives */}
       <img
-        src={bg}
+        src={bg?.src}
+        srcSet={bg?.srcSet || undefined}
+        sizes="100vw"
+        width={bg?.width || undefined}
+        height={bg?.height || undefined}
         alt=""
         aria-hidden="true"
-        onError={() => fallback?.src && bg !== fallback.src && setBg(fallback.src)}
+        onError={() => fallback?.src && bg?.src !== fallback.src && setBg(fallback)}
         className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
         fetchpriority="high"
         decoding="async"

@@ -20,7 +20,8 @@ import { imageManifest } from './imageManifest.js'
 /** Inventaire lisible des emplacements — sert aussi de table de validation. */
 export const PHOTO_SLOTS = {
   /* --- Accueil ------------------------------------------------------- */
-  101: { page: 'Accueil', zone: 'Hero', sujet: 'Maison / villa provençale' },
+  100: { page: 'Accueil', zone: 'Hero — fond', sujet: 'Véhicules PCE devant une villa' },
+  101: { page: 'Accueil', zone: 'Hero (repli)', sujet: 'Maison / villa provençale' },
   102: { page: 'Accueil', zone: "Bloc entreprise", sujet: 'Artisan en intervention' },
   103: { page: 'Accueil', zone: 'Bloc entreprise', sujet: 'Bastide, façade en pierre' },
   950: { page: 'Accueil', zone: 'Zone — Lorgues', sujet: 'Village de Lorgues' },
@@ -110,6 +111,7 @@ export const PHOTO_SLOTS = {
  */
 export const clientPhotos = {
   /* --- Accueil --- */
+  100: '/img/accueil-hero-vehicules.jpg',
   101: '/img/accueil-hero-reseaux.jpg',
   /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
      c'est le même fichier que depannage-outillage.jpg (md5 identique). */
