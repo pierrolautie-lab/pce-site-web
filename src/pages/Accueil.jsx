@@ -410,7 +410,7 @@ export default function Accueil() {
       {/* ========================================= NOS VILLES D'INTERVENTION */}
       <LinkGrid
         title="Nos interventions par ville"
-        lead="Plombier, chauffagiste, climatisation, électricien, pisciniste : PCE intervient dans chacune de ces communes du Var, depuis notre atelier de Lorgues."
+        lead="PCE intervient dans tout le Var : sur la Dracénie Provence Verdon Agglomération autour de Lorgues et Draguignan, et sur les 12 communes du Golfe de Saint-Tropez, jusqu'à Sainte-Maxime et Saint-Tropez. Plombier, chauffagiste, climatisation, électricien, pisciniste ou traitement de l'eau : PCE se déplace dans chacune de ces communes depuis son atelier de Lorgues."
         links={Object.keys(localCities).map((cityKey) => ({
           to: localPath('plombier', cityKey),
           label: localCities[cityKey].name,

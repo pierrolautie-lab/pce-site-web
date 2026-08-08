@@ -1,13 +1,20 @@
 /* -------------------------------------------------------------------------
    Pages locales SEO — une page par couple (métier × ville).
-   65 pages : 5 métiers × 13 villes du Var. Les prestations affichées sont
-   reprises telles quelles du métier correspondant dans site.js (une seule
-   source de vérité pour le contenu des prestations) ; le titre, l'intro et
-   la méta-description sont propres à chaque page. Pour éviter le duplicate
+
+   Deux générations cohabitent dans ce fichier :
+   - les 13 villes historiques, couvertes par les 5 métiers d'origine
+     (plombier, chauffagiste, climatisation, électricien, pisciniste) → 65 pages ;
+   - 20 nouvelles villes (secteur Dracénie + Golfe de Saint-Tropez), couvertes
+     par les 5 métiers d'origine PLUS 2 nouveaux (traitement de l'eau, pompe
+     à chaleur) → 140 pages.
+   Soit 205 pages locales au total. Les prestations affichées sont reprises
+   telles quelles du métier correspondant dans site.js (une seule source de
+   vérité pour le contenu des prestations) ; le titre, l'intro et la
+   méta-description sont propres à chaque page. Pour éviter le duplicate
    content, chaque ville a sa PROPRE structure de phrase (pas un gabarit
-   unique où l'on remplace juste le nom de la ville) : combinée aux 5
-   formulations différentes par métier (verb/detail), les 65 pages ont un
-   texte réellement distinct.
+   unique où l'on remplace juste le nom de la ville) : combinée aux
+   formulations différentes par métier (verb/detail), les pages ont un texte
+   réellement distinct.
 ---------------------------------------------------------------------------*/
 
 /** Un métier « local » = un slug d'URL + le service complet dont il reprend les prestations. */
@@ -55,18 +62,42 @@ export const localTrades = {
     detail: 'filtration, traitement au sel, chauffage du bassin et automatisation du local technique',
     relatedExpertise: 'entretien-piscine-var',
   },
+  /* --------------------------- Nouveaux métiers, ouverts aux 20 nouvelles villes */
+  'traitement-eau': {
+    urlSlug: 'traitement-eau',
+    label: "Traitement de l'eau",
+    serviceKey: 'traitement-de-l-eau',
+    verb: 'le traitement de votre eau',
+    detail: "adoucisseur Pentair Foleo, filtration fine, charbon actif et traitement UV",
+    relatedExpertise: 'adoucisseur-eau-var',
+  },
+  'pompe-a-chaleur': {
+    urlSlug: 'pompe-a-chaleur',
+    label: 'Pompe à chaleur',
+    serviceKey: 'chauffage',
+    verb: 'votre pompe à chaleur',
+    detail:
+      'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
+    relatedExpertise: 'installation-pompe-a-chaleur-var',
+  },
 }
+
+/** Les 5 métiers ouverts aux 13 villes historiques (inchangé depuis l'origine). */
+const ORIGINAL_TRADES = ['plombier', 'chauffagiste', 'climatisation', 'electricien', 'pisciniste']
 
 /* Chaque ville a : sa distance approximative depuis Lorgues (pour un
    phrasé honnête), 2 communes voisines (pour le maillage interne — voir
    `neighbors`), un paragraphe d'intro déjà entièrement rédigé pour cette
    ville (fonction qui reçoit le `trade` et compose la phrase), et une
-   clé de rotation pour la méta-description. */
+   clé de rotation pour la méta-description. Les villes historiques portent
+   en plus un champ `trades` qui restreint les métiers disponibles (sinon,
+   toute ville hérite par défaut des 7 métiers — voir `localPages`). */
 export const localCities = {
   Lorgues: {
     name: 'Lorgues',
     distanceKm: 0,
     neighbors: ['Draguignan', 'Flayosc'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Basée à Lorgues depuis 2005, PCE intervient pour ${t.verb} directement dans votre commune : ${t.detail}. Devis gratuit et intervention rapide, sans trajet à facturer.`,
   },
@@ -74,6 +105,7 @@ export const localCities = {
     name: 'Draguignan',
     distanceKm: 10,
     neighbors: ['Lorgues', 'Trans-en-Provence'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Draguignan et son agglomération font partie du cœur de notre zone d'intervention : à une dizaine de minutes de notre atelier de Lorgues, PCE y assure ${t.verb} au quotidien — ${t.detail}. Un devis gratuit, sans surcoût de déplacement.`,
   },
@@ -81,6 +113,7 @@ export const localCities = {
     name: 'Vidauban',
     distanceKm: 15,
     neighbors: ['Le Luc', 'Taradeau'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `À quelques minutes de Lorgues, Vidauban bénéficie du même niveau de service que notre commune d'origine. PCE y intervient pour ${t.verb} : ${t.detail}. Déplacement rapide, devis gratuit.`,
   },
@@ -88,6 +121,7 @@ export const localCities = {
     name: 'Flayosc',
     distanceKm: 7,
     neighbors: ['Lorgues', 'Le Thoronet'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Village voisin de Lorgues, Flayosc et ses hameaux sont desservis quotidiennement par nos équipes pour ${t.verb} — ${t.detail}. Intervention rapide, sans frais de déplacement additionnels, et devis établi gratuitement.`,
   },
@@ -95,6 +129,7 @@ export const localCities = {
     name: 'Les Arcs',
     distanceKm: 9,
     neighbors: ['Vidauban', 'Taradeau'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `À la sortie de Lorgues, sur l'axe vers Les Arcs-sur-Argens, PCE couvre cette commune pour ${t.verb} : ${t.detail}. Nos artisans s'y déplacent aussi vite qu'à Lorgues même, devis gratuit à l'appui.`,
   },
@@ -102,6 +137,7 @@ export const localCities = {
     name: 'Le Thoronet',
     distanceKm: 12,
     neighbors: ['Flayosc', 'Salernes'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Le Thoronet et ses environs, plus ruraux, demandent souvent une intervention rapide : c'est précisément ce que propose PCE depuis Lorgues pour ${t.verb} — ${t.detail}. Devis gratuit, sans engagement.`,
   },
@@ -109,6 +145,7 @@ export const localCities = {
     name: 'Taradeau',
     distanceKm: 10,
     neighbors: ['Les Arcs', 'Vidauban'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Entre vignes et collines, Taradeau fait partie des communes que PCE dessert régulièrement depuis Lorgues pour ${t.verb} : ${t.detail}. Un seul appel suffit pour obtenir un devis gratuit et une date d'intervention rapprochée.`,
   },
@@ -116,6 +153,7 @@ export const localCities = {
     name: 'Salernes',
     distanceKm: 15,
     neighbors: ['Le Thoronet', 'Lorgues'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Connue pour ses tomettes, Salernes se situe dans le prolongement de notre zone d'intervention historique. PCE y prend en charge ${t.verb} — ${t.detail} — avec le même sérieux qu'à Lorgues. Devis gratuit sur simple demande.`,
   },
@@ -123,6 +161,7 @@ export const localCities = {
     name: 'Le Luc',
     distanceKm: 20,
     neighbors: ['Vidauban', 'Les Arcs'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Sur l'axe Lorgues – Le Luc, nos équipes se déplacent régulièrement pour assurer ${t.verb} aux habitants et professionnels de la commune : ${t.detail}. Devis gratuit, sans engagement, réponse rapide.`,
   },
@@ -130,6 +169,7 @@ export const localCities = {
     name: 'Trans-en-Provence',
     distanceKm: 12,
     neighbors: ['Draguignan', 'Lorgues'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Trans-en-Provence, proche de Draguignan, bénéficie elle aussi de la réactivité de PCE pour ${t.verb} : ${t.detail}. Nos artisans, basés à Lorgues, s'y déplacent sans délai excessif — devis gratuit.`,
   },
@@ -137,6 +177,7 @@ export const localCities = {
     name: 'Sainte-Maxime',
     distanceKm: 35,
     neighbors: ['Fréjus', 'Saint-Raphaël'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Sur le Golfe de Saint-Tropez, Sainte-Maxime fait partie des communes littorales où PCE se déplace pour ${t.verb} : ${t.detail}. Malgré la distance depuis notre atelier de Lorgues, nous maintenons des délais d'intervention raisonnables et un devis toujours gratuit.`,
   },
@@ -144,6 +185,7 @@ export const localCities = {
     name: 'Fréjus',
     distanceKm: 30,
     neighbors: ['Sainte-Maxime', 'Saint-Raphaël'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Fréjus et son agglomération constituent l'une des zones les plus demandées de notre secteur d'intervention élargi. PCE y assure ${t.verb} — ${t.detail} — avec la même exigence de qualité qu'au plus près de Lorgues. Devis gratuit, sans engagement.`,
   },
@@ -151,8 +193,153 @@ export const localCities = {
     name: 'Saint-Raphaël',
     distanceKm: 35,
     neighbors: ['Fréjus', 'Sainte-Maxime'],
+    trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Jusqu'à Saint-Raphaël, à l'extrémité de notre zone de chalandise, PCE continue d'assurer ${t.verb} pour les particuliers et professionnels du secteur : ${t.detail}. Un devis gratuit et une intervention planifiée à l'avance, même à cette distance de Lorgues.`,
+  },
+
+  /* --------------------------------------- Secteur Dracénie (6 nouvelles villes) */
+  'Le Muy': {
+    name: 'Le Muy',
+    distanceKm: 20,
+    neighbors: ['La Motte', 'Roquebrune-sur-Argens'],
+    intro: (t) =>
+      `Aux portes de l'autoroute A8, Le Muy fait partie du bassin dracénois où PCE intervient couramment depuis Lorgues pour ${t.verb} : ${t.detail}. Devis gratuit et délai d'intervention maîtrisé, à une vingtaine de minutes de notre atelier.`,
+  },
+  'La Motte': {
+    name: 'La Motte',
+    distanceKm: 15,
+    neighbors: ['Le Muy', 'Draguignan'],
+    intro: (t) =>
+      `Entre Lorgues et Le Muy, La Motte bénéficie d'un accès rapide depuis notre atelier pour ${t.verb} : ${t.detail}. Un artisan de la Dracénie, disponible sur rendez-vous et devis gratuit.`,
+  },
+  Ampus: {
+    name: 'Ampus',
+    distanceKm: 15,
+    neighbors: ['Draguignan', 'Figanières'],
+    intro: (t) =>
+      `Village perché du haut Var, Ampus fait partie du territoire dracénois desservi par PCE pour ${t.verb} — ${t.detail}. Malgré son caractère rural, la commune bénéficie des mêmes délais d'intervention et d'un devis gratuit.`,
+  },
+  Figanières: {
+    name: 'Figanières',
+    distanceKm: 10,
+    neighbors: ['Draguignan', 'Callas'],
+    intro: (t) =>
+      `À quelques kilomètres de Draguignan, Figanières est l'une des communes de la Dracénie où PCE se déplace régulièrement pour ${t.verb} : ${t.detail}. Intervention rapide depuis Lorgues, devis gratuit sur simple demande.`,
+  },
+  Callas: {
+    name: 'Callas',
+    distanceKm: 15,
+    neighbors: ['Figanières', 'Draguignan'],
+    intro: (t) =>
+      `Aux confins du pays de Fayence et de la Dracénie, Callas est desservie par nos équipes basées à Lorgues pour ${t.verb} — ${t.detail}. Devis gratuit et rendez-vous rapide, malgré l'éloignement relatif du village.`,
+  },
+  'Saint-Antonin-du-Var': {
+    name: 'Saint-Antonin-du-Var',
+    distanceKm: 10,
+    neighbors: ['Lorgues', 'Salernes'],
+    intro: (t) =>
+      `Petite commune viticole voisine de Lorgues, Saint-Antonin-du-Var profite de la proximité de notre atelier pour ${t.verb} : ${t.detail}. Intervention quasi immédiate et devis gratuit, comme pour l'ensemble de la Dracénie.`,
+  },
+
+  /* ------------------------------ Secteur Golfe de Saint-Tropez (14 nouvelles villes) */
+  'Saint-Tropez': {
+    name: 'Saint-Tropez',
+    distanceKm: 45,
+    neighbors: ['Ramatuelle', 'Gassin'],
+    intro: (t) =>
+      `Sur la presqu'île, Saint-Tropez fait partie des communes du Golfe de Saint-Tropez où PCE se déplace pour ${t.verb} : ${t.detail}. Malgré la distance depuis Lorgues, nos artisans y interviennent avec la même exigence de qualité, devis gratuit inclus.`,
+  },
+  Grimaud: {
+    name: 'Grimaud',
+    distanceKm: 40,
+    neighbors: ['Cogolin', 'Port-Grimaud'],
+    intro: (t) =>
+      `Grimaud et son arrière-pays font partie de notre zone d'intervention élargie sur le Golfe de Saint-Tropez. PCE y assure ${t.verb} — ${t.detail} — avec la réactivité d'un artisan basé à Lorgues. Devis gratuit, sans engagement.`,
+  },
+  Cogolin: {
+    name: 'Cogolin',
+    distanceKm: 38,
+    neighbors: ['Grimaud', 'Gassin'],
+    intro: (t) =>
+      `Cogolin, porte d'entrée du Golfe de Saint-Tropez, bénéficie des interventions régulières de PCE pour ${t.verb} : ${t.detail}. Un devis gratuit et une intervention planifiée, à environ quarante minutes de Lorgues.`,
+  },
+  Gassin: {
+    name: 'Gassin',
+    distanceKm: 43,
+    neighbors: ['Saint-Tropez', 'Cogolin'],
+    intro: (t) =>
+      `Village perché au-dessus du Golfe de Saint-Tropez, Gassin est desservi par PCE pour ${t.verb} — ${t.detail}. Nos équipes s'y déplacent depuis Lorgues pour un relevé sur site et un devis toujours gratuit.`,
+  },
+  Ramatuelle: {
+    name: 'Ramatuelle',
+    distanceKm: 48,
+    neighbors: ['Saint-Tropez', 'Gassin'],
+    intro: (t) =>
+      `Entre vignes et plages, Ramatuelle fait partie des communes du Golfe de Saint-Tropez où PCE intervient pour ${t.verb} : ${t.detail}. Devis gratuit et intervention organisée à l'avance, malgré la distance depuis notre atelier de Lorgues.`,
+  },
+  'La Croix-Valmer': {
+    name: 'La Croix-Valmer',
+    distanceKm: 50,
+    neighbors: ['Ramatuelle', 'Cavalaire-sur-Mer'],
+    intro: (t) =>
+      `À l'extrémité sud du Golfe de Saint-Tropez, La Croix-Valmer reste dans notre zone d'intervention pour ${t.verb} — ${t.detail}. PCE y planifie ses interventions à l'avance pour garantir un service aussi réactif qu'au plus près de Lorgues.`,
+  },
+  'Cavalaire-sur-Mer': {
+    name: 'Cavalaire-sur-Mer',
+    distanceKm: 50,
+    neighbors: ['La Croix-Valmer', 'Rayol-Canadel-sur-Mer'],
+    intro: (t) =>
+      `Station balnéaire du Golfe de Saint-Tropez, Cavalaire-sur-Mer est desservie par PCE pour ${t.verb} : ${t.detail}. Devis gratuit et rendez-vous programmé, malgré l'éloignement de cette partie du littoral varois depuis Lorgues.`,
+  },
+  'La Môle': {
+    name: 'La Môle',
+    distanceKm: 42,
+    neighbors: ['Grimaud', 'La Garde-Freinet'],
+    intro: (t) =>
+      `Nichée entre le massif des Maures et le Golfe de Saint-Tropez, La Môle fait partie des communes rurales que PCE dessert pour ${t.verb} — ${t.detail}. Devis gratuit, intervention planifiée depuis notre atelier de Lorgues.`,
+  },
+  'Le Plan-de-la-Tour': {
+    name: 'Le Plan-de-la-Tour',
+    distanceKm: 35,
+    neighbors: ['Grimaud', 'La Garde-Freinet'],
+    intro: (t) =>
+      `Le Plan-de-la-Tour, village du massif des Maures proche du Golfe de Saint-Tropez, bénéficie des interventions de PCE pour ${t.verb} : ${t.detail}. Un devis gratuit et une intervention organisée sans surprise de délai.`,
+  },
+  'La Garde-Freinet': {
+    name: 'La Garde-Freinet',
+    distanceKm: 30,
+    neighbors: ['Le Plan-de-la-Tour', 'Grimaud'],
+    intro: (t) =>
+      `Ancien village de charbonniers au cœur des Maures, La Garde-Freinet fait partie du secteur du Golfe de Saint-Tropez desservi par PCE pour ${t.verb} — ${t.detail}. Devis gratuit, intervention depuis Lorgues sans surcoût de déplacement injustifié.`,
+  },
+  'Port-Grimaud': {
+    name: 'Port-Grimaud',
+    distanceKm: 40,
+    neighbors: ['Grimaud', 'Sainte-Maxime'],
+    intro: (t) =>
+      `Cité lacustre du Golfe de Saint-Tropez, Port-Grimaud regroupe de nombreuses résidences où PCE intervient pour ${t.verb} : ${t.detail}. Devis gratuit et créneaux adaptés aux résidences secondaires comme aux habitants à l'année.`,
+  },
+  'Rayol-Canadel-sur-Mer': {
+    name: 'Rayol-Canadel-sur-Mer',
+    distanceKm: 55,
+    neighbors: ['Cavalaire-sur-Mer', 'La Croix-Valmer'],
+    intro: (t) =>
+      `Aux confins du Golfe de Saint-Tropez, sur la Corniche des Maures, Rayol-Canadel-sur-Mer reste couverte par PCE pour ${t.verb} — ${t.detail}. Intervention planifiée à l'avance et devis gratuit, malgré la distance depuis Lorgues.`,
+  },
+  'Roquebrune-sur-Argens': {
+    name: 'Roquebrune-sur-Argens',
+    distanceKm: 28,
+    neighbors: ['Fréjus', 'Les Issambres'],
+    intro: (t) =>
+      `Au carrefour de la Dracénie et du Golfe de Saint-Tropez, Roquebrune-sur-Argens et son rocher rouge caractéristique font partie de notre zone d'intervention pour ${t.verb} : ${t.detail}. Devis gratuit et délai d'intervention raisonnable depuis Lorgues.`,
+  },
+  'Les Issambres': {
+    name: 'Les Issambres',
+    distanceKm: 38,
+    neighbors: ['Sainte-Maxime', 'Roquebrune-sur-Argens'],
+    intro: (t) =>
+      `Station balnéaire de la commune de Roquebrune-sur-Argens, Les Issambres fait partie du littoral du Golfe de Saint-Tropez où PCE se déplace pour ${t.verb} — ${t.detail}. Devis gratuit, intervention organisée pour les résidents comme pour les propriétaires de résidences secondaires.`,
   },
 }
 
@@ -179,10 +366,12 @@ export function localCopy(tradeKey, cityKey) {
   }
 }
 
-/** Les 65 combinaisons publiées (5 métiers × 13 villes). */
-export const localPages = Object.keys(localTrades).flatMap((tradeKey) =>
-  Object.keys(localCities).map((cityKey) => ({ tradeKey, cityKey }))
-)
+/** Toutes les combinaisons publiées : chaque ville expose ses métiers propres
+ *  (`city.trades`), ou par défaut l'ensemble des 7 métiers du catalogue. */
+export const localPages = Object.keys(localCities).flatMap((cityKey) => {
+  const tradeKeys = localCities[cityKey].trades || Object.keys(localTrades)
+  return tradeKeys.map((tradeKey) => ({ tradeKey, cityKey }))
+})
 
 /** Convertit un nom de ville en slug d'URL propre : minuscule, sans accents ni apostrophes. */
 function slugifyCity(cityKey) {

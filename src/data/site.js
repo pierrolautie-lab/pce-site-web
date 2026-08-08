@@ -338,7 +338,7 @@ export const services = {
       heading: "Une climatisation qu'on n'entend pas et qu'on ne voit pas",
       photo: { tags: 'livingroom', lock: 518 },
       paragraphs: [
-        "Détenteurs de l'attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011. Avec le temps, nous avons développé une conviction : une bonne installation, c'est celle qu'on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d'une façade en pierre, ni goulotte plastique qui court le long d'un mur.",
+        "Détenteurs de l'attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011, principalement du matériel Daikin, Mitsubishi Electric et Midea, choisi pour sa fiabilité et la disponibilité des pièces détachées dans notre secteur. Avec le temps, nous avons développé une conviction : une bonne installation, c'est celle qu'on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d'une façade en pierre, ni goulotte plastique qui court le long d'un mur.",
         "Cela demande du temps en amont. Nous étudions le tracé des liaisons pour les encastrer ou les dissimuler, nous calculons la distance acoustique aux pièces de nuit et aux limites de propriété, et nous intégrons le groupe extérieur derrière un claustra ou dans un renfoncement chaque fois que c'est possible. Sur les maisons de caractère de Lorgues, c'est souvent ce détail qui fait toute la différence.",
         "Techniquement, nous ne transigeons pas sur la mise sous vide et le contrôle d'étanchéité : ce sont les deux opérations que les poses bâclées suppriment, et la cause quasi systématique des pannes qui surviennent au bout de deux étés. Nous laissons également un accès de maintenance sur chaque unité, pour que l'entretien annuel ne se transforme pas en démontage.",
       ],
@@ -353,7 +353,7 @@ export const services = {
     process: [
       { title: 'La visite des pièces', text: "Volumes, orientation, apports solaires, nombre d'occupants : nous calculons les frigories réellement nécessaires, pièce par pièce." },
       { title: "Le choix de l'implantation", text: "Position des unités intérieures, tracé des liaisons, emplacement du groupe extérieur — validé avec vous avant toute commande." },
-      { title: 'Le devis et la commande', text: "Matériel nommément désigné, puissance, classe énergétique et niveau sonore indiqués noir sur blanc." },
+      { title: 'Le devis et la commande', text: "Matériel nommément désigné (Daikin, Mitsubishi Electric, Midea selon les projets), puissance, classe énergétique et niveau sonore indiqués noir sur blanc." },
       { title: 'La pose', text: "Percements soignés, liaisons encastrées ou dissimulées, tirage au vide, charge en fluide et contrôle d'étanchéité." },
       { title: 'La prise en main', text: "Réglages, explication de la télécommande et de l'application, conseils d'usage pour ne pas surconsommer." },
     ],
@@ -421,14 +421,14 @@ export const services = {
     process: [
       { title: "L'état des lieux", text: "Ouverture du tableau, contrôle des protections, de la terre et des sections de conducteurs. Nous vous montrons ce que nous voyons." },
       { title: 'Le rapport et les priorités', text: "Nous distinguons ce qui relève de la sécurité immédiate, de la mise en conformité et du confort. Vous arbitrez en connaissance de cause." },
-      { title: 'Le devis chiffré', text: "Chaque poste est détaillé, avec les marques d'appareillage et le nombre de points. Aucune ligne « divers »." },
+      { title: 'Le devis chiffré', text: "Chaque poste est détaillé, avec les marques d'appareillage (Schneider Electric, Legrand) et le nombre de points. Aucune ligne « divers »." },
       { title: 'Les travaux', text: "Coupures annoncées à l'avance et limitées, saignées rebouchées, poussières maîtrisées. Vous récupérez le courant chaque soir." },
       { title: 'La remise du dossier', text: "Schéma de tableau, étiquetage, essais des différentiels devant vous et explication du fonctionnement." },
     ],
 
     info: {
       heading: 'Pourquoi refaire son tableau électrique ?',
-      lead: "Une installation antérieure à 1991 concentre l'essentiel des risques domestiques. La remise à niveau est rapide et se fait le plus souvent sans casser les murs.",
+      lead: "Une installation antérieure à 1991 concentre l'essentiel des risques domestiques. Nous posons du matériel Schneider Electric et Legrand, reconnu pour sa fiabilité, et la remise à niveau est rapide, le plus souvent sans casser les murs.",
       bullets: [
         'Assurer la sécurité des occupants avec des différentiels 30 mA.',
         'Protéger vos appareils sensibles contre les surtensions et la foudre.',
@@ -660,6 +660,13 @@ export const services = {
     ],
   },
 }
+
+/* Alias : la page /traitement-de-l-eau utilise le slug complet comme clé de
+   route, alors que l'objet ci-dessus est indexé sous `traitementEau`. Cet
+   alias permet à local.js (`services[trade.serviceKey]`) et à ServicePage.jsx
+   (`findLocalTrade`, qui compare au slug) de résoudre le même service sans
+   dupliquer son contenu. */
+services['traitement-de-l-eau'] = services.traitementEau
 
 /* ---------------------------------------------------------------------
    SOUS-PAGE : CHAUDIÈRE À CONDENSATION

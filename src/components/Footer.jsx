@@ -10,6 +10,10 @@ const servedCities = [
   { name: 'Fréjus', cityKey: 'Fréjus' },
   { name: 'Saint-Raphaël', cityKey: 'Saint-Raphaël' },
   { name: 'Sainte-Maxime', cityKey: 'Sainte-Maxime' },
+  { name: 'Saint-Tropez', cityKey: 'Saint-Tropez' },
+  { name: 'Grimaud', cityKey: 'Grimaud' },
+  { name: 'Cogolin', cityKey: 'Cogolin' },
+  { name: 'Roquebrune-sur-Argens', cityKey: 'Roquebrune-sur-Argens' },
 ]
 
 const servicesLinks = [...trades, { label: 'Dépannage', to: '/depannage' }]

@@ -108,7 +108,7 @@ export default function PlanDuSite() {
           <SectionTitle
             align="left"
             title="Pages locales"
-            lead="Nos interventions, ville par ville, pour chacun des cinq métiers."
+            lead="Nos interventions, ville par ville, pour chacun de nos métiers, dans la Dracénie comme sur le Golfe de Saint-Tropez."
           />
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {pagesLocalesParMetier.map(({ trade, links }) => (
