@@ -28,15 +28,15 @@ jobs:
 
       - name: Envoyer dist/ et corriger les permissions via lftp
         # L'action tierce SamKirkland/FTP-Deploy-Action a été abandonnée ici :
-        # malgré un server-dir absolu correct
-        # (/home/u718469912/domains/pcevar.fr/public_html/, confirmé par le
-        # support Hostinger comme le vrai document root), elle a rapporté un
+        # malgré un server-dir absolu qui semblait correct, elle a rapporté un
         # envoi réussi ("Sync complete") alors que les fichiers atterrissaient
-        # ailleurs sur le serveur (/home/public_html) — constaté par le
-        # support qui a dû les copier manuellement au bon endroit. lftp, lui,
-        # affiche `pwd` avant chaque envoi : on voit exactement où les
-        # fichiers partent, sans dépendre de la résolution de chemin interne
-        # d'une action tierce.
+        # ailleurs sur le serveur. lftp, lui, affiche `pwd` avant chaque
+        # envoi : on voit exactement où les fichiers partent, sans dépendre
+        # de la résolution de chemin interne d'une action tierce.
+        #
+        # Chemin cible : public_html/ à la racine du compte FTP (et non
+        # domains/pcevar.fr/public_html/, utilisé précédemment) — changé sur
+        # demande explicite après vérification côté Hostinger.
         #
         # Nettoyage des variables (\r\n parasites) et forme d'authentification
         # ("open host:port" puis "user" séparé) : voir historique du commit,
@@ -59,7 +59,7 @@ jobs:
           set mirror:use-pget-n 1
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd /home/u718469912/domains/pcevar.fr/public_html
+          cd public_html
           pwd
           mirror --reverse --delete --verbose --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
           pwd
