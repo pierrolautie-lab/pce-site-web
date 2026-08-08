@@ -66,6 +66,10 @@ export default function ArticlePage({ slug }) {
               </div>
             ))}
 
+            {data.closing && (
+              <p className="mt-10 text-[14.5px] font-semibold leading-[1.85] text-navy-700">{data.closing}</p>
+            )}
+
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 to={data.relatedService}
