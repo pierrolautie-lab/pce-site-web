@@ -363,34 +363,6 @@ export default function Contact() {
                 </ul>
               </div>
 
-              {/* Réseaux sociaux (QR code) */}
-              <div className="mt-5 flex items-center gap-5 rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100">
-                <img
-                  src="/img/qr-reseaux-sociaux.png"
-                  alt="QR code vers les réseaux et contacts PCE"
-                  width={104}
-                  height={104}
-                  loading="lazy"
-                  className="h-[104px] w-[104px] shrink-0 rounded-lg ring-1 ring-navy-100"
-                />
-                <div className="min-w-0">
-                  <h3 className="text-[12px] font-bold uppercase tracking-[.12em] text-navy-800">
-                    Nos réseaux
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-[1.6] text-navy-500">
-                    Scannez le QR code pour retrouver tous nos liens et réseaux en un clic.
-                  </p>
-                  <a
-                    href={company.socialHub}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold uppercase tracking-[.06em] text-azure-500 hover:underline"
-                  >
-                    Voir nos liens
-                    <Icon name="arrowUpRight" className="h-3.5 w-3.5" strokeWidth={2.2} />
-                  </a>
-                </div>
-              </div>
             </aside>
           </div>
         </div>

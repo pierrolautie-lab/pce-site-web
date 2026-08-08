@@ -36,7 +36,7 @@ const infosLinks = [
 ]
 
 const socials = [
-  { name: 'Facebook', icon: 'facebook', href: '#' },
+  { name: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/yves.texier.3/' },
   { name: 'Instagram', icon: 'instagram', href: '#' },
   { name: 'LinkedIn', icon: 'linkedin', href: '#' },
   { name: 'Tous nos liens', icon: 'globe', href: company.socialHub },

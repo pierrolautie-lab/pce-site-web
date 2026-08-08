@@ -46,7 +46,7 @@ export default function Accueil() {
         intro="Plomberie, chauffage, climatisation, électricité et piscine : depuis 2005, PCE conçoit, installe et entretient les équipements qui font le confort de votre maison. Un seul interlocuteur du devis à la mise en service, une équipe locale qui connaît le bâti, l'eau et le climat du Var."
         photo={{ tags: 'house', lock: 101, alt: 'Maison provençale équipée par PCE' }}
       >
-        <ul className="mt-8 flex flex-wrap gap-2">
+        <ul className="mt-8 hidden flex-wrap gap-2 lg:flex">
           {serviceList.map((s) => (
             <li key={s.slug}>
               <Link
@@ -62,7 +62,7 @@ export default function Accueil() {
       </PageHero>
 
       {/* ============================================ CARTES DES MÉTIERS == */}
-      <section className="section bg-white">
+      <section className="bg-white pb-14 pt-6 sm:py-16 lg:py-20">
         <div className="container-pce">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionTitle
@@ -76,7 +76,7 @@ export default function Accueil() {
             </Link>
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-3">
             {cards.map((c) => (
               <Link
                 key={c.to}
@@ -89,26 +89,28 @@ export default function Accueil() {
                     lock={c.photo.lock}
                     alt={c.title}
                     rounded=""
-                    className="aspect-[4/3] w-full"
+                    className="aspect-[4/3] w-full sm:aspect-[4/3]"
                     imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/10 to-transparent" />
-                  <span className="absolute bottom-4 left-4 grid h-11 w-11 place-items-center rounded-full bg-white text-azure-500 shadow-card">
-                    <Icon name={c.icon} className="h-5 w-5" strokeWidth={1.6} />
+                  <span className="absolute bottom-2 left-2 grid h-8 w-8 place-items-center rounded-full bg-white text-azure-500 shadow-card sm:bottom-4 sm:left-4 sm:h-11 sm:w-11">
+                    <Icon name={c.icon} className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.6} />
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-[15px] font-bold uppercase tracking-[.06em] text-navy-800">
+                <div className="flex flex-1 flex-col p-3 sm:p-6">
+                  <h3 className="text-[12px] font-bold uppercase tracking-[.06em] text-navy-800 sm:text-[15px]">
                     {c.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-[13.5px] leading-[1.7] text-navy-500">{c.text}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-azure-500">
+                  <p className="mt-3 hidden flex-1 text-[13.5px] leading-[1.7] text-navy-500 sm:block">
+                    {c.text}
+                  </p>
+                  <span className="mt-2 inline-flex items-center gap-1.5 text-[9.5px] font-bold uppercase tracking-[.1em] text-azure-500 sm:mt-5 sm:gap-2 sm:text-[10.5px] sm:tracking-[.12em]">
                     En savoir plus
                     <Icon
                       name="arrowRight"
-                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                      className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 sm:h-3.5 sm:w-3.5"
                       strokeWidth={2.4}
                     />
                   </span>
@@ -421,6 +423,36 @@ export default function Accueil() {
 
       <CtaSection />
       <GuaranteeBar />
+
+      {/* ================================== PCE SUR LE TERRAIN (véhicule) = */}
+      <section className="relative overflow-hidden bg-navy-900 text-white">
+        <Photo
+          tags={depannage.hero.tags}
+          lock={depannage.hero.lock}
+          alt="Le véhicule PCE en intervention"
+          rounded=""
+          className="aspect-[4/5] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-navy-900/10" />
+        <div className="container-pce absolute inset-0 flex flex-col items-start justify-end pb-8 sm:pb-12 lg:pb-16">
+          <span className="inline-flex w-fit items-center gap-2 rounded bg-gold-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800">
+            <Icon name="truck" className="h-3.5 w-3.5" strokeWidth={2.2} />
+            PCE sur le terrain
+          </span>
+          <h2 className="mt-4 max-w-2xl text-[24px] font-black uppercase leading-[1.05] tracking-[-.01em] sm:text-[34px] lg:text-[42px]">
+            Vous nous croisez dans le Var ? C'est bien nous.
+          </h2>
+          <p className="mt-3 max-w-xl text-[13.5px] leading-[1.7] text-white/70 sm:text-[14.5px]">
+            Notre véhicule floqué PCE — Qualigaz, Qualipac — sillonne Lorgues, la Dracénie et le
+            Golfe de Saint-Tropez chaque jour. Même équipe sur le terrain et sur ce site.
+          </p>
+          <a href={company.phoneHref} className="btn-gold mt-6">
+            <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
+            {company.phone}
+          </a>
+        </div>
+      </section>
     </>
   )
 }

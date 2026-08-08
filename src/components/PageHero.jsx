@@ -73,7 +73,7 @@ export default function PageHero({
             </nav>
           )}
 
-          <div className="grid items-center gap-10 pb-14 pt-8 lg:grid-cols-12 lg:pb-20 lg:pt-10">
+          <div className="grid items-center gap-6 pb-8 pt-6 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-10">
             <div className="min-w-0 lg:col-span-7">
               <h1 className={`font-black uppercase leading-[1.12] tracking-[-.03em] md:leading-[.94] ${titleClassName}`}>
                 {title}
@@ -107,7 +107,7 @@ export default function PageHero({
               )}
 
               {actions && (
-                <div className="mt-9 flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-9">
                   <Link to="/contact" className="btn-azure">
                     {primaryLabel}
                     <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
@@ -130,7 +130,7 @@ export default function PageHero({
                   lock={photo.lock}
                   alt={photo.alt || title}
                   priority
-                  className="aspect-[4/3] w-full shadow-photo"
+                  className="aspect-[16/9] w-full shadow-photo"
                   rounded="rounded-xl"
                 />
               </div>
@@ -149,7 +149,7 @@ export function ReassuranceBar() {
   return (
     <section className="border-t border-white/10 bg-navy-900 text-white">
       <div className="container-pce">
-        <ul className="grid grid-cols-2 divide-white/10 py-8 lg:grid-cols-4 lg:divide-x">
+        <ul className="grid grid-cols-2 divide-white/10 py-4 lg:grid-cols-4 lg:divide-x lg:py-8">
           {reassurance.map((r) => (
             <li key={r.title} className="flex items-start gap-3.5 px-0 py-3 lg:px-6 lg:py-1">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25">
