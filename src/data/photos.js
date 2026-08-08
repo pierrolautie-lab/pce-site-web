@@ -111,7 +111,9 @@ export const PHOTO_SLOTS = {
 export const clientPhotos = {
   /* --- Accueil --- */
   101: '/img/accueil-hero-reseaux.jpg',
-  102: '/img/savoir-faire-cintrage.jpg',
+  /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
+     c'est le même fichier que depannage-outillage.jpg (md5 identique). */
+  102: '/img/climatisation-expertise-gaines-combles.jpg',
   103: '/img/douche-pierre-finie.jpg',
 
   /* --- Pages métier --- */
@@ -145,7 +147,10 @@ export const clientPhotos = {
 
   /* --- Dépannage --- */
   844: '/img/depannage-vehicule-pce.jpg',
-  845: '/img/depannage-outillage.jpg',
+  /* depannage-outillage.jpg écartée : photo inexploitable (variance du
+     laplacien à 33, la plus floue de la bibliothèque avec son doublon
+     savoir-faire-cintrage.jpg, même fichier au bit près). */
+  845: '/img/electricite-prestations-reseau.jpg',
 
   /* --- Réalisations --- */
   960: '/img/realisations-hero-radiateur.jpg',

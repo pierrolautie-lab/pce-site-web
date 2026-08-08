@@ -1,35 +1,61 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
-import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
-import { CtaSection, GuaranteeBar, TrustBadges, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
-import { Wordmark } from '../components/Brand.jsx'
-import {
-  areasDetail,
-  company,
-  depannage,
-  projects,
-  serviceList,
-  stats,
-  values,
-  whyChooseUs,
-} from '../data/site.js'
-import { localCities, localPath } from '../data/local.js'
+import { ReassuranceBar } from '../components/PageHero.jsx'
+import { company, depannage, projects, serviceList } from '../data/site.js'
+import { clientPhotoMeta } from '../data/photos.js'
+
+/* -------------------------------------------------------------------------
+   AVIS GOOGLE — À CONFIRMER
+   ⚠️ ne pas publier sans fiche Google Business réelle : ces valeurs sont
+   des espaces réservés fournis par le client, non vérifiés. Le bloc reste
+   masqué tant que SHOW_GOOGLE_REVIEWS vaut false.
+---------------------------------------------------------------------------*/
+const SHOW_GOOGLE_REVIEWS = false
+// À CONFIRMER — ne pas publier sans fiche Google Business réelle
+const GOOGLE_REVIEWS = { rating: '4,9/5', stars: 5, count: '+450 clients satisfaits', href: '/contact' }
+
+/* Photo de fond du héros. Le fichier définitif (véhicules devant une villa)
+   est encore à livrer : tant qu'il est absent, `onError` bascule sur la
+   photo d'accueil actuelle. Une fois le fichier déposé dans public/img/,
+   lancer `node scripts/optimize-images.js` pour générer ses variantes WebP. */
+const HERO_BG = '/img/accueil-hero-vehicules.jpg'
+
+/* Les 5 métiers mis en avant sous le titre du héros. */
+const HERO_TRADES = [
+  { icon: 'droplet', label: 'Plomberie', to: '/plomberie' },
+  { icon: 'flame', label: 'Chauffage', to: '/chauffage' },
+  { icon: 'snowflake', label: 'Climatisation', to: '/climatisation' },
+  { icon: 'waves', label: 'Piscine', to: '/piscine' },
+  { icon: 'bolt', label: 'Électricité', to: '/electricite' },
+]
+
+/* Ordre des cartes validé par le client : piscine avant électricité, et le
+   dépannage en dernier — il n'est pas dans `serviceList`, on l'ajoute à la
+   main à partir de son propre objet. */
+const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau']
+
+const CLIENT_TYPES = [
+  'Particuliers & Professionnels',
+  'Résidences secondaires',
+  'Syndics & Copropriétés',
+  'Commerces & Entreprises',
+]
+
+/* Communes repères de la carte, en pourcentage du cadre SVG. Lorgues est le
+   point d'ancrage (siège), les autres situent l'amplitude de la zone. */
+const MAP_POINTS = [
+  { name: 'Draguignan', x: 62, y: 12 },
+  { name: 'Fréjus', x: 87, y: 26 },
+  { name: 'Le Luc', x: 21, y: 40 },
+  { name: 'Sainte-Maxime', x: 83, y: 48 },
+  { name: 'Saint-Tropez', x: 79, y: 66 },
+  { name: 'Cavalaire-sur-Mer', x: 74, y: 84 },
+]
 
 export default function Accueil() {
-  /* Les 4 premières cartes occupent la première ligne, les 2 dernières
-     s'étalent sur la seconde : aucune cellule orpheline. */
-  /* Six métiers sur une grille de 3 colonnes (deux rangées pleines),
-     le dépannage étant mis en avant juste après, sur toute la largeur. */
-  const cards = serviceList.map((s) => ({
-    to: `/${s.slug}`,
-    icon: s.icon,
-    title: s.title,
-    text: s.card,
-    photo: s.hero,
-  }))
-
   return (
     <>
       <Seo
@@ -38,421 +64,307 @@ export default function Accueil() {
         description="PCE, artisan à Lorgues dans le Var depuis 2005 : plomberie, chauffage, climatisation, électricité et entretien de piscine. Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez."
         path="/"
       />
-      {/* ====================================================== HERO ====== */}
-      <PageHero
-        title="Votre confort, notre métier"
-        titleClassName="text-[8.8vw] md:text-5xl lg:text-[3.9rem]"
-        subtitle="Cinq savoir-faire réunis sous le même toit, à Lorgues depuis 2005"
-        intro="Plomberie, chauffage, climatisation, électricité et piscine : depuis 2005, PCE conçoit, installe et entretient les équipements qui font le confort de votre maison. Un seul interlocuteur du devis à la mise en service, une équipe locale qui connaît le bâti, l'eau et le climat du Var."
-        photo={{ tags: 'house', lock: 101, alt: 'Maison provençale équipée par PCE' }}
-      >
-        <ul className="mt-8 hidden flex-wrap gap-2 lg:flex">
-          {serviceList.map((s) => (
-            <li key={s.slug}>
-              <Link
-                to={`/${s.slug}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-4 py-3.5 text-[11px] font-bold uppercase tracking-[.08em] text-white/80 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
-              >
-                <Icon name={s.icon} className="h-3.5 w-3.5" strokeWidth={2} />
-                {s.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </PageHero>
 
-      {/* ============================================ CARTES DES MÉTIERS == */}
-      <section className="bg-white pb-14 pt-6 sm:py-16 lg:py-20">
-        <div className="container-pce">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionTitle
-              align="left"
-              title="Nos métiers — ce que nous savons faire"
-              lead="Cinq spécialités complémentaires, exercées par la même équipe. C'est ce qui nous permet de livrer un chantier complet sans coordination hasardeuse entre plusieurs entreprises."
-            />
-            <Link to="/realisations" className="btn-outline shrink-0">
-              Voir nos réalisations
-              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.2} />
-            </Link>
-          </div>
+      <HomeHero />
+      <ReassuranceBar />
+      <ServiceCards />
+      <ProofRow />
+    </>
+  )
+}
 
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-3">
-            {cards.map((c) => (
-              <Link
-                key={c.to}
-                to={c.to}
-                className="group relative flex flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="relative">
-                  <Photo
-                    tags={c.photo.tags}
-                    lock={c.photo.lock}
-                    alt={c.title}
-                    rounded=""
-                    className="aspect-[4/3] w-full sm:aspect-[4/3]"
-                    imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/10 to-transparent" />
-                  <span className="absolute bottom-2 left-2 grid h-8 w-8 place-items-center rounded-full bg-white text-azure-500 shadow-card sm:bottom-4 sm:left-4 sm:h-11 sm:w-11">
-                    <Icon name={c.icon} className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.6} />
-                  </span>
-                </div>
+/* ======================================================== HÉROS ========= */
+function HomeHero() {
+  const fallback = clientPhotoMeta(101)
+  const [bg, setBg] = useState(HERO_BG)
 
-                <div className="flex flex-1 flex-col p-3 sm:p-6">
-                  <h3 className="text-[12px] font-bold uppercase tracking-[.06em] text-navy-800 sm:text-[15px]">
-                    {c.title}
-                  </h3>
-                  <p className="mt-3 hidden flex-1 text-[13.5px] leading-[1.7] text-navy-500 sm:block">
-                    {c.text}
-                  </p>
-                  <span className="mt-2 inline-flex items-center gap-1.5 text-[9.5px] font-bold uppercase tracking-[.1em] text-azure-500 sm:mt-5 sm:gap-2 sm:text-[10.5px] sm:tracking-[.12em]">
-                    En savoir plus
-                    <Icon
-                      name="arrowRight"
-                      className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 sm:h-3.5 sm:w-3.5"
-                      strokeWidth={2.4}
-                    />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Dépannage mis en avant sur toute la largeur */}
-          <Link
-            to="/depannage"
-            className="group mt-5 grid overflow-hidden rounded-xl bg-navy-800 text-white shadow-card transition-all duration-300 hover:-translate-y-1 lg:grid-cols-12"
-          >
-            <div className="relative min-w-0 lg:col-span-5">
-              <Photo
-                tags={depannage.hero.tags}
-                lock={depannage.hero.lock}
-                alt="Dépannage PCE 7j/7"
-                rounded=""
-                className="aspect-[21/9] w-full lg:h-full lg:aspect-auto"
-                imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-navy-900/40 to-navy-800/80 lg:to-navy-800" />
-            </div>
-
-            <div className="flex min-w-0 flex-col justify-center p-5 sm:p-7 lg:col-span-7">
-              <span className="inline-flex w-fit items-center gap-2 rounded bg-gold-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800">
-                <Icon name="clock" className="h-3.5 w-3.5" strokeWidth={2.2} />
-                Urgence 7j/7
-              </span>
-              <h3 className="mt-3 text-[17px] font-black uppercase tracking-[-.01em] sm:text-[22px]">
-                Dépannage dans tout le Var
-              </h3>
-              <p className="mt-2 max-w-xl text-[13.5px] leading-[1.6] text-white/65">
-                Fuite d'eau, panne de chauffage ou de climatisation, coupure électrique, filtration
-                de piscine à l'arrêt : un créneau vous est donné dès votre appel, et le prix est
-                annoncé avant toute intervention.
-              </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-gold-400">
-                Voir la page dépannage
-                <Icon
-                  name="arrowRight"
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                  strokeWidth={2.4}
-                />
-              </span>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* ============================================= POURQUOI CHOISIR PCE */}
-      <section className="section bg-navy-50">
-        <div className="container-pce">
-          <SectionTitle
-            title="Pourquoi choisir PCE ?"
-            lead="Six raisons concrètes, données par nos clients de Lorgues et de la Dracénie."
-          />
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChooseUs.map((w) => (
-              <div key={w.title} className="flex flex-col rounded-2xl bg-white p-7 ring-1 ring-navy-100">
-                <span className="grid h-12 w-12 place-items-center rounded-full bg-navy-50 text-azure-500 ring-1 ring-navy-100">
-                  <Icon name={w.icon} className="h-5 w-5" strokeWidth={1.6} />
-                </span>
-                <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800">
-                  {w.title}
-                </h3>
-                <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500">{w.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <TrustBadges />
-
-      {/* ================================== QUI SOMMES-NOUS (rédactionnel) = */}
-      <section className="section bg-navy-50">
-        <div className="container-pce">
-          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
-            <div className="min-w-0 lg:col-span-6">
-              <SectionTitle
-                align="left"
-                title="PCE, l'artisan du confort à Lorgues depuis 2005"
-              />
-              <div className="mt-7 space-y-5">
-                <p className="text-[15px] leading-[1.85] text-navy-600">
-                  PCE est née à Lorgues en 2005, d'une conviction simple : dans une maison, l'eau,
-                  la chaleur et l'électricité forment un tout. Les séparer entre trois entreprises,
-                  c'est multiplier les délais, les rendez-vous manqués et les responsabilités
-                  diluées. Nous avons donc choisi la voie inverse et intégré, année après année, les
-                  cinq métiers qui font le confort d'un logement.
-                </p>
-                <p className="text-[15px] leading-[1.85] text-navy-600">
-                  Vingt ans plus tard, cette approche est notre marque de fabrique. Une pompe à
-                  chaleur, c'est de l'hydraulique, du frigorifique et de l'électricité : nous
-                  livrons l'ensemble. Une salle de bains, c'est du sanitaire, de la ventilation et
-                  des circuits protégés : nous livrons l'ensemble. Un local technique de piscine,
-                  c'est de la tuyauterie et un coffret aux normes : nous livrons l'ensemble.
-                </p>
-                <p className="text-[15px] leading-[1.85] text-navy-600">
-                  Nous travaillons pour des particuliers, des syndics et des propriétaires de
-                  résidences secondaires, entre Lorgues, la Dracénie et le Golfe de Saint-Tropez.
-                  Notre connaissance du terrain — une eau très calcaire, des bastides en pierre à
-                  forte inertie, des étés qui imposent le rafraîchissement — nous permet de
-                  préconiser juste, plutôt que de vendre du catalogue.
-                </p>
-              </div>
-
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Link to="/a-propos" className="btn-azure">
-                  Découvrir notre histoire
-                  <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
-                </Link>
-                <p className="signature text-[15px]">{company.tagline}</p>
-              </div>
-            </div>
-
-            <div className="min-w-0 lg:col-span-6">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Photo
-                  tags="tools"
-                  lock={102}
-                  alt="L'équipe PCE en intervention"
-                  className="aspect-[3/4] w-full shadow-photo sm:mt-10"
-                />
-                <Photo
-                  tags="architecture"
-                  lock={103}
-                  alt="Bastide provençale à Lorgues"
-                  className="aspect-[3/4] w-full shadow-photo"
-                />
-              </div>
-
-              {/* Chiffres clés */}
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {stats.map((s) => (
-                  <div key={s.label} className="rounded-2xl bg-white p-5 ring-1 ring-navy-100">
-                    <p className="text-[26px] font-black leading-none tracking-tight text-navy-800">
-                      {s.value}
-                    </p>
-                    <p className="mt-2 text-[11.5px] leading-snug text-navy-500">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================ GARANTIE DÉCENNALE / UN SEUL INTERLOCUTEUR ====== */}
-      <section className="relative overflow-hidden bg-navy-800 py-16 text-white sm:py-20 lg:py-24">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 select-none text-[240px] font-black uppercase leading-none tracking-[-.05em] text-white/[.04]"
-        >
-          {company.name}
-        </span>
-
-        <div className="container-pce relative">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="min-w-0 lg:col-span-5">
-              <Wordmark size="sm" />
-              <h2 className="mt-6 text-3xl font-black uppercase leading-[1.04] tracking-[-.02em] sm:text-[2.4rem]">
-                Garantie décennale,
-                <br />
-                un seul interlocuteur
-              </h2>
-              <p className="mt-6 text-[15px] leading-[1.85] text-white/65">
-                Nos installations sont couvertes par notre assurance décennale, et l'attestation
-                vous est remise avec le devis — avant le début des travaux, pas après. Sur le
-                chantier, une seule entreprise engage sa responsabilité : la nôtre. Vous n'avez
-                jamais à arbitrer entre le plombier qui accuse l'électricien et l'inverse.
-              </p>
-              <Link to="/contact" className="btn-gold mt-8">
-                Nous confier votre projet
-                <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
-              </Link>
-            </div>
-
-            <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-span-7">
-              {values.map((v) => (
-                <div
-                  key={v.title}
-                  className="rounded-2xl border border-white/12 bg-white/[.04] p-6 transition-colors hover:border-white/25"
-                >
-                  <span className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white">
-                    <Icon name={v.icon} className="h-5 w-5" strokeWidth={1.5} />
-                  </span>
-                  <h3 className="mt-5 text-[13px] font-bold uppercase tracking-[.08em] text-white">
-                    {v.title}
-                  </h3>
-                  <p className="mt-3 text-[13px] leading-[1.7] text-white/60">{v.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================= ZONE D'INTERVENTION ==== */}
-      <section className="section bg-white">
-        <div className="container-pce">
-          <SectionTitle
-            title="Zone d'intervention — trois territoires, une même équipe"
-            lead="Basés à Lorgues, nous rayonnons sur tout le centre-Var et jusqu'au littoral. Nous sommes rarement à plus de quarante minutes de votre porte."
-          />
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {areasDetail.map((a) => (
-              <article
-                key={a.name}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100"
-              >
-                <div className="relative">
-                  <Photo
-                    tags={a.tags}
-                    lock={a.lock}
-                    alt={a.name}
-                    rounded=""
-                    className="aspect-[16/10] w-full"
-                    imgClassName="transition-transform duration-700 group-hover:scale-105"
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
-                  <div className="absolute bottom-4 left-5 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[.18em] text-white/60">
-                      {a.lead}
-                    </p>
-                    <h3 className="mt-1 text-[21px] font-black uppercase tracking-tight">{a.name}</h3>
-                  </div>
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[13.5px] leading-[1.75] text-navy-500">{a.text}</p>
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
-                    {a.towns.map((t) => (
-                      <li
-                        key={t}
-                        className="rounded-full bg-navy-50 px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[.08em] text-navy-600 ring-1 ring-navy-100"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================ APERÇU RÉALISATIONS = */}
-      <section className="section bg-navy-50">
-        <div className="container-pce">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionTitle
-              align="left"
-              title="Quelques réalisations récentes"
-              lead="Chaque chantier est différent, mais le niveau d'exigence reste le même : un travail propre, repéré et durable."
-            />
-            <Link to="/realisations" className="btn-outline shrink-0">
-              Toutes nos réalisations
-              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.2} />
-            </Link>
-          </div>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p) => (
-              <article
-                key={p.title}
-                className="group overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100"
-              >
-                <Photo
-                  tags={p.tags}
-                  lock={p.lock}
-                  alt={p.title}
-                  rounded=""
-                  className="aspect-[4/3] w-full"
-                  imgClassName="transition-transform duration-700 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-navy-500">
-                    <span className="text-navy-700">{p.trade}</span>
-                    <span className="h-1 w-1 rounded-full bg-navy-200" />
-                    <span>
-                      {p.city} · {p.year}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-[15px] font-bold leading-snug text-navy-800">{p.title}</h3>
-                  <p className="mt-2.5 text-[13px] leading-[1.7] text-navy-500">{p.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================= NOS VILLES D'INTERVENTION */}
-      <LinkGrid
-        title="Nos interventions par ville"
-        lead="PCE intervient dans tout le Var : sur la Dracénie Provence Verdon Agglomération autour de Lorgues et Draguignan, et sur les 12 communes du Golfe de Saint-Tropez, jusqu'à Sainte-Maxime et Saint-Tropez. Plombier, chauffagiste, climatisation, électricien, pisciniste ou traitement de l'eau : PCE se déplace dans chacune de ces communes depuis son atelier de Lorgues."
-        links={Object.keys(localCities).map((cityKey) => ({
-          to: localPath('plombier', cityKey),
-          label: localCities[cityKey].name,
-        }))}
+  return (
+    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
+      {/* Photo de fond pleine largeur */}
+      <img
+        src={bg}
+        alt=""
+        aria-hidden="true"
+        onError={() => fallback?.src && bg !== fallback.src && setBg(fallback.src)}
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
       />
 
-      <CtaSection />
-      <GuaranteeBar />
+      {/* Dégradé marine : de la gauche vers la transparence à droite. Le second
+          dégradé, vertical, garde le texte lisible en mobile où la colonne
+          occupe toute la largeur. */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/40 lg:hidden" />
 
-      {/* ================================== PCE SUR LE TERRAIN (véhicule) = */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
-        <Photo
-          tags={depannage.hero.tags}
-          lock={depannage.hero.lock}
-          alt="Le véhicule PCE en intervention"
-          rounded=""
-          className="aspect-[4/5] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-navy-900/10" />
-        <div className="container-pce absolute inset-0 flex flex-col items-start justify-end pb-8 sm:pb-12 lg:pb-16">
-          <span className="inline-flex w-fit items-center gap-2 rounded bg-gold-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800">
-            <Icon name="truck" className="h-3.5 w-3.5" strokeWidth={2.2} />
-            PCE sur le terrain
-          </span>
-          <h2 className="mt-4 max-w-2xl text-[24px] font-black uppercase leading-[1.05] tracking-[-.01em] sm:text-[34px] lg:text-[42px]">
-            Vous nous croisez dans le Var ? C'est bien nous.
-          </h2>
-          <p className="mt-3 max-w-xl text-[13.5px] leading-[1.7] text-white/70 sm:text-[14.5px]">
-            Notre véhicule floqué PCE sillonne Lorgues, la Dracénie et le Golfe de Saint-Tropez
-            chaque jour. Même équipe sur le terrain et sur ce site.
+      <div className="container-pce relative py-10 sm:py-14 lg:py-20">
+        <div className="max-w-2xl">
+          <h1 className="font-black uppercase leading-[1.06] tracking-[-.02em] text-[8.5vw] sm:text-[42px] lg:text-[54px]">
+            <span className="block">Votre expert</span>
+            <span className="block">Plomberie • Chauffage</span>
+            <span className="block text-azure-400">Climatisation • Piscine</span>
+            <span className="block text-gold-500">Électricité</span>
+          </h1>
+
+          {/* Filet or */}
+          <span aria-hidden="true" className="mt-5 block h-[3px] w-24 bg-gold-500 sm:w-32" />
+
+          <p className="signature mt-4 text-[20px] sm:text-[26px]">Dans tout le Var</p>
+
+          <p className="mt-3 max-w-lg text-[14px] leading-[1.7] text-white/80 sm:text-[15.5px]">
+            De Lorgues jusqu'au Golfe de Saint-Tropez et toutes les communes alentours
           </p>
-          <a href={company.phoneHref} className="btn-gold mt-6">
-            <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
-            {company.phone}
-          </a>
+
+          {/* Pictos métier */}
+          <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-5 sm:gap-x-9">
+            {HERO_TRADES.map((t) => (
+              <li key={t.label}>
+                <Link to={t.to} className="group flex flex-col items-center gap-2 text-center">
+                  <Icon
+                    name={t.icon}
+                    className="h-7 w-7 text-azure-400 transition-colors group-hover:text-gold-500 sm:h-8 sm:w-8"
+                    strokeWidth={1.5}
+                  />
+                  <span className="text-[9.5px] font-bold uppercase tracking-[.08em] text-white/85 transition-colors group-hover:text-white sm:text-[10.5px]">
+                    {t.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-500 px-6 py-4 text-center text-[12px] font-bold uppercase tracking-[.08em] text-navy-900 transition-colors hover:bg-gold-400"
+            >
+              Demande de devis gratuit
+              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
+            </Link>
+            <a
+              href={company.phoneHref}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-center text-[13px] font-bold tracking-[.04em] text-white transition-colors hover:border-white hover:bg-white hover:text-navy-900"
+            >
+              <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
+              {company.phone}
+            </a>
+          </div>
         </div>
-      </section>
-    </>
+
+        {/* Pastille zone d'intervention, en bas à droite */}
+        <div className="mt-10 flex items-center gap-3 rounded-lg border border-white/15 bg-navy-900/70 px-5 py-4 backdrop-blur-sm lg:absolute lg:bottom-8 lg:right-6 lg:mt-0 lg:max-w-sm xl:right-[max(1.5rem,calc((100vw-1280px)/2+2rem))]">
+          <Icon name="mapPin" className="h-6 w-6 shrink-0 text-gold-500" strokeWidth={1.6} />
+          <span className="min-w-0">
+            <span className="block text-[11.5px] font-bold uppercase tracking-[.06em]">
+              Intervention dans tout le Var
+            </span>
+            <span className="mt-0.5 block text-[11.5px] leading-snug text-white/65">
+              De Lorgues au Golfe de Saint-Tropez
+            </span>
+          </span>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ================================================ CARTES DES MÉTIERS ==== */
+function ServiceCards() {
+  const ordered = CARD_ORDER.map((slug) => serviceList.find((s) => s.slug === slug)).filter(Boolean)
+
+  const cards = [
+    ...ordered.map((s) => ({
+      to: `/${s.slug}`,
+      icon: s.icon,
+      title: s.title,
+      text: s.card,
+      photo: s.hero,
+    })),
+    {
+      to: '/depannage',
+      icon: 'wrench',
+      title: 'Dépannage',
+      text: 'Intervention rapide 7j/7 dans tout le Var. Devis immédiat, prix annoncé avant intervention.',
+      photo: depannage.hero,
+    },
+  ]
+
+  return (
+    <section className="bg-navy-50 py-10 sm:py-12 lg:py-14">
+      <div className="container-pce">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+          {cards.map((c) => (
+            <Link
+              key={c.to}
+              to={c.to}
+              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="relative">
+                <Photo
+                  lock={c.photo.lock}
+                  alt={c.title}
+                  rounded=""
+                  className="aspect-[4/3] w-full"
+                  imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
+                  sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                />
+                <span className="absolute -bottom-4 left-3 grid h-9 w-9 place-items-center rounded-full bg-white text-azure-500 shadow-card ring-1 ring-navy-100">
+                  <Icon name={c.icon} className="h-4 w-4" strokeWidth={1.7} />
+                </span>
+              </div>
+
+              <div className="flex flex-1 flex-col px-4 pb-4 pt-7">
+                <h3 className="text-[12.5px] font-bold uppercase tracking-[.05em] text-navy-800">
+                  {c.title}
+                </h3>
+                <p className="mt-2 line-clamp-2 flex-1 text-[11.5px] leading-[1.55] text-navy-500">
+                  {c.text}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[9.5px] font-bold uppercase tracking-[.1em] text-azure-500">
+                  En savoir plus
+                  <Icon
+                    name="arrowRight"
+                    className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1"
+                    strokeWidth={2.4}
+                  />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ============================= AVIS / RÉALISATIONS / ZONE D'INTERVENTION = */
+function ProofRow() {
+  /* Sans le bloc avis, les deux blocs restants se répartissent la largeur
+     plutôt que de laisser une colonne vide. */
+  const gallerySpan = SHOW_GOOGLE_REVIEWS ? 'lg:col-span-5' : 'lg:col-span-7'
+  const zoneSpan = SHOW_GOOGLE_REVIEWS ? 'lg:col-span-4' : 'lg:col-span-5'
+
+  return (
+    <section className="bg-white pb-12 sm:pb-14 lg:pb-16">
+      <div className="container-pce">
+        <div className="grid gap-4 lg:grid-cols-12">
+          {SHOW_GOOGLE_REVIEWS && (
+            <div className="min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 lg:col-span-3">
+              <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+                Ils nous font confiance
+              </h2>
+              <div className="mt-4 flex items-center gap-3">
+                <span className="flex" aria-hidden="true">
+                  {Array.from({ length: GOOGLE_REVIEWS.stars }).map((_, i) => (
+                    <Icon key={i} name="star" className="h-5 w-5 text-gold-500" strokeWidth={1.4} />
+                  ))}
+                </span>
+                <span className="text-[22px] font-black leading-none text-navy-800">
+                  {GOOGLE_REVIEWS.rating}
+                </span>
+              </div>
+              <p className="mt-3 text-[12px] leading-snug text-navy-500">
+                sur Google
+                <br />
+                {GOOGLE_REVIEWS.count}
+              </p>
+              <Link to={GOOGLE_REVIEWS.href} className="btn-outline mt-5 w-full text-center">
+                Voir les avis
+              </Link>
+            </div>
+          )}
+
+          {/* ------------------------------------------------ Réalisations */}
+          <div className={`min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 ${gallerySpan}`}>
+            <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+              Nos réalisations
+            </h2>
+
+            <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
+              {projects.slice(0, 5).map((p) => (
+                <li key={p.title} className="min-w-0">
+                  <Photo
+                    lock={p.lock}
+                    alt={p.title}
+                    rounded="rounded-lg"
+                    className="aspect-square w-full"
+                    sizes="(min-width: 1024px) 10vw, 40vw"
+                  />
+                </li>
+              ))}
+            </ul>
+
+            <Link to="/realisations" className="btn-outline mt-5 w-full text-center">
+              Voir toutes nos réalisations
+              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.2} />
+            </Link>
+          </div>
+
+          {/* --------------------------------------- Zone d'intervention */}
+          <div className={`min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 ${zoneSpan}`}>
+            <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+              Notre zone d'intervention
+            </h2>
+
+            <div className="mt-4 grid gap-5 sm:grid-cols-2">
+              <div className="min-w-0">
+                <p className="text-[12.5px] leading-[1.65] text-navy-500">
+                  Nous intervenons dans tout le Var, de Lorgues au Golfe de Saint-Tropez et toutes
+                  les communes alentours.
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {CLIENT_TYPES.map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <Icon
+                        name="check"
+                        className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500"
+                        strokeWidth={3}
+                      />
+                      <span className="text-[12px] leading-snug text-navy-600">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <VarMap />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/** Carte schématique du Var : repère visuel de l'amplitude de la zone, pas
+ *  un fond cartographique exact. Tracé inline pour éviter toute requête
+ *  externe et rester net à toutes les tailles. */
+function VarMap() {
+  return (
+    <div className="relative min-w-0">
+      <svg viewBox="0 0 200 150" className="h-auto w-full" role="img" aria-label="Carte schématique de la zone d'intervention de PCE dans le Var">
+        <path
+          d="M18 44 L40 20 L78 10 L120 14 L158 30 L186 52 L178 86 L150 112 L112 132 L74 128 L44 104 L22 74 Z"
+          className="fill-navy-100"
+        />
+        {MAP_POINTS.map((p) => (
+          <g key={p.name}>
+            <circle cx={(p.x / 100) * 200} cy={(p.y / 100) * 150} r="2.6" className="fill-azure-500" />
+            <text
+              x={(p.x / 100) * 200 + 5}
+              y={(p.y / 100) * 150 + 2.5}
+              className="fill-navy-500 text-[6px]"
+            >
+              {p.name}
+            </text>
+          </g>
+        ))}
+        {/* Lorgues, siège de l'entreprise */}
+        <circle cx="88" cy="86" r="5" className="fill-azure-500/25" />
+        <circle cx="88" cy="86" r="2.8" className="fill-navy-800" />
+        <text x="88" y="100" textAnchor="middle" className="fill-navy-800 text-[8px] font-bold">
+          Lorgues
+        </text>
+      </svg>
+    </div>
   )
 }

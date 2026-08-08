@@ -145,22 +145,24 @@ export default function PageHero({
   )
 }
 
-/** Bandeau marine de réassurance, placé sous le héros. */
+/** Bandeau marine de réassurance, placé sous le héros. 6 colonnes en
+ *  desktop, 3 en tablette, 2 en mobile — la grille suit la longueur de
+ *  `reassurance`, sinon les colonnes en trop laissent un vide à droite. */
 export function ReassuranceBar() {
   return (
     <section className="border-t border-white/10 bg-navy-900 text-white">
       <div className="container-pce">
-        <ul className="grid grid-cols-2 divide-white/10 py-4 lg:grid-cols-4 lg:divide-x lg:py-8">
+        <ul className="grid grid-cols-2 divide-white/10 py-4 sm:grid-cols-3 lg:grid-cols-6 lg:divide-x lg:py-8">
           {reassurance.map((r) => (
-            <li key={r.title} className="flex items-start gap-3.5 px-0 py-3 lg:px-6 lg:py-1">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25">
-                <Icon name={r.icon} className="h-5 w-5" strokeWidth={1.4} />
+            <li key={r.title} className="flex items-start gap-3 px-0 py-3 lg:px-4 lg:py-1">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 lg:h-10 lg:w-10">
+                <Icon name={r.icon} className="h-4 w-4 lg:h-[18px] lg:w-[18px]" strokeWidth={1.4} />
               </span>
-              <span>
-                <span className="block text-[12px] font-bold uppercase leading-tight tracking-[.05em]">
+              <span className="min-w-0">
+                <span className="block text-[10.5px] font-bold uppercase leading-tight tracking-[.04em]">
                   {r.title}
                 </span>
-                <span className="mt-1 block text-[11.5px] leading-snug text-white/50">
+                <span className="mt-1 block text-[10.5px] leading-snug text-white/50">
                   {r.label}
                 </span>
               </span>

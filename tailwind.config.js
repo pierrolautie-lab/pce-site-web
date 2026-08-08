@@ -14,14 +14,14 @@ export default {
           500: '#456695',
           600: '#1F4A82',
           700: '#153567',
-          800: '#0E2547', // marine principal
-          900: '#0A1B35',
-          950: '#061223',
+          800: '#0A2247', // marine principal
+          900: '#021C41', // bandeaux et pied de page
+          950: '#010C1E', // marine profond — barre de nav, héros
         },
         /* Bleu vif — titres de section, boutons primaires, liens */
         azure: {
           300: '#6FA9E8',
-          400: '#3E8BE0',
+          400: '#5599E6', // bleu vif des mots-clés du héros
           500: '#1B6FC4', // bleu vif principal
           600: '#1459A4',
           700: '#0F4380',
@@ -29,8 +29,8 @@ export default {
         /* Or — accent des appels à l'action et de la signature */
         gold: {
           300: '#FFD87A',
-          400: '#FFC94A',
-          500: '#F5B400', // or principal
+          400: '#FFCA3A',
+          500: '#FFBA00', // or principal des CTA
           600: '#DB9A0C',
           700: '#B07A08',
         },

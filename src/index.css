@@ -23,8 +23,9 @@
   }
 
   ::selection {
-    background: #0e2547;
-    color: #fff;
+    /* Suit la charte : pas de hex en dur, sinon la couleur se désynchronise
+       de `navy.800` à chaque mise à jour de la palette. */
+    @apply bg-navy-800 text-white;
   }
 
   :focus-visible {

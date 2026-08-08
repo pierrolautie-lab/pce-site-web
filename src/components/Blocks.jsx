@@ -6,7 +6,8 @@ import { company, guarantees, tvaCard } from '../data/site.js'
 
 /* -------------------------------------------------------------------------
    Blocs de section réutilisés par toutes les pages.
-   Charte : marine #0E2547, bleu vif #1B6FC4, or #F5B400, fond gris-bleu.
+   Charte : marine `navy-800`, bleu vif `azure-500`, or `gold-500`, fond
+   gris-bleu `navy-50` — les valeurs font foi dans tailwind.config.js.
 ---------------------------------------------------------------------------*/
 
 /** Titre de section : bleu vif, capitales, centré par défaut. */

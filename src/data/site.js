@@ -120,12 +120,16 @@ export const whyChooseUs = [
   { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Tous nos chantiers sont couverts par la garantie décennale.' },
 ]
 
-/* Bandeau de réassurance affiché sous chaque héros. */
+/* Bandeau de réassurance affiché sous chaque héros. La grille de
+   `ReassuranceBar` suit la longueur de cette liste : y ajouter ou en
+   retirer un argument sans ajuster les colonnes laisserait un vide. */
 export const reassurance = [
-  { icon: 'award', title: '+ de 20 ans', label: "d'expérience et de savoir-faire" },
-  { icon: 'mapPin', title: 'Entreprise locale', label: 'Basée à Lorgues, interventions rapides' },
-  { icon: 'shieldCheck', title: 'Garantie décennale', label: 'Et assurance RC Pro' },
-  { icon: 'clipboard', title: 'Devis gratuit', label: 'Réponse rapide et sans engagement' },
+  { icon: 'award', title: '+ de 20 ans d’expérience', label: 'Un savoir-faire reconnu' },
+  { icon: 'mapPin', title: 'Entreprise locale & réactive', label: 'Basée à Lorgues, interventions rapides' },
+  { icon: 'settings', title: 'Matériel de qualité, marques reconnues', label: 'Produits performants' },
+  { icon: 'shieldCheck', title: 'Garantie décennale & assurance RC Pro', label: 'Votre sérénité, notre priorité' },
+  { icon: 'headset', title: 'Service après-vente & entretien', label: 'Un suivi durable de toutes vos installations' },
+  { icon: 'fileText', title: 'Devis gratuit & sans engagement', label: 'Réponse rapide et personnalisée' },
 ]
 
 /* --------------------------------------------------- Barre de garanties --*/
