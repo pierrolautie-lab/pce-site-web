@@ -35,13 +35,24 @@ export function SectionTitle({ title, lead, align = 'center', tone = 'light', cl
 }
 
 /* ------------------------------------------------------- NOS PRESTATIONS -*/
+/* Les métiers n'ont pas tous le même nombre de prestations : la grille suit
+   la liste, sinon les colonnes en trop laissent un vide sur la droite.
+   Classes écrites en toutes lettres, sinon Tailwind ne les génère pas. */
+const PRESTATIONS_LG_COLS = {
+  4: 'lg:grid-cols-4',
+  5: 'lg:grid-cols-5',
+  6: 'lg:grid-cols-6',
+}
+
 export function Prestations({ items, title = 'Nos prestations', lead }) {
+  const lgCols = PRESTATIONS_LG_COLS[items.length] ?? 'lg:grid-cols-6'
+
   return (
     <section className="section bg-white">
       <div className="container-pce">
         <SectionTitle title={title} lead={lead} />
 
-        <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
+        <div className={`mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:gap-x-6 ${lgCols}`}>
           {items.map((it) => (
             <div key={it.title} className="group flex flex-col items-center text-center">
               <span
@@ -262,7 +273,9 @@ export function GuaranteeBar() {
   return (
     <section className="border-t border-navy-100 bg-white py-10 sm:py-12">
       <div className="container-pce">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+        {/* Une colonne par argument : la grille doit suivre la longueur de
+            `guarantees`, sinon les colonnes en trop laissent un vide à droite. */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {guarantees.map((g) => (
             <div key={g.label} className="flex items-center gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
