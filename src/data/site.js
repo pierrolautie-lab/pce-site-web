@@ -453,6 +453,119 @@ export const services = {
     metaDescription: "Piscinier à Lorgues (83) : filtration, traitement au sel, pompe à chaleur et automatisation de bassin. Diagnostic du local technique, devis gratuit dans le Var.",
     hero: { tags: 'swimmingpool', lock: 739 },
 
+    /* ------------------------------------------------------------------
+       Contenus de la page /piscine refondue. Regroupés ici plutôt qu'en
+       dur dans le composant, pour rester modifiables sans toucher au JSX.
+    ------------------------------------------------------------------ */
+    page: {
+      h1: ['Piscine', "Des bassins d'exception,", 'Un service complet'],
+      intro:
+        "De la conception à l'entretien, en passant par l'équipement et l'automatisation, PCE vous accompagne pour profiter pleinement de votre piscine tout au long de l'année dans tout le Var.",
+
+      heroHighlights: [
+        { icon: 'home', title: 'Construction', label: 'Sur mesure' },
+        { icon: 'settings', title: 'Équipements', label: 'Haute performance' },
+        { icon: 'waves', title: 'Entretien', label: 'Eau saine et limpide' },
+        { icon: 'wrench', title: 'Dépannage', label: 'Intervention rapide' },
+      ],
+
+      prestations: {
+        title: 'Nos prestations piscine',
+        items: [
+          'Construction de piscines béton & coque polyester',
+          'Rénovation et modernisation de bassins',
+          'Systèmes de filtration performants',
+          'Pompes à chaleur & réchauffeurs',
+          "Traitement de l'eau (sel, chlore, pH, redox…)",
+          'Électrolyseurs au sel',
+          'Volets roulants & couvertures',
+          'Éclairages LED & ambiances',
+          'Automatisation & domotique',
+          'Entretien régulier & contrats maintenance',
+          'Dépannage & recherche de fuites',
+        ],
+      },
+
+      automatisation: {
+        title: ["L'automatisation au service", 'de votre confort'],
+        checks: [
+          'Pilotage à distance de votre piscine',
+          'Régulation automatique du pH et du désinfectant',
+          'Gestion intelligente de la filtration',
+          "Économies d'eau et d'énergie",
+          'Alertes et suivi en temps réel',
+        ],
+        pictos: [
+          { icon: 'gauge', label: ['Pompe', 'à vitesse variable'] },
+          { icon: 'testTube', label: ['Régulation', 'pH & redox'] },
+          { icon: 'salt', label: ['Électrolyseur', 'au sel'] },
+          { icon: 'robot', label: ['Traitement', 'automatique'] },
+        ],
+      },
+
+      /* Les visuels produit de la maquette sont des photos de catalogue
+         fabricant, protégées : on ne les reprend pas. Ces fichiers seront
+         fournis par le client à partir de matériel réellement installé —
+         en attendant, BrandLogo affiche un cadre neutre. */
+      equipements: {
+        title: "Des équipements de qualité, pour une eau saine et économe",
+        items: [
+          {
+            title: ['Filtration', 'haute performance'],
+            img: '/img/equipement-filtration.jpg',
+            text: "Des filtres à sable ou à cartouche de dernière génération pour une eau parfaitement limpide.",
+          },
+          {
+            title: ['Pompes', 'à vitesse variable'],
+            img: '/img/equipement-pompe-vitesse-variable.jpg',
+            text: "Jusqu'à 80 % d'économies d'énergie par rapport à une pompe à vitesse fixe, grâce à une filtration adaptée à vos besoins.",
+          },
+          {
+            title: ["Traitement de l'eau", 'nouvelle génération'],
+            img: '/img/equipement-traitement-eau.jpg',
+            text: "Électrolyse au sel, régulation automatique du pH et du redox pour une eau saine toute l'année.",
+          },
+          {
+            title: ['Pompes', 'à chaleur'],
+            img: '/img/equipement-pac-piscine.jpg',
+            text: "Profitez d'une eau à la température idéale plus longtemps avec nos pompes à chaleur performantes et silencieuses.",
+          },
+        ],
+      },
+
+      entretien: {
+        title: ['Entretien & maintenance', 'pour une piscine sans souci'],
+        text: "Nous assurons l'entretien régulier de votre piscine pour garantir une eau propre, saine et équilibrée.",
+        checks: [
+          'Nettoyage',
+          "Contrôle et analyse de l'eau",
+          'Réglage des équipements',
+          'Hivernage & remise en service',
+        ],
+      },
+
+      accompagnement: {
+        title: 'Un accompagnement sur mesure',
+        items: [
+          { icon: 'clipboard', title: 'Conseil', label: 'Étude personnalisée de votre projet' },
+          { icon: 'shieldCheck', title: 'Qualité', label: 'Matériel fiable & durable' },
+          { icon: 'headset', title: 'Sérénité', label: 'Service après-vente et suivi' },
+          { icon: 'mapPin', title: 'Proximité', label: 'Entreprise locale à votre écoute' },
+        ],
+      },
+
+      /* ⚠️ PCE installe ces marques sans accord de distribution : ne jamais
+         écrire « nos partenaires ». Libellé validé par le client. */
+      marques: {
+        label: ['Les marques', 'que nous installons', 'et entretenons'],
+        items: [
+          { name: 'Hayward', src: '/img/marque-hayward.png' },
+          { name: 'Zodiac', src: '/img/marque-zodiac.png' },
+          { name: 'Fluidra', src: '/img/marque-fluidra.png' },
+        ],
+      },
+    },
+
     prestations: [
       { icon: 'home', title: 'Création et rénovation', label: 'Bassin et plage technique' },
       { icon: 'panel', title: 'Local technique', label: 'Tuyauterie et coffret' },

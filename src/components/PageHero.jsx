@@ -157,7 +157,9 @@ export function ReassuranceBar() {
   return (
     <section className="border-t border-white/10 bg-navy-900 text-white">
       <div className="container-pce">
-        <ul className="grid grid-cols-2 divide-white/10 py-4 sm:grid-cols-3 lg:grid-cols-6 lg:divide-x lg:py-8">
+        {/* 6 colonnes seulement à partir de xl : à 1024 px, six libellés de
+            cette longueur débordaient de leur colonne. */}
+        <ul className="grid grid-cols-2 divide-white/10 py-4 sm:grid-cols-3 lg:divide-x lg:py-8 xl:grid-cols-6">
           {reassurance.map((r) => (
             <li key={r.title} className="flex items-start gap-3 px-0 py-3 lg:px-4 lg:py-1">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 lg:h-10 lg:w-10">

@@ -17,8 +17,12 @@ export default function BrandLogo({ name, src, className = '', grayscale = false
   if (failed || !src) {
     return (
       <span
-        className={`grid place-items-center rounded-lg border border-navy-200 bg-white px-4 py-3
-                    text-center text-body-sm font-bold uppercase tracking-wider text-navy-600 ${className}`}
+        /* flex et non `grid place-items-center` : ce dernier dimensionne le
+           texte en max-content, qui refuse alors de passer à la ligne et
+           déborde du cadre sur les noms longs. */
+        className={`flex items-center justify-center break-words rounded-lg border border-navy-200
+                    bg-navy-50 p-2 text-center text-label font-bold uppercase leading-tight
+                    text-navy-600 ${className}`}
       >
         {name}
       </span>
