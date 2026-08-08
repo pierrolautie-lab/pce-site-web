@@ -4,7 +4,7 @@ import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
 import { Prestations, GuaranteeBar, CtaSection, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import { services, whyChooseUs } from '../data/site.js'
-import { localTrades, localCities, localCopy, localPath } from '../data/local.js'
+import { localTrades, localCities, localCopy, localPath, inCity } from '../data/local.js'
 import { expertisePages } from '../data/expertise.js'
 
 /** Élision : "de plombier" mais "d'électricien" devant une voyelle. */
@@ -24,12 +24,13 @@ export default function LocalPage({ tradeKey, cityKey }) {
   const city = localCities[cityKey]
   const service = services[trade.serviceKey]
   const { intro, metaDescription } = localCopy(tradeKey, cityKey)
-  const title = `${trade.label} à ${city.name}`
+  const inThisCity = inCity(city.name)
+  const title = `${trade.label} ${inThisCity}`
   const path = localPath(tradeKey, cityKey)
   const expertise = expertisePages[trade.relatedExpertise]
   const neighborLinks = city.neighbors.map((neighborKey) => ({
     to: localPath(tradeKey, neighborKey),
-    label: `${trade.label} à ${localCities[neighborKey].name}`,
+    label: `${trade.label} ${inCity(localCities[neighborKey].name)}`,
   }))
 
   return (
@@ -39,7 +40,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
         description={metaDescription}
         path={path}
         jsonLd={[
-          serviceSchema({ name: `${trade.label} à ${city.name}`, description: metaDescription, path }),
+          serviceSchema({ name: title, description: metaDescription, path }),
           breadcrumbSchema([
             { name: 'Accueil', path: '/' },
             { name: trade.label, path: `/${trade.serviceKey}` },
@@ -51,21 +52,21 @@ export default function LocalPage({ tradeKey, cityKey }) {
       <PageHero
         breadcrumb={[{ label: trade.label, to: `/${trade.serviceKey}` }, { label: city.name }]}
         title={title}
-        subtitle={`${trade.label} à ${city.name} (83) — devis gratuit`}
+        subtitle={`${trade.label} ${inThisCity} (83) — devis gratuit`}
         intro={intro}
-        photo={{ ...service.hero, alt: `${trade.label} à ${city.name} — PCE` }}
+        photo={{ ...service.hero, alt: `${title} — PCE` }}
       />
 
       <Prestations
         items={service.prestations}
-        title={`Nos prestations ${deTrade(trade.label)} à ${city.name}`}
-        lead={`Ce que PCE prend en charge le plus souvent pour ce métier, à ${city.name} comme dans le reste de notre zone d'intervention.`}
+        title={`Nos prestations ${deTrade(trade.label)} ${inThisCity}`}
+        lead={`Ce que PCE prend en charge le plus souvent pour ce métier, ${inThisCity} comme dans le reste de notre zone d'intervention.`}
       />
 
       <section className="section bg-navy-50">
         <div className="container-pce">
           <SectionTitle
-            title={`Pourquoi choisir PCE à ${city.name} ?`}
+            title={`Pourquoi choisir PCE ${inThisCity} ?`}
             lead="Les mêmes garanties sur chaque chantier, où que vous soyez dans notre zone d'intervention."
           />
 
@@ -98,8 +99,8 @@ export default function LocalPage({ tradeKey, cityKey }) {
       <GuaranteeBar />
 
       <CtaSection
-        title={`Un projet ${deTrade(trade.label)} à ${city.name} ?`}
-        text={`Décrivez-nous votre besoin : nous nous déplaçons à ${city.name} pour un relevé sur site et nous établissons un devis détaillé, gratuit et sans engagement.`}
+        title={`Un projet ${deTrade(trade.label)} ${inThisCity} ?`}
+        text={`Décrivez-nous votre besoin : nous nous déplaçons ${inThisCity} pour un relevé sur site et nous établissons un devis détaillé, gratuit et sans engagement.`}
       />
     </>
   )

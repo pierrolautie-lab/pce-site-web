@@ -14,6 +14,7 @@ const servedCities = [
   { name: 'Grimaud', cityKey: 'Grimaud' },
   { name: 'Cogolin', cityKey: 'Cogolin' },
   { name: 'Roquebrune-sur-Argens', cityKey: 'Roquebrune-sur-Argens' },
+  { name: 'Le Rocher de Roquebrune', cityKey: 'Le Rocher de Roquebrune' },
   { name: 'Puget-sur-Argens', cityKey: 'Puget-sur-Argens' },
   { name: 'Les Issambres', cityKey: 'Les Issambres' },
 ]

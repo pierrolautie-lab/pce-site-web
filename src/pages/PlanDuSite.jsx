@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
 import { SectionTitle } from '../components/Blocks.jsx'
 import { serviceList } from '../data/site.js'
-import { localTrades, localCities, localPages, localPath } from '../data/local.js'
+import { localTrades, localCities, localPages, localPath, inCity } from '../data/local.js'
 import { expertisePages, expertiseSlugs } from '../data/expertise.js'
 import { articles, articleSlugs } from '../data/articles.js'
 
@@ -31,7 +31,7 @@ const pagesLocalesParMetier = Object.keys(localTrades).map((tradeKey) => ({
   links: localPages
     .filter((p) => p.tradeKey === tradeKey)
     .map(({ cityKey }) => ({
-      label: `${localTrades[tradeKey].label} à ${localCities[cityKey].name}`,
+      label: `${localTrades[tradeKey].label} ${inCity(localCities[cityKey].name)}`,
       to: localPath(tradeKey, cityKey),
     })),
 }))

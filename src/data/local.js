@@ -343,7 +343,7 @@ export const localCities = {
   'Roquebrune-sur-Argens': {
     name: 'Roquebrune-sur-Argens',
     distanceKm: 28,
-    neighbors: ['Puget-sur-Argens', 'Les Issambres'],
+    neighbors: ['Puget-sur-Argens', 'Les Issambres', 'Le Rocher de Roquebrune'],
     intro: (t) =>
       `Au carrefour de la Dracénie et du Golfe de Saint-Tropez, Roquebrune-sur-Argens et son rocher rouge caractéristique font partie de notre zone d'intervention pour ${t.verb} : ${t.detail}. Devis gratuit et délai d'intervention raisonnable depuis Lorgues.`,
   },
@@ -353,6 +353,13 @@ export const localCities = {
     neighbors: ['Sainte-Maxime', 'Roquebrune-sur-Argens'],
     intro: (t) =>
       `Station balnéaire de la commune de Roquebrune-sur-Argens, Les Issambres fait partie du littoral du Golfe de Saint-Tropez où PCE se déplace pour ${t.verb} — ${t.detail}. Devis gratuit, intervention organisée pour les résidents comme pour les propriétaires de résidences secondaires.`,
+  },
+  'Le Rocher de Roquebrune': {
+    name: 'Le Rocher de Roquebrune',
+    distanceKm: 28,
+    neighbors: ['Roquebrune-sur-Argens', 'La Bouverie'],
+    intro: (t) =>
+      `Au pied du massif rouge qui domine la plaine de l'Argens, les quartiers du Rocher de Roquebrune mêlent villas récentes et mas restaurés, souvent à l'écart du centre. PCE y assure ${t.verb} : ${t.detail}. Devis gratuit et intervention organisée depuis Lorgues, y compris sur les accès un peu isolés.`,
   },
 }
 
@@ -375,7 +382,7 @@ export function localCopy(tradeKey, cityKey) {
   const closing = metaClosings[cityKeysInOrder.indexOf(cityKey) % metaClosings.length]
   return {
     intro: city.intro(trade),
-    metaDescription: `${trade.label} à ${city.name} (83) : ${trade.detail}. ${closing}`,
+    metaDescription: `${trade.label} ${inCity(city.name)} (83) : ${trade.detail}. ${closing}`,
   }
 }
 
@@ -385,6 +392,18 @@ export const localPages = Object.keys(localCities).flatMap((cityKey) => {
   const tradeKeys = localCities[cityKey].trades || Object.keys(localTrades)
   return tradeKeys.map((tradeKey) => ({ tradeKey, cityKey }))
 })
+
+/**
+ * « à » + nom de ville, avec la contraction française obligatoire :
+ * à + Le → au, à + Les → aux. Sans ça on écrit « Plombier à Le Muy »
+ * ou « à Les Arcs » dans les titres et les méta-descriptions.
+ * Les noms en « La » ne se contractent pas (« à La Motte » est correct).
+ */
+export function inCity(cityName) {
+  if (cityName.startsWith('Le ')) return `au ${cityName.slice(3)}`
+  if (cityName.startsWith('Les ')) return `aux ${cityName.slice(4)}`
+  return `à ${cityName}`
+}
 
 /** Convertit un nom de ville en slug d'URL propre : minuscule, sans accents ni apostrophes. */
 function slugifyCity(cityKey) {
