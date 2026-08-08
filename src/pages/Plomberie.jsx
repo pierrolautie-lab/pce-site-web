@@ -1,5 +1,5 @@
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, Expertise, InfoBlock } from '../components/Blocks.jsx'
 import { ServiceTwoColumn, ServiceFeatureCards } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -93,6 +93,12 @@ export default function Plomberie() {
       />
 
       <ServiceTwoColumn checklistTitle="Nos services plomberie" checklist={SERVICES_CHECKLIST} card={RENOVATION_CARD} />
+
+      {/* Fonds alternés : ServiceTwoColumn (navy-50) → Expertise (blanc) →
+          InfoBlock (navy-50) → ServiceFeatureCards (blanc). */}
+      <Expertise data={service.expertise} />
+
+      <InfoBlock info={service.info} />
 
       <ServiceFeatureCards items={FEATURE_CARDS} />
 

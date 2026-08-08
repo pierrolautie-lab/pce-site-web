@@ -1,5 +1,5 @@
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, Expertise, InfoBlock } from '../components/Blocks.jsx'
 import { ServiceTwoColumn, ServiceFeatureCards, ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -102,20 +102,29 @@ export default function Climatisation() {
         ]}
       />
 
+      {/* `intro` est lue depuis site.js : c'est elle qui porte la phrase sur
+          l'arrivée de la climatisation avec l'installation dans le Var. */}
       <PageHero
         breadcrumb={service.title}
         title="Climatisation"
         subtitle="Confort l'été, performance toute l'année"
-        intro="Installation de climatisation mono-split, multi-split et gainable, posée avec soin pour rester discrète et silencieuse. PCE assure aussi l'entretien réglementaire de votre équipement dans tout le Var."
+        intro={service.intro}
         photo={{ ...service.hero, alt: 'Climatisation gainable installée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
       />
 
       <ServiceTwoColumn checklistTitle="Nos services climatisation" checklist={SERVICES_CHECKLIST} card={GAINABLE_CARD} />
 
+      {/* Expertise intercalée ici : elle porte le récit d'origine du métier,
+          et son fond blanc casse les deux navy-50 qui se suivaient entre
+          ServiceTwoColumn et ServiceBrandsRow. */}
+      <Expertise data={service.expertise} />
+
       <ServiceBrandsRow title="Les marques que nous installons" brands={BRANDS} />
 
       <ServiceFeatureCards items={FEATURE_CARDS} />
+
+      <InfoBlock info={service.info} />
 
       <CtaBand />
     </>
