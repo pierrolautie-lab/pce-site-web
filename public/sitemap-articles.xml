@@ -49,12 +49,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pcevar.fr/adoucisseur-eau-var</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://pcevar.fr/plancher-chauffant-var</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
@@ -68,12 +62,6 @@
   </url>
   <url>
     <loc>https://pcevar.fr/conseils/entretien-climatisation-quand-et-pourquoi</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pcevar.fr/conseils/pourquoi-installer-adoucisseur-eau-var</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -116,24 +104,6 @@
   </url>
   <url>
     <loc>https://pcevar.fr/conseils/climatisation-gainable-ou-split</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pcevar.fr/conseils/avantages-inconvenients-adoucisseur</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pcevar.fr/conseils/comment-savoir-eau-calcaire</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pcevar.fr/conseils/peut-on-boire-eau-adoucisseur</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

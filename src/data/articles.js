@@ -106,52 +106,6 @@ export const articles = {
     ],
   },
 
-  'pourquoi-installer-adoucisseur-eau-var': {
-    title: "Pourquoi installer un adoucisseur d'eau dans le Var ?",
-    metaDescription:
-      "Pourquoi installer un adoucisseur d'eau dans le Var : calcaire, protection des canalisations, confort au quotidien. Les conseils de PCE avec Pentair FOLEO.",
-    photo: { tags: 'water-softener', lock: 803 },
-    relatedExpertise: 'adoucisseur-eau-var',
-    relatedService: '/traitement-de-l-eau/adoucisseur',
-    intro: [
-      "Dépôts blanchâtres sur la robinetterie, chauffe-eau qui s'entartre plus vite que prévu, linge qui devient rêche : la dureté de l'eau du Var laisse des traces bien réelles dans la plupart des foyers. Voici pourquoi PCE recommande régulièrement l'installation d'un adoucisseur, et comment il fonctionne concrètement.",
-    ],
-    sections: [
-      {
-        h2: 'Le calcaire, un problème silencieux',
-        paragraphs: [
-          "Une eau à plus de 25°f (degrés français) de dureté, comme c'est fréquent dans de nombreuses communes du Var, dépose progressivement du tartre dans les canalisations, la robinetterie, les ballons d'eau chaude et les appareils électroménagers. Ce dépôt est rarement visible avant que les premiers dysfonctionnements n'apparaissent : baisse de pression, surconsommation d'énergie pour chauffer l'eau, pannes prématurées.",
-        ],
-      },
-      {
-        h2: 'Ce que le calcaire abîme réellement',
-        paragraphs: [
-          "Un ballon d'eau chaude entartré consomme davantage d'énergie pour chauffer le même volume d'eau, car le tartre isole la résistance de l'eau à chauffer. Lave-linge, lave-vaisselle et robinetterie voient également leur durée de vie réduite. Sur plusieurs années, le coût cumulé de ces dégradations dépasse largement celui d'un adoucisseur.",
-        ],
-      },
-      {
-        h2: 'Adoucisseur au sel : comment ça marche',
-        paragraphs: [
-          "Un adoucisseur remplace les ions calcium et magnésium responsables de la dureté par des ions sodium, via une résine régénérée périodiquement au sel. PCE installe la gamme Pentair FOLEO, garantie 10 ans sur la cuve, avec une régénération programmée selon votre consommation réelle plutôt qu'à intervalle fixe.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        q: 'Un adoucisseur est-il rentable sur le long terme ?',
-        a: "Oui : en protégeant le chauffe-eau, la robinetterie et l'électroménager du tartre, l'adoucisseur limite des réparations et remplacements prématurés dont le coût cumulé dépasse généralement celui de l'équipement et de son entretien.",
-      },
-      {
-        q: 'Faut-il un adoucisseur même avec une eau moyennement calcaire ?',
-        a: "Cela dépend du seuil : en dessous de 20°f, l'intérêt est plus limité. PCE recommande une analyse de la dureté réelle de votre eau avant de préconiser un adoucisseur, plutôt que de le proposer systématiquement.",
-      },
-      {
-        q: "L'installation d'un adoucisseur nécessite-t-elle de gros travaux ?",
-        a: "Non, l'adoucisseur se pose en dérivation sur l'arrivée d'eau froide générale, généralement en une demi-journée, sans reprise des canalisations existantes.",
-      },
-    ],
-  },
-
   'quand-refaire-tableau-electrique': {
     title: 'Quand faut-il refaire son tableau électrique ?',
     metaDescription:
@@ -450,129 +404,11 @@ export const articles = {
       "PCE intervient dans le Var (83), de Lorgues et Draguignan jusqu'à Sainte-Maxime, Les Issambres et l'ensemble du Golfe de Saint-Tropez.",
   },
 
-  'avantages-inconvenients-adoucisseur': {
-    title: "Adoucisseur d'eau : avantages et inconvénients",
-    metaDescription:
-      "Adoucisseur d'eau : les vrais avantages (protection des équipements, confort) et les points de vigilance. L'avis neutre de PCE, installateur Pentair Foleo.",
-    photo: { tags: 'water-softener', lock: 1106 },
-    relatedExpertise: 'adoucisseur-eau-var',
-    relatedService: '/traitement-de-l-eau/adoucisseur',
-    intro: [
-      "Un adoucisseur d'eau change réellement le quotidien dans une région aussi calcaire que le Var, mais ce n'est pas un équipement à installer sans réflexion. Voici, sans parti pris commercial, ce que PCE explique à ses clients avant de préconiser un adoucisseur.",
-    ],
-    sections: [
-      {
-        h2: 'Les avantages concrets',
-        paragraphs: [
-          "Moins de tartre dans les canalisations, le chauffe-eau et l'électroménager, une robinetterie qui reste propre plus longtemps, un linge plus doux et une peau moins agressée après la douche : ce sont les bénéfices que nos clients remarquent en premier. Sur plusieurs années, la protection des équipements contre l'entartrage représente aussi une économie réelle sur les réparations et remplacements prématurés.",
-        ],
-      },
-      {
-        h2: 'Les points de vigilance',
-        paragraphs: [
-          "Un adoucisseur consomme du sel et de l'eau lors de ses cycles de régénération, ce qui représente un coût d'usage à intégrer au calcul de rentabilité. L'eau adoucie est légèrement plus riche en sodium : PCE recommande systématiquement de conserver un point d'eau non adoucie pour la boisson et la cuisine, en particulier pour les régimes pauvres en sel.",
-        ],
-      },
-      {
-        h2: "Quand l'adoucisseur n'est pas la priorité",
-        paragraphs: [
-          "En dessous de 20°f de dureté, l'intérêt d'un adoucisseur reste limité par rapport à son coût d'installation et d'entretien. C'est pourquoi PCE mesure systématiquement la dureté réelle de l'eau avant de le préconiser, plutôt que de le proposer par défaut à chaque visite.",
-        ],
-      },
-    ],
-    faq: [
-      { q: "Un adoucisseur augmente-t-il la facture d'eau ?", a: "Légèrement, en raison de l'eau utilisée pour les cycles de régénération, mais cette hausse reste généralement bien inférieure aux économies réalisées sur les produits d'entretien et la durée de vie des équipements." },
-      { q: 'Faut-il changer la résine régulièrement ?', a: "Non, la résine d'un adoucisseur bien entretenu dure généralement plusieurs dizaines d'années ; seul le sel doit être rechargé périodiquement." },
-      { q: "L'adoucisseur convient-il à toutes les maisons ?", a: 'Oui techniquement, mais son intérêt économique dépend de la dureté réelle de votre eau, mesurée avant tout devis par PCE.' },
-    ],
-    closing:
-      "PCE intervient dans le Var (83), de Lorgues et Draguignan jusqu'à Sainte-Maxime, Les Issambres et l'ensemble du Golfe de Saint-Tropez.",
-  },
-
-  'comment-savoir-eau-calcaire': {
-    title: 'Comment savoir si son eau est calcaire ?',
-    metaDescription:
-      "Comment savoir si son eau est calcaire : signes visibles, test de dureté et seuils à connaître. Les repères de PCE, spécialiste du traitement de l'eau dans le Var.",
-    photo: { tags: 'water-softener', lock: 1107 },
-    relatedExpertise: 'adoucisseur-eau-var',
-    relatedService: '/traitement-de-l-eau',
-    intro: [
-      "Avant de préconiser un traitement, PCE mesure toujours la dureté réelle de l'eau plutôt que de se fier aux seules apparences. Voici les signes qui doivent alerter, et comment obtenir une mesure fiable.",
-    ],
-    sections: [
-      {
-        h2: 'Les signes visibles au quotidien',
-        paragraphs: [
-          "Traces blanchâtres autour des robinets et sur la robinetterie, dépôt au fond des verres après lavage, résistance de chauffe-eau qui s'entartre rapidement, linge qui devient rêche avec le temps : ce sont les premiers signaux d'une eau dure. Dans le Var, où de nombreuses communes dépassent 25°f, ces signes apparaissent souvent en quelques mois seulement après un remplacement d'équipement.",
-        ],
-      },
-      {
-        h2: 'La dureté se mesure en degrés français (°f)',
-        paragraphs: [
-          "La dureté de l'eau, ou titre hydrotimétrique, s'exprime en degrés français. En dessous de 15°f, l'eau est considérée comme douce ; entre 15 et 25°f, moyennement dure ; au-delà de 25°f, dure à très dure. Une bandelette de test, disponible en magasin de bricolage, donne une première indication rapide mais approximative.",
-        ],
-      },
-      {
-        h2: 'Une mesure fiable avant tout devis',
-        paragraphs: [
-          "PCE réalise une mesure précise de la dureté directement chez vous, avant toute proposition d'équipement. Cette analyse conditionne le choix du traitement : simple filtration, adoucisseur classique ou solution combinée selon la présence éventuelle de fer ou de particules dans l'eau.",
-        ],
-      },
-    ],
-    faq: [
-      { q: 'La compagnie des eaux communique-t-elle la dureté ?', a: "Oui, la plupart des services d'eau publient un rapport annuel sur la qualité de l'eau distribuée, incluant la dureté moyenne. Cette valeur reste toutefois une moyenne communale : une mesure sur place donne un résultat plus précis pour votre logement." },
-      { q: 'Le calcaire est-il dangereux pour la santé ?', a: "Non, le calcium et le magnésium contenus dans une eau dure ne présentent pas de risque sanitaire ; le problème est avant tout matériel, sur les canalisations et les équipements." },
-      { q: 'Peut-on réduire le calcaire sans adoucisseur ?', a: "Un filtre anti-tartre polyphosphates limite les dépôts sans changer la composition de l'eau, mais reste moins efficace qu'un adoucisseur sur une eau très dure comme celle observée dans une grande partie du Var." },
-    ],
-    closing:
-      "PCE intervient dans le Var (83), de Lorgues et Draguignan jusqu'à Sainte-Maxime, Les Issambres et l'ensemble du Golfe de Saint-Tropez.",
-  },
-
-  'peut-on-boire-eau-adoucisseur': {
-    title: "Peut-on boire l'eau d'un adoucisseur ?",
-    metaDescription:
-      "Peut-on boire l'eau adoucie : teneur en sodium, précautions et bonnes pratiques. Les explications de PCE, installateur d'adoucisseurs dans le Var.",
-    photo: { tags: 'water-softener', lock: 1108 },
-    relatedExpertise: 'adoucisseur-eau-var',
-    relatedService: '/traitement-de-l-eau/adoucisseur',
-    intro: [
-      "C'est l'une des questions les plus fréquentes posées avant l'installation d'un adoucisseur : l'eau adoucie reste-t-elle bonne à boire ? La réponse est oui dans la grande majorité des cas, avec quelques précautions simples que PCE explique systématiquement.",
-    ],
-    sections: [
-      {
-        h2: 'Ce que change réellement l’adoucissement',
-        paragraphs: [
-          "Un adoucisseur remplace le calcium et le magnésium par du sodium, via une résine régénérée au sel. Cette substitution reste chimiquement sans danger pour la grande majorité des personnes, mais elle augmente légèrement la teneur en sodium de l'eau, proportionnellement à la dureté initiale et au réglage de l'appareil.",
-        ],
-      },
-      {
-        h2: 'Pourquoi garder un point d’eau non adoucie',
-        paragraphs: [
-          "Par précaution, PCE installe systématiquement une dérivation d'eau non adoucie au niveau de l'évier de cuisine, en particulier pour les foyers suivant un régime pauvre en sel, avec un nourrisson, ou simplement par préférence de goût. Cette dérivation ne nécessite aucun entretien particulier et coexiste sans problème avec le circuit adouci du reste du logement.",
-        ],
-      },
-      {
-        h2: 'Et pour la cuisson ou l’arrosage ?',
-        paragraphs: [
-          "L'eau adoucie convient parfaitement à la cuisson des aliments et au nettoyage, mais elle est déconseillée pour l'arrosage des plantes sensibles au sodium sur le long terme : mieux vaut y consacrer un point d'eau brute, généralement conservé sur le circuit extérieur avant l'adoucisseur.",
-        ],
-      },
-    ],
-    faq: [
-      { q: 'L’eau adoucie a-t-elle un goût différent ?', a: 'Certaines personnes perçoivent une légère différence de goût, plus douce, sans que cela pose de problème sanitaire. C’est une question de préférence personnelle plus que de qualité de l’eau.' },
-      { q: 'Les personnes sous régime sans sel peuvent-elles utiliser un adoucisseur ?', a: "Oui, à condition de conserver un point d'eau non adoucie pour la boisson et la préparation des repas, ce que PCE prévoit systématiquement lors de l'installation." },
-      { q: "Faut-il un traitement complémentaire pour l'eau de boisson ?", a: "Ce n'est pas obligatoire, mais une filtration à charbon actif sur le point d'eau non adoucie améliore encore le goût en réduisant le chlore résiduel, si vous le souhaitez." },
-    ],
-    closing:
-      "PCE intervient dans le Var (83), de Lorgues et Draguignan jusqu'à Sainte-Maxime, Les Issambres et l'ensemble du Golfe de Saint-Tropez.",
-  },
-
   'comment-filtrer-eau-forage': {
     title: "Comment filtrer l'eau d'un forage ?",
     metaDescription:
       "Comment filtrer l'eau d'un forage : particules, fer, dureté et désinfection. La méthode de PCE pour une eau de forage saine dans le Var.",
     photo: { tags: 'water-softener', lock: 1109 },
-    relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
       "Contrairement à l'eau du réseau public, l'eau d'un forage n'est ni contrôlée ni traitée en amont : sa qualité dépend entièrement de la nature du sous-sol et impose une analyse avant tout usage domestique. Voici la méthode que PCE applique pour traiter une eau de forage dans le Var.",
@@ -593,7 +429,7 @@ export const articles = {
       {
         h2: 'Fer, dureté et désinfection : des traitements ciblés',
         paragraphs: [
-          "Un excès de fer se traite par oxydation puis filtration dédiée, sous peine de tacher durablement la robinetterie et le linge. La dureté, si elle est élevée, justifie ensuite un adoucisseur classique. Enfin, en l'absence de désinfection naturelle comme sur le réseau public, un traitement UV ou une chloration ponctuelle sécurise l'eau sur le plan bactériologique, en particulier pour un usage de boisson.",
+          "Un excès de fer se traite par oxydation puis filtration dédiée, sous peine de tacher durablement la robinetterie et le linge. Enfin, en l'absence de désinfection naturelle comme sur le réseau public, un traitement UV ou une chloration ponctuelle sécurise l'eau sur le plan bactériologique, en particulier pour un usage de boisson.",
         ],
       },
     ],
@@ -611,7 +447,6 @@ export const articles = {
     metaDescription:
       "Traitement UV de l'eau : principe, efficacité et cas d'usage. Les explications de PCE sur cette désinfection sans produit chimique, installée dans le Var.",
     photo: { tags: 'water-softener', lock: 1110 },
-    relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
       "Le traitement UV désinfecte l'eau sans ajouter le moindre produit chimique, ce qui en fait une solution particulièrement adaptée à certaines situations. Voici comment PCE l'utilise, et dans quels cas il est réellement pertinent.",
@@ -650,7 +485,6 @@ export const articles = {
     metaDescription:
       "Charbon actif : chlore, pesticides, goûts et odeurs de l'eau. Ce que filtre réellement cette technologie, expliqué par PCE dans le Var.",
     photo: { tags: 'water-softener', lock: 1111 },
-    relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
       "Le charbon actif est l'une des filtrations les plus répandues pour améliorer le goût de l'eau du robinet, mais son champ d'action reste précis. Voici ce qu'il filtre réellement, et ce qu'il ne traite pas.",
@@ -671,7 +505,7 @@ export const articles = {
       {
         h2: "Ce qu'il ne traite pas",
         paragraphs: [
-          "Le charbon actif ne réduit ni le calcaire ni la présence de sodium, de nitrates ou de métaux lourds : ces éléments nécessitent d'autres technologies, comme l'adoucisseur pour la dureté ou l'osmose inverse pour les nitrates et métaux. C'est pourquoi PCE le propose généralement en complément d'un autre traitement, rarement seul, sauf pour une simple amélioration du goût.",
+          "Le charbon actif ne réduit ni le calcaire ni la présence de nitrates ou de métaux lourds : ces éléments nécessitent d'autres technologies, comme l'osmose inverse pour les nitrates et les métaux. C'est pourquoi PCE le propose généralement en complément d'un autre traitement, rarement seul, sauf pour une simple amélioration du goût.",
         ],
       },
     ],

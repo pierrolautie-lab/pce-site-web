@@ -163,7 +163,7 @@ export const services = {
       { icon: 'shower', title: 'Salle de bains', label: 'Rénovation clé en main' },
       { icon: 'search', title: 'Recherche de fuite', label: 'Détection non destructive' },
       { icon: 'flame', title: 'Chauffe-eau', label: 'Ballons et thermodynamique' },
-      { icon: 'filter', title: "Adoucisseurs d'eau", label: 'Traitement et filtration' },
+      { icon: 'filter', title: "Traitement de l'eau", label: 'Filtration et analyse' },
       { icon: 'gauge', title: 'Débit et pression', label: 'Réglage et mise aux normes' },
     ],
 
@@ -174,7 +174,7 @@ export const services = {
       paragraphs: [
         "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l'Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d'ouvrir une saignée.",
         "Notre parti pris est simple : nous ne posons que du matériel que nous saurons réparer dans dix ans. Multicouche à sertir pour les réseaux encastrés, laiton sur les points sensibles, robinetterie de marques distribuées en France dont les pièces détachées restent disponibles. Chaque installation est repérée, chaque vanne d'arrêt reste accessible, et chaque chantier est livré avec un plan de réseau que vous conservez.",
-        "L'eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C'est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la dureté avant de proposer quoi que ce soit, et nous dimensionnons l'adoucisseur sur votre consommation réelle plutôt que sur un forfait commercial.",
+        "L'eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C'est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer une solution de filtration adaptée à votre consommation réelle.",
       ],
       points: [
         'Réseaux repérés et plan remis en fin de chantier',
@@ -193,14 +193,14 @@ export const services = {
     ],
 
     info: {
-      heading: "Pourquoi installer un adoucisseur d'eau ?",
-      lead: "L'eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f. Un adoucisseur correctement dimensionné change le quotidien et protège durablement vos équipements.",
+      heading: "Pourquoi traiter l'eau de votre logement ?",
+      lead: "L'eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f de dureté. Un traitement adapté change le quotidien et protège durablement vos équipements.",
       bullets: [
         'Fini les dépôts de calcaire sur la robinetterie, les parois de douche et le carrelage.',
         'Une durée de vie nettement allongée pour le chauffe-eau, le lave-linge et le lave-vaisselle.',
-        "Jusqu'à 30 % d'économies sur les produits d'entretien et les détergents.",
+        "Des économies sur les produits d'entretien et les détergents.",
         'Une eau plus douce pour la peau, les cheveux et la tenue du linge.',
-        'Un entretien minimal : quelques sacs de sel par an suffisent.',
+        'Un entretien minimal selon la solution retenue.',
       ],
     },
 
@@ -208,7 +208,7 @@ export const services = {
       { q: 'Intervenez-vous en urgence pour une fuite ?', a: "Oui, sept jours sur sept. Un dégât des eaux ne peut pas attendre le lundi : appelez-nous, nous vous donnons un créneau dès l'appel et nous vous indiquons par téléphone comment couper l'arrivée d'eau en attendant." },
       { q: 'Comment se déroule une recherche de fuite ?', a: "Nous travaillons sans casser : gaz traceur, caméra thermique, corrélation acoustique et inspection par caméra selon la configuration. Le point de fuite est localisé au centimètre, puis nous vous proposons la réparation dans la foulée." },
       { q: 'Quel délai pour une salle de bains complète ?', a: "Comptez de dix à quinze jours ouvrés selon l'ampleur de la dépose et le carrelage retenu. Nous coordonnons nous-mêmes le carreleur et l'électricien, ce qui évite les temps morts entre corps de métier." },
-      { q: 'Faut-il vraiment un adoucisseur dans le Var ?', a: "Dans notre secteur, très souvent oui. Mais nous mesurons toujours la dureté avant de vous le dire : sur certains réseaux communaux, un simple filtre anti-calcaire en tête d'installation suffit et coûte bien moins cher." },
+      { q: 'Faut-il traiter son eau dans le Var ?', a: "Dans notre secteur, très souvent oui. Mais nous mesurons toujours la qualité de l'eau avant de vous le dire : sur certains réseaux communaux, un simple filtre en tête d'installation suffit et coûte bien moins cher." },
       { q: 'Vous occupez-vous des démarches de TVA réduite ?', a: "Oui. Nous vérifions votre éligibilité, nous préparons l'attestation simplifiée et nous appliquons directement le taux de 5,5 % sur le devis. Vous n'avez qu'une signature à apposer." },
     ],
   },
@@ -533,13 +533,12 @@ export const services = {
     icon: 'filter',
     tagline: 'Pour un confort sain et durable',
     intro:
-      "L'eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : adoucissement, filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
-    card: "Adoucisseurs, filtration, purification et désinfection de votre eau.",
-    metaDescription: "Traitement de l'eau à Lorgues (83) : adoucisseur Pentair Foleo, filtration fine, charbon actif et UV. Analyse de votre eau et devis gratuit dans le Var.",
+      "L'eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
+    card: 'Filtration, purification et désinfection de votre eau.',
+    metaDescription: "Traitement de l'eau à Lorgues (83) : filtration fine, filtration de forage, charbon actif et traitement UV. Analyse de votre eau et devis gratuit dans le Var.",
     hero: { tags: 'bathroom', lock: 300 },
 
     prestations: [
-      { icon: 'tank', title: "Adoucisseur d'eau", label: 'Pentair Foleo, haute performance' },
       { icon: 'filter', title: 'Filtration fine', label: 'Sous évier, eau de boisson' },
       { icon: 'droplet', title: 'Filtration de forage', label: 'Sable, boue, rouille, particules' },
       { icon: 'testTube', title: 'Charbon actif', label: 'Chlore, pesticides, goûts et odeurs' },
@@ -547,102 +546,55 @@ export const services = {
       { icon: 'search', title: 'Analyse et conseil', label: 'Étude personnalisée de votre eau' },
     ],
 
-    /* Bénéfices repris du support « Adoucisseur Pentair Foleo » */
     benefits: [
       { icon: 'droplet', title: 'Eau plus saine', label: 'Une qualité maîtrisée au quotidien' },
       { icon: 'shieldCheck', title: 'Équipements protégés', label: 'Moins de pannes, moins d’usure' },
-      { icon: 'euro', title: 'Économies', label: 'Moins de calcaire, moins de produits' },
+      { icon: 'euro', title: 'Économies', label: 'Moins de dépôts, moins de produits' },
       { icon: 'award', title: 'Expertise locale', label: 'Des solutions adaptées à l’eau du Var' },
     ],
-
-    /* Produit phare installé par PCE */
-    product: {
-      brand: 'Pentair',
-      model: 'Foleo',
-      heading: "L'adoucisseur Pentair Foleo, notre solution de référence",
-      lead: "L'adoucisseur Pentair Foleo élimine le calcaire de votre eau pour un confort au quotidien et des économies durables. C'est l'appareil que nous installons le plus, parce qu'il tient dans la durée.",
-      warranty: "Garantie jusqu'à 10 ans sur la cuve",
-      photo: { tags: 'bathroom', lock: 300 },
-      /* Bienfaits, tels que présentés sur la documentation du fabricant */
-      benefits: [
-        {
-          icon: 'sparkles',
-          title: 'Bienfaits pour la peau',
-          text: "Une eau douce préserve l'hydratation de la peau et limite les irritations et les démangeaisons.",
-        },
-        {
-          icon: 'settings',
-          title: 'Protège vos électroménagers',
-          text: 'Moins de calcaire, c’est moins de pannes et une durée de vie prolongée pour le lave-linge, le lave-vaisselle et le chauffe-eau.',
-        },
-        {
-          icon: 'home',
-          title: 'Protège votre maison',
-          text: "Prévient l'entartrage des canalisations, du chauffe-eau et de la robinetterie : moins d'usure, moins de réparations.",
-        },
-        {
-          icon: 'shower',
-          title: 'Confort pour la douche',
-          text: 'Une eau douce pour une peau plus douce, une sensation agréable et des parois sans traces de calcaire.',
-        },
-        {
-          icon: 'droplet',
-          title: 'Des cheveux plus souples',
-          text: "Fini les cheveux secs, ternes et difficiles à coiffer : l'eau douce révèle leur souplesse naturelle.",
-        },
-      ],
-      specs: [
-        'Compact et design',
-        'Régénération intelligente et économique',
-        'Installation rapide et facile',
-        'Entretien minimal',
-        'Performance longue durée',
-      ],
-    },
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
       heading: "Traiter l'eau, c'est d'abord la mesurer",
       photo: { tags: 'plumbing', lock: 301 },
       paragraphs: [
-        "Nous relevons couramment plus de 30 °f de dureté sur le secteur de Lorgues et de la Dracénie. À ce niveau, le calcaire n'est plus un désagrément esthétique : il entartre le chauffe-eau, bloque les mitigeurs thermostatiques, réduit le rendement des résistances et abrège la vie des électroménagers. C'est l'une des premières causes d'intervention que nous constatons depuis 2005.",
-        "Notre méthode ne varie pas : nous commençons par mesurer. Dureté, pH, présence de fer ou de particules, pression et débit disponibles, configuration du local. Un adoucisseur mal dimensionné régénère trop souvent, consomme du sel pour rien et finit par lasser. Un appareil calibré sur votre consommation réelle se fait oublier.",
-        "Selon les résultats, le traitement n'est d'ailleurs pas toujours un adoucisseur : un simple filtre en tête d'installation, une cartouche à charbon actif sur l'eau de boisson ou un stérilisateur UV sur un forage suffisent parfois — et coûtent bien moins cher. Nous préférons vous le dire plutôt que de vendre l'appareil le plus cher du catalogue.",
+        "Le calcaire n'est pas la seule question sur l'eau du secteur de Lorgues et de la Dracénie : chlore, particules, fer selon les réseaux de forage. C'est l'une des premières causes d'intervention que nous constatons depuis 2005.",
+        "Notre méthode ne varie pas : nous commençons par mesurer. pH, présence de fer ou de particules, pression et débit disponibles, configuration du local. Un équipement mal dimensionné se fait vite oublier dans le mauvais sens : trop d'entretien pour rien.",
+        "Selon les résultats, le traitement retenu diffère : un simple filtre en tête d'installation, une cartouche à charbon actif sur l'eau de boisson ou un stérilisateur UV sur un forage suffisent parfois — et coûtent bien moins cher. Nous préférons vous le dire plutôt que de vendre l'équipement le plus cher du catalogue.",
       ],
       points: [
-        'Dureté et pH mesurés sur place, avant tout devis',
-        'Appareil dimensionné sur votre consommation réelle',
+        'pH et qualité de l’eau mesurés sur place, avant tout devis',
+        'Équipement dimensionné sur votre consommation réelle',
         'Solutions alternatives proposées quand elles suffisent',
         'Mise en service, réglages et suivi assurés par nos soins',
       ],
     },
 
     process: [
-      { title: 'Étude personnalisée', text: "Analyse de votre eau, relevé de la dureté et du débit, examen du local technique et de vos usages." },
-      { title: 'La préconisation', text: "Adoucisseur, filtration, charbon actif ou UV : nous ne proposons que ce qui est réellement utile chez vous." },
-      { title: 'Installation professionnelle', text: "Pose en tête d'installation, by-pass, raccordement à l'évacuation et protection du réseau existant." },
-      { title: 'Réglages et mise en service', text: "Paramétrage de la régénération, contrôle de la dureté en sortie et explication du fonctionnement." },
-      { title: 'Suivi et entretien', text: "Contrôle annuel, réglage du sel et vérification des performances de l'appareil dans le temps." },
+      { title: 'Étude personnalisée', text: "Analyse de votre eau, relevé du débit, examen du local technique et de vos usages." },
+      { title: 'La préconisation', text: 'Filtration, charbon actif ou UV : nous ne proposons que ce qui est réellement utile chez vous.' },
+      { title: 'Installation professionnelle', text: "Pose en tête d'installation, raccordement à l'évacuation et protection du réseau existant." },
+      { title: 'Réglages et mise en service', text: 'Paramétrage, contrôle et explication du fonctionnement.' },
+      { title: 'Suivi et entretien', text: "Contrôle annuel et vérification des performances de l'équipement dans le temps." },
     ],
 
     info: {
       heading: "Pourquoi traiter votre eau ?",
       lead: "Le calcaire, le chlore et les particules ont un impact direct sur votre santé, vos installations et votre confort au quotidien.",
       bullets: [
-        'Protège vos canalisations, votre chauffe-eau et votre robinetterie du calcaire.',
+        'Protège vos canalisations, votre chauffe-eau et votre robinetterie.',
         "Prolonge la durée de vie du lave-linge, du lave-vaisselle et des résistances.",
-        "Réduit la consommation de produits d'entretien, de lessive et d'adoucissant.",
+        "Réduit la consommation de produits d'entretien et de lessive.",
         'Préserve la douceur de la peau, des cheveux et la tenue du linge.',
         'Améliore le goût de l’eau de boisson avec une filtration adaptée.',
       ],
     },
 
     faq: [
-      { q: "L'eau adoucie est-elle potable ?", a: "Oui. L'adoucisseur échange le calcium et le magnésium contre du sodium, en quantité très faible. Nous laissons systématiquement un point d'eau non adoucie pour la boisson et la cuisine, et nous pouvons y ajouter une filtration à charbon actif." },
-      { q: 'Quel entretien pour un adoucisseur ?', a: "Très peu : ajouter du sel quelques fois par an et faire contrôler l'appareil une fois par an. Nous vérifions la dureté en sortie, la régénération et l'état de la cuve et des joints." },
-      { q: 'Combien de sel consomme un adoucisseur ?', a: "Cela dépend de la dureté de l'eau et de votre consommation. Sur un foyer de quatre personnes dans notre secteur, comptez généralement quelques sacs par an. Un appareil à régénération intelligente en consomme sensiblement moins qu'un modèle à horloge." },
-      { q: 'Peut-on traiter une eau de forage ?', a: "Oui, mais rarement avec un adoucisseur seul. Un forage demande d'abord une filtration des particules (sable, boue, rouille), puis selon l'analyse un traitement du fer, un charbon actif et souvent une désinfection UV avant tout adoucissement." },
-      { q: 'Où installe-t-on l’appareil ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Il faut une évacuation à proximité et une prise électrique. Nous validons l'emplacement pendant la visite technique." },
+      { q: 'Faut-il un traitement même si mon eau semble normale ?', a: "Une analyse rapide sur place permet de le savoir. Nous ne préconisons un équipement que si l'analyse le justifie réellement." },
+      { q: 'Quel entretien demande une filtration ?', a: "Peu de choses : remplacement de la cartouche une fois par an en moyenne, selon le débit et l'usage." },
+      { q: 'Peut-on traiter une eau de forage ?', a: "Oui. Un forage demande d'abord une filtration des particules (sable, boue, rouille), puis selon l'analyse un traitement du fer, un charbon actif et souvent une désinfection UV." },
+      { q: 'Où installe-t-on l’équipement ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Nous validons l'emplacement pendant la visite technique." },
     ],
   },
 }
@@ -696,17 +648,10 @@ export const chaudiereCondensation = {
   },
 }
 
-/* ---------------------------------------------------------------------
-   SOUS-PAGE : ADOUCISSEUR D'EAU
-   Approfondit un point du métier « Traitement de l'eau ». Accessible via
-   un bouton « En savoir plus » depuis la page Traitement de l'eau, et sa
-   propre route directe.
-------------------------------------------------------------------------*/
 /* ================================================================ CONSEILS =
    Contenu éducatif générique sur les cinq métiers, pensé pour répondre aux
    questions les plus fréquentes avant même le premier appel. Renvoie vers
-   les pages métier et les deux sous-pages approfondies (adoucisseur,
-   chaudière à condensation). */
+   les pages métier et la sous-page approfondie chaudière à condensation. */
 export const conseils = [
   {
     icon: 'droplet',
@@ -739,47 +684,6 @@ export const conseils = [
     to: '/piscine',
   },
 ]
-
-export const adoucisseur = {
-  slug: 'traitement-de-l-eau/adoucisseur',
-  title: "L'adoucisseur d'eau",
-  tagline: "Une eau plus douce, des équipements protégés, un entretien minimal.",
-  intro:
-    "L'eau du Var et de la Dracénie dépasse fréquemment 30 °f de dureté. L'adoucisseur reste la solution la plus efficace pour protéger durablement vos canalisations et vos équipements, tout en gagnant en confort au quotidien.",
-  hero: { tags: 'bathroom', lock: 300 },
-
-  avantages: {
-    heading: 'Les avantages d’une eau adoucie',
-    lead: "Au-delà du confort immédiat, l'eau adoucie change la donne sur la durée de vie de vos équipements et sur votre budget d'entretien.",
-    bullets: [
-      'Fini les dépôts de calcaire sur la robinetterie, les parois de douche et le carrelage.',
-      'Une durée de vie nettement allongée pour le chauffe-eau, le lave-linge et le lave-vaisselle.',
-      "Jusqu'à 30 % d'économies sur les produits d'entretien et les détergents.",
-      'Une eau plus douce pour la peau, les cheveux et la tenue du linge.',
-      'Un entretien minimal : quelques sacs de sel par an suffisent.',
-    ],
-  },
-
-  installation: {
-    heading: 'L’installation par PCE',
-    lead: "Nous ne posons jamais un adoucisseur au forfait : chaque appareil est dimensionné sur votre eau et votre consommation réelles.",
-    steps: [
-      { title: 'Étude personnalisée', text: "Analyse de votre eau, relevé de la dureté et du débit, examen du local technique et de vos usages." },
-      { title: 'La préconisation', text: "Nous ne proposons un adoucisseur que si c'est réellement la solution la plus adaptée à votre eau." },
-      { title: 'Installation professionnelle', text: "Pose en tête d'installation, by-pass, raccordement à l'évacuation et protection du réseau existant." },
-      { title: 'Réglages et mise en service', text: "Paramétrage de la régénération, contrôle de la dureté en sortie et explication du fonctionnement." },
-      { title: 'Suivi et entretien', text: "Contrôle annuel, réglage du sel et vérification des performances de l'appareil dans le temps." },
-    ],
-  },
-
-  faq: [
-    { q: "L'eau adoucie est-elle potable ?", a: "Oui. L'adoucisseur échange le calcium et le magnésium contre du sodium, en quantité très faible. Nous laissons systématiquement un point d'eau non adoucie pour la boisson et la cuisine, et nous pouvons y ajouter une filtration à charbon actif." },
-    { q: 'Quel entretien pour un adoucisseur ?', a: "Très peu : ajouter du sel quelques fois par an et faire contrôler l'appareil une fois par an. Nous vérifions la dureté en sortie, la régénération et l'état de la cuve et des joints." },
-    { q: 'Combien de sel consomme un adoucisseur ?', a: "Cela dépend de la dureté de l'eau et de votre consommation. Sur un foyer de quatre personnes dans notre secteur, comptez généralement quelques sacs par an. Un appareil à régénération intelligente en consomme sensiblement moins qu'un modèle à horloge." },
-    { q: 'Peut-on traiter une eau de forage ?', a: "Oui, mais rarement avec un adoucisseur seul. Un forage demande d'abord une filtration des particules (sable, boue, rouille), puis selon l'analyse un traitement du fer, un charbon actif et souvent une désinfection UV avant tout adoucissement." },
-    { q: 'Où installe-t-on l’appareil ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Il faut une évacuation à proximité et une prise électrique. Nous validons l'emplacement pendant la visite technique." },
-  ],
-}
 
 export const serviceList = [
   services.plomberie,

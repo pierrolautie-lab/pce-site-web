@@ -23,7 +23,6 @@ const pagesPrincipales = [
 const pagesMetiers = [
   ...serviceList.map((s) => ({ label: s.title, to: `/${s.slug}` })),
   { label: 'Chaudière à condensation', to: '/chauffage/chaudiere-condensation' },
-  { label: "L'adoucisseur d'eau", to: '/traitement-de-l-eau/adoucisseur' },
 ]
 
 /** Groupe des 65 pages locales par métier plutôt qu'en une seule liste de 65 liens. */

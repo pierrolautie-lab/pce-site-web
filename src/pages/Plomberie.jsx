@@ -16,7 +16,7 @@ const SERVICES_CHECKLIST = [
   'Rénovation complète de salle de bains',
   'Recherche de fuite non destructive',
   'Remplacement de chauffe-eau (thermodynamique, électrique, gaz)',
-  "Installation d'adoucisseurs et filtration d'eau",
+  "Filtration et traitement de l'eau",
   'Réglage du débit et de la pression',
   'Débouchage et réparation de canalisations',
   'Robinetterie et sanitaires',
@@ -59,8 +59,8 @@ const FEATURE_CARDS = [
   {
     icon: 'filter',
     title: "Traitement de l'eau",
-    text: 'Adoucisseurs et filtration installés en complément de vos travaux de plomberie.',
-    bullets: ['Adoucisseur Pentair Foleo', 'Filtration fine', "Analyse de l'eau"],
+    text: 'Filtration et traitement installés en complément de vos travaux de plomberie.',
+    bullets: ['Filtration fine', 'Charbon actif', "Analyse de l'eau"],
   },
 ]
 

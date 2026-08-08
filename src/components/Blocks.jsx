@@ -257,89 +257,6 @@ export function TrustBadges({ tone = 'light' }) {
   )
 }
 
-/* ------------------------------------- PRODUIT PHARE (adoucisseur Pentair) */
-export function ProductSpotlight({ product }) {
-  return (
-    <section className="section bg-white">
-      <div className="container-pce">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-          {/* Visuel produit + pastille garantie */}
-          <div className="min-w-0 lg:col-span-5">
-            <div className="relative">
-              <Photo
-                tags={product.photo.tags}
-                lock={product.photo.lock}
-                alt={`Adoucisseur ${product.brand} ${product.model}`}
-                className="aspect-[3/4] w-full bg-white shadow-photo"
-                imgClassName="object-contain p-6"
-                rounded="rounded-xl"
-                sizes="(min-width: 1024px) 42vw, 100vw"
-              />
-              <div className="absolute -bottom-4 left-4 flex items-center gap-3 rounded-lg bg-navy-800 px-5 py-3 text-white shadow-card">
-                <Icon name="shieldCheck" className="h-5 w-5 text-gold-500" strokeWidth={1.7} />
-                <span className="text-[11.5px] font-bold uppercase leading-tight tracking-[.05em]">
-                  {product.warranty}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Texte */}
-          <div className="min-w-0 lg:col-span-7">
-            <p className="text-[11px] font-bold uppercase tracking-[.16em] text-azure-500">
-              {product.brand} {product.model}
-            </p>
-            <h2 className="mt-3 text-[19px] font-bold uppercase leading-tight tracking-[.04em] text-navy-800 sm:text-[24px]">
-              {product.heading}
-            </h2>
-            <p className="mt-5 text-[14.5px] leading-[1.8] text-navy-500">{product.lead}</p>
-
-            {/* Bienfaits */}
-            <ul className="mt-8 space-y-4">
-              {product.benefits.map((b) => (
-                <li key={b.title} className="flex items-start gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
-                    <Icon name={b.icon} className="h-5 w-5" strokeWidth={1.5} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[13px] font-bold uppercase tracking-[.05em] text-navy-800">
-                      {b.title}
-                    </span>
-                    <span className="mt-1 block text-[13px] leading-[1.7] text-navy-500">
-                      {b.text}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Caractéristiques */}
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {product.specs.map((s) => (
-                <li
-                  key={s}
-                  className="flex items-center gap-2 rounded-lg bg-navy-50 px-4 py-2.5 text-[12px] font-semibold text-navy-700 ring-1 ring-navy-100"
-                >
-                  <Icon name="check" className="h-3.5 w-3.5 text-azure-500" strokeWidth={3} />
-                  {s}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              to="/traitement-de-l-eau/adoucisseur"
-              className="btn-gold mt-8 w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
-            >
-              En savoir plus sur les adoucisseurs
-              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* --------------------------------------------------- BARRE DE GARANTIES -*/
 export function GuaranteeBar() {
   return (
@@ -417,13 +334,15 @@ export function Expertise({ data }) {
 }
 
 /* ------------------------------------------------------ MÉTHODE / ÉTAPES -*/
-export function Process({ steps, title = 'Comment nous travaillons', lead }) {
+export function Process({ steps, title = 'Comment nous travaillons', lead, columns = 5 }) {
+  const lgCols = columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-5'
+
   return (
     <section className="section bg-navy-50">
       <div className="container-pce">
         <SectionTitle title={title} lead={lead} />
 
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className={`mt-12 grid gap-5 sm:grid-cols-2 ${lgCols}`}>
           {steps.map((s, i) => (
             <li key={s.title} className="flex flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100">
               <span className="grid h-9 w-9 place-items-center rounded-full bg-azure-500 text-[13px] font-black text-white">

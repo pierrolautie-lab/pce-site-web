@@ -14,7 +14,6 @@ import { CATEGORIES, categoryFor } from '../data/categories.js'
 const ARTICLE_ICONS = {
   'comment-choisir-pompe-a-chaleur': 'leaf',
   'entretien-climatisation-quand-et-pourquoi': 'settings',
-  'pourquoi-installer-adoucisseur-eau-var': 'tank',
   'quand-refaire-tableau-electrique': 'panel',
   'preparer-piscine-pour-ete': 'sun',
   'comment-fonctionne-pompe-a-chaleur': 'gauge',
@@ -22,9 +21,6 @@ const ARTICLE_ICONS = {
   'pompe-a-chaleur-ou-chaudiere-gaz': 'flame',
   'quelle-climatisation-choisir-maison-var': 'snowflake',
   'climatisation-gainable-ou-split': 'layers',
-  'avantages-inconvenients-adoucisseur': 'shieldCheck',
-  'comment-savoir-eau-calcaire': 'search',
-  'peut-on-boire-eau-adoucisseur': 'droplet',
   'comment-filtrer-eau-forage': 'filter',
   'a-quoi-sert-traitement-uv': 'sparkles',
   'charbon-actif-que-filtre-t-il': 'testTube',
@@ -157,17 +153,17 @@ export default function Conseils() {
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             <Link
-              to="/traitement-de-l-eau/adoucisseur"
+              to="/renovation-salle-de-bain-var"
               className="group flex flex-col rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
             >
               <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
-                <Icon name="filter" className="h-5 w-5" strokeWidth={1.6} />
+                <Icon name="shower" className="h-5 w-5" strokeWidth={1.6} />
               </span>
               <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
-                L'adoucisseur d'eau
+                La rénovation de salle de bain
               </h3>
               <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500 transition-colors group-hover:text-white/70">
-                Avantages d'une eau adoucie, installation par PCE et réponses aux questions les plus fréquentes.
+                Étapes du projet, délais et ce que PCE prend en charge pour une salle de bain clé en main.
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500 transition-colors group-hover:text-white">
                 Lire le dossier

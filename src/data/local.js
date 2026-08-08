@@ -68,8 +68,7 @@ export const localTrades = {
     label: "Traitement de l'eau",
     serviceKey: 'traitement-de-l-eau',
     verb: 'le traitement de votre eau',
-    detail: "adoucisseur Pentair Foleo, filtration fine, charbon actif et traitement UV",
-    relatedExpertise: 'adoucisseur-eau-var',
+    detail: 'filtration fine, filtration de forage, charbon actif et traitement UV',
   },
   'pompe-a-chaleur': {
     urlSlug: 'pompe-a-chaleur',

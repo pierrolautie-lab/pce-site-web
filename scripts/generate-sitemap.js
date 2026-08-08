@@ -29,7 +29,6 @@ const staticRoutes = [
   { path: '/electricite', priority: '0.9', changefreq: 'monthly' },
   { path: '/piscine', priority: '0.9', changefreq: 'monthly' },
   { path: '/traitement-de-l-eau', priority: '0.9', changefreq: 'monthly' },
-  { path: '/traitement-de-l-eau/adoucisseur', priority: '0.6', changefreq: 'monthly' },
   { path: '/depannage', priority: '0.8', changefreq: 'monthly' },
   { path: '/realisations', priority: '0.7', changefreq: 'weekly' },
   { path: '/conseils', priority: '0.6', changefreq: 'monthly' },

@@ -39,7 +39,7 @@ export const PHOTO_SLOTS = {
   629: { page: 'Électricité', zone: 'Expertise', sujet: 'Électricien au travail, câblage' },
   739: { page: 'Piscine', zone: 'Hero', sujet: 'Bassin, piscine' },
   740: { page: 'Piscine', zone: 'Expertise', sujet: 'Local technique, pompe, filtre' },
-  300: { page: "Traitement de l'eau", zone: 'Hero / produit', sujet: 'Adoucisseur Pentair Foleo' },
+  300: { page: "Traitement de l'eau", zone: 'Hero', sujet: "Réseau, arrivée d'eau" },
   301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: "Réseau, arrivée d'eau" },
 
   /* --- Dépannage ----------------------------------------------------- */
@@ -82,13 +82,11 @@ export const PHOTO_SLOTS = {
   706: { page: 'Sous-expertise', zone: 'Mise aux normes électriques', sujet: 'Tableau électrique' },
   707: { page: 'Sous-expertise', zone: 'Borne de recharge', sujet: 'Borne murale' },
   708: { page: 'Sous-expertise', zone: 'Entretien piscine', sujet: 'Bassin' },
-  709: { page: 'Sous-expertise', zone: 'Adoucisseur', sujet: 'Pentair Foleo' },
   710: { page: 'Sous-expertise', zone: 'Plancher chauffant', sujet: 'Plancher chauffant' },
 
   /* --- Articles de conseils (20) ---------------------------------------- */
   801: { page: 'Conseils', zone: 'Article', sujet: 'Choisir sa pompe à chaleur' },
   802: { page: 'Conseils', zone: 'Article', sujet: 'Entretien climatisation' },
-  803: { page: 'Conseils', zone: 'Article', sujet: "Adoucisseur d'eau" },
   804: { page: 'Conseils', zone: 'Article', sujet: 'Tableau électrique' },
   805: { page: 'Conseils', zone: 'Article', sujet: 'Piscine — été' },
   1101: { page: 'Conseils', zone: 'Article', sujet: 'Fonctionnement PAC' },
@@ -96,9 +94,6 @@ export const PHOTO_SLOTS = {
   1103: { page: 'Conseils', zone: 'Article', sujet: 'PAC ou chaudière gaz' },
   1104: { page: 'Conseils', zone: 'Article', sujet: 'Choisir sa climatisation' },
   1105: { page: 'Conseils', zone: 'Article', sujet: 'Gainable ou split' },
-  1106: { page: 'Conseils', zone: 'Article', sujet: 'Avantages adoucisseur' },
-  1107: { page: 'Conseils', zone: 'Article', sujet: 'Eau calcaire' },
-  1108: { page: 'Conseils', zone: 'Article', sujet: 'Eau adoucie et boisson' },
   1109: { page: 'Conseils', zone: 'Article', sujet: 'Filtration eau de forage' },
   1110: { page: 'Conseils', zone: 'Article', sujet: 'Traitement UV' },
   1111: { page: 'Conseils', zone: 'Article', sujet: 'Charbon actif' },
@@ -141,7 +136,7 @@ export const clientPhotos = {
   518: '/img/climatisation-expertise-gainable-salon.jpg',
 
   /* Traitement de l'eau */
-  300: '/img/traitement-eau-pentair-foleo.jpg',
+  300: '/img/traitement-eau-reseau-cuivre.jpg',
   301: '/img/traitement-eau-reseau-cuivre.jpg',
 
   /* Électricité — armoire et coffret réellement posés par PCE */
@@ -182,13 +177,11 @@ export const clientPhotos = {
   706: '/img/electricite-galerie-tableau-fini.jpg', // mise-aux-normes-electriques-var
   707: '/img/electricite-borne-recharge-1.jpg', // installation-borne-recharge-vehicule-electrique-var
   708: '/img/piscine-hero-bassin.jpg', // entretien-piscine-var
-  709: '/img/traitement-eau-pentair-foleo.jpg', // adoucisseur-eau-var
   710: '/img/real-plancher-chauffant.jpg', // plancher-chauffant-var
 
   /* --- Articles de conseils (5 historiques), src/data/articles.js --- */
   801: '/img/apropos-hero-chaufferie.jpg', // comment-choisir-pompe-a-chaleur
   802: '/img/climatisation-groupe-exterieur.jpg', // entretien-climatisation-quand-et-pourquoi
-  803: '/img/traitement-eau-reseau-cuivre.jpg', // pourquoi-installer-adoucisseur-eau-var
   804: '/img/electricite-galerie-tableau-cablage.jpg', // quand-refaire-tableau-electrique
   805: '/img/piscine-hero-bassin.jpg', // preparer-piscine-pour-ete
 
@@ -198,12 +191,9 @@ export const clientPhotos = {
   1103: '/img/real-local-chaudiere-ballon.jpg', // pompe-a-chaleur-ou-chaudiere-gaz
   1104: '/img/climatisation-hero-split.jpg', // quelle-climatisation-choisir-maison-var
   1105: '/img/climatisation-expertise-gaines-combles.jpg', // climatisation-gainable-ou-split
-  1106: '/img/traitement-eau-pentair-foleo.jpg', // avantages-inconvenients-adoucisseur
-  1107: '/img/traitement-eau-reseau-cuivre.jpg', // comment-savoir-eau-calcaire
-  1108: '/img/traitement-eau-pentair-foleo.jpg', // peut-on-boire-eau-adoucisseur
   1109: '/img/traitement-eau-reseau-cuivre.jpg', // comment-filtrer-eau-forage
   1110: '/img/traitement-eau-reseau-cuivre.jpg', // a-quoi-sert-traitement-uv
-  1111: '/img/traitement-eau-pentair-foleo.jpg', // charbon-actif-que-filtre-t-il
+  1111: '/img/traitement-eau-reseau-cuivre.jpg', // charbon-actif-que-filtre-t-il
   1112: '/img/piscine-hero-bassin.jpg', // pourquoi-piscine-au-sel
   1113: '/img/piscine-hero-bassin.jpg', // pompe-piscine-vitesse-variable-avantages
   1114: '/img/piscine-hero-bassin.jpg', // pourquoi-ph-piscine-varie

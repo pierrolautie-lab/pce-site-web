@@ -439,58 +439,6 @@ export const expertisePages = {
     ],
   },
 
-  'adoucisseur-eau-var': {
-    tradeKey: 'plombier',
-    servicePath: '/traitement-de-l-eau',
-    h1: "Adoucisseur d'eau dans le Var",
-    metaDescription:
-      "Adoucisseur d'eau dans le Var face au calcaire : gamme Pentair FOLEO garantie 10 ans, installation par PCE. Analyse de votre eau, devis gratuit.",
-    photo: { tags: 'water-softener', lock: 709 },
-    intro: [
-      "L'eau du Var est particulièrement calcaire, avec des conséquences visibles sur les canalisations, les appareils électroménagers et le confort au quotidien. PCE installe des adoucisseurs d'eau, notamment la gamme Pentair FOLEO, pour protéger durablement votre installation de plomberie et vos équipements.",
-    ],
-    sections: [
-      {
-        h2: "Pourquoi l'eau du Var est-elle si calcaire ?",
-        paragraphs: [
-          "Le sous-sol calcaire de nombreuses communes du Var confère à l'eau du réseau une dureté élevée, souvent supérieure à 30°f. Au-delà de 25°f, le tartre s'accumule visiblement dans les canalisations, sur la robinetterie et dans les ballons d'eau chaude, réduisant leur durée de vie et augmentant la consommation d'énergie nécessaire pour chauffer l'eau.",
-        ],
-      },
-      {
-        h2: 'L\'adoucisseur Pentair FOLEO : notre recommandation',
-        paragraphs: [
-          "PCE installe la gamme Pentair FOLEO, garantie 10 ans sur la cuve, avec une régénération automatique programmable selon votre consommation réelle d'eau.",
-        ],
-        points: [
-          'Analyse de la dureté de votre eau avant installation',
-          'Dimensionnement de l\'adoucisseur selon votre consommation',
-          "Pose en dérivation du réseau d'eau froide",
-          'Réglage de la régénération et mise en service',
-          'Maintenance et réapprovisionnement en sel',
-        ],
-      },
-      {
-        h2: "Les bénéfices concrets d'un adoucisseur",
-        paragraphs: [
-          "Au-delà de la protection des canalisations et des appareils, un adoucisseur d'eau améliore l'efficacité du savon et des produits d'entretien, et adoucit sensiblement la sensation de l'eau sur la peau et les cheveux — un changement que beaucoup de nos clients du Var remarquent dès les premières semaines.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        q: "L'eau adoucie est-elle bonne à boire ?",
-        a: 'PCE recommande de conserver un robinet d\'eau non adoucie pour la cuisine et la boisson, notamment pour les personnes suivant un régime pauvre en sodium. L\'eau adoucie reste potable mais légèrement plus riche en sodium.',
-      },
-      {
-        q: 'Quel entretien demande un adoucisseur d\'eau au quotidien ?',
-        a: "L'entretien se limite essentiellement à l'ajout régulier de sel, généralement toutes les 4 à 8 semaines selon la consommation du foyer.",
-      },
-      {
-        q: 'Un adoucisseur consomme-t-il beaucoup d\'eau et d\'électricité ?',
-        a: 'La régénération consomme une quantité d\'eau limitée et une consommation électrique négligeable, largement compensée par les économies réalisées sur les appareils protégés du tartre.',
-      },
-    ],
-  },
 
   'plancher-chauffant-var': {
     tradeKey: 'chauffagiste',
