@@ -41,7 +41,7 @@ export default function Accueil() {
       {/* ====================================================== HERO ====== */}
       <PageHero
         title="Votre confort, notre métier"
-        titleClassName="text-[10.5vw] sm:text-5xl lg:text-[3.9rem]"
+        titleClassName="text-[8.8vw] md:text-5xl lg:text-[3.9rem]"
         subtitle="Cinq savoir-faire réunis sous le même toit, à Lorgues depuis 2005"
         intro="Plomberie, chauffage, climatisation, électricité et piscine : depuis 2005, PCE conçoit, installe et entretient les équipements qui font le confort de votre maison. Un seul interlocuteur du devis à la mise en service, une équipe locale qui connaît le bâti, l'eau et le climat du Var."
         photo={{ tags: 'house', lock: 101, alt: 'Maison provençale équipée par PCE' }}

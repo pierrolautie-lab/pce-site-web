@@ -14,7 +14,7 @@ import { company, reassurance } from '../data/site.js'
  */
 export default function PageHero({
   title,
-  titleClassName = 'text-[12vw] sm:text-6xl lg:text-[4.4rem]',
+  titleClassName = 'text-[10vw] md:text-6xl lg:text-[4.4rem]',
   subtitle,
   intro,
   photo,
@@ -75,7 +75,7 @@ export default function PageHero({
 
           <div className="grid items-center gap-10 pb-14 pt-8 lg:grid-cols-12 lg:pb-20 lg:pt-10">
             <div className="min-w-0 lg:col-span-7">
-              <h1 className={`font-black uppercase leading-[.94] tracking-[-.03em] ${titleClassName}`}>
+              <h1 className={`font-black uppercase leading-[1.12] tracking-[-.03em] md:leading-[.94] ${titleClassName}`}>
                 {title}
               </h1>
 
