@@ -70,7 +70,7 @@ export default function ServicePage({ service, children, before }) {
       {/* 5 — Bandeau de garanties */}
       <GuaranteeBar />
 
-      {/* Qualifications : Qualigaz, Qualipac, décennale, RC Pro */}
+      {/* Qualifications : garantie décennale */}
       <TrustBadges />
 
       {/* Bandeau d'appel bleu, repris des maquettes */}

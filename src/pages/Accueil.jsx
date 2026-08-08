@@ -444,8 +444,8 @@ export default function Accueil() {
             Vous nous croisez dans le Var ? C'est bien nous.
           </h2>
           <p className="mt-3 max-w-xl text-[13.5px] leading-[1.7] text-white/70 sm:text-[14.5px]">
-            Notre véhicule floqué PCE — Qualigaz, Qualipac — sillonne Lorgues, la Dracénie et le
-            Golfe de Saint-Tropez chaque jour. Même équipe sur le terrain et sur ce site.
+            Notre véhicule floqué PCE sillonne Lorgues, la Dracénie et le Golfe de Saint-Tropez
+            chaque jour. Même équipe sur le terrain et sur ce site.
           </p>
           <a href={company.phoneHref} className="btn-gold mt-6">
             <Icon name="phone" className="h-4 w-4" strokeWidth={2} />

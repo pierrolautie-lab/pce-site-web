@@ -14,7 +14,7 @@ export const expertisePages = {
       "Installation de pompe à chaleur air/air ou air/eau dans le Var par PCE : étude thermique, dimensionnement, pose et aides MaPrimeRénov'. Devis gratuit.",
     photo: { tags: 'heating', lock: 701 },
     intro: [
-      "Remplacer une chaudière au fioul ou au gaz par une pompe à chaleur est aujourd'hui l'un des projets de rénovation énergétique les plus demandés dans le Var. PCE, installateur certifié Qualipac basé à Lorgues, accompagne particuliers et professionnels de la Dracénie au Golfe de Saint-Tropez dans le choix, le dimensionnement et la pose de leur pompe à chaleur.",
+      "Remplacer une chaudière au fioul ou au gaz par une pompe à chaleur est aujourd'hui l'un des projets de rénovation énergétique les plus demandés dans le Var. PCE, basé à Lorgues, accompagne particuliers et professionnels de la Dracénie au Golfe de Saint-Tropez dans le choix, le dimensionnement et la pose de leur pompe à chaleur.",
       "Air/air, air/eau, avec ou sans production d'eau chaude sanitaire : chaque logement a ses contraintes, et un mauvais dimensionnement se paie en confort et en facture d'électricité pendant quinze ans. C'est pourquoi PCE réalise systématiquement une étude thermique avant de proposer un modèle et une puissance adaptés à votre maison.",
     ],
     sections: [

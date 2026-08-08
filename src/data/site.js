@@ -41,8 +41,7 @@ export const company = {
     { d: 'Dimanche', h: 'Urgences uniquement' },
   ],
   areas: ['Lorgues', 'Dracénie', 'Golfe de Saint-Tropez'],
-  /* Qualifications relevées sur le véhicule de l'entreprise */
-  certifications: ['Certifié Qualigaz', 'Certifié Qualipac', 'Garantie décennale', 'Assurance RC Pro'],
+  certifications: ['Garantie décennale'],
 }
 
 /* ----------------------------------------------------------- Informations légales --
@@ -118,7 +117,7 @@ export const whyChooseUs = [
   { icon: 'clipboard', title: 'Devis gratuit', text: 'Étude personnalisée et devis détaillé, sans engagement.' },
   { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans un rayon de 50 km autour de Lorgues.' },
   { icon: 'wrench', title: 'Matériel professionnel', text: 'Nous travaillons avec des marques reconnues pour garantir la qualité et la durabilité de nos installations.' },
-  { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Tous nos chantiers sont couverts par la garantie décennale et nos certifications Qualigaz et Qualipac.' },
+  { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Tous nos chantiers sont couverts par la garantie décennale.' },
 ]
 
 /* Bandeau de réassurance affiché sous chaque héros. */
@@ -135,8 +134,6 @@ export const guarantees = [
   { icon: 'award', label: 'Travail soigné et durable' },
   { icon: 'fileText', label: 'Devis gratuit et personnalisé' },
   { icon: 'headset', label: 'Service après-vente à votre écoute' },
-  { icon: 'shieldCheck', label: 'Certifié Qualigaz' },
-  { icon: 'shieldCheck', label: 'Certifié Qualipac' },
 ]
 
 /* ------------------------------------------------------------ TVA 5,5 % --*/

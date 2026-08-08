@@ -9,7 +9,7 @@ export const articles = {
   'comment-choisir-pompe-a-chaleur': {
     title: 'Comment choisir sa pompe à chaleur ?',
     metaDescription:
-      "Comment choisir sa pompe à chaleur dans le Var : air/air, air/eau, puissance, COP et aides disponibles. Les conseils de PCE, installateur Qualipac.",
+      "Comment choisir sa pompe à chaleur dans le Var : air/air, air/eau, puissance, COP et aides disponibles. Les conseils de PCE, installateur de pompes à chaleur.",
     photo: { tags: 'heating', lock: 801 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
@@ -256,7 +256,7 @@ export const articles = {
   'comment-fonctionne-pompe-a-chaleur': {
     title: 'Comment fonctionne une pompe à chaleur ?',
     metaDescription:
-      "Comment fonctionne une pompe à chaleur air/air ou air/eau : cycle frigorifique, COP et rendement. Les explications de PCE, installateur Qualipac dans le Var.",
+      "Comment fonctionne une pompe à chaleur air/air ou air/eau : cycle frigorifique, COP et rendement. Les explications de PCE, installateur de pompes à chaleur dans le Var.",
     photo: { tags: 'heating', lock: 1101 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
