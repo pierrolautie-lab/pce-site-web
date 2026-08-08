@@ -61,6 +61,23 @@ export default {
           'sans-serif',
         ],
       },
+      /* ------------------------------------------- Échelle typographique --
+         Six niveaux, utilisés par les pages métier refondues. Les titres
+         sont fluides (`clamp`) pour éviter les paliers brutaux entre les
+         points de rupture ; le corps de texte reste fixe, la lisibilité
+         d'un paragraphe ne gagnant rien à varier avec la fenêtre.
+         `text-label` ne descend pas sous 11 px : en dessous, les capitales
+         interlettrées deviennent difficiles à lire.
+         Le reste du site utilise encore des tailles arbitraires
+         (`text-[15px]`) — les deux cohabitent sans conflit. */
+      fontSize: {
+        hero: ['clamp(30px, 4.6vw, 54px)', { lineHeight: '1.06', letterSpacing: '-.025em' }],
+        title: ['clamp(19px, 2.1vw, 26px)', { lineHeight: '1.15', letterSpacing: '-.01em' }],
+        kicker: ['clamp(15px, 1.35vw, 18px)', { lineHeight: '1.3' }],
+        body: ['15px', { lineHeight: '1.75' }],
+        'body-sm': ['13px', { lineHeight: '1.65' }],
+        label: ['11px', { lineHeight: '1.4', letterSpacing: '.1em' }],
+      },
       letterSpacing: {
         wider: '.06em',
         widest: '.18em',

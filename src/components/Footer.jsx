@@ -25,7 +25,6 @@ const entrepriseLinks = [
   { label: 'À propos de PCE', to: '/a-propos' },
   { label: 'Nos réalisations', to: '/realisations' },
   { label: 'Nos engagements', to: '/a-propos' },
-  { label: 'Nos certifications', to: '/a-propos' },
   { label: 'Contact', to: '/contact' },
 ]
 

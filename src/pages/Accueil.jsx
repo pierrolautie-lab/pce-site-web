@@ -4,20 +4,11 @@ import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import Seo from '../components/Seo.jsx'
 import { ReassuranceBar } from '../components/PageHero.jsx'
+import VarMap from '../components/VarMap.jsx'
+import ZoneBadge from '../components/ZoneBadge.jsx'
 import { company, depannage, projects, serviceList } from '../data/site.js'
 import { clientPhotoMeta } from '../data/photos.js'
-
-/* -------------------------------------------------------------------------
-   AVIS GOOGLE — À CONFIRMER
-   ⚠️ ne pas publier sans fiche Google Business réelle : ces valeurs sont
-   des espaces réservés fournis par le client, non vérifiés. Le bloc reste
-   masqué tant que SHOW_GOOGLE_REVIEWS vaut false.
----------------------------------------------------------------------------*/
-const SHOW_GOOGLE_REVIEWS = true
-// À CONFIRMER — valeurs fournies par le client, non vérifiées contre une
-// fiche Google Business réelle. Publier de faux avis expose à une sanction
-// pour pratique commerciale trompeuse : à confirmer avant mise en ligne.
-const GOOGLE_REVIEWS = { rating: '4,9/5', stars: 5, count: '+450 clients satisfaits', href: '/contact' }
+import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
 /* Photo de fond du héros (slot 100, véhicules PCE devant une villa) et son
    repli (slot 101, photo d'accueil précédente) si le fichier venait à
@@ -40,23 +31,6 @@ const HERO_TRADES = [
    main à partir de son propre objet. */
 const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau']
 
-const CLIENT_TYPES = [
-  'Particuliers & Professionnels',
-  'Résidences secondaires',
-  'Syndics & Copropriétés',
-  'Commerces & Entreprises',
-]
-
-/* Communes repères de la carte, en pourcentage du cadre SVG. Lorgues est le
-   point d'ancrage (siège), les autres situent l'amplitude de la zone. */
-const MAP_POINTS = [
-  { name: 'Draguignan', x: 62, y: 12 },
-  { name: 'Fréjus', x: 87, y: 26 },
-  { name: 'Le Luc', x: 21, y: 40 },
-  { name: 'Sainte-Maxime', x: 83, y: 48 },
-  { name: 'Saint-Tropez', x: 79, y: 66 },
-  { name: 'Cavalaire-sur-Mer', x: 74, y: 84 },
-]
 
 export default function Accueil() {
   return (
@@ -181,17 +155,7 @@ function HomeHero() {
             </a>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-navy-900/70 px-5 py-4 backdrop-blur-sm lg:max-w-sm lg:shrink-0">
-            <Icon name="mapPin" className="h-6 w-6 shrink-0 text-gold-500" strokeWidth={1.6} />
-            <span className="min-w-0">
-              <span className="block text-[11.5px] font-bold uppercase tracking-[.06em]">
-                Intervention dans tout le Var
-              </span>
-              <span className="mt-0.5 block text-[11.5px] leading-snug text-white/65">
-                De Lorgues au Golfe de Saint-Tropez
-              </span>
-            </span>
-          </div>
+          <ZoneBadge className="lg:max-w-sm lg:shrink-0" />
         </div>
       </div>
     </section>
@@ -365,36 +329,3 @@ function ProofRow() {
   )
 }
 
-/** Carte schématique du Var : repère visuel de l'amplitude de la zone, pas
- *  un fond cartographique exact. Tracé inline pour éviter toute requête
- *  externe et rester net à toutes les tailles. */
-function VarMap() {
-  return (
-    <div className="relative min-w-0">
-      <svg viewBox="0 0 200 150" className="h-auto w-full" role="img" aria-label="Carte schématique de la zone d'intervention de PCE dans le Var">
-        <path
-          d="M18 44 L40 20 L78 10 L120 14 L158 30 L186 52 L178 86 L150 112 L112 132 L74 128 L44 104 L22 74 Z"
-          className="fill-navy-100"
-        />
-        {MAP_POINTS.map((p) => (
-          <g key={p.name}>
-            <circle cx={(p.x / 100) * 200} cy={(p.y / 100) * 150} r="2.6" className="fill-azure-500" />
-            <text
-              x={(p.x / 100) * 200 + 5}
-              y={(p.y / 100) * 150 + 2.5}
-              className="fill-navy-500 text-[6px]"
-            >
-              {p.name}
-            </text>
-          </g>
-        ))}
-        {/* Lorgues, siège de l'entreprise */}
-        <circle cx="88" cy="86" r="5" className="fill-azure-500/25" />
-        <circle cx="88" cy="86" r="2.8" className="fill-navy-800" />
-        <text x="88" y="100" textAnchor="middle" className="fill-navy-800 text-[8px] font-bold">
-          Lorgues
-        </text>
-      </svg>
-    </div>
-  )
-}
