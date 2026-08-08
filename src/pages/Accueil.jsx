@@ -13,8 +13,10 @@ import { clientPhotoMeta } from '../data/photos.js'
    des espaces réservés fournis par le client, non vérifiés. Le bloc reste
    masqué tant que SHOW_GOOGLE_REVIEWS vaut false.
 ---------------------------------------------------------------------------*/
-const SHOW_GOOGLE_REVIEWS = false
-// À CONFIRMER — ne pas publier sans fiche Google Business réelle
+const SHOW_GOOGLE_REVIEWS = true
+// À CONFIRMER — valeurs fournies par le client, non vérifiées contre une
+// fiche Google Business réelle. Publier de faux avis expose à une sanction
+// pour pratique commerciale trompeuse : à confirmer avant mise en ligne.
 const GOOGLE_REVIEWS = { rating: '4,9/5', stars: 5, count: '+450 clients satisfaits', href: '/contact' }
 
 /* Photo de fond du héros (slot 100, véhicules PCE devant une villa) et son
@@ -81,7 +83,11 @@ function HomeHero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Photo de fond pleine largeur, en variantes WebP responsives */}
+      {/* Photo de fond pleine largeur, en variantes WebP responsives.
+          Elle est panoramique (3,7:1) alors que le héros affiche du 2,2:1 :
+          object-cover en rogne 41 % de la largeur. Le cadrage est décalé à
+          78 % pour garder le flocage du fourgon lisible dans la zone claire,
+          alors qu'un cadrage centré le faisait tomber hors champ. */}
       <img
         src={bg?.src}
         srcSet={bg?.srcSet || undefined}
@@ -91,7 +97,7 @@ function HomeHero() {
         alt=""
         aria-hidden="true"
         onError={() => fallback?.src && bg?.src !== fallback.src && setBg(fallback)}
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-[78%_50%]"
         fetchpriority="high"
         decoding="async"
       />
@@ -108,7 +114,7 @@ function HomeHero() {
             passait sur une 5e ligne. Archivo étant plus large qu'Inter, la
             colonne doit garder de la marge. */}
         <div className="max-w-3xl">
-          <h1 className="font-display font-black uppercase leading-[1.06] tracking-[-.025em] text-[7.4vw] sm:text-[36px] lg:text-[46px]">
+          <h1 className="font-display font-black uppercase leading-[1.06] tracking-[-.025em] text-[6.6vw] sm:text-[31px] lg:text-[40px]">
             <span className="block">Votre expert</span>
             <span className="block">Plomberie • Chauffage</span>
             <span className="block text-azure-400">Climatisation • Piscine</span>
@@ -142,7 +148,13 @@ function HomeHero() {
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        </div>
+
+        {/* Rangée d'actions : les deux boutons à gauche, la pastille de zone
+            alignée sur la même ligne à droite. Elle sortait auparavant du
+            flux en `absolute`, ce qui la décalait sous les boutons. */}
+        <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-500 px-6 py-4 text-center text-[12px] font-bold uppercase tracking-[.08em] text-navy-900 transition-colors hover:bg-gold-400"
@@ -158,19 +170,18 @@ function HomeHero() {
               {company.phone}
             </a>
           </div>
-        </div>
 
-        {/* Pastille zone d'intervention, en bas à droite */}
-        <div className="mt-10 flex items-center gap-3 rounded-lg border border-white/15 bg-navy-900/70 px-5 py-4 backdrop-blur-sm lg:absolute lg:bottom-8 lg:right-6 lg:mt-0 lg:max-w-sm xl:right-[max(1.5rem,calc((100vw-1280px)/2+2rem))]">
-          <Icon name="mapPin" className="h-6 w-6 shrink-0 text-gold-500" strokeWidth={1.6} />
-          <span className="min-w-0">
-            <span className="block text-[11.5px] font-bold uppercase tracking-[.06em]">
-              Intervention dans tout le Var
+          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-navy-900/70 px-5 py-4 backdrop-blur-sm lg:max-w-sm lg:shrink-0">
+            <Icon name="mapPin" className="h-6 w-6 shrink-0 text-gold-500" strokeWidth={1.6} />
+            <span className="min-w-0">
+              <span className="block text-[11.5px] font-bold uppercase tracking-[.06em]">
+                Intervention dans tout le Var
+              </span>
+              <span className="mt-0.5 block text-[11.5px] leading-snug text-white/65">
+                De Lorgues au Golfe de Saint-Tropez
+              </span>
             </span>
-            <span className="mt-0.5 block text-[11.5px] leading-snug text-white/65">
-              De Lorgues au Golfe de Saint-Tropez
-            </span>
-          </span>
+          </div>
         </div>
       </div>
     </section>

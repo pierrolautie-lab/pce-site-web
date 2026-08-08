@@ -11,8 +11,8 @@ export const imageManifest = {
     ]
   },
   "accueil-hero-vehicules.jpg": {
-    "width": 1264,
-    "height": 843,
+    "width": 2472,
+    "height": 672,
     "widths": [
       400,
       800,
