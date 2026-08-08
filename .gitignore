@@ -5,6 +5,7 @@ dist/
 # Fichiers locaux / environnement
 .DS_Store
 *.local
+deploy_log.txt
 
 # Matériel brut non versionné (code source du site uniquement) :
 # - photos/       : photos brutes du client (originaux non recadrés, non triés)
