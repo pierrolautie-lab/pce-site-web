@@ -38,7 +38,7 @@ export const company = {
   ],
   areas: ['Lorgues', 'Dracénie', 'Golfe de Saint-Tropez'],
   /* Qualifications relevées sur le véhicule de l'entreprise */
-  certifications: ['Qualigaz', 'Qualipac', 'Garantie décennale', 'Assurance RC Pro'],
+  certifications: ['Certifié Qualigaz', 'Certifié Qualipac', 'Garantie décennale', 'Assurance RC Pro'],
 }
 
 /* ----------------------------------------------------------- Informations légales --
@@ -148,6 +148,8 @@ export const guarantees = [
   { icon: 'award', label: 'Travail soigné et durable' },
   { icon: 'fileText', label: 'Devis gratuit et personnalisé' },
   { icon: 'headset', label: 'Service après-vente à votre écoute' },
+  { icon: 'shieldCheck', label: 'Certifié Qualigaz' },
+  { icon: 'shieldCheck', label: 'Certifié Qualipac' },
 ]
 
 /* ------------------------------------------------------------ TVA 5,5 % --*/

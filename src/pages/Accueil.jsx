@@ -3,7 +3,7 @@ import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
-import { CtaSection, GuaranteeBar, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
+import { CtaSection, GuaranteeBar, TrustBadges, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
 import {
   areasDetail,
@@ -183,6 +183,8 @@ export default function Accueil() {
           </div>
         </div>
       </section>
+
+      <TrustBadges />
 
       {/* ================================== QUI SOMMES-NOUS (rédactionnel) = */}
       <section className="section bg-navy-50">

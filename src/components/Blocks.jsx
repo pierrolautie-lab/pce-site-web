@@ -345,7 +345,7 @@ export function GuaranteeBar() {
   return (
     <section className="border-t border-navy-100 bg-white py-10 sm:py-12">
       <div className="container-pce">
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
           {guarantees.map((g) => (
             <div key={g.label} className="flex items-center gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
