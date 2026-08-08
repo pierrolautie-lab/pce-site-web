@@ -168,6 +168,11 @@ export const clientPhotos = {
   970: '/img/apropos-hero-chaufferie.jpg',
   971: '/img/apropos-ancienne-tuyauterie.jpg',
 
+  /* --- Accueil, cartes de zones --- */
+  950: '/img/zone-lorgues.jpg',
+  951: '/img/zone-dracenie.jpg',
+  952: '/img/zone-golfe-saint-tropez.jpg',
+
   /* --- Pages sous-expertise (longue traîne), src/data/expertise.js --- */
   701: '/img/chauffage-hero-chaufferie.jpg', // installation-pompe-a-chaleur-var
   702: '/img/climatisation-hero-split.jpg', // installation-climatisation-reversible-var

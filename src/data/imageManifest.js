@@ -346,5 +346,26 @@ export const imageManifest = {
       800,
       1200
     ]
+  },
+  "zone-dracenie.jpg": {
+    "width": 321,
+    "height": 220,
+    "widths": [
+      321
+    ]
+  },
+  "zone-golfe-saint-tropez.jpg": {
+    "width": 412,
+    "height": 220,
+    "widths": [
+      400
+    ]
+  },
+  "zone-lorgues.jpg": {
+    "width": 333,
+    "height": 220,
+    "widths": [
+      333
+    ]
   }
 }

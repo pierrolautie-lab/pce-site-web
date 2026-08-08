@@ -23,7 +23,7 @@ const QUALITY = 80
 // d'image OG/Twitter à une URL fixe référencée telle quelle dans index.html ;
 // le .png (fond transparent) est affiché directement par Brand.jsx, hors du
 // composant Photo — aucun des deux n'a besoin de variantes WebP.
-const SKIP = new Set(['logo-pce-officiel.jpg', 'logo-pce-officiel.png'])
+const SKIP = new Set(['logo-pce-officiel.jpg', 'logo-pce-officiel.png', 'qr-reseaux-sociaux.png'])
 
 const files = readdirSync(imgDir).filter(
   (f) => /\.(jpe?g|png)$/i.test(f) && !SKIP.has(f)
