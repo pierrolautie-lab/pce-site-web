@@ -257,7 +257,7 @@ export const articles = {
     title: 'Comment fonctionne une pompe à chaleur ?',
     metaDescription:
       "Comment fonctionne une pompe à chaleur air/air ou air/eau : cycle frigorifique, COP et rendement. Les explications de PCE, installateur Qualipac dans le Var.",
-    photo: { tags: 'heating', lock: 901 },
+    photo: { tags: 'heating', lock: 1101 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
     intro: [
@@ -297,7 +297,7 @@ export const articles = {
     title: 'Combien consomme une pompe à chaleur ?',
     metaDescription:
       "Combien consomme une pompe à chaleur air/eau ou air/air : COP, facteurs qui influencent la facture et ordres de grandeur. Les repères de PCE dans le Var.",
-    photo: { tags: 'heating', lock: 902 },
+    photo: { tags: 'heating', lock: 1102 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
     intro: [
@@ -336,7 +336,7 @@ export const articles = {
     title: 'Pompe à chaleur ou chaudière gaz : que choisir ?',
     metaDescription:
       "Pompe à chaleur ou chaudière à gaz : comparatif coût, aides financières et confort. Les conseils neutres de PCE, installateur des deux solutions dans le Var.",
-    photo: { tags: 'heating', lock: 903 },
+    photo: { tags: 'heating', lock: 1103 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
     intro: [
@@ -375,7 +375,7 @@ export const articles = {
     title: 'Quelle climatisation choisir pour sa maison dans le Var ?',
     metaDescription:
       "Quelle climatisation choisir dans le Var : monosplit, multisplit ou gainable selon votre logement. Les conseils de PCE, installateur climatisation certifié.",
-    photo: { tags: 'aircon', lock: 904 },
+    photo: { tags: 'aircon', lock: 1104 },
     relatedExpertise: 'installation-climatisation-reversible-var',
     relatedService: '/climatisation',
     intro: [
@@ -415,7 +415,7 @@ export const articles = {
     title: 'Climatisation gainable ou split : quelles différences ?',
     metaDescription:
       "Climatisation gainable ou split : discrétion, coût, faisabilité. Le comparatif de PCE pour bien choisir votre installation dans le Var.",
-    photo: { tags: 'aircon', lock: 905 },
+    photo: { tags: 'aircon', lock: 1105 },
     relatedExpertise: 'installation-climatisation-reversible-var',
     relatedService: '/climatisation',
     intro: [
@@ -454,7 +454,7 @@ export const articles = {
     title: "Adoucisseur d'eau : avantages et inconvénients",
     metaDescription:
       "Adoucisseur d'eau : les vrais avantages (protection des équipements, confort) et les points de vigilance. L'avis neutre de PCE, installateur Pentair Foleo.",
-    photo: { tags: 'water-softener', lock: 906 },
+    photo: { tags: 'water-softener', lock: 1106 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau/adoucisseur',
     intro: [
@@ -493,7 +493,7 @@ export const articles = {
     title: 'Comment savoir si son eau est calcaire ?',
     metaDescription:
       "Comment savoir si son eau est calcaire : signes visibles, test de dureté et seuils à connaître. Les repères de PCE, spécialiste du traitement de l'eau dans le Var.",
-    photo: { tags: 'water-softener', lock: 907 },
+    photo: { tags: 'water-softener', lock: 1107 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
@@ -532,7 +532,7 @@ export const articles = {
     title: "Peut-on boire l'eau d'un adoucisseur ?",
     metaDescription:
       "Peut-on boire l'eau adoucie : teneur en sodium, précautions et bonnes pratiques. Les explications de PCE, installateur d'adoucisseurs dans le Var.",
-    photo: { tags: 'water-softener', lock: 908 },
+    photo: { tags: 'water-softener', lock: 1108 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau/adoucisseur',
     intro: [
@@ -571,7 +571,7 @@ export const articles = {
     title: "Comment filtrer l'eau d'un forage ?",
     metaDescription:
       "Comment filtrer l'eau d'un forage : particules, fer, dureté et désinfection. La méthode de PCE pour une eau de forage saine dans le Var.",
-    photo: { tags: 'water-softener', lock: 909 },
+    photo: { tags: 'water-softener', lock: 1109 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
@@ -610,7 +610,7 @@ export const articles = {
     title: "À quoi sert le traitement UV de l'eau ?",
     metaDescription:
       "Traitement UV de l'eau : principe, efficacité et cas d'usage. Les explications de PCE sur cette désinfection sans produit chimique, installée dans le Var.",
-    photo: { tags: 'water-softener', lock: 910 },
+    photo: { tags: 'water-softener', lock: 1110 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
@@ -649,7 +649,7 @@ export const articles = {
     title: 'Filtration au charbon actif : que filtre-t-elle exactement ?',
     metaDescription:
       "Charbon actif : chlore, pesticides, goûts et odeurs de l'eau. Ce que filtre réellement cette technologie, expliqué par PCE dans le Var.",
-    photo: { tags: 'water-softener', lock: 911 },
+    photo: { tags: 'water-softener', lock: 1111 },
     relatedExpertise: 'adoucisseur-eau-var',
     relatedService: '/traitement-de-l-eau',
     intro: [
@@ -688,7 +688,7 @@ export const articles = {
     title: 'Pourquoi passer sa piscine au sel ?',
     metaDescription:
       "Pourquoi choisir une piscine au sel : confort, économies et fonctionnement de l'électrolyse. Les explications de PCE, pisciniste dans le Var.",
-    photo: { tags: 'pool', lock: 912 },
+    photo: { tags: 'pool', lock: 1112 },
     relatedExpertise: 'entretien-piscine-var',
     relatedService: '/piscine',
     intro: [
@@ -727,7 +727,7 @@ export const articles = {
     title: 'Pompe de piscine à vitesse variable : quels avantages ?',
     metaDescription:
       "Pompe à vitesse variable pour piscine : économies d'électricité, silence et longévité. Les avantages détaillés par PCE, pisciniste dans le Var.",
-    photo: { tags: 'pool', lock: 913 },
+    photo: { tags: 'pool', lock: 1113 },
     relatedExpertise: 'entretien-piscine-var',
     relatedService: '/piscine',
     intro: [
@@ -766,7 +766,7 @@ export const articles = {
     title: 'Pourquoi le pH d’une piscine varie-t-il sans arrêt ?',
     metaDescription:
       "Pourquoi le pH d'une piscine bouge : température, pluie, baigneurs et traitement. Les explications de PCE pour stabiliser durablement votre bassin.",
-    photo: { tags: 'pool', lock: 914 },
+    photo: { tags: 'pool', lock: 1114 },
     relatedExpertise: 'entretien-piscine-var',
     relatedService: '/piscine',
     intro: [
@@ -805,7 +805,7 @@ export const articles = {
     title: "À quoi sert le redox dans le traitement d'une piscine ?",
     metaDescription:
       "Le redox (ORP) en piscine : ce qu'il mesure, pourquoi il est plus fiable que le taux de chlore seul. Les explications de PCE, pisciniste dans le Var.",
-    photo: { tags: 'pool', lock: 915 },
+    photo: { tags: 'pool', lock: 1115 },
     relatedExpertise: 'entretien-piscine-var',
     relatedService: '/piscine',
     intro: [

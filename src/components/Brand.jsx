@@ -4,17 +4,19 @@ import { company } from '../data/site.js'
 /* -------------------------------------------------------------------------
    Identité PCE — UNE SEULE version du logo pour tout le site.
 
-   Vrai logo du client (public/img/logo-pce-officiel.jpg) : ovale chromé cerclé de
-   bleu clair, « PCE » en capitales marine — détourage officiel fourni par
-   le client, aplati sur fond blanc et réencodé en JPEG.
-   (Le PNG à fond transparent d'origine était pourtant valide, mais
-   provoquait une erreur "Invalid source image" sur le CDN de Hostinger,
-   quel que soit l'encodeur PNG utilisé pour le réenregistrer — seul le
-   passage en JPEG a résolu le blocage.)
+   Vrai logo du client : ovale chromé cerclé de bleu clair, « PCE » en
+   capitales marine. Affiché en PNG à fond transparent
+   (public/img/logo-pce-officiel.png) — sans conteneur, cadre ni fond
+   additionnel en CSS, y compris dans les sections à fond marine du site.
 
-   Le fichier gère déjà son propre fond : posée telle quelle, sans aucun
-   conteneur, cadre ni fond additionnel en CSS (demande explicite du
-   client), y compris dans les sections à fond marine du site.
+   ⚠️ Historique CDN : un PNG transparent avait déjà été tenté ici par le
+   passé et provoquait une erreur "Invalid source image" sur le CDN de
+   Hostinger (cause jamais identifiée avec certitude), ce qui avait motivé
+   un repli temporaire sur un JPEG aplati sur fond blanc — d'où le
+   rectangle blanc visible autour du logo que ce PNG corrige. Le fichier
+   JPEG (logo-pce-officiel.jpg) reste présent dans public/img/ comme filet
+   de sécurité : si ce PNG échoue à nouveau sur le CDN, il suffit de
+   remettre l'extension .jpg ci-dessous pour revenir à l'état précédent.
 
    ⚠️ Ne pas créer de variante. Toute évolution du logo se fait ICI, dans
    <Medallion />, pour rester cohérent partout (en-tête, pied de page,
@@ -35,7 +37,7 @@ const SIZES = {
 function Medallion({ className = '' }) {
   return (
     <img
-      src="/img/logo-pce-officiel.jpg"
+      src="/img/logo-pce-officiel.png"
       alt={`${company.name} — ${company.baselineShort}`}
       className={`object-contain ${className}`}
     />

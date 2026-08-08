@@ -80,28 +80,11 @@ export const legal = {
 }
 
 /* ---------------------------------------------------------------- Photos --
-   Photo d'illustration générique, utilisée UNIQUEMENT tant qu'aucune vraie
-   photo client n'est encore assignée pour un emplacement (voir
-   `clientPhoto()` dans src/data/photos.js, qui a toujours priorité).
-   `lock` fige un rendu identique d'un chargement à l'autre.
-
-   ⚠️ Ne jamais utiliser un service qui choisit la photo par mot-clé
-   (type loremflickr) : cela revient à afficher en direct une photo prise
-   au hasard sur Internet sans aucun contrôle sur son contenu — un
-   emplacement resté sans vraie photo a ainsi affiché une image
-   inappropriée sur la page Piscine (slot 740, tag "pool"). picsum.photos
-   renvoie une image générique par graine (paysage/texture), sans lien
-   avec le mot-clé, donc sans ce risque.
-
-   Pour passer sur vos propres visuels : renseignez le slot dans
-   src/data/photos.js — pas besoin de toucher à ce fichier.
----------------------------------------------------------------------------*/
-export const photo = (tags, lock, w = 1200, h = 900) =>
-  `https://picsum.photos/seed/pce${lock}/${w}/${h}`
-
-/** Repli si la source ci-dessus ne répond pas (voir composant <Photo />). */
-export const photoFallback = (lock, w = 1200, h = 900) =>
-  `https://picsum.photos/seed/pcefallback${lock}/${w}/${h}`
+   Il n'existe plus aucun générateur d'image externe dans ce projet : tout
+   emplacement photo doit être assigné à une vraie photo du client dans
+   src/data/photos.js (`clientPhotos`). Si un emplacement est un jour
+   utilisé sans y être assigné, le composant <Photo /> (src/components/
+   Photo.jsx) affiche le logo PCE local — jamais une image tierce.
 
 /* ------------------------------------------------------------ Navigation -*/
 export const trades = [
@@ -131,12 +114,12 @@ export const nav = [
 
 /* Section « Pourquoi choisir PCE ? » de la page d'accueil. */
 export const whyChooseUs = [
-  { icon: 'award', title: "20 ans d'expérience", text: 'Une équipe qui connaît le bâti, l’eau et le climat du Var depuis 2005.' },
-  { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, rarement à plus de quarante minutes de chez vous.' },
-  { icon: 'clipboard', title: 'Devis gratuit', text: 'Détaillé poste par poste, sans engagement et sans surprise à la fin.' },
-  { icon: 'truck', title: 'Intervention rapide', text: 'Un créneau annoncé dès votre appel, y compris pour les urgences 7j/7.' },
-  { icon: 'wrench', title: 'Matériel professionnel', text: 'Des marques reconnues, choisies pour durer et rester réparables.' },
-  { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Garantie décennale et assurance RC Pro sur chaque chantier livré.' },
+  { icon: 'award', title: "20 ans d'expérience", text: 'Depuis 2005, PCE intervient à Lorgues et dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
+  { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, nous intervenons rapidement dans toute la Dracénie et le Golfe de Saint-Tropez.' },
+  { icon: 'clipboard', title: 'Devis gratuit', text: 'Étude personnalisée et devis détaillé, sans engagement.' },
+  { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans un rayon de 50 km autour de Lorgues.' },
+  { icon: 'wrench', title: 'Matériel professionnel', text: 'Nous travaillons avec des marques reconnues pour garantir la qualité et la durabilité de nos installations.' },
+  { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Tous nos chantiers sont couverts par la garantie décennale et nos certifications Qualigaz et Qualipac.' },
 ]
 
 /* Bandeau de réassurance affiché sous chaque héros. */

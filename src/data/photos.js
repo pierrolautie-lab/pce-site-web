@@ -72,6 +72,40 @@ export const PHOTO_SLOTS = {
   /* --- À propos ------------------------------------------------------ */
   970: { page: 'À propos', zone: 'Hero', sujet: "Équipe / atelier PCE" },
   971: { page: 'À propos', zone: 'Histoire', sujet: 'Lorgues, le village' },
+
+  /* --- Pages sous-expertise (10) --------------------------------------- */
+  701: { page: 'Sous-expertise', zone: 'Pompe à chaleur', sujet: 'Chaufferie' },
+  702: { page: 'Sous-expertise', zone: 'Climatisation réversible', sujet: 'Split mural' },
+  703: { page: 'Sous-expertise', zone: 'Rénovation salle de bain', sujet: 'Carrelage, sanitaire' },
+  704: { page: 'Sous-expertise', zone: 'Dépannage plomberie', sujet: 'Canalisation' },
+  705: { page: 'Sous-expertise', zone: 'Chauffe-eau thermodynamique', sujet: 'Chauffe-eau Fleck' },
+  706: { page: 'Sous-expertise', zone: 'Mise aux normes électriques', sujet: 'Tableau électrique' },
+  707: { page: 'Sous-expertise', zone: 'Borne de recharge', sujet: 'Borne murale' },
+  708: { page: 'Sous-expertise', zone: 'Entretien piscine', sujet: 'Bassin' },
+  709: { page: 'Sous-expertise', zone: 'Adoucisseur', sujet: 'Pentair Foleo' },
+  710: { page: 'Sous-expertise', zone: 'Plancher chauffant', sujet: 'Plancher chauffant' },
+
+  /* --- Articles de conseils (20) ---------------------------------------- */
+  801: { page: 'Conseils', zone: 'Article', sujet: 'Choisir sa pompe à chaleur' },
+  802: { page: 'Conseils', zone: 'Article', sujet: 'Entretien climatisation' },
+  803: { page: 'Conseils', zone: 'Article', sujet: "Adoucisseur d'eau" },
+  804: { page: 'Conseils', zone: 'Article', sujet: 'Tableau électrique' },
+  805: { page: 'Conseils', zone: 'Article', sujet: 'Piscine — été' },
+  1101: { page: 'Conseils', zone: 'Article', sujet: 'Fonctionnement PAC' },
+  1102: { page: 'Conseils', zone: 'Article', sujet: 'Consommation PAC' },
+  1103: { page: 'Conseils', zone: 'Article', sujet: 'PAC ou chaudière gaz' },
+  1104: { page: 'Conseils', zone: 'Article', sujet: 'Choisir sa climatisation' },
+  1105: { page: 'Conseils', zone: 'Article', sujet: 'Gainable ou split' },
+  1106: { page: 'Conseils', zone: 'Article', sujet: 'Avantages adoucisseur' },
+  1107: { page: 'Conseils', zone: 'Article', sujet: 'Eau calcaire' },
+  1108: { page: 'Conseils', zone: 'Article', sujet: 'Eau adoucie et boisson' },
+  1109: { page: 'Conseils', zone: 'Article', sujet: 'Filtration eau de forage' },
+  1110: { page: 'Conseils', zone: 'Article', sujet: 'Traitement UV' },
+  1111: { page: 'Conseils', zone: 'Article', sujet: 'Charbon actif' },
+  1112: { page: 'Conseils', zone: 'Article', sujet: 'Piscine au sel' },
+  1113: { page: 'Conseils', zone: 'Article', sujet: 'Pompe à vitesse variable' },
+  1114: { page: 'Conseils', zone: 'Article', sujet: 'pH piscine' },
+  1115: { page: 'Conseils', zone: 'Article', sujet: 'Redox piscine' },
 }
 
 /**
@@ -133,6 +167,42 @@ export const clientPhotos = {
   /* --- À propos --- */
   970: '/img/apropos-hero-chaufferie.jpg',
   971: '/img/apropos-ancienne-tuyauterie.jpg',
+
+  /* --- Pages sous-expertise (longue traîne), src/data/expertise.js --- */
+  701: '/img/chauffage-hero-chaufferie.jpg', // installation-pompe-a-chaleur-var
+  702: '/img/climatisation-hero-split.jpg', // installation-climatisation-reversible-var
+  703: '/img/real-sdb-carrelage-motifs.jpg', // renovation-salle-de-bain-var
+  704: '/img/real-canalisation-obstruee.jpg', // depannage-plomberie-urgence-var
+  705: '/img/real-chauffe-eau-fleck.jpg', // installation-chauffe-eau-thermodynamique-var
+  706: '/img/electricite-galerie-tableau-fini.jpg', // mise-aux-normes-electriques-var
+  707: '/img/electricite-borne-recharge-1.jpg', // installation-borne-recharge-vehicule-electrique-var
+  708: '/img/piscine-hero-bassin.jpg', // entretien-piscine-var
+  709: '/img/traitement-eau-pentair-foleo.jpg', // adoucisseur-eau-var
+  710: '/img/real-plancher-chauffant.jpg', // plancher-chauffant-var
+
+  /* --- Articles de conseils (5 historiques), src/data/articles.js --- */
+  801: '/img/apropos-hero-chaufferie.jpg', // comment-choisir-pompe-a-chaleur
+  802: '/img/climatisation-groupe-exterieur.jpg', // entretien-climatisation-quand-et-pourquoi
+  803: '/img/traitement-eau-reseau-cuivre.jpg', // pourquoi-installer-adoucisseur-eau-var
+  804: '/img/electricite-galerie-tableau-cablage.jpg', // quand-refaire-tableau-electrique
+  805: '/img/piscine-hero-bassin.jpg', // preparer-piscine-pour-ete
+
+  /* --- Articles de conseils (15 supplémentaires), src/data/articles.js --- */
+  1101: '/img/chauffage-hero-chaufferie.jpg', // comment-fonctionne-pompe-a-chaleur
+  1102: '/img/chauffage-chaudiere-neuve.jpg', // combien-consomme-pompe-a-chaleur
+  1103: '/img/real-local-chaudiere-ballon.jpg', // pompe-a-chaleur-ou-chaudiere-gaz
+  1104: '/img/climatisation-hero-split.jpg', // quelle-climatisation-choisir-maison-var
+  1105: '/img/climatisation-expertise-gaines-combles.jpg', // climatisation-gainable-ou-split
+  1106: '/img/traitement-eau-pentair-foleo.jpg', // avantages-inconvenients-adoucisseur
+  1107: '/img/traitement-eau-reseau-cuivre.jpg', // comment-savoir-eau-calcaire
+  1108: '/img/traitement-eau-pentair-foleo.jpg', // peut-on-boire-eau-adoucisseur
+  1109: '/img/traitement-eau-reseau-cuivre.jpg', // comment-filtrer-eau-forage
+  1110: '/img/traitement-eau-reseau-cuivre.jpg', // a-quoi-sert-traitement-uv
+  1111: '/img/traitement-eau-pentair-foleo.jpg', // charbon-actif-que-filtre-t-il
+  1112: '/img/piscine-hero-bassin.jpg', // pourquoi-piscine-au-sel
+  1113: '/img/piscine-hero-bassin.jpg', // pompe-piscine-vitesse-variable-avantages
+  1114: '/img/piscine-hero-bassin.jpg', // pourquoi-ph-piscine-varie
+  1115: '/img/piscine-hero-bassin.jpg', // a-quoi-sert-le-redox
 
   /* --- Nouveaux chantiers Électricité / Climatisation / bornes --- */
   910: '/img/electricite-galerie-tableau-cablage.jpg',

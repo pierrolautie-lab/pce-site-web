@@ -19,10 +19,11 @@ const imgDir = resolve(__dirname, '../public/img')
 const WIDTHS = [400, 800, 1200]
 const QUALITY = 80
 
-// Le logo n'est volontairement pas traité ici : il sert aussi de favicon et
-// d'image OG/Twitter à des URLs fixes en .jpg, référencées telles quelles
-// dans index.html.
-const SKIP = new Set(['logo-pce-officiel.jpg'])
+// Le logo n'est volontairement pas traité ici : le .jpg sert de favicon et
+// d'image OG/Twitter à une URL fixe référencée telle quelle dans index.html ;
+// le .png (fond transparent) est affiché directement par Brand.jsx, hors du
+// composant Photo — aucun des deux n'a besoin de variantes WebP.
+const SKIP = new Set(['logo-pce-officiel.jpg', 'logo-pce-officiel.png'])
 
 const files = readdirSync(imgDir).filter(
   (f) => /\.(jpe?g|png)$/i.test(f) && !SKIP.has(f)

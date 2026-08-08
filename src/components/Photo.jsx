@@ -1,6 +1,9 @@
-import { useRef, useState } from 'react'
-import { photo, photoFallback } from '../data/site.js'
+import { useState } from 'react'
 import { clientPhotoMeta } from '../data/photos.js'
+
+/** Repli local si un emplacement photo n'a pas (encore) de vraie photo
+ *  assignée dans src/data/photos.js — jamais une image ou un service tiers. */
+const LOGO_FALLBACK = '/img/logo-pce-officiel.jpg'
 
 /**
  * Photographie du site.
@@ -8,20 +11,16 @@ import { clientPhotoMeta } from '../data/photos.js'
  * Ordre de priorité de la source :
  *   1. la vraie photo du client (WebP responsive, `srcset` 400/800/1200px),
  *      si le slot (`lock`) est renseigné dans src/data/photos.js ;
- *   2. la photo d'illustration par mot-clé ;
- *   3. un service de repli, si la source précédente renvoie une erreur.
+ *   2. le logo PCE local, si aucune photo n'est assignée à ce slot.
  *
  * Un aplat animé occupe la place pendant le chargement, ce qui évite tout
- * décalage de mise en page. Le repli est déclenché par l'événement `error`
- * de l'image — et non par une minuterie, qui se déclencherait à tort sur les
- * images en chargement différé situées loin sous la ligne de flottaison.
+ * décalage de mise en page.
  *
  * `sizes` doit refléter la largeur réelle d'affichage de l'image dans sa
  * mise en page (ex. un tiers de la largeur d'écran dans une grille à 3
  * colonnes) pour que le navigateur choisisse la bonne variante du `srcset`.
  */
 export default function Photo({
-  tags,
   lock,
   alt,
   w = 1200,
@@ -34,18 +33,13 @@ export default function Photo({
 }) {
   const real = clientPhotoMeta(lock)
 
-  const [src, setSrc] = useState(real?.src || photo(tags, lock, w, h))
+  const [src, setSrc] = useState(real?.src || LOGO_FALLBACK)
   const [loaded, setLoaded] = useState(false)
-  const stage = useRef(real ? 'client' : 'primary')
 
-  /* Chaque échec fait descendre d'un cran dans la liste des sources. */
+  /* Le repli est déjà local : plus rien à tenter en cas d'échec. */
   const handleError = () => {
-    if (stage.current === 'fallback') {
-      setLoaded(true) // plus rien à tenter : on laisse l'aplat marine
-      return
-    }
-    stage.current = 'fallback'
-    setSrc(photoFallback(lock, w, h))
+    setSrc(LOGO_FALLBACK)
+    setLoaded(true)
   }
 
   const intrinsicWidth = real?.width || w
@@ -58,8 +52,8 @@ export default function Photo({
       )}
       <img
         src={src}
-        srcSet={stage.current === 'client' ? real?.srcSet : undefined}
-        sizes={stage.current === 'client' && real?.srcSet ? sizes : undefined}
+        srcSet={src === real?.src ? real?.srcSet : undefined}
+        sizes={src === real?.src && real?.srcSet ? sizes : undefined}
         width={intrinsicWidth}
         height={intrinsicHeight}
         alt={alt}
