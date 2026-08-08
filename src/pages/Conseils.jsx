@@ -1,114 +1,166 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
-import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
-import { conseils } from '../data/site.js'
+import { CtaSection, GuaranteeBar } from '../components/Blocks.jsx'
 import { articles, articleSlugs } from '../data/articles.js'
+import { CATEGORIES, categoryFor } from '../data/categories.js'
 
-/**
- * Page éducative générique sur les cinq métiers PCE, pensée pour répondre
- * aux questions les plus fréquentes avant le premier appel. Renvoie vers
- * les pages métier et vers les deux sous-pages approfondies.
- */
+/* Icône propre à chaque article, pour casser la répétition visuelle au
+   sein d'une même catégorie (sinon toutes les cartes « Piscine » par
+   exemple afficheraient la même icône). Repli sur l'icône de catégorie
+   si un slug n'est pas listé ici (nouveaux articles). */
+const ARTICLE_ICONS = {
+  'comment-choisir-pompe-a-chaleur': 'leaf',
+  'entretien-climatisation-quand-et-pourquoi': 'settings',
+  'pourquoi-installer-adoucisseur-eau-var': 'tank',
+  'quand-refaire-tableau-electrique': 'panel',
+  'preparer-piscine-pour-ete': 'sun',
+  'comment-fonctionne-pompe-a-chaleur': 'gauge',
+  'combien-consomme-pompe-a-chaleur': 'euro',
+  'pompe-a-chaleur-ou-chaudiere-gaz': 'flame',
+  'quelle-climatisation-choisir-maison-var': 'snowflake',
+  'climatisation-gainable-ou-split': 'layers',
+  'avantages-inconvenients-adoucisseur': 'shieldCheck',
+  'comment-savoir-eau-calcaire': 'search',
+  'peut-on-boire-eau-adoucisseur': 'droplet',
+  'comment-filtrer-eau-forage': 'filter',
+  'a-quoi-sert-traitement-uv': 'sparkles',
+  'charbon-actif-que-filtre-t-il': 'testTube',
+  'pourquoi-piscine-au-sel': 'salt',
+  'pompe-piscine-vitesse-variable-avantages': 'gauge',
+  'pourquoi-ph-piscine-varie': 'testTube',
+  'a-quoi-sert-le-redox': 'testTube',
+}
+
+/* Alterne 3 styles de carte (blanc / gris clair / navy) pour casser la
+   monotonie visuelle d'une grille par ailleurs homogène. */
+const CARD_STYLES = [
+  { bg: 'bg-white ring-1 ring-navy-100', title: 'text-navy-800', text: 'text-navy-500', link: 'text-azure-500' },
+  { bg: 'bg-navy-50 ring-1 ring-navy-100', title: 'text-navy-800', text: 'text-navy-500', link: 'text-azure-500' },
+  { bg: 'bg-navy-800', title: 'text-white', text: 'text-white/65', link: 'text-gold-400' },
+]
+
 export default function Conseils() {
+  const [active, setActive] = useState('tous')
+
+  const items = articleSlugs.map((slug) => ({ slug, ...articles[slug], category: categoryFor(articles[slug].relatedService) }))
+  const visible = active === 'tous' ? items : items.filter((a) => a.category.key === active)
+
   return (
     <>
       <Seo
         title="Conseils"
-        description="Conseils pratiques de PCE sur la plomberie, le chauffage, la climatisation, l'électricité et la piscine, tirés de vingt ans de chantiers dans le Var."
+        description="Conseils pratiques de PCE sur la plomberie, le chauffage, la climatisation, l'électricité, la piscine et le traitement de l'eau, tirés de vingt ans de chantiers dans le Var."
         path="/conseils"
       />
       <PageHero
         breadcrumb="Conseils"
-        title="Conseils"
-        subtitle="Cinq métiers, un premier repère avant d'appeler"
-        intro="Quelques points de vigilance simples, tirés de vingt ans de chantiers à Lorgues et dans la Dracénie. Ils ne remplacent pas un diagnostic sur place, mais permettent souvent de reconnaître un problème avant qu'il ne s'aggrave."
+        title="Nos conseils d'expert"
+        subtitle="Le savoir-faire PCE, expliqué simplement"
+        subtitleClassName="text-gold-400"
+        intro="Des repères concrets tirés de vingt ans de chantiers à Lorgues et dans la Dracénie, pour chacun de nos métiers. Filtrez par sujet ou parcourez tout, un article se lit en quelques minutes."
         photo={{ tags: 'tools', lock: 970, alt: 'Outillage PCE' }}
       />
 
-      <section className="section bg-white">
+      {/* ============================================= FILTRES PAR CATÉGORIE */}
+      <section className="border-b border-navy-100 bg-white py-6">
         <div className="container-pce">
-          <SectionTitle
-            title="Un repère par métier"
-            lead="Un point de vigilance concret pour chaque savoir-faire PCE."
-          />
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {conseils.map((c) => (
-              <div key={c.title} className="flex flex-col rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100">
-                <span className="grid h-12 w-12 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100">
-                  <Icon name={c.icon} className="h-5 w-5" strokeWidth={1.6} />
-                </span>
-                <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800">
-                  {c.title}
-                </h3>
-                <p className="mt-3 flex-1 text-[13.5px] leading-[1.75] text-navy-500">{c.tip}</p>
-                <Link
-                  to={c.to}
-                  className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500 transition-colors hover:text-azure-600"
-                >
-                  Voir la page {c.title.toLowerCase()}
-                  <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
-                </Link>
-              </div>
+          <div className="flex flex-wrap gap-2.5">
+            <button
+              type="button"
+              onClick={() => setActive('tous')}
+              className={`rounded-full px-4 py-2 text-[11.5px] font-bold uppercase tracking-[.08em] ring-1 transition-colors ${
+                active === 'tous'
+                  ? 'bg-navy-800 text-white ring-navy-800'
+                  : 'bg-white text-navy-600 ring-navy-200 hover:ring-navy-400'
+              }`}
+            >
+              Tous
+            </button>
+            {CATEGORIES.map((c) => (
+              <button
+                key={c.key}
+                type="button"
+                onClick={() => setActive(c.key)}
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11.5px] font-bold uppercase tracking-[.08em] ring-1 transition-colors ${
+                  active === c.key ? `${c.solid} text-white ring-transparent` : `${c.bg} ${c.text} ${c.ring} hover:brightness-95`
+                }`}
+              >
+                <Icon name={c.icon} className="h-3.5 w-3.5" strokeWidth={2.2} />
+                {c.label}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ---------------------------------------------------- Articles de fond */}
+      {/* ================================================== GRILLE D'ARTICLES */}
       <section className="section bg-navy-50">
         <div className="container-pce">
-          <SectionTitle
-            title="Nos derniers articles"
-            lead="Des dossiers plus complets pour préparer votre projet ou anticiper un entretien."
-          />
+          {visible.length === 0 ? (
+            <p className="text-center text-[14px] text-navy-500">Aucun article dans cette catégorie pour le moment.</p>
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {visible.map((a, i) => {
+                const style = CARD_STYLES[i % 3]
+                const icon = ARTICLE_ICONS[a.slug] || a.category.icon
+                return (
+                  <Link
+                    key={a.slug}
+                    to={`/conseils/${a.slug}`}
+                    className={`group flex flex-col rounded-2xl p-7 shadow-card transition-all duration-300 hover:-translate-y-1 ${style.bg}`}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span
+                        className={`grid h-12 w-12 place-items-center rounded-full ${
+                          style.title === 'text-white' ? 'bg-white/10 text-white' : `${a.category.bg} ${a.category.text}`
+                        }`}
+                      >
+                        <Icon name={icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
+                      </span>
+                      <span
+                        className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[.08em] ${
+                          style.title === 'text-white' ? 'bg-white/10 text-white/80' : `${a.category.bg} ${a.category.text}`
+                        }`}
+                      >
+                        {a.category.label}
+                      </span>
+                    </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {articleSlugs.map((slug) => {
-              const a = articles[slug]
-              return (
-                <Link
-                  key={slug}
-                  to={`/conseils/${slug}`}
-                  className="group flex flex-col rounded-2xl bg-white p-7 shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
-                >
-                  <h3 className="text-[14px] font-bold uppercase leading-snug tracking-[.05em] text-navy-800">
-                    {a.title}
-                  </h3>
-                  <p className="mt-3 flex-1 text-[13px] leading-[1.7] text-navy-500">
-                    {a.intro[0].slice(0, 120)}…
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500">
-                    Lire l'article
-                    <Icon
-                      name="arrowRight"
-                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                      strokeWidth={2.4}
-                    />
-                  </span>
-                </Link>
-              )
-            })}
-          </div>
+                    <h3 className={`mt-5 text-[14.5px] font-bold uppercase leading-snug tracking-[.03em] ${style.title}`}>
+                      {a.title}
+                    </h3>
+                    <p className={`mt-3 flex-1 text-[13px] leading-[1.7] ${style.text}`} style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      {a.intro[0]}
+                    </p>
+                    <span className={`mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] ${style.link}`}>
+                      Lire l'article
+                      <Icon name="arrowRight" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.4} />
+                    </span>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
         </div>
       </section>
 
       {/* ---------------------------------------------- Deux dossiers complets */}
-      <section className="section bg-navy-50">
+      <section className="section bg-white">
         <div className="container-pce">
-          <SectionTitle
-            title="Deux sujets approfondis"
-            lead="Pour aller plus loin sur deux équipements que nous posons très régulièrement."
-          />
+          <h2 className="section-title">Deux sujets approfondis</h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-[13.5px] leading-[1.7] text-navy-500">
+            Pour aller plus loin sur deux équipements que nous posons très régulièrement.
+          </p>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             <Link
               to="/traitement-de-l-eau/adoucisseur"
-              className="group flex flex-col rounded-2xl bg-white p-7 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
+              className="group flex flex-col rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-navy-50 text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                 <Icon name="filter" className="h-5 w-5" strokeWidth={1.6} />
               </span>
               <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
@@ -125,9 +177,9 @@ export default function Conseils() {
 
             <Link
               to="/chauffage/chaudiere-condensation"
-              className="group flex flex-col rounded-2xl bg-white p-7 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
+              className="group flex flex-col rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-navy-50 text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                 <Icon name="flame" className="h-5 w-5" strokeWidth={1.6} />
               </span>
               <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">

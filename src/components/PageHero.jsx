@@ -16,6 +16,7 @@ export default function PageHero({
   title,
   titleClassName = 'text-[10vw] md:text-6xl lg:text-[4.4rem]',
   subtitle,
+  subtitleClassName = 'text-azure-300',
   intro,
   photo,
   breadcrumb,
@@ -80,7 +81,7 @@ export default function PageHero({
               </h1>
 
               {subtitle && (
-                <p className="mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
+                <p className={`mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] sm:text-[24px] ${subtitleClassName}`}>
                   {subtitle}
                 </p>
               )}
