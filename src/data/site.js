@@ -709,11 +709,124 @@ export const services = {
       { icon: 'search', title: 'Analyse et conseil', label: 'Étude personnalisée de votre eau' },
     ],
 
-    benefits: [
-      { icon: 'droplet', title: 'Eau plus saine', label: 'Une qualité maîtrisée au quotidien' },
-      { icon: 'shieldCheck', title: 'Équipements protégés', label: 'Moins de pannes, moins d’usure' },
-      { icon: 'euro', title: 'Économies', label: 'Moins de dépôts, moins de produits' },
-      { icon: 'award', title: 'Expertise locale', label: 'Des solutions adaptées à l’eau du Var' },
+    /* Bandeau des 5 arguments sous le héros — bespoke à cette page, ne pas
+       confondre avec `reassurance` (bandeau générique du site). */
+    argBar: [
+      { icon: 'droplet', title: 'Eau plus saine', label: 'Améliorez la qualité de votre eau' },
+      { icon: 'shieldCheck', title: 'Protection des équipements', label: 'Préserve vos installations et électroménagers' },
+      { icon: 'leaf', title: 'Économies', label: 'Moins de calcaire, moins de consommation' },
+      { icon: 'checkCircle', title: 'Sécurité & confort', label: 'Une eau maîtrisée pour toute la famille' },
+      { icon: 'mapPin', title: 'Expertise locale', label: "Des solutions adaptées à l'eau du Var" },
+    ],
+
+    /* Les 6 cartes « Nos solutions de traitement de l'eau ». Le nom de
+       l'adoucisseur (ADOUCISSEUR_MODEL, à confirmer) est injecté par la
+       page — volontairement absent d'ici. `ctaTo` pointe vers /contact
+       partout : aucune sous-page dédiée n'existe pour ces sujets. */
+    solutions: [
+      {
+        key: 'adoucisseur',
+        title: "Adoucisseur d'eau",
+        bullets: [
+          'Protège vos canalisations et équipements',
+          'Prolonge la durée de vie de vos installations',
+          'Peau plus douce & cheveux plus souples',
+          "Moins de calcaire, moins d'entretien",
+          'Économies d’énergie & de consommation',
+        ],
+        ctaLabel: 'En savoir plus sur les adoucisseurs',
+        ctaTo: '/contact',
+        photo: 'eau-adoucisseur.jpg',
+        alt: "Adoucisseur d'eau installé par PCE",
+      },
+      {
+        key: 'filtration-sous-evier',
+        title: 'Filtration fine sous évier',
+        bullets: [
+          'Eau pure et saine pour la boisson',
+          'Filtration des impuretés, chlore, goût et odeurs',
+          'Cartouches haute performance',
+          'Compact, discret et efficace',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+        photo: 'eau-filtration-sous-evier.jpg',
+        alt: 'Filtration fine sous évier installée par PCE',
+      },
+      {
+        key: 'filtration-forage',
+        title: 'Filtration eau de forage',
+        bullets: [
+          'Élimine sable, boue, rouille et particules',
+          'Protège vos équipements et installations',
+          'Solutions adaptées à chaque forage',
+          'Installation sur mesure',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+        photo: 'eau-filtration-forage.jpg',
+        alt: "Filtration d'eau de forage installée par PCE",
+      },
+      {
+        key: 'charbon-actif',
+        title: 'Filtration à charbon actif pour toute la maison',
+        bullets: [
+          'Réduit le chlore, pesticides, mauvais goûts et odeurs',
+          'Améliore la qualité de l’eau dans toute la maison',
+          'Protège la peau, les cheveux et le linge',
+          'Cartouches charbon haute capacité',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+        photo: 'eau-charbon-actif.jpg',
+        alt: 'Filtration à charbon actif installée par PCE',
+      },
+      {
+        key: 'uv',
+        title: "Traitement UV — désinfection de l'eau",
+        /* Formulation à reprendre mot pour mot : le taux d'abattement dépend
+           du débit, de la turbidité et de l'entretien de l'appareil — jamais
+           d'allégation sanitaire inconditionnelle. */
+        bullets: [
+          "Réduction jusqu'à 99,9 % des bactéries, virus et micro-organismes, sur une installation correctement dimensionnée et entretenue",
+          'Sans produit chimique',
+          'Idéal pour forage, puits et eau de réseau',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+        photo: 'eau-traitement-uv.jpg',
+        alt: 'Traitement UV installé par PCE',
+      },
+      {
+        key: 'complet',
+        title: 'Filtration & traitement complet sur mesure',
+        bullets: [
+          'Étude personnalisée de votre eau',
+          'Solutions complètes et évolutives',
+          'Matériel de qualité professionnelle',
+          'Installation, entretien et suivi par nos experts',
+        ],
+        ctaLabel: 'Nous contacter',
+        ctaTo: '/contact',
+        photo: 'eau-installation-complete.jpg',
+        alt: 'Installation de traitement complet réalisée par PCE',
+      },
+    ],
+
+    whyTreat: {
+      heading: 'Pourquoi traiter votre eau ?',
+      paragraphs: [
+        'Le calcaire, le chlore, les pesticides et les impuretés peuvent avoir un impact sur votre santé, vos installations et votre confort au quotidien.',
+        'PCE vous accompagne pour une eau plus saine et plus économique.',
+      ],
+    },
+
+    treatedBenefits: [
+      { icon: 'droplet', title: 'Santé', label: 'Eau saine et sans impuretés' },
+      { icon: 'sparkles', title: 'Confort', label: 'Peau, cheveux, linge préservés' },
+      { icon: 'shieldCheck', title: 'Durabilité', label: 'Équipements et installations protégés' },
+      { icon: 'euro', title: 'Économies', label: 'Moins de produits, moins de dépenses' },
+      { icon: 'leaf', title: 'Écologie', label: 'Moins de produits chimiques' },
     ],
 
     expertise: {

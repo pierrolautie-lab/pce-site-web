@@ -1,75 +1,142 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand, Process } from '../components/Blocks.jsx'
-import { ServiceTwoColumn, ServiceFeatureCards } from '../components/ServiceBlocks.jsx'
+import { CtaBand } from '../components/Blocks.jsx'
+import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
-const HERO_HIGHLIGHTS = [
-  { icon: 'filter', title: 'Filtration', label: 'Fine & forage' },
-  { icon: 'testTube', title: 'Charbon actif', label: 'Chlore, pesticides, odeurs' },
-  { icon: 'sparkles', title: 'Traitement UV', label: 'Sans produit chimique' },
-  { icon: 'search', title: 'Analyse', label: "Étude de votre eau" },
-]
+// À CONFIRMER — référence fabricant à valider avant publication.
+const ADOUCISSEUR_MODEL = 'Panther Foleo'
 
-const SERVICES_CHECKLIST = [
-  'Filtration fine (eau de boisson)',
-  'Filtration de forage (sable, boue, rouille)',
-  'Charbon actif (chlore, pesticides, odeurs)',
-  'Traitement UV (désinfection sans produit chimique)',
-  "Analyse de la qualité de l'eau",
-  'Installation en tête de réseau',
-  'Entretien annuel et suivi',
-]
-
-const ANALYSE_CARD = {
-  title: 'Analyse de votre eau',
-  kicker: 'La première étape, toujours gratuite',
-  text: "Avant de proposer un traitement, nous mesurons le pH et recherchons la présence éventuelle de fer ou de particules dans votre eau, pour ne préconiser que ce qui est réellement utile.",
-  checklist: [
-    'Mesure du pH sur place',
-    'Détection de fer ou de particules',
-    'Préconisation adaptée à votre eau réelle',
-    'Devis gratuit et sans engagement',
-  ],
-  ctaLabel: 'Demander une analyse gratuite',
-  ctaTo: '/contact',
+/** Bandeau bespoke de 5 arguments, propre à cette page (pas `ReassuranceBar`). */
+function WaterArgsBar({ items }) {
+  return (
+    <section className="border-t border-white/10 bg-navy-900 text-white">
+      <div className="container-pce">
+        <ul className="grid grid-cols-1 divide-white/10 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:divide-x lg:py-8">
+          {items.map((a) => (
+            <li key={a.title} className="flex items-start gap-3 px-0 py-3 lg:px-4 lg:py-1">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 lg:h-10 lg:w-10">
+                <Icon name={a.icon} className="h-4 w-4 lg:h-[18px] lg:w-[18px]" strokeWidth={1.4} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-label font-bold uppercase leading-tight">{a.title}</span>
+                <span className="mt-1 block text-body-sm leading-snug text-white/50">{a.label}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
 }
 
-const INSTALLATION_STEPS = [
-  { title: "Étude de l'installation", text: "Relevé du local technique, du débit et de la configuration de votre arrivée d'eau." },
-  { title: "Analyse de l'eau", text: "Mesure du pH et détection d'éventuelles particules ou de fer avant toute préconisation." },
-  { title: 'Choix du traitement', text: 'Filtration, charbon actif ou UV : nous ne proposons que ce qui est réellement utile chez vous.' },
-  { title: 'Pose complète', text: 'Installation en tête de réseau, raccordements et protection du réseau existant.' },
-  { title: 'Mise en service', text: "Réglages et contrôle du bon fonctionnement de l'équipement posé." },
-  { title: 'Entretien annuel', text: 'Contrôle des performances et remplacement des consommables (cartouches, lampe UV).' },
-]
+/** Photo produit avec repli sur un cadre neutre portant le nom de la solution
+ *  tant que le fichier réel (fourni par le client) n'est pas déposé. */
+function SolutionPhoto({ src, alt, label }) {
+  const [errored, setErrored] = useState(false)
 
-const FEATURE_CARDS = [
-  {
-    icon: 'filter',
-    title: 'Filtration fine',
-    text: 'Pour une eau de boisson meilleure au goût, sans chlore ni particules.',
-    bullets: ["Sous évier ou en tête d'installation", 'Cartouche à changer 1x/an', 'Eau au goût amélioré'],
-  },
-  {
-    icon: 'droplet',
-    title: 'Filtration de forage',
-    text: 'Sable, boue, rouille : une eau de forage traitée avant tout usage domestique.',
-    bullets: ['Analyse préalable systématique', 'Filtre à particules', 'Traitement du fer si besoin'],
-  },
-  {
-    icon: 'testTube',
-    title: 'Charbon actif',
-    text: 'Réduit le chlore, les pesticides et les mauvais goûts ou odeurs de votre eau.',
-    bullets: ['Cartouche à charbon actif', 'Installation sous évier ou en ligne', 'Renouvellement annuel'],
-  },
-  {
-    icon: 'sparkles',
-    title: 'Traitement UV',
-    text: 'Désinfection sans produit chimique, pour une eau sécurisée sur le plan bactériologique.',
-    bullets: ['Sans impact sur le goût', 'Lampe à remplacer 1x/an', "Idéal en complément d'un forage"],
-  },
-]
+  if (errored) {
+    return (
+      <div className="grid h-24 w-24 shrink-0 place-items-center rounded-lg bg-navy-50 p-2 text-center ring-1 ring-navy-100 sm:h-28 sm:w-28">
+        <span className="text-label font-bold uppercase leading-tight text-navy-400">{label}</span>
+      </div>
+    )
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onError={() => setErrored(true)}
+      className="h-24 w-24 shrink-0 rounded-lg bg-navy-50 object-cover ring-1 ring-navy-100 sm:h-28 sm:w-28"
+    />
+  )
+}
+
+/** Grille des 6 solutions, hauteur de carte égale, bouton aligné en bas. */
+function SolutionsGrid({ items }) {
+  return (
+    <section className="section bg-white">
+      <div className="container-pce">
+        <h2 className="text-center text-title font-display font-black uppercase tracking-[.03em] text-navy-800">
+          Nos solutions de traitement de l'eau
+        </h2>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((s, i) => (
+            <div key={s.key} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 sm:p-7">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <h3 className="text-title font-display font-black uppercase leading-snug text-navy-800">
+                    {s.title}
+                  </h3>
+                  {i === 0 && (
+                    <p className="mt-1 text-kicker font-black uppercase tracking-[.03em] text-gold-500">
+                      {ADOUCISSEUR_MODEL}
+                    </p>
+                  )}
+                </div>
+                <SolutionPhoto src={`/img/${s.photo}`} alt={s.alt} label={s.title} />
+              </div>
+
+              <ul className="mt-5 flex-1 space-y-2.5">
+                {s.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2.5">
+                    <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
+                    <span className="text-body-sm leading-[1.6] text-navy-600">{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link to={s.ctaTo} className="btn-navy btn-sm mt-6 w-full justify-center whitespace-normal text-center">
+                {s.ctaLabel}
+                <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.4} />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/** Bloc 2 colonnes : pourquoi traiter son eau / bénéfices d'une eau traitée. */
+function WhyTreatBenefits({ whyTreat, benefits }) {
+  return (
+    <section className="section bg-navy-50">
+      <div className="container-pce grid gap-6 lg:grid-cols-12">
+        <div className="min-w-0 rounded-xl bg-navy-900 p-8 text-white lg:col-span-5 sm:p-10">
+          <h2 className="text-title font-display font-black uppercase leading-snug">{whyTreat.heading}</h2>
+          {whyTreat.paragraphs.map((p) => (
+            <p key={p} className="mt-4 text-body leading-[1.8] text-white/70">
+              {p}
+            </p>
+          ))}
+        </div>
+
+        <div className="min-w-0 rounded-xl bg-white p-8 ring-1 ring-navy-100 lg:col-span-7 sm:p-10">
+          <h2 className="text-center text-title font-display font-black uppercase tracking-[.03em] text-azure-500">
+            Les bénéfices d'une eau traitée
+          </h2>
+          <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+            {benefits.map((b) => (
+              <div key={b.title} className="flex flex-col items-center text-center">
+                <span className="grid h-12 w-12 place-items-center rounded-full border border-navy-200 text-azure-500">
+                  <Icon name={b.icon} className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <span className="mt-4 text-label font-bold uppercase text-navy-800">{b.title}</span>
+                <span className="mt-1.5 text-body-sm leading-snug text-navy-500">{b.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function TraitementEau() {
   const service = services.traitementEau
@@ -92,27 +159,42 @@ export default function TraitementEau() {
 
       <PageHero
         breadcrumb={service.title}
-        title="Traitement de l'eau"
-        subtitle="Filtration, charbon actif et traitement UV de votre eau"
-        intro="L'eau du Var compte parmi les plus calcaires de France. PCE installe des solutions de filtration fine, de filtration de forage, de charbon actif et de traitement UV, dimensionnées après une analyse réelle de votre eau."
-        photo={{ ...service.hero, alt: "Traitement de l'eau installé par PCE" }}
-        highlights={HERO_HIGHLIGHTS}
+        title={
+          <>
+            Traitement
+            <span className="block">de l'eau</span>
+            <span className="block text-azure-400">pour un confort sain</span>
+            <span className="block text-azure-400">et durable</span>
+          </>
+        }
+        subtitle={null}
+        intro={
+          <>
+            <span className="block">
+              PCE vous propose des solutions complètes pour améliorer la qualité de votre eau au quotidien :
+              adoucissement, filtration, purification et désinfection.
+            </span>
+            <span className="mt-3 block">
+              Protégez votre santé, vos équipements et votre habitat avec des systèmes performants et fiables.
+            </span>
+          </>
+        }
+        photo={{ ...service.hero, alt: "Matériel de traitement de l'eau installé par PCE" }}
+        showReassurance={false}
+        photoBadge={
+          <div className="grid h-28 w-28 place-items-center rounded-full bg-azure-500 p-4 text-center shadow-lg ring-4 ring-white/10 sm:h-32 sm:w-32">
+            <span className="text-label font-black uppercase leading-tight text-white">
+              Une eau pure au quotidien
+            </span>
+          </div>
+        }
       />
 
-      <ServiceTwoColumn
-        checklistTitle="Nos services traitement de l'eau"
-        checklist={SERVICES_CHECKLIST}
-        card={ANALYSE_CARD}
-      />
+      <WaterArgsBar items={service.argBar} />
 
-      <Process
-        steps={INSTALLATION_STEPS}
-        title="Installation par PCE"
-        lead="Chaque traitement est choisi et réglé selon l'eau réelle de votre logement, pas selon une solution unique appliquée par défaut."
-        columns={3}
-      />
+      <SolutionsGrid items={service.solutions} />
 
-      <ServiceFeatureCards items={FEATURE_CARDS} />
+      <WhyTreatBenefits whyTreat={service.whyTreat} benefits={service.treatedBenefits} />
 
       <CtaBand />
     </>

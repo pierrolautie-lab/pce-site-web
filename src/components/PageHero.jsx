@@ -27,6 +27,7 @@ export default function PageHero({
   actions = true,
   primaryLabel = 'Demande de devis gratuit',
   showReassurance = true,
+  photoBadge,
   children,
 }) {
   return (
@@ -45,6 +46,7 @@ export default function PageHero({
             />
             <div className="absolute inset-0 bg-gradient-to-r from-navy-800 via-navy-800/80 to-navy-800/25" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-800/70 to-transparent" />
+            {photoBadge && <div className="absolute bottom-6 right-6">{photoBadge}</div>}
           </div>
         )}
 
