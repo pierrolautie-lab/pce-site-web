@@ -118,6 +118,16 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
                 )}
               </div>
               <p className="mt-4 text-[13.5px] leading-[1.7] text-navy-600">{p.text}</p>
+              {p.bullets && (
+                <ul className="mt-5 space-y-2.5 border-t border-navy-100 pt-5">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5">
+                      <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500" strokeWidth={3.2} />
+                      <span className="text-[12.5px] leading-[1.5] text-navy-600">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>

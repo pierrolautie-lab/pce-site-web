@@ -234,10 +234,53 @@ export const services = {
 
     /* Rangée de bénéfices, reprise du support « PCE, votre expert chauffage & gaz » */
     benefits: [
-      { icon: 'euro', title: "Économies d'énergie", label: 'Des équipements à haut rendement' },
-      { icon: 'shieldCheck', title: 'Sécurité', label: 'Installations gaz contrôlées' },
-      { icon: 'gauge', title: 'Performance', label: 'Matériel dimensionné au juste besoin' },
-      { icon: 'checkCircle', title: 'Conformité', label: 'Mise aux normes et attestation' },
+      { icon: 'euro', title: "Économies d'énergie", label: 'Des équipements performants pour réduire vos factures de chauffage.' },
+      { icon: 'home', title: 'Confort optimal', label: 'Une chaleur homogène et constante pour votre bien-être au quotidien.' },
+      { icon: 'shieldCheck', title: 'Sécurité assurée', label: 'Des installations fiables et conformes aux normes en vigueur.' },
+      { icon: 'handshake', title: 'Aides & subventions', label: 'Nous vous accompagnons dans vos démarches pour bénéficier des aides.' },
+    ],
+
+    /* Checklist « Nos solutions de chauffage » — pas de chaudière fioul :
+       l'installation de nouvelles chaudières fioul est interdite depuis 2022. */
+    solutions: [
+      'Chaudières gaz à condensation',
+      'Pompes à chaleur air/eau et air/air',
+      'Planchers chauffants & radiateurs',
+      'Régulations & thermostats connectés',
+      'Chauffe-eau thermodynamiques et ballons',
+      'Entretien annuel & contrats de maintenance',
+      'Dépannage toutes marques',
+    ],
+
+    /* Marques installées — pas de logo officiel reproduit (droits fabricants) */
+    brands: [
+      {
+        name: 'Frisquet',
+        color: 'text-[#E2001A]',
+        text: "L'excellence française depuis 1868.",
+        bullets: ['Chaudières gaz à haute performance', 'Fiabilité, durabilité et rendement', 'Fabrication française'],
+      },
+      {
+        name: 'elm.leblanc',
+        color: 'text-navy-900',
+        swatch: 'bg-[#F5A623]',
+        text: 'La référence du confort.',
+        bullets: ['Chaudières gaz innovantes', 'Technologies performantes et économiques', 'Confort et sécurité au quotidien'],
+      },
+      {
+        name: 'Chappée',
+        color: 'text-[#C8102E]',
+        text: "L'efficacité au service de votre confort.",
+        bullets: ['Chaudières gaz & fioul', 'Solutions adaptées à tous les besoins', 'Robustesse et performance'],
+      },
+    ],
+
+    /* Chips « aides financières » — libellés génériques : le détail de
+       l'éligibilité (PAC vs chaudière gaz) reste porté par `process`/`faq`. */
+    aids: [
+      { icon: 'euro', label: "MaPrimeRénov'" },
+      { icon: 'leaf', label: 'CEE' },
+      { icon: 'checkCircle', label: 'TVA 5,5 %' },
     ],
 
     prestations: [

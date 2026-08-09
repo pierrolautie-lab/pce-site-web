@@ -1,98 +1,145 @@
-import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
-import { ServiceTwoColumn, ServiceFeatureCards } from '../components/ServiceBlocks.jsx'
+import Photo from '../components/Photo.jsx'
 import Icon from '../components/Icon.jsx'
+import { CtaBand } from '../components/Blocks.jsx'
+import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
-import { services } from '../data/site.js'
+import { company, services } from '../data/site.js'
 
 const HERO_HIGHLIGHTS = [
-  { icon: 'leaf', title: 'Pompe à chaleur', label: 'Air/eau & air/air' },
-  { icon: 'flame', title: 'Chaudière gaz', label: 'Condensation' },
-  { icon: 'settings', title: 'Entretien', label: 'Contrat annuel' },
+  { icon: 'droplet', title: 'Installation', label: 'Neuf & rénovation' },
   { icon: 'wrench', title: 'Dépannage', label: 'Intervention rapide' },
+  { icon: 'layers', title: 'Matériels', label: 'Qualité & durables' },
+  { icon: 'handshake', title: 'Accompagnement', label: 'Conseils personnalisés' },
 ]
 
-const SERVICES_CHECKLIST = [
-  'Installation de pompe à chaleur air/eau ou air/air',
-  'Chaudière à gaz à condensation',
-  'Installation et mise en conformité de gaz',
-  'Chauffe-eau thermodynamiques et ballons',
-  'Radiateurs et plancher chauffant',
-  'Entretien annuel et contrat de maintenance',
-  'Dépannage toutes marques',
-  'Étude thermique et dimensionnement',
-]
-
-const PAC_CARD = {
-  title: 'Installation de pompe à chaleur',
-  kicker: 'Jusqu’à 3 à 4 fois moins de consommation',
-  text: "La pompe à chaleur reste la solution la plus performante pour remplacer une chaudière fioul ou gaz vieillissante. PCE étudie le dimensionnement adapté à votre logement avant tout devis.",
-  checklist: [
-    'Étude thermique et dimensionnement sur mesure',
-    'Pompes à chaleur air/eau et air/air',
-    "Éligible à MaPrimeRénov' et aux CEE",
-    'Entretien annuel inclus dans nos contrats',
-  ],
-  ctaLabel: 'En savoir plus sur la pompe à chaleur',
-  ctaTo: '/installation-pompe-a-chaleur-var',
-}
-
-const FEATURE_CARDS = [
-  {
-    icon: 'leaf',
-    title: 'Pompe à chaleur',
-    text: "Air/eau ou air/air, réversible, pour chauffer et rafraîchir toute l'année.",
-    bullets: ['Étude de dimensionnement', 'Installation et mise en service', 'Aides MaPrimeRénov’ et CEE'],
-  },
-  {
-    icon: 'flame',
-    title: 'Chaudière & installation gaz',
-    text: 'Chaudières à gaz à condensation et mise en conformité de vos installations gaz.',
-    bullets: ['Chaudière à condensation', 'Création et mise aux normes gaz', "Contrôle d'étanchéité"],
-  },
-  {
-    icon: 'radiator',
-    title: 'Émetteurs de chaleur',
-    text: 'Radiateurs et plancher chauffant, dimensionnés pour un confort homogène.',
-    bullets: ['Radiateurs basse température', 'Plancher chauffant', 'Régulation par pièce'],
-  },
-  {
-    icon: 'settings',
-    title: 'Entretien & dépannage',
-    text: 'Contrat d’entretien annuel et dépannage toutes marques, avec attestation.',
-    bullets: ['Contrôle des pressions', "Attestation d'entretien", 'Intervention rapide'],
-  },
-]
-
-/** Bandeau reliant vers la sous-page dédiée à la chaudière à condensation. */
-function CondensationBanner() {
+/** Checklist « Nos solutions » + photo à droite, encart navy « Pourquoi choisir PCE » à droite. */
+function SolutionsWhyUs({ service }) {
   return (
-    <section className="bg-white pb-14 sm:pb-16 lg:pb-20">
+    <section className="bg-navy-50 py-14 sm:py-16 lg:py-20">
       <div className="container-pce">
-        <div className="flex flex-col items-start gap-6 rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:flex-row sm:items-center sm:justify-between sm:p-9">
-          <div className="flex items-start gap-4">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-azure-500 ring-1 ring-navy-100">
-              <Icon name="flame" className="h-5.5 w-5.5" strokeWidth={1.5} />
-            </span>
-            <div>
-              <h3 className="text-[14.5px] font-bold uppercase tracking-[.05em] text-navy-800">
-                Chaudière à condensation
-              </h3>
-              <p className="mt-2 max-w-xl text-[13.5px] leading-[1.7] text-navy-500">
-                Gaz, fioul ou bois/granulés : comment cette technologie récupère la chaleur des
-                fumées pour réduire votre consommation de combustible.
-              </p>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="min-w-0 overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
+            <div className="grid gap-0 sm:grid-cols-2">
+              <Photo
+                lock={service.expertise.photo.lock}
+                alt="Chaudière et ballon thermodynamique installés par PCE"
+                className="h-56 w-full sm:h-full"
+                rounded=""
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+              <div className="p-7 sm:p-8">
+                <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500 sm:text-[19px]">
+                  Nos solutions de chauffage
+                </h2>
+                <p className="mt-2 text-[12.5px] text-navy-500">Des systèmes performants et économiques</p>
+                <ul className="mt-6 space-y-3.5">
+                  {service.solutions.map((s) => (
+                    <li key={s} className="flex items-start gap-3">
+                      <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
+                      <span className="text-[13.5px] leading-[1.6] text-navy-700">{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-          <Link
-            to="/chauffage/chaudiere-condensation"
-            className="btn-azure w-full whitespace-normal text-center sm:w-auto sm:shrink-0 sm:whitespace-nowrap"
-          >
-            En savoir plus sur la chaudière à condensation
-            <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
-          </Link>
+          <div className="relative min-w-0 overflow-hidden rounded-xl bg-navy-800 p-8 text-white sm:p-10">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
+            >
+              {company.name}
+            </span>
+            <div className="relative">
+              <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-white sm:text-[19px]">
+                Pourquoi choisir PCE ?
+              </h2>
+              <ul className="mt-7 grid gap-6 sm:grid-cols-2">
+                {service.benefits.map((b) => (
+                  <li key={b.title} className="flex items-start gap-3.5">
+                    <Icon name={b.icon} className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.6} />
+                    <span className="min-w-0">
+                      <span className="block text-[12.5px] font-bold uppercase tracking-[.04em] text-white">
+                        {b.title}
+                      </span>
+                      <span className="mt-1.5 block text-[12.5px] leading-[1.55] text-white/70">{b.label}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/** Rangée de 3 blocs : entretien, aides financières, appel à l'action. */
+function EntretienAidesConseil({ service }) {
+  return (
+    <section className="bg-white pb-14 sm:pb-16 lg:pb-20">
+      <div className="container-pce">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {/* Pas de photo technicien : aucune n'est disponible dans les
+              médias du site — un fond navy avec icône remplace la photo
+              de la maquette plutôt que de réutiliser une image sans rapport. */}
+          <div className="rounded-xl bg-navy-800 p-7 text-white sm:p-8">
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-gold-400">
+              <Icon name="settings" className="h-5 w-5" strokeWidth={1.6} />
+            </span>
+            <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.05em]">
+              Entretien : une obligation, une sérénité
+            </h3>
+            <p className="mt-3 text-[12.5px] leading-[1.65] text-white/70">
+              L'entretien annuel de votre chaudière est obligatoire et essentiel pour garantir sécurité,
+              performance et longévité de votre installation.
+            </p>
+            <ul className="mt-5 space-y-2.5">
+              {['Meilleur rendement', 'Moins de pannes', 'Économies d’énergie', 'Respect des normes'].map((b) => (
+                <li key={b} className="flex items-start gap-2.5">
+                  <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-400" strokeWidth={3.2} />
+                  <span className="text-[12.5px] leading-[1.5] text-white/85">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
+            <h3 className="text-[14px] font-bold uppercase tracking-[.05em] text-navy-800">
+              Aides financières disponibles
+            </h3>
+            <p className="mt-3 text-[12.5px] leading-[1.65] text-navy-500">
+              Nous vous accompagnons pour bénéficier des aides de l'État, selon votre projet et votre éligibilité.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {service.aids.map((a) => (
+                <li
+                  key={a.label}
+                  className="flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[11.5px] font-bold uppercase tracking-[.04em] text-navy-700 ring-1 ring-navy-100"
+                >
+                  <Icon name={a.icon} className="h-3.5 w-3.5 text-azure-500" strokeWidth={2.2} />
+                  {a.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
+            <h3 className="text-[14px] font-bold uppercase tracking-[.05em] text-navy-800">
+              Besoin d'un conseil ou d'un devis ?
+            </h3>
+            <p className="mt-3 text-[12.5px] leading-[1.65] text-navy-500">
+              Nos experts sont à votre écoute pour étudier votre projet et vous proposer la solution de chauffage
+              la plus adaptée.
+            </p>
+            <a href={company.phoneHref} className="btn-azure mt-6 w-full justify-center sm:w-auto sm:self-start">
+              Appelez-nous maintenant
+              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -120,18 +167,24 @@ export default function Chauffage() {
 
       <PageHero
         breadcrumb={service.title}
-        title="Chauffage"
-        subtitle="Pompes à chaleur, chaudières et entretien"
-        intro="Installation de pompes à chaleur, chaudières à gaz à condensation et entretien de vos équipements de chauffage dans tout le Var. Des solutions dimensionnées à votre logement, pour un confort durable et une facture maîtrisée."
+        title={
+          <>
+            Chauffage
+            <span className="block">Confort, performance</span>
+            <span className="block text-azure-400">et économies d'énergie</span>
+          </>
+        }
+        intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."
         photo={{ ...service.hero, alt: 'Chaufferie installée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
+        subtitle={null}
       />
 
-      <ServiceTwoColumn checklistTitle="Nos services chauffage" checklist={SERVICES_CHECKLIST} card={PAC_CARD} />
+      <SolutionsWhyUs service={service} />
 
-      <CondensationBanner />
+      <ServiceBrandsRow title="Des marques de confiance pour votre chauffage" brands={service.brands} />
 
-      <ServiceFeatureCards items={FEATURE_CARDS} />
+      <EntretienAidesConseil service={service} />
 
       <CtaBand />
     </>
