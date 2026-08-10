@@ -22,6 +22,10 @@ export default function PageHero({
   subtitleClassName = 'text-azure-300',
   intro,
   photo,
+  /* Visuel décoratif bottom-right quand la page n'a pas de `photo` plein
+     cadre (ex. le véhicule détouré de Contact) : object-contain, fondu à
+     gauche vers le fond du héros plutôt qu'une photo cover classique. */
+  sideVisual,
   breadcrumb,
   highlights,
   actions = true,
@@ -129,6 +133,27 @@ export default function PageHero({
 
               {children}
             </div>
+
+            {/* Visuel décoratif (ex. véhicule détouré de Contact) : placé
+                comme cellule de la même grille 12 colonnes que le texte
+                (col-start/col-span), plutôt qu'en pourcentage de la largeur
+                du héros — la largeur du texte pouvant varier d'une page à
+                l'autre, un pourcentage fixe finissait par passer sous le
+                texte à certaines largeurs. En grille, le chevauchement est
+                structurellement impossible : les deux colonnes ne se
+                touchent jamais. */}
+            {!photo && sideVisual && (
+              <div className="relative hidden self-stretch lg:col-span-4 lg:col-start-9 lg:block xl:col-span-5 xl:col-start-8">
+                <img
+                  src={sideVisual.src}
+                  alt={sideVisual.alt}
+                  loading="lazy"
+                  aria-hidden="false"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-contain object-bottom"
+                />
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-navy-800 to-transparent" />
+              </div>
+            )}
 
             {/* Photo en carte sur mobile / tablette */}
             {photo && (

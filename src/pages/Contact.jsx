@@ -83,6 +83,10 @@ export default function Contact() {
         subtitle="Un devis gratuit, détaillé et sans engagement"
         intro="Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour préciser la demande et convenir d'une visite sur site. Pour une urgence, l'appel reste le moyen le plus rapide."
         actions={false}
+        sideVisual={{
+          src: '/img/vehicule-pce-profil.png',
+          alt: "Véhicule d'intervention PCE — plomberie, chauffage, électricité, climatisation et piscine dans le Var",
+        }}
       />
 
       {/* ---------------------------------------------- Coordonnées + form */}
