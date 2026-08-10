@@ -351,6 +351,108 @@ export const services = {
     metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
     hero: { tags: 'airconditioner', lock: 517 },
 
+    /* ------------------------------------------------------------------
+       Contenus de la page /climatisation refondue, sur le même principe
+       que `piscine.page` : regroupés ici plutôt qu'en dur dans le JSX.
+    ------------------------------------------------------------------ */
+    page: {
+      h1: ['Climatisation', 'Confort, performance', "et économies d'énergie"],
+      intro:
+        'Installation, entretien et dépannage de systèmes de climatisation pour les particuliers dans tout le Var.',
+      heroChecklist: [
+        'Confort été comme hiver',
+        "Économies d'énergie",
+        'Matériel haut de gamme',
+        'Installation soignée et durable',
+        'Entretien & SAV réactif',
+      ],
+
+      /* ⚠️ PCE installe ces marques sans accord de distribution : ne jamais
+         écrire « nos partenaires » — libellé validé « marques installées ».
+         Logos pas encore fournis par le client : BrandLogo affiche un cadre
+         neutre en attendant les fichiers /img/marque-{daikin,mitsubishi,midea}.jpg */
+      brands: [
+        { name: 'Daikin', src: '/img/marque-daikin.jpg' },
+        { name: 'Mitsubishi Electric', src: '/img/marque-mitsubishi.jpg' },
+        { name: 'Midea', src: '/img/marque-midea.jpg' },
+      ],
+      trust: [
+        { icon: 'award', title: '+ de 20 ans', label: "d'expérience" },
+        { icon: 'shieldCheck', title: 'Garantie', label: 'décennale' },
+        { icon: 'headset', title: 'SAV réactif', label: '& local' },
+      ],
+
+      reversible: {
+        heading: ['Climatisation réversible', "Le confort toute l'année"],
+        paragraphs: [
+          "La climatisation réversible permet de chauffer en hiver et de rafraîchir en été tout en réalisant jusqu'à 70 % d'économies d'énergie par rapport à un système de chauffage classique.",
+          "PCE vous accompagne dans le choix, l'installation et l'entretien de votre climatisation pour un confort optimal au quotidien.",
+        ],
+        photo: { lock: 518 },
+        engagements: {
+          title: 'Nos engagements',
+          items: [
+            'Étude personnalisée de vos besoins',
+            'Matériel performant et silencieux',
+            'Installation dans les règles de l’art',
+            'Conseils pour optimiser votre consommation',
+            'Entretien pour une durée de vie maximale',
+          ],
+        },
+      },
+
+      solutions: {
+        title: 'Nos solutions climatisation',
+        items: [
+          {
+            title: 'Climatisation murale',
+            text: 'Solution discrète et esthétique, idéale pour une ou plusieurs pièces.',
+            photo: '/img/climatisation-hero-split.jpg',
+          },
+          {
+            title: 'Climatisation gainable',
+            text: 'Intégration complète dans les combles ou faux-plafonds pour un confort invisible.',
+            photo: '/img/climatisation-hero-gainable-grille.jpg',
+          },
+          {
+            title: 'Console & plafonnier',
+            text: 'Parfait pour les pièces à vivre, offrant puissance et diffusion homogène.',
+            photo: '/img/climatisation-console-plafonnier.jpg',
+          },
+          {
+            title: 'Multi-split',
+            text: 'Une seule unité extérieure pour plusieurs unités intérieures. Confort sur-mesure.',
+            photo: '/img/climatisation-groupe-exterieur.jpg',
+          },
+          {
+            title: 'Entretien & dépannage',
+            text: 'Entretien complet, nettoyage, vérification des fluides et dépannage rapide.',
+            photo: '/img/climatisation-prestations-groupe.jpg',
+          },
+        ],
+      },
+
+      argBand: [
+        { icon: 'euro', title: "Économies d'énergie", label: 'Consommation maîtrisée grâce à des équipements performants et économes.' },
+        { icon: 'leaf', title: 'Confort optimal', label: 'Température homogène, air sain, régulation précise et silencieuse.' },
+        { icon: 'home', title: 'Valorisation de votre bien', label: 'Une climatisation bien installée augmente le confort et la valeur de votre habitation.' },
+        { icon: 'snowflake', title: 'Fonction réversible', label: 'Chauffe en hiver, rafraîchit en été : une solution 2-en-1 pour un confort toute l’année.' },
+      ],
+
+      /* ⚠️ La pose d'une climatisation seule (PAC air/air) est exclue du
+         parcours d'aides MaPrimeRénov'/CEE depuis le 1er janvier 2025 :
+         texte volontairement conditionnel, aucun badge d'aide affiché. */
+      aids: {
+        heading: 'Aides & avantages',
+        text: "Le remplacement d'une climatisation seule ne bénéficie plus des aides MaPrimeRénov' ni des CEE depuis le 1ᵉʳ janvier 2025. Ces dispositifs restent mobilisables lorsque le projet inclut une pompe à chaleur air/eau : nous étudions votre éligibilité au cas par cas.",
+      },
+
+      zone: {
+        heading: "Notre zone d'intervention",
+        text: 'Nous intervenons dans tout le Var, de Lorgues au Golfe de Saint-Tropez et toutes les communes alentour.',
+      },
+    },
+
     /* Rangée de bénéfices, reprise des supports de communication PCE */
     benefits: [
       { icon: 'snowflake', title: 'Confort', label: 'Une température idéale été comme hiver' },
