@@ -1,10 +1,19 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
-import PageHero from '../components/PageHero.jsx'
+import { ReassuranceBar } from '../components/PageHero.jsx'
+import { HeroBackgroundPhoto, HeroTextVeil } from '../components/HeroPhoto.jsx'
 import Seo from '../components/Seo.jsx'
 import { GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { trackEvent } from '../components/Analytics.jsx'
 import { company, serviceList } from '../data/site.js'
+
+/* Même photo, même mécanique que le héros de l'accueil (voir
+   HeroPhoto.jsx) — le véhicule détouré posé directement sur le fond marine
+   uni a été retiré : sans sol ni ombre portée, il flottait. */
+const HERO_SLOT = 100
+const HERO_FALLBACK_SLOT = 101
+const HERO_ALT = "Les véhicules d'intervention PCE devant une villa dans le Var"
 
 const SUBJECTS = [...serviceList.map((s) => s.title), 'Dépannage / urgence', 'Autre demande']
 
@@ -77,17 +86,8 @@ export default function Contact() {
         description="Demandez un devis gratuit à PCE, artisan à Lorgues (83) : plomberie, chauffage, climatisation, électricité, piscine et traitement de l'eau. Réponse rapide."
         path="/contact"
       />
-      <PageHero
-        breadcrumb="Contact"
-        title="Contact"
-        subtitle="Un devis gratuit, détaillé et sans engagement"
-        intro="Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour préciser la demande et convenir d'une visite sur site. Pour une urgence, l'appel reste le moyen le plus rapide."
-        actions={false}
-        sideVisual={{
-          src: '/img/vehicule-pce-profil.png',
-          alt: "Véhicule d'intervention PCE — plomberie, chauffage, électricité, climatisation et piscine dans le Var",
-        }}
-      />
+      <Hero />
+      <ReassuranceBar />
 
       {/* ---------------------------------------------- Coordonnées + form */}
       <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
@@ -374,5 +374,50 @@ export default function Contact() {
 
       <GuaranteeBar />
     </>
+  )
+}
+
+/* ========================================================= HÉROS ======== */
+function Hero() {
+  return (
+    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
+      <div className="container-pce relative py-10 sm:py-8 lg:py-20">
+        <nav aria-label="Fil d'Ariane" className="pt-6">
+          <ol className="flex flex-wrap items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-white/45">
+            <li>
+              <Link to="/" className="transition-colors hover:text-white">
+                Accueil
+              </Link>
+            </li>
+            <li className="flex items-center gap-2">
+              <span aria-hidden="true">›</span>
+              <span className="text-white/80">Contact</span>
+            </li>
+          </ol>
+        </nav>
+
+        <div className="relative mt-6 max-w-2xl">
+          <HeroTextVeil />
+
+          <h1 className="font-display font-black uppercase leading-[1.12] tracking-[-.03em] text-[8.6vw] md:text-5xl lg:text-[3.6rem]">
+            Contact
+          </h1>
+
+          <p className="mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
+            Un devis gratuit, détaillé et sans engagement
+          </p>
+
+          <p className="signature mt-4 text-[17px] sm:text-[19px]">{company.expertise}</p>
+
+          <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/70">
+            Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour
+            préciser la demande et convenir d'une visite sur site. Pour une urgence, l'appel reste
+            le moyen le plus rapide.
+          </p>
+        </div>
+      </div>
+
+      <HeroBackgroundPhoto slot={HERO_SLOT} fallbackSlot={HERO_FALLBACK_SLOT} alt={HERO_ALT} />
+    </section>
   )
 }

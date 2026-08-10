@@ -405,14 +405,6 @@ export const imageManifest = {
       1200
     ]
   },
-  "vehicule-pce-profil.png": {
-    "width": 890,
-    "height": 357,
-    "widths": [
-      400,
-      800
-    ]
-  },
   "zone-dracenie.jpg": {
     "width": 321,
     "height": 220,
