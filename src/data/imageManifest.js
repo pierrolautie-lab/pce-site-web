@@ -11,8 +11,8 @@ export const imageManifest = {
     ]
   },
   "accueil-hero-vehicules.jpg": {
-    "width": 2472,
-    "height": 672,
+    "width": 1672,
+    "height": 941,
     "widths": [
       400,
       800,
@@ -207,6 +207,55 @@ export const imageManifest = {
       1200
     ]
   },
+  "equipement-filtration.jpg": {
+    "width": 386,
+    "height": 220,
+    "widths": [
+      386
+    ]
+  },
+  "equipement-pac-piscine.jpg": {
+    "width": 330,
+    "height": 220,
+    "widths": [
+      330
+    ]
+  },
+  "equipement-pompe-vitesse-variable.jpg": {
+    "width": 447,
+    "height": 447,
+    "widths": [
+      400
+    ]
+  },
+  "equipement-traitement-eau.jpg": {
+    "width": 352,
+    "height": 220,
+    "widths": [
+      352
+    ]
+  },
+  "marque-fluidra.jpg": {
+    "width": 474,
+    "height": 125,
+    "widths": [
+      400
+    ]
+  },
+  "marque-hayward.jpg": {
+    "width": 420,
+    "height": 220,
+    "widths": [
+      400
+    ]
+  },
+  "marque-zodiac.jpg": {
+    "width": 293,
+    "height": 220,
+    "widths": [
+      293
+    ]
+  },
   "piscine-hero-bassin.jpg": {
     "width": 1600,
     "height": 783,
@@ -354,6 +403,14 @@ export const imageManifest = {
       400,
       800,
       1200
+    ]
+  },
+  "vehicule-pce-profil.png": {
+    "width": 890,
+    "height": 357,
+    "widths": [
+      400,
+      800
     ]
   },
   "zone-dracenie.jpg": {

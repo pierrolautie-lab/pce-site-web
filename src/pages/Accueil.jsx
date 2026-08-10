@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
@@ -16,6 +16,7 @@ import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/revie
    PCE, qui serait illisible étiré en fond de héros. */
 const HERO_SLOT = 100
 const HERO_FALLBACK_SLOT = 101
+const HERO_ALT = "Les véhicules d'intervention PCE devant une villa dans le Var"
 
 /* Les 5 métiers mis en avant sous le titre du héros. */
 const HERO_TRADES = [
@@ -54,45 +55,69 @@ export default function Accueil() {
 function HomeHero() {
   const fallback = clientPhotoMeta(HERO_FALLBACK_SLOT)
   const [bg, setBg] = useState(() => clientPhotoMeta(HERO_SLOT) || fallback)
+  const onError = () => fallback?.src && bg?.src !== fallback.src && setBg(fallback)
+
+  /* Précharge la variante affichée : c'est l'image la plus lourde du site,
+     au-dessus de la ligne de flottaison — un <link rel="preload"> lui
+     évite d'attendre la découverte tardive par le parseur. Écrit/retiré à
+     la main (pas de Helmet dans ce projet) sur le même principe que
+     Seo.jsx, qui mute déjà le <head> directement. */
+  useEffect(() => {
+    if (!bg?.src) return
+    let link = document.head.querySelector('link[data-hero-preload]')
+    if (!link) {
+      link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.setAttribute('data-hero-preload', '')
+      document.head.appendChild(link)
+    }
+    link.href = bg.src
+    if (bg.srcSet) link.setAttribute('imagesrcset', bg.srcSet)
+    link.setAttribute('imagesizes', '100vw')
+    return () => link?.remove()
+  }, [bg])
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Photo de fond pleine largeur, en variantes WebP responsives.
-          Elle est panoramique (3,7:1) alors que le héros affiche du 2,2:1.
-          À partir de `lg` on passe en `contain` calé en bas : la photo
-          s'affiche entière, en bande pleine largeur, pour qu'on voie les
-          trois véhicules floqués et le paysage — `cover` en rognait 41 %.
-          En dessous de `lg` la bande ne ferait qu'une centaine de pixels de
-          haut : on garde `cover`, cadré à 78 % sur le fourgon de droite. */}
+      {/* Fond photo plein cadre, à partir de `sm` seulement. En dessous, le
+          héros est nettement plus haut que large : en `cover`, le rognage
+          nécessaire pour combler la hauteur n'aurait laissé qu'un fragment
+          de carrosserie. Le mobile reçoit à la place un bandeau photo à
+          format natif, sous le bloc de texte (plus bas dans ce composant),
+          sur un fond marine uni. */}
       <img
         src={bg?.src}
         srcSet={bg?.srcSet || undefined}
         sizes="100vw"
         width={bg?.width || undefined}
         height={bg?.height || undefined}
-        alt=""
-        aria-hidden="true"
-        onError={() => fallback?.src && bg?.src !== fallback.src && setBg(fallback)}
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-[78%_50%] lg:object-contain lg:object-bottom"
+        alt={HERO_ALT}
+        onError={onError}
+        loading="eager"
         fetchpriority="high"
         decoding="async"
+        className="absolute inset-0 -z-10 hidden h-full w-full object-cover object-[65%_center] sm:block lg:object-right"
       />
 
-      {/* Dégradé marine : de la gauche vers la transparence à droite. Le second
-          dégradé, vertical, garde le texte lisible en mobile où la colonne
-          occupe toute la largeur. */}
-      {/* En desktop le titre est au-dessus de la bande photo, sur du marine
-          plein : le dégradé horizontal n'a plus à masquer la gauche de
-          l'image, seuls les boutons la recouvrent et portent leur propre
-          fond. On l'allège donc pour dégager le fourgon de gauche et le
-          paysage, que la version opaque escamotait. */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:from-navy-950/75 lg:via-navy-950/25 lg:to-transparent" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/40 lg:hidden" />
-      {/* En `contain`, le haut de la bande photo forme une arête franche
-          contre le marine : ce dégradé vertical l'estompe. */}
-      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-b from-navy-950 via-navy-950/55 to-transparent lg:block" />
+      {/* Dégradé de lisibilité : le tiers gauche de la photo (véhicule clair,
+          ciel lumineux) est exactement la zone que recouvrent le titre, la
+          signature, le chapô, les pictos et les boutons. Opaque à 92 % sur
+          le bord gauche jusqu'à transparent à 60 % de la largeur, plus un
+          voile uniforme sur toute la surface pour tenir le contraste dans
+          les zones de ciel au-delà de ce point.
+          Voile à 60 % et non 20 % : mesuré sur la photo réelle (pixels
+          échantillonnés via canvas), le chapô déborde du dégradé (au-delà
+          de 60 % de largeur) dès `sm`/`md`, où sa colonne (`max-w-lg` fixe)
+          occupe une part bien plus grande d'un héros étroit qu'en desktop.
+          Dans cette zone non couverte par le dégradé directionnel, seul le
+          voile protège le texte : à 20 % le contraste tombait à 3,1:1 sur
+          un ciel clair, à 45 % encore à 4,2:1 à 768 px. À 60 %, le pire cas
+          mesuré sur la photo réelle remonte à 6,6:1 à 768 px. */}
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy-950/[.92] from-0% to-transparent to-60% sm:block" />
+      <div className="absolute inset-0 -z-10 hidden bg-navy-950/60 sm:block" />
 
-      <div className="container-pce relative py-10 sm:py-14 lg:py-20">
+      <div className="container-pce relative py-10 sm:py-8 lg:py-20">
         {/* max-w-3xl et non 2xl : « Climatisation • Piscine » demande 674 px
             à 54 px, soit plus que les 672 px d'un max-w-2xl — le titre
             passait sur une 5e ligne. Archivo étant plus large qu'Inter, la
@@ -110,7 +135,7 @@ function HomeHero() {
 
           <p className="signature mt-4 text-[20px] sm:text-[26px]">Dans tout le Var</p>
 
-          <p className="mt-3 max-w-lg text-[14px] leading-[1.7] text-white/80 sm:text-[15.5px]">
+          <p className="mt-3 max-w-lg text-[14px] leading-[1.7] text-white sm:text-[15.5px]">
             De Lorgues jusqu'au Golfe de Saint-Tropez et toutes les communes alentours
           </p>
 
@@ -157,6 +182,26 @@ function HomeHero() {
 
           <ZoneBadge className="lg:max-w-sm lg:shrink-0" />
         </div>
+      </div>
+
+      {/* Bandeau photo mobile : hors de `container-pce` pour rester pleine
+          largeur. Format natif (16:9, comme le fichier source) plutôt que du
+          `cover` forcé dans une bande plus basse, qui aurait de nouveau rogné
+          les véhicules. */}
+      <div className="sm:hidden">
+        <img
+          src={bg?.src}
+          srcSet={bg?.srcSet || undefined}
+          sizes="100vw"
+          width={bg?.width || undefined}
+          height={bg?.height || undefined}
+          alt={HERO_ALT}
+          onError={onError}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          className="aspect-video w-full object-cover"
+        />
       </div>
     </section>
   )
