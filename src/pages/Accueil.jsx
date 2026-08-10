@@ -61,9 +61,46 @@ function HomeHero() {
      au-dessus de la ligne de flottaison — un <link rel="preload"> lui
      évite d'attendre la découverte tardive par le parseur. Écrit/retiré à
      la main (pas de Helmet dans ce projet) sur le même principe que
-     Seo.jsx, qui mute déjà le <head> directement. */
+     Seo.jsx, qui mute déjà le <head> directement.
+     `href` est recalculé à la largeur d'écran réelle plutôt que fixé à la
+     plus grande variante : posé sur la plus grande (1200w) par défaut, un
+     visiteur mobile téléchargeait le preload en 1200w *en plus* du 400w
+     réellement affiché — `imagesrcset` n'est pas fiable pour un <link>
+     inséré dynamiquement en JS (contrairement à un <link> découvert par le
+     parseur HTML), certains navigateurs retombent alors sur `href` sans
+     re-résoudre la largeur. En calculant nous-mêmes `href` à partir de la
+     largeur de viewport, le repli est déjà correct même si `imagesrcset`
+     n'est pas honoré.
+     `href` calculé une seule fois, au montage — pas de ré-écoute sur
+     `resize` : un navigateur qui ajuste ses métriques de viewport juste
+     après le premier rendu (fréquent en émulation, possible aussi lors
+     d'une rotation d'écran) déclenchait sinon un second téléchargement
+     quand `href` changeait de valeur après coup. Un preload légèrement
+     décalé après une rotation reste un détail de performance ; un second
+     téléchargement de la plus grosse image du site ne l'est pas.
+     `imagesrcset`/`imagesizes` volontairement absents : posés en plus de
+     `href`, un navigateur constaté (Chrome, testé ici) commence à
+     précharger une variante d'après `imagesrcset` dès que cet attribut est
+     posé, avant même que `imagesizes` (posé juste après) ne soit en place
+     — la résolution se fait alors sans largeur connue, sur la plus petite
+     variante, puis se corrige une fois `imagesizes` posé : deux
+     téléchargements au lieu d'un. `href` seul, déjà calculé à la bonne
+     largeur, suffit et reste déterministe. */
   useEffect(() => {
-    if (!bg?.src) return
+    if (!bg?.srcSet) return
+
+    const entries = bg.srcSet
+      .split(',')
+      .map((s) => {
+        const [url, w] = s.trim().split(' ')
+        return { url, width: parseInt(w, 10) }
+      })
+      .sort((a, b) => a.width - b.width)
+
+    const needed = window.innerWidth * (window.devicePixelRatio || 1)
+    const match = entries.find((e) => e.width >= needed)
+    const href = (match || entries[entries.length - 1]).url
+
     let link = document.head.querySelector('link[data-hero-preload]')
     if (!link) {
       link = document.createElement('link')
@@ -72,57 +109,26 @@ function HomeHero() {
       link.setAttribute('data-hero-preload', '')
       document.head.appendChild(link)
     }
-    link.href = bg.src
-    if (bg.srcSet) link.setAttribute('imagesrcset', bg.srcSet)
-    link.setAttribute('imagesizes', '100vw')
+    link.href = href
+
     return () => link?.remove()
   }, [bg])
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Fond photo plein cadre, à partir de `sm` seulement. En dessous, le
-          héros est nettement plus haut que large : en `cover`, le rognage
-          nécessaire pour combler la hauteur n'aurait laissé qu'un fragment
-          de carrosserie. Le mobile reçoit à la place un bandeau photo à
-          format natif, sous le bloc de texte (plus bas dans ce composant),
-          sur un fond marine uni. */}
-      <img
-        src={bg?.src}
-        srcSet={bg?.srcSet || undefined}
-        sizes="100vw"
-        width={bg?.width || undefined}
-        height={bg?.height || undefined}
-        alt={HERO_ALT}
-        onError={onError}
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-10 hidden h-full w-full object-cover object-[65%_center] sm:block lg:object-right"
-      />
-
-      {/* Dégradé de lisibilité : le tiers gauche de la photo (véhicule clair,
-          ciel lumineux) est exactement la zone que recouvrent le titre, la
-          signature, le chapô, les pictos et les boutons. Opaque à 92 % sur
-          le bord gauche jusqu'à transparent à 60 % de la largeur, plus un
-          voile uniforme sur toute la surface pour tenir le contraste dans
-          les zones de ciel au-delà de ce point.
-          Voile à 60 % et non 20 % : mesuré sur la photo réelle (pixels
-          échantillonnés via canvas), le chapô déborde du dégradé (au-delà
-          de 60 % de largeur) dès `sm`/`md`, où sa colonne (`max-w-lg` fixe)
-          occupe une part bien plus grande d'un héros étroit qu'en desktop.
-          Dans cette zone non couverte par le dégradé directionnel, seul le
-          voile protège le texte : à 20 % le contraste tombait à 3,1:1 sur
-          un ciel clair, à 45 % encore à 4,2:1 à 768 px. À 60 %, le pire cas
-          mesuré sur la photo réelle remonte à 6,6:1 à 768 px. */}
-      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy-950/[.92] from-0% to-transparent to-60% sm:block" />
-      <div className="absolute inset-0 -z-10 hidden bg-navy-950/60 sm:block" />
-
       <div className="container-pce relative py-10 sm:py-8 lg:py-20">
         {/* max-w-3xl et non 2xl : « Climatisation • Piscine » demande 674 px
             à 54 px, soit plus que les 672 px d'un max-w-2xl — le titre
             passait sur une 5e ligne. Archivo étant plus large qu'Inter, la
             colonne doit garder de la marge. */}
-        <div className="max-w-3xl">
+        <div className="relative max-w-3xl">
+          {/* Voile local, propre au bloc de texte : suit le texte plutôt
+              que de couvrir toute la photo (contrairement au voile
+              uniforme ci-dessous, qui lui reste léger pour ne pas assombrir
+              les véhicules). Opaque derrière le titre, fondu vers son coin
+              bas-droit. */}
+          <div className="pointer-events-none absolute -inset-3 -z-10 hidden bg-gradient-to-br from-navy-950/55 to-transparent sm:block" />
+
           <h1 className="font-display font-black uppercase leading-[1.06] tracking-[-.025em] text-[6.6vw] sm:text-[31px] lg:text-[40px]">
             <span className="block">Votre expert</span>
             <span className="block">Plomberie • Chauffage</span>
@@ -135,7 +141,11 @@ function HomeHero() {
 
           <p className="signature mt-4 text-[20px] sm:text-[26px]">Dans tout le Var</p>
 
-          <p className="mt-3 max-w-lg text-[14px] leading-[1.7] text-white sm:text-[15.5px]">
+          {/* max-w-md entre `sm` et `lg` : à 768 px, un max-w-lg fixe pousse
+              le bord droit du chapô au-delà du dégradé directionnel (80 %
+              de la largeur du héros) — resserrer la colonne à ce palier
+              règle le débordement sans toucher au voile. */}
+          <p className="mt-3 max-w-md text-[14px] leading-[1.7] text-white sm:text-[15.5px] lg:max-w-lg">
             De Lorgues jusqu'au Golfe de Saint-Tropez et toutes les communes alentours
           </p>
 
@@ -184,25 +194,41 @@ function HomeHero() {
         </div>
       </div>
 
-      {/* Bandeau photo mobile : hors de `container-pce` pour rester pleine
-          largeur. Format natif (16:9, comme le fichier source) plutôt que du
-          `cover` forcé dans une bande plus basse, qui aurait de nouveau rogné
-          les véhicules. */}
-      <div className="sm:hidden">
-        <img
-          src={bg?.src}
-          srcSet={bg?.srcSet || undefined}
-          sizes="100vw"
-          width={bg?.width || undefined}
-          height={bg?.height || undefined}
-          alt={HERO_ALT}
-          onError={onError}
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          className="aspect-video w-full object-cover"
-        />
-      </div>
+      {/* Un seul <img> pour les deux usages (bandeau mobile / fond desktop),
+          repositionné en CSS plutôt que dupliqué : deux <img> avec
+          `loading="eager" fetchpriority="high"` téléchargeaient chacun leur
+          source, `hidden`/`sm:hidden` n'empêchant pas la requête réseau —
+          tout visiteur récupérait les deux variantes de la plus grosse
+          image du site. Ici, un seul élément, positionné dans le flux après
+          le bloc de texte (bandeau, <sm), puis détaché en fond plein cadre
+          à partir de `sm` (`sm:absolute sm:inset-0`) — l'ordre DOM ne
+          change pas, seule sa position bascule. `-z-20` le maintient
+          derrière les dégradés (`-z-10`) quelle que soit sa place dans le
+          DOM une fois détaché du flux. */}
+      <img
+        src={bg?.src}
+        srcSet={bg?.srcSet || undefined}
+        sizes="100vw"
+        width={bg?.width || undefined}
+        height={bg?.height || undefined}
+        alt={HERO_ALT}
+        onError={onError}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        className="aspect-video w-full object-cover sm:absolute sm:inset-0 sm:-z-20 sm:aspect-auto sm:h-full sm:object-[65%_center] lg:object-right"
+      />
+
+      {/* Dégradé de lisibilité : le tiers gauche de la photo (véhicule clair,
+          ciel lumineux) est la zone que recouvrent le titre, la signature,
+          le chapô et les pictos. Opaque à 92 % sur le bord gauche jusqu'à
+          transparent à 80 % de la largeur (étendu depuis 60 %, qui laissait
+          le chapô déborder du dégradé à `sm`/`md`), plus un voile uniforme
+          léger sur toute la surface — les véhicules ne doivent pas en
+          pâtir, c'est le voile local ci-dessus (propre au bloc de texte)
+          qui porte l'essentiel du contraste, pas celui-ci. */}
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy-950/[.92] from-0% to-transparent to-80% sm:block" />
+      <div className="absolute inset-0 -z-10 hidden bg-navy-950/15 sm:block" />
     </section>
   )
 }
