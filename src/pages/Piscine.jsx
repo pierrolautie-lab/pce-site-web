@@ -96,8 +96,8 @@ function Hero({ page, hero }) {
         <div className="max-w-2xl">
           <h1 className="font-display font-black uppercase">
             <span className="block text-hero">{ligne1}</span>
-            <span className="block text-title">{ligne2}</span>
-            <span className="block text-title text-azure-400">{ligne3}</span>
+            <span className="block text-title-lg">{ligne2}</span>
+            <span className="block text-title-lg text-azure-400">{ligne3}</span>
           </h1>
 
           <p className="signature mt-4 text-kicker">{company.expertise}</p>
@@ -144,23 +144,32 @@ function PrestationsEtAutomatisation({ page, hero }) {
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-2">
           {/* ------------------------------------------- Prestations */}
-          <div className="relative min-w-0 overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 sm:block">
-              <Photo lock={hero.lock} alt="" rounded="" className="h-full w-full" />
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/40" />
-            </div>
-
-            <div className="relative p-8 sm:p-10">
+          <div className="flex min-w-0 flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
+            <div className="p-8 sm:p-10">
               <h2 className="font-display text-title font-black uppercase text-navy-800">
                 {page.prestations.title}
               </h2>
               <CheckList items={page.prestations.items} className="mt-6 max-w-sm" />
             </div>
+            {/* Bande photo pleinement visible plutôt qu'un fond estompé
+                derrière le texte : c'est ce qui donne du poids visuel à la
+                carte, comme sur la maquette. */}
+            <div className="mt-auto h-44 sm:h-52">
+              <Photo lock={hero.lock} alt="Bassin éclairé, réalisation PCE" rounded="" className="h-full w-full" />
+            </div>
           </div>
 
           {/* ---------------------------------------- Automatisation */}
-          <div className="min-w-0 overflow-hidden rounded-xl bg-navy-900 p-8 text-white shadow-card sm:p-10">
-            <h2 className="font-display text-title font-black uppercase">
+          <div className="relative min-w-0 overflow-hidden rounded-xl bg-navy-900 p-8 text-white shadow-card sm:p-10">
+            {/* Grande icône embossée en fond : évoque le pilotage à distance
+                sans reproduire l'interface d'une application tierce. */}
+            <Icon
+              name="robot"
+              className="pointer-events-none absolute -right-6 -top-8 h-40 w-40 text-white/[.06]"
+              strokeWidth={1}
+            />
+
+            <h2 className="relative font-display text-title font-black uppercase">
               {page.automatisation.title.map((l) => (
                 <span key={l} className="block">
                   {l}
@@ -168,7 +177,7 @@ function PrestationsEtAutomatisation({ page, hero }) {
               ))}
             </h2>
 
-            <CheckList items={page.automatisation.checks} tone="dark" className="mt-6" />
+            <CheckList items={page.automatisation.checks} tone="dark" className="relative mt-6" />
 
             {/* 4 colonnes seulement à partir de xl : « Électrolyseur » ne
                 tient pas dans une colonne de 93 px en dessous. */}

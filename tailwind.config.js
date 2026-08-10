@@ -72,6 +72,10 @@ export default {
          (`text-[15px]`) — les deux cohabitent sans conflit. */
       fontSize: {
         hero: ['clamp(30px, 4.6vw, 54px)', { lineHeight: '1.06', letterSpacing: '-.025em' }],
+        /* Palier intermédiaire hero/title : sert aux lignes secondaires d'un
+           titre multi-lignes (ex. héros Piscine), qui doivent rester proches
+           de `hero` en taille — `title` seul seul crée un écart trop marqué. */
+        'title-lg': ['clamp(22px, 3.2vw, 36px)', { lineHeight: '1.1', letterSpacing: '-.015em' }],
         title: ['clamp(19px, 2.1vw, 26px)', { lineHeight: '1.15', letterSpacing: '-.01em' }],
         kicker: ['clamp(15px, 1.35vw, 18px)', { lineHeight: '1.3' }],
         body: ['15px', { lineHeight: '1.75' }],
