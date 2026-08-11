@@ -10,7 +10,7 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Lire .htaccess et une page prérendue via lftp
+      - name: Lire .htaccess et chercher un second emplacement servi via lftp
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
@@ -27,14 +27,31 @@ jobs:
           set net:max-retries 3
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
+          echo "=== pwd (répertoire de connexion) ==="
           pwd
-          echo "=== .htaccess (contenu complet) ==="
-          cat .htaccess
-          echo "=== electricite/ ==="
-          ls -la electricite/
-          echo "=== plombier-frejus/ ==="
-          ls -la plombier-frejus/
-          echo "=== conseils/ (premier niveau) ==="
-          ls -la conseils/
+          echo "=== ls -la . (répertoire courant, pour voir si public_html est un lien symbolique) ==="
+          ls -la .
+          echo "=== ls -la .. (un niveau au-dessus du répertoire de dépôt actuel) ==="
+          cd ..
+          pwd
+          ls -la .
+          echo "=== domains/ existe-t-il à ce niveau ? ==="
+          ls -la domains/ 2>&1
+          echo "=== domains/pcevar.fr/ ==="
+          ls -la domains/pcevar.fr/ 2>&1
+          echo "=== domains/pcevar.fr/public_html/ ==="
+          ls -la domains/pcevar.fr/public_html/ 2>&1
+          echo "=== domains/pcevar.fr/public_html/index.html ==="
+          ls -la domains/pcevar.fr/public_html/index.html 2>&1
+          echo "=== domains/pcevar.fr/public_html/assets/ ==="
+          ls -la domains/pcevar.fr/public_html/assets/ 2>&1
+          echo "=== autres racines webroot courantes, au cas où ==="
+          ls -la htdocs/ 2>&1
+          ls -la www/ 2>&1
+          echo "=== rappel : le dossier où le mirror écrit actuellement ==="
+          cd public_html
+          pwd
+          ls -la index.html
+          ls -la assets/ | head -5
           bye
           EOF
