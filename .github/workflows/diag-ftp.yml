@@ -1,0 +1,40 @@
+name: Diagnostic FTP (lecture seule)
+
+# Déclenché manuellement uniquement — jamais sur push, pour ne jamais se
+# confondre avec le déploiement. But : lire le .htaccess réellement en ligne
+# et la taille d'un fichier prérendu précis, sans rien transférer ni modifier.
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lire .htaccess et une page prérendue via lftp
+        env:
+          FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y lftp
+          FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
+          FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
+          FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
+          lftp <<EOF
+          set ssl:verify-certificate no
+          set ftp:ssl-force true
+          set net:timeout 20
+          set net:max-retries 3
+          open "$FTP_SERVER:21"
+          user "$FTP_USERNAME" "$FTP_PASSWORD"
+          pwd
+          echo "=== .htaccess (contenu complet) ==="
+          cat .htaccess
+          echo "=== electricite/ ==="
+          ls -la electricite/
+          echo "=== plombier-frejus/ ==="
+          ls -la plombier-frejus/
+          echo "=== conseils/ (premier niveau) ==="
+          ls -la conseils/
+          bye
+          EOF
