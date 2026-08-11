@@ -11,7 +11,10 @@ const LOGO_FALLBACK = '/img/logo-pce-officiel.jpg'
  * Ordre de priorité de la source :
  *   1. la vraie photo du client (WebP responsive, `srcset` 400/800/1200px),
  *      si le slot (`lock`) est renseigné dans src/data/photos.js ;
- *   2. le logo PCE local, si aucune photo n'est assignée à ce slot.
+ *   2. le repli — le logo PCE local par défaut, ou un aplat de couleur uni
+ *      si `fallback="blank"` (voir `bgClassName`) — pour les emplacements où
+ *      le logo ferait double emploi avec un titre déjà présent juste en
+ *      dessous (ex. cartes Équipements de la page Piscine).
  *
  * Un aplat animé occupe la place pendant le chargement, ce qui évite tout
  * décalage de mise en page.
@@ -30,23 +33,37 @@ export default function Photo({
   imgClassName = '',
   rounded = 'rounded-2xl',
   sizes = '100vw',
+  fallback = 'logo',
+  bgClassName = 'bg-navy-100',
 }) {
   const real = clientPhotoMeta(lock)
 
-  const [src, setSrc] = useState(real?.src || LOGO_FALLBACK)
+  const [src, setSrc] = useState(real?.src || (fallback === 'blank' ? null : LOGO_FALLBACK))
   const [loaded, setLoaded] = useState(false)
+  const [failed, setFailed] = useState(!real?.src)
 
   /* Le repli est déjà local : plus rien à tenter en cas d'échec. */
   const handleError = () => {
-    setSrc(LOGO_FALLBACK)
+    setFailed(true)
+    if (fallback !== 'blank') setSrc(LOGO_FALLBACK)
     setLoaded(true)
   }
 
   const intrinsicWidth = real?.width || w
   const intrinsicHeight = real?.height || h
 
+  if (fallback === 'blank' && failed) {
+    return (
+      <div
+        role="img"
+        aria-label={alt}
+        className={`overflow-hidden ${rounded} ${bgClassName} ${className}`}
+      />
+    )
+  }
+
   return (
-    <div className={`relative overflow-hidden ${rounded} bg-navy-100 ${className}`}>
+    <div className={`relative overflow-hidden ${rounded} ${bgClassName} ${className}`}>
       {!loaded && (
         <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-navy-100 via-navy-200 to-navy-100" />
       )}

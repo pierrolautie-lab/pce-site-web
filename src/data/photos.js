@@ -40,6 +40,10 @@ export const PHOTO_SLOTS = {
   629: { page: 'Électricité', zone: 'Expertise', sujet: 'Électricien au travail, câblage' },
   739: { page: 'Piscine', zone: 'Hero', sujet: 'Bassin, piscine' },
   740: { page: 'Piscine', zone: 'Expertise', sujet: 'Local technique, pompe, filtre' },
+  741: { page: 'Piscine', zone: 'Équipements', sujet: 'Filtration' },
+  742: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à vitesse variable' },
+  743: { page: 'Piscine', zone: 'Équipements', sujet: "Traitement de l'eau" },
+  744: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à chaleur piscine' },
   300: { page: "Traitement de l'eau", zone: 'Hero', sujet: "Réseau, arrivée d'eau" },
   301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: "Réseau, arrivée d'eau" },
 
@@ -132,6 +136,10 @@ export const clientPhotos = {
      src/data/site.js. À remplacer dès qu'une vraie photo de local
      technique est disponible. */
   740: '/img/piscine-hero-bassin.jpg',
+  741: '/img/equipement-filtration.jpg',
+  742: '/img/equipement-pompe-vitesse-variable.jpg',
+  743: '/img/equipement-traitement-eau.jpg',
+  744: '/img/equipement-pac-piscine.jpg',
 
   /* Climatisation — chantiers réels du client (gainable en combles et
      grille de diffusion finie). Remplace les visuels issus des flyers,

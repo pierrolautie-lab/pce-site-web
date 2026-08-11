@@ -682,22 +682,22 @@ export const services = {
         items: [
           {
             title: ['Filtration', 'haute performance'],
-            img: '/img/equipement-filtration.jpg',
+            photo: { lock: 741 },
             text: "Des filtres à sable ou à cartouche de dernière génération pour une eau parfaitement limpide.",
           },
           {
             title: ['Pompes', 'à vitesse variable'],
-            img: '/img/equipement-pompe-vitesse-variable.jpg',
+            photo: { lock: 742 },
             text: "Jusqu'à 80 % d'économies d'énergie par rapport à une pompe à vitesse fixe, grâce à une filtration adaptée à vos besoins.",
           },
           {
             title: ["Traitement de l'eau", 'nouvelle génération'],
-            img: '/img/equipement-traitement-eau.jpg',
+            photo: { lock: 743 },
             text: "Électrolyse au sel, régulation automatique du pH et du redox pour une eau saine toute l'année.",
           },
           {
             title: ['Pompes', 'à chaleur'],
-            img: '/img/equipement-pac-piscine.jpg',
+            photo: { lock: 744 },
             text: "Profitez d'une eau à la température idéale plus longtemps avec nos pompes à chaleur performantes et silencieuses.",
           },
         ],

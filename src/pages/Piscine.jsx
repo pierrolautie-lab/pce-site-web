@@ -214,21 +214,38 @@ function Equipements({ data }) {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {data.items.map((item) => (
-            <article key={item.title.join(' ')} className="flex min-w-0 items-start gap-4">
-              <BrandLogo
-                name={item.title.join(' ')}
-                src={item.img}
-                className="h-24 w-24 shrink-0 rounded-lg object-cover"
+            <article
+              key={item.title.join(' ')}
+              className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100"
+            >
+              {/* fallback="blank" : un aplat navy-50 sans texte plutôt que le
+                  repli logo PCE habituel de `Photo` — le titre juste en
+                  dessous dit déjà de quoi il s'agit, pas besoin d'un cadre
+                  en attente. Les 4 photos existent réellement à ce jour ;
+                  ce repli reste dormant tant qu'elles ne disparaissent pas. */}
+              <Photo
+                lock={item.photo.lock}
+                alt={item.title.join(' ')}
+                rounded=""
+                className="aspect-[4/3] w-full"
+                fallback="blank"
+                bgClassName="bg-navy-50"
+                sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
               />
-              <div className="min-w-0">
-                <h3 className="font-display text-kicker font-bold uppercase leading-tight text-navy-800">
+              <div className="flex flex-1 flex-col p-6">
+                {/* min-h-12 : les titres tiennent tous sur 2 lignes dans les
+                    données actuelles, mais un mot plus long pourrait forcer
+                    un retour à la ligne sur l'une des 4 cartes — la hauteur
+                    minimale garde les 4 titres (et donc les 4 cartes)
+                    alignés même dans ce cas. */}
+                <h3 className="min-h-12 font-display text-kicker font-bold uppercase leading-tight text-navy-800">
                   {item.title.map((l) => (
                     <span key={l} className="block">
                       {l}
                     </span>
                   ))}
                 </h3>
-                <p className="mt-3 text-body-sm text-navy-500">{item.text}</p>
+                <p className="mt-3 flex-1 text-balance text-body-sm text-navy-500">{item.text}</p>
               </div>
             </article>
           ))}
