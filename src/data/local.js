@@ -156,6 +156,25 @@ export const localCities = {
     intro: (t) =>
       `Connue pour ses tomettes, Salernes se situe dans le prolongement de notre zone d'intervention historique. PCE y prend en charge ${t.verb} — ${t.detail} — avec le même sérieux qu'à Lorgues. Devis gratuit sur simple demande.`,
   },
+  /* Ajoutées après coup, avec la même restriction aux 5 métiers d'origine
+     que les villes historiques ci-dessus (choix explicite, pas un oubli) —
+     distances vérifiées par recherche routière réelle, pas estimées. */
+  Entrecasteaux: {
+    name: 'Entrecasteaux',
+    distanceKm: 14,
+    neighbors: ['Lorgues', 'Salernes'],
+    trades: ORIGINAL_TRADES,
+    intro: (t) =>
+      `Village fortifié dominé par son château, Entrecasteaux fait partie du triangle Lorgues–Salernes–Villecroze où PCE intervient régulièrement pour ${t.verb} : ${t.detail}. Devis gratuit et délai d'intervention court, comme sur le reste de notre secteur historique.`,
+  },
+  Villecroze: {
+    name: 'Villecroze',
+    distanceKm: 13,
+    neighbors: ['Salernes', 'Entrecasteaux'],
+    trades: ORIGINAL_TRADES,
+    intro: (t) =>
+      `Connue pour ses grottes et sa cascade, Villecroze est desservie par nos équipes au même titre que les communes voisines de Salernes et Entrecasteaux, pour ${t.verb} — ${t.detail}. Intervention rapide depuis Lorgues, devis gratuit sur simple demande.`,
+  },
   'Le Luc': {
     name: 'Le Luc',
     distanceKm: 20,
@@ -187,6 +206,17 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Fréjus et son agglomération constituent l'une des zones les plus demandées de notre secteur d'intervention élargi. PCE y assure ${t.verb} — ${t.detail} — avec la même exigence de qualité qu'au plus près de Lorgues. Devis gratuit, sans engagement.`,
+  },
+  /* Quartier balnéaire de Fréjus, traité à part avec un texte volontairement
+     différent (résidences secondaires, remises en service saisonnières) pour
+     ne pas dupliquer l'intro de Fréjus ci-dessus. */
+  'Saint-Aygulf': {
+    name: 'Saint-Aygulf',
+    distanceKm: 45,
+    neighbors: ['Fréjus', 'Sainte-Maxime'],
+    trades: ORIGINAL_TRADES,
+    intro: (t) =>
+      `Sur le front de mer entre Fréjus et Sainte-Maxime, Saint-Aygulf compte une forte proportion de résidences secondaires et de copropriétés balnéaires : PCE y assure ${t.verb}, y compris les remises en service avant l'arrivée des propriétaires en saison — ${t.detail}. Devis gratuit, intervention planifiée à l'avance pour les séjours estivaux.`,
   },
   'Saint-Raphaël': {
     name: 'Saint-Raphaël',
