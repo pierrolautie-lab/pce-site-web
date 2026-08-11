@@ -90,7 +90,23 @@ function Hero({ page, hero }) {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
-        <Photo lock={hero.lock} alt="Climatisation installée par PCE" priority rounded="" className="h-full w-full" />
+        {/* object-[50%_52%] : photo portrait 1200×1600, groupe extérieur situé
+            au tiers central de l'image en hauteur (centre vertical mesuré à
+            50,6 % de la hauteur). Dans ce panneau, toujours plus large que
+            haut (aucune largeur de l'image n'est jamais rognée en cover —
+            vérifié à 1024/1440/1920 px), seule la position verticale compte :
+            52 % centre la fenêtre visible sur le groupe extérieur à toutes
+            les largeurs testées (fenêtre visible la plus étroite, à 1920 px,
+            de 28 % à 73 % de la hauteur — contient largement le sujet, situé
+            entre 37,5 % et 64 %). */}
+        <Photo
+          lock={hero.lock}
+          alt="Climatisation installée par PCE"
+          priority
+          rounded=""
+          className="h-full w-full"
+          imgClassName="object-[50%_52%]"
+        />
         <ZoneBadge className="absolute bottom-6 right-6" />
       </div>
       <div className="absolute inset-0 -z-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:to-transparent" />

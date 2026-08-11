@@ -136,7 +136,15 @@ export const clientPhotos = {
   /* Climatisation — chantiers réels du client (gainable en combles et
      grille de diffusion finie). Remplace les visuels issus des flyers,
      désormais gardés en repli (voir plus bas). */
-  517: '/img/climatisation-hero-gainable-grille.jpg',
+  /* climatisation-hero-gainable-grille.jpg écartée du héros : variance du
+     Laplacien à 202 (la plus floue de la bibliothèque climatisation, contre
+     1460 pour la meilleure) et sujet — une grille de plafond sur un mur nu —
+     illisible comme prestation en pleine largeur. climatisation-prestations
+     -groupe.jpg (groupe extérieur posé, cadré net) la remplace en attendant
+     qu'un visuel paysage dédié soit fourni par le client : les 7 photos
+     climatisation du projet sont toutes en portrait, prises au téléphone en
+     contre-plongée, aucune n'est pensée pour un usage en héros. */
+  517: '/img/climatisation-prestations-groupe.jpg',
   518: '/img/climatisation-expertise-gainable-salon.jpg',
 
   /* Traitement de l'eau */
