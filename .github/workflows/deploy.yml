@@ -41,6 +41,15 @@ jobs:
         # Nettoyage des variables (\r\n parasites) et forme d'authentification
         # ("open host:port" puis "user" séparé) : voir historique du commit,
         # plusieurs combinaisons de flags lftp ont échoué avant celle-ci.
+        #
+        # `mirror` compare déjà taille/date et ne renvoie que ce qui a changé
+        # (incrémental par défaut) — `--delete` retire du serveur ce qui n'a
+        # plus d'équivalent local, `--parallel=5` accélère l'envoi des 268
+        # dossiers en les transférant en parallèle plutôt qu'un par un. Le
+        # `put ./dist/.htaccess` après `mirror` est une sécurité explicite :
+        # sans lui, un serveur FTP qui masque les fichiers point dans son
+        # listing pourrait fausser la comparaison de `mirror` sur ce fichier
+        # précis, dont dépend tout le routage des 268 pages.
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
@@ -51,6 +60,7 @@ jobs:
           FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
           FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
           echo "Longueurs — serveur: ${#FTP_SERVER}, utilisateur: ${#FTP_USERNAME}, mot de passe: ${#FTP_PASSWORD}"
+          DEBUT=$(date +%s)
           lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
@@ -61,11 +71,16 @@ jobs:
           user "$FTP_USERNAME" "$FTP_PASSWORD"
           cd public_html
           pwd
-          mirror --reverse --delete --verbose --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
+          mirror --reverse --delete --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
+          put ./dist/.htaccess
           pwd
           ls -la
           echo "--- img/ ---"
           ls -la img/
+          echo "--- vérification .htaccess ---"
+          ls -la .htaccess
           chmod -R 755 .
           bye
           EOF
+          FIN=$(date +%s)
+          echo "Durée de l'envoi FTP : $((FIN - DEBUT))s"

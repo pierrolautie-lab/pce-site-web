@@ -112,7 +112,8 @@ function EntretienAidesConseil({ service }) {
               Aides financières disponibles
             </h3>
             <p className="mt-3 text-[12.5px] leading-[1.65] text-navy-500">
-              Nous vous accompagnons pour bénéficier des aides de l'État, selon votre projet et votre éligibilité.
+              Ces aides ciblent les équipements décarbonés : la pompe à chaleur en bénéficie pleinement, la
+              chaudière à gaz n'y est plus éligible depuis 2023-2024, hors TVA à 5,5 %.
             </p>
             <ul className="mt-6 flex flex-wrap gap-3">
               {service.aids.map((a) => (
@@ -122,6 +123,12 @@ function EntretienAidesConseil({ service }) {
                 >
                   <Icon name={a.icon} className="h-3.5 w-3.5 text-azure-500" strokeWidth={2.2} />
                   {a.label}
+                  {a.detail && (
+                    <span className="normal-case tracking-normal font-normal text-navy-400">
+                      {' '}
+                      — {a.detail}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

@@ -9,8 +9,12 @@
    `SHOW_GOOGLE_REVIEWS` pilote l'affichage sur TOUTES les pages qui montrent
    ce bloc (accueil, climatisation). Une seule valeur, pour qu'on ne puisse
    pas publier les avis à un endroit en les croyant masqués ailleurs.
+
+   Remis à `false` avant mise en ligne (2026-08-11) : aucune fiche Google
+   Business vérifiée ne confirme cette note ni ce volume d'avis. Ne repasser
+   à `true` qu'après confirmation que la fiche existe réellement.
 ---------------------------------------------------------------------------*/
-export const SHOW_GOOGLE_REVIEWS = true
+export const SHOW_GOOGLE_REVIEWS = false
 
 // À CONFIRMER — ne pas publier sans fiche Google Business réelle
 export const GOOGLE_REVIEWS = {

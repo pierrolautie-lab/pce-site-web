@@ -10,6 +10,12 @@ import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components
 import { company, services } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
+/* Sur le modèle de `SHOW_GOOGLE_REVIEWS` : les fichiers logo Daikin,
+   Mitsubishi Electric et Midea ne sont pas encore livrés, le bloc marques
+   affiche donc trois cadres de repli. À repasser à `true` dès que les trois
+   logos sont déposés dans public/img/ et renseignés dans `site.js`. */
+const SHOW_CLIM_BRANDS = false
+
 /** Liste à coches, réutilisée dans les deux tons de la page (cf. Piscine.jsx). */
 function CheckList({ items, tone = 'light', className = '' }) {
   const dark = tone === 'dark'
@@ -73,7 +79,9 @@ export default function Climatisation() {
       />
 
       <Hero page={p} hero={service.hero} />
-      <ServiceBrandsRow title="Les marques que nous installons et entretenons" brands={p.brands} />
+      {SHOW_CLIM_BRANDS && (
+        <ServiceBrandsRow title="Les marques que nous installons et entretenons" brands={p.brands} />
+      )}
       <ReversibleEtEngagements data={p.reversible} />
       <Solutions data={p.solutions} />
       <ArgBand items={p.argBand} />
@@ -245,10 +253,12 @@ function ArgBand({ items }) {
 
 /* ====================================== AIDES / ZONE / AVIS GOOGLE ====== */
 function AidesZoneAvis({ aids, zone }) {
+  /* Sans le bloc avis, une grille à 3 colonnes laisse la troisième vide :
+     on repasse à 2 colonnes, comme le fait déjà ProofRow sur l'accueil. */
   return (
     <section className="section bg-navy-50">
       <div className="container-pce">
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className={`grid gap-6 ${SHOW_GOOGLE_REVIEWS ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
           <div className="min-w-0 rounded-xl bg-white p-7 shadow-card ring-1 ring-navy-100">
             <h2 className="font-display text-kicker font-bold uppercase text-navy-800">{aids.heading}</h2>
             <p className="mt-3 text-body-sm leading-[1.65] text-navy-500">{aids.text}</p>

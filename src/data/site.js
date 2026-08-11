@@ -278,16 +278,18 @@ export const services = {
         name: 'Chappée',
         color: 'text-[#C8102E]',
         text: "L'efficacité au service de votre confort.",
-        bullets: ['Chaudières gaz & fioul', 'Solutions adaptées à tous les besoins', 'Robustesse et performance'],
+        bullets: ['Chaudières gaz, gammes complètes', 'Solutions adaptées à tous les besoins', 'Robustesse et performance'],
       },
     ],
 
-    /* Chips « aides financières » — libellés génériques : le détail de
-       l'éligibilité (PAC vs chaudière gaz) reste porté par `process`/`faq`. */
+    /* Chips « aides financières » — MaPrimeRénov' et la CEE ne sont plus
+       mobilisables pour une chaudière à gaz depuis 2023-2024 (voir `faq`
+       plus bas) : chaque chip porte donc son propre équipement cible, pour
+       qu'aucun visiteur ne lise ces aides comme applicables au gaz. */
     aids: [
-      { icon: 'euro', label: "MaPrimeRénov'" },
-      { icon: 'leaf', label: 'CEE' },
-      { icon: 'checkCircle', label: 'TVA 5,5 %' },
+      { icon: 'euro', label: "MaPrimeRénov'", detail: 'Pompe à chaleur' },
+      { icon: 'leaf', label: 'CEE', detail: 'Pompe à chaleur' },
+      { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Tous travaux' },
     ],
 
     prestations: [
