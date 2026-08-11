@@ -290,7 +290,7 @@ function AidesZoneAvis({ aids, zone }) {
               <div className="mt-4 flex items-center justify-center gap-2">
                 <span className="flex gap-0.5 text-gold-500">
                   {Array.from({ length: GOOGLE_REVIEWS.stars }).map((_, i) => (
-                    <Icon key={i} name="star" className="h-5 w-5" strokeWidth={1.4} />
+                    <Icon key={i} name="star" className="h-5 w-5" strokeWidth={1.4} fill="currentColor" />
                   ))}
                 </span>
                 <span className="text-title font-display font-black text-navy-800">{GOOGLE_REVIEWS.rating}</span>

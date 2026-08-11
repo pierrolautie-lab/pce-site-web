@@ -95,8 +95,19 @@ export const trades = [
 ]
 
 /* Navigation à plat, conforme aux maquettes de référence. */
-export const nav = [
+/* En-tête : 5 entrées à plat + les 7 métiers regroupés sous le déclencheur
+   « Nos services » (voir Header.jsx). Les 12 entrées à plat ne tenaient à
+   aucune largeur d'écran dans le conteneur du site (max-w-[1280px]) — measuré
+   à 1665px de large nécessaire, quel que soit le seuil de bascule choisi. */
+export const navFlat = [
   { label: 'Accueil', to: '/' },
+  { label: 'Réalisations', to: '/realisations' },
+  { label: 'Conseils', to: '/conseils' },
+  { label: 'À propos', to: '/a-propos' },
+  { label: 'Contact', to: '/contact' },
+]
+
+export const navServices = [
   { label: 'Plomberie', to: '/plomberie' },
   { label: 'Chauffage', to: '/chauffage' },
   { label: 'Climatisation', to: '/climatisation' },
@@ -104,10 +115,6 @@ export const nav = [
   { label: 'Piscine', to: '/piscine' },
   { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
   { label: 'Dépannage', to: '/depannage' },
-  { label: 'Réalisations', to: '/realisations' },
-  { label: 'Conseils', to: '/conseils' },
-  { label: 'À propos', to: '/a-propos' },
-  { label: 'Contact', to: '/contact' },
 ]
 
 /* Section « Pourquoi choisir PCE ? » de la page d'accueil. */

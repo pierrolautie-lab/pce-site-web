@@ -1,8 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import { Logo } from './Brand.jsx'
-import { company, nav } from '../data/site.js'
+import { company, navFlat, navServices } from '../data/site.js'
+
+const NAV_LINK_CLASS = ({ isActive }) =>
+  `relative whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
+   after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
+   ${
+     isActive
+       ? 'text-navy-800 after:bg-gold-500'
+       : 'text-navy-600 after:bg-transparent hover:text-navy-800 hover:after:bg-navy-200'
+   }`
 
 export default function Header() {
   const { pathname } = useLocation()
@@ -48,29 +58,34 @@ export default function Header() {
         <Logo size="header" />
 
         {/* ------------------------------------------- Centre : navigation + téléphone/devis
-            Le menu à plat compte dix entrées : il ne tient qu'à partir de
-            1440 px. En dessous, on bascule sur le panneau déroulant, et seul
-            le bloc téléphone/devis occupe le centre. */}
+            Menu à plat : 5 entrées + le déclencheur « Nos services », qui
+            regroupe les 7 métiers en panneau déroulant (voir ServicesMenu
+            plus bas). Mesuré à 1155px de large au maximum — tient dans le
+            conteneur du site (max-w-[1280px]) à partir de 1180px, seuil
+            retenu avec une marge de sécurité. Les 12 entrées à plat
+            précédentes ne tenaient à AUCUNE largeur d'écran : le manque
+            (385px) ne se résorbe jamais, le conteneur du site plafonnant à
+            1280px quelle que soit la largeur de la fenêtre. */}
         <div className="hidden min-w-0 items-center justify-center gap-x-6 lg:flex">
+          {/* min-w-0 : sans lui, min-width: auto (valeur par défaut d'un
+              enfant flex) empêche flex-shrink d'agir, et un débordement
+              remonterait visuellement sous le logo — comme cela arrivait
+              avant, à toute largeur, avec les 12 entrées à plat. Avec ce
+              menu réduit à 6 éléments, la marge est confortable, mais la
+              règle reste structurellement correcte quel que soit le nombre
+              d'entrées ajoutées plus tard. */}
           <nav
-            className="hidden items-center justify-center gap-x-3 gap-y-1 min-[1500px]:flex"
+            className="hidden min-w-0 items-center justify-center gap-x-3 gap-y-1 min-[1180px]:flex"
             aria-label="Navigation principale"
           >
-            {nav.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === '/'}
-                className={({ isActive }) =>
-                  `relative whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
-                   after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
-                   ${
-                     isActive
-                       ? 'text-navy-800 after:bg-gold-500'
-                       : 'text-navy-600 after:bg-transparent hover:text-navy-800 hover:after:bg-navy-200'
-                   }`
-                }
-              >
+            <NavLink to="/" end className={NAV_LINK_CLASS}>
+              Accueil
+            </NavLink>
+
+            <ServicesMenu pathname={pathname} />
+
+            {navFlat.slice(1).map((item) => (
+              <NavLink key={item.to} to={item.to} className={NAV_LINK_CLASS}>
                 {item.label}
               </NavLink>
             ))}
@@ -118,13 +133,13 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Bouton menu pour les largeurs intermédiaires (lg → 1440 px) */}
+          {/* Bouton menu pour les largeurs intermédiaires (lg → 1180 px) */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="hidden h-11 w-11 shrink-0 place-items-center rounded-lg text-navy-800 ring-1 ring-navy-200 transition-colors hover:bg-navy-50 lg:grid min-[1500px]:hidden"
+            className="hidden h-11 w-11 shrink-0 place-items-center rounded-lg text-navy-800 ring-1 ring-navy-200 transition-colors hover:bg-navy-50 lg:grid min-[1180px]:hidden"
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" strokeWidth={2} />
           </button>
@@ -133,16 +148,45 @@ export default function Header() {
 
       {/* ------------------------------------------------ Panneau mobile */}
       <div
-        className={`overflow-hidden border-t border-navy-100 bg-white transition-[max-height] duration-300 min-[1500px]:hidden ${
+        className={`overflow-hidden border-t border-navy-100 bg-white transition-[max-height] duration-300 min-[1180px]:hidden ${
           open ? 'max-h-[80vh] overflow-y-auto' : 'max-h-0'
         }`}
       >
         <nav className="container-pce flex flex-col py-4" aria-label="Navigation mobile">
-          {nav.map((item) => (
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+                isActive
+                  ? 'border-gold-500 bg-navy-50 text-navy-800'
+                  : 'border-transparent text-navy-600 hover:bg-navy-50'
+              }`
+            }
+          >
+            Accueil
+          </NavLink>
+
+          {navServices.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
-              end={item.to === '/'}
+              className={({ isActive }) =>
+                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+                  isActive
+                    ? 'border-gold-500 bg-navy-50 text-navy-800'
+                    : 'border-transparent text-navy-600 hover:bg-navy-50'
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+
+          {navFlat.slice(1).map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
               className={({ isActive }) =>
                 `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
                   isActive
@@ -173,5 +217,134 @@ export default function Header() {
         </nav>
       </div>
     </header>
+  )
+}
+
+/** Déclencheur « Nos services » du menu à plat, ouvrant un panneau listant
+ *  les 7 métiers. Les 7 <a> sont dans le DOM au chargement (juste masqués
+ *  en opacité/visibilité), jamais injectés à l'ouverture — un lecteur
+ *  d'écran ou un moteur de recherche les voit toujours. */
+function ServicesMenu({ pathname }) {
+  const [open, setOpen] = useState(false)
+  const wrapperRef = useRef(null)
+  const triggerRef = useRef(null)
+  const linkRefs = useRef([])
+
+  const isActive = navServices.some((item) => item.to === pathname)
+
+  useEffect(() => setOpen(false), [pathname])
+
+  useEffect(() => {
+    if (!open) return
+    const onPointerDown = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setOpen(false)
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    return () => document.removeEventListener('mousedown', onPointerDown)
+  }, [open])
+
+  const openAndFocusFirst = () => {
+    // flushSync plutôt que requestAnimationFrame : le focus doit atterrir
+    // sur le premier lien dès que le panneau est monté, pas "au prochain
+    // rendu, un jour" — flushSync applique le rendu de façon synchrone
+    // avant qu'on appelle .focus(), sans dépendre d'une frame de
+    // compositing qui peut être retardée (onglet en arrière-plan, etc.).
+    flushSync(() => setOpen(true))
+    linkRefs.current[0]?.focus()
+  }
+
+  const onTriggerClick = () => {
+    // Un <button>, jamais un lien : le premier appui tactile ouvre le
+    // panneau, il ne navigue jamais.
+    setOpen((v) => !v)
+  }
+
+  const onTriggerKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      openAndFocusFirst()
+    } else if (e.key === 'Escape' && open) {
+      // Échap doit fermer même si le focus n'a pas encore quitté le
+      // déclencheur (ouverture à la souris, puis Échap au clavier sans
+      // être descendu dans le panneau) — pas seulement depuis les liens.
+      e.preventDefault()
+      setOpen(false)
+    }
+  }
+
+  const onPanelKeyDown = (e, index) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      linkRefs.current[(index + 1) % navServices.length]?.focus()
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      linkRefs.current[(index - 1 + navServices.length) % navServices.length]?.focus()
+    } else if (e.key === 'Escape') {
+      e.preventDefault()
+      setOpen(false)
+      triggerRef.current?.focus()
+    }
+  }
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="relative shrink-0"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        ref={triggerRef}
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        aria-controls="services-menu-panel"
+        onClick={onTriggerClick}
+        onKeyDown={onTriggerKeyDown}
+        className={`relative flex items-center gap-1 whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
+                   after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
+                   ${
+                     isActive
+                       ? 'text-navy-800 after:bg-gold-500'
+                       : 'text-navy-600 after:bg-transparent hover:text-navy-800 hover:after:bg-navy-200'
+                   }`}
+      >
+        Nos services
+        <Icon
+          name="chevronDown"
+          className={`h-3 w-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          strokeWidth={2.4}
+        />
+      </button>
+
+      <div
+        id="services-menu-panel"
+        role="menu"
+        aria-label="Nos services"
+        className={`absolute left-1/2 top-full z-50 mt-2 w-64 -translate-x-1/2 rounded-xl bg-white p-2 shadow-header ring-1 ring-navy-100 transition-all duration-150 ${
+          open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
+        }`}
+      >
+        {navServices.map((item, i) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            role="menuitem"
+            tabIndex={open ? 0 : -1}
+            ref={(el) => {
+              linkRefs.current[i] = el
+            }}
+            onKeyDown={(e) => onPanelKeyDown(e, i)}
+            className={({ isActive: linkActive }) =>
+              `block rounded-lg px-3 py-2.5 font-display text-[11px] font-bold uppercase tracking-[.03em] transition-colors ${
+                linkActive ? 'bg-navy-50 text-navy-800' : 'text-navy-600 hover:bg-navy-50 hover:text-navy-800'
+              }`
+            }
+          >
+            {item.label}
+          </NavLink>
+        ))}
+      </div>
+    </div>
   )
 }

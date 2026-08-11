@@ -220,7 +220,7 @@ function ProofRow() {
               <div className="mt-4 flex items-center gap-3">
                 <span className="flex" aria-hidden="true">
                   {Array.from({ length: GOOGLE_REVIEWS.stars }).map((_, i) => (
-                    <Icon key={i} name="star" className="h-5 w-5 text-gold-500" strokeWidth={1.4} />
+                    <Icon key={i} name="star" className="h-5 w-5 text-gold-500" strokeWidth={1.4} fill="currentColor" />
                   ))}
                 </span>
                 <span className="text-[22px] font-black leading-none text-navy-800">
