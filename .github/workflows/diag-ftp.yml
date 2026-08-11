@@ -1,8 +1,14 @@
 name: Diagnostic FTP (lecture seule)
 
 # Déclenché manuellement uniquement — jamais sur push, pour ne jamais se
-# confondre avec le déploiement. But : lire le .htaccess réellement en ligne
-# et la taille d'un fichier prérendu précis, sans rien transférer ni modifier.
+# confondre avec le déploiement.
+#
+# 2026-08-11 : repurposé en diagnostic de connectivité après deux échecs FTP
+# consécutifs ("max-retries exceeded" dès la commande cd) espacés de 2h30.
+# Le support Hostinger a demandé l'IP publique du runner pour vérifier un
+# éventuel blocage pare-feu. Affiche l'IP puis tente une connexion FTP
+# minimale (ouverture + authentification + pwd, rien d'autre) pour savoir si
+# le blocage est encore actif au moment du test.
 on:
   workflow_dispatch:
 
@@ -10,7 +16,13 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Lire .htaccess et chercher un second emplacement servi via lftp
+      - name: IP publique du runner
+        run: |
+          echo "IP publique de ce runner GitHub Actions :"
+          curl -4 -s --max-time 10 https://api.ipify.org
+          echo
+
+      - name: Test de connexion FTP minimal
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
@@ -20,6 +32,7 @@ jobs:
           FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
           FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
           FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
+          DEBUT=$(date +%s)
           lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
@@ -27,31 +40,8 @@ jobs:
           set net:max-retries 3
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          echo "=== pwd (répertoire de connexion) ==="
           pwd
-          echo "=== ls -la . (répertoire courant, pour voir si public_html est un lien symbolique) ==="
-          ls -la .
-          echo "=== ls -la .. (un niveau au-dessus du répertoire de dépôt actuel) ==="
-          cd ..
-          pwd
-          ls -la .
-          echo "=== domains/ existe-t-il à ce niveau ? ==="
-          ls -la domains/
-          echo "=== domains/pcevar.fr/ ==="
-          ls -la domains/pcevar.fr/
-          echo "=== domains/pcevar.fr/public_html/ ==="
-          ls -la domains/pcevar.fr/public_html/
-          echo "=== domains/pcevar.fr/public_html/index.html ==="
-          ls -la domains/pcevar.fr/public_html/index.html
-          echo "=== domains/pcevar.fr/public_html/assets/ ==="
-          ls -la domains/pcevar.fr/public_html/assets/
-          echo "=== autres racines webroot courantes, au cas où ==="
-          ls -la htdocs/
-          ls -la www/
-          echo "=== rappel : le dossier où le mirror écrit actuellement ==="
-          cd public_html
-          pwd
-          ls -la index.html
-          ls -la assets/ | head -5
           bye
           EOF
+          FIN=$(date +%s)
+          echo "Durée du test : $((FIN - DEBUT))s"
