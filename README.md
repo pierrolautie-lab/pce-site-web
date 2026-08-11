@@ -181,10 +181,43 @@ Le fichier **`public/.htaccess`** est indispensable : il redirige toutes les
 URL vers `index.html` pour que le routage React (React Router) fonctionne
 aussi quand une page est rechargée directement (ex. `pcevar.fr/chauffage`).
 
-> Si votre offre Hostinger inclut l'accès SSH (vérifiable dans hPanel →
-> *Avancé* → *SSH Access*), une alternative plus robuste est de remplacer
-> l'étape FTP par un envoi en SFTP/rsync — plus rapide et plus sûr qu'un FTP
-> classique. Dites-le-moi si c'est votre cas, j'adapterai le workflow.
+### Alternative SSH/rsync — préparée, pas encore active
+
+SSH est disponible sur ce compte Hostinger (confirmé le 2026-08-11). Un
+déploiement par `rsync` sur SSH existe en préparation sur la branche
+**`feature/ssh-rsync-deploy`** — le FTP classique négocie une connexion par
+fichier (15+ minutes pour ~900 fichiers), rsync transfère en un seul flux
+compressé et ne renvoie que ce qui a changé (de l'ordre de quelques secondes
+à 1 minute une fois la première synchronisation complète faite).
+
+**Mise en place (à faire une seule fois, avant de fusionner cette branche)**
+
+1. **Ajouter la clé publique dans hPanel** → *Avancé* → *Accès SSH* → *Gérer
+   les clés SSH*. Une paire de clés dédiée au déploiement (jamais une clé
+   personnelle) a été générée pour cette préparation — la clé publique vous
+   a été transmise séparément.
+
+2. **Récupérer l'hôte, le port et l'utilisateur SSH** dans hPanel → *Avancé*
+   → *Accès SSH* (le port n'est presque jamais 22 sur de l'hébergement
+   mutualisé — souvent 65002 chez Hostinger, à vérifier).
+
+3. **Ajouter quatre secrets GitHub** (`Settings` → `Secrets and variables` →
+   `Actions`) :
+
+   | Nom du secret | Valeur |
+   |---|---|
+   | `HOSTINGER_SSH_HOST` | l'hôte SSH noté ci-dessus |
+   | `HOSTINGER_SSH_PORT` | le port SSH noté ci-dessus |
+   | `HOSTINGER_SSH_USER` | l'identifiant SSH (généralement le même que le FTP) |
+   | `HOSTINGER_SSH_KEY` | la clé **privée** correspondante (format PEM), transmise séparément — jamais dans le code ni dans un message |
+
+4. **Tester la branche** avant de la fusionner : `workflow_dispatch` depuis
+   l'onglet Actions, sur la branche `feature/ssh-rsync-deploy`, pour vérifier
+   que le transfert et la vérification post-transfert passent avant de
+   remplacer le FTP en production.
+
+Une fois validée, fusionner la branche remplace l'étape FTP par rsync sans
+toucher au reste du pipeline (build, vérification post-transfert).
 
 ### Deux emplacements sur le serveur — résolu le 2026-08-11
 

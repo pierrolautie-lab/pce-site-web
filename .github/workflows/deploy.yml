@@ -26,76 +26,55 @@ jobs:
       - name: Construire le site (npm run build)
         run: npm run build
 
-      - name: Envoyer dist/ et corriger les permissions via lftp
-        # L'action tierce SamKirkland/FTP-Deploy-Action a été abandonnée ici :
-        # malgré un server-dir absolu qui semblait correct, elle a rapporté un
-        # envoi réussi ("Sync complete") alors que les fichiers atterrissaient
-        # ailleurs sur le serveur. lftp, lui, affiche `pwd` avant chaque
-        # envoi : on voit exactement où les fichiers partent, sans dépendre
-        # de la résolution de chemin interne d'une action tierce.
+      - name: Envoyer dist/ via rsync sur SSH
+        # ⚠️ 2026-08-11 — BRANCHE DE PRÉPARATION, PAS ENCORE FUSIONNÉE.
+        # Remplace l'étape FTP/lftp (voir git log de ce fichier pour son
+        # historique complet) : un transfert FTP classique de ~900 fichiers
+        # répartis sur 283 dossiers prenait 15+ minutes, avec un protocole qui
+        # négocie une connexion par fichier. rsync sur SSH transfère en un
+        # seul flux compressé et ne renvoie que les fichiers qui ont changé
+        # (comme `mirror`, mais sans le coût par-fichier du FTP) : de l'ordre
+        # de quelques secondes à 1 minute pour un déploiement incrémental une
+        # fois la première synchronisation complète faite.
         #
-        # ⚠️ 2026-08-11 — Chemin cible changé pour domains/pcevar.fr/public_html/,
-        # confirmé par le support Hostinger le jour même comme la racine réelle
-        # du domaine (/home/u718469912/domains/pcevar.fr/public_html). Un
-        # diagnostic FTP en lecture seule avait déjà montré la même chose
-        # (empreinte des assets servis identique au contenu de ce dossier,
-        # figé au 8 août). Le fichier domains/pcevar.fr/DO_NOT_UPLOAD_HERE
-        # (daté du 4 août) ne change rien à la configuration du domaine selon
-        # le support — laissé en place, sans certitude sur son origine.
-        # public_html/ à la racine du compte n'est pas utilisé pour pcevar.fr
-        # (confirmé par le support) ; laissé en l'état, pas supprimé, au cas
-        # où une autre configuration du compte en dépendrait.
+        # Chemin cible : /home/u718469912/domains/pcevar.fr/public_html/ — la
+        # racine réelle du domaine, confirmée par le support Hostinger le
+        # 2026-08-11 (voir README, section « Deux emplacements sur le
+        # serveur »). Chemin absolu, donc indépendant du dossier où la
+        # connexion SSH atterrit par défaut — contrairement au FTP, pas de
+        # mauvaise surprise possible sur ce point.
         #
-        # Chemin précédent : public_html/ à la racine du compte FTP — utilisé
-        # à tort du 4 au 11 août 2026 sur la base d'une vérification Hostinger
-        # antérieure qui s'est révélée incorrecte (ou périmée).
-        #
-        # Nettoyage des variables (\r\n parasites) et forme d'authentification
-        # ("open host:port" puis "user" séparé) : voir historique du commit,
-        # plusieurs combinaisons de flags lftp ont échoué avant celle-ci.
-        #
-        # `mirror` compare déjà taille/date et ne renvoie que ce qui a changé
-        # (incrémental par défaut) — `--delete` retire du serveur ce qui n'a
-        # plus d'équivalent local, `--parallel=5` accélère l'envoi des 268
-        # dossiers en les transférant en parallèle plutôt qu'un par un. Le
-        # `put ./dist/.htaccess` après `mirror` est une sécurité explicite :
-        # sans lui, un serveur FTP qui masque les fichiers point dans son
-        # listing pourrait fausser la comparaison de `mirror` sur ce fichier
-        # précis, dont dépend tout le routage des 268 pages.
+        # Secrets nécessaires (à créer avant de fusionner cette branche) :
+        #   HOSTINGER_SSH_HOST      hôte SSH (hPanel -> Avancé -> Accès SSH)
+        #   HOSTINGER_SSH_PORT      port SSH (souvent 65002 chez Hostinger,
+        #                           jamais 22 sur de l'hébergement mutualisé)
+        #   HOSTINGER_SSH_USER      identifiant SSH (le même que le FTP,
+        #                           généralement)
+        #   HOSTINGER_SSH_KEY       clé privée (PEM), la clé publique
+        #                           correspondante doit être ajoutée dans
+        #                           hPanel -> Avancé -> Accès SSH -> Gérer
+        #                           les clés SSH
+        # Une paire de clés dédiée au déploiement (pas une clé personnelle) a
+        # été générée pour cette préparation — voir le message qui accompagne
+        # ce commit pour la clé publique à ajouter dans hPanel.
         env:
-          FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_PORT: ${{ secrets.HOSTINGER_SSH_PORT }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
         run: |
-          sudo apt-get update -y && sudo apt-get install -y lftp
-          FTP_SERVER=$(printf '%s' "$FTP_SERVER" | tr -d '\r\n')
-          FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
-          FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
-          echo "Longueurs — serveur: ${#FTP_SERVER}, utilisateur: ${#FTP_USERNAME}, mot de passe: ${#FTP_PASSWORD}"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           DEBUT=$(date +%s)
-          lftp <<EOF
-          set ssl:verify-certificate no
-          set ftp:ssl-force true
-          set net:timeout 20
-          set net:max-retries 3
-          set mirror:use-pget-n 1
-          open "$FTP_SERVER:21"
-          user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd ../domains/pcevar.fr/public_html
-          pwd
-          mirror --reverse --delete --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
-          put ./dist/.htaccess
-          pwd
-          ls -la
-          echo "--- img/ ---"
-          ls -la img/
-          echo "--- vérification .htaccess ---"
-          ls -la .htaccess
-          chmod -R 755 .
-          bye
-          EOF
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes" \
+            --exclude='.git*' \
+            dist/ "$SSH_USER@$SSH_HOST:/home/u718469912/domains/pcevar.fr/public_html/"
           FIN=$(date +%s)
-          echo "Durée de l'envoi FTP : $((FIN - DEBUT))s"
+          echo "Durée de l'envoi rsync : $((FIN - DEBUT))s"
+          rm -f ~/.ssh/deploy_key
 
       - name: Vérifier que le site en ligne correspond bien au build envoyé
         # Garde-fou direct suite à l'incident du 2026-08-11 : un transfert
