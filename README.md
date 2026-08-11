@@ -185,3 +185,57 @@ aussi quand une page est rechargée directement (ex. `pcevar.fr/chauffage`).
 > *Avancé* → *SSH Access*), une alternative plus robuste est de remplacer
 > l'étape FTP par un envoi en SFTP/rsync — plus rapide et plus sûr qu'un FTP
 > classique. Dites-le-moi si c'est votre cas, j'adapterai le workflow.
+
+### ⚠️ Deux emplacements possibles sur le serveur
+
+Ce compte Hostinger contient **deux dossiers distincts**, tous deux nommés
+`public_html`, et rien ne dit lequel des deux le domaine `pcevar.fr` sert
+réellement — vérifié une fois, contredit une autre fois. Avant de toucher au
+`server-dir` du workflow, relire ceci.
+
+| Chemin FTP | Contenu au 2026-08-11 | Statut |
+|---|---|---|
+| `/public_html` (racine du compte) | Site à jour, régénéré à chaque déploiement | Chemin utilisé par `deploy.yml` depuis le **4 août 2026** — choisi après une vérification côté Hostinger à cette date |
+| `/domains/pcevar.fr/public_html/` | Figé au **8 août 2026, 15h19** (`index.html`, `assets/`, `.htaccess`) | Contient un fichier `DO_NOT_UPLOAD_HERE` (vide), daté du **4 août 2026, 08h37** — un avertissement explicite à ne pas y écrire |
+
+**Ce que montre le diagnostic du 11 août** : `pcevar.fr` sert en réalité
+`/domains/pcevar.fr/public_html/` — l'empreinte des fichiers JS/CSS servis en
+production (`index-CCCsneVi.js`, `index-DzT6xFtx.css`) correspond exactement
+à ce dossier, et pas à la racine où les déploiements écrivent depuis le 4
+août. Le site public est donc resté figé au 8 août malgré des déploiements
+répétés qui, eux, réussissaient — sur le mauvais dossier.
+
+**La contradiction n'est pas résolue.** Le marqueur `DO_NOT_UPLOAD_HERE`
+suggère qu'écrire dans `/domains/pcevar.fr/public_html/` a été identifié
+comme une erreur — mais c'est ce dossier que le domaine sert réellement
+aujourd'hui. Deux lectures possibles :
+1. Le marqueur avait raison le 4 août ; la racine du domaine a changé côté
+   Hostinger depuis (volontairement ou non) — c'est leur configuration qu'il
+   faut corriger, pas le workflow.
+2. Le marqueur se trompait, ou la situation a changé depuis — le vrai
+   dossier servi est `/domains/pcevar.fr/public_html/`, et c'est
+   `server-dir` qu'il faut corriger.
+
+**Avant tout changement de `server-dir` : faire confirmer par le support
+Hostinger quelle racine le domaine `pcevar.fr` sert réellement**, en citant
+ces deux chemins et le fichier `DO_NOT_UPLOAD_HERE`. Une modification
+préparée (nouveau `server-dir` + vérification post-transfert qui compare
+l'empreinte du build envoyé à ce que sert `pcevar.fr` en direct) existe sur
+la branche `fix/hostinger-serverdir-domains`, prête à fusionner une fois la
+confirmation obtenue.
+
+**Point non vérifié et potentiellement sérieux** : `/public_html` à la
+racine pourrait servir un *autre* domaine de ce même compte Hostinger (le
+domaine principal du compte, selon la convention habituelle — un seul
+dossier `domains/<nom>` existe, celui de `pcevar.fr`, ce qui va dans ce
+sens). Si c'est le cas, les déploiements y écrivent avec `mirror --delete`
+depuis le 4 août et ont pu écraser ce site tiers. À vérifier dans hPanel →
+Domaines : quel domaine est marqué comme principal, et quelle racine
+utilise-t-il.
+
+Pour vérifier sans attendre un déploiement complet (15 min) si la production
+sert bien le dernier build local, une fois `npm run build` lancé :
+
+```powershell
+powershell -File scripts/check-cache.ps1
+```

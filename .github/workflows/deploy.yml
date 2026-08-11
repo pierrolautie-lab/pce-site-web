@@ -34,9 +34,23 @@ jobs:
         # envoi : on voit exactement où les fichiers partent, sans dépendre
         # de la résolution de chemin interne d'une action tierce.
         #
-        # Chemin cible : public_html/ à la racine du compte FTP (et non
-        # domains/pcevar.fr/public_html/, utilisé précédemment) — changé sur
-        # demande explicite après vérification côté Hostinger.
+        # ⚠️ 2026-08-11 — BRANCHE DE PRÉPARATION, PAS ENCORE FUSIONNÉE.
+        # Chemin cible changé pour domains/pcevar.fr/public_html/ : un
+        # diagnostic FTP en lecture seule a montré que pcevar.fr sert
+        # réellement ce dossier (index.html + assets datés du 8 août,
+        # identiques au HTML/JS observés en production), et non
+        # public_html/ à la racine où ce workflow écrivait depuis le 4 août.
+        # Voir README, section « Deux emplacements possibles sur le serveur »,
+        # pour le détail complet — notamment le fichier
+        # domains/pcevar.fr/DO_NOT_UPLOAD_HERE (daté du 4 août) qui contredit
+        # ce changement. Ne PAS fusionner cette branche sur main avant
+        # confirmation du support Hostinger sur la racine réelle du domaine :
+        # si public_html/ à la racine sert un autre domaine du compte, y
+        # écrire avec --delete l'a potentiellement déjà endommagé ce matin.
+        #
+        # Chemin précédent : public_html/ à la racine du compte FTP (et non
+        # domains/pcevar.fr/public_html/, utilisé encore avant) — changé sur
+        # demande explicite après vérification côté Hostinger, le 4 août.
         #
         # Nettoyage des variables (\r\n parasites) et forme d'authentification
         # ("open host:port" puis "user" séparé) : voir historique du commit,
@@ -69,7 +83,7 @@ jobs:
           set mirror:use-pget-n 1
           open "$FTP_SERVER:21"
           user "$FTP_USERNAME" "$FTP_PASSWORD"
-          cd public_html
+          cd ../domains/pcevar.fr/public_html
           pwd
           mirror --reverse --delete --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
           put ./dist/.htaccess
@@ -84,3 +98,29 @@ jobs:
           EOF
           FIN=$(date +%s)
           echo "Durée de l'envoi FTP : $((FIN - DEBUT))s"
+
+      - name: Vérifier que le site en ligne correspond bien au build envoyé
+        # Garde-fou direct suite à l'incident du 2026-08-11 : un transfert
+        # FTP réussi ne prouve pas que le bon dossier est servi (voir le
+        # commentaire de l'étape précédente). On compare ici l'empreinte
+        # d'asset du dist/ qu'on vient d'envoyer à celle réellement rendue
+        # par https://pcevar.fr — le job échoue net, avec les deux valeurs
+        # affichées, si elles diffèrent. Un petit délai avant la requête
+        # laisse le temps au serveur de servir les fichiers qu'on vient
+        # d'écrire.
+        run: |
+          sleep 5
+          LOCAL_HASH=$(grep -oE 'assets/index-[A-Za-z0-9]+\.js' dist/index.html | head -1)
+          if [ -z "$LOCAL_HASH" ]; then
+            echo "::error::Empreinte introuvable dans dist/index.html — le build local est-il correct ?"
+            exit 1
+          fi
+          LIVE_HTML=$(curl -s --max-time 20 -H "Cache-Control: no-cache" "https://pcevar.fr/?v=$(date +%s)")
+          LIVE_HASH=$(echo "$LIVE_HTML" | grep -oE 'assets/index-[A-Za-z0-9]+\.js' | head -1)
+          echo "Empreinte du build envoyé : $LOCAL_HASH"
+          echo "Empreinte servie par pcevar.fr : ${LIVE_HASH:-(aucune trouvée)}"
+          if [ "$LOCAL_HASH" != "$LIVE_HASH" ]; then
+            echo "::error::Le site en ligne ne correspond pas au build envoyé. Le transfert a réussi mais pcevar.fr sert autre chose (mauvais dossier, cache, ou site tiers)."
+            exit 1
+          fi
+          echo "OK — pcevar.fr sert bien le build qui vient d'être envoyé."
