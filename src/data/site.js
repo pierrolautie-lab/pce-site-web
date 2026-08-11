@@ -375,19 +375,37 @@ export const services = {
       ],
 
       /* ⚠️ PCE installe ces marques sans accord de distribution : ne jamais
-         écrire « nos partenaires » — libellé validé « marques installées ».
-         Logos pas encore fournis par le client : BrandLogo affiche un cadre
-         neutre en attendant les fichiers /img/marque-{daikin,mitsubishi,midea}.jpg */
+         écrire « nos partenaires » — libellé validé « marques que nous
+         installons et entretenons ». Logos pas encore fournis par le
+         client : BrandLogo (mode `plain`, voir ServiceBrandsRow) affiche le
+         nom de la marque en attendant les fichiers
+         /img/marque-{daikin,mitsubishi,midea}.jpg — même convention que les
+         logos piscine (.jpg + variantes .webp générées par
+         scripts/optimize-images.js une fois les fichiers déposés). */
       brands: [
-        { name: 'Daikin', src: '/img/marque-daikin.jpg' },
-        { name: 'Mitsubishi Electric', src: '/img/marque-mitsubishi.jpg' },
-        { name: 'Midea', src: '/img/marque-midea.jpg' },
+        {
+          name: 'Daikin',
+          src: '/img/marque-daikin.jpg',
+          text: "L'inventeur du climatiseur réversible.",
+          bullets: ['Fiabilité éprouvée', 'Niveaux sonores parmi les plus bas', 'Réseau de pièces détachées dense'],
+        },
+        {
+          name: 'Mitsubishi Electric',
+          src: '/img/marque-mitsubishi.jpg',
+          text: 'La référence du silencieux.',
+          bullets: ['Unités intérieures très discrètes', 'Rendements élevés à basse température', 'Longévité reconnue'],
+        },
+        {
+          name: 'Midea',
+          src: '/img/marque-midea.jpg',
+          text: 'Le meilleur rapport performance-prix.',
+          bullets: ['Gamme complète du split au gainable', 'Bon niveau d’équipement de série', 'Solution adaptée aux budgets serrés'],
+        },
       ],
-      trust: [
-        { icon: 'award', title: '+ de 20 ans', label: "d'expérience" },
-        { icon: 'shieldCheck', title: 'Garantie', label: 'décennale' },
-        { icon: 'headset', title: 'SAV réactif', label: '& local' },
-      ],
+      /* Plus de bloc `trust` séparé : « + de 20 ans d'expérience »,
+         « Garantie décennale » et « SAV réactif & local » font déjà partie
+         des 6 arguments de reassurance du site (src/data/site.js,
+         `reassurance`) — les répéter ici les aurait affichés deux fois. */
 
       reversible: {
         heading: ['Climatisation réversible', "Le confort toute l'année"],

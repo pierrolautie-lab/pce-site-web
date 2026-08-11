@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
-import BrandLogo from '../components/BrandLogo.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
 import { CtaBand } from '../components/Blocks.jsx'
+import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { company, services } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
@@ -73,7 +73,7 @@ export default function Climatisation() {
       />
 
       <Hero page={p} hero={service.hero} />
-      <BrandsAndTrust brands={p.brands} trust={p.trust} />
+      <ServiceBrandsRow title="Les marques que nous installons et entretenons" brands={p.brands} />
       <ReversibleEtEngagements data={p.reversible} />
       <Solutions data={p.solutions} />
       <ArgBand items={p.argBand} />
@@ -159,45 +159,6 @@ function Hero({ page, hero }) {
   )
 }
 
-/* ================================================ MARQUES + CONFIANCE === */
-function BrandsAndTrust({ brands, trust }) {
-  return (
-    <section className="border-b border-navy-100 bg-white py-8">
-      <div className="container-pce">
-        <div className="grid items-center gap-8 lg:grid-cols-12">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8 lg:col-span-7">
-            <span className="shrink-0 text-label font-bold uppercase leading-tight text-navy-400">
-              Marques
-              <br />
-              installées
-            </span>
-            <ul className="flex flex-wrap items-center gap-x-8 gap-y-4">
-              {brands.map((b) => (
-                <li key={b.name} className="flex h-9 min-w-0 items-center">
-                  <BrandLogo name={b.name} src={b.src} className="max-h-9 max-w-[9rem]" />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <ul className="grid grid-cols-3 gap-4 border-t border-navy-100 pt-6 lg:col-span-5 lg:divide-x lg:divide-navy-100 lg:border-t-0 lg:pt-0">
-            {trust.map((t) => (
-              <li key={t.title} className="flex min-w-0 items-center gap-2.5 lg:px-4 lg:first:pl-0">
-                <Icon name={t.icon} className="h-6 w-6 shrink-0 text-azure-500" strokeWidth={1.5} />
-                <span className="min-w-0 text-label font-bold uppercase leading-tight text-navy-700">
-                  {t.title}
-                  <br />
-                  <span className="font-normal normal-case text-navy-400">{t.label}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* ============================== RÉVERSIBLE + ENGAGEMENTS ================ */
 function ReversibleEtEngagements({ data }) {
   return (
@@ -264,9 +225,9 @@ function Solutions({ data }) {
 /* ============================================ BANDEAU 4 ARGUMENTS ======= */
 function ArgBand({ items }) {
   return (
-    <section className="border-y border-white/10 bg-navy-900 text-white">
+    <section className="section border-y border-white/10 bg-navy-900 text-white">
       <div className="container-pce">
-        <ul className="grid grid-cols-1 divide-white/10 py-6 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:py-10">
+        <ul className="grid grid-cols-1 divide-white/10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x">
           {items.map((a) => (
             <li key={a.title} className="flex items-start gap-3 px-0 py-3 lg:px-6 lg:py-1 lg:first:pl-0">
               <Icon name={a.icon} className="h-7 w-7 shrink-0" strokeWidth={1.3} />

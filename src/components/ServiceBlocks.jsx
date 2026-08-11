@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
+import BrandLogo from './BrandLogo.jsx'
 import { company } from '../data/site.js'
 
 /* -------------------------------------------------------------------------
@@ -98,7 +99,11 @@ export function ServiceFeatureCards({ items }) {
   )
 }
 
-/** Rangée de blocs « marques utilisées » (équipements posés par PCE — pas de logo officiel de partenariat). */
+/** Rangée de blocs « marques utilisées » (équipements posés par PCE — pas de logo officiel de partenariat).
+ *  Chaque entrée de `brands` affiche soit un vrai logo (`src`, avec repli
+ *  typographique tant que le fichier n'est pas fourni), soit le nom stylisé
+ *  en couleur (`color`, sans `src`) — les deux formes cohabitent selon les
+ *  pages appelantes. */
 export function ServiceBrandsRow({ title = 'Marques que nous installons', brands }) {
   return (
     <section className="section bg-navy-50">
@@ -108,15 +113,19 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
         <div className={`mt-12 grid gap-6 ${brands.length >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
           {brands.map((p) => (
             <div key={p.name} className="rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-9">
-              <div className="flex items-center gap-2.5">
-                {p.swatch && <span className={`h-6 w-6 shrink-0 rounded-sm ${p.swatch}`} aria-hidden="true" />}
-                <span className={`text-[24px] font-black leading-none tracking-tight ${p.color}`}>{p.name}</span>
-                {p.suffix && (
-                  <span className="text-[12px] font-semibold uppercase tracking-[.1em] text-navy-500">
-                    {p.suffix}
-                  </span>
-                )}
-              </div>
+              {p.src ? (
+                <BrandLogo name={p.name} src={p.src} plain className="max-h-9 text-[24px]" />
+              ) : (
+                <div className="flex items-center gap-2.5">
+                  {p.swatch && <span className={`h-6 w-6 shrink-0 rounded-sm ${p.swatch}`} aria-hidden="true" />}
+                  <span className={`text-[24px] font-black leading-none tracking-tight ${p.color}`}>{p.name}</span>
+                  {p.suffix && (
+                    <span className="text-[12px] font-semibold uppercase tracking-[.1em] text-navy-500">
+                      {p.suffix}
+                    </span>
+                  )}
+                </div>
+              )}
               <p className="mt-4 text-[13.5px] leading-[1.7] text-navy-600">{p.text}</p>
               {p.bullets && (
                 <ul className="mt-5 space-y-2.5 border-t border-navy-100 pt-5">
