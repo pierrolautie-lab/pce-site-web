@@ -36,18 +36,18 @@ jobs:
           pwd
           ls -la .
           echo "=== domains/ existe-t-il à ce niveau ? ==="
-          ls -la domains/ 2>&1
+          ls -la domains/
           echo "=== domains/pcevar.fr/ ==="
-          ls -la domains/pcevar.fr/ 2>&1
+          ls -la domains/pcevar.fr/
           echo "=== domains/pcevar.fr/public_html/ ==="
-          ls -la domains/pcevar.fr/public_html/ 2>&1
+          ls -la domains/pcevar.fr/public_html/
           echo "=== domains/pcevar.fr/public_html/index.html ==="
-          ls -la domains/pcevar.fr/public_html/index.html 2>&1
+          ls -la domains/pcevar.fr/public_html/index.html
           echo "=== domains/pcevar.fr/public_html/assets/ ==="
-          ls -la domains/pcevar.fr/public_html/assets/ 2>&1
+          ls -la domains/pcevar.fr/public_html/assets/
           echo "=== autres racines webroot courantes, au cas où ==="
-          ls -la htdocs/ 2>&1
-          ls -la www/ 2>&1
+          ls -la htdocs/
+          ls -la www/
           echo "=== rappel : le dossier où le mirror écrit actuellement ==="
           cd public_html
           pwd
