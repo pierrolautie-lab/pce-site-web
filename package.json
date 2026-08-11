@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/generate-sitemap.js && vite build && node scripts/prerender.js && node scripts/cache-bust.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:live": "node scripts/verify-live.js"
   },
   "dependencies": {
     "react": "^18.3.1",
