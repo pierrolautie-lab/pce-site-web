@@ -13,18 +13,32 @@
   SecRuleRemoveById 400012
 </IfModule>
 
-# Site à page unique (React Router) : toute URL qui ne correspond pas à un
-# fichier réel doit être servie par index.html, pour que le routage côté
-# client prenne le relais (ex : /chauffage rechargé directement dans le
-# navigateur, sans passer par la navigation interne du site).
+# Site prérendu (voir scripts/prerender.js) : chaque route déclarée dans les
+# sitemaps a son propre dossier avec un index.html complet dans dist/, ex.
+# /plombier-lorgues -> plombier-lorgues/index.html. On sert ce fichier
+# directement, SANS passer par la redirection 301 qu'Apache ajoute
+# normalement pour une URL de dossier sans slash final (mod_dir) : les URL
+# canoniques déclarées partout sur le site (sitemaps, <link rel=canonical>,
+# liens internes) n'ont pas de slash final, la redirection les contredirait.
+# Seule une URL réellement inconnue retombe sur la coquille SPA (React
+# Router y affiche alors la page 404 côté client).
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Laisse passer les fichiers et dossiers qui existent réellement
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # Fichier réel demandé tel quel (assets, images, sitemap...)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
 
+  # Page prérendue : /plombier-lorgues -> /plombier-lorgues/index.html, sans redirection
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*[^/])$ $1/index.html [L]
+
+  # URL vraiment inconnue : coquille SPA
   RewriteRule ^ index.html [L]
 </IfModule>
 
