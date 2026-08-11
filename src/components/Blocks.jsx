@@ -18,18 +18,14 @@ export function SectionTitle({ title, lead, align = 'center', tone = 'light', cl
       className={`${align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl'} ${className}`}
     >
       <h2
-        className={`text-[19px] font-bold uppercase leading-tight tracking-[.06em] sm:text-[24px] ${
+        className={`text-title font-bold uppercase ${
           dark ? 'text-white' : 'text-azure-500'
         }`}
       >
         {title}
       </h2>
       {lead && (
-        <p
-          className={`mt-4 text-[14.5px] leading-[1.8] ${dark ? 'text-white/65' : 'text-navy-500'}`}
-        >
-          {lead}
-        </p>
+        <p className={`mt-4 text-body ${dark ? 'text-white/65' : 'text-navy-500'}`}>{lead}</p>
       )}
     </div>
   )
@@ -62,10 +58,10 @@ export function Prestations({ items, title = 'Nos prestations', lead }) {
               >
                 <Icon name={it.icon} className="h-7 w-7" strokeWidth={1.4} />
               </span>
-              <h3 className="mt-4 text-[12.5px] font-bold uppercase leading-tight tracking-[.05em] text-navy-800">
+              <h3 className="mt-4 text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
                 {it.title}
               </h3>
-              <p className="mt-1.5 text-[11.5px] leading-snug text-navy-500">{it.label}</p>
+              <p className="mt-1.5 text-body-sm text-navy-500">{it.label}</p>
             </div>
           ))}
         </div>
@@ -91,13 +87,13 @@ export function TvaCard({ className = '' }) {
         <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-500 text-navy-800">
           <Icon name="euro" className="h-5 w-5" strokeWidth={2} />
         </span>
-        <h3 className="mt-5 text-[17px] font-bold uppercase tracking-[.06em] text-gold-400">
+        <h3 className="mt-5 text-kicker font-bold uppercase text-gold-400">
           {tvaCard.title}
         </h3>
-        <p className="mt-4 text-[13.5px] leading-[1.75] text-white/75">{tvaCard.text}</p>
+        <p className="mt-4 text-body-sm text-white/75">{tvaCard.text}</p>
       </div>
 
-      <p className="relative mt-auto pt-6 text-[10.5px] leading-[1.6] text-white/40">
+      <p className="relative mt-auto pt-6 text-caption text-white/40">
         {tvaCard.note}
       </p>
     </div>
@@ -111,11 +107,11 @@ export function InfoBlock({ info }) {
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-5">
           <div className="min-w-0 rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10 lg:col-span-3">
-            <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500 sm:text-[19px]">
+            <h2 className="text-kicker font-bold uppercase text-azure-500">
               {info.heading}
             </h2>
             {info.lead && (
-              <p className="mt-4 max-w-xl text-[14px] leading-[1.75] text-navy-500">{info.lead}</p>
+              <p className="mt-4 max-w-xl text-body text-navy-500">{info.lead}</p>
             )}
 
             <ul className="mt-7 space-y-4">
@@ -126,7 +122,7 @@ export function InfoBlock({ info }) {
                     className="mt-0.5 h-4 w-4 shrink-0 text-azure-500"
                     strokeWidth={3}
                   />
-                  <span className="text-[14px] leading-[1.65] text-navy-700">{b}</span>
+                  <span className="text-body-sm text-navy-700">{b}</span>
                 </li>
               ))}
             </ul>
@@ -136,7 +132,7 @@ export function InfoBlock({ info }) {
             {info.link && (
               <Link
                 to={info.link.to}
-                className="group mt-7 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-azure-500"
+                className="group mt-7 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500"
               >
                 {info.link.label}
                 <Icon
@@ -175,8 +171,8 @@ export function TvaBanner() {
             <h2 className="mt-5 text-[18px] font-bold uppercase tracking-[.06em] text-gold-400 sm:text-[22px]">
               {tvaCard.title} sur la main d'œuvre
             </h2>
-            <p className="mt-4 text-[14px] leading-[1.75] text-white/75">{tvaCard.text}</p>
-            <p className="mt-6 text-[10.5px] leading-[1.6] text-white/40">{tvaCard.note}</p>
+            <p className="mt-4 text-body text-white/75">{tvaCard.text}</p>
+            <p className="mt-6 text-caption text-white/40">{tvaCard.note}</p>
           </div>
         </div>
       </div>
@@ -197,7 +193,7 @@ export function ThreeColumns({ columns, title, lead }) {
               <span className="grid h-12 w-12 place-items-center rounded-full border border-navy-200 text-azure-500">
                 <Icon name={col.icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
               </span>
-              <h3 className="mt-5 text-[14px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500">
+              <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.05em] text-azure-500">
                 {col.heading}
               </h3>
               <ul className="mt-5 space-y-3.5">
@@ -208,7 +204,7 @@ export function ThreeColumns({ columns, title, lead }) {
                       className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500"
                       strokeWidth={3.2}
                     />
-                    <span className="text-[13px] leading-[1.6] text-navy-600">{b}</span>
+                    <span className="text-body-sm text-navy-600">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -233,10 +229,10 @@ export function Benefits({ items, title }) {
               <span className="grid h-16 w-16 place-items-center rounded-full bg-navy-800 text-white">
                 <Icon name={b.icon} className="h-7 w-7" strokeWidth={1.5} />
               </span>
-              <h3 className="mt-4 text-[14px] font-bold uppercase tracking-[.05em] text-navy-800">
+              <h3 className="mt-4 text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
                 {b.title}
               </h3>
-              <p className="mt-2 max-w-[15rem] text-[12.5px] leading-snug text-navy-500">
+              <p className="mt-2 max-w-[15rem] text-body-sm text-navy-500">
                 {b.label}
               </p>
             </div>
@@ -254,7 +250,7 @@ export function TrustBadges({ tone = 'light' }) {
     <section className={dark ? 'bg-navy-900 py-9' : 'border-y border-navy-100 bg-white py-9'}>
       <div className="container-pce">
         <p
-          className={`text-center text-[10.5px] font-bold uppercase tracking-[.16em] ${
+          className={`text-center text-label font-bold uppercase ${
             dark ? 'text-white/45' : 'text-navy-500'
           }`}
         >
@@ -276,7 +272,7 @@ export function TrustBadges({ tone = 'light' }) {
                 className={`h-5 w-5 shrink-0 ${dark ? 'text-gold-500' : 'text-azure-500'}`}
                 strokeWidth={1.6}
               />
-              <span className="text-[12px] font-bold uppercase tracking-[.06em]">{c}</span>
+              <span className="text-label font-bold uppercase">{c}</span>
             </li>
           ))}
         </ul>
@@ -298,7 +294,7 @@ export function GuaranteeBar() {
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
                 <Icon name={g.icon} className="h-5 w-5" strokeWidth={1.4} />
               </span>
-              <p className="text-[11px] font-bold uppercase leading-[1.4] tracking-[.05em] text-navy-800">
+              <p className="text-label font-bold uppercase text-navy-800">
                 {g.label}
               </p>
             </div>
@@ -331,7 +327,7 @@ export function Expertise({ data }) {
 
             <div className="mt-6 space-y-5">
               {data.paragraphs.map((p, i) => (
-                <p key={i} className="text-[14.5px] leading-[1.85] text-navy-600">
+                <p key={i} className="text-body text-navy-600">
                   {p}
                 </p>
               ))}
@@ -349,7 +345,7 @@ export function Expertise({ data }) {
                       className="mt-0.5 h-4 w-4 shrink-0 text-azure-500"
                       strokeWidth={3}
                     />
-                    <span className="text-[12.5px] font-semibold leading-snug text-navy-700">
+                    <span className="text-body-sm font-semibold text-navy-700">
                       {pt}
                     </span>
                   </li>
@@ -375,13 +371,13 @@ export function Process({ steps, title = 'Comment nous travaillons', lead, colum
         <ol className={`mt-12 grid gap-5 sm:grid-cols-2 ${lgCols}`}>
           {steps.map((s, i) => (
             <li key={s.title} className="flex flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-azure-500 text-[13px] font-black text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-azure-500 text-body-sm font-black text-white">
                 {i + 1}
               </span>
-              <h3 className="mt-4 text-[13.5px] font-bold uppercase leading-snug tracking-[.05em] text-navy-800">
+              <h3 className="mt-4 text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
                 {s.title}
               </h3>
-              <p className="mt-3 text-[12.5px] leading-[1.7] text-navy-500">{s.text}</p>
+              <p className="mt-3 text-body-sm text-navy-500">{s.text}</p>
             </li>
           ))}
         </ol>
@@ -409,12 +405,12 @@ export function Faq({ items, title = 'Questions fréquentes', lead }) {
               {items.map((item) => (
                 <details key={item.q} className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 transition-colors hover:bg-white">
-                    <h3 className="text-[14px] font-bold leading-snug text-navy-800">{item.q}</h3>
+                    <h3 className="text-body font-bold text-navy-800">{item.q}</h3>
                     <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-navy-200 text-navy-700 transition-all duration-300 group-open:rotate-45 group-open:border-gold-500 group-open:bg-gold-500 group-open:text-navy-800">
                       <Icon name="close" className="h-3.5 w-3.5 rotate-45" strokeWidth={2.4} />
                     </span>
                   </summary>
-                  <p className="px-6 pb-6 text-[13.5px] leading-[1.8] text-navy-500">{item.a}</p>
+                  <p className="px-6 pb-6 text-body text-navy-500">{item.a}</p>
                 </details>
               ))}
             </div>
@@ -438,7 +434,7 @@ export function CtaBand({
             compact ? 'py-7' : 'py-12'
           }`}
         >
-          <h2 className="text-[15px] font-bold uppercase tracking-[.05em] text-white sm:text-[19px]">
+          <h2 className="text-kicker font-bold uppercase text-white">
             {title}
           </h2>
           <a href={company.phoneHref} className="btn-gold shrink-0">
@@ -470,11 +466,11 @@ export function CtaSection({
         <div className="grid items-center gap-8 lg:grid-cols-12">
           <div className="min-w-0 lg:col-span-7">
             <Wordmark size="sm" />
-            <h2 className="mt-6 text-[22px] font-black uppercase leading-[1.1] tracking-[-.01em] sm:text-[34px]">
+            <h2 className="mt-6 text-title-lg font-black uppercase">
               {title}
             </h2>
-            <p className="signature mt-3 text-[16px]">{company.expertise}</p>
-            <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/65">{text}</p>
+            <p className="signature mt-3 text-kicker">{company.expertise}</p>
+            <p className="mt-5 max-w-xl text-body text-white/65">{text}</p>
           </div>
 
           <div className="flex min-w-0 flex-col gap-3 lg:col-span-5 lg:items-end">
@@ -486,7 +482,7 @@ export function CtaSection({
               <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
               {company.phone}
             </a>
-            <p className="mt-1 text-center text-[10.5px] uppercase tracking-[.12em] text-white/40 lg:text-right">
+            <p className="mt-1 text-center text-label uppercase text-white/40 lg:text-right">
               Devis gratuit · Réponse sous 24 h
             </p>
           </div>
@@ -508,7 +504,7 @@ export function LinkGrid({ title, lead, links, tone = 'light' }) {
             <Link
               key={l.to}
               to={l.to}
-              className={`inline-flex items-center rounded-full px-5 py-3.5 text-[12.5px] font-semibold transition-colors duration-200 ${
+              className={`inline-flex items-center rounded-full px-5 py-3.5 text-body-sm font-semibold transition-colors duration-200 ${
                 dark
                   ? 'bg-white/10 text-white hover:bg-gold-500 hover:text-navy-800'
                   : 'bg-white text-navy-700 ring-1 ring-navy-100 hover:bg-azure-500 hover:text-white'
@@ -541,11 +537,11 @@ export function OtherServices({ current, items }) {
               <span className="grid h-11 w-11 place-items-center rounded-full border border-navy-200 text-azure-500 transition-colors group-hover:border-azure-500 group-hover:bg-azure-500 group-hover:text-white">
                 <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.5} />
               </span>
-              <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800">
+              <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.06em] text-navy-800">
                 {s.title}
               </h3>
-              <p className="mt-2.5 flex-1 text-[12.5px] leading-[1.65] text-navy-500">{s.card}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-azure-500">
+              <p className="mt-2.5 flex-1 text-body-sm text-navy-500">{s.card}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500">
                 En savoir plus
                 <Icon
                   name="arrowRight"
