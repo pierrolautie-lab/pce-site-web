@@ -72,8 +72,21 @@ jobs:
           FTP_USERNAME=$(printf '%s' "$FTP_USERNAME" | tr -d '\r\n')
           FTP_PASSWORD=$(printf '%s' "$FTP_PASSWORD" | tr -d '\r\n')
           echo "Longueurs — serveur: ${#FTP_SERVER}, utilisateur: ${#FTP_USERNAME}, mot de passe: ${#FTP_PASSWORD}"
-          DEBUT=$(date +%s)
-          lftp <<EOF
+
+          # ⚠️ 2026-08-11 : deux échecs le même jour, "max-retries exceeded"
+          # dès la commande cd (donc avant tout transfert) — la connexion FTP
+          # elle-même est refusée par intermittence, pas un souci de fichier.
+          # `net:max-retries 3` dans lftp ne couvre que les tentatives DANS
+          # une même session ; si la session entière échoue à s'établir, rien
+          # ne la relançait — il fallait relancer le run manuellement. Cette
+          # boucle retente la connexion complète jusqu'à 3 fois, avec une
+          # pause, avant d'abandonner pour de bon.
+          MAX_ATTEMPTS=3
+          attempt=1
+          until [ "$attempt" -gt "$MAX_ATTEMPTS" ]; do
+            echo "=== Tentative de transfert $attempt/$MAX_ATTEMPTS ==="
+            DEBUT=$(date +%s)
+            if lftp <<EOF
           set ssl:verify-certificate no
           set ftp:ssl-force true
           set net:timeout 20
@@ -94,8 +107,19 @@ jobs:
           chmod -R 755 .
           bye
           EOF
-          FIN=$(date +%s)
-          echo "Durée de l'envoi FTP : $((FIN - DEBUT))s"
+            then
+              FIN=$(date +%s)
+              echo "Durée de l'envoi FTP : $((FIN - DEBUT))s (tentative $attempt)"
+              break
+            fi
+            echo "Tentative $attempt échouée."
+            if [ "$attempt" -eq "$MAX_ATTEMPTS" ]; then
+              echo "::error::Les $MAX_ATTEMPTS tentatives de transfert FTP ont échoué."
+              exit 1
+            fi
+            attempt=$((attempt + 1))
+            sleep 30
+          done
 
       - name: Vérifier que le site en ligne correspond bien au build envoyé
         # Garde-fou direct suite à l'incident du 2026-08-11 : un transfert
@@ -106,6 +130,13 @@ jobs:
         # affichées, si elles diffèrent. Un petit délai avant la requête
         # laisse le temps au serveur de servir les fichiers qu'on vient
         # d'écrire.
+        #
+        # ⚠️ Cette étape ne vérifie que l'accueil : un déploiement peut y
+        # réussir alors que d'autres pages manquent (incident du 2026-08-11 :
+        # un run FTP interrompu en cours de transfert avait mis à jour
+        # l'accueil et le sitemap sans avoir eu le temps d'envoyer 15 pages
+        # locales). Voir l'étape suivante pour un contrôle sur un échantillon
+        # de pages, pas seulement l'accueil.
         run: |
           sleep 5
           LOCAL_HASH=$(grep -oE 'assets/index-[A-Za-z0-9]+\.js' dist/index.html | head -1)
@@ -122,3 +153,16 @@ jobs:
             exit 1
           fi
           echo "OK — pcevar.fr sert bien le build qui vient d'être envoyé."
+
+      - name: Vérifier un échantillon de pages (pas seulement l'accueil)
+        # Ajouté suite à l'incident du 2026-08-11 : l'étape précédente ne
+        # vérifie que l'accueil, donc un transfert partiel qui la touche en
+        # premier passe le garde-fou alors que d'autres pages manquent
+        # encore. Tire 10 pages au hasard dans chacune des 3 familles
+        # (statiques, locales, articles) et vérifie que chacune sert bien
+        # SON PROPRE contenu (comparaison du <link rel="canonical">, pas
+        # juste la taille — une page absente retombe sur l'accueil
+        # prérendue, assez grande pour tromper un contrôle de taille seul).
+        # Échantillon, pas exhaustif : les 283 pages complètes restent
+        # disponibles via `npm run verify:live` en dehors de la CI.
+        run: node scripts/verify-live.js https://pcevar.fr --sample=10

@@ -11,12 +11,36 @@
 // correspond pas à la route demandée, ce n'est pas la bonne page — quelle
 // que soit sa taille.
 //
-// Usage : node scripts/verify-live.js [base_url]
+// Usage : node scripts/verify-live.js [base_url] [--sample=N]
 //   base_url par défaut : https://pcevar.fr
-import { allRoutes } from './routes.js'
+//   --sample=N : au lieu des 283 routes, tire N pages au hasard dans
+//     chacune des 3 familles (pages statiques, pages locales, articles) —
+//     pensé pour un déploiement CI où interroger les 283 URL est trop
+//     lourd. Sans cette option, vérifie tout.
+import { allRoutes, staticRoutes, localRoutes, articleRoutes } from './routes.js'
 
-const baseUrl = (process.argv[2] || 'https://pcevar.fr').replace(/\/$/, '')
+const args = process.argv.slice(2)
+const baseUrl = (args.find((a) => !a.startsWith('--')) || 'https://pcevar.fr').replace(/\/$/, '')
+const sampleArg = args.find((a) => a.startsWith('--sample='))
+const sampleSize = sampleArg ? Number(sampleArg.split('=')[1]) : null
 const CONCURRENCY = 8
+
+function sample(arr, n) {
+  const copy = [...arr]
+  const picked = []
+  for (let i = 0; i < Math.min(n, copy.length); i++) {
+    picked.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0])
+  }
+  return picked
+}
+
+const routes = sampleSize
+  ? [
+      ...sample(staticRoutes.map((r) => r.path), sampleSize),
+      ...sample(localRoutes.map((r) => r.path), sampleSize),
+      ...sample(articleRoutes.map((r) => r.path), sampleSize),
+    ]
+  : allRoutes
 
 async function checkRoute(route) {
   const url = `${baseUrl}${route === '/' ? '' : route}?v=${Date.now()}`
@@ -34,15 +58,15 @@ async function checkRoute(route) {
 }
 
 async function run() {
-  console.log(`Vérification de ${allRoutes.length} routes sur ${baseUrl}…`)
+  console.log(`Vérification de ${routes.length} routes sur ${baseUrl}…`)
   const results = []
   let cursor = 0
 
   async function worker() {
-    while (cursor < allRoutes.length) {
-      const route = allRoutes[cursor++]
+    while (cursor < routes.length) {
+      const route = routes[cursor++]
       results.push(await checkRoute(route))
-      if (results.length % 40 === 0) console.log(`  ${results.length}/${allRoutes.length}…`)
+      if (results.length % 40 === 0) console.log(`  ${results.length}/${routes.length}…`)
     }
   }
 
