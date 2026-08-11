@@ -8,6 +8,10 @@
 # le code actuel, pour que dist/index.html reflete le dernier build.
 #
 # Usage : powershell -File scripts/check-cache.ps1
+#
+# 2026-08-11 : motif elargi a [A-Za-z0-9_-] -- les hachages Rollup peuvent
+# contenir "_" et "-" (ex. index-C_o26_XP.js), ce qui faisait echouer la
+# detection meme quand le build et le serveur etaient corrects.
 
 $ErrorActionPreference = "Stop"
 
@@ -18,7 +22,7 @@ if (-not (Test-Path $indexPath)) {
 }
 
 $localContent = Get-Content $indexPath -Raw
-if ($localContent -notmatch 'assets/(index-[A-Za-z0-9]+)\.js') {
+if ($localContent -notmatch 'assets/(index-[A-Za-z0-9_-]+)\.js') {
     Write-Host "Empreinte introuvable dans dist/index.html -- le build local est-il correct ?" -ForegroundColor Yellow
     exit 1
 }
@@ -36,7 +40,7 @@ if ($html -match $expected) {
     exit 0
 }
 
-if ($html -match 'assets/(index-[A-Za-z0-9]+)\.') {
+if ($html -match 'assets/(index-[A-Za-z0-9_-]+)\.') {
     Write-Host "DIFFERENT -- le serveur sert $($Matches[1]), le build local est $expected" -ForegroundColor Red
 } else {
     Write-Host "DIFFERENT -- aucune empreinte trouvee dans la reponse du serveur (attendu : $expected)" -ForegroundColor Red

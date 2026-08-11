@@ -217,3 +217,33 @@ sert bien le dernier build local, une fois `npm run build` lancé :
 ```powershell
 powershell -File scripts/check-cache.ps1
 ```
+
+### Contrôle complet avant livraison au client
+
+`scripts/verify-live.js` vérifie que chaque page réellement déployée sert
+bien SON PROPRE contenu — pas une page de repli sur l'accueil. Deux
+incidents (voir plus haut) sont passés inaperçus d'un simple coup d'œil :
+une coquille SPA vide de 5,5 Ko, puis une page de repli sur l'accueil
+prérendue (grande, avec un vrai pied de page) suite à un transfert
+interrompu. Le contrôle fiable compare le `<link rel="canonical">` réellement
+servi à celui attendu pour chaque route.
+
+Deux usages :
+
+- **En CI, à chaque déploiement** (`deploy.yml`, dernière étape) : tire 10
+  pages au hasard dans chacune des 3 familles de routes (pages statiques,
+  pages locales, articles), soit 30 vérifications — pensé pour rester rapide
+  et ne pas ralentir chaque push.
+- **À la demande, avant toute livraison au client** : vérifie les 283 routes
+  une par une, sans échantillonnage. À lancer après tout déploiement dont le
+  contenu doit être garanti (nouvelles pages, changement de structure) :
+
+  ```bash
+  npm run verify:live
+  ```
+
+  Une page isolée en échec est probablement un accident de transfert (à
+  redéployer). Plusieurs pages en échec qui partagent un point commun
+  (même famille, même position alphabétique, envoyées en fin de transfert…)
+  indique un problème structurel côté déploiement, pas un accident isolé —
+  creuser avant de relancer un simple redéploiement.

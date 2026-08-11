@@ -131,6 +131,13 @@ jobs:
         # laisse le temps au serveur de servir les fichiers qu'on vient
         # d'écrire.
         #
+        # ⚠️ 2026-08-11 (faux négatif) : le motif d'empreinte n'acceptait que
+        # [A-Za-z0-9], alors que les hachages générés par Rollup peuvent
+        # contenir "_" et "-" (ex. index-C_o26_XP.js). Résultat : la commande
+        # ne trouvait aucune empreinte locale et le job échouait alors que le
+        # transfert et le site en ligne étaient corrects. Élargi à
+        # [A-Za-z0-9_-].
+        #
         # ⚠️ Cette étape ne vérifie que l'accueil : un déploiement peut y
         # réussir alors que d'autres pages manquent (incident du 2026-08-11 :
         # un run FTP interrompu en cours de transfert avait mis à jour
@@ -139,13 +146,13 @@ jobs:
         # de pages, pas seulement l'accueil.
         run: |
           sleep 5
-          LOCAL_HASH=$(grep -oE 'assets/index-[A-Za-z0-9]+\.js' dist/index.html | head -1)
+          LOCAL_HASH=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' dist/index.html | head -1)
           if [ -z "$LOCAL_HASH" ]; then
             echo "::error::Empreinte introuvable dans dist/index.html — le build local est-il correct ?"
             exit 1
           fi
           LIVE_HTML=$(curl -s --max-time 20 -H "Cache-Control: no-cache" "https://pcevar.fr/?v=$(date +%s)")
-          LIVE_HASH=$(echo "$LIVE_HTML" | grep -oE 'assets/index-[A-Za-z0-9]+\.js' | head -1)
+          LIVE_HASH=$(echo "$LIVE_HTML" | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' | head -1)
           echo "Empreinte du build envoyé : $LOCAL_HASH"
           echo "Empreinte servie par pcevar.fr : ${LIVE_HASH:-(aucune trouvée)}"
           if [ "$LOCAL_HASH" != "$LIVE_HASH" ]; then
