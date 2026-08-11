@@ -42,7 +42,7 @@ const distDir = resolve(__dirname, '../dist')
 const prerenderer = new Prerenderer({
   staticDir: distDir,
   renderer: new PuppeteerRenderer({
-    maxConcurrentRoutes: 5,
+    maxConcurrentRoutes: 3,
     // ⚠️ `renderAfterElementExists` seul a été essayé en premier (attendre le
     // <footer> de Layout.jsx, monté en un seul rendu synchrone avec le
     // contenu de la page — pas de code-splitting par route dans App.jsx).
@@ -59,11 +59,22 @@ const prerenderer = new Prerenderer({
     // process sortir en code 0 sans rien avoir écrit (voir l'échange qui a
     // précédé ce script pour le détail du diagnostic).
     // `renderAfterTime` seul ne crée qu'UNE SEULE promesse interne : pas de
-    // course, pas de connexion coupée en vol. Le site n'a aucune donnée
-    // asynchrone (tout vient d'objets JS statiques importés) ; 1000 ms est
-    // une marge large par rapport aux ~130 ms de rendu complet mesurés
-    // localement (chargement + hydratation + <title>/<meta> de Seo.jsx).
-    renderAfterTime: 1000,
+    // course, pas de connexion coupée en vol.
+    //
+    // ⚠️ 2026-08-11 : 1000 ms (avec 5 routes en parallèle) suffisait en local
+    // mais pas sur le runner GitHub Actions — le déploiement a mis en ligne
+    // 268 pages de ~5,5 Ko (la coquille vide, capturée avant hydratation React
+    // et avant le <title>/<meta> posés par Seo.jsx), sans que le script ne le
+    // détecte : `renderRoutes` avait bien écrit un fichier par route, donc
+    // « 268/268 écrites » s'est affiché alors que le contenu était vide. La
+    // marge de 1000 ms, confortable avec un seul onglet local, ne l'est plus
+    // avec 5 onglets Chromium concurrents sur un runner CI partagé et plus
+    // lent. On réduit donc la concurrence et on augmente très largement la
+    // marge. Insuffisant en soi pour garantir qu'un incident similaire ne se
+    // reproduise pas ailleurs (charge CI variable) : voir le contrôle de
+    // taille ci-dessous, qui détecte la coquille vide plutôt que de supposer
+    // qu'un fichier écrit est un fichier correct.
+    renderAfterTime: 3000,
     // Bloque le script GA4 (googletagmanager.com) et toute autre requête
     // externe pendant le crawl : évite à la fois de fausses métriques GA à
     // chaque build et un risque de lenteur/flakiness liée à des requêtes
@@ -84,10 +95,35 @@ try {
   await prerenderer.destroy()
 }
 
+// Un fichier écrit n'est pas forcément un fichier correct : l'incident du
+// 2026-08-11 a mis en ligne 268 coquilles vides de ~5,5 Ko (capturées avant
+// hydratation) alors que `renderRoutes` avait rendu 268/268 routes sans
+// erreur. Deux signaux bon marché suffisent à distinguer une page réellement
+// rendue d'une coquille : sa taille (une coquille vide fait ~5,5 Ko, la plus
+// petite page réelle du site en fait plus de 20 Ko) et la présence du
+// <footer> de Layout.jsx, qui ne peut exister qu'après le rendu React complet.
+const MIN_BYTES = 20_000
+const emptyShells = []
+
 for (const { route, html } of renderedRoutes) {
+  const looksEmpty = html.length < MIN_BYTES || !html.includes('</footer>')
+  if (looksEmpty) emptyShells.push({ route, bytes: html.length })
+
   const outDir = route === '/' ? distDir : join(distDir, route)
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'index.html'), html)
+}
+
+if (emptyShells.length > 0) {
+  console.error(
+    `⚠️ ${emptyShells.length} route(s) rendue(s) mais dont le HTML ressemble à une coquille vide (pas encore hydratée) :`
+  )
+  for (const { route, bytes } of emptyShells.slice(0, 10)) {
+    console.error(`   ${route} — ${bytes} octets`)
+  }
+  if (emptyShells.length > 10) console.error(`   … et ${emptyShells.length - 10} autre(s).`)
+  console.error('Augmenter `renderAfterTime` ou réduire `maxConcurrentRoutes` dans ce script.')
+  process.exitCode = 1
 }
 
 const elapsedS = Math.round((Date.now() - startedAt) / 100) / 10
