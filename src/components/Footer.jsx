@@ -59,7 +59,7 @@ export default function Footer() {
           {/* ------------------------------------------------ Identité */}
           <div className="min-w-0 lg:col-span-4">
             <Wordmark size="lg" />
-            <p className="mt-6 max-w-xs text-[10.5px] font-bold uppercase leading-[1.7] tracking-[.06em] text-white/70">
+            <p className="mt-6 max-w-xs text-label font-bold uppercase text-white/70">
               {company.baseline}
             </p>
             <p className="signature mt-4 text-[15px]">{company.tagline}</p>
@@ -69,7 +69,7 @@ export default function Footer() {
               {company.certifications.map((c) => (
                 <li
                   key={c}
-                  className="rounded border border-white/15 px-3 py-1.5 text-[9.5px] font-bold uppercase tracking-[.1em] text-white/60"
+                  className="rounded border border-white/15 px-3 py-1.5 text-label font-bold uppercase text-white/60"
                 >
                   {c}
                 </li>
@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* ------------------------------------------------ Services */}
           <div className="min-w-0 lg:col-span-2">
-            <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+            <h3 className="text-label font-bold uppercase text-white">
               Nos services
             </h3>
             <ul className="mt-5 space-y-2.5">
@@ -98,7 +98,7 @@ export default function Footer() {
 
           {/* ------------------------------------------------ Entreprise */}
           <div className="min-w-0 lg:col-span-2">
-            <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+            <h3 className="text-label font-bold uppercase text-white">
               L'entreprise
             </h3>
             <ul className="mt-5 space-y-2.5">
@@ -117,7 +117,7 @@ export default function Footer() {
 
           {/* ------------------------------------------------ Informations */}
           <div className="min-w-0 lg:col-span-2">
-            <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+            <h3 className="text-label font-bold uppercase text-white">
               Informations
             </h3>
             <ul className="mt-5 space-y-2.5">
@@ -136,7 +136,7 @@ export default function Footer() {
 
           {/* ------------------------------------------------ Contact */}
           <div className="min-w-0 lg:col-span-2">
-            <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+            <h3 className="text-label font-bold uppercase text-white">
               Nous contacter
             </h3>
 
@@ -188,7 +188,7 @@ export default function Footer() {
                     {company.address.street2}
                     <br />
                     {company.address.zip} {company.address.city}
-                    <span className="mt-1 block text-[11px] font-bold uppercase tracking-[.1em] text-white/40 group-hover:text-gold-400">
+                    <span className="mt-1 block text-label font-bold uppercase text-white/40 group-hover:text-gold-400">
                       Voir sur Google Maps
                     </span>
                   </span>
@@ -217,7 +217,7 @@ export default function Footer() {
 
         {/* ------------------------------------------------ Villes desservies */}
         <div className="mt-12 border-t border-white/10 pt-8">
-          <h3 className="text-[11px] font-bold uppercase tracking-[.14em] text-white">
+          <h3 className="text-label font-bold uppercase text-white">
             Villes desservies
           </h3>
           <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">

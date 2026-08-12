@@ -61,7 +61,7 @@ function SolutionsWhyUs({ service }) {
                   <li key={b.title} className="flex items-start gap-3.5">
                     <Icon name={b.icon} className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.6} />
                     <span className="min-w-0">
-                      <span className="block text-[12.5px] font-bold uppercase tracking-[.04em] text-white">
+                      <span className="block text-body-sm font-bold uppercase tracking-[.04em] text-white">
                         {b.title}
                       </span>
                       <span className="mt-1.5 block text-[12.5px] leading-[1.55] text-white/70">{b.label}</span>
@@ -119,7 +119,7 @@ function EntretienAidesConseil({ service }) {
               {service.aids.map((a) => (
                 <li
                   key={a.label}
-                  className="flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[11.5px] font-bold uppercase tracking-[.04em] text-navy-700 ring-1 ring-navy-100"
+                  className="flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-label font-bold uppercase text-navy-700 ring-1 ring-navy-100"
                 >
                   <Icon name={a.icon} className="h-3.5 w-3.5 text-azure-500" strokeWidth={2.2} />
                   {a.label}

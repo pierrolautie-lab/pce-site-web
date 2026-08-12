@@ -66,7 +66,7 @@ export default function Depannage() {
                 <span className="grid h-14 w-14 place-items-center rounded-full border border-navy-200 text-navy-800 transition-colors group-hover:border-white/30 group-hover:text-white">
                   <Icon name={d.icon} className="h-6 w-6" strokeWidth={1.5} />
                 </span>
-                <h3 className="mt-4 text-[12.5px] font-bold uppercase tracking-[.07em] text-navy-800 transition-colors group-hover:text-white">
+                <h3 className="mt-4 text-body-sm font-bold uppercase tracking-[.07em] text-navy-800 transition-colors group-hover:text-white">
                   {d.title}
                 </h3>
                 <p className="mt-2 text-[11.5px] leading-snug text-navy-500 transition-colors group-hover:text-white/60">
@@ -125,7 +125,7 @@ export default function Depannage() {
                   <Icon name="phone" className="h-7 w-7" strokeWidth={1.7} />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[10px] font-bold uppercase tracking-[.18em] text-navy-500">
+                  <span className="block text-label font-bold uppercase text-navy-500">
                     Appelez-nous maintenant
                   </span>
                   <span className="mt-1.5 block text-[28px] font-black leading-none tracking-tight sm:text-[38px]">

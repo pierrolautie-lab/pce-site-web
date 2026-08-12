@@ -33,6 +33,8 @@ export function ServiceTwoColumn({ checklistTitle, checklist, card }) {
           </div>
 
           <div className="relative min-w-0 overflow-hidden rounded-xl bg-navy-800 p-8 text-white sm:p-10">
+            {/* Filigrane décoratif (aria-hidden), hors échelle typographique
+                — voir la même exception dans Blocks.jsx. */}
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
@@ -120,7 +122,7 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
                   {p.swatch && <span className={`h-6 w-6 shrink-0 rounded-sm ${p.swatch}`} aria-hidden="true" />}
                   <span className={`text-[24px] font-black leading-none tracking-tight ${p.color}`}>{p.name}</span>
                   {p.suffix && (
-                    <span className="text-[12px] font-semibold uppercase tracking-[.1em] text-navy-500">
+                    <span className="text-label font-semibold uppercase text-navy-500">
                       {p.suffix}
                     </span>
                   )}

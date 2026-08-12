@@ -92,7 +92,7 @@ function HomeHero() {
                     className="h-7 w-7 text-azure-400 transition-colors group-hover:text-gold-500 sm:h-8 sm:w-8"
                     strokeWidth={1.5}
                   />
-                  <span className="text-[9.5px] font-bold uppercase tracking-[.08em] text-white/85 transition-colors group-hover:text-white sm:text-[10.5px]">
+                  <span className="text-label font-bold uppercase text-white/85 transition-colors group-hover:text-white">
                     {t.label}
                   </span>
                 </Link>
@@ -109,7 +109,7 @@ function HomeHero() {
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-500 px-6 py-4 text-center text-[12px] font-bold uppercase tracking-[.08em] text-navy-900 transition-colors hover:bg-gold-400"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-500 px-6 py-4 text-center text-label font-bold uppercase text-navy-900 transition-colors hover:bg-gold-400"
             >
               Demande de devis gratuit
               <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
@@ -178,13 +178,13 @@ function ServiceCards() {
               </div>
 
               <div className="flex flex-1 flex-col px-4 pb-4 pt-7">
-                <h3 className="font-display text-[12.5px] font-bold uppercase tracking-[.05em] text-navy-800">
+                <h3 className="font-display text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
                   {c.title}
                 </h3>
                 <p className="mt-2 line-clamp-2 flex-1 text-[11.5px] leading-[1.55] text-navy-500">
                   {c.text}
                 </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[9.5px] font-bold uppercase tracking-[.1em] text-azure-500">
+                <span className="mt-3 inline-flex items-center gap-1.5 text-label font-bold uppercase text-azure-500">
                   En savoir plus
                   <Icon
                     name="arrowRight"
@@ -214,7 +214,7 @@ function ProofRow() {
         <div className="grid gap-4 lg:grid-cols-12">
           {SHOW_GOOGLE_REVIEWS && (
             <div className="min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 lg:col-span-3">
-              <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+              <h2 className="text-body-sm font-bold uppercase tracking-[.06em] text-navy-800">
                 Ils nous font confiance
               </h2>
               <div className="mt-4 flex items-center gap-3">
@@ -240,7 +240,7 @@ function ProofRow() {
 
           {/* ------------------------------------------------ Réalisations */}
           <div className={`min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 ${gallerySpan}`}>
-            <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+            <h2 className="text-body-sm font-bold uppercase tracking-[.06em] text-navy-800">
               Nos réalisations
             </h2>
 
@@ -266,7 +266,7 @@ function ProofRow() {
 
           {/* --------------------------------------- Zone d'intervention */}
           <div className={`min-w-0 rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 ${zoneSpan}`}>
-            <h2 className="text-[12.5px] font-bold uppercase tracking-[.06em] text-navy-800">
+            <h2 className="text-body-sm font-bold uppercase tracking-[.06em] text-navy-800">
               Notre zone d'intervention
             </h2>
 

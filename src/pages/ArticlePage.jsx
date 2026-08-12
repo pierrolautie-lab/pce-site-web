@@ -62,7 +62,7 @@ export default function ArticlePage({ slug }) {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             {/* ==================================================== ARTICLE == */}
             <div className="min-w-0 lg:col-span-8">
-              <span className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10.5px] font-bold uppercase tracking-[.1em] ${category.bg} ${category.text}`}>
+              <span className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-label font-bold uppercase ${category.bg} ${category.text}`}>
                 <Icon name={category.icon} className="h-3.5 w-3.5" strokeWidth={2.2} />
                 {category.label}
               </span>
@@ -99,7 +99,7 @@ export default function ArticlePage({ slug }) {
                         <Icon name="star" className="h-5 w-5" strokeWidth={1.8} />
                       </span>
                       <div>
-                        <h3 className="text-[12.5px] font-black uppercase tracking-[.1em] text-gold-700">
+                        <h3 className="text-label font-black uppercase text-gold-700">
                           Le conseil PCE
                         </h3>
                         <p className="mt-2 text-[14px] leading-[1.75] text-navy-700">{retenirText}</p>
@@ -125,14 +125,14 @@ export default function ArticlePage({ slug }) {
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link
                     to="/contact"
-                    className="inline-flex w-full items-center justify-center gap-2 whitespace-normal rounded-lg bg-navy-900 px-6 py-3.5 text-center text-[12.5px] font-bold uppercase tracking-[.08em] text-white transition-colors hover:bg-navy-800 sm:w-auto sm:whitespace-nowrap"
+                    className="inline-flex w-full items-center justify-center gap-2 whitespace-normal rounded-lg bg-navy-900 px-6 py-3.5 text-center text-label font-bold uppercase text-white transition-colors hover:bg-navy-800 sm:w-auto sm:whitespace-nowrap"
                   >
                     Demande de devis gratuit
                     <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
                   </Link>
                   <Link
                     to={data.relatedService}
-                    className="inline-flex w-full items-center justify-center gap-2 whitespace-normal rounded-lg border-2 border-navy-900 px-6 py-3.5 text-center text-[12.5px] font-bold uppercase tracking-[.08em] text-navy-900 transition-colors hover:bg-navy-900 hover:text-white sm:w-auto sm:whitespace-nowrap"
+                    className="inline-flex w-full items-center justify-center gap-2 whitespace-normal rounded-lg border-2 border-navy-900 px-6 py-3.5 text-center text-label font-bold uppercase text-navy-900 transition-colors hover:bg-navy-900 hover:text-white sm:w-auto sm:whitespace-nowrap"
                   >
                     Voir la page métier
                     <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
@@ -178,7 +178,7 @@ export default function ArticlePage({ slug }) {
             <aside className="min-w-0 lg:col-span-4">
               <div className="lg:sticky lg:top-24">
                 <div className="rounded-2xl bg-white p-6 shadow-card ring-1 ring-navy-100 sm:p-7">
-                  <h3 className="text-[12px] font-bold uppercase tracking-[.12em] text-navy-800">À lire aussi</h3>
+                  <h3 className="text-label font-bold uppercase text-navy-800">À lire aussi</h3>
                   <ul className="mt-5 space-y-4">
                     {related.map((s) => {
                       const rc = categoryFor(articles[s].relatedService)
@@ -198,7 +198,7 @@ export default function ArticlePage({ slug }) {
                   </ul>
                   <Link
                     to="/conseils"
-                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500"
+                    className="mt-6 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500"
                   >
                     Tous les articles
                     <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />

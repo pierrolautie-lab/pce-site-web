@@ -28,7 +28,7 @@ export default function APropos() {
       <section className="section bg-navy-50">
         <div className="container-pce">
           <div className="max-w-3xl">
-            <p className="text-[11px] font-bold uppercase tracking-[.16em] text-azure-500">
+            <p className="text-label font-bold uppercase text-azure-500">
               Nos origines
             </p>
             <SectionTitle align="left" title="Le métier appris à Paris" className="mt-3" />
@@ -202,7 +202,7 @@ export default function APropos() {
                     <Icon name="mapPin" className="h-5 w-5" strokeWidth={1.6} />
                   </span>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-navy-500">
+                    <p className="text-label font-bold uppercase text-navy-500">
                       {a.lead}
                     </p>
                     <h3 className="text-[17px] font-black uppercase tracking-tight text-navy-800">
@@ -215,7 +215,7 @@ export default function APropos() {
                   {a.towns.map((t) => (
                     <li
                       key={t}
-                      className="rounded-full bg-white px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[.08em] text-navy-600 ring-1 ring-navy-100"
+                      className="rounded-full bg-white px-3 py-1.5 text-label font-semibold uppercase text-navy-600 ring-1 ring-navy-100"
                     >
                       {t}
                     </li>
@@ -244,7 +244,7 @@ export default function APropos() {
                 <h3 className="mt-5 text-[13.5px] font-bold uppercase tracking-[.08em] text-navy-800 transition-colors group-hover:text-white">
                   {s.title}
                 </h3>
-                <span className="mt-4 inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.14em] text-navy-600 transition-colors group-hover:text-white">
+                <span className="mt-4 inline-flex items-center gap-2 text-label font-bold uppercase text-navy-600 transition-colors group-hover:text-white">
                   Voir
                   <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
                 </span>

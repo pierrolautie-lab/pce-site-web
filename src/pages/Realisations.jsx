@@ -76,7 +76,7 @@ export default function Realisations() {
                   type="button"
                   onClick={() => setFilter(f)}
                   aria-pressed={active}
-                  className={`rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[.12em] transition-all duration-200 ${
+                  className={`rounded-full px-5 py-2.5 text-label font-bold uppercase transition-all duration-200 ${
                     active
                       ? 'bg-navy-800 text-white'
                       : 'bg-navy-50 text-navy-600 ring-1 ring-navy-100 hover:bg-navy-100'
@@ -115,13 +115,13 @@ export default function Realisations() {
                     imgClassName="transition-transform duration-700 group-hover:scale-105"
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-navy-800 backdrop-blur">
+                  <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-1.5 text-label font-bold uppercase text-navy-800 backdrop-blur">
                     {p.trade}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-500">
+                  <div className="flex items-center gap-2 text-label font-bold uppercase text-navy-500">
                     <Icon name="mapPin" className="h-3.5 w-3.5" strokeWidth={2} />
                     {p.city}
                     <span className="h-1 w-1 rounded-full bg-navy-200" />
@@ -182,7 +182,7 @@ export default function Realisations() {
               priority
             />
             <div className="p-6">
-              <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.13em] text-navy-500">
+              <div className="flex items-center gap-2 text-label font-bold uppercase text-navy-500">
                 <Icon name="mapPin" className="h-3.5 w-3.5" strokeWidth={2} />
                 {lightbox.city}
                 <span className="h-1 w-1 rounded-full bg-navy-200" />

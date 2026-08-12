@@ -67,7 +67,7 @@ export default function Conseils() {
             <button
               type="button"
               onClick={() => setActive('tous')}
-              className={`rounded-full px-4 py-2 text-[11.5px] font-bold uppercase tracking-[.08em] ring-1 transition-colors ${
+              className={`rounded-full px-4 py-2 text-label font-bold uppercase ring-1 transition-colors ${
                 active === 'tous'
                   ? 'bg-navy-800 text-white ring-navy-800'
                   : 'bg-white text-navy-600 ring-navy-200 hover:ring-navy-400'
@@ -80,7 +80,7 @@ export default function Conseils() {
                 key={c.key}
                 type="button"
                 onClick={() => setActive(c.key)}
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11.5px] font-bold uppercase tracking-[.08em] ring-1 transition-colors ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-label font-bold uppercase ring-1 transition-colors ${
                   active === c.key ? `${c.solid} text-white ring-transparent` : `${c.bg} ${c.text} ${c.ring} hover:brightness-95`
                 }`}
               >
@@ -117,7 +117,7 @@ export default function Conseils() {
                         <Icon name={icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
                       </span>
                       <span
-                        className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[.08em] ${
+                        className={`rounded-full px-3 py-1 text-label font-bold uppercase ${
                           style.title === 'text-white' ? 'bg-white/10 text-white/80' : `${a.category.bg} ${a.category.text}`
                         }`}
                       >
@@ -131,7 +131,7 @@ export default function Conseils() {
                     <p className={`mt-3 flex-1 text-[13px] leading-[1.7] ${style.text}`} style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                       {a.intro[0]}
                     </p>
-                    <span className={`mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] ${style.link}`}>
+                    <span className={`mt-5 inline-flex items-center gap-2 text-label font-bold uppercase ${style.link}`}>
                       Lire l'article
                       <Icon name="arrowRight" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.4} />
                     </span>
@@ -165,7 +165,7 @@ export default function Conseils() {
               <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500 transition-colors group-hover:text-white/70">
                 Étapes du projet, délais et ce que PCE prend en charge pour une salle de bain clé en main.
               </p>
-              <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500 transition-colors group-hover:text-white">
+              <span className="mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500 transition-colors group-hover:text-white">
                 Lire le dossier
                 <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
               </span>
@@ -184,7 +184,7 @@ export default function Conseils() {
               <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500 transition-colors group-hover:text-white/70">
                 Fonctionnement, économies réalisées et impact écologique de cette technologie.
               </p>
-              <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-azure-500 transition-colors group-hover:text-white">
+              <span className="mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500 transition-colors group-hover:text-white">
                 Lire le dossier
                 <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
               </span>

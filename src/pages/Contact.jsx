@@ -76,7 +76,7 @@ export default function Contact() {
 
   const field =
     'w-full rounded-xl border border-navy-200 bg-white px-4 py-3.5 text-[14px] text-navy-800 outline-none transition-colors placeholder:text-navy-300 focus:border-navy-800'
-  const labelCls = 'mb-2 block text-[10.5px] font-bold uppercase tracking-[.14em] text-navy-600'
+  const labelCls = 'mb-2 block text-label font-bold uppercase text-navy-600'
   const errorCls = 'mt-1.5 text-[12px] font-medium text-navy-700'
 
   return (
@@ -283,7 +283,7 @@ export default function Contact() {
                           <Icon name="phone" className="h-4.5 w-4.5" strokeWidth={1.7} />
                         </span>
                         <span>
-                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                          <span className="block text-label font-bold uppercase text-white/45">
                             Téléphone — urgences 7j/7
                           </span>
                           <span className="mt-1 block text-[22px] font-black leading-tight tracking-tight">
@@ -299,7 +299,7 @@ export default function Contact() {
                           <Icon name="mail" className="h-4.5 w-4.5" strokeWidth={1.7} />
                         </span>
                         <span>
-                          <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                          <span className="block text-label font-bold uppercase text-white/45">
                             E-mail
                           </span>
                           <span className="mt-1 block text-[14.5px] font-semibold">
@@ -314,7 +314,7 @@ export default function Contact() {
                         <Icon name="mapPin" className="h-4.5 w-4.5" strokeWidth={1.7} />
                       </span>
                       <span>
-                        <span className="block text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                        <span className="block text-label font-bold uppercase text-white/45">
                           Atelier
                         </span>
                         <span className="mt-1 block text-[14.5px] leading-relaxed">
@@ -329,7 +329,7 @@ export default function Contact() {
                   </ul>
 
                   <div className="mt-8 border-t border-white/12 pt-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+                    <p className="text-label font-bold uppercase text-white/45">
                       Horaires d'ouverture
                     </p>
                     <ul className="mt-4 space-y-2.5">
@@ -348,7 +348,7 @@ export default function Contact() {
 
               {/* Zone d'intervention */}
               <div className="mt-5 rounded-2xl bg-navy-50 p-7 ring-1 ring-navy-100">
-                <h3 className="text-[12px] font-bold uppercase tracking-[.12em] text-navy-800">
+                <h3 className="text-label font-bold uppercase text-navy-800">
                   Zone d'intervention
                 </h3>
                 <p className="mt-3 text-[13.5px] leading-[1.7] text-navy-500">
@@ -359,7 +359,7 @@ export default function Contact() {
                   {company.areas.map((a) => (
                     <li
                       key={a}
-                      className="rounded-full bg-white px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[.08em] text-navy-600 ring-1 ring-navy-100"
+                      className="rounded-full bg-white px-3 py-1.5 text-label font-semibold uppercase text-navy-600 ring-1 ring-navy-100"
                     >
                       {a}
                     </li>
@@ -383,7 +383,7 @@ function Hero() {
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
       <div className="container-pce relative py-10 sm:py-8 lg:py-20">
         <nav aria-label="Fil d'Ariane" className="pt-6">
-          <ol className="flex flex-wrap items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-white/45">
+          <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/45">
             <li>
               <Link to="/" className="transition-colors hover:text-white">
                 Accueil

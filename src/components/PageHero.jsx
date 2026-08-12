@@ -57,7 +57,7 @@ export default function PageHero({
               tableau de { label, to? } pour un fil à plusieurs niveaux. */}
           {breadcrumb && (
             <nav aria-label="Fil d'Ariane" className="pt-6">
-              <ol className="flex flex-wrap items-center gap-2 text-[10.5px] font-bold uppercase tracking-[.12em] text-white/45">
+              <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/45">
                 <li>
                   <Link to="/" className="transition-colors hover:text-white">
                     Accueil
@@ -105,7 +105,7 @@ export default function PageHero({
                   {highlights.map((h) => (
                     <li key={h.title} className="flex flex-col items-start">
                       <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />
-                      <span className="mt-3 text-[11.5px] font-bold uppercase leading-tight tracking-[.05em]">
+                      <span className="mt-3 text-label font-bold uppercase">
                         {h.title}
                       </span>
                       <span className="mt-1 text-[11px] leading-snug text-white/50">{h.label}</span>
@@ -168,7 +168,7 @@ export function ReassuranceBar() {
                 <Icon name={r.icon} className="h-4 w-4 lg:h-[18px] lg:w-[18px]" strokeWidth={1.4} />
               </span>
               <span className="min-w-0">
-                <span className="block text-[10.5px] font-bold uppercase leading-tight tracking-[.04em]">
+                <span className="block text-label font-bold uppercase">
                   {r.title}
                 </span>
                 <span className="mt-1 block text-[10.5px] leading-snug text-white/50">

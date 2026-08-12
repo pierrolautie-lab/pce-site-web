@@ -49,7 +49,7 @@ export default function NotFound() {
             <li key={t.to}>
               <Link
                 to={t.to}
-                className="inline-flex rounded-lg border border-white/20 px-4 py-2 text-[11px] font-bold uppercase tracking-[.08em] text-white/80 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
+                className="inline-flex rounded-lg border border-white/20 px-4 py-2 text-label font-bold uppercase text-white/80 transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-800"
               >
                 {t.label}
               </Link>

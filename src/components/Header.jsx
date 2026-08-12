@@ -6,7 +6,7 @@ import { Logo } from './Brand.jsx'
 import { company, navFlat, navServices } from '../data/site.js'
 
 const NAV_LINK_CLASS = ({ isActive }) =>
-  `relative whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
+  `relative whitespace-nowrap py-2 font-display text-label font-bold uppercase transition-colors
    after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
    ${
      isActive
@@ -157,7 +157,7 @@ export default function Header() {
             to="/"
             end
             className={({ isActive }) =>
-              `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+              `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
                 isActive
                   ? 'border-gold-500 bg-navy-50 text-navy-800'
                   : 'border-transparent text-navy-600 hover:bg-navy-50'
@@ -172,7 +172,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
                   isActive
                     ? 'border-gold-500 bg-navy-50 text-navy-800'
                     : 'border-transparent text-navy-600 hover:bg-navy-50'
@@ -188,7 +188,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-[12px] font-bold uppercase tracking-[.08em] transition-colors ${
+                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
                   isActive
                     ? 'border-gold-500 bg-navy-50 text-navy-800'
                     : 'border-transparent text-navy-600 hover:bg-navy-50'
@@ -301,7 +301,7 @@ function ServicesMenu({ pathname }) {
         aria-controls="services-menu-panel"
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeyDown}
-        className={`relative flex items-center gap-1 whitespace-nowrap py-2 font-display text-[10.5px] font-bold uppercase tracking-[.03em] transition-colors
+        className={`relative flex items-center gap-1 whitespace-nowrap py-2 font-display text-label font-bold uppercase transition-colors
                    after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:rounded-full after:transition-all
                    ${
                      isActive
@@ -336,7 +336,7 @@ function ServicesMenu({ pathname }) {
             }}
             onKeyDown={(e) => onPanelKeyDown(e, i)}
             className={({ isActive: linkActive }) =>
-              `block rounded-lg px-3 py-2.5 font-display text-[11px] font-bold uppercase tracking-[.03em] transition-colors ${
+              `block rounded-lg px-3 py-2.5 font-display text-label font-bold uppercase transition-colors ${
                 linkActive ? 'bg-navy-50 text-navy-800' : 'text-navy-600 hover:bg-navy-50 hover:text-navy-800'
               }`
             }
