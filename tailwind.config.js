@@ -77,9 +77,17 @@ export default {
            de `hero` en taille — `title` seul seul crée un écart trop marqué. */
         'title-lg': ['clamp(22px, 3.2vw, 36px)', { lineHeight: '1.1', letterSpacing: '-.015em' }],
         title: ['clamp(19px, 2.1vw, 26px)', { lineHeight: '1.15', letterSpacing: '-.01em' }],
+        /* Chiffres statistiques ("1 800+", "20 ans"...). Plancher (28px)
+           volontairement au-dessus du plafond de `title` (26px) : un chiffre
+           doit rester visuellement plus gros que n'importe quel titre
+           voisin, à toutes les largeurs d'écran. */
+        stat: ['clamp(28px, 3.4vw, 40px)', { lineHeight: '1', letterSpacing: '-.01em' }],
         kicker: ['clamp(15px, 1.35vw, 18px)', { lineHeight: '1.3' }],
         body: ['15px', { lineHeight: '1.75' }],
         'body-sm': ['13px', { lineHeight: '1.65' }],
+        /* Note de bas de bloc, mention secondaire en minuscules (distinct de
+           `label`, qui est réservé aux micro-libellés en capitales). */
+        caption: ['11px', { lineHeight: '1.6' }],
         label: ['11px', { lineHeight: '1.4', letterSpacing: '.1em' }],
       },
       letterSpacing: {

@@ -76,6 +76,9 @@ export function TvaCard({ className = '' }) {
     <div
       className={`relative flex flex-col overflow-hidden rounded-xl bg-navy-800 p-8 text-white sm:p-9 ${className}`}
     >
+      {/* Filigrane décoratif (aria-hidden) : hors échelle typographique par
+          nature, exception admise à l'étape 3. Les 3 occurrences de ce motif
+          dans ce fichier (110/140/220px) restent en valeurs arbitraires. */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
@@ -168,6 +171,12 @@ export function TvaBanner() {
             <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-gold-500 text-navy-800">
               <Icon name="euro" className="h-5 w-5" strokeWidth={2} />
             </span>
+            {/* ⚠️ Exception documentée (étape 3 typographie, 2026-08-12) :
+                ne rentre proprement dans aucun rôle de l'échelle. `title`
+                irait à contresens (letter-spacing négatif, resserre au lieu
+                d'écarter comme le fait ce tracking-[.06em]) ; `kicker`
+                plafonne à 18px, 4px sous les 22px voulus ici. Laissé en
+                valeurs arbitraires en attendant un rôle dédié. */}
             <h2 className="mt-5 text-[18px] font-bold uppercase tracking-[.06em] text-gold-400 sm:text-[22px]">
               {tvaCard.title} sur la main d'œuvre
             </h2>
@@ -439,7 +448,7 @@ export function CtaBand({
           </h2>
           <a href={company.phoneHref} className="btn-gold shrink-0">
             <Icon name="phone" className="h-4 w-4" strokeWidth={2.2} />
-            <span className="text-[16px] tracking-tight">{company.phone}</span>
+            <span className="text-kicker tracking-tight">{company.phone}</span>
           </a>
         </div>
       </div>
