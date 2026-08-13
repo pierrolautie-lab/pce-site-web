@@ -96,7 +96,7 @@ export default function Conseils() {
       <section className="section bg-navy-50">
         <div className="container-pce">
           {visible.length === 0 ? (
-            <p className="text-center text-[14px] text-navy-500">Aucun article dans cette catégorie pour le moment.</p>
+            <p className="text-center text-body-sm text-navy-500">Aucun article dans cette catégorie pour le moment.</p>
           ) : (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {visible.map((a, i) => {
@@ -125,10 +125,10 @@ export default function Conseils() {
                       </span>
                     </div>
 
-                    <h3 className={`mt-5 text-[14.5px] font-bold uppercase leading-snug tracking-[.03em] ${style.title}`}>
+                    <h3 className={`mt-5 text-body-sm font-bold uppercase tracking-[.03em] ${style.title}`}>
                       {a.title}
                     </h3>
-                    <p className={`mt-3 flex-1 text-[13px] leading-[1.7] ${style.text}`} style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    <p className={`mt-3 flex-1 text-body-sm ${style.text}`} style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                       {a.intro[0]}
                     </p>
                     <span className={`mt-5 inline-flex items-center gap-2 text-label font-bold uppercase ${style.link}`}>
@@ -147,7 +147,7 @@ export default function Conseils() {
       <section className="section bg-white">
         <div className="container-pce">
           <h2 className="section-title">Deux sujets approfondis</h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-[13.5px] leading-[1.7] text-navy-500">
+          <p className="mx-auto mt-3 max-w-xl text-center text-body-sm text-navy-500">
             Pour aller plus loin sur deux équipements que nous posons très régulièrement.
           </p>
 
@@ -159,10 +159,10 @@ export default function Conseils() {
               <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                 <Icon name="shower" className="h-5 w-5" strokeWidth={1.6} />
               </span>
-              <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
+              <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
                 La rénovation de salle de bain
               </h3>
-              <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500 transition-colors group-hover:text-white/70">
+              <p className="mt-3 text-body-sm text-navy-500 transition-colors group-hover:text-white/70">
                 Étapes du projet, délais et ce que PCE prend en charge pour une salle de bain clé en main.
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500 transition-colors group-hover:text-white">
@@ -178,10 +178,10 @@ export default function Conseils() {
               <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                 <Icon name="flame" className="h-5 w-5" strokeWidth={1.6} />
               </span>
-              <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
+              <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.06em] text-navy-800 transition-colors group-hover:text-white">
                 La chaudière à condensation
               </h3>
-              <p className="mt-3 text-[13.5px] leading-[1.75] text-navy-500 transition-colors group-hover:text-white/70">
+              <p className="mt-3 text-body-sm text-navy-500 transition-colors group-hover:text-white/70">
                 Fonctionnement, économies réalisées et impact écologique de cette technologie.
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-azure-500 transition-colors group-hover:text-white">

@@ -68,7 +68,7 @@ export default function ArticlePage({ slug }) {
               </span>
 
               {data.intro.slice(1).map((p, i) => (
-                <p key={i} className="mt-5 text-[14.5px] leading-[1.85] text-navy-600">
+                <p key={i} className="mt-5 text-body text-navy-600">
                   {p}
                 </p>
               ))}
@@ -80,13 +80,13 @@ export default function ArticlePage({ slug }) {
                       <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${category.bg} ${category.text}`}>
                         <Icon name={category.icon} className="h-4 w-4" strokeWidth={1.8} />
                       </span>
-                      <h2 className="text-[15.5px] font-bold uppercase leading-snug tracking-[.04em] text-navy-800 sm:text-[17px]">
+                      <h2 className="text-kicker font-bold uppercase tracking-[.04em] text-navy-800">
                         {sec.h2}
                       </h2>
                     </div>
                     <div className="mt-4 space-y-4">
                       {sec.paragraphs.map((p, j) => (
-                        <p key={j} className="text-[14.5px] leading-[1.85] text-navy-600">
+                        <p key={j} className="text-body text-navy-600">
                           {p}
                         </p>
                       ))}
@@ -102,7 +102,7 @@ export default function ArticlePage({ slug }) {
                         <h3 className="text-label font-black uppercase text-gold-700">
                           Le conseil PCE
                         </h3>
-                        <p className="mt-2 text-[14px] leading-[1.75] text-navy-700">{retenirText}</p>
+                        <p className="mt-2 text-body text-navy-700">{retenirText}</p>
                       </div>
                     </div>
                   )}
@@ -110,15 +110,15 @@ export default function ArticlePage({ slug }) {
               ))}
 
               {data.closing && (
-                <p className="mt-8 text-[14.5px] font-semibold leading-[1.85] text-navy-700">{data.closing}</p>
+                <p className="mt-8 text-body font-semibold text-navy-700">{data.closing}</p>
               )}
 
               {/* ===================================================== CTA == */}
               <div className="mt-10 rounded-2xl bg-gold-500 p-7 sm:p-9">
-                <h3 className="text-[18px] font-black uppercase leading-tight tracking-[-.01em] text-navy-900 sm:text-[22px]">
+                <h3 className="text-title font-black uppercase text-navy-900">
                   Un projet à concrétiser ?
                 </h3>
-                <p className="mt-3 max-w-xl text-[13.5px] leading-[1.7] text-navy-800/80">
+                <p className="mt-3 max-w-xl text-body-sm text-navy-800/80">
                   Décrivez-nous votre besoin : nous vous répondons directement et nous établissons
                   un devis détaillé, gratuit et sans engagement.
                 </p>
@@ -152,7 +152,7 @@ export default function ArticlePage({ slug }) {
 
               {/* ===================================================== FAQ == */}
               <div className="mt-12">
-                <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-navy-800 sm:text-[19px]">
+                <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-navy-800">
                   Questions fréquentes
                 </h2>
                 <div className="mt-6 space-y-3">
@@ -162,12 +162,12 @@ export default function ArticlePage({ slug }) {
                       className={`group overflow-hidden rounded-xl border-l-4 bg-white ring-1 ring-navy-100 ${category.border}`}
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-6">
-                        <h3 className="text-[14px] font-bold leading-snug text-navy-800">{item.q}</h3>
+                        <h3 className="text-body font-bold text-navy-800">{item.q}</h3>
                         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-navy-200 text-navy-700 transition-all duration-300 group-open:rotate-45 group-open:border-gold-500 group-open:bg-gold-500 group-open:text-navy-800">
                           <Icon name="close" className="h-3.5 w-3.5 rotate-45" strokeWidth={2.4} />
                         </span>
                       </summary>
-                      <p className="px-5 pb-5 text-[13.5px] leading-[1.8] text-navy-500 sm:px-6 sm:pb-6">{item.a}</p>
+                      <p className="px-5 pb-5 text-body-sm text-navy-500 sm:px-6 sm:pb-6">{item.a}</p>
                     </details>
                   ))}
                 </div>
@@ -188,7 +188,7 @@ export default function ArticlePage({ slug }) {
                             <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full ${rc.bg} ${rc.text}`}>
                               <Icon name={rc.icon} className="h-3.5 w-3.5" strokeWidth={1.8} />
                             </span>
-                            <span className="text-[13px] font-semibold leading-snug text-navy-700 transition-colors group-hover:text-azure-500">
+                            <span className="text-body-sm font-semibold text-navy-700 transition-colors group-hover:text-azure-500">
                               {articles[s].title}
                             </span>
                           </Link>

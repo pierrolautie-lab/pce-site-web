@@ -78,7 +78,7 @@ function HomeHero() {
               le bord droit du chapô au-delà du dégradé directionnel (80 %
               de la largeur du héros) — resserrer la colonne à ce palier
               règle le débordement sans toucher au voile. */}
-          <p className="mt-3 max-w-md text-[14px] leading-[1.7] text-white sm:text-[15.5px] lg:max-w-lg">
+          <p className="mt-3 max-w-md text-body text-white lg:max-w-lg">
             De Lorgues jusqu'au Golfe de Saint-Tropez et toutes les communes alentours
           </p>
 
@@ -116,7 +116,7 @@ function HomeHero() {
             </Link>
             <a
               href={company.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-center text-[13px] font-bold tracking-[.04em] text-white transition-colors hover:border-white hover:bg-white hover:text-navy-900"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-center text-body-sm font-bold tracking-[.04em] text-white transition-colors hover:border-white hover:bg-white hover:text-navy-900"
             >
               <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
               {company.phone}
@@ -181,7 +181,7 @@ function ServiceCards() {
                 <h3 className="font-display text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
                   {c.title}
                 </h3>
-                <p className="mt-2 line-clamp-2 flex-1 text-[11.5px] leading-[1.55] text-navy-500">
+                <p className="mt-2 line-clamp-2 flex-1 text-caption text-navy-500">
                   {c.text}
                 </p>
                 <span className="mt-3 inline-flex items-center gap-1.5 text-label font-bold uppercase text-azure-500">
@@ -223,11 +223,11 @@ function ProofRow() {
                     <Icon key={i} name="star" className="h-5 w-5 text-gold-500" strokeWidth={1.4} fill="currentColor" />
                   ))}
                 </span>
-                <span className="text-[22px] font-black leading-none text-navy-800">
+                <span className="text-title font-black text-navy-800">
                   {GOOGLE_REVIEWS.rating}
                 </span>
               </div>
-              <p className="mt-3 text-[12px] leading-snug text-navy-500">
+              <p className="mt-3 text-body-sm text-navy-500">
                 sur Google
                 <br />
                 {GOOGLE_REVIEWS.count}
@@ -272,7 +272,7 @@ function ProofRow() {
 
             <div className="mt-4 grid gap-5 sm:grid-cols-2">
               <div className="min-w-0">
-                <p className="text-[12.5px] leading-[1.65] text-navy-500">
+                <p className="text-body-sm text-navy-500">
                   Nous intervenons dans tout le Var, de Lorgues au Golfe de Saint-Tropez et toutes
                   les communes alentours.
                 </p>
@@ -284,7 +284,7 @@ function ProofRow() {
                         className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500"
                         strokeWidth={3}
                       />
-                      <span className="text-[12px] leading-snug text-navy-600">{t}</span>
+                      <span className="text-body-sm text-navy-600">{t}</span>
                     </li>
                   ))}
                 </ul>

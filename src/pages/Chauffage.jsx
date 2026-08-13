@@ -33,15 +33,15 @@ function SolutionsWhyUs({ service }) {
                 sizes="(min-width: 640px) 50vw, 100vw"
               />
               <div className="p-7 sm:p-8">
-                <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500 sm:text-[19px]">
+                <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-azure-500">
                   Nos solutions de chauffage
                 </h2>
-                <p className="mt-2 text-[12.5px] text-navy-500">Des systèmes performants et économiques</p>
+                <p className="mt-2 text-body-sm text-navy-500">Des systèmes performants et économiques</p>
                 <ul className="mt-6 space-y-3.5">
                   {service.solutions.map((s) => (
                     <li key={s} className="flex items-start gap-3">
                       <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                      <span className="text-[13.5px] leading-[1.6] text-navy-700">{s}</span>
+                      <span className="text-body-sm text-navy-700">{s}</span>
                     </li>
                   ))}
                 </ul>
@@ -50,6 +50,8 @@ function SolutionsWhyUs({ service }) {
           </div>
 
           <div className="relative min-w-0 overflow-hidden rounded-xl bg-navy-800 p-8 text-white sm:p-10">
+            {/* Filigrane décoratif (aria-hidden), hors échelle typographique
+                — voir la même exception dans Blocks.jsx. */}
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
@@ -57,7 +59,7 @@ function SolutionsWhyUs({ service }) {
               {company.name}
             </span>
             <div className="relative">
-              <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-white sm:text-[19px]">
+              <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-white">
                 Pourquoi choisir PCE ?
               </h2>
               <ul className="mt-7 grid gap-6 sm:grid-cols-2">
@@ -68,7 +70,7 @@ function SolutionsWhyUs({ service }) {
                       <span className="block text-body-sm font-bold uppercase tracking-[.04em] text-white">
                         {b.title}
                       </span>
-                      <span className="mt-1.5 block text-[12.5px] leading-[1.55] text-white/70">{b.label}</span>
+                      <span className="mt-1.5 block text-caption text-white/70">{b.label}</span>
                     </span>
                   </li>
                 ))}
@@ -94,10 +96,10 @@ function EntretienAidesConseil({ service }) {
             <span className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-gold-400">
               <Icon name="settings" className="h-5 w-5" strokeWidth={1.6} />
             </span>
-            <h3 className="mt-5 text-[14px] font-bold uppercase tracking-[.05em]">
+            <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.05em]">
               Entretien : une obligation, une sérénité
             </h3>
-            <p className="mt-3 text-[12.5px] leading-[1.65] text-white/70">
+            <p className="mt-3 text-body-sm text-white/70">
               L'entretien annuel de votre chaudière est obligatoire et essentiel pour garantir sécurité,
               performance et longévité de votre installation.
             </p>
@@ -105,17 +107,17 @@ function EntretienAidesConseil({ service }) {
               {['Meilleur rendement', 'Moins de pannes', 'Économies d’énergie', 'Respect des normes'].map((b) => (
                 <li key={b} className="flex items-start gap-2.5">
                   <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-400" strokeWidth={3.2} />
-                  <span className="text-[12.5px] leading-[1.5] text-white/85">{b}</span>
+                  <span className="text-body-sm text-white/85">{b}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
-            <h3 className="text-[14px] font-bold uppercase tracking-[.05em] text-navy-800">
+            <h3 className="text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
               Aides financières disponibles
             </h3>
-            <p className="mt-3 text-[12.5px] leading-[1.65] text-navy-500">
+            <p className="mt-3 text-body-sm text-navy-500">
               Ces aides ciblent les équipements décarbonés : la pompe à chaleur en bénéficie pleinement, la
               chaudière à gaz n'y est plus éligible depuis 2023-2024, hors TVA à 5,5 %.
             </p>
@@ -139,10 +141,10 @@ function EntretienAidesConseil({ service }) {
           </div>
 
           <div className="flex flex-col rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
-            <h3 className="text-[14px] font-bold uppercase tracking-[.05em] text-navy-800">
+            <h3 className="text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
               Besoin d'un conseil ou d'un devis ?
             </h3>
-            <p className="mt-3 text-[12.5px] leading-[1.65] text-navy-500">
+            <p className="mt-3 text-body-sm text-navy-500">
               Nos experts sont à votre écoute pour étudier votre projet et vous proposer la solution de chauffage
               la plus adaptée.
             </p>
