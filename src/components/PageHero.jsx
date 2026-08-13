@@ -88,7 +88,7 @@ export default function PageHero({
                 </p>
               )}
 
-              <p className="signature mt-4 text-[17px] sm:text-[19px]">{company.expertise}</p>
+              <p className="signature mt-4 text-kicker">{company.expertise}</p>
 
               {intro && (
                 <p className="mt-5 max-w-xl text-body text-white/70">{intro}</p>

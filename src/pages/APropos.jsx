@@ -95,7 +95,7 @@ export default function APropos() {
                 </p>
               </div>
 
-              <p className="signature mt-9 text-[16px]">{company.tagline}</p>
+              <p className="signature mt-9 text-body">{company.tagline}</p>
             </div>
 
             <div className="min-w-0 lg:col-span-5">

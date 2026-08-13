@@ -342,7 +342,7 @@ export default function Contact() {
                     </ul>
                   </div>
 
-                  <p className="signature mt-8 text-[15px]">{company.tagline}</p>
+                  <p className="signature mt-8 text-body">{company.tagline}</p>
                 </div>
               </div>
 
@@ -407,7 +407,7 @@ function Hero() {
             Un devis gratuit, détaillé et sans engagement
           </p>
 
-          <p className="signature mt-4 text-[17px] sm:text-[19px]">{company.expertise}</p>
+          <p className="signature mt-4 text-kicker">{company.expertise}</p>
 
           <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/70">
             Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour

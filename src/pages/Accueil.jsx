@@ -72,7 +72,7 @@ function HomeHero() {
           {/* Filet or */}
           <span aria-hidden="true" className="mt-5 block h-[3px] w-24 bg-gold-500 sm:w-32" />
 
-          <p className="signature mt-4 text-[20px] sm:text-[26px]">Dans tout le Var</p>
+          <p className="signature mt-4 text-title">Dans tout le Var</p>
 
           {/* max-w-md entre `sm` et `lg` : à 768 px, un max-w-lg fixe pousse
               le bord droit du chapô au-delà du dégradé directionnel (80 %

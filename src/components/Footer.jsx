@@ -64,7 +64,7 @@ export default function Footer() {
             <p className="mt-6 max-w-xs text-label font-bold uppercase text-white/70">
               {company.baseline}
             </p>
-            <p className="signature mt-4 text-[15px]">{company.tagline}</p>
+            <p className="signature mt-4 text-body">{company.tagline}</p>
 
             {/* Qualifications */}
             <ul className="mt-6 flex flex-wrap gap-2">

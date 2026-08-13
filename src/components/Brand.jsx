@@ -104,5 +104,5 @@ export function Watermark({ tone = 'white', className = '' }) {
 
 /** Signature dorée en italique, reprise des maquettes. */
 export function Signature({ className = '' }) {
-  return <p className={`signature text-[17px] sm:text-[19px] ${className}`}>{company.expertise}</p>
+  return <p className={`signature text-kicker ${className}`}>{company.expertise}</p>
 }

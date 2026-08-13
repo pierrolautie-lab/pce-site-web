@@ -24,7 +24,7 @@ export default function NotFound() {
         <p className="mt-6 max-w-md text-[19px] font-bold uppercase text-azure-300">
           Cette page n'existe pas — ou plus.
         </p>
-        <p className="signature mt-3 text-[17px]">{company.expertise}</p>
+        <p className="signature mt-3 text-kicker">{company.expertise}</p>
         <p className="mt-5 max-w-lg text-[14.5px] leading-[1.8] text-white/65">
           Le lien que vous avez suivi est peut-être obsolète. Vous pouvez revenir à l'accueil ou
           rejoindre directement l'un de nos cinq métiers.
