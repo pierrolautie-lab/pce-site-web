@@ -230,20 +230,23 @@ export default function APropos() {
       {/* ------------------------------------------------- Rappel métiers */}
       <section className="section bg-navy-50">
         <div className="container-pce">
-          <SectionTitle title="Cinq savoir-faire, une seule équipe" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <SectionTitle title="Six savoir-faire, une seule équipe" />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {serviceList.map((s) => (
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
-                className="group flex flex-col rounded-2xl bg-white p-6 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
+                className="group flex h-full flex-col rounded-2xl bg-white p-6 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-navy-50 text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                   <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.6} />
                 </span>
-                <h3 className="mt-5 text-[13.5px] font-bold uppercase tracking-[.08em] text-navy-800 transition-colors group-hover:text-white">
+                <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.08em] text-navy-800 transition-colors group-hover:text-white">
                   {s.title}
                 </h3>
+                <p className="mt-2 flex-1 text-body-sm text-navy-500 transition-colors group-hover:text-white/70">
+                  {s.card}
+                </p>
                 <span className="mt-4 inline-flex items-center gap-2 text-label font-bold uppercase text-navy-600 transition-colors group-hover:text-white">
                   Voir
                   <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
