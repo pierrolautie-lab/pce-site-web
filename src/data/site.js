@@ -848,14 +848,16 @@ export const services = {
       { icon: 'mapPin', title: 'Expertise locale', label: "Des solutions adaptées à l'eau du Var" },
     ],
 
-    /* Les 6 cartes « Nos solutions de traitement de l'eau ». Le nom de
-       l'adoucisseur (ADOUCISSEUR_MODEL, à confirmer) est injecté par la
-       page — volontairement absent d'ici. `ctaTo` pointe vers /contact
-       partout : aucune sous-page dédiée n'existe pour ces sujets. */
+    /* Les 6 cartes « Nos solutions de traitement de l'eau ». Aucune photo :
+       le client n'en fournit pas pour ces sujets (voir icon ci-dessous, une
+       pastille ronde par carte, plutôt qu'un repli sur cadre en attente).
+       `ctaTo` pointe vers /contact partout : aucune sous-page dédiée
+       n'existe pour ces sujets. */
     solutions: [
       {
         key: 'adoucisseur',
         title: "Adoucisseur d'eau",
+        icon: 'droplet',
         bullets: [
           'Protège vos canalisations et équipements',
           'Prolonge la durée de vie de vos installations',
@@ -865,12 +867,11 @@ export const services = {
         ],
         ctaLabel: 'En savoir plus sur les adoucisseurs',
         ctaTo: '/contact',
-        photo: 'eau-adoucisseur.jpg',
-        alt: "Adoucisseur d'eau installé par PCE",
       },
       {
         key: 'filtration-sous-evier',
         title: 'Filtration fine sous évier',
+        icon: 'filter',
         bullets: [
           'Eau pure et saine pour la boisson',
           'Filtration des impuretés, chlore, goût et odeurs',
@@ -879,12 +880,11 @@ export const services = {
         ],
         ctaLabel: 'En savoir plus',
         ctaTo: '/contact',
-        photo: 'eau-filtration-sous-evier.jpg',
-        alt: 'Filtration fine sous évier installée par PCE',
       },
       {
         key: 'filtration-forage',
         title: 'Filtration eau de forage',
+        icon: 'pipe',
         bullets: [
           'Élimine sable, boue, rouille et particules',
           'Protège vos équipements et installations',
@@ -893,12 +893,11 @@ export const services = {
         ],
         ctaLabel: 'En savoir plus',
         ctaTo: '/contact',
-        photo: 'eau-filtration-forage.jpg',
-        alt: "Filtration d'eau de forage installée par PCE",
       },
       {
         key: 'charbon-actif',
-        title: 'Filtration à charbon actif pour toute la maison',
+        title: 'Charbon actif — toute la maison',
+        icon: 'shieldCheck',
         bullets: [
           'Réduit le chlore, pesticides, mauvais goûts et odeurs',
           'Améliore la qualité de l’eau dans toute la maison',
@@ -907,12 +906,11 @@ export const services = {
         ],
         ctaLabel: 'En savoir plus',
         ctaTo: '/contact',
-        photo: 'eau-charbon-actif.jpg',
-        alt: 'Filtration à charbon actif installée par PCE',
       },
       {
         key: 'uv',
-        title: "Traitement UV — désinfection de l'eau",
+        title: 'Traitement UV',
+        icon: 'bolt',
         /* Formulation à reprendre mot pour mot : le taux d'abattement dépend
            du débit, de la turbidité et de l'entretien de l'appareil — jamais
            d'allégation sanitaire inconditionnelle. */
@@ -923,12 +921,11 @@ export const services = {
         ],
         ctaLabel: 'En savoir plus',
         ctaTo: '/contact',
-        photo: 'eau-traitement-uv.jpg',
-        alt: 'Traitement UV installé par PCE',
       },
       {
         key: 'complet',
         title: 'Filtration & traitement complet sur mesure',
+        icon: 'settings',
         bullets: [
           'Étude personnalisée de votre eau',
           'Solutions complètes et évolutives',
@@ -937,8 +934,6 @@ export const services = {
         ],
         ctaLabel: 'Nous contacter',
         ctaTo: '/contact',
-        photo: 'eau-installation-complete.jpg',
-        alt: 'Installation de traitement complet réalisée par PCE',
       },
     ],
 

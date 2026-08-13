@@ -1,13 +1,9 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import { CtaBand } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
-
-// À CONFIRMER — référence fabricant à valider avant publication.
-const ADOUCISSEUR_MODEL = 'Panther Foleo'
 
 /** Bandeau bespoke de 5 arguments, propre à cette page (pas `ReassuranceBar`). */
 function WaterArgsBar({ items }) {
@@ -32,31 +28,10 @@ function WaterArgsBar({ items }) {
   )
 }
 
-/** Photo produit avec repli sur un cadre neutre portant le nom de la solution
- *  tant que le fichier réel (fourni par le client) n'est pas déposé. */
-function SolutionPhoto({ src, alt, label }) {
-  const [errored, setErrored] = useState(false)
-
-  if (errored) {
-    return (
-      <div className="grid h-24 w-24 shrink-0 place-items-center rounded-lg bg-navy-50 p-2 text-center ring-1 ring-navy-100 sm:h-28 sm:w-28">
-        <span className="text-label font-bold uppercase leading-tight text-navy-400">{label}</span>
-      </div>
-    )
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      onError={() => setErrored(true)}
-      className="h-24 w-24 shrink-0 rounded-lg bg-navy-50 object-cover ring-1 ring-navy-100 sm:h-28 sm:w-28"
-    />
-  )
-}
-
-/** Grille des 6 solutions, hauteur de carte égale, bouton aligné en bas. */
+/** Grille des 6 solutions, hauteur de carte égale, bouton aligné en bas.
+ *  Aucune photo (le client n'en fournit pas pour ces sujets) : une icône de
+ *  la charte remplace le repli sur cadre, définitivement — pas un
+ *  emplacement en attente. */
 function SolutionsGrid({ items }) {
   return (
     <section className="section bg-white">
@@ -65,24 +40,23 @@ function SolutionsGrid({ items }) {
           Nos solutions de traitement de l'eau
         </h2>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((s, i) => (
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {items.map((s) => (
             <div key={s.key} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 sm:p-7">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <h3 className="text-title font-display font-black uppercase leading-snug text-navy-800">
-                    {s.title}
-                  </h3>
-                  {i === 0 && (
-                    <p className="mt-1 text-kicker font-black uppercase tracking-[.03em] text-gold-500">
-                      {ADOUCISSEUR_MODEL}
-                    </p>
-                  )}
-                </div>
-                <SolutionPhoto src={`/img/${s.photo}`} alt={s.alt} label={s.title} />
-              </div>
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-navy-50 text-azure-500 ring-1 ring-navy-100">
+                <Icon name={s.icon} className="h-5.5 w-5.5" strokeWidth={1.6} />
+              </span>
 
-              <ul className="mt-5 flex-1 space-y-2.5">
+              {/* Hauteur minimale fixe : les titres vont d'un à deux mots
+                  (« Traitement UV ») à une phrase complète (« Filtration &
+                  traitement complet sur mesure ») — sans plancher commun,
+                  les listes qui suivent ne s'alignent plus d'une carte à
+                  l'autre dans la même rangée. */}
+              <h3 className="mt-4 min-h-[3.4em] text-title font-display font-black uppercase leading-snug text-navy-800">
+                {s.title}
+              </h3>
+
+              <ul className="mt-2 flex-1 space-y-2.5">
                 {s.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2.5">
                     <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
