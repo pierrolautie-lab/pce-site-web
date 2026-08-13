@@ -16,7 +16,11 @@ export default function PageHero({
   title,
   /* Tailles réduites d'environ 18 % avec le passage à Archivo : à corps
      égal elle rend ~8 % plus large qu'Inter, et « Traitement de l'eau »
-     débordait sur deux lignes. À 3.6rem il tient sur une seule. */
+     débordait sur deux lignes. À 3.6rem il tient sur une seule.
+     ⚠️ Exception étape 3 typographie : pas convertie vers `hero`, dont la
+     courbe clamp() est différente (ex. ~30px vs ~32px ici en mobile) et
+     pourrait réintroduire le débordement que ce réglage corrige. À vérifier
+     page par page avant toute conversion. */
   titleClassName = 'text-[8.6vw] md:text-5xl lg:text-[3.6rem]',
   subtitle,
   subtitleClassName = 'text-azure-300',
@@ -88,7 +92,7 @@ export default function PageHero({
               </h1>
 
               {subtitle && (
-                <p className={`mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] sm:text-[24px] ${subtitleClassName}`}>
+                <p className={`mt-5 max-w-lg text-title font-bold uppercase ${subtitleClassName}`}>
                   {subtitle}
                 </p>
               )}
@@ -96,7 +100,7 @@ export default function PageHero({
               <p className="signature mt-4 text-[17px] sm:text-[19px]">{company.expertise}</p>
 
               {intro && (
-                <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/70">{intro}</p>
+                <p className="mt-5 max-w-xl text-body text-white/70">{intro}</p>
               )}
 
               {/* Rangée d'icônes optionnelle (voir page Piscine) */}
@@ -108,7 +112,7 @@ export default function PageHero({
                       <span className="mt-3 text-label font-bold uppercase">
                         {h.title}
                       </span>
-                      <span className="mt-1 text-[11px] leading-snug text-white/50">{h.label}</span>
+                      <span className="mt-1 text-caption text-white/50">{h.label}</span>
                     </li>
                   ))}
                 </ul>
@@ -171,7 +175,7 @@ export function ReassuranceBar() {
                 <span className="block text-label font-bold uppercase">
                   {r.title}
                 </span>
-                <span className="mt-1 block text-[10.5px] leading-snug text-white/50">
+                <span className="mt-1 block text-caption text-white/50">
                   {r.label}
                 </span>
               </span>

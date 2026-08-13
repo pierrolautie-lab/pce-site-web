@@ -16,6 +16,10 @@ import { useState } from 'react'
  * qu'un cadre en attente. Réservé à ce contexte ; le repli par défaut
  * (cadre neutre) reste inchangé pour les autres usages (grille d'aides de
  * Piscine, etc.).
+ *
+ * Taille/interlignage/interlettrage ne sont plus fixés ici (étape 3
+ * typographie) : `className` doit toujours porter un rôle de l'échelle
+ * (`text-title`, `text-label`...), qui les fournit déjà.
  */
 export default function BrandLogo({ name, src, className = '', grayscale = false, plain = false }) {
   const [failed, setFailed] = useState(false)
@@ -24,8 +28,8 @@ export default function BrandLogo({ name, src, className = '', grayscale = false
     if (plain) {
       return (
         <span
-          className={`flex w-full items-center justify-center text-center font-black leading-none
-                      tracking-tight text-navy-800 ${className}`}
+          className={`flex w-full items-center justify-center text-center font-black
+                      text-navy-800 ${className}`}
         >
           {name}
         </span>
@@ -37,7 +41,7 @@ export default function BrandLogo({ name, src, className = '', grayscale = false
            texte en max-content, qui refuse alors de passer à la ligne et
            déborde du cadre sur les noms longs. */
         className={`flex items-center justify-center break-words rounded-lg border border-navy-200
-                    bg-navy-50 p-2 text-center text-label font-bold uppercase leading-tight
+                    bg-navy-50 p-2 text-center text-label font-bold uppercase
                     text-navy-600 ${className}`}
       >
         {name}

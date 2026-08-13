@@ -19,14 +19,14 @@ export function ServiceTwoColumn({ checklistTitle, checklist, card }) {
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="min-w-0 rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10">
-            <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-azure-500 sm:text-[19px]">
+            <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-azure-500">
               {checklistTitle}
             </h2>
             <ul className="mt-7 space-y-4">
               {checklist.map((b) => (
                 <li key={b} className="flex items-start gap-3.5">
                   <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                  <span className="text-[14px] leading-[1.65] text-navy-700">{b}</span>
+                  <span className="text-body-sm text-navy-700">{b}</span>
                 </li>
               ))}
             </ul>
@@ -42,16 +42,16 @@ export function ServiceTwoColumn({ checklistTitle, checklist, card }) {
               {company.name}
             </span>
             <div className="relative">
-              <h2 className="text-[17px] font-bold uppercase leading-snug tracking-[.05em] text-white sm:text-[19px]">
+              <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-white">
                 {card.title}
               </h2>
-              {card.kicker && <p className="signature mt-3 text-[16px]">{card.kicker}</p>}
-              <p className="mt-4 max-w-md text-[14px] leading-[1.75] text-white/70">{card.text}</p>
+              {card.kicker && <p className="signature mt-3 text-kicker">{card.kicker}</p>}
+              <p className="mt-4 max-w-md text-body text-white/70">{card.text}</p>
               <ul className="mt-6 space-y-3.5">
                 {card.checklist.map((b) => (
                   <li key={b} className="flex items-start gap-3.5">
                     <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" strokeWidth={3} />
-                    <span className="text-[14px] leading-[1.65] text-white/85">{b}</span>
+                    <span className="text-body-sm text-white/85">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -81,15 +81,15 @@ export function ServiceFeatureCards({ items }) {
               <span className="grid h-12 w-12 place-items-center rounded-full border border-navy-200 text-azure-500">
                 <Icon name={c.icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
               </span>
-              <h3 className="mt-5 text-[13.5px] font-bold uppercase leading-snug tracking-[.04em] text-navy-800">
+              <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.04em] text-navy-800">
                 {c.title}
               </h3>
-              <p className="mt-3 text-[12.5px] leading-[1.6] text-navy-500">{c.text}</p>
+              <p className="mt-3 text-body-sm text-navy-500">{c.text}</p>
               <ul className="mt-4 space-y-2.5">
                 {c.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2.5">
                     <Icon name="check" className="mt-0.5 h-3 w-3 shrink-0 text-azure-500" strokeWidth={3.2} />
-                    <span className="text-[12px] leading-[1.5] text-navy-600">{b}</span>
+                    <span className="text-body-sm text-navy-600">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -116,11 +116,11 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
           {brands.map((p) => (
             <div key={p.name} className="rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-9">
               {p.src ? (
-                <BrandLogo name={p.name} src={p.src} plain className="max-h-9 text-[24px]" />
+                <BrandLogo name={p.name} src={p.src} plain className="max-h-9 text-title" />
               ) : (
                 <div className="flex items-center gap-2.5">
                   {p.swatch && <span className={`h-6 w-6 shrink-0 rounded-sm ${p.swatch}`} aria-hidden="true" />}
-                  <span className={`text-[24px] font-black leading-none tracking-tight ${p.color}`}>{p.name}</span>
+                  <span className={`text-title font-black ${p.color}`}>{p.name}</span>
                   {p.suffix && (
                     <span className="text-label font-semibold uppercase text-navy-500">
                       {p.suffix}
@@ -128,13 +128,13 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
                   )}
                 </div>
               )}
-              <p className="mt-4 text-[13.5px] leading-[1.7] text-navy-600">{p.text}</p>
+              <p className="mt-4 text-body-sm text-navy-600">{p.text}</p>
               {p.bullets && (
                 <ul className="mt-5 space-y-2.5 border-t border-navy-100 pt-5">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5">
                       <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500" strokeWidth={3.2} />
-                      <span className="text-[12.5px] leading-[1.5] text-navy-600">{b}</span>
+                      <span className="text-body-sm text-navy-600">{b}</span>
                     </li>
                   ))}
                 </ul>

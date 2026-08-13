@@ -47,6 +47,8 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-navy-800 text-white">
+      {/* Filigrane décoratif (aria-hidden), hors échelle typographique —
+          voir la même exception dans Blocks.jsx. */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-14 -right-6 select-none text-[26vw] font-black uppercase leading-none tracking-[-.05em] text-white/[.03] sm:text-[180px]"
@@ -87,7 +89,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-[13px] text-white/60 transition-colors hover:text-gold-400"
+                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -106,7 +108,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-[13px] text-white/60 transition-colors hover:text-gold-400"
+                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -125,7 +127,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-[13px] text-white/60 transition-colors hover:text-gold-400"
+                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -144,7 +146,7 @@ export default function Footer() {
               <li>
                 <a
                   href={company.phoneHref}
-                  className="flex items-center gap-2.5 text-[13px] text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="phone" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.phone}
@@ -153,7 +155,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${company.email}`}
-                  className="flex items-center gap-2.5 text-[13px] text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="mail" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.email}
@@ -162,7 +164,7 @@ export default function Footer() {
               <li>
                 <a
                   href={company.url}
-                  className="flex items-center gap-2.5 text-[13px] text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="globe" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.domain}
@@ -175,7 +177,7 @@ export default function Footer() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-2.5 text-[13px] leading-relaxed text-white/70 transition-colors hover:text-gold-400"
+                  className="group flex items-start gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon
                     name="mapPin"
@@ -225,7 +227,7 @@ export default function Footer() {
               <li key={c.cityKey}>
                 <Link
                   to={localPath('plombier', c.cityKey)}
-                  className="text-[13px] text-white/60 transition-colors hover:text-gold-400"
+                  className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
                 >
                   {c.name}
                 </Link>
@@ -236,11 +238,11 @@ export default function Footer() {
 
         {/* ------------------------------------------------ Bas de page */}
         <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[11.5px] text-white/40">
+          <p className="text-caption text-white/40">
             © {year} {company.name} — {company.address.street}, {company.address.zip}{' '}
             {company.address.city}. Tous droits réservés.
           </p>
-          <p className="text-[11.5px] text-white/40">
+          <p className="text-caption text-white/40">
             {company.hoursShort} · Urgences 7j/7
           </p>
         </div>

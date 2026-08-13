@@ -98,11 +98,11 @@ export default function Header() {
                 className="group flex items-center gap-2 text-navy-800 transition-colors hover:text-azure-500"
               >
                 <Icon name="phone" className="h-4 w-4 text-azure-500" strokeWidth={2} />
-                <span className="text-[17px] font-black leading-none tracking-tight">
+                <span className="text-kicker font-black tracking-tight">
                   {company.phone}
                 </span>
               </a>
-              <p className="text-[10.5px] leading-none text-navy-500">{company.hoursShort}</p>
+              <p className="text-caption text-navy-500">{company.hoursShort}</p>
             </div>
             <Link to="/contact" className="btn-gold btn-sm">
               <Icon name="clipboard" className="h-3.5 w-3.5" strokeWidth={2} />
@@ -208,11 +208,11 @@ export default function Header() {
             href={company.phoneHref}
             className="mt-3 flex flex-col items-center gap-1 py-2 text-navy-800"
           >
-            <span className="flex items-center gap-2 text-[19px] font-black tracking-tight">
+            <span className="flex items-center gap-2 text-kicker font-black tracking-tight">
               <Icon name="phone" className="h-4 w-4 text-azure-500" strokeWidth={2} />
               {company.phone}
             </span>
-            <span className="text-[11px] text-navy-500">{company.hoursShort}</span>
+            <span className="text-caption text-navy-500">{company.hoursShort}</span>
           </a>
         </nav>
       </div>
