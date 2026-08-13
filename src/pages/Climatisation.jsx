@@ -36,13 +36,20 @@ function CheckList({ items, tone = 'light', className = '' }) {
 }
 
 /** Photo de solution avec repli sur un cadre neutre tant que le fichier réel n'existe pas. */
-function SolutionPhoto({ src, alt, label }) {
+function SolutionPhoto({ src, alt, label, icon }) {
   const [errored, setErrored] = useState(false)
 
+  /* Repli provisoire, pas définitif comme sur Traitement de l'eau : une
+     vraie photo est encore attendue pour cette carte. Icône plutôt que le
+     titre en cadre gris, en attendant. */
   if (errored) {
     return (
       <div className="grid h-40 w-full place-items-center rounded-t-xl bg-navy-50 ring-1 ring-navy-100">
-        <span className="text-label font-bold uppercase text-navy-400">{label}</span>
+        {icon ? (
+          <Icon name={icon} className="h-9 w-9 text-azure-500" strokeWidth={1.4} />
+        ) : (
+          <span className="text-label font-bold uppercase text-navy-400">{label}</span>
+        )}
       </div>
     )
   }
@@ -215,7 +222,7 @@ function Solutions({ data }) {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {data.items.map((s) => (
             <div key={s.title} className="flex min-w-0 flex-col overflow-hidden rounded-xl bg-navy-50 ring-1 ring-navy-100">
-              <SolutionPhoto src={s.photo} alt={s.title} label={s.title} />
+              <SolutionPhoto src={s.photo} alt={s.title} label={s.title} icon={s.icon} />
               <div className="p-5">
                 <h3 className="font-display text-kicker font-bold uppercase leading-tight text-navy-800">
                   {s.title}

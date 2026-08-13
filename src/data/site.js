@@ -444,7 +444,12 @@ export const services = {
           {
             title: 'Console & plafonnier',
             text: 'Parfait pour les pièces à vivre, offrant puissance et diffusion homogène.',
+            /* photo: pas de fichier valide pour l'instant (5 candidats
+               évalués le 13/08/2026, tous écartés : générés par IA, hors
+               sujet, ou marque concurrente visible) — repli sur icône en
+               attendant. Voir `icon` sur SolutionPhoto. */
             photo: '/img/climatisation-console-plafonnier.jpg',
+            icon: 'snowflake',
           },
           {
             title: 'Multi-split',
