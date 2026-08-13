@@ -108,7 +108,12 @@ export default function Electricite() {
         highlights={HERO_HIGHLIGHTS}
       />
 
-      <ServiceTwoColumn checklistTitle="Nos services électricité" checklist={SERVICES_CHECKLIST} card={NORMES_CARD} />
+      <ServiceTwoColumn
+        checklistTitle="Nos services électricité"
+        checklist={SERVICES_CHECKLIST}
+        card={NORMES_CARD}
+        tightBottom
+      />
 
       <ServiceBrandsRow title="Les marques que nous installons" brands={BRANDS} />
 

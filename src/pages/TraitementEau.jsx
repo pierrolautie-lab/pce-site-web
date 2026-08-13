@@ -159,15 +159,8 @@ export default function TraitementEau() {
 
       <PageHero
         breadcrumb={service.title}
-        title={
-          <>
-            Traitement
-            <span className="block">de l'eau</span>
-            <span className="block text-azure-400">pour un confort sain</span>
-            <span className="block text-azure-400">et durable</span>
-          </>
-        }
-        subtitle={null}
+        title="Traitement de l'eau"
+        subtitle="Pour un confort sain et durable"
         intro={
           <>
             <span className="block">

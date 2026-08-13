@@ -71,7 +71,7 @@ export default {
          Le reste du site utilise encore des tailles arbitraires
          (`text-[15px]`) — les deux cohabitent sans conflit. */
       fontSize: {
-        hero: ['clamp(30px, 4.6vw, 54px)', { lineHeight: '1.06', letterSpacing: '-.025em' }],
+        hero: ['clamp(26px, 4.6vw, 54px)', { lineHeight: '1.06', letterSpacing: '-.025em' }],
         /* Palier intermédiaire hero/title : sert aux lignes secondaires d'un
            titre multi-lignes (ex. héros Piscine), qui doivent rester proches
            de `hero` en taille — `title` seul seul crée un écart trop marqué. */

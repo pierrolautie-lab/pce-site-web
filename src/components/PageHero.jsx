@@ -14,14 +14,7 @@ import { company, reassurance } from '../data/site.js'
  */
 export default function PageHero({
   title,
-  /* Tailles réduites d'environ 18 % avec le passage à Archivo : à corps
-     égal elle rend ~8 % plus large qu'Inter, et « Traitement de l'eau »
-     débordait sur deux lignes. À 3.6rem il tient sur une seule.
-     ⚠️ Exception étape 3 typographie : pas convertie vers `hero`, dont la
-     courbe clamp() est différente (ex. ~30px vs ~32px ici en mobile) et
-     pourrait réintroduire le débordement que ce réglage corrige. À vérifier
-     page par page avant toute conversion. */
-  titleClassName = 'text-[8.6vw] md:text-5xl lg:text-[3.6rem]',
+  titleClassName = 'text-hero',
   subtitle,
   subtitleClassName = 'text-azure-300',
   intro,
@@ -85,9 +78,7 @@ export default function PageHero({
 
           <div className="grid items-center gap-6 pb-8 pt-6 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-10">
             <div className="min-w-0 lg:col-span-7">
-              {/* Interlettrage laissé à -.03em : déjà plus serré que la
-                  cible -.025em, le desserrer irait contre l'objectif. */}
-              <h1 className={`font-display font-black uppercase leading-[1.12] tracking-[-.03em] md:leading-[.94] ${titleClassName}`}>
+              <h1 className={`text-balance font-display font-black uppercase ${titleClassName}`}>
                 {title}
               </h1>
 

@@ -16,7 +16,11 @@ const HERO_HIGHLIGHTS = [
 /** Checklist « Nos solutions » + photo à droite, encart navy « Pourquoi choisir PCE » à droite. */
 function SolutionsWhyUs({ service }) {
   return (
-    <section className="bg-navy-50 py-14 sm:py-16 lg:py-20">
+    /* Pas de padding-bottom : ce bloc est immédiatement suivi de
+       ServiceBrandsRow, qui partage le même bg-navy-50 et fournit déjà son
+       propre padding-top — un py- ici doublait l'espace vide entre les deux
+       (aucune limite de couleur pour signaler la transition). */
+    <section className="bg-navy-50 pt-14 sm:pt-16 lg:pt-20">
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="min-w-0 overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
@@ -174,17 +178,11 @@ export default function Chauffage() {
 
       <PageHero
         breadcrumb={service.title}
-        title={
-          <>
-            Chauffage
-            <span className="block">Confort, performance</span>
-            <span className="block text-azure-400">et économies d'énergie</span>
-          </>
-        }
+        title="Chauffage"
+        subtitle="Confort, performance et économies d'énergie"
         intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."
         photo={{ ...service.hero, alt: 'Chaufferie installée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
-        subtitle={null}
       />
 
       <SolutionsWhyUs service={service} />
