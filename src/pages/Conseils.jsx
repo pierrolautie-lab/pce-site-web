@@ -98,7 +98,13 @@ export default function Conseils() {
           {visible.length === 0 ? (
             <p className="text-center text-body-sm text-navy-500">Aucun article dans cette catégorie pour le moment.</p>
           ) : (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            /* flex + largeurs calculées plutôt que grid : quand le nombre
+               d'articles visibles n'est pas un multiple du nombre de
+               colonnes (fréquent, le filtre par catégorie change ce
+               compte), grid laisse la dernière rangée incomplète collée à
+               gauche — flex-wrap + justify-center centre la rangée
+               orpheline au lieu de la laisser isolée. */
+            <div className="flex flex-wrap justify-center gap-5">
               {visible.map((a, i) => {
                 const style = CARD_STYLES[i % 3]
                 const icon = ARTICLE_ICONS[a.slug] || a.category.icon
@@ -106,7 +112,7 @@ export default function Conseils() {
                   <Link
                     key={a.slug}
                     to={`/conseils/${a.slug}`}
-                    className={`group flex flex-col rounded-2xl p-7 shadow-card transition-all duration-300 hover:-translate-y-1 ${style.bg}`}
+                    className={`group flex w-full flex-col rounded-2xl p-7 shadow-card transition-all duration-300 hover:-translate-y-1 sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.334px)] ${style.bg}`}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span

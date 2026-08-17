@@ -88,8 +88,11 @@ export default function Realisations() {
             })}
           </div>
 
-          {/* Cartes */}
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Cartes — flex + largeurs calculées plutôt que grid : le filtre
+              par métier fait varier le nombre de cartes visibles, souvent
+              pas multiple de 3, ce qui isolerait un orphelin collé à
+              gauche sur la dernière rangée. */}
+          <div className="mt-10 flex flex-wrap justify-center gap-5">
             {visible.map((p) => (
               <article
                 key={p.title}
@@ -103,7 +106,7 @@ export default function Realisations() {
                 role="button"
                 tabIndex={0}
                 aria-label={`Agrandir la photo : ${p.title}`}
-                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure-500"
+                className="group flex w-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure-500 sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.334px)]"
               >
                 <div className="relative">
                   <Photo

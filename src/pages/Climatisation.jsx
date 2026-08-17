@@ -219,9 +219,11 @@ function Solutions({ data }) {
       <div className="container-pce">
         <h2 className="section-title">{data.title}</h2>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {/* flex + largeurs calculées : 5 solutions, pas multiple de 2 —
+            grid isolait la 5e carte seule sur sa rangée au palier sm. */}
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
           {data.items.map((s) => (
-            <div key={s.title} className="flex min-w-0 flex-col overflow-hidden rounded-xl bg-navy-50 ring-1 ring-navy-100">
+            <div key={s.title} className="flex w-full min-w-0 flex-col overflow-hidden rounded-xl bg-navy-50 ring-1 ring-navy-100 sm:w-[calc(50%-12px)] lg:w-[calc(20%-19.2px)]">
               <SolutionPhoto src={s.photo} alt={s.title} label={s.title} icon={s.icon} />
               <div className="p-5">
                 <h3 className="font-display text-kicker font-bold uppercase leading-tight text-navy-800">

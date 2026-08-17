@@ -156,12 +156,17 @@ function ServiceCards() {
   return (
     <section className="bg-navy-50 py-10 sm:py-12 lg:py-14">
       <div className="container-pce">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+        {/* 6 métiers + Dépannage = 7 : un multiple de 2 et 4 nulle part
+            avant le palier xl (seul le plafond à 7 colonnes tombe juste) —
+            flex + largeurs calculées plutôt que grid, pour que la dernière
+            rangée incomplète se centre aux paliers intermédiaires au lieu
+            de laisser un orphelin collé à gauche. */}
+        <div className="flex flex-wrap justify-center gap-4">
           {cards.map((c) => (
             <Link
               key={c.to}
               to={c.to}
-              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
+              className="group flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] xl:w-[calc(100%/7-13.714px)]"
             >
               <div className="relative">
                 <Photo
