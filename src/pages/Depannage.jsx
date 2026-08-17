@@ -19,6 +19,7 @@ export default function Depannage() {
         breadcrumb="Dépannage"
         icon="wrench"
         iconClass="text-white"
+        haloClass="from-white/[.18]"
         title={depannage.title}
         subtitle={depannage.tagline}
         intro={depannage.intro}

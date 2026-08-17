@@ -16,6 +16,7 @@ export default function PageHero({
   title,
   icon,
   iconClass = 'text-white',
+  haloClass = 'from-white/[.18]',
   titleClassName = 'text-hero',
   subtitle,
   subtitleClassName = 'text-azure-300',
@@ -81,11 +82,16 @@ export default function PageHero({
           <div className="grid items-center gap-6 pb-8 pt-6 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-10">
             <div className="min-w-0 lg:col-span-7">
               {icon && (
-                <span
-                  aria-hidden="true"
-                  className="mb-5 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-navy-800/60 sm:h-14 sm:w-14"
-                >
-                  <Icon name={icon} className={`h-5 w-5 sm:h-6 sm:w-6 ${iconClass}`} strokeWidth={1.6} />
+                <span aria-hidden="true" className="relative mb-5 grid h-8 w-8 place-items-center sm:h-10 sm:w-10">
+                  {/* Halo radial : éclaire le fond sans le découper, aucune bordure. */}
+                  <span
+                    className={`pointer-events-none absolute -inset-6 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] to-transparent sm:-inset-[30px] ${haloClass}`}
+                  />
+                  <Icon
+                    name={icon}
+                    className={`relative h-8 w-8 drop-shadow-[0_6px_14px_rgba(1,12,30,.45)] sm:h-10 sm:w-10 ${iconClass}`}
+                    strokeWidth={1.4}
+                  />
                 </span>
               )}
               <h1 className={`text-balance font-display font-black uppercase ${titleClassName}`}>

@@ -140,11 +140,13 @@ function Hero({ page, hero }) {
         </nav>
 
         <div className="max-w-2xl">
-          <span
-            aria-hidden="true"
-            className="mb-5 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-navy-800/60 sm:h-14 sm:w-14"
-          >
-            <Icon name="snowflake" className="h-5 w-5 text-sky-300 sm:h-6 sm:w-6" strokeWidth={1.6} />
+          <span aria-hidden="true" className="relative mb-5 grid h-8 w-8 place-items-center sm:h-10 sm:w-10">
+            <span className="pointer-events-none absolute -inset-6 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-sky-300/[.18] to-transparent sm:-inset-[30px]" />
+            <Icon
+              name="snowflake"
+              className="relative h-8 w-8 text-sky-300 drop-shadow-[0_6px_14px_rgba(1,12,30,.45)] sm:h-10 sm:w-10"
+              strokeWidth={1.4}
+            />
           </span>
           <h1 className="font-display font-black uppercase">
             <span className="block text-hero">{ligne1}</span>

@@ -44,8 +44,8 @@ export const PHOTO_SLOTS = {
   742: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à vitesse variable' },
   743: { page: 'Piscine', zone: 'Équipements', sujet: "Traitement de l'eau" },
   744: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à chaleur piscine' },
-  300: { page: "Traitement de l'eau", zone: 'Hero', sujet: "Réseau, arrivée d'eau" },
-  301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: "Réseau, arrivée d'eau" },
+  300: { page: "Traitement de l'eau", zone: 'Hero', sujet: 'Adoucisseur installé (à recevoir)' },
+  301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: 'Adoucisseur installé (à recevoir)' },
 
   /* --- Dépannage ----------------------------------------------------- */
   844: { page: 'Dépannage', zone: 'Hero', sujet: 'Véhicule PCE, intervention' },
@@ -155,9 +155,17 @@ export const clientPhotos = {
   517: '/img/climatisation-prestations-groupe.jpg',
   518: '/img/climatisation-expertise-gainable-salon.jpg',
 
-  /* Traitement de l'eau */
-  300: '/img/traitement-eau-reseau-cuivre.jpg',
-  301: '/img/traitement-eau-reseau-cuivre.jpg',
+  /* Traitement de l'eau — l'ancienne photo (réseau de cuivre au mur)
+     montrait de la plomberie, pas du traitement de l'eau : signalée hors
+     sujet par le client le 17/08/2026. Retirée du héros (voir PageHero
+     dans TraitementEau.jsx, pas de prop `photo` pour l'instant). Slots
+     réassignés au nom de fichier attendu pour la photo d'adoucisseur
+     installé que le client doit fournir — le fichier n'existe pas encore,
+     ces deux lignes ne servent donc à rien tant qu'il n'est pas déposé et
+     que `photo={{ ...service.hero }}` n'est pas restauré dans
+     TraitementEau.jsx. */
+  300: '/img/eau-adoucisseur-installe.jpg',
+  301: '/img/eau-adoucisseur-installe.jpg',
 
   /* Électricité — armoire et coffret réellement posés par PCE */
   628: '/img/electricite-hero-armoire.jpg',

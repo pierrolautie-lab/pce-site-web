@@ -182,6 +182,7 @@ export default function Chauffage() {
         breadcrumb={service.title}
         icon="flame"
         iconClass="text-gold-500"
+        haloClass="from-gold-500/[.18]"
         title="Chauffage"
         subtitle="Confort, performance et économies d'énergie"
         intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."

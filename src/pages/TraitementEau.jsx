@@ -135,6 +135,7 @@ export default function TraitementEau() {
         breadcrumb={service.title}
         icon="filter"
         iconClass="text-azure-300"
+        haloClass="from-azure-300/[.18]"
         title="Traitement de l'eau"
         subtitle="Pour un confort sain et durable"
         intro={
@@ -148,15 +149,19 @@ export default function TraitementEau() {
             </span>
           </>
         }
-        photo={{ ...service.hero, alt: "Matériel de traitement de l'eau installé par PCE" }}
+        /* Pas de `photo` : le seul visuel disponible (slot 300) montrait un
+           réseau de cuivre au mur — de la plomberie, pas du traitement de
+           l'eau, signalé hors sujet par le client. Aucun autre visuel du
+           stock ne montre du matériel de traitement réellement installé
+           (recherché le 17/08/2026 : les deux fichiers nommés en rapport —
+           filtration.jpg, traitement.jpg — font 386×220 et 352×220, bien
+           sous le seuil de 800 px). Repli sur fond marine uni, comme le
+           comportement mobile des autres héros, en attendant la photo
+           d'adoucisseur installé promise par le client (voir
+           `eau-adoucisseur-installe.jpg` dans src/data/photos.js). Restaurer
+           `photo={{ ...service.hero, alt: "..." }}` et `photoBadge` (voir
+           git history) dès qu'un visuel valable existe. */
         showReassurance={false}
-        photoBadge={
-          <div className="grid h-28 w-28 place-items-center rounded-full bg-azure-500 p-4 text-center shadow-lg ring-4 ring-white/10 sm:h-32 sm:w-32">
-            <span className="text-label font-black uppercase leading-tight text-white">
-              Une eau pure au quotidien
-            </span>
-          </div>
-        }
       />
 
       <WaterArgsBar items={service.argBar} />
