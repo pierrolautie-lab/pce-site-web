@@ -15,6 +15,7 @@ import { company, reassurance } from '../data/site.js'
 export default function PageHero({
   title,
   icon,
+  iconClass = 'text-white',
   titleClassName = 'text-hero',
   subtitle,
   subtitleClassName = 'text-azure-300',
@@ -84,7 +85,7 @@ export default function PageHero({
                   aria-hidden="true"
                   className="mb-5 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-navy-800/60 sm:h-14 sm:w-14"
                 >
-                  <Icon name={icon} className="h-5 w-5 text-gold-500 sm:h-6 sm:w-6" strokeWidth={1.6} />
+                  <Icon name={icon} className={`h-5 w-5 sm:h-6 sm:w-6 ${iconClass}`} strokeWidth={1.6} />
                 </span>
               )}
               <h1 className={`text-balance font-display font-black uppercase ${titleClassName}`}>

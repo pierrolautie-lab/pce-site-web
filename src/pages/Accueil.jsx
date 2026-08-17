@@ -17,19 +17,35 @@ const HERO_SLOT = 100
 const HERO_FALLBACK_SLOT = 101
 const HERO_ALT = "Les véhicules d'intervention PCE devant une villa dans le Var"
 
-/* Les 5 métiers mis en avant sous le titre du héros. */
+/* Les 5 métiers mis en avant sous le titre du héros — même couleur que sur
+   la page métier correspondante (icône des héros PageHero), pour que le
+   visiteur retrouve le même code couleur d'une page à l'autre. */
 const HERO_TRADES = [
-  { icon: 'droplet', label: 'Plomberie', to: '/plomberie' },
-  { icon: 'flame', label: 'Chauffage', to: '/chauffage' },
-  { icon: 'snowflake', label: 'Climatisation', to: '/climatisation' },
-  { icon: 'waves', label: 'Piscine', to: '/piscine' },
-  { icon: 'bolt', label: 'Électricité', to: '/electricite' },
+  { icon: 'droplet', label: 'Plomberie', to: '/plomberie', iconClass: 'text-azure-400' },
+  { icon: 'flame', label: 'Chauffage', to: '/chauffage', iconClass: 'text-gold-500' },
+  { icon: 'snowflake', label: 'Climatisation', to: '/climatisation', iconClass: 'text-sky-300' },
+  { icon: 'waves', label: 'Piscine', to: '/piscine', iconClass: 'text-cyan-300' },
+  { icon: 'bolt', label: 'Électricité', to: '/electricite', iconClass: 'text-gold-400' },
 ]
 
 /* Ordre des cartes validé par le client : piscine avant électricité, et le
    dépannage en dernier — il n'est pas dans `serviceList`, on l'ajoute à la
    main à partir de son propre objet. */
 const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau']
+
+/* Même logique de couleur que les héros métier, mais en variante plus
+   soutenue : la pastille des cartes est sur fond blanc, où les teintes
+   claires des héros (sky-300, cyan-300, gold-400/500...) tombent sous le
+   seuil de contraste 3:1. */
+const CARD_ICON_CLASS = {
+  plomberie: 'text-azure-600',
+  chauffage: 'text-gold-700',
+  climatisation: 'text-sky-600',
+  piscine: 'text-cyan-600',
+  electricite: 'text-gold-800',
+  'traitement-de-l-eau': 'text-azure-700',
+  depannage: 'text-navy-800',
+}
 
 
 export default function Accueil() {
@@ -89,7 +105,7 @@ function HomeHero() {
                 <Link to={t.to} className="group flex flex-col items-center gap-2 text-center">
                   <Icon
                     name={t.icon}
-                    className="h-7 w-7 text-azure-400 transition-colors group-hover:text-gold-500 sm:h-8 sm:w-8"
+                    className={`h-7 w-7 transition-colors group-hover:text-gold-500 sm:h-8 sm:w-8 ${t.iconClass}`}
                     strokeWidth={1.5}
                   />
                   <span className="text-label font-bold uppercase text-white/85 transition-colors group-hover:text-white">
@@ -140,6 +156,7 @@ function ServiceCards() {
     ...ordered.map((s) => ({
       to: `/${s.slug}`,
       icon: s.icon,
+      iconClass: CARD_ICON_CLASS[s.slug],
       title: s.title,
       text: s.card,
       photo: s.hero,
@@ -147,6 +164,7 @@ function ServiceCards() {
     {
       to: '/depannage',
       icon: 'wrench',
+      iconClass: CARD_ICON_CLASS.depannage,
       title: 'Dépannage',
       text: 'Intervention rapide 7j/7 dans tout le Var. Devis immédiat, prix annoncé avant intervention.',
       photo: depannage.hero,
@@ -177,7 +195,7 @@ function ServiceCards() {
                   imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
                   sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />
-                <span className="absolute -bottom-4 left-3 grid h-9 w-9 place-items-center rounded-full bg-white text-azure-500 shadow-card ring-1 ring-navy-100">
+                <span className={`absolute -bottom-4 left-3 grid h-9 w-9 place-items-center rounded-full bg-white shadow-card ring-1 ring-navy-100 ${c.iconClass}`}>
                   <Icon name={c.icon} className="h-4 w-4" strokeWidth={1.7} />
                 </span>
               </div>

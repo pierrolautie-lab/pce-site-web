@@ -144,7 +144,7 @@ function Hero({ page, hero }) {
             aria-hidden="true"
             className="mb-5 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-navy-800/60 sm:h-14 sm:w-14"
           >
-            <Icon name="snowflake" className="h-5 w-5 text-gold-500 sm:h-6 sm:w-6" strokeWidth={1.6} />
+            <Icon name="snowflake" className="h-5 w-5 text-sky-300 sm:h-6 sm:w-6" strokeWidth={1.6} />
           </span>
           <h1 className="font-display font-black uppercase">
             <span className="block text-hero">{ligne1}</span>

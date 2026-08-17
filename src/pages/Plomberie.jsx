@@ -86,6 +86,7 @@ export default function Plomberie() {
       <PageHero
         breadcrumb={service.title}
         icon="droplet"
+        iconClass="text-azure-400"
         title="Plomberie"
         subtitle="Installation, rénovation et dépannage sanitaire"
         intro="Installation sanitaire, rénovation de salle de bains, recherche de fuite et dépannage plomberie pour les particuliers et professionnels dans tout le Var. Des interventions soignées et durables, du premier appel à la mise en service."

@@ -102,6 +102,7 @@ export default function Electricite() {
       <PageHero
         breadcrumb={service.title}
         icon="bolt"
+        iconClass="text-gold-400"
         title="Électricité"
         subtitle="Sécurité, performance et mise aux normes"
         intro="Installation, rénovation, mise aux normes et dépannage électrique pour les particuliers dans tout le Var. Des solutions fiables, durables et conformes aux normes actuelles pour votre sécurité et votre confort."

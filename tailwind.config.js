@@ -33,6 +33,19 @@ export default {
           500: '#FFBA00', // or principal des CTA
           600: '#DB9A0C',
           700: '#B07A08',
+          800: '#8C6006', // variante foncée, réservée à l'icône Électricité sur fond clair
+        },
+        /* Extension provisoire de la charte (icône Climatisation) — hors des
+           trois couleurs validées, en attente de confirmation client. */
+        sky: {
+          300: '#8ECAE6',
+          600: '#2A7DA6', // variante foncée, contraste suffisant sur fond blanc
+        },
+        /* Extension provisoire de la charte (icône Piscine) — hors des trois
+           couleurs validées, en attente de confirmation client. */
+        cyan: {
+          300: '#5FC9C9',
+          600: '#1B8A87', // variante foncée, contraste suffisant sur fond blanc
         },
       },
       fontFamily: {
