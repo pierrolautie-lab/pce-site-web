@@ -31,7 +31,7 @@ const HERO_TRADES = [
 /* Ordre des cartes validé par le client : piscine avant électricité, et le
    dépannage en dernier — il n'est pas dans `serviceList`, on l'ajoute à la
    main à partir de son propre objet. */
-const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau']
+const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau', 'vmc']
 
 /* Même logique de couleur que les héros métier, mais en variante plus
    soutenue : la pastille des cartes est sur fond blanc, où les teintes
@@ -44,6 +44,7 @@ const CARD_ICON_CLASS = {
   piscine: 'text-cyan-600',
   electricite: 'text-gold-800',
   'traitement-de-l-eau': 'text-azure-700',
+  vmc: 'text-mint-600',
   depannage: 'text-navy-800',
 }
 
@@ -174,27 +175,34 @@ function ServiceCards() {
   return (
     <section className="bg-navy-50 py-10 sm:py-12 lg:py-14">
       <div className="container-pce">
-        {/* 6 métiers + Dépannage = 7 : un multiple de 2 et 4 nulle part
-            avant le palier xl (seul le plafond à 7 colonnes tombe juste) —
-            flex + largeurs calculées plutôt que grid, pour que la dernière
-            rangée incomplète se centre aux paliers intermédiaires au lieu
-            de laisser un orphelin collé à gauche. */}
-        <div className="flex flex-wrap justify-center gap-4">
+        {/* 7 métiers + Dépannage = 8 : multiple de 2 et de 4, grille classique
+            suffit — plus besoin du flex + largeurs calculées qu'imposait
+            l'ancien compte de 7 (voir git history). */}
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {cards.map((c) => (
             <Link
               key={c.to}
               to={c.to}
-              className="group flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] xl:w-[calc(100%/7-13.714px)]"
+              className="group flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative">
-                <Photo
-                  lock={c.photo.lock}
-                  alt={c.title}
-                  rounded=""
-                  className="aspect-[4/3] w-full"
-                  imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
-                  sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                />
+                {c.photo ? (
+                  <Photo
+                    lock={c.photo.lock}
+                    alt={c.title}
+                    rounded=""
+                    className="aspect-[4/3] w-full"
+                    imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
+                    sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                ) : (
+                  /* Pas de photo VMC disponible (aucune reçue du client) :
+                     aplat de couleur + icône, jamais un cadre gris répétant
+                     le titre. */
+                  <div className={`grid aspect-[4/3] w-full place-items-center bg-navy-50 ${c.iconClass}`}>
+                    <Icon name={c.icon} className="h-10 w-10" strokeWidth={1.3} />
+                  </div>
+                )}
                 <span className={`absolute -bottom-4 left-3 grid h-9 w-9 place-items-center rounded-full bg-white shadow-card ring-1 ring-navy-100 ${c.iconClass}`}>
                   <Icon name={c.icon} className="h-4 w-4" strokeWidth={1.7} />
                 </span>

@@ -47,6 +47,14 @@ export default {
           300: '#5FC9C9',
           600: '#1B8A87', // variante foncée, contraste suffisant sur fond blanc
         },
+        /* Extension provisoire de la charte (icône VMC — air renouvelé) —
+           hors des trois couleurs validées, en attente de confirmation
+           client. Seule teinte non bleue/or de la palette métier : aucun
+           des 7 autres métiers n'utilise de vert, aucune confusion possible. */
+        mint: {
+          300: '#7FE0C4',
+          600: '#178A69', // variante foncée, contraste suffisant sur fond blanc
+        },
       },
       fontFamily: {
         /* Police d'affichage : titres, boutons et navigation. Inter reste

@@ -79,10 +79,21 @@ export const localTrades = {
       'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
     relatedExpertise: 'installation-pompe-a-chaleur-var',
   },
+  vmc: {
+    urlSlug: 'installateur-vmc',
+    label: 'Installateur VMC',
+    serviceKey: 'vmc',
+    verb: 'votre VMC',
+    detail:
+      'VMC simple flux autoréglable, hygroréglable ou double flux, en neuf comme en rénovation',
+  },
 }
 
-/** Les 5 métiers ouverts aux 13 villes historiques (inchangé depuis l'origine). */
-const ORIGINAL_TRADES = ['plombier', 'chauffagiste', 'climatisation', 'electricien', 'pisciniste']
+/** Les métiers ouverts à toutes les communes (les 5 d'origine, plus la VMC —
+ *  au même niveau que les métiers fondateurs, pas restreinte comme
+ *  Traitement de l'eau et Pompe à chaleur qui n'existent que sur les 23
+ *  communes non restreintes ci-dessous). */
+const ORIGINAL_TRADES = ['plombier', 'chauffagiste', 'climatisation', 'electricien', 'pisciniste', 'vmc']
 
 /* Chaque ville a : sa distance approximative depuis Lorgues (pour un
    phrasé honnête), 2 communes voisines (pour le maillage interne — voir

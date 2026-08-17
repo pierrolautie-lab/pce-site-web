@@ -9,10 +9,13 @@ deploy_log.txt
 
 # Matériel brut non versionné (code source du site uniquement) :
 # - photos/       : photos brutes du client (originaux non recadrés, non triés)
+# - reference/    : copie de travail des visuels à comparer au rendu (contrôle
+#                   visuel manuel), pas les fichiers réellement servis
 # - explication/  : documents de référence fournis par le client (PDF tiers)
 # - l'archive zip d'origine
 # Les visuels réellement utilisés par le site vivent dans public/img/.
 photos/
+reference/
 explication/
 *.zip
 

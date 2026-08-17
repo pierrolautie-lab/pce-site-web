@@ -8,6 +8,7 @@ import Climatisation from './pages/Climatisation.jsx'
 import Electricite from './pages/Electricite.jsx'
 import Piscine from './pages/Piscine.jsx'
 import TraitementEau from './pages/TraitementEau.jsx'
+import VMC from './pages/VMC.jsx'
 import Depannage from './pages/Depannage.jsx'
 import Realisations from './pages/Realisations.jsx'
 import Conseils from './pages/Conseils.jsx'
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="electricite" element={<Electricite />} />
         <Route path="piscine" element={<Piscine />} />
         <Route path="traitement-de-l-eau" element={<TraitementEau />} />
+        <Route path="vmc" element={<VMC />} />
         <Route path="depannage" element={<Depannage />} />
         <Route path="realisations" element={<Realisations />} />
         <Route path="conseils" element={<Conseils />} />

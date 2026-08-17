@@ -144,7 +144,7 @@ export const expertisePages = {
           "Modification des arrivées d'eau et évacuations",
           'Étanchéité renforcée sous carrelage (receveur, douche italienne)',
           'Pose de la robinetterie, du mobilier et des équipements',
-          'Raccordements électriques aux normes (VMC, éclairage, prises)',
+          'Raccordements électriques aux normes (éclairage, prises)',
         ],
       },
       {

@@ -230,13 +230,16 @@ export default function APropos() {
       {/* ------------------------------------------------- Rappel métiers */}
       <section className="section bg-navy-50">
         <div className="container-pce">
-          <SectionTitle title="Six savoir-faire, une seule équipe" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionTitle title="Sept savoir-faire, une seule équipe" />
+          {/* 7 métiers, pas multiple de 2 ni de 3 : flex + largeurs calculées
+              plutôt que grid, pour que la dernière rangée incomplète se
+              centre au lieu de laisser un orphelin collé à gauche. */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             {serviceList.map((s) => (
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
-                className="group flex h-full flex-col rounded-2xl bg-white p-6 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800"
+                className="group flex h-full w-full flex-col rounded-2xl bg-white p-6 ring-1 ring-navy-100 transition-all duration-300 hover:bg-navy-800 hover:ring-navy-800 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-10.667px)]"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-navy-50 text-navy-800 ring-1 ring-navy-100 transition-colors group-hover:bg-white/12 group-hover:text-white group-hover:ring-white/20">
                   <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.6} />

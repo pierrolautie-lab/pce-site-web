@@ -92,6 +92,7 @@ export const trades = [
   { label: 'Électricité', to: '/electricite' },
   { label: 'Piscine', to: '/piscine' },
   { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
+  { label: 'VMC', to: '/vmc' },
 ]
 
 /* Navigation à plat, conforme aux maquettes de référence. */
@@ -114,6 +115,7 @@ export const navServices = [
   { label: 'Électricité', to: '/electricite' },
   { label: 'Piscine', to: '/piscine' },
   { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
+  { label: 'VMC', to: '/vmc' },
   { label: 'Dépannage', to: '/depannage' },
 ]
 
@@ -1002,6 +1004,109 @@ export const services = {
       { q: 'Où installe-t-on l’équipement ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Nous validons l'emplacement pendant la visite technique." },
     ],
   },
+
+  /* -------------------------------------------------------------- VMC ---
+     Contenu limité à ce que le client a confirmé (17/08/2026) : trois
+     produits, deux marchés, une prestation d'entretien. Aucune aide
+     financière : le client n'est pas certifié RGE, condition requise pour
+     que la VMC double flux ouvre droit à MaPrimeRénov'/CEE. Pas de badge,
+     pas de mention, pas de « renseignez-vous ». */
+  vmc: {
+    slug: 'vmc',
+    title: 'VMC',
+    navLabel: 'VMC',
+    icon: 'fan',
+    tagline: 'Un air renouvelé, sans courant d’air froid',
+    intro:
+      "PCE installe et entretient trois types de VMC : simple flux autoréglable, simple flux hygroréglable et double flux avec récupération de chaleur. En construction neuve comme en rénovation, nous dimensionnons le réseau selon votre logement plutôt que sur catalogue.",
+    card: 'VMC simple flux, hygroréglable et double flux, installation et entretien.',
+    metaDescription: 'Installation VMC à Lorgues (83) : simple flux autoréglable, hygroréglable et double flux avec récupération de chaleur. Neuf et rénovation, entretien assuré. Devis gratuit dans le Var.',
+
+    prestations: [
+      { icon: 'fan', title: 'VMC simple flux autoréglable', label: 'Débit constant, la solution la plus répandue' },
+      { icon: 'settings', title: 'VMC simple flux hygroréglable', label: 'Type B, débit piloté par l’humidité' },
+      { icon: 'wind', title: 'VMC double flux', label: 'Récupération de chaleur sur l’air extrait' },
+      { icon: 'headset', title: 'Entretien', label: 'Bouches, filtres, débits, caisson' },
+    ],
+
+    /* Trois cartes seulement : ce sont les trois seules prestations
+       confirmées par le client. Aucune photo disponible (comme pour
+       Traitement de l'eau) : icône plutôt qu'un repli en attente. */
+    solutions: [
+      {
+        key: 'simple-flux-autoreglable',
+        title: 'VMC simple flux autoréglable',
+        icon: 'fan',
+        bullets: [
+          "Débit d'extraction constant, quelle que soit l'humidité",
+          'La solution la plus répandue, simple et fiable',
+          'Entrées d’air dans les pièces de vie, extraction dans les pièces humides',
+          'Adaptée au neuf comme au remplacement en rénovation',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+      },
+      {
+        key: 'simple-flux-hygroreglable',
+        title: 'VMC simple flux hygroréglable (type B)',
+        icon: 'settings',
+        bullets: [
+          "Débit ajusté automatiquement au taux d'humidité détecté",
+          'Entrées d’air et bouches d’extraction pilotées, aussi appelée « double hygrométrie »',
+          "Réduit le renouvellement d'air inutile, donc les déperditions de chaleur",
+          'Un bon compromis confort/économie pour remplacer une autoréglable vieillissante',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+      },
+      {
+        key: 'double-flux',
+        title: 'VMC double flux',
+        icon: 'wind',
+        bullets: [
+          "Récupération de chaleur sur l'air extrait avant rejet",
+          "Air entrant filtré et préchauffé avant d'entrer dans les pièces de vie",
+          'Meilleur confort acoustique, pas de courant d’air froid en hiver',
+          'Deux réseaux de gaines : une étude de faisabilité est nécessaire, en neuf comme en rénovation',
+        ],
+        ctaLabel: 'En savoir plus',
+        ctaTo: '/contact',
+      },
+    ],
+
+    /* Neuf / rénovation : deux logiques commerciales distinctes, demandées
+       explicitement par le client plutôt qu'un texte générique. */
+    markets: {
+      neuf: {
+        title: 'Construction neuve',
+        text: "Le réseau de VMC se pense dès la conception : tracé des gaines intégré au gros œuvre, débits calculés pièce par pièce, conformité à la réglementation en vigueur sur le logement neuf. Aucune reprise ni percement après coup.",
+      },
+      renovation: {
+        title: 'Rénovation',
+        text: "C'est le terrain le plus fréquent dans le bâti varois : remplacement d'une VMC vétuste, passage d'une autoréglable à une hygroréglable pour gagner en confort. Dans les bastides en pierre et les maisons sans faux-plafond, le passage des gaines demande une étude au cas par cas — le même savoir-faire de rénovation du bâti ancien que PCE a développé sur ses autres métiers.",
+        link: { label: 'Notre savoir-faire sur le bâti ancien', to: '/a-propos' },
+      },
+    },
+
+    /* Section entretien : prestation récurrente confirmée par le client,
+       traitée à part plutôt que noyée dans les prestations. */
+    entretien: {
+      heading: 'Un entretien assuré par PCE',
+      lead: 'Une VMC mal entretenue perd en efficacité sans que ça se voie. Nous assurons le suivi dans le temps.',
+      items: [
+        { icon: 'wind', title: 'Nettoyage des bouches', label: 'Extraction et, sur double flux, entrées d’air' },
+        { icon: 'filter', title: 'Remplacement des filtres', label: 'Sur les installations double flux' },
+        { icon: 'gauge', title: 'Contrôle des débits', label: 'Vérification du bon fonctionnement' },
+        { icon: 'settings', title: 'Vérification du caisson', label: 'Moteur, connexions, état général' },
+      ],
+    },
+
+    faq: [
+      { q: 'Quelle est la différence entre VMC autoréglable et hygroréglable ?', a: "L'autoréglable extrait un débit fixe en continu. L'hygroréglable (type B) ajuste ce débit selon le taux d'humidité détecté, pièce par pièce, ce qui limite le renouvellement d'air inutile." },
+      { q: 'Faut-il entretenir sa VMC ?', a: "Oui, quel que soit le type. Un caisson encrassé ou des bouches obstruées font chuter le débit sans que ça se remarque au quotidien. Nous proposons un suivi régulier : nettoyage, contrôle des débits et remplacement des filtres sur double flux." },
+      { q: 'Peut-on installer une VMC double flux en rénovation ?', a: "Techniquement oui, mais ça demande une étude de faisabilité : la double flux nécessite deux réseaux de gaines, ce qui est plus simple à intégrer en neuf. En rénovation, la configuration du logement détermine si c'est réalisable sans travaux lourds." },
+    ],
+  },
 }
 
 /* Alias : la page /traitement-de-l-eau utilise le slug complet comme clé de
@@ -1097,6 +1202,7 @@ export const serviceList = [
   services.electricite,
   services.piscine,
   services.traitementEau,
+  services.vmc,
 ]
 
 /* ============================================================== DÉPANNAGE =*/
