@@ -17,6 +17,7 @@ export default function Depannage() {
       {/* -------------------------------------------- Hero sur fond marine */}
       <PageHero
         breadcrumb="Dépannage"
+        icon="wrench"
         title={depannage.title}
         subtitle={depannage.tagline}
         intro={depannage.intro}

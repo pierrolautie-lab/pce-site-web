@@ -133,6 +133,7 @@ export default function TraitementEau() {
 
       <PageHero
         breadcrumb={service.title}
+        icon="filter"
         title="Traitement de l'eau"
         subtitle="Pour un confort sain et durable"
         intro={
