@@ -135,6 +135,60 @@ export const imageManifest = {
       800
     ]
   },
+  "eau-solution-adoucisseur.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "eau-solution-charbon-actif.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "eau-solution-filtration-forage.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "eau-solution-filtration-sous-evier.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "eau-solution-installation-complete.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "eau-solution-traitement-uv.jpg": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "electricite-borne-recharge-1.jpg": {
     "width": 1200,
     "height": 1600,

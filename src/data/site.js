@@ -855,9 +855,12 @@ export const services = {
       { icon: 'mapPin', title: 'Expertise locale', label: "Des solutions adaptées à l'eau du Var" },
     ],
 
-    /* Les 6 cartes « Nos solutions de traitement de l'eau ». Aucune photo :
-       le client n'en fournit pas pour ces sujets (voir icon ci-dessous, une
-       pastille ronde par carte, plutôt qu'un repli sur cadre en attente).
+    /* Les 6 cartes « Nos solutions de traitement de l'eau ». Photos produit
+       déposées le 18/08/2026 (slots 310-315, src/data/photos.js) —
+       détourées et mises à l'échelle sur un fond blanc commun.
+       ⚠️ adoucisseur (310) et charbon-actif (313) : fond noir en dégradé
+       radial dans le fichier source, pas blanc — voir le commentaire dans
+       photos.js. Branchés quand même, en attente d'arbitrage client.
        `ctaTo` pointe vers /contact partout : aucune sous-page dédiée
        n'existe pour ces sujets. */
     solutions: [
@@ -865,6 +868,7 @@ export const services = {
         key: 'adoucisseur',
         title: "Adoucisseur d'eau",
         icon: 'droplet',
+        photoSlot: 310,
         bullets: [
           'Protège vos canalisations et équipements',
           'Prolonge la durée de vie de vos installations',
@@ -879,6 +883,7 @@ export const services = {
         key: 'filtration-sous-evier',
         title: 'Filtration fine sous évier',
         icon: 'filter',
+        photoSlot: 311,
         bullets: [
           'Eau pure et saine pour la boisson',
           'Filtration des impuretés, chlore, goût et odeurs',
@@ -892,6 +897,7 @@ export const services = {
         key: 'filtration-forage',
         title: 'Filtration eau de forage',
         icon: 'pipe',
+        photoSlot: 312,
         bullets: [
           'Élimine sable, boue, rouille et particules',
           'Protège vos équipements et installations',
@@ -905,6 +911,7 @@ export const services = {
         key: 'charbon-actif',
         title: 'Charbon actif — toute la maison',
         icon: 'shieldCheck',
+        photoSlot: 313,
         bullets: [
           'Réduit le chlore, pesticides, mauvais goûts et odeurs',
           'Améliore la qualité de l’eau dans toute la maison',
@@ -918,6 +925,7 @@ export const services = {
         key: 'uv',
         title: 'Traitement UV',
         icon: 'bolt',
+        photoSlot: 314,
         /* Formulation à reprendre mot pour mot : le taux d'abattement dépend
            du débit, de la turbidité et de l'entretien de l'appareil — jamais
            d'allégation sanitaire inconditionnelle. */
@@ -933,6 +941,7 @@ export const services = {
         key: 'complet',
         title: 'Filtration & traitement complet sur mesure',
         icon: 'settings',
+        photoSlot: 315,
         bullets: [
           'Étude personnalisée de votre eau',
           'Solutions complètes et évolutives',

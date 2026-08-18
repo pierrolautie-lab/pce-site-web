@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
+import Photo from '../components/Photo.jsx'
 import { CtaBand } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
@@ -29,9 +30,12 @@ function WaterArgsBar({ items }) {
 }
 
 /** Grille des 6 solutions, hauteur de carte égale, bouton aligné en bas.
- *  Aucune photo (le client n'en fournit pas pour ces sujets) : une icône de
- *  la charte remplace le repli sur cadre, définitivement — pas un
- *  emplacement en attente. */
+ *  Photo produit en tête de carte (18/08/2026) : format 4/3, `object-contain`
+ *  sur fond blanc — jamais `object-cover`, qui rognerait l'appareil. Les
+ *  images sources sont déjà détourées et recalées sur une échelle commune
+ *  (voir process-eau-cards.cjs) : pas besoin de logique de mise à l'échelle
+ *  supplémentaire ici, `object-contain` suffit à les caler sur une hauteur
+ *  commune sans les déformer. */
 function SolutionsGrid({ items }) {
   return (
     <section className="section bg-white">
@@ -42,33 +46,42 @@ function SolutionsGrid({ items }) {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {items.map((s) => (
-            <div key={s.key} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 sm:p-7">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-navy-50 text-azure-500 ring-1 ring-navy-100">
-                <Icon name={s.icon} className="h-5.5 w-5.5" strokeWidth={1.6} />
-              </span>
+            <div key={s.key} className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
+              <Photo
+                lock={s.photoSlot}
+                alt={s.title}
+                rounded=""
+                bgClassName="bg-white"
+                imgClassName="object-contain p-6"
+                className="aspect-[4/3] w-full shrink-0"
+                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+              />
 
-              {/* Hauteur minimale fixe : les titres vont d'un à deux mots
-                  (« Traitement UV ») à une phrase complète (« Filtration &
-                  traitement complet sur mesure ») — sans plancher commun,
-                  les listes qui suivent ne s'alignent plus d'une carte à
-                  l'autre dans la même rangée. */}
-              <h3 className="mt-4 min-h-[3.4em] text-title font-display font-black uppercase leading-snug text-navy-800">
-                {s.title}
-              </h3>
+              <div className="flex flex-1 flex-col p-6 pt-5 sm:p-7 sm:pt-5">
+                {/* Hauteur minimale fixe : les titres vont d'un à deux mots
+                    (« Traitement UV ») à une phrase complète (« Filtration &
+                    traitement complet sur mesure ») — sans plancher commun,
+                    les listes qui suivent ne s'alignent plus d'une carte à
+                    l'autre dans la même rangée. `line-clamp-2` fait
+                    respecter le maximum de deux lignes. */}
+                <h3 className="line-clamp-2 min-h-[3.4em] text-title font-display font-black uppercase leading-snug text-navy-800">
+                  {s.title}
+                </h3>
 
-              <ul className="mt-2 flex-1 space-y-2.5">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5">
-                    <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                    <span className="text-body-sm leading-[1.6] text-navy-600">{b}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-2 flex-1 space-y-2.5">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5">
+                      <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
+                      <span className="text-body-sm leading-[1.6] text-navy-600">{b}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <Link to={s.ctaTo} className="btn-navy btn-sm mt-6 w-full justify-center whitespace-normal text-center">
-                {s.ctaLabel}
-                <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.4} />
-              </Link>
+                <Link to={s.ctaTo} className="btn-navy btn-sm mt-6 w-full justify-center whitespace-normal text-center">
+                  {s.ctaLabel}
+                  <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.4} />
+                </Link>
+              </div>
             </div>
           ))}
         </div>

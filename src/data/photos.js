@@ -46,6 +46,12 @@ export const PHOTO_SLOTS = {
   744: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à chaleur piscine' },
   300: { page: "Traitement de l'eau", zone: 'Hero', sujet: 'Adoucisseur installé (à recevoir)' },
   301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: 'Adoucisseur installé (à recevoir)' },
+  310: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Adoucisseur (PANTHER FOLEO)' },
+  311: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Filtration fine sous évier' },
+  312: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Filtration eau de forage' },
+  313: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Charbon actif (PCE EAU)' },
+  314: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Traitement UV (PCE EAU)' },
+  315: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Installation complète groupée' },
 
   /* --- Dépannage ----------------------------------------------------- */
   844: { page: 'Dépannage', zone: 'Hero', sujet: 'Véhicule PCE, intervention' },
@@ -167,6 +173,21 @@ export const clientPhotos = {
      TraitementEau.jsx. */
   300: '/img/eau-adoucisseur-installe.jpg',
   301: '/img/eau-adoucisseur-installe.jpg',
+
+  /* Nos solutions de traitement de l'eau — 6 cartes produit, déposées le
+     18/08/2026. Détourées, cadrées et mises à l'échelle sur un fond blanc
+     commun (voir process-eau-cards.cjs, script ponctuel, pas dans scripts/
+     car il ne sert qu'à ce lot précis).
+     ⚠️ 310 et 313 : les fichiers sources ne sont PAS sur fond blanc — fond
+     noir en dégradé radial. Branchés tels quels à la demande du client,
+     mais visuellement en rupture avec les 4 autres cartes (rectangle sombre
+     visible sur fond de carte blanc). Signalé, en attente d'arbitrage. */
+  310: '/img/eau-solution-adoucisseur.jpg',
+  311: '/img/eau-solution-filtration-sous-evier.jpg',
+  312: '/img/eau-solution-filtration-forage.jpg',
+  313: '/img/eau-solution-charbon-actif.jpg',
+  314: '/img/eau-solution-traitement-uv.jpg',
+  315: '/img/eau-solution-installation-complete.jpg',
 
   /* Électricité — armoire et coffret réellement posés par PCE */
   628: '/img/electricite-hero-armoire.jpg',
