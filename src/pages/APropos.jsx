@@ -129,9 +129,15 @@ export default function APropos() {
             lead="La construction progressive d'une entreprise généraliste du confort, métier après métier."
           />
 
-          <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {/* 5 jalons : exact en 5 colonnes à lg, mais 5 est impair en 2
+              colonnes à sm (2+2+1) — flex centré plutôt que grid pour cette
+              rangée intermédiaire. */}
+          <ol className="mt-12 flex flex-wrap justify-center gap-5">
             {milestones.map((m) => (
-              <li key={m.year} className="relative rounded-2xl bg-white p-6 ring-1 ring-navy-100">
+              <li
+                key={m.year}
+                className="relative w-full rounded-2xl bg-white p-6 ring-1 ring-navy-100 sm:w-[calc(50%-10px)] lg:w-[calc(20%-16px)]"
+              >
                 <span className="text-[24px] font-black leading-none tracking-tight text-navy-800">
                   {m.year}
                 </span>
