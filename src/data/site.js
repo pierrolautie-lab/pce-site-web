@@ -308,7 +308,7 @@ export const services = {
       heading: 'Le chauffage pensé pour le climat provençal',
       photo: { tags: 'tools', lock: 413 },
       paragraphs: [
-        "Chauffer une maison dans le Var n'a rien à voir avec chauffer une maison en Bourgogne. Nos hivers comptent peu de journées sous zéro, mais nos bastides en pierre ont une inertie considérable et nos étés imposent de penser le rafraîchissement dès la conception. C'est cette lecture locale qui guide chacune de nos préconisations depuis 2005.",
+        "Chauffer une maison dans le Var n'a rien à voir avec chauffer une maison en Bourgogne. Nos hivers comptent peu de journées sous zéro, mais nos bastides en pierre ont une inertie considérable et nos étés imposent de penser le rafraîchissement dès la conception. C'est cette lecture locale qui guide chacune de nos préconisations depuis notre installation dans le Var.",
         "Concrètement, nous refusons de dimensionner une pompe à chaleur au ratio. Nous relevons les surfaces, l'orientation, la nature des murs, l'état des menuiseries et les émetteurs existants, puis nous calculons la puissance réellement nécessaire. Une machine surdimensionnée coûte plus cher à l'achat, se met en défaut par cycles courts et s'use prématurément : c'est l'erreur que nous voyons le plus souvent sur les installations que nous reprenons.",
         "Nous privilégions les fabricants disposant d'un réseau technique en région PACA, afin qu'une pièce sous garantie arrive en quarante-huit heures et non en trois semaines. Et parce qu'une installation ne vaut que par son suivi, nous assurons nous-mêmes l'entretien annuel, avec relevé des performances et attestation d'entretien remise à chaque passage.",
       ],
@@ -965,7 +965,7 @@ export const services = {
       heading: "Traiter l'eau, c'est d'abord la mesurer",
       photo: { tags: 'plumbing', lock: 301 },
       paragraphs: [
-        "Le calcaire n'est pas la seule question sur l'eau du secteur de Lorgues et de la Dracénie : chlore, particules, fer selon les réseaux de forage. C'est l'une des premières causes d'intervention que nous constatons depuis 2005.",
+        "Le calcaire n'est pas la seule question sur l'eau du secteur de Lorgues et de la Dracénie : chlore, particules, fer selon les réseaux de forage. C'est l'une des premières causes d'intervention que nous constatons depuis notre installation dans le Var.",
         "Notre méthode ne varie pas : nous commençons par mesurer. pH, présence de fer ou de particules, pression et débit disponibles, configuration du local. Un équipement mal dimensionné se fait vite oublier dans le mauvais sens : trop d'entretien pour rien.",
         "Selon les résultats, le traitement retenu diffère : un simple filtre en tête d'installation, une cartouche à charbon actif sur l'eau de boisson ou un stérilisateur UV sur un forage suffisent parfois — et coûtent bien moins cher. Nous préférons vous le dire plutôt que de vendre l'équipement le plus cher du catalogue.",
       ],
@@ -1029,77 +1029,108 @@ export const services = {
       { icon: 'headset', title: 'Entretien', label: 'Bouches, filtres, débits, caisson' },
     ],
 
-    /* Trois cartes seulement : ce sont les trois seules prestations
-       confirmées par le client. Aucune photo disponible (comme pour
-       Traitement de l'eau) : icône plutôt qu'un repli en attente. */
-    solutions: [
-      {
-        key: 'simple-flux-autoreglable',
-        title: 'VMC simple flux autoréglable',
-        icon: 'fan',
-        bullets: [
-          "Débit d'extraction constant, quelle que soit l'humidité",
-          'La solution la plus répandue, simple et fiable',
-          'Entrées d’air dans les pièces de vie, extraction dans les pièces humides',
-          'Adaptée au neuf comme au remplacement en rénovation',
-        ],
-        ctaLabel: 'En savoir plus',
-        ctaTo: '/contact',
-      },
-      {
-        key: 'simple-flux-hygroreglable',
-        title: 'VMC simple flux hygroréglable (type B)',
-        icon: 'settings',
-        bullets: [
-          "Débit ajusté automatiquement au taux d'humidité détecté",
-          'Entrées d’air et bouches d’extraction pilotées, aussi appelée « double hygrométrie »',
-          "Réduit le renouvellement d'air inutile, donc les déperditions de chaleur",
-          'Un bon compromis confort/économie pour remplacer une autoréglable vieillissante',
-        ],
-        ctaLabel: 'En savoir plus',
-        ctaTo: '/contact',
-      },
-      {
-        key: 'double-flux',
-        title: 'VMC double flux',
-        icon: 'wind',
-        bullets: [
-          "Récupération de chaleur sur l'air extrait avant rejet",
-          "Air entrant filtré et préchauffé avant d'entrer dans les pièces de vie",
-          'Meilleur confort acoustique, pas de courant d’air froid en hiver',
-          'Deux réseaux de gaines : une étude de faisabilité est nécessaire, en neuf comme en rénovation',
-        ],
-        ctaLabel: 'En savoir plus',
-        ctaTo: '/contact',
-      },
+    /* Rangée de 4 pictos du héros — maquette validée par le client le
+       17/08/2026. */
+    heroHighlights: [
+      { icon: 'wind', title: 'Air sain', label: 'Renouvellement permanent' },
+      { icon: 'droplet', title: 'Confort', label: 'Moins d’humidité, plus de bien-être' },
+      { icon: 'shieldCheck', title: 'Protection', label: 'Préserve votre logement et votre santé' },
+      { icon: 'euro', title: 'Économies', label: 'Meilleure efficacité énergétique' },
     ],
 
-    /* Neuf / rénovation : deux logiques commerciales distinctes, demandées
-       explicitement par le client plutôt qu'un texte générique. */
-    markets: {
-      neuf: {
-        title: 'Construction neuve',
-        text: "Le réseau de VMC se pense dès la conception : tracé des gaines intégré au gros œuvre, débits calculés pièce par pièce, conformité à la réglementation en vigueur sur le logement neuf. Aucune reprise ni percement après coup.",
+    /* Simple flux / double flux — comparaison à deux colonnes, maquette
+       validée le 17/08/2026. Texte et puces repris à l'identique de la
+       maquette : ne pas ajouter « jusqu'à 90 % » ni aucun autre chiffre de
+       rendement non réservé (rendement labo vs conditions réelles). */
+    flux: {
+      simple: {
+        title: 'VMC simple flux',
+        subtitle: 'Efficace et économique',
+        text: "La VMC simple flux extrait l'air vicié des pièces humides (cuisine, salle de bain, WC) et fait entrer de l'air neuf par les entrées d'air situées dans les pièces sèches (séjour, chambres).",
+        bullets: [
+          'Système simple et fiable',
+          'Faible consommation électrique',
+          'Adaptée à la rénovation',
+          'Entretien facile',
+          'Améliore la qualité de l’air intérieur',
+        ],
       },
-      renovation: {
-        title: 'Rénovation',
-        text: "C'est le terrain le plus fréquent dans le bâti varois : remplacement d'une VMC vétuste, passage d'une autoréglable à une hygroréglable pour gagner en confort. Dans les bastides en pierre et les maisons sans faux-plafond, le passage des gaines demande une étude au cas par cas — le même savoir-faire de rénovation du bâti ancien que PCE a développé sur ses autres métiers.",
-        link: { label: 'Notre savoir-faire sur le bâti ancien', to: '/a-propos' },
+      double: {
+        title: 'VMC double flux',
+        subtitle: 'Confort et performance',
+        text: "La VMC double flux renouvelle l'air tout en récupérant une large part de la chaleur de l'air extrait pour réchauffer l'air neuf entrant. Idéale pour les maisons performantes.",
+        bullets: [
+          'Récupération de chaleur sur l’air extrait',
+          'Économies d’énergie significatives',
+          'Air neuf filtré : plus sain',
+          'Confort thermique optimal été comme hiver',
+          'Réduit l’humidité et les polluants',
+        ],
       },
     },
 
-    /* Section entretien : prestation récurrente confirmée par le client,
-       traitée à part plutôt que noyée dans les prestations. */
-    entretien: {
-      heading: 'Un entretien assuré par PCE',
-      lead: 'Une VMC mal entretenue perd en efficacité sans que ça se voie. Nous assurons le suivi dans le temps.',
-      items: [
-        { icon: 'wind', title: 'Nettoyage des bouches', label: 'Extraction et, sur double flux, entrées d’air' },
-        { icon: 'filter', title: 'Remplacement des filtres', label: 'Sur les installations double flux' },
-        { icon: 'gauge', title: 'Contrôle des débits', label: 'Vérification du bon fonctionnement' },
-        { icon: 'settings', title: 'Vérification du caisson', label: 'Moteur, connexions, état général' },
+    /* « Comment fonctionne la VMC ? » — 4 étapes numérotées + encart
+       « pourquoi installer/rénover ». Maquette validée le 17/08/2026. */
+    howItWorks: {
+      heading: 'Comment fonctionne la VMC ?',
+      steps: [
+        { icon: 'fan', title: 'Extraction', text: 'L’air vicié est extrait des pièces humides (cuisine, salle de bain, WC, buanderie).' },
+        { icon: 'wind', title: 'Entrée d’air neuf', text: 'De l’air neuf entre par les entrées d’air situées dans les pièces principales.' },
+        { icon: 'filter', title: 'Filtration', text: 'L’air neuf est filtré pour éliminer poussières, pollens et polluants (surtout en double flux).' },
+        { icon: 'home', title: 'Diffusion', text: 'L’air sain est réparti dans votre maison pour un confort optimal au quotidien.' },
       ],
+      why: {
+        heading: 'Pourquoi installer ou rénover sa VMC ?',
+        items: [
+          'Élimine l’humidité et prévient les moisissures',
+          'Renouvelle l’air en continu',
+          'Réduit les mauvaises odeurs',
+          'Améliore le confort et le bien-être',
+          'Valorise votre logement',
+          'Contribue aux économies d’énergie',
+        ],
+      },
     },
+
+    /* Section à trois blocs (entretien / marques / solutions adaptées).
+       Aucune photo VMC disponible pour bloc 1 et bloc 3 (recherché le
+       17/08/2026, rien trouvé) : icône plutôt qu'un repli en attente, même
+       parti pris que le reste de la page. */
+    blocks: {
+      entretien: {
+        title: 'Un entretien régulier, indispensable',
+        icon: 'wrench',
+        text: 'Un entretien régulier de votre VMC garantit son efficacité et la qualité de l’air intérieur.',
+        bullets: [
+          'Nettoyage des bouches et entrées d’air',
+          'Vérification des débits',
+          'Contrôle du moteur et des filtres',
+          'Conseils personnalisés',
+        ],
+      },
+      solutions: {
+        title: 'Des solutions adaptées à chaque habitat',
+        icon: 'home',
+        bullets: [
+          'Maisons neuves ou en rénovation',
+          'Logements individuels ou collectifs',
+          'Conseil, installation et mise en service',
+          'Intervention rapide dans tout le Var',
+        ],
+      },
+    },
+
+    /* Marques VMC installées — confirmées par le client le 17/08/2026
+       (Eoliance, Panol). Fichiers logo à déposer dans public/img/ :
+       marque-eoliance.png, marque-panol.png — BrandLogo bascule sur un
+       repli typographique tant qu'ils sont absents. Pas de texte marketing
+       fourni par le client : description volontairement factuelle, sans
+       allégation non vérifiée. Jamais « partenaires » (pas d'accord de
+       distribution) — voir garde-fous. */
+    brands: [
+      { name: 'Eoliance', src: '/img/marque-eoliance.png', text: 'Centrales de VMC installées par PCE.' },
+      { name: 'Panol', src: '/img/marque-panol.png', text: 'Centrales de VMC installées par PCE.' },
+    ],
 
     faq: [
       { q: 'Quelle est la différence entre VMC autoréglable et hygroréglable ?', a: "L'autoréglable extrait un débit fixe en continu. L'hygroréglable (type B) ajuste ce débit selon le taux d'humidité détecté, pièce par pièce, ce qui limite le renouvellement d'air inutile." },
@@ -1416,10 +1447,10 @@ export const projects = [
 
 /* ============================================================== À PROPOS ==*/
 export const milestones = [
-  { year: '2005', title: "Création de l'entreprise", text: "PCE s'installe à Lorgues, d'abord centré sur la plomberie et le sanitaire." },
-  { year: '2011', title: 'La climatisation', text: "Le climat varois impose une nouvelle compétence : obtention de l'attestation de capacité fluides frigorigènes, premières pompes à chaleur et premiers splits." },
+  { year: '2005', title: "Création de l'entreprise", text: "PCE naît en région parisienne, d'abord centrée sur la plomberie et le sanitaire." },
+  { year: '2011', title: 'La climatisation', text: "Encore en région parisienne, obtention de l'attestation de capacité fluides frigorigènes : premières pompes à chaleur et premiers splits." },
   { year: '2016', title: "L'électricité intégrée", text: "L'équipe s'étoffe pour livrer des chantiers complets, sans passer par la sous-traitance." },
-  { year: '2020', title: 'Le pôle piscine', text: "Traitement de l'eau, filtration et automatisation viennent compléter les cinq métiers." },
+  { year: '2020', title: 'Arrivée dans le Var', text: "PCE quitte la région parisienne pour s'installer à Lorgues. Le marché local impose aussitôt un nouveau métier : ouverture d'un pôle piscine, dédié au traitement de l'eau, à la filtration et à l'automatisation." },
   { year: '2025', title: 'Vingt ans de chantiers', text: 'Plus de 1 800 interventions réalisées entre Lorgues, la Dracénie et le Golfe.' },
 ]
 
@@ -1444,7 +1475,7 @@ export const values = [
   {
     icon: 'building',
     title: 'Une entreprise locale',
-    text: "Installés à Lorgues depuis 2005, nous connaissons le bâti, l'eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
+    text: "Installés à Lorgues depuis 2020 et forts de vingt ans de métier, nous connaissons le bâti, l'eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
   },
   {
     icon: 'euro',
@@ -1457,7 +1488,7 @@ export const areasDetail = [
   {
     name: 'Lorgues',
     lead: 'Notre commune',
-    text: "Siège de l'entreprise depuis 2005. Nous intervenons ici en quelques minutes, sur le centre ancien comme sur les quartiers de villas et les domaines viticoles alentour.",
+    text: "Siège de l'entreprise depuis 2020. Nous intervenons ici en quelques minutes, sur le centre ancien comme sur les quartiers de villas et les domaines viticoles alentour.",
     towns: ['Lorgues', 'Taradeau', 'Flayosc', 'Les Arcs', 'Vidauban', 'Le Thoronet'],
     tags: 'village',
     lock: 950,

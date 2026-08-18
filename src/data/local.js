@@ -109,7 +109,7 @@ export const localCities = {
     neighbors: ['Draguignan', 'Flayosc'],
     trades: ORIGINAL_TRADES,
     intro: (t) =>
-      `Basée à Lorgues depuis 2005, PCE intervient pour ${t.verb} directement dans votre commune : ${t.detail}. Devis gratuit et intervention rapide, sans trajet à facturer.`,
+      `Basée à Lorgues depuis 2020 et forte de vingt ans de métier, PCE intervient pour ${t.verb} directement dans votre commune : ${t.detail}. Devis gratuit et intervention rapide, sans trajet à facturer.`,
   },
   Draguignan: {
     name: 'Draguignan',
@@ -408,8 +408,8 @@ export const localCities = {
    par ville (voir `localCopy`) pour que deux villes voisines n'aient pas
    la même phrase de fin. */
 const metaClosings = [
-  'Devis gratuit avec PCE, artisan basé à Lorgues depuis 2005.',
-  'Intervention rapide et devis gratuit avec PCE, entreprise du Var depuis 2005.',
+  'Devis gratuit avec PCE, artisan basé à Lorgues depuis 2020, fort de vingt ans de métier.',
+  'Intervention rapide et devis gratuit avec PCE, dans le Var depuis 2020, vingt ans de métier.',
   'PCE se déplace sur place pour un devis gratuit et sans engagement.',
   'Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez.',
 ]

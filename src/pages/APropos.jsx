@@ -12,7 +12,7 @@ export default function APropos() {
     <>
       <Seo
         title="À propos"
-        description="PCE, artisan à Lorgues (83) depuis 2005 : vingt ans de chantiers, cinq métiers réunis sous le même toit et plus de 1 800 interventions dans le Var."
+        description="PCE, artisan à Lorgues (83) depuis 2020, fort de vingt ans de métier : cinq métiers réunis sous le même toit et plus de 1 800 interventions dans le Var."
         path="/a-propos"
       />
       <PageHero
@@ -68,7 +68,7 @@ export default function APropos() {
 
               <div className="mt-7 space-y-5">
                 <p className="text-[15px] leading-[1.85] text-navy-600">
-                  En 2005, PCE s'installe à Lorgues avec une activité de plomberie
+                  En 2005, PCE naît en région parisienne avec une activité de plomberie
                   traditionnelle : sanitaire, réseaux, chauffe-eau. Très vite, un constat s'impose
                   sur les chantiers. Sur presque chaque intervention un peu ambitieuse, il faut
                   faire venir un chauffagiste, puis un électricien — et c'est là que les délais
@@ -78,13 +78,13 @@ export default function APropos() {
                 <p className="text-[15px] leading-[1.85] text-navy-600">
                   Plutôt que de subir cette organisation, nous avons décidé de l'absorber. Le
                   chauffage, nous l'avions déjà : c'est avec lui que l'entreprise s'est construite.
-                  Mais le Var a fait apparaître un besoin que la région parisienne ne connaissait
-                  pas — rafraîchir. En 2011, l'obtention de l'attestation de capacité à la
-                  manipulation des fluides frigorigènes ouvre la porte de la climatisation et des
-                  pompes à chaleur. En 2016,
-                  l'électricité rejoint le périmètre et l'équipe se structure. En 2020, la demande
-                  massive de nos clients du Golfe nous conduit à créer un pôle piscine, dédié au
-                  traitement de l'eau, à la filtration et à l'automatisation.
+                  En 2011, encore en région parisienne, l'obtention de l'attestation de capacité à
+                  la manipulation des fluides frigorigènes ouvre la porte de la climatisation et
+                  des pompes à chaleur. En 2016, l'électricité rejoint le périmètre et l'équipe se
+                  structure. En 2020, PCE quitte la région parisienne pour s'installer à Lorgues,
+                  dans le Var — et la demande massive de nos clients du Golfe nous conduit
+                  aussitôt à créer un pôle piscine, dédié au traitement de l'eau, à la filtration
+                  et à l'automatisation.
                 </p>
                 <p className="text-[15px] leading-[1.85] text-navy-600">
                   Aujourd'hui, PCE réunit cinq métiers sous le même toit et a réalisé plus de

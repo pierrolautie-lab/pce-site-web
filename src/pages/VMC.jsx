@@ -1,110 +1,140 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand, Faq } from '../components/Blocks.jsx'
+import { CtaBand } from '../components/Blocks.jsx'
+import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
-/** Grille des 3 types de VMC confirmés par le client — aucun autre produit
- *  n'est affiché. Aucune photo disponible : icône plutôt qu'un repli en
- *  attente, même parti pris que Traitement de l'eau. */
-function SolutionsGrid({ items }) {
+/* Marques VMC confirmées par le client le 17/08/2026 (Eoliance, Panol) —
+   voir le commentaire sur `services.vmc.brands` dans site.js. */
+const SHOW_VMC_BRANDS = true
+
+/** Comparaison simple flux / double flux — maquette validée le 17/08/2026. */
+function FluxComparison({ flux }) {
   return (
     <section className="section bg-white">
-      <div className="container-pce">
-        <h2 className="text-center text-title font-display font-black uppercase tracking-[.03em] text-navy-800">
-          Nos VMC
-        </h2>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {items.map((s) => (
-            <div key={s.key} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-card ring-1 ring-navy-100 sm:p-7">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-navy-50 text-mint-600 ring-1 ring-navy-100">
-                <Icon name={s.icon} className="h-5.5 w-5.5" strokeWidth={1.6} />
-              </span>
-
-              <h3 className="mt-4 min-h-[3.4em] text-title font-display font-black uppercase leading-snug text-navy-800">
-                {s.title}
-              </h3>
-
-              <ul className="mt-2 flex-1 space-y-2.5">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5">
-                    <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-mint-600" strokeWidth={3} />
-                    <span className="text-body-sm leading-[1.6] text-navy-600">{b}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link to={s.ctaTo} className="btn-navy btn-sm mt-6 w-full justify-center whitespace-normal text-center">
-                {s.ctaLabel}
-                <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.4} />
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div className="container-pce grid gap-6 lg:grid-cols-2">
+        {[flux.simple, flux.double].map((f) => (
+          <div key={f.title} className="min-w-0 rounded-xl bg-navy-50 p-8 ring-1 ring-navy-100 sm:p-10">
+            <h2 className="text-title font-display font-black uppercase leading-snug text-navy-800">
+              {f.title}
+            </h2>
+            <p className="mt-1.5 text-kicker font-bold uppercase text-azure-500">{f.subtitle}</p>
+            <p className="mt-5 text-body leading-[1.8] text-navy-600">{f.text}</p>
+            <ul className="mt-6 space-y-3">
+              {f.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
+                  <span className="text-body-sm text-navy-600">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   )
 }
 
-/** Bloc 2 colonnes : neuf vs rénovation — deux logiques commerciales
- *  distinctes, demandées explicitement par le client. */
-function Markets({ markets }) {
+/** « Comment fonctionne la VMC ? » — 4 étapes reliées + encart « pourquoi ». */
+function HowItWorks({ data }) {
   return (
     <section className="section bg-navy-50">
-      <div className="container-pce grid gap-6 lg:grid-cols-2">
-        <div className="min-w-0 rounded-xl bg-navy-900 p-8 text-white sm:p-10">
-          <h2 className="text-title font-display font-black uppercase leading-snug">{markets.neuf.title}</h2>
-          <p className="mt-4 text-body leading-[1.8] text-white/70">{markets.neuf.text}</p>
-        </div>
+      <div className="container-pce">
+        <h2 className="text-center text-title font-display font-black uppercase tracking-[.03em] text-azure-500">
+          {data.heading}
+        </h2>
 
-        <div className="min-w-0 rounded-xl bg-white p-8 ring-1 ring-navy-100 sm:p-10">
-          <h2 className="text-title font-display font-black uppercase leading-snug text-navy-800">{markets.renovation.title}</h2>
-          <p className="mt-4 text-body leading-[1.8] text-navy-600">{markets.renovation.text}</p>
-          {markets.renovation.link && (
-            <Link
-              to={markets.renovation.link.to}
-              className="group mt-5 inline-flex items-center gap-2 text-label font-bold uppercase text-mint-600"
-            >
-              {markets.renovation.link.label}
-              <Icon
-                name="arrowRight"
-                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                strokeWidth={2.4}
-              />
-            </Link>
-          )}
+        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
+            <div className="grid gap-8 sm:grid-cols-2">
+              {data.steps.map((s, i) => (
+                <div key={s.title} className="relative flex flex-col items-center text-center">
+                  {i < data.steps.length - 1 && (
+                    <Icon
+                      name="arrowRight"
+                      className="absolute -right-5 top-6 hidden h-5 w-5 text-navy-300 sm:block lg:right-[-22px]"
+                      strokeWidth={2}
+                    />
+                  )}
+                  <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-azure-500 shadow-card ring-1 ring-navy-100">
+                    <Icon name={s.icon} className="h-6 w-6" strokeWidth={1.5} />
+                  </span>
+                  <span className="mt-4 text-label font-bold uppercase text-navy-800">{s.title}</span>
+                  <p className="mt-2 max-w-[22ch] text-body-sm leading-snug text-navy-500">{s.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="min-w-0 rounded-xl bg-navy-900 p-8 text-white sm:p-10 lg:col-span-5">
+            <h3 className="text-kicker font-bold uppercase tracking-[.05em] text-white">
+              {data.why.heading}
+            </h3>
+            <ul className="mt-6 space-y-3.5">
+              {data.why.items.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" strokeWidth={3} />
+                  <span className="text-body-sm text-white/85">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-/** Section entretien — prestation récurrente confirmée par le client,
- *  traitée à part plutôt que noyée dans les prestations. */
-function Entretien({ entretien }) {
+/** Section à trois blocs : entretien, marques (conditionnel), solutions
+ *  adaptées. Bloc entretien + bloc solutions forment une paire à deux
+ *  colonnes ; le bloc marques réutilise `ServiceBrandsRow` tel quel, aligné
+ *  sur Chauffage et Climatisation. */
+function ThreeBlocks({ entretien, solutions, brands }) {
   return (
-    <section className="section bg-white">
-      <div className="container-pce">
-        <h2 className="text-center text-title font-display font-black uppercase tracking-[.03em] text-navy-800">
-          {entretien.heading}
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-body text-navy-500">{entretien.lead}</p>
+    <>
+      <section className="section bg-white">
+        <div className="container-pce grid gap-6 lg:grid-cols-2">
+          <div className="min-w-0 rounded-xl bg-navy-900 p-8 text-white sm:p-10">
+            <span className="grid h-12 w-12 place-items-center rounded-full border border-white/25 text-white">
+              <Icon name={entretien.icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
+            </span>
+            <h2 className="mt-5 text-title font-display font-black uppercase leading-snug">
+              {entretien.title}
+            </h2>
+            <p className="mt-4 text-body leading-[1.8] text-white/70">{entretien.text}</p>
+            <ul className="mt-6 space-y-3">
+              {entretien.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" strokeWidth={3} />
+                  <span className="text-body-sm text-white/85">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
-          {entretien.items.map((it) => (
-            <div key={it.title} className="flex flex-col items-center text-center">
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-navy-200 text-mint-600">
-                <Icon name={it.icon} className="h-5 w-5" strokeWidth={1.5} />
-              </span>
-              <span className="mt-4 text-label font-bold uppercase text-navy-800">{it.title}</span>
-              <span className="mt-1.5 text-body-sm leading-snug text-navy-500">{it.label}</span>
-            </div>
-          ))}
+          <div className="min-w-0 rounded-xl bg-navy-50 p-8 ring-1 ring-navy-100 sm:p-10">
+            <span className="grid h-12 w-12 place-items-center rounded-full bg-white text-azure-500 ring-1 ring-navy-100">
+              <Icon name={solutions.icon} className="h-5.5 w-5.5" strokeWidth={1.5} />
+            </span>
+            <h2 className="mt-5 text-title font-display font-black uppercase leading-snug text-navy-800">
+              {solutions.title}
+            </h2>
+            <ul className="mt-6 space-y-3">
+              {solutions.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
+                  <span className="text-body-sm text-navy-600">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {SHOW_VMC_BRANDS && <ServiceBrandsRow title="Les marques que nous installons" brands={brands} />}
+    </>
   )
 }
 
@@ -132,24 +162,35 @@ export default function VMC() {
         icon="fan"
         iconClass="text-mint-300"
         haloClass="from-mint-300/[.18]"
-        title="VMC"
-        subtitle={service.tagline}
-        intro={service.intro}
+        title={
+          <>
+            VMC
+            <span className="mt-2 block text-title-lg font-bold text-white/85">
+              Ventilation mécanique contrôlée
+            </span>
+          </>
+        }
+        subtitle="Un air sain, un confort durable"
+        subtitleClassName="text-azure-400"
+        intro="Indispensable pour garantir la qualité de l'air intérieur, la VMC renouvelle l'air de votre logement en continu, élimine l'humidité et les polluants, et préserve votre santé ainsi que votre habitat."
+        highlights={service.heroHighlights}
         /* Pas de `photo` : le client n'a fourni aucun visuel de VMC (recherché
            le 17/08/2026 par nom et par date de modification dans photos/,
            rien trouvé). Repli sur fond marine uni, même parti pris que
            Traitement de l'eau. */
       />
 
-      <SolutionsGrid items={service.solutions} />
+      <FluxComparison flux={service.flux} />
 
-      <Markets markets={service.markets} />
+      {/* Schémas simple flux / double flux : en attente de validation, voir
+          la proposition transmise au client — non dessinés tant qu'elle
+          n'est pas approuvée. */}
 
-      <Entretien entretien={service.entretien} />
+      <HowItWorks data={service.howItWorks} />
 
-      <Faq items={service.faq} title="Questions fréquentes sur la VMC" />
+      <ThreeBlocks entretien={service.blocks.entretien} solutions={service.blocks.solutions} brands={service.brands} />
 
-      <CtaBand />
+      <CtaBand title="Besoin d'un conseil ou d'un devis ? Appelez-nous !" />
     </>
   )
 }

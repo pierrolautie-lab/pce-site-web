@@ -55,7 +55,7 @@ export default function Accueil() {
       <Seo
         standalone
         title="PCE — Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83)"
-        description="PCE, artisan à Lorgues dans le Var depuis 2005 : plomberie, chauffage, climatisation, électricité et entretien de piscine. Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez."
+        description="PCE, artisan à Lorgues dans le Var depuis 2020, fort de vingt ans de métier : plomberie, chauffage, climatisation, électricité et entretien de piscine. Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez."
         path="/"
       />
 
