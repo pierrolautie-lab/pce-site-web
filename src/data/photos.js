@@ -35,7 +35,8 @@ export const PHOTO_SLOTS = {
   413: { page: 'Chauffage', zone: 'Expertise', sujet: 'Installation PAC / chaudière' },
   414: { page: 'Chauffage — Chaudière à condensation', zone: 'Hero', sujet: 'Chaudière murale installée' },
   517: { page: 'Climatisation', zone: 'Hero', sujet: 'Split mural, pièce de vie' },
-  518: { page: 'Climatisation', zone: 'Expertise', sujet: 'Gainable, grille de plafond' },
+  518: { page: 'Climatisation', zone: 'Expertise', sujet: 'Gainable, grille de plafond (inutilisée depuis le 18/08/2026, voir 519)' },
+  519: { page: 'Climatisation', zone: 'Réversible — le confort toute l’année', sujet: 'Split mural DAIKIN, séjour' },
   628: { page: 'Électricité', zone: 'Hero', sujet: 'Tableau électrique' },
   629: { page: 'Électricité', zone: 'Expertise', sujet: 'Électricien au travail, câblage' },
   739: { page: 'Piscine', zone: 'Hero', sujet: 'Bassin, piscine' },
@@ -160,7 +161,12 @@ export const clientPhotos = {
      climatisation du projet sont toutes en portrait, prises au téléphone en
      contre-plongée, aucune n'est pensée pour un usage en héros. */
   517: '/img/climatisation-prestations-groupe.jpg',
+  /* 518 (climatisation-expertise-gainable-salon.jpg) : la section
+     « Climatisation réversible » qui l'utilisait pointe maintenant vers
+     519. Ce fichier n'est référencé par aucun autre slot — orphelin,
+     signalé plutôt que supprimé (18/08/2026). */
   518: '/img/climatisation-expertise-gainable-salon.jpg',
+  519: '/img/climatisation-reversible-salon.jpg',
 
   /* Traitement de l'eau — l'ancienne photo (réseau de cuivre au mur)
      montrait de la plomberie, pas du traitement de l'eau : signalée hors

@@ -111,6 +111,60 @@ export const imageManifest = {
       1200
     ]
   },
+  "climatisation-reversible-salon.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "climatisation-solution-cassette-plafond.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "climatisation-solution-console.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "climatisation-solution-entretien.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "climatisation-solution-groupe-exterieur.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "climatisation-solution-murale.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "depannage-outillage.jpg": {
     "width": 900,
     "height": 1600,

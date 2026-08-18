@@ -190,7 +190,12 @@ function ReversibleEtEngagements({ data }) {
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="relative min-w-0 overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
             <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 sm:block">
-              <Photo lock={data.photo.lock} alt="Climatisation réversible installée par PCE" rounded="" className="h-full w-full" />
+              <Photo
+                lock={data.photo.lock}
+                alt="Climatisation réversible murale installée dans un séjour — chauffage en hiver, rafraîchissement en été"
+                rounded=""
+                className="h-full w-full"
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
             </div>
 

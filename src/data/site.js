@@ -417,7 +417,7 @@ export const services = {
           "La climatisation réversible permet de chauffer en hiver et de rafraîchir en été tout en réalisant jusqu'à 70 % d'économies d'énergie par rapport à un système de chauffage classique.",
           "PCE vous accompagne dans le choix, l'installation et l'entretien de votre climatisation pour un confort optimal au quotidien.",
         ],
-        photo: { lock: 518 },
+        photo: { lock: 519 },
         engagements: {
           title: 'Nos engagements',
           items: [
@@ -436,32 +436,37 @@ export const services = {
           {
             title: 'Climatisation murale',
             text: 'Solution discrète et esthétique, idéale pour une ou plusieurs pièces.',
-            photo: '/img/climatisation-hero-split.jpg',
+            photo: '/img/climatisation-solution-murale.jpg',
           },
           {
             title: 'Climatisation gainable',
             text: 'Intégration complète dans les combles ou faux-plafonds pour un confort invisible.',
+            /* Photo déjà correcte, ne pas toucher : grille de diffusion
+               discrète au plafond, sans appareil visible — exactement ce
+               qui distingue un gainable d'une cassette (18/08/2026). */
             photo: '/img/climatisation-hero-gainable-grille.jpg',
           },
           {
             title: 'Console & plafonnier',
             text: 'Parfait pour les pièces à vivre, offrant puissance et diffusion homogène.',
-            /* photo: pas de fichier valide pour l'instant (5 candidats
-               évalués le 13/08/2026, tous écartés : générés par IA, hors
-               sujet, ou marque concurrente visible) — repli sur icône en
-               attendant. Voir `icon` sur SolutionPhoto. */
-            photo: '/img/climatisation-console-plafonnier.jpg',
-            icon: 'snowflake',
+            /* Photo déposée le 18/08/2026 : console au sol, correspond au
+               titre de la carte. Repli icône (SolutionPhoto) retiré. */
+            photo: '/img/climatisation-solution-console.jpg',
           },
           {
             title: 'Multi-split',
             text: 'Une seule unité extérieure pour plusieurs unités intérieures. Confort sur-mesure.',
-            photo: '/img/climatisation-groupe-exterieur.jpg',
+            photo: '/img/climatisation-solution-groupe-exterieur.jpg',
           },
           {
             title: 'Entretien & dépannage',
+            /* ⚠️ Visuel généré représentant un technicien fictif (personne
+               et uniforme PCE générés par IA, pas un employé réel) — validé
+               par le client le 18/08/2026 malgré le slogan de la page
+               ("Confort, performance et économies d'énergie") visible au
+               dos du polo. */
             text: 'Entretien complet, nettoyage, vérification des fluides et dépannage rapide.',
-            photo: '/img/climatisation-prestations-groupe.jpg',
+            photo: '/img/climatisation-solution-entretien.jpg',
           },
         ],
       },
