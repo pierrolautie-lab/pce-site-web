@@ -682,17 +682,19 @@ export const services = {
         ],
       },
 
-      /* Les visuels produit de la maquette sont des photos de catalogue
-         fabricant, protégées : on ne les reprend pas. Ces fichiers seront
-         fournis par le client à partir de matériel réellement installé —
-         en attendant, BrandLogo affiche un cadre neutre. */
+      /* Photos produit déposées le 18/08/2026 (matériel réellement installé
+         par PCE, logos de marque visibles et confirmés par le client —
+         Pentair, Hayward, Full Inverter). */
       equipements: {
         title: "Des équipements de qualité, pour une eau saine et économe",
         items: [
           {
             title: ['Filtration', 'haute performance'],
             photo: { lock: 741 },
-            text: "Des filtres à sable ou à cartouche de dernière génération pour une eau parfaitement limpide.",
+            /* Texte ajusté au visuel réel : filtre à SABLE (vanne
+               multivoies, manomètre, boîtier de commande) — l'ancien texte
+               mentionnait aussi la cartouche, absente de cette photo. */
+            text: 'Filtre à sable avec vanne multivoies et boîtier de commande, pour une eau parfaitement limpide.',
           },
           {
             title: ['Pompes', 'à vitesse variable'],

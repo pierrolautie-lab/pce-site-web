@@ -262,31 +262,39 @@ export const imageManifest = {
     ]
   },
   "equipement-filtration.jpg": {
-    "width": 386,
-    "height": 220,
+    "width": 1200,
+    "height": 900,
     "widths": [
-      386
+      400,
+      800,
+      1200
     ]
   },
   "equipement-pac-piscine.jpg": {
-    "width": 330,
-    "height": 220,
+    "width": 1200,
+    "height": 900,
     "widths": [
-      330
+      400,
+      800,
+      1200
     ]
   },
   "equipement-pompe-vitesse-variable.jpg": {
-    "width": 447,
-    "height": 447,
+    "width": 1200,
+    "height": 900,
     "widths": [
-      400
+      400,
+      800,
+      1200
     ]
   },
   "equipement-traitement-eau.jpg": {
-    "width": 352,
-    "height": 220,
+    "width": 1200,
+    "height": 900,
     "widths": [
-      352
+      400,
+      800,
+      1200
     ]
   },
   "marque-fluidra.jpg": {

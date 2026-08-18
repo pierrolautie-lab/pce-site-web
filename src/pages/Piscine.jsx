@@ -230,14 +230,18 @@ function Equipements({ data }) {
                   repli logo PCE habituel de `Photo` — le titre juste en
                   dessous dit déjà de quoi il s'agit, pas besoin d'un cadre
                   en attente. Les 4 photos existent réellement à ce jour ;
-                  ce repli reste dormant tant qu'elles ne disparaissent pas. */}
+                  ce repli reste dormant tant qu'elles ne disparaissent pas.
+                  `object-contain` : jamais `object-cover` ici, qui
+                  rognerait les appareils (déjà détourés et recalés sur un
+                  fond blanc commun, voir process-piscine-equipements.cjs). */}
               <Photo
                 lock={item.photo.lock}
                 alt={item.title.join(' ')}
                 rounded=""
                 className="aspect-[4/3] w-full"
+                imgClassName="object-contain p-6"
                 fallback="blank"
-                bgClassName="bg-navy-50"
+                bgClassName="bg-white"
                 sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
               />
               <div className="flex flex-1 flex-col p-6">
