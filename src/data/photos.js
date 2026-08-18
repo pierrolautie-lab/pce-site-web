@@ -120,6 +120,7 @@ export const clientPhotos = {
   /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
      c'est le même fichier que depannage-outillage.jpg (md5 identique). */
   102: '/img/climatisation-expertise-gaines-combles.jpg',
+  // netteté (Laplacien) 88 — à remplacer, cf. README.
   103: '/img/douche-pierre-finie.jpg',
 
   /* --- Pages métier --- */
@@ -180,14 +181,20 @@ export const clientPhotos = {
 
   /* --- Réalisations --- */
   960: '/img/realisations-hero-radiateur.jpg',
+  // netteté (Laplacien) 111 — à remplacer, cf. README.
   901: '/img/real-sdb-complete.jpg',
+  // netteté (Laplacien) 137 — à remplacer, cf. README.
   902: '/img/real-ballon-thermo.jpg',
   903: '/img/real-plancher-chauffant.jpg',
   904: '/img/real-collecteurs.jpg',
+  // netteté (Laplacien) 79 — à remplacer, cf. README.
   905: '/img/real-canalisation-obstruee.jpg',
   906: '/img/real-local-chaudiere-ballon.jpg',
+  // netteté (Laplacien) 51 — à remplacer, cf. README. C'est un carton
+  // d'emballage, pas une installation posée.
   907: '/img/real-chauffe-eau-fleck.jpg',
   908: '/img/real-cuisine-equipee.jpg',
+  // netteté (Laplacien) 55 — à remplacer, cf. README.
   909: '/img/real-sdb-carrelage-motifs.jpg',
 
   /* --- À propos --- */
