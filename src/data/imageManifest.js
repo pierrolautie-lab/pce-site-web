@@ -505,6 +505,15 @@ export const imageManifest = {
       800
     ]
   },
+  "traitement-eau-hero-local-technique.jpg": {
+    "width": 1456,
+    "height": 819,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "traitement-eau-pentair-foleo.jpg": {
     "width": 336,
     "height": 632,
@@ -515,6 +524,15 @@ export const imageManifest = {
   "traitement-eau-reseau-cuivre.jpg": {
     "width": 1600,
     "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "vmc-hero-combles.jpg": {
+    "width": 1456,
+    "height": 819,
     "widths": [
       400,
       800,

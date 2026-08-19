@@ -360,7 +360,7 @@ export const services = {
       "C'est en nous installant dans le Var que nous avons ajouté la climatisation à nos métiers, pour répondre à une demande que le climat local rend incontournable. Rafraîchir sans faire de bruit ni défigurer une façade, c'est tout l'enjeu d'une bonne installation. Nous étudions l'implantation des unités, l'acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l'entretien réglementaire de votre équipement.",
     card: 'Mono-split, multi-split, gainable et entretien des unités.',
     metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
-    hero: { tags: 'airconditioner', lock: 517 },
+    hero: { tags: 'airconditioner', lock: 520 },
 
     /* ------------------------------------------------------------------
        Contenus de la page /climatisation refondue, sur le même principe
@@ -441,10 +441,16 @@ export const services = {
           {
             title: 'Climatisation gainable',
             text: 'Intégration complète dans les combles ou faux-plafonds pour un confort invisible.',
-            /* Photo déjà correcte, ne pas toucher : grille de diffusion
-               discrète au plafond, sans appareil visible — exactement ce
-               qui distingue un gainable d'une cassette (18/08/2026). */
-            photo: '/img/climatisation-hero-gainable-grille.jpg',
+            /* 19/08/2026 : remplacée par climatisation-expertise-gainable-salon.jpg
+               (stock existant, pas de nouvelle génération). Netteté quasi
+               doublée (variance du Laplacien 191,8 contre 108,7) et un vrai
+               salon visible au lieu d'un simple gros plan de plafond — reste
+               en portrait comme toute la bibliothèque climatisation, donc
+               un mieux net plutôt qu'un visuel au niveau des 4 rendus
+               voisins. La grille de plafond reste le sujet : toujours sans
+               appareil visible, ce qui distingue un gainable d'une
+               cassette. */
+            photo: '/img/climatisation-expertise-gainable-salon.jpg',
           },
           {
             title: 'Console & plafonnier',

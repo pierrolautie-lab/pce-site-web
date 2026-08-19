@@ -70,15 +70,41 @@ export default function Piscine() {
 }
 
 /* ========================================================= HÉROS ======== */
+/* Dégradé à 11 arrêts adoucis (même courbe que Plomberie/Climatisation) —
+   coefficient propre à cette page, 0,44. Masque = courbe complémentaire
+   appliquée à la photo elle-même, indépendamment du dégradé — voir le
+   même mécanisme sur Climatisation.jsx (19/08/2026, correction du bord
+   net découvert sur le héros Climatisation). */
+const HERO_GRADIENT_STOPS = [
+  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
+  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
+]
+const HERO_COEFFICIENT = 0.44
+const HERO_GRADIENT = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  ([pos, op]) => `rgb(1 12 30 / ${(op * HERO_COEFFICIENT).toFixed(4)}) ${pos}%`
+).join(', ')})`
+const HERO_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
+).join(', ')}, black 100%)`
+
 function Hero({ page, hero }) {
   const [ligne1, ligne2, ligne3] = page.h1
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+      {/* Photo plein cadre — pas un panneau posé à droite. Le masque,
+          appliqué directement sur la photo, et le dégradé (couche
+          suivante) la font disparaître progressivement vers la gauche :
+          deux mécanismes indépendants, aucun bord net possible entre les
+          deux. */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden lg:block"
+        style={{ WebkitMaskImage: HERO_MASK, maskImage: HERO_MASK }}
+      >
         <Photo lock={hero.lock} alt="Bassin éclairé, réalisation PCE" priority rounded="" className="h-full w-full" />
       </div>
-      <div className="absolute inset-0 -z-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:to-transparent" />
+      <div className="absolute inset-0 -z-0 hidden lg:block" style={{ background: HERO_GRADIENT }} />
+      <div className="absolute inset-0 -z-0 bg-navy-950 lg:hidden" />
 
       <div className="container-pce relative py-8 lg:py-14">
         <nav aria-label="Fil d'Ariane" className="mb-6">
@@ -112,8 +138,15 @@ function Hero({ page, hero }) {
 
           <p className="mt-5 max-w-xl text-body text-white/75">{page.intro}</p>
 
-          {/* Pictos séparés par des filets verticaux fins */}
-          <ul className="mt-8 grid grid-cols-2 gap-y-6 sm:grid-cols-4 sm:divide-x sm:divide-white/15">
+          {/* Pictos séparés par des filets verticaux fins. Fond translucide
+              (19/08/2026) : le dernier picto (« Dépannage ») retombait sur une
+              zone très claire de la photo (reflet du bassin), contraste
+              mesuré à 1,42 avec le dégradé seul — même correctif que
+              VMC/Chauffage/Électricité (`highlightsPanel` dans PageHero),
+              transposé ici car ce héros est un composant maison. Opacité à
+              55 % (vs 35 % ailleurs) : la zone est plus claire qu'ailleurs,
+              35 % ne suffisait pas (3,33:1 mesuré, still < 4,5:1). */}
+          <ul className="mt-8 grid grid-cols-2 gap-y-6 rounded-xl bg-navy-950/55 px-5 py-5 backdrop-blur-sm sm:grid-cols-4 sm:divide-x sm:divide-white/15">
             {page.heroHighlights.map((h) => (
               <li key={h.title} className="flex flex-col items-start px-0 sm:px-5 sm:first:pl-0">
                 <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />

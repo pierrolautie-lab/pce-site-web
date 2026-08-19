@@ -232,8 +232,21 @@ function ServiceCards() {
   )
 }
 
+/* Sélection curatée pour la bande d'accueil (19/08/2026) : `projects.slice(0, 5)`
+   sortait par accident les 5 premières entrées du tableau, toutes
+   plomberie/chauffage — aucune diversité de métier. Un métier par vignette
+   quand c'est possible (traitement de l'eau n'a aucune vraie photo de
+   chantier, seulement des cartes produit sur fond blanc — hors registre
+   ici, donc plomberie doublée à la place). Exclut les visuels signalés
+   flous dans le README (901, 902, 905, 907, 909) et le split-chambre
+   climatisation (920, gros logo PCE quasi centré qui masque l'appareil) —
+   un seul visuel climatisation (923, groupe extérieur) pour éviter la
+   quasi-répétition avec un second angle du même type de sujet. */
+const FEATURED_REALISATIONS = [904, 906, 923, 911, 908]
+
 /* ============================= AVIS / RÉALISATIONS / ZONE D'INTERVENTION = */
 function ProofRow() {
+  const featuredProjects = FEATURED_REALISATIONS.map((lock) => projects.find((p) => p.lock === lock)).filter(Boolean)
   /* Sans le bloc avis, les deux blocs restants se répartissent la largeur
      plutôt que de laisser une colonne vide. */
   const gallerySpan = SHOW_GOOGLE_REVIEWS ? 'lg:col-span-5' : 'lg:col-span-7'
@@ -276,7 +289,7 @@ function ProofRow() {
             </h2>
 
             <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
-              {projects.slice(0, 5).map((p) => (
+              {featuredProjects.map((p) => (
                 <li key={p.title} className="min-w-0">
                   <Photo
                     lock={p.lock}

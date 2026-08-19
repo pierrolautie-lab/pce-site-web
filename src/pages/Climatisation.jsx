@@ -99,12 +99,37 @@ export default function Climatisation() {
 }
 
 /* ========================================================= HÉROS ======== */
+/* Dégradé à 11 arrêts adoucis (même courbe que Plomberie) — coefficient
+   propre à cette page, 0,46, fixé lors de la mesure du lot d'images du
+   17/08/2026. Le masque applique la courbe complémentaire (1 - opacité)
+   directement sur la photo : deux mécanismes indépendants pour le même
+   défaut, l'un ne peut pas laisser un bord net si l'autre s'applique. */
+const HERO_GRADIENT_STOPS = [
+  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
+  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
+]
+const HERO_COEFFICIENT = 0.46
+const HERO_GRADIENT = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  ([pos, op]) => `rgb(1 12 30 / ${(op * HERO_COEFFICIENT).toFixed(4)}) ${pos}%`
+).join(', ')})`
+const HERO_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
+).join(', ')}, black 100%)`
+
 function Hero({ page, hero }) {
   const [ligne1, ligne2, ligne3] = page.h1
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+      {/* Photo plein cadre, d'un bord à l'autre du héros — pas un panneau
+          posé à droite. Le dégradé (couche suivante) et le masque
+          (appliqué ici sur la photo elle-même) la font disparaître
+          progressivement vers la gauche ; il ne doit exister nulle part de
+          bord net entre marine uni et photo. */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden lg:block"
+        style={{ WebkitMaskImage: HERO_MASK, maskImage: HERO_MASK }}
+      >
         {/* object-[50%_52%] : photo portrait 1200×1600, groupe extérieur situé
             au tiers central de l'image en hauteur (centre vertical mesuré à
             50,6 % de la hauteur). Dans ce panneau, toujours plus large que
@@ -113,18 +138,26 @@ function Hero({ page, hero }) {
             52 % centre la fenêtre visible sur le groupe extérieur à toutes
             les largeurs testées (fenêtre visible la plus étroite, à 1920 px,
             de 28 % à 73 % de la hauteur — contient largement le sujet, situé
-            entre 37,5 % et 64 %). */}
+            entre 37,5 % et 64 %).
+            19/08/2026 : remplacée par une photo paysage (groupe extérieur,
+            jardin/piscine) — l'ancienne était en portrait, cadrée pour un
+            panneau étroit à droite, pas pour un plein cadre. object-cover
+            simple, plus besoin de position verticale sur mesure. */}
         <Photo
           lock={hero.lock}
           alt="Climatisation installée par PCE"
           priority
           rounded=""
           className="h-full w-full"
-          imgClassName="object-[50%_52%]"
         />
-        <ZoneBadge className="absolute bottom-6 right-6" />
       </div>
-      <div className="absolute inset-0 -z-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/20 lg:to-transparent" />
+      <ZoneBadge className="pointer-events-none absolute bottom-6 right-6 hidden lg:block" />
+
+      <div
+        className="absolute inset-0 -z-0 hidden lg:block"
+        style={{ background: HERO_GRADIENT }}
+      />
+      <div className="absolute inset-0 -z-0 bg-navy-950 lg:hidden" />
 
       <div className="container-pce relative py-8 lg:py-14">
         <nav aria-label="Fil d'Ariane" className="mb-6">

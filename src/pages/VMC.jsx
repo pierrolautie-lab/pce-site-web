@@ -174,10 +174,12 @@ export default function VMC() {
         subtitleClassName="text-azure-400"
         intro="Indispensable pour garantir la qualité de l'air intérieur, la VMC renouvelle l'air de votre logement en continu, élimine l'humidité et les polluants, et préserve votre santé ainsi que votre habitat."
         highlights={service.heroHighlights}
-        /* Pas de `photo` : le client n'a fourni aucun visuel de VMC (recherché
-           le 17/08/2026 par nom et par date de modification dans photos/,
-           rien trouvé). Repli sur fond marine uni, même parti pris que
-           Traitement de l'eau. */
+        /* Photo restaurée le 19/08/2026 (slot 521) : caisson double flux en
+           combles. */
+        photo={{ lock: 521, alt: 'VMC double flux installée par PCE' }}
+        fullBleed
+        gradientCoefficient={0.42}
+        highlightsPanel
       />
 
       <FluxComparison flux={service.flux} />

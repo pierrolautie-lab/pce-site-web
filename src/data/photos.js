@@ -34,7 +34,8 @@ export const PHOTO_SLOTS = {
   412: { page: 'Chauffage', zone: 'Hero', sujet: 'Pompe à chaleur, groupe extérieur' },
   413: { page: 'Chauffage', zone: 'Expertise', sujet: 'Installation PAC / chaudière' },
   414: { page: 'Chauffage — Chaudière à condensation', zone: 'Hero', sujet: 'Chaudière murale installée' },
-  517: { page: 'Climatisation', zone: 'Hero', sujet: 'Split mural, pièce de vie' },
+  517: { page: 'Climatisation', zone: 'Hero (inutilisé depuis le 19/08/2026, voir 520)', sujet: 'Groupe extérieur, portrait — remplacé, mauvais format pour un héros plein cadre' },
+  520: { page: 'Climatisation', zone: 'Hero', sujet: 'Groupe extérieur DAIKIN, jardin/piscine' },
   518: { page: 'Climatisation', zone: 'Expertise', sujet: 'Gainable, grille de plafond (inutilisée depuis le 18/08/2026, voir 519)' },
   519: { page: 'Climatisation', zone: 'Réversible — le confort toute l’année', sujet: 'Split mural DAIKIN, séjour' },
   628: { page: 'Électricité', zone: 'Hero', sujet: 'Tableau électrique' },
@@ -45,8 +46,10 @@ export const PHOTO_SLOTS = {
   742: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à vitesse variable' },
   743: { page: 'Piscine', zone: 'Équipements', sujet: "Traitement de l'eau" },
   744: { page: 'Piscine', zone: 'Équipements', sujet: 'Pompe à chaleur piscine' },
-  300: { page: "Traitement de l'eau", zone: 'Hero', sujet: 'Adoucisseur installé (à recevoir)' },
+  300: { page: "Traitement de l'eau", zone: 'Hero (superseded, voir 302)', sujet: 'Adoucisseur installé (jamais reçu)' },
   301: { page: "Traitement de l'eau", zone: 'Expertise', sujet: 'Adoucisseur installé (à recevoir)' },
+  302: { page: "Traitement de l'eau", zone: 'Hero', sujet: 'Local technique groupé (adoucisseurs, filtres, UV)' },
+  521: { page: 'VMC', zone: 'Hero', sujet: 'Caisson double flux, combles' },
   310: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Adoucisseur (PANTHER FOLEO)' },
   311: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Filtration fine sous évier' },
   312: { page: "Traitement de l'eau", zone: 'Nos solutions — carte', sujet: 'Filtration eau de forage' },
@@ -160,7 +163,11 @@ export const clientPhotos = {
      qu'un visuel paysage dédié soit fourni par le client : les 7 photos
      climatisation du projet sont toutes en portrait, prises au téléphone en
      contre-plongée, aucune n'est pensée pour un usage en héros. */
+  /* 517 : le héros pointe maintenant vers 520 (photo paysage, plein cadre —
+     celle-ci est en portrait, cadre mal un héros full-bleed). Le fichier
+     reste utilisé par le slot 923 (galerie Réalisations) : pas orphelin. */
   517: '/img/climatisation-prestations-groupe.jpg',
+  520: '/img/climatisation-solution-groupe-exterieur.jpg',
   /* 518 (climatisation-expertise-gainable-salon.jpg) : la section
      « Climatisation réversible » qui l'utilisait pointe maintenant vers
      519. Ce fichier n'est référencé par aucun autre slot — orphelin,
@@ -178,6 +185,13 @@ export const clientPhotos = {
      que `photo={{ ...service.hero }}` n'est pas restauré dans
      TraitementEau.jsx. */
   300: '/img/eau-adoucisseur-installe.jpg',
+  /* 302 : héros Traitement de l'eau, déposé le 19/08/2026. Un petit badge
+     illisible/déformé subsiste sur l'écran du 3e appareil (~51-60% de la
+     largeur) — signalé, pas recadré : à cette échelle et sous le dégradé,
+     il n'est pas perceptible sans zoomer fortement, et le retirer par un
+     recadrage aurait coupé d'autres appareils de la composition. */
+  302: '/img/traitement-eau-hero-local-technique.jpg',
+  521: '/img/vmc-hero-combles.jpg',
   301: '/img/eau-adoucisseur-installe.jpg',
 
   /* Nos solutions de traitement de l'eau — 6 cartes produit, déposées le

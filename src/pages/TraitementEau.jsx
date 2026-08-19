@@ -162,18 +162,13 @@ export default function TraitementEau() {
             </span>
           </>
         }
-        /* Pas de `photo` : le seul visuel disponible (slot 300) montrait un
-           réseau de cuivre au mur — de la plomberie, pas du traitement de
-           l'eau, signalé hors sujet par le client. Aucun autre visuel du
-           stock ne montre du matériel de traitement réellement installé
-           (recherché le 17/08/2026 : les deux fichiers nommés en rapport —
-           filtration.jpg, traitement.jpg — font 386×220 et 352×220, bien
-           sous le seuil de 800 px). Repli sur fond marine uni, comme le
-           comportement mobile des autres héros, en attendant la photo
-           d'adoucisseur installé promise par le client (voir
-           `eau-adoucisseur-installe.jpg` dans src/data/photos.js). Restaurer
-           `photo={{ ...service.hero, alt: "..." }}` et `photoBadge` (voir
-           git history) dès qu'un visuel valable existe. */
+        /* Photo restaurée le 19/08/2026 (slot 302) : local technique groupé,
+           plein cadre. Un petit badge illisible subsiste sur le 3e appareil
+           — voir le commentaire sur le slot 302 dans photos.js, signalé
+           plutôt que recadré. */
+        photo={{ lock: 302, alt: "Local technique de traitement de l'eau installé par PCE" }}
+        fullBleed
+        gradientCoefficient={0.36}
         showReassurance={false}
       />
 

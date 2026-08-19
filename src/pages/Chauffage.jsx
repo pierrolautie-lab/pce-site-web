@@ -188,6 +188,9 @@ export default function Chauffage() {
         intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."
         photo={{ ...service.hero, alt: 'Chaufferie installée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
+        fullBleed
+        gradientCoefficient={0.49}
+        highlightsPanel
       />
 
       <SolutionsWhyUs service={service} />

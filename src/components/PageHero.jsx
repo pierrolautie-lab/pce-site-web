@@ -4,6 +4,26 @@ import Photo from './Photo.jsx'
 import { Watermark } from './Brand.jsx'
 import { company, reassurance } from '../data/site.js'
 
+/* Dégradé à 11 arrêts adoucis, réservé au mode `fullBleed` — même courbe
+   que Plomberie/Climatisation/Piscine (19/08/2026). Le coefficient est
+   fourni par la page appelante (`gradientCoefficient`) : chaque héros a sa
+   propre opacité de départ mesurée. Le masque applique la courbe
+   complémentaire directement sur la photo, indépendamment du dégradé —
+   deux mécanismes pour un seul défaut (le bord net d'un panneau photo
+   étroit), pas un seul. */
+const HERO_GRADIENT_STOPS = [
+  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
+  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
+]
+function fullBleedGradient(coefficient) {
+  return `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+    ([pos, op]) => `rgb(1 12 30 / ${(op * coefficient).toFixed(4)}) ${pos}%`
+  ).join(', ')})`
+}
+const FULL_BLEED_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
+).join(', ')}, black 100%)`
+
 /**
  * Héros commun à toutes les pages, conforme aux maquettes :
  *   — fond bleu marine, photo fondue sur la droite
@@ -11,6 +31,15 @@ import { company, reassurance } from '../data/site.js'
  *     signature dorée en italique, paragraphe clair
  *   — filigrane « PCE » embossé derrière le texte
  *   — bandeau de réassurance marine juste en dessous
+ *
+ * `fullBleed` (optionnel, défaut `false`) : la photo occupe tout le héros
+ * (fond, pas panneau posé à droite) avec le dégradé à 11 arrêts + masque
+ * décrits ci-dessus, au lieu du panneau étroit (`w-[58%]`) historique.
+ * Strictement opt-in — tous les appelants existants (articles, pages
+ * locales, à propos, dépannage, réalisations...) gardent le rendu
+ * d'origine tant qu'ils ne passent pas `fullBleed`. `gradientCoefficient`
+ * est obligatoire dans ce mode (pas de valeur par défaut : l'opacité doit
+ * être mesurée par page, jamais devinée).
  */
 export default function PageHero({
   title,
@@ -29,21 +58,32 @@ export default function PageHero({
   showReassurance = true,
   photoBadge,
   children,
+  fullBleed = false,
+  gradientCoefficient,
+  highlightsPanel = false,
 }) {
   return (
     <>
-      <section className="relative overflow-hidden bg-navy-800 text-white">
-        {/* Photo de fond, fondue vers la gauche */}
-        {photo && (
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
-            <Photo
-              tags={photo.tags}
-              lock={photo.lock}
-              alt={photo.alt || title}
-              priority
-              rounded=""
-              className="h-full w-full"
+      <section className={`relative overflow-hidden text-white ${fullBleed ? 'bg-navy-950' : 'bg-navy-800'}`}>
+        {photo && fullBleed && (
+          <>
+            <div
+              className="pointer-events-none absolute inset-0 hidden lg:block"
+              style={{ WebkitMaskImage: FULL_BLEED_MASK, maskImage: FULL_BLEED_MASK }}
+            >
+              <Photo tags={photo.tags} lock={photo.lock} alt={photo.alt || title} priority rounded="" className="h-full w-full" />
+            </div>
+            <div
+              className="pointer-events-none absolute inset-0 hidden lg:block"
+              style={{ background: fullBleedGradient(gradientCoefficient) }}
             />
+            {photoBadge && <div className="pointer-events-none absolute bottom-6 right-6 hidden lg:block">{photoBadge}</div>}
+          </>
+        )}
+
+        {photo && !fullBleed && (
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+            <Photo tags={photo.tags} lock={photo.lock} alt={photo.alt || title} priority rounded="" className="h-full w-full" />
             <div className="absolute inset-0 bg-gradient-to-r from-navy-800 via-navy-800/80 to-navy-800/25" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-800/70 to-transparent" />
             {photoBadge && <div className="absolute bottom-6 right-6">{photoBadge}</div>}
@@ -110,9 +150,18 @@ export default function PageHero({
                 <p className="mt-5 max-w-xl text-body text-white/70">{intro}</p>
               )}
 
-              {/* Rangée d'icônes optionnelle (voir page Piscine) */}
+              {/* Rangée d'icônes optionnelle (voir page Piscine). `highlightsPanel`
+                  (opt-in) ajoute un fond translucide derrière la rangée — même
+                  procédé que `ZoneBadge` sur Climatisation — pour les héros
+                  `fullBleed` dont la photo a une zone locale trop claire à cet
+                  endroit précis (ex : VMC, fenêtre lumineuse sous « Économies »),
+                  sans toucher au dégradé global ni aux autres appelants. */}
               {highlights && (
-                <ul className="mt-9 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4">
+                <ul
+                  className={`mt-9 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4 ${
+                    highlightsPanel ? 'rounded-xl bg-navy-950/35 px-5 py-5 backdrop-blur-sm' : ''
+                  }`}
+                >
                   {highlights.map((h) => (
                     <li key={h.title} className="flex flex-col items-start">
                       <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />
