@@ -153,7 +153,7 @@ export const guarantees = [
 export const tvaCard = {
   title: 'TVA réduite à 5,5 %*',
   text: "Sur les travaux d’amélioration énergétique réalisés dans un logement achevé depuis plus de deux ans, la TVA s’applique au taux réduit de 5,5 % au lieu de 20 %. PCE établit l’attestation, la fait signer et applique le taux réduit directement sur votre devis : vous n’avez aucune démarche à effectuer.",
-  note: "* Taux réduit applicable sous conditions (article 278-0 bis A du CGI) : logement à usage d'habitation achevé depuis plus de deux ans, matériel et pose facturés par la même entreprise, attestation simplifiée signée avant le début des travaux. Selon la législation en vigueur.",
+  note: "* Taux réduit applicable sous conditions (article 278-0 bis A du CGI) : logement à usage d’habitation achevé depuis plus de deux ans, matériel et pose facturés par la même entreprise, attestation simplifiée signée avant le début des travaux. Selon la législation en vigueur.",
 }
 
 /* ================================================================ MÉTIERS =*/

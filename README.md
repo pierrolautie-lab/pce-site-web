@@ -251,6 +251,96 @@ Deux usages :
 
 ---
 
+## Relecture typographique et orthographique
+
+Le site va continuer à recevoir du contenu (communes, articles, pages) :
+chaque ajout réintroduit des apostrophes droites et des espaces
+insécables manquantes. Deux outils permanents, construits lors de l'audit
+du 19-20/08/2026, évitent de refaire ce travail à la main à chaque fois.
+
+**Périmètre des deux outils** (voir `scripts/lib/prose-fields.cjs`, la
+référence — ce README résume, ne duplique pas) : uniquement les champs de
+prose affichée de `src/data/site.js`, `src/data/articles.js` et
+`src/data/local.js`. Une chaîne n'est traitée que si sa clé d'objet figure
+dans une **liste blanche** (`title`, `text`, `label`, `q`, `a`,
+`paragraphs`, `intro`, `metaDescription`, `h1`, `h2`…) et ne ressemble pas
+à un chemin, une URL ou un slug (garde-fou supplémentaire même sous une
+clé de la liste blanche). Une **liste noire** de clés structurelles
+(`slug`, `path`, `to`, `href`, `icon`, `className`, `lock`, `city`,
+`name`, `src`…) est prioritaire et exclut toujours. **Ne jamais ajouter
+une clé à la liste blanche « parce qu'elle a l'air de contenir du
+texte »** — vérifier le contenu réel de la clé dans le fichier avant
+d'ajouter, sinon l'outil finit par corrompre un slug ou une classe CSS un
+jour où cette clé sert à autre chose ailleurs. C'est précisément pour
+cette raison que les clés `d` et `h` (tableau `hours` de `site.js`) sont
+sciemment absentes malgré une prose légitime à cet endroit : `d` est
+aussi l'attribut `d` d'un tracé SVG (`Icon.jsx`), trop générique pour une
+liste blanche permanente.
+
+### `npm run check:typo`
+
+Signale les défauts typographiques (apostrophe droite, `...`, espace
+manquante avant `? ! : ; » %`) sans rien écrire. À lancer après tout
+ajout de contenu.
+
+### `npm run fix:typo`
+
+Applique les corrections trouvées par `check:typo`. Remplacement de plage
+sur le texte source (pas de régénération de code via un générateur AST) :
+le diff produit ne contient que les caractères réellement changés, ce qui
+le rend relisible intégralement avant de committer — voir la méthode
+complète dans l'historique Git du 19-20/08/2026 (recherche du commit
+« Passe typographique mécanique »).
+
+### `npm run check:spell`
+
+Passe la même prose dans `nspell` + `dictionary-fr` (implémentation JS de
+l'algorithme Hunspell, dictionnaire fr_FR de LibreOffice — `hunspell` en
+tant que binaire n'est pas installé sur les machines de développement
+utilisées jusqu'ici). Liste les mots absents du dictionnaire, **sans
+jamais corriger** : un correcteur généraliste signale à tort tout le
+vocabulaire métier et les noms propres locaux. La séparation
+contrôle/correction compte particulièrement ici — une correction
+automatique sur un faux positif de vocabulaire introduirait une vraie
+faute.
+
+La liste `EXCEPTIONS` dans `scripts/spellcheck.cjs` — vocabulaire métier
+(gainable, hygroréglable, adoucisseur, redox, thermodynamique…), marques
+(Daikin, Frisquet, MaPrimeRénov'…) et communes du Var (Lorgues,
+Entrecasteaux, Figanières, Rayol-Canadel-sur-Mer…) — **est le savoir
+réellement accumulé par cet audit**. Sans elle, chaque exécution
+future remonterait les mêmes ~40 faux positifs. Quand un nouveau terme
+métier ou une nouvelle commune apparaît dans le contenu :
+
+1. Vérifier que le mot est réellement correct (dictionnaire, source
+   fiable) — ne jamais ajouter « au cas où » pour faire taire l'outil.
+2. L'ajouter à `EXCEPTIONS` (ou `KNOWN_PLACES` pour une commune), en
+   minuscules dans le tableau — la comparaison se fait insensible à la
+   casse.
+3. Relancer `check:spell` pour confirmer que le suspect disparaît.
+
+### Deux limites connues
+
+- **`metaClosings` (`local.js`)** : un tableau de 4 phrases de clôture,
+  déclaré au niveau racine du module (`const metaClosings = [...]`), hors
+  de toute clé d'objet. La résolution de « clé gouvernante » des deux
+  outils ne remonte pas jusqu'à un `const` nommé — ces 4 phrases ne sont
+  donc jamais scannées. Vérifié manuellement le 20/08/2026 : aucune ne
+  contient de caractère concerné par la typographie ou de mot hors
+  dictionnaire, mais à re-vérifier à la main si leur contenu change.
+- **Mots d'une seule lettre** (`check:spell`) : ignorés, car aucun mot
+  français valide d'une lettre n'existe à vérifier utilement une fois les
+  élisions (l'/d'/qu'…) déjà retirées en amont. Un « A » isolé qui
+  devrait être « À » ne serait donc pas détecté par `check:spell`. Une
+  recherche ciblée sur les capitales sans accent et les lettres isolées a
+  été faite à la main le 20/08/2026 sur tout `src/` (pas seulement les 3
+  fichiers de données) : aucun cas réel trouvé, uniquement des faux
+  positifs (tracés SVG, couleurs hexadécimales, « E-mail », références
+  légales, numéros d'autoroute). À refaire ponctuellement plutôt qu'en
+  continu si le doute revient — pas d'outil permanent pour ce point précis.
+
+---
+
 ## Visuels de réalisations à refaire
 
 Ces six photos sont conservées en attendant un remplacement (décision
