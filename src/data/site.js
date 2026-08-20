@@ -8,11 +8,11 @@ export const company = {
   name: 'PCE',
   signature: 'Depuis 2005',
   /* Signature dorée reprise dans les héros */
-  expertise: "L'expertise PCE à votre service",
+  expertise: "L’expertise PCE à votre service",
   /* Baseline du pied de page */
-  tagline: 'La qualité au service de votre confort !',
+  tagline: 'La qualité au service de votre confort !',
   baseline:
-    "Plomberie · Chauffage · Climatisation · Électricité · Piscine · Traitement de l'eau · Dépannage dans tout le Var",
+    "Plomberie · Chauffage · Climatisation · Électricité · Piscine · Traitement de l’eau · Dépannage dans tout le Var",
   /* Ligne de métiers reprise dans le logo */
   baselineShort: 'Plomberie · Chauffage · Électricité · Piscine — Tout corps d’état',
   since: 2005,
@@ -91,7 +91,7 @@ export const trades = [
   { label: 'Climatisation', to: '/climatisation' },
   { label: 'Électricité', to: '/electricite' },
   { label: 'Piscine', to: '/piscine' },
-  { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
+  { label: "Traitement de l’eau", to: '/traitement-de-l-eau' },
   { label: 'VMC', to: '/vmc' },
 ]
 
@@ -114,14 +114,14 @@ export const navServices = [
   { label: 'Climatisation', to: '/climatisation' },
   { label: 'Électricité', to: '/electricite' },
   { label: 'Piscine', to: '/piscine' },
-  { label: "Traitement de l'eau", to: '/traitement-de-l-eau' },
+  { label: "Traitement de l’eau", to: '/traitement-de-l-eau' },
   { label: 'VMC', to: '/vmc' },
   { label: 'Dépannage', to: '/depannage' },
 ]
 
 /* Section « Pourquoi choisir PCE ? » de la page d'accueil. */
 export const whyChooseUs = [
-  { icon: 'award', title: "20 ans d'expérience", text: 'Depuis 2005, PCE intervient à Lorgues et dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
+  { icon: 'award', title: "20 ans d’expérience", text: 'Depuis 2005, PCE intervient à Lorgues et dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
   { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, nous intervenons rapidement dans toute la Dracénie et le Golfe de Saint-Tropez.' },
   { icon: 'clipboard', title: 'Devis gratuit', text: 'Étude personnalisée et devis détaillé, sans engagement.' },
   { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans un rayon de 50 km autour de Lorgues.' },
@@ -151,8 +151,8 @@ export const guarantees = [
 
 /* ------------------------------------------------------------ TVA 5,5 % --*/
 export const tvaCard = {
-  title: 'TVA réduite à 5,5 %*',
-  text: "Sur les travaux d'amélioration énergétique réalisés dans un logement achevé depuis plus de deux ans, la TVA s'applique au taux réduit de 5,5 % au lieu de 20 %. PCE établit l'attestation, la fait signer et applique le taux réduit directement sur votre devis : vous n'avez aucune démarche à effectuer.",
+  title: 'TVA réduite à 5,5 %*',
+  text: "Sur les travaux d’amélioration énergétique réalisés dans un logement achevé depuis plus de deux ans, la TVA s’applique au taux réduit de 5,5 % au lieu de 20 %. PCE établit l’attestation, la fait signer et applique le taux réduit directement sur votre devis : vous n’avez aucune démarche à effectuer.",
   note: "* Taux réduit applicable sous conditions (article 278-0 bis A du CGI) : logement à usage d'habitation achevé depuis plus de deux ans, matériel et pose facturés par la même entreprise, attestation simplifiée signée avant le début des travaux. Selon la législation en vigueur.",
 }
 
@@ -166,9 +166,9 @@ export const services = {
     icon: 'droplet',
     tagline: 'Des solutions durables pour votre confort au quotidien.',
     intro:
-      "Depuis 2005, PCE prend en charge l'ensemble de vos travaux de plomberie, de la création d'un réseau neuf à la rénovation complète d'une salle de bains. Recherche de fuite non destructive, remplacement de chauffe-eau, traitement de l'eau : un seul interlocuteur, du premier relevé jusqu'à la mise en service.",
-    card: "Réseaux neufs, salles de bains, recherche de fuite et traitement de l'eau.",
-    metaDescription: "Plombier à Lorgues (83) : réseaux neufs, rénovation de salle de bains, recherche de fuite non destructive et chauffe-eau. Devis gratuit, intervention rapide dans le Var.",
+      "Depuis 2005, PCE prend en charge l’ensemble de vos travaux de plomberie, de la création d’un réseau neuf à la rénovation complète d’une salle de bains. Recherche de fuite non destructive, remplacement de chauffe-eau, traitement de l’eau : un seul interlocuteur, du premier relevé jusqu’à la mise en service.",
+    card: "Réseaux neufs, salles de bains, recherche de fuite et traitement de l’eau.",
+    metaDescription: "Plombier à Lorgues (83) : réseaux neufs, rénovation de salle de bains, recherche de fuite non destructive et chauffe-eau. Devis gratuit, intervention rapide dans le Var.",
     hero: { tags: 'bathroom', lock: 231 },
 
     prestations: [
@@ -176,7 +176,7 @@ export const services = {
       { icon: 'shower', title: 'Salle de bains', label: 'Rénovation clé en main' },
       { icon: 'search', title: 'Recherche de fuite', label: 'Détection non destructive' },
       { icon: 'flame', title: 'Chauffe-eau', label: 'Ballons et thermodynamique' },
-      { icon: 'filter', title: "Traitement de l'eau", label: 'Adoucisseur et filtration' },
+      { icon: 'filter', title: "Traitement de l’eau", label: 'Adoucisseur et filtration' },
       { icon: 'gauge', title: 'Débit et pression', label: 'Réglage et mise aux normes' },
     ],
 
@@ -185,46 +185,46 @@ export const services = {
       heading: 'De Paris au bâti varois, vingt ans de plomberie',
       photo: { tags: 'plumbing', lock: 232 },
       paragraphs: [
-        "Avant le Var, il y a eu Paris. L'entreprise s'est construite sur une forte expérience du chauffage en région parisienne, puis sur l'apprentissage du métier dans sa forme la plus exigeante : le cuivre cintré et brasé, le zinc, le plomb des réseaux anciens. Ce sont des chantiers de rénovation d'immeubles haussmanniens, menés avec des architectes, qui ont formé notre façon de travailler.",
-        "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l'Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d'ouvrir une saignée.",
-        "Notre parti pris est simple : nous ne posons que du matériel que nous saurons réparer dans dix ans. Multicouche à sertir pour les réseaux encastrés, laiton sur les points sensibles, robinetterie de marques distribuées en France dont les pièces détachées restent disponibles. Chaque installation est repérée, chaque vanne d'arrêt reste accessible, et chaque chantier est livré avec un plan de réseau que vous conservez.",
-        "L'eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C'est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer un adoucisseur ou une solution de filtration adaptée à votre consommation réelle.",
+        "Avant le Var, il y a eu Paris. L’entreprise s’est construite sur une forte expérience du chauffage en région parisienne, puis sur l’apprentissage du métier dans sa forme la plus exigeante : le cuivre cintré et brasé, le zinc, le plomb des réseaux anciens. Ce sont des chantiers de rénovation d’immeubles haussmanniens, menés avec des architectes, qui ont formé notre façon de travailler.",
+        "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l’Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d’ouvrir une saignée.",
+        "Notre parti pris est simple : nous ne posons que du matériel que nous saurons réparer dans dix ans. Multicouche à sertir pour les réseaux encastrés, laiton sur les points sensibles, robinetterie de marques distribuées en France dont les pièces détachées restent disponibles. Chaque installation est repérée, chaque vanne d’arrêt reste accessible, et chaque chantier est livré avec un plan de réseau que vous conservez.",
+        "L’eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C’est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer un adoucisseur ou une solution de filtration adaptée à votre consommation réelle.",
       ],
       points: [
         'Réseaux repérés et plan remis en fin de chantier',
-        "Vannes d'arrêt toujours laissées accessibles",
-        "Dureté de l'eau mesurée sur place, avant devis",
+        "Vannes d’arrêt toujours laissées accessibles",
+        "Dureté de l’eau mesurée sur place, avant devis",
         'Matériel choisi pour être réparable, pas jetable',
       ],
     },
 
     process: [
       { title: 'Le premier échange', text: "Vous nous décrivez la situation par téléphone. Nous posons les questions utiles et fixons une visite, généralement sous quarante-huit heures." },
-      { title: 'La visite technique', text: "Relevé sur place, mesure de la dureté et de la pression, contrôle de l'état des réseaux existants. Gratuite et sans engagement." },
+      { title: 'La visite technique', text: "Relevé sur place, mesure de la dureté et de la pression, contrôle de l’état des réseaux existants. Gratuite et sans engagement." },
       { title: 'Le devis détaillé', text: "Poste par poste, avec les références exactes du matériel et le taux de TVA applicable. Valable trois mois, sans révision de prix." },
       { title: 'Le chantier', text: "Dates annoncées et tenues, sols protégés, gravats évacués. Nous laissons le chantier propre chaque soir, y compris sur les rénovations lourdes." },
       { title: 'La mise en service', text: "Essais en votre présence, explication des organes de coupe, remise du plan et des notices. Nous restons joignables après la facture." },
     ],
 
     info: {
-      heading: "Pourquoi traiter l'eau de votre logement ?",
-      lead: "L'eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f de dureté. Un adoucisseur correctement dimensionné change le quotidien et protège durablement vos équipements.",
+      heading: "Pourquoi traiter l’eau de votre logement ?",
+      lead: "L’eau de Lorgues et de la Dracénie dépasse fréquemment 30 °f de dureté. Un adoucisseur correctement dimensionné change le quotidien et protège durablement vos équipements.",
       bullets: [
         'Fini les dépôts de calcaire sur la robinetterie, les parois de douche et le carrelage.',
         'Une durée de vie nettement allongée pour le chauffe-eau, le lave-linge et le lave-vaisselle.',
-        "Des économies sur les produits d'entretien et les détergents.",
+        "Des économies sur les produits d’entretien et les détergents.",
         'Une eau plus douce pour la peau, les cheveux et la tenue du linge.',
         'Un entretien minimal selon la solution retenue.',
       ],
-      link: { to: '/traitement-de-l-eau', label: "Découvrir nos adoucisseurs et le traitement de l'eau" },
+      link: { to: '/traitement-de-l-eau', label: "Découvrir nos adoucisseurs et le traitement de l’eau" },
     },
 
     faq: [
-      { q: 'Intervenez-vous en urgence pour une fuite ?', a: "Oui, sept jours sur sept. Un dégât des eaux ne peut pas attendre le lundi : appelez-nous, nous vous donnons un créneau dès l'appel et nous vous indiquons par téléphone comment couper l'arrivée d'eau en attendant." },
-      { q: 'Comment se déroule une recherche de fuite ?', a: "Nous travaillons sans casser : gaz traceur, caméra thermique, corrélation acoustique et inspection par caméra selon la configuration. Le point de fuite est localisé au centimètre, puis nous vous proposons la réparation dans la foulée." },
-      { q: 'Quel délai pour une salle de bains complète ?', a: "Comptez de dix à quinze jours ouvrés selon l'ampleur de la dépose et le carrelage retenu. Nous coordonnons nous-mêmes le carreleur et l'électricien, ce qui évite les temps morts entre corps de métier." },
-      { q: 'Faut-il traiter son eau dans le Var ?', a: "Dans notre secteur, très souvent oui. Mais nous mesurons toujours la qualité de l'eau avant de vous le dire : sur certains réseaux communaux, un simple filtre en tête d'installation suffit et coûte bien moins cher." },
-      { q: 'Vous occupez-vous des démarches de TVA réduite ?', a: "Oui. Nous vérifions votre éligibilité, nous préparons l'attestation simplifiée et nous appliquons directement le taux de 5,5 % sur le devis. Vous n'avez qu'une signature à apposer." },
+      { q: 'Intervenez-vous en urgence pour une fuite ?', a: "Oui, sept jours sur sept. Un dégât des eaux ne peut pas attendre le lundi : appelez-nous, nous vous donnons un créneau dès l’appel et nous vous indiquons par téléphone comment couper l’arrivée d’eau en attendant." },
+      { q: 'Comment se déroule une recherche de fuite ?', a: "Nous travaillons sans casser : gaz traceur, caméra thermique, corrélation acoustique et inspection par caméra selon la configuration. Le point de fuite est localisé au centimètre, puis nous vous proposons la réparation dans la foulée." },
+      { q: 'Quel délai pour une salle de bains complète ?', a: "Comptez de dix à quinze jours ouvrés selon l’ampleur de la dépose et le carrelage retenu. Nous coordonnons nous-mêmes le carreleur et l’électricien, ce qui évite les temps morts entre corps de métier." },
+      { q: 'Faut-il traiter son eau dans le Var ?', a: "Dans notre secteur, très souvent oui. Mais nous mesurons toujours la qualité de l’eau avant de vous le dire : sur certains réseaux communaux, un simple filtre en tête d’installation suffit et coûte bien moins cher." },
+      { q: 'Vous occupez-vous des démarches de TVA réduite ?', a: "Oui. Nous vérifions votre éligibilité, nous préparons l’attestation simplifiée et nous appliquons directement le taux de 5,5 % sur le devis. Vous n’avez qu’une signature à apposer." },
     ],
   },
 
@@ -236,14 +236,14 @@ export const services = {
     icon: 'flame',
     tagline: 'Des solutions performantes et économiques.',
     intro:
-      "Nous dimensionnons chaque installation en fonction de votre logement, de son isolation et du climat provençal — jamais sur catalogue. Étude préalable, choix du matériel, pose et entretien annuel : PCE vous accompagne sur toute la durée de vie de votre système de chauffage.",
+      "Nous dimensionnons chaque installation en fonction de votre logement, de son isolation et du climat provençal — jamais sur catalogue. Étude préalable, choix du matériel, pose et entretien annuel : PCE vous accompagne sur toute la durée de vie de votre système de chauffage.",
     card: "Pompes à chaleur, chaudières et installations gaz, plancher chauffant et entretien.",
-    metaDescription: "Chauffagiste à Lorgues (83) : pompe à chaleur, chaudière à gaz à condensation, plancher chauffant et entretien annuel. Étude thermique et devis gratuit dans le Var.",
+    metaDescription: "Chauffagiste à Lorgues (83) : pompe à chaleur, chaudière à gaz à condensation, plancher chauffant et entretien annuel. Étude thermique et devis gratuit dans le Var.",
     hero: { tags: 'airconditioner', lock: 412 },
 
     /* Rangée de bénéfices, reprise du support « PCE, votre expert chauffage & gaz » */
     benefits: [
-      { icon: 'euro', title: "Économies d'énergie", label: 'Des équipements performants pour réduire vos factures de chauffage.' },
+      { icon: 'euro', title: "Économies d’énergie", label: 'Des équipements performants pour réduire vos factures de chauffage.' },
       { icon: 'home', title: 'Confort optimal', label: 'Une chaleur homogène et constante pour votre bien-être au quotidien.' },
       { icon: 'shieldCheck', title: 'Sécurité assurée', label: 'Des installations fiables et conformes aux normes en vigueur.' },
       { icon: 'handshake', title: 'Aides & subventions', label: 'Nous vous accompagnons dans vos démarches pour bénéficier des aides.' },
@@ -266,7 +266,7 @@ export const services = {
       {
         name: 'Frisquet',
         color: 'text-[#E2001A]',
-        text: "L'excellence française depuis 1868.",
+        text: "L’excellence française depuis 1868.",
         bullets: ['Chaudières gaz à haute performance', 'Fiabilité, durabilité et rendement', 'Fabrication française'],
       },
       {
@@ -279,7 +279,7 @@ export const services = {
       {
         name: 'Chappée',
         color: 'text-[#C8102E]',
-        text: "L'efficacité au service de votre confort.",
+        text: "L’efficacité au service de votre confort.",
         bullets: ['Chaudières gaz, gammes complètes', 'Solutions adaptées à tous les besoins', 'Robustesse et performance'],
       },
     ],
@@ -289,9 +289,9 @@ export const services = {
        plus bas) : chaque chip porte donc son propre équipement cible, pour
        qu'aucun visiteur ne lise ces aides comme applicables au gaz. */
     aids: [
-      { icon: 'euro', label: "MaPrimeRénov'", detail: 'Pompe à chaleur' },
+      { icon: 'euro', label: "MaPrimeRénov’", detail: 'Pompe à chaleur' },
       { icon: 'leaf', label: 'CEE', detail: 'Pompe à chaleur' },
-      { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Tous travaux' },
+      { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Tous travaux' },
     ],
 
     prestations: [
@@ -308,9 +308,9 @@ export const services = {
       heading: 'Le chauffage pensé pour le climat provençal',
       photo: { tags: 'tools', lock: 413 },
       paragraphs: [
-        "Chauffer une maison dans le Var n'a rien à voir avec chauffer une maison en Bourgogne. Nos hivers comptent peu de journées sous zéro, mais nos bastides en pierre ont une inertie considérable et nos étés imposent de penser le rafraîchissement dès la conception. C'est cette lecture locale qui guide chacune de nos préconisations depuis notre installation dans le Var.",
-        "Concrètement, nous refusons de dimensionner une pompe à chaleur au ratio. Nous relevons les surfaces, l'orientation, la nature des murs, l'état des menuiseries et les émetteurs existants, puis nous calculons la puissance réellement nécessaire. Une machine surdimensionnée coûte plus cher à l'achat, se met en défaut par cycles courts et s'use prématurément : c'est l'erreur que nous voyons le plus souvent sur les installations que nous reprenons.",
-        "Nous privilégions les fabricants disposant d'un réseau technique en région PACA, afin qu'une pièce sous garantie arrive en quarante-huit heures et non en trois semaines. Et parce qu'une installation ne vaut que par son suivi, nous assurons nous-mêmes l'entretien annuel, avec relevé des performances et attestation d'entretien remise à chaque passage.",
+        "Chauffer une maison dans le Var n’a rien à voir avec chauffer une maison en Bourgogne. Nos hivers comptent peu de journées sous zéro, mais nos bastides en pierre ont une inertie considérable et nos étés imposent de penser le rafraîchissement dès la conception. C’est cette lecture locale qui guide chacune de nos préconisations depuis notre installation dans le Var.",
+        "Concrètement, nous refusons de dimensionner une pompe à chaleur au ratio. Nous relevons les surfaces, l’orientation, la nature des murs, l’état des menuiseries et les émetteurs existants, puis nous calculons la puissance réellement nécessaire. Une machine surdimensionnée coûte plus cher à l’achat, se met en défaut par cycles courts et s’use prématurément : c’est l’erreur que nous voyons le plus souvent sur les installations que nous reprenons.",
+        "Nous privilégions les fabricants disposant d’un réseau technique en région PACA, afin qu’une pièce sous garantie arrive en quarante-huit heures et non en trois semaines. Et parce qu’une installation ne vaut que par son suivi, nous assurons nous-mêmes l’entretien annuel, avec relevé des performances et attestation d’entretien remise à chaque passage.",
       ],
       points: [
         'Bilan thermique réalisé avant toute préconisation',
@@ -321,19 +321,19 @@ export const services = {
     },
 
     process: [
-      { title: "L'étude du logement", text: "Relevé des surfaces, de l'isolation, de l'orientation et des émetteurs en place. C'est cette étape qui détermine la puissance et le type de machine." },
-      { title: 'Le comparatif chiffré', text: "Nous présentons deux à trois solutions avec, pour chacune, le coût d'installation, la consommation annuelle estimée et les aides mobilisables." },
-      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov', certificats d'économie d'énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l'être du devis. Pour une chaudière à gaz, seule la TVA à 5,5 % et l'éco-PTZ restent mobilisables." },
-      { title: "L'installation", text: "Dépose de l'ancien système, pose, raccordements hydrauliques et frigorifiques, mise en service et équilibrage des émetteurs." },
+      { title: "L’étude du logement", text: "Relevé des surfaces, de l’isolation, de l’orientation et des émetteurs en place. C’est cette étape qui détermine la puissance et le type de machine." },
+      { title: 'Le comparatif chiffré', text: "Nous présentons deux à trois solutions avec, pour chacune, le coût d’installation, la consommation annuelle estimée et les aides mobilisables." },
+      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov’, certificats d’économie d’énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l’être du devis. Pour une chaudière à gaz, seule la TVA à 5,5 % et l’éco-PTZ restent mobilisables." },
+      { title: "L’installation", text: "Dépose de l’ancien système, pose, raccordements hydrauliques et frigorifiques, mise en service et équilibrage des émetteurs." },
       { title: 'Le suivi dans le temps', text: "Entretien annuel, relevé des performances, attestation remise à chaque passage et intervention prioritaire en cas de panne." },
     ],
 
     info: {
-      heading: 'Pourquoi choisir une pompe à chaleur ?',
-      lead: "Sous le climat de la Dracénie, la pompe à chaleur est la solution la plus rentable du marché : les températures extérieures restent favorables à son rendement presque toute l'année.",
+      heading: 'Pourquoi choisir une pompe à chaleur ?',
+      lead: "Sous le climat de la Dracénie, la pompe à chaleur est la solution la plus rentable du marché : les températures extérieures restent favorables à son rendement presque toute l’année.",
       bullets: [
-        "Jusqu'à 75 % de l'énergie restituée est puisée gratuitement dans l'air extérieur.",
-        "Une réduction immédiate et importante de votre consommation d'énergie.",
+        "Jusqu’à 75 % de l’énergie restituée est puisée gratuitement dans l’air extérieur.",
+        "Une réduction immédiate et importante de votre consommation d’énergie.",
         'Chauffage en hiver et rafraîchissement en été avec un seul appareil (selon modèle).',
         'Une valorisation nette de votre logement à la revente comme à la location.',
         'Plus aucune cuve, aucune livraison de combustible, aucun ramonage.',
@@ -341,11 +341,11 @@ export const services = {
     },
 
     faq: [
-      { q: "Une pompe à chaleur fonctionne-t-elle vraiment l'hiver ici ?", a: "Parfaitement. Dans la Dracénie, la température descend rarement sous −3 °C et les machines actuelles conservent un excellent rendement jusqu'à −10 °C. C'est justement l'un des climats les plus favorables de France pour cette technologie." },
-      { q: 'Puis-je garder mes radiateurs existants ?', a: "Souvent oui, à condition qu'ils soient suffisamment dimensionnés. Nous le vérifions pendant l'étude. Si un ou deux radiateurs sont trop justes, il est presque toujours moins coûteux de les remplacer que de renoncer à la pompe à chaleur." },
-      { q: "L'entretien annuel est-il obligatoire ?", a: "Oui pour les pompes à chaleur de plus de 4 kW et pour les chaudières gaz. Au-delà de l'obligation, c'est ce qui préserve le rendement et la garantie constructeur. Nous proposons un contrat avec passage programmé et intervention prioritaire." },
-      { q: 'Le groupe extérieur est-il bruyant ?', a: "Les machines récentes tournent autour de 35 à 45 dB à quelques mètres. L'essentiel se joue à l'implantation : nous étudions la distance aux chambres, aux voisins et aux murs réfléchissants avant de fixer l'emplacement." },
-      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov', prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov' et la prime CEE ne sont plus mobilisables depuis 2023-2024 : seules la TVA à 5,5 % et l'éco-PTZ restent disponibles. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
+      { q: "Une pompe à chaleur fonctionne-t-elle vraiment l’hiver ici ?", a: "Parfaitement. Dans la Dracénie, la température descend rarement sous −3 °C et les machines actuelles conservent un excellent rendement jusqu’à −10 °C. C’est justement l’un des climats les plus favorables de France pour cette technologie." },
+      { q: 'Puis-je garder mes radiateurs existants ?', a: "Souvent oui, à condition qu’ils soient suffisamment dimensionnés. Nous le vérifions pendant l’étude. Si un ou deux radiateurs sont trop justes, il est presque toujours moins coûteux de les remplacer que de renoncer à la pompe à chaleur." },
+      { q: "L’entretien annuel est-il obligatoire ?", a: "Oui pour les pompes à chaleur de plus de 4 kW et pour les chaudières gaz. Au-delà de l’obligation, c’est ce qui préserve le rendement et la garantie constructeur. Nous proposons un contrat avec passage programmé et intervention prioritaire." },
+      { q: 'Le groupe extérieur est-il bruyant ?', a: "Les machines récentes tournent autour de 35 à 45 dB à quelques mètres. L’essentiel se joue à l’implantation : nous étudions la distance aux chambres, aux voisins et aux murs réfléchissants avant de fixer l’emplacement." },
+      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov’, prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov’ et la prime CEE ne sont plus mobilisables depuis 2023-2024 : seules la TVA à 5,5 % et l’éco-PTZ restent disponibles. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
     ],
   },
 
@@ -355,11 +355,11 @@ export const services = {
     title: 'Climatisation',
     navLabel: 'Climatisation',
     icon: 'snowflake',
-    tagline: "Fraîcheur l'été, confort l'hiver.",
+    tagline: "Fraîcheur l’été, confort l’hiver.",
     intro:
-      "C'est en nous installant dans le Var que nous avons ajouté la climatisation à nos métiers, pour répondre à une demande que le climat local rend incontournable. Rafraîchir sans faire de bruit ni défigurer une façade, c'est tout l'enjeu d'une bonne installation. Nous étudions l'implantation des unités, l'acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l'entretien réglementaire de votre équipement.",
+      "C’est en nous installant dans le Var que nous avons ajouté la climatisation à nos métiers, pour répondre à une demande que le climat local rend incontournable. Rafraîchir sans faire de bruit ni défigurer une façade, c’est tout l’enjeu d’une bonne installation. Nous étudions l’implantation des unités, l’acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l’entretien réglementaire de votre équipement.",
     card: 'Mono-split, multi-split, gainable et entretien des unités.',
-    metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
+    metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
     hero: { tags: 'airconditioner', lock: 520 },
 
     /* ------------------------------------------------------------------
@@ -367,12 +367,12 @@ export const services = {
        que `piscine.page` : regroupés ici plutôt qu'en dur dans le JSX.
     ------------------------------------------------------------------ */
     page: {
-      h1: ['Climatisation', 'Confort, performance', "et économies d'énergie"],
+      h1: ['Climatisation', 'Confort, performance', "et économies d’énergie"],
       intro:
         'Installation, entretien et dépannage de systèmes de climatisation pour les particuliers dans tout le Var.',
       heroChecklist: [
         'Confort été comme hiver',
-        "Économies d'énergie",
+        "Économies d’énergie",
         'Matériel haut de gamme',
         'Installation soignée et durable',
         'Entretien & SAV réactif',
@@ -390,7 +390,7 @@ export const services = {
         {
           name: 'Daikin',
           src: '/img/marque-daikin.jpg',
-          text: "L'inventeur du climatiseur réversible.",
+          text: "L’inventeur du climatiseur réversible.",
           bullets: ['Fiabilité éprouvée', 'Niveaux sonores parmi les plus bas', 'Réseau de pièces détachées dense'],
         },
         {
@@ -412,10 +412,10 @@ export const services = {
          `reassurance`) — les répéter ici les aurait affichés deux fois. */
 
       reversible: {
-        heading: ['Climatisation réversible', "Le confort toute l'année"],
+        heading: ['Climatisation réversible', "Le confort toute l’année"],
         paragraphs: [
-          "La climatisation réversible permet de chauffer en hiver et de rafraîchir en été tout en réalisant jusqu'à 70 % d'économies d'énergie par rapport à un système de chauffage classique.",
-          "PCE vous accompagne dans le choix, l'installation et l'entretien de votre climatisation pour un confort optimal au quotidien.",
+          "La climatisation réversible permet de chauffer en hiver et de rafraîchir en été tout en réalisant jusqu’à 70 % d’économies d’énergie par rapport à un système de chauffage classique.",
+          "PCE vous accompagne dans le choix, l’installation et l’entretien de votre climatisation pour un confort optimal au quotidien.",
         ],
         photo: { lock: 519 },
         engagements: {
@@ -478,10 +478,10 @@ export const services = {
       },
 
       argBand: [
-        { icon: 'euro', title: "Économies d'énergie", label: 'Consommation maîtrisée grâce à des équipements performants et économes.' },
+        { icon: 'euro', title: "Économies d’énergie", label: 'Consommation maîtrisée grâce à des équipements performants et économes.' },
         { icon: 'leaf', title: 'Confort optimal', label: 'Température homogène, air sain, régulation précise et silencieuse.' },
         { icon: 'home', title: 'Valorisation de votre bien', label: 'Une climatisation bien installée augmente le confort et la valeur de votre habitation.' },
-        { icon: 'snowflake', title: 'Fonction réversible', label: 'Chauffe en hiver, rafraîchit en été : une solution 2-en-1 pour un confort toute l’année.' },
+        { icon: 'snowflake', title: 'Fonction réversible', label: 'Chauffe en hiver, rafraîchit en été : une solution 2-en-1 pour un confort toute l’année.' },
       ],
 
       /* ⚠️ La pose d'une climatisation seule (PAC air/air) est exclue du
@@ -489,11 +489,11 @@ export const services = {
          texte volontairement conditionnel, aucun badge d'aide affiché. */
       aids: {
         heading: 'Aides & avantages',
-        text: "Le remplacement d'une climatisation seule ne bénéficie plus des aides MaPrimeRénov' ni des CEE depuis le 1ᵉʳ janvier 2025. Ces dispositifs restent mobilisables lorsque le projet inclut une pompe à chaleur air/eau : nous étudions votre éligibilité au cas par cas.",
+        text: "Le remplacement d’une climatisation seule ne bénéficie plus des aides MaPrimeRénov’ ni des CEE depuis le 1ᵉʳ janvier 2025. Ces dispositifs restent mobilisables lorsque le projet inclut une pompe à chaleur air/eau : nous étudions votre éligibilité au cas par cas.",
       },
 
       zone: {
-        heading: "Notre zone d'intervention",
+        heading: "Notre zone d’intervention",
         text: 'Nous intervenons dans tout le Var, de Lorgues au Golfe de Saint-Tropez et toutes les communes alentour.',
       },
     },
@@ -507,8 +507,8 @@ export const services = {
     ],
 
     prestations: [
-      { icon: 'acUnit', title: 'Climatisation monosplit', label: 'Une pièce à traiter' },
-      { icon: 'layers', title: 'Climatisation multisplit', label: 'Plusieurs unités intérieures' },
+      { icon: 'acUnit', title: 'Climatisation mono-split', label: 'Une pièce à traiter' },
+      { icon: 'layers', title: 'Climatisation multi-split', label: 'Plusieurs unités intérieures' },
       { icon: 'settings', title: 'Entretien et maintenance', label: 'Nettoyage et contrôle du fluide' },
       { icon: 'wrench', title: 'Dépannage toutes marques', label: 'Diagnostic et réparation' },
       { icon: 'search', title: 'Conseil et étude', label: 'Dimensionnement sur mesure' },
@@ -520,10 +520,10 @@ export const services = {
       heading: "La climatisation, un métier né du climat varois",
       photo: { tags: 'livingroom', lock: 518 },
       paragraphs: [
-        "La climatisation n'était pas au programme. C'est l'installation dans le Var qui l'a imposée : des étés qui s'allongent, des bastides en pierre qui emmagasinent la chaleur, une clientèle qui demandait à rafraîchir des maisons conçues pour l'inverse. Le chauffage, nous le connaissions déjà — c'est le métier avec lequel l'entreprise s'est construite en région parisienne. La climatisation, nous sommes allés la chercher, ici, parce que le terrain la réclamait.",
-        "Détenteurs de l'attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011, année où nous avons passé la qualification pour répondre à cette demande, principalement du matériel Daikin, Mitsubishi Electric et Midea, choisi pour sa fiabilité et la disponibilité des pièces détachées dans notre secteur. Avec le temps, nous avons développé une conviction : une bonne installation, c'est celle qu'on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d'une façade en pierre, ni goulotte plastique qui court le long d'un mur.",
-        "Cela demande du temps en amont. Nous étudions le tracé des liaisons pour les encastrer ou les dissimuler, nous calculons la distance acoustique aux pièces de nuit et aux limites de propriété, et nous intégrons le groupe extérieur derrière un claustra ou dans un renfoncement chaque fois que c'est possible. Sur les maisons de caractère de Lorgues, c'est souvent ce détail qui fait toute la différence.",
-        "Techniquement, nous ne transigeons pas sur la mise sous vide et le contrôle d'étanchéité : ce sont les deux opérations que les poses bâclées suppriment, et la cause quasi systématique des pannes qui surviennent au bout de deux étés. Nous laissons également un accès de maintenance sur chaque unité, pour que l'entretien annuel ne se transforme pas en démontage.",
+        "La climatisation n’était pas au programme. C’est l’installation dans le Var qui l’a imposée : des étés qui s’allongent, des bastides en pierre qui emmagasinent la chaleur, une clientèle qui demandait à rafraîchir des maisons conçues pour l’inverse. Le chauffage, nous le connaissions déjà — c’est le métier avec lequel l’entreprise s’est construite en région parisienne. La climatisation, nous sommes allés la chercher, ici, parce que le terrain la réclamait.",
+        "Détenteurs de l’attestation de capacité à la manipulation des fluides frigorigènes, nous posons des climatisations dans le Var depuis 2011, année où nous avons passé la qualification pour répondre à cette demande, principalement du matériel Daikin, Mitsubishi Electric et Midea, choisi pour sa fiabilité et la disponibilité des pièces détachées dans notre secteur. Avec le temps, nous avons développé une conviction : une bonne installation, c’est celle qu’on oublie. Ni ronronnement dans la chambre, ni groupe extérieur planté au milieu d’une façade en pierre, ni goulotte plastique qui court le long d’un mur.",
+        "Cela demande du temps en amont. Nous étudions le tracé des liaisons pour les encastrer ou les dissimuler, nous calculons la distance acoustique aux pièces de nuit et aux limites de propriété, et nous intégrons le groupe extérieur derrière un claustra ou dans un renfoncement chaque fois que c’est possible. Sur les maisons de caractère de Lorgues, c’est souvent ce détail qui fait toute la différence.",
+        "Techniquement, nous ne transigeons pas sur la mise sous vide et le contrôle d’étanchéité : ce sont les deux opérations que les poses bâclées suppriment, et la cause quasi systématique des pannes qui surviennent au bout de deux étés. Nous laissons également un accès de maintenance sur chaque unité, pour que l’entretien annuel ne se transforme pas en démontage.",
       ],
       points: [
         'Attestation de capacité fluides frigorigènes',
@@ -534,11 +534,11 @@ export const services = {
     },
 
     process: [
-      { title: 'La visite des pièces', text: "Volumes, orientation, apports solaires, nombre d'occupants : nous calculons les frigories réellement nécessaires, pièce par pièce." },
-      { title: "Le choix de l'implantation", text: "Position des unités intérieures, tracé des liaisons, emplacement du groupe extérieur — validé avec vous avant toute commande." },
+      { title: 'La visite des pièces', text: "Volumes, orientation, apports solaires, nombre d’occupants : nous calculons les frigories réellement nécessaires, pièce par pièce." },
+      { title: "Le choix de l’implantation", text: "Position des unités intérieures, tracé des liaisons, emplacement du groupe extérieur — validé avec vous avant toute commande." },
       { title: 'Le devis et la commande', text: "Matériel nommément désigné (Daikin, Mitsubishi Electric, Midea selon les projets), puissance, classe énergétique et niveau sonore indiqués noir sur blanc." },
-      { title: 'La pose', text: "Percements soignés, liaisons encastrées ou dissimulées, tirage au vide, charge en fluide et contrôle d'étanchéité." },
-      { title: 'La prise en main', text: "Réglages, explication de la télécommande et de l'application, conseils d'usage pour ne pas surconsommer." },
+      { title: 'La pose', text: "Percements soignés, liaisons encastrées ou dissimulées, tirage au vide, charge en fluide et contrôle d’étanchéité." },
+      { title: 'La prise en main', text: "Réglages, explication de la télécommande et de l’application, conseils d’usage pour ne pas surconsommer." },
     ],
 
     info: {
@@ -546,19 +546,19 @@ export const services = {
       lead: "Le confort et la facture ne dépendent pas de la marque, mais du dimensionnement et de la qualité de pose. Voici ce que nous vérifions systématiquement.",
       bullets: [
         'Un dimensionnement juste garantit le confort et évite la surconsommation.',
-        "Une climatisation moderne consomme trois à quatre fois moins qu'un radiateur électrique.",
-        "La qualité de l'air intérieur est améliorée par la filtration des unités.",
+        "Une climatisation moderne consomme trois à quatre fois moins qu’un radiateur électrique.",
+        "La qualité de l’air intérieur est améliorée par la filtration des unités.",
         'En mode réversible, elle chauffe efficacement pendant les mi-saisons.',
         'Un entretien régulier conditionne la performance et la longévité.',
       ],
     },
 
     faq: [
-      { q: 'Puis-je faire poser une climatisation moi-même ?', a: "Non : la mise en service implique la manipulation de fluides frigorigènes, réservée par la loi aux détenteurs d'une attestation de capacité. Une pose non conforme annule par ailleurs la garantie du fabricant." },
-      { q: 'Quelle différence entre monosplit et multisplit ?', a: "Le monosplit relie un groupe extérieur à une seule unité intérieure. Le multisplit permet d'en raccorder deux à cinq sur un seul groupe : une façade dégagée, un seul point d'alimentation, mais une puissance à répartir avec soin." },
-      { q: 'Le gainable est-il envisageable en rénovation ?', a: "Oui dès qu'il existe des combles accessibles ou un faux plafond. Le résultat est très discret : seules des grilles linéaires restent visibles. Nous étudions la faisabilité pendant la visite technique." },
-      { q: 'À quelle fréquence entretenir sa climatisation ?', a: "Un nettoyage des filtres tous les deux à trois mois d'usage, et une visite professionnelle annuelle. Le contrôle d'étanchéité est obligatoire dès que la charge en fluide dépasse le seuil réglementaire." },
-      { q: 'Peut-on climatiser une maison en pierre ?', a: "Tout à fait, et l'inertie des murs joue même en votre faveur. La difficulté est le passage des liaisons : c'est précisément le genre de configuration sur lequel nous travaillons chaque semaine dans le Var." },
+      { q: 'Puis-je faire poser une climatisation moi-même ?', a: "Non : la mise en service implique la manipulation de fluides frigorigènes, réservée par la loi aux détenteurs d’une attestation de capacité. Une pose non conforme annule par ailleurs la garantie du fabricant." },
+      { q: 'Quelle différence entre mono-split et multi-split ?', a: "Le mono-split relie un groupe extérieur à une seule unité intérieure. Le multi-split permet d’en raccorder deux à cinq sur un seul groupe : une façade dégagée, un seul point d’alimentation, mais une puissance à répartir avec soin." },
+      { q: 'Le gainable est-il envisageable en rénovation ?', a: "Oui dès qu’il existe des combles accessibles ou un faux plafond. Le résultat est très discret : seules des grilles linéaires restent visibles. Nous étudions la faisabilité pendant la visite technique." },
+      { q: 'À quelle fréquence entretenir sa climatisation ?', a: "Un nettoyage des filtres tous les deux à trois mois d’usage, et une visite professionnelle annuelle. Le contrôle d’étanchéité est obligatoire dès que la charge en fluide dépasse le seuil réglementaire." },
+      { q: 'Peut-on climatiser une maison en pierre ?', a: "Tout à fait, et l’inertie des murs joue même en votre faveur. La difficulté est le passage des liaisons : c’est précisément le genre de configuration sur lequel nous travaillons chaque semaine dans le Var." },
     ],
   },
 
@@ -570,9 +570,9 @@ export const services = {
     icon: 'bolt',
     tagline: 'Sécurité, performance et conformité.',
     intro:
-      "Tableau vétuste, disjoncteur qui saute, projet d'extension ou borne de recharge : nous reprenons votre installation électrique dans le respect de la norme NF C 15-100. Chaque chantier est repéré, étiqueté et livré avec un schéma de tableau lisible par n'importe quel électricien après nous.",
+      "Tableau vétuste, disjoncteur qui saute, projet d’extension ou borne de recharge : nous reprenons votre installation électrique dans le respect de la norme NF C 15-100. Chaque chantier est repéré, étiqueté et livré avec un schéma de tableau lisible par n’importe quel électricien après nous.",
     card: 'Tableaux, mise aux normes NF C 15-100, dépannage et bornes de recharge.',
-    metaDescription: "Électricien à Lorgues (83) : tableaux électriques, mise aux normes NF C 15-100, bornes de recharge et dépannage. Circuits étiquetés, devis gratuit dans le Var.",
+    metaDescription: "Électricien à Lorgues (83) : tableaux électriques, mise aux normes NF C 15-100, bornes de recharge et dépannage. Circuits étiquetés, devis gratuit dans le Var.",
     hero: { tags: 'electricity', lock: 628 },
 
     prestations: [
@@ -589,9 +589,9 @@ export const services = {
       heading: 'Une installation lisible, sûre et prête pour vos usages',
       photo: { tags: 'electrician', lock: 629 },
       paragraphs: [
-        "Nous avons intégré l'électricité à nos métiers en 2016, pour une raison simple : la moitié de nos chantiers de plomberie et de chauffage y touchait de toute façon. Plutôt que de sous-traiter, nous avons formé l'équipe. Aujourd'hui, une pompe à chaleur, une borne de recharge ou un local technique de piscine sont livrés par PCE de bout en bout, sans coordination hasardeuse entre deux entreprises.",
-        "Le patrimoine électrique local est ancien. Beaucoup de villas de la Dracénie fonctionnent encore avec un tableau d'origine, sans différentiel 30 mA, parfois sans terre dans les pièces d'eau. Nous reprenons ces installations progressivement lorsque le budget l'impose, en traitant toujours la sécurité des personnes en priorité absolue.",
-        "Notre signature, c'est le repérage. Chaque circuit est étiqueté, chaque tableau est livré avec son schéma sous pochette, chaque modification est reportée. Cela ne coûte rien de plus sur le devis, mais cela vous fait gagner une heure de recherche à chaque intervention future — y compris si un autre professionnel passe après nous.",
+        "Nous avons intégré l’électricité à nos métiers en 2016, pour une raison simple : la moitié de nos chantiers de plomberie et de chauffage y touchait de toute façon. Plutôt que de sous-traiter, nous avons formé l’équipe. Aujourd’hui, une pompe à chaleur, une borne de recharge ou un local technique de piscine sont livrés par PCE de bout en bout, sans coordination hasardeuse entre deux entreprises.",
+        "Le patrimoine électrique local est ancien. Beaucoup de villas de la Dracénie fonctionnent encore avec un tableau d’origine, sans différentiel 30 mA, parfois sans terre dans les pièces d’eau. Nous reprenons ces installations progressivement lorsque le budget l’impose, en traitant toujours la sécurité des personnes en priorité absolue.",
+        "Notre signature, c’est le repérage. Chaque circuit est étiqueté, chaque tableau est livré avec son schéma sous pochette, chaque modification est reportée. Cela ne coûte rien de plus sur le devis, mais cela vous fait gagner une heure de recherche à chaque intervention future — y compris si un autre professionnel passe après nous.",
       ],
       points: [
         'Norme NF C 15-100 appliquée à la lettre',
@@ -602,31 +602,31 @@ export const services = {
     },
 
     process: [
-      { title: "L'état des lieux", text: "Ouverture du tableau, contrôle des protections, de la terre et des sections de conducteurs. Nous vous montrons ce que nous voyons." },
+      { title: "L’état des lieux", text: "Ouverture du tableau, contrôle des protections, de la terre et des sections de conducteurs. Nous vous montrons ce que nous voyons." },
       { title: 'Le rapport et les priorités', text: "Nous distinguons ce qui relève de la sécurité immédiate, de la mise en conformité et du confort. Vous arbitrez en connaissance de cause." },
-      { title: 'Le devis chiffré', text: "Chaque poste est détaillé, avec les marques d'appareillage (Schneider Electric, Legrand) et le nombre de points. Aucune ligne « divers »." },
-      { title: 'Les travaux', text: "Coupures annoncées à l'avance et limitées, saignées rebouchées, poussières maîtrisées. Vous récupérez le courant chaque soir." },
+      { title: 'Le devis chiffré', text: "Chaque poste est détaillé, avec les marques d’appareillage (Schneider Electric, Legrand) et le nombre de points. Aucune ligne « divers »." },
+      { title: 'Les travaux', text: "Coupures annoncées à l’avance et limitées, saignées rebouchées, poussières maîtrisées. Vous récupérez le courant chaque soir." },
       { title: 'La remise du dossier', text: "Schéma de tableau, étiquetage, essais des différentiels devant vous et explication du fonctionnement." },
     ],
 
     info: {
-      heading: 'Pourquoi refaire son tableau électrique ?',
-      lead: "Une installation antérieure à 1991 concentre l'essentiel des risques domestiques. Nous posons du matériel Schneider Electric et Legrand, reconnu pour sa fiabilité, et la remise à niveau est rapide, le plus souvent sans casser les murs.",
+      heading: 'Pourquoi refaire son tableau électrique ?',
+      lead: "Une installation antérieure à 1991 concentre l’essentiel des risques domestiques. Nous posons du matériel Schneider Electric et Legrand, reconnu pour sa fiabilité, et la remise à niveau est rapide, le plus souvent sans casser les murs.",
       bullets: [
         'Assurer la sécurité des occupants avec des différentiels 30 mA.',
         'Protéger vos appareils sensibles contre les surtensions et la foudre.',
-        'Préparer votre installation aux nouveaux usages : clim, PAC, borne de recharge.',
+        'Préparer votre installation aux nouveaux usages : clim, PAC, borne de recharge.',
         'Éviter les coupures et les surcharges liées à un tableau saturé.',
         'Être en conformité avec la norme NF C 15-100 en cas de vente ou de location.',
       ],
     },
 
     faq: [
-      { q: 'Le parafoudre est-il obligatoire ?', a: "Il dépend de la localisation du bâtiment, du niveau d'exposition à la foudre et des exigences de la norme NF C 15-100. Dans le Var, il est très souvent recommandé pour protéger les équipements électroniques et les cartes de régulation." },
-      { q: 'Faut-il tout casser pour une mise aux normes ?', a: "Rarement. Dans la majorité des cas, le remplacement du tableau, la création d'une liaison de terre et la reprise des circuits sensibles suffisent. Nous privilégions les passages existants, les plinthes et les combles." },
-      { q: 'Combien de temps dure le remplacement d’un tableau ?', a: "Une journée pour un logement standard, deux si la terre est à créer ou si le comptage doit être déplacé. Le courant est rétabli le soir même dans tous les cas." },
-      { q: 'Installez-vous les bornes de recharge pour voiture électrique ?', a: "Oui, en 3,7, 7,4 ou 11 kW selon votre véhicule et votre abonnement. Nous créons une ligne dédiée depuis le tableau avec protection différentielle adaptée et, si besoin, pilotage de la puissance pour éviter la disjonction." },
-      { q: 'Intervenez-vous sur les pannes urgentes ?', a: "Oui, sept jours sur sept. Coupure générale, disjoncteur qui claque en boucle, odeur de brûlé au tableau : appelez immédiatement, ces symptômes ne doivent jamais attendre." },
+      { q: 'Le parafoudre est-il obligatoire ?', a: "Il dépend de la localisation du bâtiment, du niveau d’exposition à la foudre et des exigences de la norme NF C 15-100. Dans le Var, il est très souvent recommandé pour protéger les équipements électroniques et les cartes de régulation." },
+      { q: 'Faut-il tout casser pour une mise aux normes ?', a: "Rarement. Dans la majorité des cas, le remplacement du tableau, la création d’une liaison de terre et la reprise des circuits sensibles suffisent. Nous privilégions les passages existants, les plinthes et les combles." },
+      { q: 'Combien de temps dure le remplacement d’un tableau ?', a: "Une journée pour un logement standard, deux si la terre est à créer ou si le comptage doit être déplacé. Le courant est rétabli le soir même dans tous les cas." },
+      { q: 'Installez-vous les bornes de recharge pour voiture électrique ?', a: "Oui, en 3,7, 7,4 ou 11 kW selon votre véhicule et votre abonnement. Nous créons une ligne dédiée depuis le tableau avec protection différentielle adaptée et, si besoin, pilotage de la puissance pour éviter la disjonction." },
+      { q: 'Intervenez-vous sur les pannes urgentes ?', a: "Oui, sept jours sur sept. Coupure générale, disjoncteur qui claque en boucle, odeur de brûlé au tableau : appelez immédiatement, ces symptômes ne doivent jamais attendre." },
     ],
   },
 
@@ -638,9 +638,9 @@ export const services = {
     icon: 'waves',
     tagline: 'Profitez d’une eau propre, claire et sans contrainte.',
     intro:
-      "Une eau limpide sans y passer ses week-ends, c'est d'abord une affaire de réglages et de bon matériel. PCE assure la mise en route, l'hivernage, la rénovation du local technique et l'automatisation complète de votre bassin, à Lorgues comme sur tout le Golfe de Saint-Tropez.",
+      "Une eau limpide sans y passer ses week-ends, c’est d’abord une affaire de réglages et de bon matériel. PCE assure la mise en route, l’hivernage, la rénovation du local technique et l’automatisation complète de votre bassin, à Lorgues comme sur tout le Golfe de Saint-Tropez.",
     card: 'Filtration, traitement au sel, chauffage du bassin et automatisation.',
-    metaDescription: "Piscinier à Lorgues (83) : filtration, traitement au sel, pompe à chaleur et automatisation de bassin. Diagnostic du local technique, devis gratuit dans le Var.",
+    metaDescription: "Piscinier à Lorgues (83) : filtration, traitement au sel, pompe à chaleur et automatisation de bassin. Diagnostic du local technique, devis gratuit dans le Var.",
     hero: { tags: 'swimmingpool', lock: 739 },
 
     /* ------------------------------------------------------------------
@@ -648,9 +648,9 @@ export const services = {
        dur dans le composant, pour rester modifiables sans toucher au JSX.
     ------------------------------------------------------------------ */
     page: {
-      h1: ['Piscine', "Des bassins d'exception,", 'Un service complet'],
+      h1: ['Piscine', "Des bassins d’exception,", 'Un service complet'],
       intro:
-        "De la conception à l'entretien, en passant par l'équipement et l'automatisation, PCE vous accompagne pour profiter pleinement de votre piscine tout au long de l'année dans tout le Var.",
+        "De la conception à l’entretien, en passant par l’équipement et l’automatisation, PCE vous accompagne pour profiter pleinement de votre piscine tout au long de l’année dans tout le Var.",
 
       heroHighlights: [
         { icon: 'home', title: 'Construction', label: 'Sur mesure' },
@@ -666,7 +666,7 @@ export const services = {
           'Rénovation et modernisation de bassins',
           'Systèmes de filtration performants',
           'Pompes à chaleur & réchauffeurs',
-          "Traitement de l'eau (sel, chlore, pH, redox…)",
+          "Traitement de l’eau (sel, chlore, pH, redox…)",
           'Électrolyseurs au sel',
           'Volets roulants & couvertures',
           'Éclairages LED & ambiances',
@@ -677,12 +677,12 @@ export const services = {
       },
 
       automatisation: {
-        title: ["L'automatisation au service", 'de votre confort'],
+        title: ["L’automatisation au service", 'de votre confort'],
         checks: [
           'Pilotage à distance de votre piscine',
           'Régulation automatique du pH et du désinfectant',
           'Gestion intelligente de la filtration',
-          "Économies d'eau et d'énergie",
+          "Économies d’eau et d’énergie",
           'Alertes et suivi en temps réel',
         ],
         pictos: [
@@ -710,27 +710,27 @@ export const services = {
           {
             title: ['Pompes', 'à vitesse variable'],
             photo: { lock: 742 },
-            text: "Jusqu'à 80 % d'économies d'énergie par rapport à une pompe à vitesse fixe, grâce à une filtration adaptée à vos besoins.",
+            text: "Jusqu’à 80 % d’économies d’énergie par rapport à une pompe à vitesse fixe, grâce à une filtration adaptée à vos besoins.",
           },
           {
-            title: ["Traitement de l'eau", 'nouvelle génération'],
+            title: ["Traitement de l’eau", 'nouvelle génération'],
             photo: { lock: 743 },
-            text: "Électrolyse au sel, régulation automatique du pH et du redox pour une eau saine toute l'année.",
+            text: "Électrolyse au sel, régulation automatique du pH et du redox pour une eau saine toute l’année.",
           },
           {
             title: ['Pompes', 'à chaleur'],
             photo: { lock: 744 },
-            text: "Profitez d'une eau à la température idéale plus longtemps avec nos pompes à chaleur performantes et silencieuses.",
+            text: "Profitez d’une eau à la température idéale plus longtemps avec nos pompes à chaleur performantes et silencieuses.",
           },
         ],
       },
 
       entretien: {
         title: ['Entretien & maintenance', 'pour une piscine sans souci'],
-        text: "Nous assurons l'entretien régulier de votre piscine pour garantir une eau propre, saine et équilibrée.",
+        text: "Nous assurons l’entretien régulier de votre piscine pour garantir une eau propre, saine et équilibrée.",
         checks: [
           'Nettoyage',
-          "Contrôle et analyse de l'eau",
+          "Contrôle et analyse de l’eau",
           'Réglage des équipements',
           'Hivernage & remise en service',
         ],
@@ -763,18 +763,18 @@ export const services = {
       { icon: 'panel', title: 'Local technique', label: 'Tuyauterie et coffret' },
       { icon: 'waves', title: 'Filtration et pompes', label: 'Débit variable' },
       { icon: 'thermometer', title: 'Chauffage de piscine', label: 'Pompe à chaleur dédiée' },
-      { icon: 'salt', title: "Traitement de l'eau", label: 'Électrolyse au sel et pH' },
+      { icon: 'salt', title: "Traitement de l’eau", label: 'Électrolyse au sel et pH' },
       { icon: 'robot', title: 'Automatisation', label: 'Sondes et pilotage à distance' },
     ],
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
-      heading: "Le local technique, c'est là que tout se joue",
+      heading: "Le local technique, c’est là que tout se joue",
       photo: { tags: 'pool', lock: 740 },
       paragraphs: [
-        "PCE a ouvert son pôle piscine en 2020, en réponse à une demande devenue constante chez nos clients de Lorgues, du Plan-de-la-Tour et de Grimaud. Notre approche est celle d'un technicien de l'eau et de l'énergie, pas d'un simple revendeur de produits : nous traitons le bassin comme une installation hydraulique et électrique complète.",
-        "Dans neuf cas sur dix, une eau qui vire ou une consommation de produits qui explose ne vient pas du bassin mais du local technique. Tuyauterie sous-dimensionnée, filtre saturé, pompe qui tourne trop peu ou trop fort, coffret électrique corrodé par l'humidité : nous commençons toujours par là. Un local repris proprement, avec des vannes repérées et un coffret étanche aux normes, règle la majorité des problèmes de saison.",
-        "Nous poussons ensuite vers l'électrolyse au sel, la pompe à débit variable et la régulation automatique du pH — non par effet de mode, mais parce que le calcul est net : sur trois saisons, ces trois équipements se remboursent en électricité et en produits, tout en supprimant l'essentiel des corvées d'entretien.",
+        "PCE a ouvert son pôle piscine en 2020, en réponse à une demande devenue constante chez nos clients de Lorgues, du Plan-de-la-Tour et de Grimaud. Notre approche est celle d’un technicien de l’eau et de l’énergie, pas d’un simple revendeur de produits : nous traitons le bassin comme une installation hydraulique et électrique complète.",
+        "Dans neuf cas sur dix, une eau qui vire ou une consommation de produits qui explose ne vient pas du bassin mais du local technique. Tuyauterie sous-dimensionnée, filtre saturé, pompe qui tourne trop peu ou trop fort, coffret électrique corrodé par l’humidité : nous commençons toujours par là. Un local repris proprement, avec des vannes repérées et un coffret étanche aux normes, règle la majorité des problèmes de saison.",
+        "Nous poussons ensuite vers l’électrolyse au sel, la pompe à débit variable et la régulation automatique du pH — non par effet de mode, mais parce que le calcul est net : sur trois saisons, ces trois équipements se remboursent en électricité et en produits, tout en supprimant l’essentiel des corvées d’entretien.",
       ],
       points: [
         'Diagnostic complet du local technique avant tout devis',
@@ -785,17 +785,17 @@ export const services = {
     },
 
     process: [
-      { title: 'Le diagnostic du bassin', text: "Analyse de l'eau, contrôle du débit, état du filtre, de la pompe et du coffret. Nous chiffrons aussi la consommation électrique actuelle." },
-      { title: 'Les préconisations', text: "Traitement, filtration, chauffage, automatisation : nous hiérarchisons ce qui aura le plus d'effet sur votre confort et votre budget." },
+      { title: 'Le diagnostic du bassin', text: "Analyse de l’eau, contrôle du débit, état du filtre, de la pompe et du coffret. Nous chiffrons aussi la consommation électrique actuelle." },
+      { title: 'Les préconisations', text: "Traitement, filtration, chauffage, automatisation : nous hiérarchisons ce qui aura le plus d’effet sur votre confort et votre budget." },
       { title: 'Les travaux', text: "Reprise de la tuyauterie, pose des équipements, câblage du coffret et raccordement des sondes, hors saison de préférence." },
-      { title: 'Les réglages', text: "Temps de filtration, consignes de pH et de désinfection, courbes de la pompe à vitesse variable, paramétrage de l'application." },
-      { title: 'Le suivi de saison', text: "Mise en route au printemps, contrôles en été si vous le souhaitez, hivernage à l'automne. Un seul interlocuteur toute l'année." },
+      { title: 'Les réglages', text: "Temps de filtration, consignes de pH et de désinfection, courbes de la pompe à vitesse variable, paramétrage de l’application." },
+      { title: 'Le suivi de saison', text: "Mise en route au printemps, contrôles en été si vous le souhaitez, hivernage à l’automne. Un seul interlocuteur toute l’année." },
     ],
 
     columns: [
       {
         icon: 'salt',
-        heading: 'Pourquoi passer au traitement au sel ?',
+        heading: 'Pourquoi passer au traitement au sel ?',
         bullets: [
           'Une eau douce et agréable, sans odeur de chlore.',
           'Plus confortable pour les yeux et pour la peau.',
@@ -806,9 +806,9 @@ export const services = {
       },
       {
         icon: 'gauge',
-        heading: "Les avantages d'une pompe à débit variable",
+        heading: "Les avantages d’une pompe à débit variable",
         bullets: [
-          "Jusqu'à 80 % d'économie d'électricité sur la filtration.",
+          "Jusqu’à 80 % d’économie d’électricité sur la filtration.",
           'Un fonctionnement nettement plus silencieux.',
           'Une filtration plus longue, donc une eau plus claire.',
           'Une durée de vie prolongée du moteur et du filtre.',
@@ -817,7 +817,7 @@ export const services = {
       },
       {
         icon: 'robot',
-        heading: 'Pourquoi automatiser votre piscine ?',
+        heading: 'Pourquoi automatiser votre piscine ?',
         bullets: [
           'Régulation automatique du pH et du désinfectant.',
           'Pilotage à distance depuis votre téléphone.',
@@ -829,25 +829,25 @@ export const services = {
     ],
 
     faq: [
-      { q: 'Quand faut-il hiverner sa piscine dans le Var ?', a: "Généralement de mi-novembre à mi-mars, lorsque l'eau descend durablement sous 12 °C. Dans notre région, l'hivernage actif — filtration réduite plutôt qu'arrêt complet — donne les meilleurs résultats et facilite la remise en route." },
-      { q: 'Le sel abîme-t-il le bassin ?', a: "Non, à condition que le taux soit maîtrisé et que les pièces à sceller soient compatibles. Nous vérifions systématiquement l'échelle, les projecteurs et le liner avant de préconiser une électrolyse." },
-      { q: 'Combien de temps dois-je filtrer par jour ?', a: "La règle usuelle est de diviser la température de l'eau par deux. Avec une pompe à vitesse variable, on filtre plus longtemps mais à faible régime, ce qui donne une eau plus claire pour moins d'électricité." },
-      { q: 'Pouvez-vous chauffer une piscine existante ?', a: "Oui, par pompe à chaleur dédiée raccordée après le filtre. Nous vérifions le débit disponible, la place au local technique et l'alimentation électrique, puis nous dimensionnons selon le volume et l'usage souhaité." },
-      { q: 'Faites-vous la recherche de fuite sur bassin ?', a: "Oui, sur le bassin comme sur les canalisations enterrées : test de perte, colorant, écoute électro-acoustique et caméra selon le cas. Nous localisons avant de casser quoi que ce soit." },
+      { q: 'Quand faut-il hiverner sa piscine dans le Var ?', a: "Généralement de mi-novembre à mi-mars, lorsque l’eau descend durablement sous 12 °C. Dans notre région, l’hivernage actif — filtration réduite plutôt qu’arrêt complet — donne les meilleurs résultats et facilite la remise en route." },
+      { q: 'Le sel abîme-t-il le bassin ?', a: "Non, à condition que le taux soit maîtrisé et que les pièces à sceller soient compatibles. Nous vérifions systématiquement l’échelle, les projecteurs et le liner avant de préconiser une électrolyse." },
+      { q: 'Combien de temps dois-je filtrer par jour ?', a: "La règle usuelle est de diviser la température de l’eau par deux. Avec une pompe à vitesse variable, on filtre plus longtemps mais à faible régime, ce qui donne une eau plus claire pour moins d’électricité." },
+      { q: 'Pouvez-vous chauffer une piscine existante ?', a: "Oui, par pompe à chaleur dédiée raccordée après le filtre. Nous vérifions le débit disponible, la place au local technique et l’alimentation électrique, puis nous dimensionnons selon le volume et l’usage souhaité." },
+      { q: 'Faites-vous la recherche de fuite sur bassin ?', a: "Oui, sur le bassin comme sur les canalisations enterrées : test de perte, colorant, écoute électro-acoustique et caméra selon le cas. Nous localisons avant de casser quoi que ce soit." },
     ],
   },
 
   /* --------------------------------------------------- TRAITEMENT DE L'EAU */
   traitementEau: {
     slug: 'traitement-de-l-eau',
-    title: "Traitement de l'eau",
-    navLabel: "Traitement de l'eau",
+    title: "Traitement de l’eau",
+    navLabel: "Traitement de l’eau",
     icon: 'filter',
     tagline: 'Pour un confort sain et durable',
     intro:
-      "L'eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
+      "L’eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
     card: 'Filtration, purification et désinfection de votre eau.',
-    metaDescription: "Traitement de l'eau à Lorgues (83) : filtration fine, filtration de forage, charbon actif et traitement UV. Analyse de votre eau et devis gratuit dans le Var.",
+    metaDescription: "Traitement de l’eau à Lorgues (83) : filtration fine, filtration de forage, charbon actif et traitement UV. Analyse de votre eau et devis gratuit dans le Var.",
     hero: { tags: 'bathroom', lock: 300 },
 
     prestations: [
@@ -865,7 +865,7 @@ export const services = {
       { icon: 'shieldCheck', title: 'Protection des équipements', label: 'Préserve vos installations et électroménagers' },
       { icon: 'leaf', title: 'Économies', label: 'Moins de calcaire, moins de consommation' },
       { icon: 'checkCircle', title: 'Sécurité & confort', label: 'Une eau maîtrisée pour toute la famille' },
-      { icon: 'mapPin', title: 'Expertise locale', label: "Des solutions adaptées à l'eau du Var" },
+      { icon: 'mapPin', title: 'Expertise locale', label: "Des solutions adaptées à l’eau du Var" },
     ],
 
     /* Les 6 cartes « Nos solutions de traitement de l'eau ». Photos produit
@@ -879,14 +879,14 @@ export const services = {
     solutions: [
       {
         key: 'adoucisseur',
-        title: "Adoucisseur d'eau",
+        title: "Adoucisseur d’eau",
         icon: 'droplet',
         photoSlot: 310,
         bullets: [
           'Protège vos canalisations et équipements',
           'Prolonge la durée de vie de vos installations',
           'Peau plus douce & cheveux plus souples',
-          "Moins de calcaire, moins d'entretien",
+          "Moins de calcaire, moins d’entretien",
           'Économies d’énergie & de consommation',
         ],
         ctaLabel: 'En savoir plus sur les adoucisseurs',
@@ -943,7 +943,7 @@ export const services = {
            du débit, de la turbidité et de l'entretien de l'appareil — jamais
            d'allégation sanitaire inconditionnelle. */
         bullets: [
-          "Réduction jusqu'à 99,9 % des bactéries, virus et micro-organismes, sur une installation correctement dimensionnée et entretenue",
+          "Réduction jusqu’à 99,9 % des bactéries, virus et micro-organismes, sur une installation correctement dimensionnée et entretenue",
           'Sans produit chimique',
           'Idéal pour forage, puits et eau de réseau',
         ],
@@ -967,7 +967,7 @@ export const services = {
     ],
 
     whyTreat: {
-      heading: 'Pourquoi traiter votre eau ?',
+      heading: 'Pourquoi traiter votre eau ?',
       paragraphs: [
         'Le calcaire, le chlore, les pesticides et les impuretés peuvent avoir un impact sur votre santé, vos installations et votre confort au quotidien.',
         'PCE vous accompagne pour une eau plus saine et plus économique.',
@@ -984,12 +984,12 @@ export const services = {
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
-      heading: "Traiter l'eau, c'est d'abord la mesurer",
+      heading: "Traiter l’eau, c’est d’abord la mesurer",
       photo: { tags: 'plumbing', lock: 301 },
       paragraphs: [
-        "Le calcaire n'est pas la seule question sur l'eau du secteur de Lorgues et de la Dracénie : chlore, particules, fer selon les réseaux de forage. C'est l'une des premières causes d'intervention que nous constatons depuis notre installation dans le Var.",
-        "Notre méthode ne varie pas : nous commençons par mesurer. pH, présence de fer ou de particules, pression et débit disponibles, configuration du local. Un équipement mal dimensionné se fait vite oublier dans le mauvais sens : trop d'entretien pour rien.",
-        "Selon les résultats, le traitement retenu diffère : un simple filtre en tête d'installation, une cartouche à charbon actif sur l'eau de boisson ou un stérilisateur UV sur un forage suffisent parfois — et coûtent bien moins cher. Nous préférons vous le dire plutôt que de vendre l'équipement le plus cher du catalogue.",
+        "Le calcaire n’est pas la seule question sur l’eau du secteur de Lorgues et de la Dracénie : chlore, particules, fer selon les réseaux de forage. C’est l’une des premières causes d’intervention que nous constatons depuis notre installation dans le Var.",
+        "Notre méthode ne varie pas : nous commençons par mesurer. pH, présence de fer ou de particules, pression et débit disponibles, configuration du local. Un équipement mal dimensionné se fait vite oublier dans le mauvais sens : trop d’entretien pour rien.",
+        "Selon les résultats, le traitement retenu diffère : un simple filtre en tête d’installation, une cartouche à charbon actif sur l’eau de boisson ou un stérilisateur UV sur un forage suffisent parfois — et coûtent bien moins cher. Nous préférons vous le dire plutôt que de vendre l’équipement le plus cher du catalogue.",
       ],
       points: [
         'pH et qualité de l’eau mesurés sur place, avant tout devis',
@@ -1001,29 +1001,29 @@ export const services = {
 
     process: [
       { title: 'Étude personnalisée', text: "Analyse de votre eau, relevé du débit, examen du local technique et de vos usages." },
-      { title: 'La préconisation', text: 'Filtration, charbon actif ou UV : nous ne proposons que ce qui est réellement utile chez vous.' },
-      { title: 'Installation professionnelle', text: "Pose en tête d'installation, raccordement à l'évacuation et protection du réseau existant." },
+      { title: 'La préconisation', text: 'Filtration, charbon actif ou UV : nous ne proposons que ce qui est réellement utile chez vous.' },
+      { title: 'Installation professionnelle', text: "Pose en tête d’installation, raccordement à l’évacuation et protection du réseau existant." },
       { title: 'Réglages et mise en service', text: 'Paramétrage, contrôle et explication du fonctionnement.' },
-      { title: 'Suivi et entretien', text: "Contrôle annuel et vérification des performances de l'équipement dans le temps." },
+      { title: 'Suivi et entretien', text: "Contrôle annuel et vérification des performances de l’équipement dans le temps." },
     ],
 
     info: {
-      heading: "Pourquoi traiter votre eau ?",
+      heading: "Pourquoi traiter votre eau ?",
       lead: "Le calcaire, le chlore et les particules ont un impact direct sur votre santé, vos installations et votre confort au quotidien.",
       bullets: [
         'Protège vos canalisations, votre chauffe-eau et votre robinetterie.',
         "Prolonge la durée de vie du lave-linge, du lave-vaisselle et des résistances.",
-        "Réduit la consommation de produits d'entretien et de lessive.",
+        "Réduit la consommation de produits d’entretien et de lessive.",
         'Préserve la douceur de la peau, des cheveux et la tenue du linge.',
         'Améliore le goût de l’eau de boisson avec une filtration adaptée.',
       ],
     },
 
     faq: [
-      { q: 'Faut-il un traitement même si mon eau semble normale ?', a: "Une analyse rapide sur place permet de le savoir. Nous ne préconisons un équipement que si l'analyse le justifie réellement." },
-      { q: 'Quel entretien demande une filtration ?', a: "Peu de choses : remplacement de la cartouche une fois par an en moyenne, selon le débit et l'usage." },
-      { q: 'Peut-on traiter une eau de forage ?', a: "Oui. Un forage demande d'abord une filtration des particules (sable, boue, rouille), puis selon l'analyse un traitement du fer, un charbon actif et souvent une désinfection UV." },
-      { q: 'Où installe-t-on l’équipement ?', a: "En tête d'installation, au plus près de l'arrivée d'eau : garage, buanderie, cellier ou local technique. Nous validons l'emplacement pendant la visite technique." },
+      { q: 'Faut-il un traitement même si mon eau semble normale ?', a: "Une analyse rapide sur place permet de le savoir. Nous ne préconisons un équipement que si l’analyse le justifie réellement." },
+      { q: 'Quel entretien demande une filtration ?', a: "Peu de choses : remplacement de la cartouche une fois par an en moyenne, selon le débit et l’usage." },
+      { q: 'Peut-on traiter une eau de forage ?', a: "Oui. Un forage demande d’abord une filtration des particules (sable, boue, rouille), puis selon l’analyse un traitement du fer, un charbon actif et souvent une désinfection UV." },
+      { q: 'Où installe-t-on l’équipement ?', a: "En tête d’installation, au plus près de l’arrivée d’eau : garage, buanderie, cellier ou local technique. Nous validons l’emplacement pendant la visite technique." },
     ],
   },
 
@@ -1040,9 +1040,9 @@ export const services = {
     icon: 'fan',
     tagline: 'Un air renouvelé, sans courant d’air froid',
     intro:
-      "PCE installe et entretient trois types de VMC : simple flux autoréglable, simple flux hygroréglable et double flux avec récupération de chaleur. En construction neuve comme en rénovation, nous dimensionnons le réseau selon votre logement plutôt que sur catalogue.",
+      "PCE installe et entretient trois types de VMC : simple flux autoréglable, simple flux hygroréglable et double flux avec récupération de chaleur. En construction neuve comme en rénovation, nous dimensionnons le réseau selon votre logement plutôt que sur catalogue.",
     card: 'VMC simple flux, hygroréglable et double flux, installation et entretien.',
-    metaDescription: 'Installation VMC à Lorgues (83) : simple flux autoréglable, hygroréglable et double flux avec récupération de chaleur. Neuf et rénovation, entretien assuré. Devis gratuit dans le Var.',
+    metaDescription: 'Installation VMC à Lorgues (83) : simple flux autoréglable, hygroréglable et double flux avec récupération de chaleur. Neuf et rénovation, entretien assuré. Devis gratuit dans le Var.',
 
     prestations: [
       { icon: 'fan', title: 'VMC simple flux autoréglable', label: 'Débit constant, la solution la plus répandue' },
@@ -1068,7 +1068,7 @@ export const services = {
       simple: {
         title: 'VMC simple flux',
         subtitle: 'Efficace et économique',
-        text: "La VMC simple flux extrait l'air vicié des pièces humides (cuisine, salle de bain, WC) et fait entrer de l'air neuf par les entrées d'air situées dans les pièces sèches (séjour, chambres).",
+        text: "La VMC simple flux extrait l’air vicié des pièces humides (cuisine, salle de bain, WC) et fait entrer de l’air neuf par les entrées d’air situées dans les pièces sèches (séjour, chambres).",
         bullets: [
           'Système simple et fiable',
           'Faible consommation électrique',
@@ -1080,11 +1080,11 @@ export const services = {
       double: {
         title: 'VMC double flux',
         subtitle: 'Confort et performance',
-        text: "La VMC double flux renouvelle l'air tout en récupérant une large part de la chaleur de l'air extrait pour réchauffer l'air neuf entrant. Idéale pour les maisons performantes.",
+        text: "La VMC double flux renouvelle l’air tout en récupérant une large part de la chaleur de l’air extrait pour réchauffer l’air neuf entrant. Idéale pour les maisons performantes.",
         bullets: [
           'Récupération de chaleur sur l’air extrait',
           'Économies d’énergie significatives',
-          'Air neuf filtré : plus sain',
+          'Air neuf filtré : plus sain',
           'Confort thermique optimal été comme hiver',
           'Réduit l’humidité et les polluants',
         ],
@@ -1094,7 +1094,7 @@ export const services = {
     /* « Comment fonctionne la VMC ? » — 4 étapes numérotées + encart
        « pourquoi installer/rénover ». Maquette validée le 17/08/2026. */
     howItWorks: {
-      heading: 'Comment fonctionne la VMC ?',
+      heading: 'Comment fonctionne la VMC ?',
       steps: [
         { icon: 'fan', title: 'Extraction', text: 'L’air vicié est extrait des pièces humides (cuisine, salle de bain, WC, buanderie).' },
         { icon: 'wind', title: 'Entrée d’air neuf', text: 'De l’air neuf entre par les entrées d’air situées dans les pièces principales.' },
@@ -1102,7 +1102,7 @@ export const services = {
         { icon: 'home', title: 'Diffusion', text: 'L’air sain est réparti dans votre maison pour un confort optimal au quotidien.' },
       ],
       why: {
-        heading: 'Pourquoi installer ou rénover sa VMC ?',
+        heading: 'Pourquoi installer ou rénover sa VMC ?',
         items: [
           'Élimine l’humidité et prévient les moisissures',
           'Renouvelle l’air en continu',
@@ -1155,9 +1155,9 @@ export const services = {
     ],
 
     faq: [
-      { q: 'Quelle est la différence entre VMC autoréglable et hygroréglable ?', a: "L'autoréglable extrait un débit fixe en continu. L'hygroréglable (type B) ajuste ce débit selon le taux d'humidité détecté, pièce par pièce, ce qui limite le renouvellement d'air inutile." },
-      { q: 'Faut-il entretenir sa VMC ?', a: "Oui, quel que soit le type. Un caisson encrassé ou des bouches obstruées font chuter le débit sans que ça se remarque au quotidien. Nous proposons un suivi régulier : nettoyage, contrôle des débits et remplacement des filtres sur double flux." },
-      { q: 'Peut-on installer une VMC double flux en rénovation ?', a: "Techniquement oui, mais ça demande une étude de faisabilité : la double flux nécessite deux réseaux de gaines, ce qui est plus simple à intégrer en neuf. En rénovation, la configuration du logement détermine si c'est réalisable sans travaux lourds." },
+      { q: 'Quelle est la différence entre VMC autoréglable et hygroréglable ?', a: "L’autoréglable extrait un débit fixe en continu. L’hygroréglable (type B) ajuste ce débit selon le taux d’humidité détecté, pièce par pièce, ce qui limite le renouvellement d’air inutile." },
+      { q: 'Faut-il entretenir sa VMC ?', a: "Oui, quel que soit le type. Un caisson encrassé ou des bouches obstruées font chuter le débit sans que ça se remarque au quotidien. Nous proposons un suivi régulier : nettoyage, contrôle des débits et remplacement des filtres sur double flux." },
+      { q: 'Peut-on installer une VMC double flux en rénovation ?', a: "Techniquement oui, mais ça demande une étude de faisabilité : la double flux nécessite deux réseaux de gaines, ce qui est plus simple à intégrer en neuf. En rénovation, la configuration du logement détermine si c’est réalisable sans travaux lourds." },
     ],
   },
 }
@@ -1179,14 +1179,14 @@ export const chaudiereCondensation = {
   title: 'Chaudière à condensation',
   tagline: 'Une même énergie, beaucoup moins de gaspillage.',
   intro:
-    "La chaudière à condensation existe en version gaz, fioul ou bois/granulés. Sur les trois, le principe est identique : au lieu de rejeter la chaleur contenue dans les fumées de combustion, l'appareil la récupère pour préchauffer l'eau qui repart vers vos radiateurs. Résultat, à besoin de chauffage égal, une consommation de combustible nettement plus faible qu'avec une chaudière classique — c'est aujourd'hui la technologie que nous posons par défaut, quelle que soit l'énergie retenue.",
+    "La chaudière à condensation existe en version gaz, fioul ou bois/granulés. Sur les trois, le principe est identique : au lieu de rejeter la chaleur contenue dans les fumées de combustion, l’appareil la récupère pour préchauffer l’eau qui repart vers vos radiateurs. Résultat, à besoin de chauffage égal, une consommation de combustible nettement plus faible qu’avec une chaudière classique — c’est aujourd’hui la technologie que nous posons par défaut, quelle que soit l’énergie retenue.",
   hero: { tags: 'plumbing', lock: 414 },
 
   fonctionnement: {
-    heading: 'Comment ça fonctionne ?',
+    heading: 'Comment ça fonctionne ?',
     paragraphs: [
-      "Dans une chaudière classique, les fumées de combustion repartent chaudes par le conduit d'évacuation — c'est de l'énergie perdue. Dans une chaudière à condensation, ces fumées traversent un second échangeur avant de sortir : la vapeur d'eau qu'elles contiennent s'y condense et cède sa chaleur à l'eau de retour des radiateurs, celle qui rentre dans la chaudière déjà refroidie par son passage dans le circuit de chauffage.",
-      "Ce préchauffage réduit d'autant le travail que la chaudière doit fournir pour remonter en température. La condensation n'est cependant efficace que si l'eau de retour arrive suffisamment froide dans l'échangeur — c'est pour cela que la chaudière donne sa pleine performance associée à un plancher chauffant basse température ou à des radiateurs basse température, qui fonctionnent justement avec une eau moins chaude qu'un radiateur classique.",
+      "Dans une chaudière classique, les fumées de combustion repartent chaudes par le conduit d’évacuation — c’est de l’énergie perdue. Dans une chaudière à condensation, ces fumées traversent un second échangeur avant de sortir : la vapeur d’eau qu’elles contiennent s’y condense et cède sa chaleur à l’eau de retour des radiateurs, celle qui rentre dans la chaudière déjà refroidie par son passage dans le circuit de chauffage.",
+      "Ce préchauffage réduit d’autant le travail que la chaudière doit fournir pour remonter en température. La condensation n’est cependant efficace que si l’eau de retour arrive suffisamment froide dans l’échangeur — c’est pour cela que la chaudière donne sa pleine performance associée à un plancher chauffant basse température ou à des radiateurs basse température, qui fonctionnent justement avec une eau moins chaude qu’un radiateur classique.",
     ],
   },
 
@@ -1196,7 +1196,7 @@ export const chaudiereCondensation = {
     bullets: [
       'Une consommation de combustible sensiblement plus faible pour un même confort, quelle que soit l’énergie (gaz, fioul, bois/granulés).',
       'Une TVA à taux réduit envisageable sur les contrats d’entretien, selon votre situation.',
-      "Un financement mobilisable via l'éco-PTZ, sans avance de trésorerie sur le prêt.",
+      "Un financement mobilisable via l’éco-PTZ, sans avance de trésorerie sur le prêt.",
     ],
   },
 
@@ -1205,7 +1205,7 @@ export const chaudiereCondensation = {
     icon: 'leaf',
     bullets: [
       'Une combustion plus propre, avec moins d’énergie perdue par le conduit d’évacuation.',
-      "Des fumées évacuées à une température nettement plus basse qu'une chaudière classique.",
+      "Des fumées évacuées à une température nettement plus basse qu’une chaudière classique.",
       'Une consommation de combustible réduite, donc moins d’émissions pour un même besoin de chauffage.',
     ],
   },
@@ -1219,31 +1219,31 @@ export const conseils = [
   {
     icon: 'droplet',
     title: 'Plomberie',
-    tip: "Une pression d'eau qui chute ou un bruit de coup de bélier dans les canalisations ne se règle presque jamais tout seul : cela vient souvent d'un réducteur de pression mal réglé ou d'une fixation de tuyauterie à reprendre.",
+    tip: "Une pression d’eau qui chute ou un bruit de coup de bélier dans les canalisations ne se règle presque jamais tout seul : cela vient souvent d’un réducteur de pression mal réglé ou d’une fixation de tuyauterie à reprendre.",
     to: '/plomberie',
   },
   {
     icon: 'flame',
     title: 'Chauffage',
-    tip: "Une pompe à chaleur mal dimensionnée coûte plus cher à l'usage qu'une machine plus petite mais bien calculée : méfiez-vous d'un devis qui ne mentionne pas de bilan thermique préalable.",
+    tip: "Une pompe à chaleur mal dimensionnée coûte plus cher à l’usage qu’une machine plus petite mais bien calculée : méfiez-vous d’un devis qui ne mentionne pas de bilan thermique préalable.",
     to: '/chauffage',
   },
   {
     icon: 'snowflake',
     title: 'Climatisation',
-    tip: "Un split qui givre ou qui tourne en continu sans jamais atteindre la consigne signale presque toujours une charge de fluide frigorigène insuffisante — à faire contrôler avant que le compresseur ne s'use prématurément.",
+    tip: "Un split qui givre ou qui tourne en continu sans jamais atteindre la consigne signale presque toujours une charge de fluide frigorigène insuffisante — à faire contrôler avant que le compresseur ne s’use prématurément.",
     to: '/climatisation',
   },
   {
     icon: 'bolt',
     title: 'Électricité',
-    tip: "Un tableau électrique sans différentiel 30 mA sur chaque circuit, ou sans aucune protection dans les pièces d'eau, doit être considéré comme prioritaire — c'est la première cause d'accident domestique évitable.",
+    tip: "Un tableau électrique sans différentiel 30 mA sur chaque circuit, ou sans aucune protection dans les pièces d’eau, doit être considéré comme prioritaire — c’est la première cause d’accident domestique évitable.",
     to: '/electricite',
   },
   {
     icon: 'waves',
     title: 'Piscine',
-    tip: "Une eau qui verdit malgré un traitement suivi vient rarement du produit lui-même : vérifiez d'abord le temps de filtration et l'état du filtre avant d'augmenter les doses de traitement.",
+    tip: "Une eau qui verdit malgré un traitement suivi vient rarement du produit lui-même : vérifiez d’abord le temps de filtration et l’état du filtre avant d’augmenter les doses de traitement.",
     to: '/piscine',
   },
 ]
@@ -1263,7 +1263,7 @@ export const depannage = {
   title: 'Dépannage / Urgence',
   tagline: 'Une intervention rapide quand vous en avez besoin.',
   intro:
-    "Fuite d'eau, panne de chauffage en plein hiver, coupure électrique, climatisation à l'arrêt en pleine canicule, filtration de piscine hors service : nous savons que cela n'attend pas. Un appel suffit pour obtenir un créneau, un diagnostic clair et un prix annoncé avant toute intervention.",
+    "Fuite d’eau, panne de chauffage en plein hiver, coupure électrique, climatisation à l’arrêt en pleine canicule, filtration de piscine hors service : nous savons que cela n’attend pas. Un appel suffit pour obtenir un créneau, un diagnostic clair et un prix annoncé avant toute intervention.",
   hero: { tags: 'plumbing', lock: 844 },
   steps: [
     { icon: 'clock', title: 'Intervention rapide 7j/7', label: 'Créneau donné dès votre appel' },
@@ -1283,9 +1283,9 @@ export const depannage = {
     heading: 'Une urgence se juge à la première heure',
     photo: { tags: 'tools', lock: 845 },
     paragraphs: [
-      "Depuis 2005, le dépannage représente une part constante de notre activité. C'est aussi la plus exigeante : quand une canalisation lâche un dimanche d'août ou qu'une pompe à chaleur s'arrête en janvier, il n'y a ni deuxième chance ni place pour l'approximation. Nous avons donc structuré notre organisation autour d'un principe unique : donner tout de suite une information fiable.",
-      "Concrètement, dès votre appel, nous cherchons à comprendre le symptôme, nous vous guidons sur les gestes conservatoires — couper l'eau, isoler un circuit, arrêter la filtration — et nous vous annonçons un créneau que nous tenons. Nos véhicules embarquent le stock courant des cinq métiers, ce qui permet de résoudre la majorité des interventions en une seule visite.",
-      "Enfin, aucun travail n'est engagé sans votre accord sur le prix. Le diagnostic est posé, la solution est expliquée, le montant est annoncé — et si la réparation peut attendre pour être faite correctement plutôt que dans l'urgence, nous vous le disons franchement.",
+      "Depuis 2005, le dépannage représente une part constante de notre activité. C’est aussi la plus exigeante : quand une canalisation lâche un dimanche d’août ou qu’une pompe à chaleur s’arrête en janvier, il n’y a ni deuxième chance ni place pour l’approximation. Nous avons donc structuré notre organisation autour d’un principe unique : donner tout de suite une information fiable.",
+      "Concrètement, dès votre appel, nous cherchons à comprendre le symptôme, nous vous guidons sur les gestes conservatoires — couper l’eau, isoler un circuit, arrêter la filtration — et nous vous annonçons un créneau que nous tenons. Nos véhicules embarquent le stock courant des cinq métiers, ce qui permet de résoudre la majorité des interventions en une seule visite.",
+      "Enfin, aucun travail n’est engagé sans votre accord sur le prix. Le diagnostic est posé, la solution est expliquée, le montant est annoncé — et si la réparation peut attendre pour être faite correctement plutôt que dans l’urgence, nous vous le disons franchement.",
     ],
     points: [
       'Un créneau annoncé dès le premier appel',
@@ -1303,7 +1303,7 @@ export const projects = [
     trade: 'Plomberie',
     city: 'Lorgues',
     year: '2025',
-    text: "Dépose totale, reprise des réseaux en multicouche, douche à l'italienne et sèche-serviettes. Chantier livré en onze jours ouvrés.",
+    text: "Dépose totale, reprise des réseaux en multicouche, douche à l’italienne et sèche-serviettes. Chantier livré en onze jours ouvrés.",
     tags: 'bathroom',
     lock: 901,
   },
@@ -1312,7 +1312,7 @@ export const projects = [
     trade: 'Chauffage',
     city: 'Taradeau',
     year: '2025',
-    text: "Dépose d'un cumulus vétuste et pose d'un ballon thermodynamique, avec reprise du réseau d'eau chaude.",
+    text: "Dépose d’un cumulus vétuste et pose d’un ballon thermodynamique, avec reprise du réseau d’eau chaude.",
     tags: 'plumbing',
     lock: 902,
   },
@@ -1339,7 +1339,7 @@ export const projects = [
     trade: 'Dépannage',
     city: 'Lorgues',
     year: '2025',
-    text: "Diagnostic par endoscopie sur une colonne obstruée : localisation du bouchon avant toute intervention destructive.",
+    text: "Diagnostic par endoscopie sur une colonne obstruée : localisation du bouchon avant toute intervention destructive.",
     tags: 'plumbing',
     lock: 905,
   },
@@ -1357,7 +1357,7 @@ export const projects = [
     trade: 'Plomberie',
     city: 'Flayosc',
     year: '2025',
-    text: "Dépose et pose d'un ballon neuf, groupe de sécurité et raccordements refaits — étiquette PCE apposée.",
+    text: "Dépose et pose d’un ballon neuf, groupe de sécurité et raccordements refaits — étiquette PCE apposée.",
     tags: 'plumbing',
     lock: 907,
   },
@@ -1366,7 +1366,7 @@ export const projects = [
     trade: 'Plomberie',
     city: 'Lorgues',
     year: '2025',
-    text: "Alimentations et évacuations reprises pour l'îlot, le lave-vaisselle et le lave-linge, plan de travail livré propre.",
+    text: "Alimentations et évacuations reprises pour l’îlot, le lave-vaisselle et le lave-linge, plan de travail livré propre.",
     tags: 'kitchen',
     lock: 908,
   },
@@ -1384,7 +1384,7 @@ export const projects = [
     trade: 'Électricité',
     city: 'Lorgues',
     year: '2025',
-    text: "Repérage et câblage complet d'un tableau divisionnaire : chaque circuit différencié, chaque départ étiqueté.",
+    text: "Repérage et câblage complet d’un tableau divisionnaire : chaque circuit différencié, chaque départ étiqueté.",
     tags: 'electricity',
     lock: 910,
   },
@@ -1393,7 +1393,7 @@ export const projects = [
     trade: 'Électricité',
     city: 'Lorgues',
     year: '2025',
-    text: 'Mise aux normes complète : différentiels 30 mA, rangées organisées et repérage définitif.',
+    text: 'Mise aux normes complète : différentiels 30 mA, rangées organisées et repérage définitif.',
     tags: 'electricity',
     lock: 911,
   },
@@ -1420,7 +1420,7 @@ export const projects = [
     trade: 'Électricité',
     city: 'Lorgues',
     year: '2024',
-    text: "Réglettes LED encastrées au plafond, alimentation dissimulée et réglage de l'intensité.",
+    text: "Réglettes LED encastrées au plafond, alimentation dissimulée et réglage de l’intensité.",
     tags: 'electrician',
     lock: 914,
   },
@@ -1429,7 +1429,7 @@ export const projects = [
     trade: 'Électricité',
     city: 'Lorgues',
     year: '2025',
-    text: "Brassage et repérage d'un coffret de communication (VDI), pour une distribution réseau propre dans tout le logement.",
+    text: "Brassage et repérage d’un coffret de communication (VDI), pour une distribution réseau propre dans tout le logement.",
     tags: 'electrician',
     lock: 915,
   },
@@ -1443,7 +1443,7 @@ export const projects = [
     lock: 920,
   },
   {
-    title: 'Gainable : gaines isolées en combles',
+    title: 'Gainable : gaines isolées en combles',
     trade: 'Climatisation',
     city: 'Lorgues',
     year: '2025',
@@ -1469,15 +1469,15 @@ export const projects = [
 
 /* ============================================================== À PROPOS ==*/
 export const milestones = [
-  { year: '2005', title: "Création de l'entreprise", text: "PCE naît en région parisienne, d'abord centrée sur la plomberie et le sanitaire." },
-  { year: '2011', title: 'La climatisation', text: "Encore en région parisienne, obtention de l'attestation de capacité fluides frigorigènes : premières pompes à chaleur et premiers splits." },
-  { year: '2016', title: "L'électricité intégrée", text: "L'équipe s'étoffe pour livrer des chantiers complets, sans passer par la sous-traitance." },
-  { year: '2020', title: 'Arrivée dans le Var', text: "PCE quitte la région parisienne pour s'installer à Lorgues. Le marché local impose aussitôt un nouveau métier : ouverture d'un pôle piscine, dédié au traitement de l'eau, à la filtration et à l'automatisation." },
+  { year: '2005', title: "Création de l’entreprise", text: "PCE naît en région parisienne, d’abord centrée sur la plomberie et le sanitaire." },
+  { year: '2011', title: 'La climatisation', text: "Encore en région parisienne, obtention de l’attestation de capacité fluides frigorigènes : premières pompes à chaleur et premiers splits." },
+  { year: '2016', title: "L’électricité intégrée", text: "L’équipe s’étoffe pour livrer des chantiers complets, sans passer par la sous-traitance." },
+  { year: '2020', title: 'Arrivée dans le Var', text: "PCE quitte la région parisienne pour s’installer à Lorgues. Le marché local impose aussitôt un nouveau métier : ouverture d’un pôle piscine, dédié au traitement de l’eau, à la filtration et à l’automatisation." },
   { year: '2025', title: 'Vingt ans de chantiers', text: 'Plus de 1 800 interventions réalisées entre Lorgues, la Dracénie et le Golfe.' },
 ]
 
 export const stats = [
-  { value: '20 ans', label: "d'expérience depuis 2005" },
+  { value: '20 ans', label: "d’expérience depuis 2005" },
   { value: '1 800+', label: 'chantiers réalisés' },
   { value: '5', label: 'métiers sous le même toit' },
   { value: '10 ans', label: 'de garantie décennale' },
@@ -1487,22 +1487,22 @@ export const values = [
   {
     icon: 'handshake',
     title: 'Un seul interlocuteur',
-    text: "Du premier appel à la mise en service, c'est la même personne qui suit votre dossier. Aucune sous-traitance en cascade, aucun renvoi de responsabilité entre corps de métier.",
+    text: "Du premier appel à la mise en service, c’est la même personne qui suit votre dossier. Aucune sous-traitance en cascade, aucun renvoi de responsabilité entre corps de métier.",
   },
   {
     icon: 'shieldCheck',
     title: 'Garantie décennale',
-    text: "Toutes nos installations sont couvertes par notre assurance décennale. L'attestation vous est remise avec le devis, avant même le début des travaux.",
+    text: "Toutes nos installations sont couvertes par notre assurance décennale. L’attestation vous est remise avec le devis, avant même le début des travaux.",
   },
   {
     icon: 'building',
     title: 'Une entreprise locale',
-    text: "Installés à Lorgues depuis 2020 et forts de vingt ans de métier, nous connaissons le bâti, l'eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
+    text: "Installés à Lorgues depuis 2020 et forts de vingt ans de métier, nous connaissons le bâti, l’eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
   },
   {
     icon: 'euro',
     title: 'Un prix tenu',
-    text: "Le devis est détaillé poste par poste et il fait foi. Pas de supplément découvert en fin de chantier, pas de ligne « divers » qui gonfle la facture.",
+    text: "Le devis est détaillé poste par poste et il fait foi. Pas de supplément découvert en fin de chantier, pas de ligne « divers » qui gonfle la facture.",
   },
 ]
 
@@ -1510,7 +1510,7 @@ export const areasDetail = [
   {
     name: 'Lorgues',
     lead: 'Notre commune',
-    text: "Siège de l'entreprise depuis 2020. Nous intervenons ici en quelques minutes, sur le centre ancien comme sur les quartiers de villas et les domaines viticoles alentour.",
+    text: "Siège de l’entreprise depuis 2020. Nous intervenons ici en quelques minutes, sur le centre ancien comme sur les quartiers de villas et les domaines viticoles alentour.",
     towns: ['Lorgues', 'Taradeau', 'Flayosc', 'Les Arcs', 'Vidauban', 'Le Thoronet'],
     tags: 'village',
     lock: 950,
@@ -1518,7 +1518,7 @@ export const areasDetail = [
   {
     name: 'Dracénie',
     lead: 'Notre bassin quotidien',
-    text: "Draguignan et les communes de la Dracénie constituent le cœur de notre activité : rénovations de villas, mises aux normes électriques et remplacements de systèmes de chauffage.",
+    text: "Draguignan et les communes de la Dracénie constituent le cœur de notre activité : rénovations de villas, mises aux normes électriques et remplacements de systèmes de chauffage.",
     towns: ['Draguignan', 'Trans-en-Provence', 'La Motte', 'Châteaudouble', 'Figanières', 'Salernes'],
     tags: 'landscape',
     lock: 951,
@@ -1526,7 +1526,7 @@ export const areasDetail = [
   {
     name: 'Golfe de Saint-Tropez',
     lead: 'Notre littoral',
-    text: "Villas avec piscine, résidences secondaires et maisons de caractère : nous y assurons installations, automatisation des bassins et suivi saisonnier, y compris en votre absence.",
+    text: "Villas avec piscine, résidences secondaires et maisons de caractère : nous y assurons installations, automatisation des bassins et suivi saisonnier, y compris en votre absence.",
     towns: ['Sainte-Maxime', 'Grimaud', 'Cogolin', 'Le Plan-de-la-Tour', 'La Garde-Freinet', 'Saint-Tropez'],
     tags: 'architecture',
     lock: 952,
