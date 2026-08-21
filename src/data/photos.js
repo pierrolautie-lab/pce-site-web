@@ -61,6 +61,23 @@ export const PHOTO_SLOTS = {
   844: { page: 'Dépannage', zone: 'Hero', sujet: 'Véhicule PCE, intervention' },
   845: { page: 'Dépannage', zone: 'Expertise', sujet: 'Outillage, caisse à outils' },
 
+  /* --- Accueil, cartes des 8 métiers (21/08/2026) --------------------
+     Visuels dédiés à cette grille, distincts des héros de chaque page
+     métier — auparavant les cartes réutilisaient `service.hero`, ce qui
+     empêchait VMC d'avoir une photo (son héros n'existait pas encore) et
+     montrait, pour Dépannage, le même véhicule que la page plutôt qu'un
+     geste métier. 180-187, plage libre. Électricité (183) volontairement
+     absente : le fichier source affiche la marque « Schneider Electric »
+     de façon répétée et lisible — en attente d'arbitrage client, la carte
+     Électricité continue d'utiliser `service.hero` en attendant. */
+  180: { page: 'Accueil', zone: 'Carte métier', sujet: 'Plomberie — vasque et robinetterie' },
+  181: { page: 'Accueil', zone: 'Carte métier', sujet: 'Chauffage — radiateur et chaudière murale' },
+  182: { page: 'Accueil', zone: 'Carte métier', sujet: 'Climatisation — unité murale intérieure' },
+  184: { page: 'Accueil', zone: 'Carte métier', sujet: 'Piscine — bassin et terrasse' },
+  185: { page: 'Accueil', zone: 'Carte métier', sujet: "Traitement de l'eau — local technique" },
+  186: { page: 'Accueil', zone: 'Carte métier', sujet: 'VMC — caisson double flux et gaines' },
+  187: { page: 'Accueil', zone: 'Carte métier', sujet: 'Dépannage — plombier sous évier' },
+
   /* --- Réalisations -------------------------------------------------- */
   960: { page: 'Réalisations', zone: 'Hero', sujet: 'Chantier en cours' },
   901: { page: 'Réalisations', zone: 'Galerie', sujet: 'Salle de bains — Lorgues' },
@@ -125,7 +142,16 @@ export const PHOTO_SLOTS = {
  */
 export const clientPhotos = {
   /* --- Accueil --- */
-  100: '/img/accueil-hero-vehicules.jpg',
+  /* 21/08/2026 : le fichier précédent portait un vrai lettrage déformé sur
+     deux des trois fourgons (« FLOMBERIE », « CLIMATSATION ») — signalé par
+     le client. Remplacé par un autre visuel du même lot (photos/
+     accueil-hero-vehicules_1.jpg), le plus propre des trois disponibles
+     (« Depuis 2005 » correct, PLOMBERIE/CHAUFFAGE/ÉLECTRICITÉ corrects),
+     après une retouche locale du seul mot fautif restant : « PSCINE » ->
+     « PISCINE » sur le fourgon de droite (bandeau redessiné en place,
+     fond marine échantillonné sur le bandeau lui-même). L'ancien fichier
+     reste sur le disque, plus référencé nulle part. */
+  100: '/img/accueil-hero-vehicules-retouche.jpg',
   101: '/img/accueil-hero-reseaux.jpg',
   /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
      c'est le même fichier que depannage-outillage.jpg (md5 identique). */
@@ -136,7 +162,13 @@ export const clientPhotos = {
   /* --- Pages métier --- */
   231: '/img/plomberie-hero-vasques.jpg',
   232: '/img/plomberie-cuivre-vase.jpg',
-  412: '/img/chauffage-hero-chaufferie.jpg',
+  /* 21/08/2026 : chauffage-hero-chaufferie.jpg montrait un groupe extérieur
+     (pompe à chaleur), pas le sujet attendu par la maquette pour ce héros —
+     signalé par le client. Remplacé par le visuel fourni dans photos/
+     (chauffage.webp) : chaudière murale + ballon d'eau chaude en local
+     technique. L'ancien fichier reste sur le disque, plus référencé nulle
+     part (aucune autre page ne pointait sur le lock 412). */
+  412: '/img/chauffage-hero-local-technique.jpg',
   413: '/img/chauffage-chaudiere-neuve.jpg',
   414: '/img/chauffage-chaudiere-neuve.jpg',
   739: '/img/piscine-hero-bassin.jpg',
@@ -210,7 +242,13 @@ export const clientPhotos = {
   315: '/img/eau-solution-installation-complete.jpg',
 
   /* Électricité — armoire et coffret réellement posés par PCE */
-  628: '/img/electricite-hero-armoire.jpg',
+  /* 21/08/2026 : electricite-hero-armoire.jpg était en portrait (1200×1600),
+     mal cadré pour un héros plein cadre — signalé par le client. Remplacé
+     par le visuel fourni dans photos/ (elec.webp), en paysage : tableau
+     ouvert, disjoncteurs en rangées, câblage bleu/brun/vert-jaune, mur
+     clair. L'ancien fichier reste sur le disque, plus référencé nulle part
+     (aucune autre page ne pointait sur le lock 628). */
+  628: '/img/electricite-hero-tableau.jpg',
   629: '/img/electricite-expertise-coffret.jpg',
 
   /* --- Dépannage --- */
@@ -219,6 +257,15 @@ export const clientPhotos = {
      laplacien à 33, la plus floue de la bibliothèque avec son doublon
      savoir-faire-cintrage.jpg, même fichier au bit près). */
   845: '/img/electricite-prestations-reseau.jpg',
+
+  /* --- Accueil, cartes des 8 métiers --- */
+  180: '/img/accueil-carte-plomberie.jpg',
+  181: '/img/accueil-carte-chauffage.jpg',
+  182: '/img/accueil-carte-climatisation.jpg',
+  184: '/img/accueil-carte-piscine.jpg',
+  185: '/img/accueil-carte-traitement-eau.jpg',
+  186: '/img/accueil-carte-vmc.jpg',
+  187: '/img/accueil-carte-depannage.jpg',
 
   /* --- Réalisations --- */
   960: '/img/realisations-hero-radiateur.jpg',

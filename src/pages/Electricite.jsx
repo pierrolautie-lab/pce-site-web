@@ -108,10 +108,10 @@ export default function Electricite() {
         title="Électricité"
         subtitle="Sécurité, performance et mise aux normes"
         intro="Installation, rénovation, mise aux normes et dépannage électrique pour les particuliers dans tout le Var. Des solutions fiables, durables et conformes aux normes actuelles pour votre sécurité et votre confort."
-        photo={{ ...service.hero, alt: 'Tableau électrique moderne installé par PCE' }}
+        photo={{ ...service.hero, alt: 'Tableau électrique ouvert installé par PCE' }}
         highlights={HERO_HIGHLIGHTS}
         fullBleed
-        gradientCoefficient={0.5}
+        gradientCoefficient={0.45}
         highlightsPanel
       />
 

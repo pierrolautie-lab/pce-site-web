@@ -1,9 +1,81 @@
 /* Généré par scripts/optimize-images.js — ne pas éditer à la main.
    Relancer le script après tout ajout/remplacement de photo dans public/img/. */
 export const imageManifest = {
+  "accueil-carte-chauffage.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-climatisation.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-depannage.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-piscine.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-plomberie.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-traitement-eau.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-carte-vmc.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "accueil-hero-reseaux.jpg": {
     "width": 1600,
     "height": 1071,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "accueil-hero-vehicules-retouche.jpg": {
+    "width": 2472,
+    "height": 672,
     "widths": [
       400,
       800,
@@ -47,6 +119,15 @@ export const imageManifest = {
   "chauffage-hero-chaufferie.jpg": {
     "width": 1600,
     "height": 900,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "chauffage-hero-local-technique.jpg": {
+    "width": 1456,
+    "height": 819,
     "widths": [
       400,
       800,
@@ -291,6 +372,15 @@ export const imageManifest = {
   "electricite-hero-armoire.jpg": {
     "width": 1200,
     "height": 1600,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "electricite-hero-tableau.jpg": {
+    "width": 1456,
+    "height": 819,
     "widths": [
       400,
       800,

@@ -6,7 +6,7 @@ import { ReassuranceBar } from '../components/PageHero.jsx'
 import { HeroBackgroundPhoto, HeroTextVeil } from '../components/HeroPhoto.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
-import { company, depannage, projects, serviceList } from '../data/site.js'
+import { company, projects, serviceList } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
 /* Photo de fond du héros (slot 100, véhicules PCE devant une villa) et son
@@ -32,6 +32,23 @@ const HERO_TRADES = [
    dépannage en dernier — il n'est pas dans `serviceList`, on l'ajoute à la
    main à partir de son propre objet. */
 const CARD_ORDER = ['plomberie', 'chauffage', 'climatisation', 'piscine', 'electricite', 'traitement-de-l-eau', 'vmc']
+
+/* Photos dédiées à cette grille (21/08/2026), distinctes des héros de page —
+   auparavant chaque carte réutilisait `service.hero`, ce qui laissait VMC
+   sans photo. Électricité volontairement absente : le fichier dédié montre
+   la marque « Schneider Electric » de façon répétée et lisible sur les
+   disjoncteurs — en attente d'arbitrage client, cette carte continue de
+   reprendre `service.hero` (le tableau électrique du héros, sans marque
+   visible) en attendant. */
+const CARD_PHOTO = {
+  plomberie: { lock: 180 },
+  chauffage: { lock: 181 },
+  climatisation: { lock: 182 },
+  piscine: { lock: 184 },
+  'traitement-de-l-eau': { lock: 185 },
+  vmc: { lock: 186 },
+  depannage: { lock: 187 },
+}
 
 /* Même logique de couleur que les héros métier, mais en variante plus
    soutenue : la pastille des cartes est sur fond blanc, où les teintes
@@ -160,15 +177,15 @@ function ServiceCards() {
       iconClass: CARD_ICON_CLASS[s.slug],
       title: s.title,
       text: s.card,
-      photo: s.hero,
+      photo: CARD_PHOTO[s.slug] || s.hero,
     })),
     {
       to: '/depannage',
       icon: 'wrench',
       iconClass: CARD_ICON_CLASS.depannage,
+      photo: CARD_PHOTO.depannage,
       title: 'Dépannage',
       text: 'Intervention rapide 7j/7 dans tout le Var. Devis immédiat, prix annoncé avant intervention.',
-      photo: depannage.hero,
     },
   ]
 
@@ -196,9 +213,10 @@ function ServiceCards() {
                     sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 ) : (
-                  /* Pas de photo VMC disponible (aucune reçue du client) :
-                     aplat de couleur + icône, jamais un cadre gris répétant
-                     le titre. */
+                  /* Repli défensif : les 8 cartes ont toutes une photo au
+                     21/08/2026, mais si l'une venait à manquer, un aplat de
+                     couleur + icône reste préférable à un cadre gris
+                     répétant le titre. */
                   <div className={`grid aspect-[4/3] w-full place-items-center bg-navy-50 ${c.iconClass}`}>
                     <Icon name={c.icon} className="h-10 w-10" strokeWidth={1.3} />
                   </div>
