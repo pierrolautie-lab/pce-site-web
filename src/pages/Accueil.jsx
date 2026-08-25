@@ -9,13 +9,15 @@ import ZoneBadge from '../components/ZoneBadge.jsx'
 import { company, projects, serviceList } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
-/* Photo de fond du héros (slot 100, véhicules PCE devant une villa) et son
-   repli (slot 101, photo d'accueil précédente) si le fichier venait à
+/* Photo de fond du héros (slot 100, fourgon PCE de nuit devant une villa) et
+   son repli (slot 101, photo d'accueil précédente) si le fichier venait à
    manquer. On ne passe pas par <Photo /> ici : son repli à lui est le logo
-   PCE, qui serait illisible étiré en fond de héros. */
+   PCE, qui serait illisible étiré en fond de héros.
+   Slot partagé avec le héros de Contact — cf. photos.js. */
 const HERO_SLOT = 100
 const HERO_FALLBACK_SLOT = 101
-const HERO_ALT = "Les véhicules d'intervention PCE devant une villa dans le Var"
+const HERO_ALT =
+  "Le fourgon d'intervention PCE stationné de nuit devant une villa éclairée dans le Var"
 
 /* Les 5 métiers mis en avant sous le titre du héros — même couleur que sur
    la page métier correspondante (icône des héros PageHero), pour que le

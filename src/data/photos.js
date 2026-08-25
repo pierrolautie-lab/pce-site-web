@@ -20,7 +20,7 @@ import { imageManifest } from './imageManifest.js'
 /** Inventaire lisible des emplacements — sert aussi de table de validation. */
 export const PHOTO_SLOTS = {
   /* --- Accueil ------------------------------------------------------- */
-  100: { page: 'Accueil', zone: 'Hero — fond', sujet: 'Véhicules PCE devant une villa' },
+  100: { page: 'Accueil + Contact', zone: 'Hero — fond', sujet: 'Fourgon PCE de nuit devant une villa éclairée' },
   101: { page: 'Accueil', zone: 'Hero (repli)', sujet: 'Maison / villa provençale' },
   102: { page: 'Accueil', zone: "Bloc entreprise", sujet: 'Artisan en intervention' },
   103: { page: 'Accueil', zone: 'Bloc entreprise', sujet: 'Bastide, façade en pierre' },
@@ -147,16 +147,26 @@ export const PHOTO_SLOTS = {
  */
 export const clientPhotos = {
   /* --- Accueil --- */
-  /* 21/08/2026 : le fichier précédent portait un vrai lettrage déformé sur
-     deux des trois fourgons (« FLOMBERIE », « CLIMATSATION ») — signalé par
-     le client. Remplacé par un autre visuel du même lot (photos/
-     accueil-hero-vehicules_1.jpg), le plus propre des trois disponibles
-     (« Depuis 2005 » correct, PLOMBERIE/CHAUFFAGE/ÉLECTRICITÉ corrects),
-     après une retouche locale du seul mot fautif restant : « PSCINE » ->
-     « PISCINE » sur le fourgon de droite (bandeau redessiné en place,
-     fond marine échantillonné sur le bandeau lui-même). L'ancien fichier
-     reste sur le disque, plus référencé nulle part. */
-  100: '/img/accueil-hero-vehicules-retouche.jpg',
+  /* Slot partagé par le héros de l'Accueil ET celui de Contact (même
+     mécanique HeroBackgroundPhoto) : toute substitution ici vaut pour les
+     deux pages.
+     21/08/2026 : le fichier d'origine (accueil-hero-vehicules.jpg) portait
+     un vrai lettrage déformé sur deux des trois fourgons (« FLOMBERIE »,
+     « CLIMATSATION »). Remplacé par un autre visuel du même lot, puis
+     retouché localement (« PSCINE » -> « PISCINE »).
+     25/08/2026 : remplacé à nouveau par un visuel nocturne 2:1 dont le
+     lettrage est intégralement correct à la source, sans retouche — PCE,
+     « Depuis 2005 », PLOMBERIE / CHAUFFAGE / CLIMATISATION / ÉLECTRICITÉ,
+     et le bandeau « INSTALLATION - ENTRETIEN - DÉPANNAGE ». C'est la
+     raison d'être de cette photo : les quatre tentatives précédentes
+     échouaient toutes sur le lettrage.
+     Conséquence sur le calibrage des voiles (voir HeroPhoto.jsx) : le
+     voile uniforme a été supprimé, car il était le seul élément qui
+     assombrissait ce lettrage (mesuré -19 % de luminance) — il se trouve
+     au-delà des 80 % où s'éteint le dégradé directionnel.
+     accueil-hero-vehicules.jpg et accueil-hero-vehicules-retouche.jpg
+     deviennent orphelines. */
+  100: '/img/accueil-hero.jpg',
   101: '/img/accueil-hero-reseaux.jpg',
   /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
      c'est le même fichier que depannage-outillage.jpg (md5 identique). */
@@ -175,7 +185,7 @@ export const clientPhotos = {
      jamais traité (le script ne scanne que .jpg/.png en source). */
   231: '/img/plomberie-hero-salle-de-bains.jpg',
   232: '/img/plomberie-cuivre-vase.jpg',
-  233: '/img/plomberie-histoire-tuyauterie.jpg',
+  233: '/img/plomberie-histoire-tuyauterie.jpg',
   /* 21/08/2026 : chauffage-hero-chaufferie.jpg montrait un groupe extérieur
      (pompe à chaleur), pas le sujet attendu par la maquette pour ce héros —
      signalé par le client. Remplacé par le visuel fourni dans photos/
@@ -266,7 +276,12 @@ export const clientPhotos = {
      par le visuel fourni dans photos/ (elec.webp), en paysage : tableau
      ouvert, disjoncteurs en rangées, câblage bleu/brun/vert-jaune, mur
      clair. L'ancien fichier reste sur le disque, plus référencé nulle part
-     (aucune autre page ne pointait sur le lock 628). */
+     (aucune autre page ne pointait sur le lock 628).
+     25/08/2026 : la marque « hager » est lisible sur certains disjoncteurs
+     de ce tableau — signalé comme incohérence potentielle (le bloc marques
+     de la page annonce Schneider Electric et Legrand, pas hager). Validé
+     par le client tel quel : ne pas remplacer l'image, ne pas la signaler
+     à nouveau. */
   628: '/img/electricite-hero-tableau.jpg',
   629: '/img/electricite-expertise-coffret.jpg',
 

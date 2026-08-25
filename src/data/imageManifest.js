@@ -91,6 +91,15 @@ export const imageManifest = {
       1200
     ]
   },
+  "accueil-hero.jpg": {
+    "width": 1774,
+    "height": 887,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "apropos-ancienne-tuyauterie.jpg": {
     "width": 900,
     "height": 1600,
@@ -192,7 +201,6 @@ export const imageManifest = {
       1200
     ]
   },
-
   "climatisation-prestations-groupe.jpg": {
     "width": 1200,
     "height": 1600,
@@ -516,7 +524,6 @@ export const imageManifest = {
       1200
     ]
   },
-
   "real-ballon-thermo.jpg": {
     "width": 900,
     "height": 1600,

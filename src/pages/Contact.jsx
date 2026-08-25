@@ -13,7 +13,8 @@ import { company, serviceList } from '../data/site.js'
    uni a été retiré : sans sol ni ombre portée, il flottait. */
 const HERO_SLOT = 100
 const HERO_FALLBACK_SLOT = 101
-const HERO_ALT = "Les véhicules d'intervention PCE devant une villa dans le Var"
+const HERO_ALT =
+  "Le fourgon d'intervention PCE stationné de nuit devant une villa éclairée dans le Var"
 
 const SUBJECTS = [...serviceList.map((s) => s.title), 'Dépannage / urgence', 'Autre demande']
 
@@ -382,38 +383,51 @@ function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
       <div className="container-pce relative py-10 sm:py-8 lg:py-20">
-        <nav aria-label="Fil d'Ariane" className="pt-6">
-          <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/45">
-            <li>
-              <Link to="/" className="transition-colors hover:text-white">
-                Accueil
-              </Link>
-            </li>
-            <li className="flex items-center gap-2">
-              <span aria-hidden="true">›</span>
-              <span className="text-white/80">Contact</span>
-            </li>
-          </ol>
-        </nav>
-
-        <div className="relative mt-6 max-w-2xl">
+        {/* Le fil d'Ariane est à l'intérieur du bloc porteur du voile, et non
+            au-dessus : en `text-white/45` sur une photo, il ne tenait son
+            contraste que par le dégradé directionnel du fond, désormais
+            ramené à 15 % (cf. HeroPhoto.jsx). Sous le voile, il repasse
+            au-dessus du seuil. L'accueil n'a pas ce cas : son bloc de texte
+            commence directement par le titre. */}
+        <div className="relative max-w-2xl">
           <HeroTextVeil />
 
-          <h1 className="font-display font-black uppercase leading-[1.12] tracking-[-.03em] text-[8.6vw] md:text-5xl lg:text-[3.6rem]">
-            Contact
-          </h1>
+          <nav aria-label="Fil d'Ariane" className="pt-6">
+            {/* /45 -> /60 : à 45 % le fil plafonnait à 4,10:1 sur cette photo
+                (seuil 4,5:1), un défaut antérieur au changement d'image. */}
+            <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
+              <li>
+                <Link to="/" className="transition-colors hover:text-white">
+                  Accueil
+                </Link>
+              </li>
+              <li className="flex items-center gap-2">
+                <span aria-hidden="true">›</span>
+                <span className="text-white/80">Contact</span>
+              </li>
+            </ol>
+          </nav>
 
-          <p className="mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
-            Un devis gratuit, détaillé et sans engagement
-          </p>
+          <div className="mt-6">
+            <h1 className="font-display font-black uppercase leading-[1.12] tracking-[-.03em] text-[8.6vw] md:text-5xl lg:text-[3.6rem]">
+              Contact
+            </h1>
 
-          <p className="signature mt-4 text-kicker">{company.expertise}</p>
+            <p className="mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
+              Un devis gratuit, détaillé et sans engagement
+            </p>
 
-          <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/70">
-            Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour
-            préciser la demande et convenir d'une visite sur site. Pour une urgence, l'appel reste
-            le moyen le plus rapide.
-          </p>
+            <p className="signature mt-4 text-kicker">{company.expertise}</p>
+
+            {/* /70 -> /80 : ce paragraphe déborde du plateau du voile (il va
+                jusqu'à 82 % de la largeur du bloc), il plafonnait à 4,15:1.
+                Même défaut antérieur que le fil d'Ariane ci-dessus. */}
+            <p className="mt-5 max-w-xl text-[14.5px] leading-[1.8] text-white/80">
+              Décrivez-nous votre besoin en quelques lignes : nous vous rappelons rapidement pour
+              préciser la demande et convenir d'une visite sur site. Pour une urgence, l'appel reste
+              le moyen le plus rapide.
+            </p>
+          </div>
         </div>
       </div>
 
