@@ -40,7 +40,7 @@ export const PHOTO_SLOTS = {
   413: { page: 'Chauffage', zone: 'Expertise', sujet: 'Installation PAC / chaudière' },
   414: { page: 'Chauffage — Chaudière à condensation', zone: 'Hero', sujet: 'Chaudière murale installée' },
   517: { page: 'Climatisation', zone: 'Hero (inutilisé depuis le 19/08/2026, voir 520)', sujet: 'Groupe extérieur, portrait — remplacé, mauvais format pour un héros plein cadre' },
-  520: { page: 'Climatisation', zone: 'Hero', sujet: 'Groupe extérieur DAIKIN, jardin/piscine' },
+  520: { page: 'Climatisation', zone: 'Hero', sujet: 'Groupe extérieur, terrasse et baie vitrée' },
   518: { page: 'Climatisation', zone: 'Expertise', sujet: 'Gainable, grille de plafond (inutilisée depuis le 18/08/2026, voir 519)' },
   519: { page: 'Climatisation', zone: 'Réversible — le confort toute l’année', sujet: 'Split mural DAIKIN, séjour' },
   628: { page: 'Électricité', zone: 'Hero', sujet: 'Tableau électrique' },
@@ -209,11 +209,21 @@ export const clientPhotos = {
      qu'un visuel paysage dédié soit fourni par le client : les 7 photos
      climatisation du projet sont toutes en portrait, prises au téléphone en
      contre-plongée, aucune n'est pensée pour un usage en héros. */
-  /* 517 : le héros pointe maintenant vers 520 (photo paysage, plein cadre —
-     celle-ci est en portrait, cadre mal un héros full-bleed). Le fichier
-     reste utilisé par le slot 923 (galerie Réalisations) : pas orphelin. */
+  /* 517 : ancien héros, remplacé une première fois par 520 puis par le
+     fichier ci-dessous. Le fichier reste utilisé par le slot 923 (galerie
+     Réalisations) : pas orphelin. */
   517: '/img/climatisation-prestations-groupe.jpg',
-  520: '/img/climatisation-solution-groupe-exterieur.jpg',
+  /* 25/08/2026 : climatisation-solution-groupe-exterieur.jpg (3:2, netteté
+     mesurée plus faible, lumineux des deux côtés — 137/146, aucune zone
+     sombre naturelle côté texte) remplacé comme héros par un nouveau
+     visuel du client : 16:9, netteté ~triplée, et surtout sombre à gauche
+     (côté texte) / clair à droite — l'inverse du problème précédent.
+     Groupe extérieur en contexte (terrasse, baie vitrée, végétation),
+     aucune marque visible. climatisation-solution-groupe-exterieur.jpg
+     N'EST PAS orpheline : elle reste utilisée par la carte « Multi-split »
+     de la section Solutions (voir site.js, services.climatisation.page.
+     solutions — référencée par chemin direct, hors système de locks). */
+  520: '/img/climatisation-hero.jpg',
   /* 518 (climatisation-expertise-gainable-salon.jpg) : la section
      « Climatisation réversible » qui l'utilisait pointe maintenant vers
      519. Ce fichier n'est référencé par aucun autre slot — orphelin,

@@ -101,9 +101,15 @@ export default function Climatisation() {
 
 /* ========================================================= HÉROS ======== */
 /* Migré sur le composant de héros partagé (PageHero, fullBleed) le
-   21/08/2026 — coefficient 0,46 propre à cette page, mesuré le 17/08/2026,
-   conservé tel quel. `ZoneBadge` passé en `photoBadge` : seul élément qui
-   restait spécifique à cette page dans l'ancien héros maison. */
+   21/08/2026. `ZoneBadge` passé en `photoBadge` : seul élément qui restait
+   spécifique à cette page dans l'ancien héros maison.
+   25/08/2026 : nouvelle photo (16:9, groupe extérieur en contexte —
+   terrasse, baie vitrée, végétation), sombre côté texte (gauche) et clair
+   côté cadre (droite) — l'inverse de l'ancienne. Coefficient recalculé de
+   0,46 à 0,15 : à 0 (masque seul, sans dégradé ajouté), le contraste
+   minimum mesuré était déjà de 4,61:1 sur les 3 largeurs lg+ (1024/1280/
+   1440) — 0,15 donne une marge confortable (min. 5,05:1) sans assombrir le
+   sujet au-delà de 4 % (mesuré 60-90% de la largeur, seuil 15%). */
 function Hero({ page, hero }) {
   const [ligne1, ligne2, ligne3] = page.h1
 
@@ -121,10 +127,10 @@ function Hero({ page, hero }) {
         </>
       }
       intro={page.intro}
-      photo={{ ...hero, alt: 'Climatisation installée par PCE' }}
+      photo={{ ...hero, alt: 'Groupe extérieur de climatisation installé par PCE, terrasse et baie vitrée' }}
       photoBadge={<ZoneBadge />}
       fullBleed
-      gradientCoefficient={0.46}
+      gradientCoefficient={0.15}
     >
       <CheckList items={page.heroChecklist} tone="dark" className="mt-6 max-w-sm" />
     </PageHero>

@@ -183,6 +183,16 @@ export const imageManifest = {
       400
     ]
   },
+  "climatisation-hero.jpg": {
+    "width": 1456,
+    "height": 819,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+
   "climatisation-prestations-groupe.jpg": {
     "width": 1200,
     "height": 1600,
