@@ -6,19 +6,35 @@ import { company, reassurance } from '../data/site.js'
 import { SOFT_FADE_STOPS, softFadeMask } from '../lib/fadeMask.js'
 
 /* Dégradé à 11 arrêts adoucis, réservé au mode `fullBleed` — même courbe
-   que Plomberie/Climatisation/Piscine (19/08/2026), partagée avec les blocs
-   de contenu à photo fondue (voir lib/fadeMask.js). Le coefficient est
-   fourni par la page appelante (`gradientCoefficient`) : chaque héros a sa
-   propre opacité de départ mesurée. Le masque applique la courbe
-   complémentaire directement sur la photo, indépendamment du dégradé —
-   deux mécanismes pour un seul défaut (le bord net d'un panneau photo
-   étroit), pas un seul. */
+   que le masque de la photo, partagée avec les blocs de contenu à photo
+   fondue (voir lib/fadeMask.js). Couche désormais optionnelle et éteinte
+   par défaut : depuis le 25/08/2026 le contraste du texte est porté par
+   FULL_BLEED_TEXT_VEIL ci-dessous, identique sur les huit héros, et plus
+   par huit coefficients réglés page par page. */
 function fullBleedGradient(coefficient) {
   return `linear-gradient(to right, ${SOFT_FADE_STOPS.map(
     ([pos, op]) => `rgb(1 12 30 / ${(op * coefficient).toFixed(4)}) ${pos}%`
   ).join(', ')})`
 }
 const FULL_BLEED_MASK = softFadeMask()
+
+/* Voile de texte du mode plein cadre (25/08/2026). Le masque rend déjà la
+   photo visible aux deux tiers dès 33 % de la largeur : passé ce point, le
+   texte de la colonne se retrouvait sur la photo avec le seul dégradé pour
+   le protéger — insuffisant, mesuré jusqu'à 1,45:1 sur le sous-titre de
+   Piscine.
+   Posé sur toute la section (`inset-0`) et non derrière la colonne de
+   texte : un voile ancré à la colonne laisse une arête verticale nette à
+   son bord gauche, là où commence la marge du conteneur — constaté en
+   zoomant sur Piscine. Couvrir toute la section supprime la question des
+   bords, il n'en reste aucun.
+   Plateau jusqu'à 50 % puis extinction à 72 % : la colonne de texte finit
+   entre 54 % et 57 % de la largeur selon le palier (mesuré de 1024 à
+   1920 px), et le texte le plus large à 54 %. `rgb(1 12 30 / 0)` plutôt
+   que `transparent` : ce dernier vaut rgba(0,0,0,0), donc un fondu vers du
+   noir et non vers du marine. */
+const FULL_BLEED_TEXT_VEIL =
+  'linear-gradient(to right, rgb(1 12 30 / .70) 0%, rgb(1 12 30 / .70) 50%, rgb(1 12 30 / 0) 72%)'
 
 /**
  * Héros commun à toutes les pages, conforme aux maquettes :
@@ -29,13 +45,19 @@ const FULL_BLEED_MASK = softFadeMask()
  *   — bandeau de réassurance marine juste en dessous
  *
  * `fullBleed` (optionnel, défaut `false`) : la photo occupe tout le héros
- * (fond, pas panneau posé à droite) avec le dégradé à 11 arrêts + masque
+ * (fond, pas panneau posé à droite) avec le masque + le voile de texte
  * décrits ci-dessus, au lieu du panneau étroit (`w-[58%]`) historique.
  * Strictement opt-in — tous les appelants existants (articles, pages
- * locales, à propos, dépannage, réalisations...) gardent le rendu
- * d'origine tant qu'ils ne passent pas `fullBleed`. `gradientCoefficient`
- * est obligatoire dans ce mode (pas de valeur par défaut : l'opacité doit
- * être mesurée par page, jamais devinée).
+ * locales, à propos, réalisations...) gardent le rendu d'origine tant
+ * qu'ils ne passent pas `fullBleed`.
+ *
+ * `gradientCoefficient` (optionnel, défaut 0) : ne sert plus au contraste.
+ * Jusqu'au 25/08/2026 chaque page portait sa propre valeur mesurée (0,15 à
+ * 0,49) parce que le dégradé était le seul rempart du texte. Depuis que le
+ * voile partagé s'en charge, les huit héros tiennent leurs seuils à 0 —
+ * mesuré page par page, pas supposé — et les huit valeurs ont été retirées
+ * de leurs appels. Le paramètre reste pour un réglage esthétique ponctuel ;
+ * à 0, la couche n'est simplement pas rendue.
  */
 export default function PageHero({
   title,
@@ -56,7 +78,7 @@ export default function PageHero({
   photoBadge,
   children,
   fullBleed = false,
-  gradientCoefficient,
+  gradientCoefficient = 0,
 }) {
   /* Style en ligne, jamais une classe Tailwind construite dynamiquement
      (`object-[${...}]`) : une classe assemblée par interpolation n'est pas
@@ -83,9 +105,15 @@ export default function PageHero({
                 imgStyle={objectPositionStyle}
               />
             </div>
+            {gradientCoefficient > 0 && (
+              <div
+                className="pointer-events-none absolute inset-0 hidden lg:block"
+                style={{ background: fullBleedGradient(gradientCoefficient) }}
+              />
+            )}
             <div
               className="pointer-events-none absolute inset-0 hidden lg:block"
-              style={{ background: fullBleedGradient(gradientCoefficient) }}
+              style={{ background: FULL_BLEED_TEXT_VEIL }}
             />
             {photoBadge && <div className="pointer-events-none absolute bottom-6 right-6 hidden lg:block">{photoBadge}</div>}
           </>
@@ -183,7 +211,10 @@ export default function PageHero({
                       <span className="mt-3 text-label font-bold uppercase">
                         {h.title}
                       </span>
-                      <span className="mt-1 text-caption text-white/50">{h.label}</span>
+                      {/* /50 -> /70 (25/08/2026) : même défaut d'origine que
+                          le fil d'Ariane — le blanc à 50 % plafonnait sous
+                          4,5:1 même sur le fond du panneau. */}
+                      <span className="mt-1 text-caption text-white/70">{h.label}</span>
                     </li>
                   ))}
                 </ul>

@@ -129,8 +129,7 @@ function Hero({ page, hero }) {
       intro={page.intro}
       photo={{ ...hero, alt: 'Groupe extérieur de climatisation installé par PCE, terrasse et baie vitrée' }}
       photoBadge={<ZoneBadge />}
-      fullBleed
-      gradientCoefficient={0.15}
+      fullBleed
     >
       <CheckList items={page.heroChecklist} tone="dark" className="mt-6 max-w-sm" />
     </PageHero>

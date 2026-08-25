@@ -15,6 +15,10 @@ export default function Depannage() {
         path="/depannage"
       />
       {/* -------------------------------------------- Hero sur fond marine */}
+      {/* 25/08/2026 : migré sur le mode plein cadre, comme les sept autres
+          héros métier. C'était le dernier resté sur le panneau photo étroit
+          (58 % à droite, bord vertical net) — la divergence qui avait déjà
+          produit le seam et le héros noir sous 1024 px ailleurs. */}
       <PageHero
         breadcrumb="Dépannage"
         icon="wrench"
@@ -25,6 +29,7 @@ export default function Depannage() {
         intro={depannage.intro}
         photo={{ ...depannage.hero, alt: 'Intervention de dépannage PCE dans le Var' }}
         primaryLabel="Décrire mon urgence"
+        fullBleed
       />
 
       {/* -------------------------------- Les 4 engagements de dépannage */}

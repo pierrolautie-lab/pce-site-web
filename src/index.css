@@ -56,9 +56,15 @@
   .btn-navy {
     @apply btn bg-navy-800 text-white hover:bg-navy-700 active:scale-[.98];
   }
-  /* Contour clair, sur fond marine */
+  /* Contour clair, sur fond marine.
+     25/08/2026 : fond marine translucide ajouté. Ce bouton est un appel à
+     l'action posé directement sur la photo dans les héros — son texte
+     blanc, sans fond, tombait entre 2,71:1 et 3,81:1 selon la page. Il ne
+     doit pas dépendre du voile qui l'entoure pour être lisible. Sur les
+     autres appelants (CtaBand, Dépannage, page 404), tous sur marine
+     plein, le fond est imperceptible. */
   .btn-outline-gold {
-    @apply btn border-2 border-gold-500 text-white hover:bg-gold-500 hover:text-navy-800 active:scale-[.98];
+    @apply btn border-2 border-gold-500 bg-navy-950/75 text-white backdrop-blur-sm hover:bg-gold-500 hover:text-navy-800 active:scale-[.98];
   }
   /* Contour marine, sur fond clair */
   .btn-outline {

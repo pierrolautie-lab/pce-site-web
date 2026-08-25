@@ -135,10 +135,27 @@ const VEIL_EDGE_FADE =
  *  c'est ce qui protège la rangée de pictos, en bas du bloc, que l'ancien
  *  fondu diagonal (`to-br`, jusqu'à 0) laissait sans voile — voir le détail
  *  et les mesures dans l'en-tête du fichier. */
-export function HeroTextVeil() {
+export function HeroTextVeil({ from = 'sm', plateau = 60 }) {
+  /* Deux classes littérales plutôt qu'une interpolation : une classe
+     assemblée dynamiquement (`hidden ${from}:block`) échappe à l'analyse
+     statique de Tailwind et se retrouve purgée en production — le même
+     piège que celui déjà documenté sur `object-[...]` dans PageHero.jsx.
+     `sm` pour les héros de HeroBackgroundPhoto (photo de fond dès 640 px),
+     `lg` pour ceux de PageHero en mode plein cadre (photo à partir de
+     1024 px seulement : en dessous, le texte est sur marine plein et le
+     voile n'aurait rien à corriger). */
+  const visibility = from === 'lg' ? 'hidden lg:block' : 'hidden sm:block'
+  /* Même raison qu'au-dessus : deux classes littérales, jamais une
+     interpolation. 60 % convient à l'accueil, dont le bloc de texte est
+     large (768 px) — étendre le plateau y assombrirait l'avant du fourgon
+     sans rien gagner, ses textes étant blancs sur fond sombre. Contact a un
+     bloc plus étroit (max-w-2xl), donc son accroche se retrouve
+     proportionnellement plus à droite dans le voile : mesurée à 2,81:1
+     (seuil 3:1) avec un plateau à 60 %, elle repasse au-dessus à 72 %. */
+  const stop = plateau === 72 ? 'via-[72%]' : 'via-60%'
   return (
     <div
-      className="pointer-events-none absolute -inset-x-3 -inset-y-12 -z-10 hidden bg-gradient-to-r from-navy-950/70 from-0% via-navy-950/70 via-60% to-transparent to-100% sm:block"
+      className={`pointer-events-none absolute -inset-x-3 -inset-y-12 -z-10 bg-gradient-to-r from-navy-950/70 from-0% via-navy-950/70 ${stop} to-transparent to-100% ${visibility}`}
       style={{ maskImage: VEIL_EDGE_FADE, WebkitMaskImage: VEIL_EDGE_FADE }}
     />
   )

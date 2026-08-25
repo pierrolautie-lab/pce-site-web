@@ -178,7 +178,6 @@ export default function VMC() {
            combles. */
         photo={{ lock: 521, alt: 'VMC double flux installée par PCE' }}
         fullBleed
-        gradientCoefficient={0.42}
       />
 
       <FluxComparison flux={service.flux} />

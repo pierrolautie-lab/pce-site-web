@@ -95,7 +95,6 @@ function Hero({ page, hero }) {
       photo={{ ...hero, alt: 'Bassin éclairé, réalisation PCE' }}
       highlights={page.heroHighlights}
       fullBleed
-      gradientCoefficient={0.44}
     />
   )
 }

@@ -189,7 +189,6 @@ export default function Chauffage() {
         photo={{ ...service.hero, alt: 'Chaufferie installée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
         fullBleed
-        gradientCoefficient={0.49}
       />
 
       <SolutionsWhyUs service={service} />

@@ -390,7 +390,7 @@ function Hero() {
             au-dessus du seuil. L'accueil n'a pas ce cas : son bloc de texte
             commence directement par le titre. */}
         <div className="relative max-w-2xl">
-          <HeroTextVeil />
+          <HeroTextVeil plateau={72} />
 
           <nav aria-label="Fil d'Ariane" className="pt-6">
             {/* /45 -> /60 : à 45 % le fil plafonnait à 4,10:1 sur cette photo

@@ -111,7 +111,6 @@ export default function Electricite() {
         photo={{ ...service.hero, alt: 'Tableau électrique ouvert installé par PCE' }}
         highlights={HERO_HIGHLIGHTS}
         fullBleed
-        gradientCoefficient={0.45}
       />
 
       <ServiceTwoColumn

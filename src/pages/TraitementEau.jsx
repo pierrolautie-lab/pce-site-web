@@ -168,7 +168,6 @@ export default function TraitementEau() {
            plutôt que recadré. */
         photo={{ lock: 302, alt: "Local technique de traitement de l'eau installé par PCE" }}
         fullBleed
-        gradientCoefficient={0.36}
         showReassurance={false}
       />
 

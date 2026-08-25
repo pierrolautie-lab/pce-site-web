@@ -93,8 +93,7 @@ export default function Plomberie() {
         intro="Installation sanitaire, rénovation de salle de bains, recherche de fuite et dépannage plomberie pour les particuliers et professionnels dans tout le Var. Des interventions soignées et durables, du premier appel à la mise en service."
         photo={{ ...service.hero, alt: 'Salle de bains rénovée par PCE' }}
         highlights={HERO_HIGHLIGHTS}
-        fullBleed
-        gradientCoefficient={0.32}
+        fullBleed
       />
 
       <ServiceTwoColumn checklistTitle="Nos services plomberie" checklist={SERVICES_CHECKLIST} card={RENOVATION_CARD} />
