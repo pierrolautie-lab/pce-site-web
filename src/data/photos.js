@@ -30,7 +30,12 @@ export const PHOTO_SLOTS = {
 
   /* --- Pages métier -------------------------------------------------- */
   231: { page: 'Plomberie', zone: 'Hero', sujet: 'Salle de bains, douche, sanitaire' },
-  232: { page: 'Plomberie', zone: 'Expertise', sujet: 'Tuyauterie, réseaux, chauffe-eau' },
+  /* 232 orpheline depuis le 25/08/2026 : le bloc Expertise (« De Paris au
+     bâti varois ») est passé sur 233 (traitement fondu à droite du texte,
+     voir Blocks.jsx/Expertise). Le fichier reste sur le disque, signalé
+     plutôt que supprimé. */
+  232: { page: 'Plomberie', zone: 'Expertise (orpheline depuis le 25/08/2026, voir 233)', sujet: 'Tuyauterie, réseaux, chauffe-eau' },
+  233: { page: 'Plomberie', zone: 'Expertise', sujet: 'Réseau de tubes métalliques, raccords à sertir, coudes et tés — recadrage paysage du tiers supérieur (zone la plus dense, sans élément de fond distrayant)' },
   412: { page: 'Chauffage', zone: 'Hero', sujet: 'Pompe à chaleur, groupe extérieur' },
   413: { page: 'Chauffage', zone: 'Expertise', sujet: 'Installation PAC / chaudière' },
   414: { page: 'Chauffage — Chaudière à condensation', zone: 'Hero', sujet: 'Chaudière murale installée' },
@@ -170,6 +175,7 @@ export const clientPhotos = {
      jamais traité (le script ne scanne que .jpg/.png en source). */
   231: '/img/plomberie-hero-salle-de-bains.jpg',
   232: '/img/plomberie-cuivre-vase.jpg',
+  233: '/img/plomberie-histoire-tuyauterie.jpg',
   /* 21/08/2026 : chauffage-hero-chaufferie.jpg montrait un groupe extérieur
      (pompe à chaleur), pas le sujet attendu par la maquette pour ce héros —
      signalé par le client. Remplacé par le visuel fourni dans photos/

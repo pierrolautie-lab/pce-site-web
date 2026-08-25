@@ -101,7 +101,7 @@ export default function Plomberie() {
 
       {/* Fonds alternés : ServiceTwoColumn (navy-50) → Expertise (blanc) →
           InfoBlock (navy-50) → ServiceFeatureCards (blanc). */}
-      <Expertise data={service.expertise} />
+      <Expertise data={service.expertise} fadePhoto />
 
       <InfoBlock info={service.info} />
 

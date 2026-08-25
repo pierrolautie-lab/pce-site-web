@@ -497,6 +497,16 @@ export const imageManifest = {
       1200
     ]
   },
+  "plomberie-histoire-tuyauterie.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+
   "real-ballon-thermo.jpg": {
     "width": 900,
     "height": 1600,

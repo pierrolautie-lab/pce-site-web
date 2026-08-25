@@ -183,7 +183,7 @@ export const services = {
     expertise: {
       eyebrow: 'Notre savoir-faire',
       heading: 'De Paris au bâti varois, vingt ans de plomberie',
-      photo: { tags: 'plumbing', lock: 232 },
+      photo: { tags: 'plumbing', lock: 233, alt: 'Réseau de tuyauterie, raccords à sertir' },
       paragraphs: [
         "Avant le Var, il y a eu Paris. L’entreprise s’est construite sur une forte expérience du chauffage en région parisienne, puis sur l’apprentissage du métier dans sa forme la plus exigeante : le cuivre cintré et brasé, le zinc, le plomb des réseaux anciens. Ce sont des chantiers de rénovation d’immeubles haussmanniens, menés avec des architectes, qui ont formé notre façon de travailler.",
         "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l’Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d’ouvrir une saignée.",

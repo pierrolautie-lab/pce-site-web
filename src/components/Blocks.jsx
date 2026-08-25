@@ -3,6 +3,9 @@ import Icon from './Icon.jsx'
 import Photo from './Photo.jsx'
 import { Wordmark } from './Brand.jsx'
 import { company, guarantees, tvaCard } from '../data/site.js'
+import { softFadeMask } from '../lib/fadeMask.js'
+
+const FADE_MASK = softFadeMask()
 
 /* -------------------------------------------------------------------------
    Blocs de section réutilisés par toutes les pages.
@@ -315,7 +318,92 @@ export function GuaranteeBar() {
 }
 
 /* ------------------------------------------------- BLOC EXPERTISE (long) -*/
-export function Expertise({ data }) {
+/** `fadePhoto` (optionnel, défaut `false`) : au lieu de la photo en carte
+ *  posée à gauche (défaut, inchangé), la photo occupe la colonne de droite,
+ *  fondue dans le fond blanc de la section par le même masque à 11 arrêts
+ *  que les héros (voir lib/fadeMask.js) — aucun bord, aucun cadre. Le
+ *  texte reste dans sa propre colonne de grille (jamais recouvert ni
+ *  compressé par la photo, quelle que soit la largeur) et plafonne à
+ *  `max-w-3xl`. Sous `lg`, la photo repasse en pleine largeur au-dessus du
+ *  texte, sans fondu (un fondu latéral n'a aucun sens sur une colonne
+ *  unique) — même bascule que la carte photo mobile des héros. Strictement
+ *  opt-in : Dépannage, seul autre appelant, garde le rendu d'origine. */
+export function Expertise({ data, fadePhoto = false }) {
+  const text = (
+    <>
+      <SectionTitle title={data.heading} align="left" />
+
+      <div className="mt-6 max-w-3xl space-y-5">
+        {data.paragraphs.map((p, i) => (
+          <p key={i} className="text-body text-navy-600">
+            {p}
+          </p>
+        ))}
+      </div>
+
+      {data.points && (
+        <ul className="mt-9 grid max-w-3xl gap-3 sm:grid-cols-2">
+          {data.points.map((pt) => (
+            <li
+              key={pt}
+              className="flex items-start gap-3 rounded-lg bg-navy-50 p-4 ring-1 ring-navy-100"
+            >
+              <Icon
+                name="check"
+                className="mt-0.5 h-4 w-4 shrink-0 text-azure-500"
+                strokeWidth={3}
+              />
+              <span className="text-body-sm font-semibold text-navy-700">
+                {pt}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
+
+  if (fadePhoto) {
+    return (
+      <section className="section bg-white">
+        <div className="container-pce">
+          <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-14">
+            {/* Photo en carte sur mobile / tablette, au-dessus du texte,
+                sans fondu (voir commentaire de la prop). */}
+            <div className="lg:hidden">
+              <Photo
+                tags={data.photo.tags}
+                lock={data.photo.lock}
+                alt={data.photo.alt || data.heading}
+                className="aspect-[4/3] w-full"
+                rounded="rounded-xl"
+                sizes="100vw"
+              />
+            </div>
+
+            <div className="min-w-0 lg:col-span-7">{text}</div>
+
+            <div className="relative hidden min-w-0 lg:col-span-5 lg:block">
+              <div
+                className="h-full w-full"
+                style={{ WebkitMaskImage: FADE_MASK, maskImage: FADE_MASK }}
+              >
+                <Photo
+                  tags={data.photo.tags}
+                  lock={data.photo.lock}
+                  alt={data.photo.alt || data.heading}
+                  rounded=""
+                  className="h-full w-full"
+                  sizes="42vw"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="section bg-white">
       <div className="container-pce">
@@ -324,44 +412,14 @@ export function Expertise({ data }) {
             <Photo
               tags={data.photo.tags}
               lock={data.photo.lock}
-              alt={data.heading}
+              alt={data.photo.alt || data.heading}
               className="aspect-[4/5] w-full shadow-photo"
               rounded="rounded-xl"
               sizes="(min-width: 1024px) 42vw, 100vw"
             />
           </div>
 
-          <div className="min-w-0 lg:col-span-7">
-            <SectionTitle title={data.heading} align="left" />
-
-            <div className="mt-6 space-y-5">
-              {data.paragraphs.map((p, i) => (
-                <p key={i} className="text-body text-navy-600">
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            {data.points && (
-              <ul className="mt-9 grid gap-3 sm:grid-cols-2">
-                {data.points.map((pt) => (
-                  <li
-                    key={pt}
-                    className="flex items-start gap-3 rounded-lg bg-navy-50 p-4 ring-1 ring-navy-100"
-                  >
-                    <Icon
-                      name="check"
-                      className="mt-0.5 h-4 w-4 shrink-0 text-azure-500"
-                      strokeWidth={3}
-                    />
-                    <span className="text-body-sm font-semibold text-navy-700">
-                      {pt}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          <div className="min-w-0 lg:col-span-7">{text}</div>
         </div>
       </div>
     </section>

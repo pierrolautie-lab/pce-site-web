@@ -3,26 +3,22 @@ import Icon from './Icon.jsx'
 import Photo from './Photo.jsx'
 import { Watermark } from './Brand.jsx'
 import { company, reassurance } from '../data/site.js'
+import { SOFT_FADE_STOPS, softFadeMask } from '../lib/fadeMask.js'
 
 /* Dégradé à 11 arrêts adoucis, réservé au mode `fullBleed` — même courbe
-   que Plomberie/Climatisation/Piscine (19/08/2026). Le coefficient est
+   que Plomberie/Climatisation/Piscine (19/08/2026), partagée avec les blocs
+   de contenu à photo fondue (voir lib/fadeMask.js). Le coefficient est
    fourni par la page appelante (`gradientCoefficient`) : chaque héros a sa
    propre opacité de départ mesurée. Le masque applique la courbe
    complémentaire directement sur la photo, indépendamment du dégradé —
    deux mécanismes pour un seul défaut (le bord net d'un panneau photo
    étroit), pas un seul. */
-const HERO_GRADIENT_STOPS = [
-  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
-  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
-]
 function fullBleedGradient(coefficient) {
-  return `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
+  return `linear-gradient(to right, ${SOFT_FADE_STOPS.map(
     ([pos, op]) => `rgb(1 12 30 / ${(op * coefficient).toFixed(4)}) ${pos}%`
   ).join(', ')})`
 }
-const FULL_BLEED_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
-  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
-).join(', ')}, black 100%)`
+const FULL_BLEED_MASK = softFadeMask()
 
 /**
  * Héros commun à toutes les pages, conforme aux maquettes :
