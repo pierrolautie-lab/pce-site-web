@@ -479,6 +479,15 @@ export const imageManifest = {
       800
     ]
   },
+  "plomberie-hero-salle-de-bains.jpg": {
+    "width": 1456,
+    "height": 819,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "plomberie-hero-vasques.jpg": {
     "width": 1600,
     "height": 900,

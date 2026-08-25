@@ -160,7 +160,15 @@ export const clientPhotos = {
   103: '/img/douche-pierre-finie.jpg',
 
   /* --- Pages métier --- */
-  231: '/img/plomberie-hero-vasques.jpg',
+  /* 21/08/2026 : Plomberie migrée sur le composant de héros partagé
+     (PageHero, fullBleed) — voir Plomberie.jsx. Le lock 231 était déclaré
+     ici mais jamais utilisé (le héros bespoke chargeait
+     /img/hero-plomberie.webp en dur, hors du système de photos). Repointé
+     vers une copie .jpg du même fichier (plomberie-hero-salle-de-bains.jpg)
+     pour que optimize-images.js génère ses variantes WebP responsives,
+     comme pour les 6 autres héros — hero-plomberie.webp lui-même n'était
+     jamais traité (le script ne scanne que .jpg/.png en source). */
+  231: '/img/plomberie-hero-salle-de-bains.jpg',
   232: '/img/plomberie-cuivre-vase.jpg',
   /* 21/08/2026 : chauffage-hero-chaufferie.jpg montrait un groupe extérieur
      (pompe à chaleur), pas le sujet attendu par la maquette pour ce héros —
