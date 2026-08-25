@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
+import PageHero from '../components/PageHero.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
 import { CtaBand } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
-import { company, services } from '../data/site.js'
+import { services } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
 /* Sur le modèle de `SHOW_GOOGLE_REVIEWS` : les fichiers logo Daikin,
@@ -99,119 +100,34 @@ export default function Climatisation() {
 }
 
 /* ========================================================= HÉROS ======== */
-/* Dégradé à 11 arrêts adoucis (même courbe que Plomberie) — coefficient
-   propre à cette page, 0,46, fixé lors de la mesure du lot d'images du
-   17/08/2026. Le masque applique la courbe complémentaire (1 - opacité)
-   directement sur la photo : deux mécanismes indépendants pour le même
-   défaut, l'un ne peut pas laisser un bord net si l'autre s'applique. */
-const HERO_GRADIENT_STOPS = [
-  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
-  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
-]
-const HERO_COEFFICIENT = 0.46
-const HERO_GRADIENT = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
-  ([pos, op]) => `rgb(1 12 30 / ${(op * HERO_COEFFICIENT).toFixed(4)}) ${pos}%`
-).join(', ')})`
-const HERO_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
-  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
-).join(', ')}, black 100%)`
-
+/* Migré sur le composant de héros partagé (PageHero, fullBleed) le
+   21/08/2026 — coefficient 0,46 propre à cette page, mesuré le 17/08/2026,
+   conservé tel quel. `ZoneBadge` passé en `photoBadge` : seul élément qui
+   restait spécifique à cette page dans l'ancien héros maison. */
 function Hero({ page, hero }) {
   const [ligne1, ligne2, ligne3] = page.h1
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Photo plein cadre, d'un bord à l'autre du héros — pas un panneau
-          posé à droite. Le dégradé (couche suivante) et le masque
-          (appliqué ici sur la photo elle-même) la font disparaître
-          progressivement vers la gauche ; il ne doit exister nulle part de
-          bord net entre marine uni et photo. */}
-      <div
-        className="pointer-events-none absolute inset-0 hidden lg:block"
-        style={{ WebkitMaskImage: HERO_MASK, maskImage: HERO_MASK }}
-      >
-        {/* object-[50%_52%] : photo portrait 1200×1600, groupe extérieur situé
-            au tiers central de l'image en hauteur (centre vertical mesuré à
-            50,6 % de la hauteur). Dans ce panneau, toujours plus large que
-            haut (aucune largeur de l'image n'est jamais rognée en cover —
-            vérifié à 1024/1440/1920 px), seule la position verticale compte :
-            52 % centre la fenêtre visible sur le groupe extérieur à toutes
-            les largeurs testées (fenêtre visible la plus étroite, à 1920 px,
-            de 28 % à 73 % de la hauteur — contient largement le sujet, situé
-            entre 37,5 % et 64 %).
-            19/08/2026 : remplacée par une photo paysage (groupe extérieur,
-            jardin/piscine) — l'ancienne était en portrait, cadrée pour un
-            panneau étroit à droite, pas pour un plein cadre. object-cover
-            simple, plus besoin de position verticale sur mesure. */}
-        <Photo
-          lock={hero.lock}
-          alt="Climatisation installée par PCE"
-          priority
-          rounded=""
-          className="h-full w-full"
-        />
-      </div>
-      <ZoneBadge className="pointer-events-none absolute bottom-6 right-6 hidden lg:block" />
-
-      <div
-        className="absolute inset-0 -z-0 hidden lg:block"
-        style={{ background: HERO_GRADIENT }}
-      />
-      <div className="absolute inset-0 -z-0 bg-navy-950 lg:hidden" />
-
-      <div className="container-pce relative py-8 lg:py-14">
-        <nav aria-label="Fil d'Ariane" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
-            <li>
-              <Link to="/" className="transition-colors hover:text-white">
-                Accueil
-              </Link>
-            </li>
-            <li aria-hidden="true">›</li>
-            <li className="text-white/80">Climatisation</li>
-          </ol>
-        </nav>
-
-        <div className="max-w-2xl">
-          <span aria-hidden="true" className="relative mb-5 grid h-8 w-8 place-items-center sm:h-10 sm:w-10">
-            <span className="pointer-events-none absolute -inset-6 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-sky-300/[.18] to-transparent sm:-inset-[30px]" />
-            <Icon
-              name="snowflake"
-              className="relative h-8 w-8 text-sky-300 drop-shadow-[0_6px_14px_rgba(1,12,30,.45)] sm:h-10 sm:w-10"
-              strokeWidth={1.4}
-            />
-          </span>
-          <h1 className="font-display font-black uppercase">
-            <span className="block text-hero">{ligne1}</span>
-            <span className="block text-title-lg">{ligne2}</span>
-            <span className="block text-title-lg text-azure-400">{ligne3}</span>
-          </h1>
-
-          <p className="signature mt-4 text-kicker">{company.expertise}</p>
-
-          <p className="mt-5 max-w-xl text-body text-white/75">{page.intro}</p>
-
-          <CheckList items={page.heroChecklist} tone="dark" className="mt-6 max-w-sm" />
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-azure-500 px-6 py-4 text-label font-bold uppercase text-white transition-colors hover:bg-azure-600"
-            >
-              Demande de devis gratuit
-              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
-            </Link>
-            <a
-              href={company.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-kicker font-bold text-white transition-colors hover:bg-white hover:text-navy-900"
-            >
-              <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
-              {company.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      breadcrumb="Climatisation"
+      icon="snowflake"
+      iconClass="text-sky-300"
+      haloClass="from-sky-300/[.18]"
+      title={
+        <>
+          <span className="block">{ligne1}</span>
+          <span className="block text-title-lg">{ligne2}</span>
+          <span className="block text-title-lg text-azure-400">{ligne3}</span>
+        </>
+      }
+      intro={page.intro}
+      photo={{ ...hero, alt: 'Climatisation installée par PCE' }}
+      photoBadge={<ZoneBadge />}
+      fullBleed
+      gradientCoefficient={0.46}
+    >
+      <CheckList items={page.heroChecklist} tone="dark" className="mt-6 max-w-sm" />
+    </PageHero>
   )
 }
 
