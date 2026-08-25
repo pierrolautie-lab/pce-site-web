@@ -51,13 +51,20 @@ const FULL_BLEED_TEXT_VEIL =
  * locales, à propos, réalisations...) gardent le rendu d'origine tant
  * qu'ils ne passent pas `fullBleed`.
  *
- * `gradientCoefficient` (optionnel, défaut 0) : ne sert plus au contraste.
- * Jusqu'au 25/08/2026 chaque page portait sa propre valeur mesurée (0,15 à
- * 0,49) parce que le dégradé était le seul rempart du texte. Depuis que le
- * voile partagé s'en charge, les huit héros tiennent leurs seuils à 0 —
- * mesuré page par page, pas supposé — et les huit valeurs ont été retirées
- * de leurs appels. Le paramètre reste pour un réglage esthétique ponctuel ;
- * à 0, la couche n'est simplement pas rendue.
+ * `gradientCoefficient` (optionnel, défaut 0 — laisser à 0).
+ *   À quoi il servait : jusqu'au 25/08/2026, le dégradé à 11 arrêts était
+ *     le seul rempart du texte sur la photo, et chaque page portait sa
+ *     propre opacité mesurée (0,15 à 0,49).
+ *   Pourquoi il ne sert plus : FULL_BLEED_TEXT_VEIL, identique sur les huit
+ *     héros, porte désormais le contraste. Vérifié page par page, les huit
+ *     tiennent leurs seuils à 0 ; les huit valeurs ont donc été retirées.
+ *     Sur sept d'entre eux la contrainte n'est même plus la photo mais le
+ *     bouton azur, une paire de couleurs fixe.
+ *   Quand le rallumer : jamais pour corriger un contraste — c'est le voile
+ *     qu'il faut alors ajuster, une fois, pour tout le monde. Uniquement
+ *     comme choix esthétique, si une photo donnée demande un fondu plus
+ *     appuyé sur son bord gauche. Toute valeur remise ici doit être mesurée
+ *     et justifiée en commentaire sur la page appelante.
  */
 export default function PageHero({
   title,

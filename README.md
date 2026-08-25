@@ -127,6 +127,37 @@ avec, pour chacun, la page, la zone et le sujet attendu. Aucune modification de
 composant n'est nécessaire : la vraie photo remplace l'illustration partout où
 le slot est utilisé.
 
+### Contraste des héros — trois photos à remesurer si elles changent
+
+Depuis le 25/08/2026, le contraste du texte des héros est porté par un **voile
+partagé** (`FULL_BLEED_TEXT_VEIL` dans `PageHero.jsx`, `HeroTextVeil` dans
+`HeroPhoto.jsx`), et non plus par un coefficient réglé page par page. Sur sept
+des dix héros, le texte le plus juste est désormais contraint par le **bouton
+azur** — une paire de couleurs fixe : changer leur photo ne peut plus rien
+casser.
+
+**Trois héros font exception** : leur texte le plus juste dépend encore de la
+photo, et tient son seuil de 3:1 sans grande marge.
+
+| Héros | Minimum mesuré | Texte contraint |
+| --- | --- | --- |
+| Accueil (slot 100) | 3,51:1 | « Climatisation • Piscine », H1 azure |
+| Climatisation (slot 520) | 3,32:1 | « et économies d'énergie », sous-titre azure |
+| Contact (slot 100) | 3,30:1 | accroche azure |
+
+> ⚠️ Si l'un de ces trois visuels est remplacé, **remesurer avant de livrer**.
+> Le point commun des trois est un texte **azure sur photo** : l'azure est un
+> ton moyen, il perd son contraste aussi bien sur un fond qui s'éclaircit que
+> sur un fond qui s'assombrit. Accueil et Contact partagent le slot 100 : une
+> seule photo, deux pages à vérifier.
+
+La mesure se fait sur le rendu réel, au pixel de glyphe — pas sur la boîte
+englobante du texte, qui donne des faux positifs sur le vide à droite des
+lignes. Méthode : capturer la page deux fois (rendu normal, puis avec
+`section * { color: transparent }`), ne retenir que les pixels où les deux
+diffèrent, et comparer la couleur calculée du texte au fond de la seconde
+capture.
+
 ---
 
 ## Formulaire de contact
