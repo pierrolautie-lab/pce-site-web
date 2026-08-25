@@ -107,7 +107,14 @@ export default function PageHero({
               tableau de { label, to? } pour un fil à plusieurs niveaux. */}
           {breadcrumb && (
             <nav aria-label="Fil d'Ariane" className="pt-6">
-              <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/45">
+              {/* /45 -> /60 (25/08/2026). Le blanc à 45 % plafonne à 4,49:1
+                  sur navy-950 *pur* : il était sous le seuil de 4,5:1 par
+                  construction, avant même qu'une photo n'entre en jeu. Mesuré
+                  sur le rendu réel des huit héros, il tombait entre 3,55:1
+                  (Climatisation) et 4,36:1 (Plomberie). À 60 %, plus aucun
+                  héros ne descend sous le seuil. Même correction que sur le
+                  fil de Contact, qui a le même défaut d'origine. */}
+              <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
                 <li>
                   <Link to="/" className="transition-colors hover:text-white">
                     Accueil
