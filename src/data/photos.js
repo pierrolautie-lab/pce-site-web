@@ -215,16 +215,12 @@ export const clientPhotos = {
   518: '/img/climatisation-expertise-gainable-salon.jpg',
   519: '/img/climatisation-reversible-salon.jpg',
 
-  /* Traitement de l'eau — l'ancienne photo (réseau de cuivre au mur)
-     montrait de la plomberie, pas du traitement de l'eau : signalée hors
-     sujet par le client le 17/08/2026. Retirée du héros (voir PageHero
-     dans TraitementEau.jsx, pas de prop `photo` pour l'instant). Slots
-     réassignés au nom de fichier attendu pour la photo d'adoucisseur
-     installé que le client doit fournir — le fichier n'existe pas encore,
-     ces deux lignes ne servent donc à rien tant qu'il n'est pas déposé et
-     que `photo={{ ...service.hero }}` n'est pas restauré dans
-     TraitementEau.jsx. */
-  300: '/img/eau-adoucisseur-installe.jpg',
+  /* 300/301 (adoucisseur installé, réseau de cuivre écarté le 17/08/2026)
+     retirées le 21/08/2026 : le fichier attendu n'a jamais été livré par
+     le client, et ces deux entrées faisaient échouer `check:images` (le
+     nouveau garde-fou de build, voir scripts/verify-images.js) puisqu'il
+     n'existe pas sur le disque. À réintroduire dès réception du fichier,
+     avec `photo={{ ...service.hero }}` restauré dans TraitementEau.jsx. */
   /* 302 : héros Traitement de l'eau, déposé le 19/08/2026. Un petit badge
      illisible/déformé subsiste sur l'écran du 3e appareil (~51-60% de la
      largeur) — signalé, pas recadré : à cette échelle et sous le dégradé,
@@ -232,7 +228,6 @@ export const clientPhotos = {
      recadrage aurait coupé d'autres appareils de la composition. */
   302: '/img/traitement-eau-hero-local-technique.jpg',
   521: '/img/vmc-hero-combles.jpg',
-  301: '/img/eau-adoucisseur-installe.jpg',
 
   /* Nos solutions de traitement de l'eau — 6 cartes produit, déposées le
      18/08/2026. Détourées, cadrées et mises à l'échelle sur un fond blanc
