@@ -3,7 +3,7 @@ import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
 import BrandLogo from '../components/BrandLogo.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
-import { ReassuranceBar } from '../components/PageHero.jsx'
+import PageHero from '../components/PageHero.jsx'
 import { company, services } from '../data/site.js'
 
 /* -------------------------------------------------------------------------
@@ -59,7 +59,6 @@ export default function Piscine() {
       />
 
       <Hero page={p} hero={service.hero} />
-      <ReassuranceBar />
       <PrestationsEtAutomatisation page={p} hero={service.hero} />
       <Equipements data={p.equipements} />
       <EntretienEtAccompagnement page={p} />
@@ -70,111 +69,34 @@ export default function Piscine() {
 }
 
 /* ========================================================= HÉROS ======== */
-/* Dégradé à 11 arrêts adoucis (même courbe que Plomberie/Climatisation) —
-   coefficient propre à cette page, 0,44. Masque = courbe complémentaire
-   appliquée à la photo elle-même, indépendamment du dégradé — voir le
-   même mécanisme sur Climatisation.jsx (19/08/2026, correction du bord
-   net découvert sur le héros Climatisation). */
-const HERO_GRADIENT_STOPS = [
-  [0, 1.0], [8, 0.793], [16, 0.612], [24, 0.456], [32, 0.325],
-  [40, 0.218], [48, 0.133], [56, 0.071], [64, 0.029], [72, 0.006], [80, 0.0],
-]
-const HERO_COEFFICIENT = 0.44
-const HERO_GRADIENT = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
-  ([pos, op]) => `rgb(1 12 30 / ${(op * HERO_COEFFICIENT).toFixed(4)}) ${pos}%`
-).join(', ')})`
-const HERO_MASK = `linear-gradient(to right, ${HERO_GRADIENT_STOPS.map(
-  ([pos, op]) => `rgba(0,0,0,${(1 - op).toFixed(4)}) ${pos}%`
-).join(', ')}, black 100%)`
-
+/* Migré sur le composant de héros partagé (PageHero, fullBleed) le
+   21/08/2026 — coefficient 0,44 propre à cette page, conservé tel quel.
+   Le panneau translucide derrière les pictos est maintenant permanent dans
+   PageHero (55 %, la valeur que cette page avait dû porter au-delà des
+   35 % standard pour rester au-dessus de 4,5:1 sur « Dépannage ») : plus
+   besoin de le répliquer ici. */
 function Hero({ page, hero }) {
   const [ligne1, ligne2, ligne3] = page.h1
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      {/* Photo plein cadre — pas un panneau posé à droite. Le masque,
-          appliqué directement sur la photo, et le dégradé (couche
-          suivante) la font disparaître progressivement vers la gauche :
-          deux mécanismes indépendants, aucun bord net possible entre les
-          deux. */}
-      <div
-        className="pointer-events-none absolute inset-0 hidden lg:block"
-        style={{ WebkitMaskImage: HERO_MASK, maskImage: HERO_MASK }}
-      >
-        <Photo lock={hero.lock} alt="Bassin éclairé, réalisation PCE" priority rounded="" className="h-full w-full" />
-      </div>
-      <div className="absolute inset-0 -z-0 hidden lg:block" style={{ background: HERO_GRADIENT }} />
-      <div className="absolute inset-0 -z-0 bg-navy-950 lg:hidden" />
-
-      <div className="container-pce relative py-8 lg:py-14">
-        <nav aria-label="Fil d'Ariane" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
-            <li>
-              <Link to="/" className="transition-colors hover:text-white">
-                Accueil
-              </Link>
-            </li>
-            <li aria-hidden="true">›</li>
-            <li className="text-white/80">Piscine</li>
-          </ol>
-        </nav>
-
-        <div className="max-w-2xl">
-          <span aria-hidden="true" className="relative mb-5 grid h-8 w-8 place-items-center sm:h-10 sm:w-10">
-            <span className="pointer-events-none absolute -inset-6 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-cyan-300/[.18] to-transparent sm:-inset-[30px]" />
-            <Icon
-              name="waves"
-              className="relative h-8 w-8 text-cyan-300 drop-shadow-[0_6px_14px_rgba(1,12,30,.45)] sm:h-10 sm:w-10"
-              strokeWidth={1.4}
-            />
-          </span>
-          <h1 className="font-display font-black uppercase">
-            <span className="block text-hero">{ligne1}</span>
-            <span className="block text-title-lg">{ligne2}</span>
-            <span className="block text-title-lg text-azure-400">{ligne3}</span>
-          </h1>
-
-          <p className="signature mt-4 text-kicker">{company.expertise}</p>
-
-          <p className="mt-5 max-w-xl text-body text-white/75">{page.intro}</p>
-
-          {/* Pictos séparés par des filets verticaux fins. Fond translucide
-              (19/08/2026) : le dernier picto (« Dépannage ») retombait sur une
-              zone très claire de la photo (reflet du bassin), contraste
-              mesuré à 1,42 avec le dégradé seul — même correctif que
-              VMC/Chauffage/Électricité (`highlightsPanel` dans PageHero),
-              transposé ici car ce héros est un composant maison. Opacité à
-              55 % (vs 35 % ailleurs) : la zone est plus claire qu'ailleurs,
-              35 % ne suffisait pas (3,33:1 mesuré, still < 4,5:1). */}
-          <ul className="mt-8 grid grid-cols-2 gap-y-6 rounded-xl bg-navy-950/55 px-5 py-5 backdrop-blur-sm sm:grid-cols-4 sm:divide-x sm:divide-white/15">
-            {page.heroHighlights.map((h) => (
-              <li key={h.title} className="flex flex-col items-start px-0 sm:px-5 sm:first:pl-0">
-                <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />
-                <span className="mt-3 text-label font-bold uppercase">{h.title}</span>
-                <span className="mt-1 text-body-sm text-white/55">{h.label}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-azure-500 px-6 py-4 text-label font-bold uppercase text-white transition-colors hover:bg-azure-600"
-            >
-              Demande de devis gratuit
-              <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
-            </Link>
-            <a
-              href={company.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-kicker font-bold text-white transition-colors hover:bg-white hover:text-navy-900"
-            >
-              <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
-              {company.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      breadcrumb="Piscine"
+      icon="waves"
+      iconClass="text-cyan-300"
+      haloClass="from-cyan-300/[.18]"
+      title={
+        <>
+          <span className="block">{ligne1}</span>
+          <span className="block text-title-lg">{ligne2}</span>
+          <span className="block text-title-lg text-azure-400">{ligne3}</span>
+        </>
+      }
+      intro={page.intro}
+      photo={{ ...hero, alt: 'Bassin éclairé, réalisation PCE' }}
+      highlights={page.heroHighlights}
+      fullBleed
+      gradientCoefficient={0.44}
+    />
   )
 }
 
