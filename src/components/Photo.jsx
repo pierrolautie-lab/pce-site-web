@@ -31,6 +31,7 @@ export default function Photo({
   priority = false,
   className = '',
   imgClassName = '',
+  imgStyle,
   rounded = 'rounded-2xl',
   sizes = '100vw',
   fallback = 'logo',
@@ -79,6 +80,7 @@ export default function Photo({
         decoding="async"
         onLoad={() => setLoaded(true)}
         onError={handleError}
+        style={imgStyle}
         className={`h-full w-full object-cover transition-opacity duration-700 ${
           loaded ? 'opacity-100' : 'opacity-0'
         } ${imgClassName}`}

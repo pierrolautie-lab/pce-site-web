@@ -112,7 +112,6 @@ export default function Electricite() {
         highlights={HERO_HIGHLIGHTS}
         fullBleed
         gradientCoefficient={0.45}
-        highlightsPanel
       />
 
       <ServiceTwoColumn

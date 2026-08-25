@@ -190,7 +190,6 @@ export default function Chauffage() {
         highlights={HERO_HIGHLIGHTS}
         fullBleed
         gradientCoefficient={0.49}
-        highlightsPanel
       />
 
       <SolutionsWhyUs service={service} />

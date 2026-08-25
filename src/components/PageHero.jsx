@@ -51,6 +51,7 @@ export default function PageHero({
   subtitleClassName = 'text-azure-300',
   intro,
   photo,
+  objectPosition,
   breadcrumb,
   highlights,
   actions = true,
@@ -60,8 +61,13 @@ export default function PageHero({
   children,
   fullBleed = false,
   gradientCoefficient,
-  highlightsPanel = false,
 }) {
+  /* Style en ligne, jamais une classe Tailwind construite dynamiquement
+     (`object-[${...}]`) : une classe assemblée par interpolation n'est pas
+     détectable par l'analyse statique de Tailwind au build et se retrouve
+     purgée en production alors qu'elle fonctionne en dev — exactement le
+     type de défaut invisible en local qui a justifié ce garde-fou. */
+  const objectPositionStyle = objectPosition ? { objectPosition } : undefined
   return (
     <>
       <section className={`relative overflow-hidden text-white ${fullBleed ? 'bg-navy-950' : 'bg-navy-800'}`}>
@@ -71,7 +77,15 @@ export default function PageHero({
               className="pointer-events-none absolute inset-0 hidden lg:block"
               style={{ WebkitMaskImage: FULL_BLEED_MASK, maskImage: FULL_BLEED_MASK }}
             >
-              <Photo tags={photo.tags} lock={photo.lock} alt={photo.alt || title} priority rounded="" className="h-full w-full" />
+              <Photo
+                tags={photo.tags}
+                lock={photo.lock}
+                alt={photo.alt || title}
+                priority
+                rounded=""
+                className="h-full w-full"
+                imgStyle={objectPositionStyle}
+              />
             </div>
             <div
               className="pointer-events-none absolute inset-0 hidden lg:block"
@@ -150,18 +164,16 @@ export default function PageHero({
                 <p className="mt-5 max-w-xl text-body text-white/70">{intro}</p>
               )}
 
-              {/* Rangée d'icônes optionnelle (voir page Piscine). `highlightsPanel`
-                  (opt-in) ajoute un fond translucide derrière la rangée — même
-                  procédé que `ZoneBadge` sur Climatisation — pour les héros
-                  `fullBleed` dont la photo a une zone locale trop claire à cet
-                  endroit précis (ex : VMC, fenêtre lumineuse sous « Économies »),
-                  sans toucher au dégradé global ni aux autres appelants. */}
+              {/* Rangée d'icônes optionnelle, toujours sur fond translucide :
+                  au moins un héros (Piscine, zone claire sous « Dépannage »,
+                  contraste mesuré à 1,42 avec le dégradé seul) en a besoin
+                  pour rester au-dessus de 4,5:1, et un fond constant partout
+                  évite d'avoir à remesurer au cas par cas à chaque nouvelle
+                  photo. 55 % d'opacité : la valeur la plus forte des sept
+                  héros mesurés, jamais la plus faible qui suffisait ailleurs
+                  — remonter, jamais redescendre en cas de doute. */}
               {highlights && (
-                <ul
-                  className={`mt-9 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4 ${
-                    highlightsPanel ? 'rounded-xl bg-navy-950/35 px-5 py-5 backdrop-blur-sm' : ''
-                  }`}
-                >
+                <ul className="mt-9 grid max-w-xl grid-cols-2 gap-6 rounded-xl bg-navy-950/55 px-5 py-5 backdrop-blur-sm sm:grid-cols-4">
                   {highlights.map((h) => (
                     <li key={h.title} className="flex flex-col items-start">
                       <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />
@@ -173,6 +185,12 @@ export default function PageHero({
                   ))}
                 </ul>
               )}
+
+              {/* `children` avant les boutons d'action : un contenu de héros
+                  propre à une page (ex. la checklist verticale de
+                  Climatisation) prend la place qu'occupait `highlights`
+                  ailleurs, jamais après l'appel à l'action. */}
+              {children}
 
               {actions && (
                 <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-9">
@@ -186,8 +204,6 @@ export default function PageHero({
                   </a>
                 </div>
               )}
-
-              {children}
             </div>
 
             {/* Photo en carte sur mobile / tablette */}
@@ -199,6 +215,7 @@ export default function PageHero({
                   alt={photo.alt || title}
                   priority
                   className="aspect-[16/9] w-full shadow-photo"
+                  imgStyle={objectPositionStyle}
                   rounded="rounded-xl"
                 />
               </div>

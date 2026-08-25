@@ -179,7 +179,6 @@ export default function VMC() {
         photo={{ lock: 521, alt: 'VMC double flux installée par PCE' }}
         fullBleed
         gradientCoefficient={0.42}
-        highlightsPanel
       />
 
       <FluxComparison flux={service.flux} />
