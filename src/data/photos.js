@@ -36,8 +36,11 @@ export const PHOTO_SLOTS = {
      plutôt que supprimé. */
   232: { page: 'Plomberie', zone: 'Expertise (orpheline depuis le 25/08/2026, voir 233)', sujet: 'Tuyauterie, réseaux, chauffe-eau' },
   233: { page: 'Plomberie', zone: 'Expertise', sujet: 'Réseau de tubes métalliques, raccords à sertir, coudes et tés — recadrage paysage du tiers supérieur (zone la plus dense, sans élément de fond distrayant)' },
-  412: { page: 'Chauffage', zone: 'Hero', sujet: 'Pompe à chaleur, groupe extérieur' },
+  412: { page: 'Chauffage', zone: 'Hero', sujet: 'Chaudière Frisquet, ballon, vase d’expansion et collecteurs' },
   413: { page: 'Chauffage', zone: 'Expertise', sujet: 'Installation PAC / chaudière' },
+  415: { page: 'Chauffage', zone: 'Nos solutions', sujet: 'Chaudière murale et ballon, cadrage décalé à droite pour sortir la baie vitrée en contre-jour' },
+  416: { page: 'Chauffage', zone: 'Pourquoi choisir PCE', sujet: 'Séjour avec chaudière et radiateur, ambiance chaleureuse' },
+  417: { page: 'Chauffage', zone: 'Entretien', sujet: 'Technicien PCE devant une chaudière ouverte' },
   414: { page: 'Chauffage — Chaudière à condensation', zone: 'Hero', sujet: 'Chaudière murale installée' },
   517: { page: 'Climatisation', zone: 'Hero (inutilisé depuis le 19/08/2026, voir 520)', sujet: 'Groupe extérieur, portrait — remplacé, mauvais format pour un héros plein cadre' },
   520: { page: 'Climatisation', zone: 'Hero', sujet: 'Groupe extérieur, terrasse et baie vitrée' },
@@ -192,9 +195,27 @@ export const clientPhotos = {
      (chauffage.webp) : chaudière murale + ballon d'eau chaude en local
      technique. L'ancien fichier reste sur le disque, plus référencé nulle
      part (aucune autre page ne pointait sur le lock 412). */
-  412: '/img/chauffage-hero-local-technique.jpg',
+  /* 26/08/2026 : nouveau visuel de héros fourni par le client — chaudière
+     Frisquet, ballon, vase d'expansion et collecteurs, en local technique
+     ouvert sur le séjour. La marque FRISQUET est lisible sur la façade :
+     c'est l'une des trois annoncées par le bloc marques de la page, donc
+     cohérent. Une version antérieure du même visuel portait « Saunier
+     Duval », marque non annoncée : ne pas la ressortir de photos/.
+     chauffage-hero-local-technique.jpg devient orpheline. */
+  412: '/img/chauffage-hero-frisquet.jpg',
   413: '/img/chauffage-chaudiere-neuve.jpg',
   414: '/img/chauffage-chaudiere-neuve.jpg',
+  /* 26/08/2026 — les trois visuels des blocs à image fondue de la page
+     Chauffage, livrés avec le héros ci-dessus. */
+  415: '/img/chauffage-solutions-chaudiere-ballon.jpg',
+  416: '/img/chauffage-sejour-radiateur.jpg',
+  /* ⚠️ Personnage fictif. Le technicien de dos porte une tenue PCE au
+     logo correct (ovale, « Depuis 2005 ») mais n'est pas un employé réel :
+     c'est une image générée, validée telle quelle par le client. Ne pas la
+     présenter comme une photo d'équipe, ne pas la signaler à nouveau comme
+     incohérence. C'est le deuxième cas du site, après la carte
+     « Entretien & dépannage » de la page Climatisation. */
+  417: '/img/chauffage-entretien-technicien.jpg',
   739: '/img/piscine-hero-bassin.jpg',
   /* Pas encore de seconde photo réelle de local technique piscine (N14
      est en attente d'original sans filigrane, voir plus bas) : on

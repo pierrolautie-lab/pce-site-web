@@ -125,6 +125,15 @@ export const imageManifest = {
       800
     ]
   },
+  "chauffage-entretien-technicien.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "chauffage-hero-chaufferie.jpg": {
     "width": 1600,
     "height": 900,
@@ -134,9 +143,36 @@ export const imageManifest = {
       1200
     ]
   },
+  "chauffage-hero-frisquet.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "chauffage-hero-local-technique.jpg": {
     "width": 1456,
     "height": 819,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "chauffage-sejour-radiateur.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
+  "chauffage-solutions-chaudiere-ballon.jpg": {
+    "width": 1260,
+    "height": 1024,
     "widths": [
       400,
       800,
