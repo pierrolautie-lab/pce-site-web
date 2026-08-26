@@ -100,7 +100,23 @@
     @apply font-semibold italic text-gold-500;
   }
 
+  /* Échelle d'espacement vertical des sections — trois crans, jamais de
+     valeur au cas par cas. Le cran standard existait déjà (56 px mobile,
+     80 px desktop) ; les deux autres ont été ajoutés le 26/08/2026 parce
+     que les pages les improvisaient jusque-là (`pt-14` sans `pb`, props
+     `tightBottom`...), ce qui produisait des écarts différents d'une page
+     à l'autre pour une même transition.
+       standard  56 -> 64 -> 80 px
+       resserré  60 % du standard : deux sections de même fond qui se
+                 lisent comme un seul ensemble
+       ample     150 % du standard : changement de fond */
   .section {
     @apply py-14 sm:py-16 lg:py-20;
+  }
+  .section-tight {
+    @apply py-[34px] sm:py-[38px] lg:py-12;
+  }
+  .section-loose {
+    @apply py-[84px] sm:py-24 lg:py-[120px];
   }
 }

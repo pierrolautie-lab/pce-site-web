@@ -317,6 +317,94 @@ export function GuaranteeBar() {
   )
 }
 
+/* --------------------------------------- SECTION À IMAGE LATÉRALE FONDUE -*/
+/**
+ * Texte d'un côté, photo de l'autre, fondue dans le fond de la section par
+ * le masque à 11 arrêts partagé avec les héros (voir lib/fadeMask.js).
+ *
+ * Le fondu est un **masque alpha**, jamais un dégradé coloré : la photo
+ * s'efface vers la transparence et laisse voir le fond de la section, quel
+ * qu'il soit. La jonction est donc invisible sur blanc comme sur marine
+ * sans qu'aucune couleur ne soit à renseigner — un dégradé coloré, lui,
+ * devrait être réaccordé à chaque changement de fond, et se verrait au
+ * premier oubli.
+ *
+ * Le texte occupe sa propre colonne de grille : il n'est jamais recouvert
+ * ni compressé par la photo, à aucune largeur. Sous `lg`, la photo repasse
+ * en pleine largeur au-dessus du texte, sans fondu — un fondu latéral n'a
+ * aucun sens sur une colonne unique.
+ *
+ * `tone` : 'light' (blanc) ou 'navy' (navy-900).
+ * `spacing` : cran de l'échelle verticale ('standard' | 'tight' | 'loose').
+ */
+const FADED_TONES = { light: 'bg-white', navy: 'bg-navy-900 text-white' }
+const FADED_SPACING = { standard: 'section', tight: 'section-tight', loose: 'section-loose' }
+
+export function FadedPhotoSection({
+  photo,
+  alt,
+  tone = 'light',
+  spacing = 'standard',
+  objectPosition,
+  children,
+}) {
+  const imgStyle = objectPosition ? { objectPosition } : undefined
+  return (
+    <section className={`relative overflow-hidden ${FADED_SPACING[spacing]} ${FADED_TONES[tone]}`}>
+      {/* Photo posée en absolu sur la moitié droite de la SECTION, et non
+          dans une colonne de la grille : une colonne s'arrête au conteneur
+          et à l'intérieur des marges verticales, ce qui laisse trois bords
+          francs — en haut, en bas et à droite. Ici la photo va d'un bord à
+          l'autre en hauteur (inset-y-0) et jusqu'au bord de l'écran
+          (right-0) : il ne reste que le fondu de gauche, qui est justement
+          le seul bord voulu. Décorative et aria-hidden : le texte
+          alternatif est porté par l'instance mobile ci-dessous, pour ne pas
+          annoncer deux fois la même image. */}
+      <div
+        aria-hidden="true"
+        /* 2/5 et non 1/2 : la colonne d'origine (`lg:col-span-5` du
+           conteneur) commençait à ~40 % de la largeur de l'écran, aux deux
+           paliers mesurés (854/1440 et 625/1024). Passer à la moitié
+           avançait le bord gauche de la photo de 100 px et la faisait
+           mordre sur le titre — mesuré 2,71:1 sur celui de Plomberie à
+           1024 px. 2/5 conserve la position d'origine tout en laissant la
+           photo filer jusqu'au bord de l'écran. */
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-2/5 lg:block"
+        style={{ WebkitMaskImage: FADE_MASK, maskImage: FADE_MASK }}
+      >
+        <Photo
+          lock={photo.lock}
+          alt=""
+          rounded=""
+          className="h-full w-full"
+          sizes="50vw"
+          imgStyle={imgStyle}
+        />
+      </div>
+
+      <div className="container-pce relative">
+        {/* Sous lg, la photo repasse en carte pleine largeur au-dessus du
+            texte, sans fondu : un fondu latéral n'a aucun sens sur une
+            colonne unique. */}
+        <div className="mb-8 lg:hidden">
+          <Photo
+            lock={photo.lock}
+            alt={alt}
+            className="aspect-[4/3] w-full"
+            rounded="rounded-xl"
+            sizes="100vw"
+            imgStyle={imgStyle}
+          />
+        </div>
+
+        <div className="grid lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-7">{children}</div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ------------------------------------------------- BLOC EXPERTISE (long) -*/
 /** `fadePhoto` (optionnel, défaut `false`) : au lieu de la photo en carte
  *  posée à gauche (défaut, inchangé), la photo occupe la colonne de droite,
@@ -363,47 +451,22 @@ export function Expertise({ data, fadePhoto = false }) {
     </>
   )
 
+  /* Délègue à FadedPhotoSection : une seule mécanique de bloc à image
+     latérale fondue pour tout le site. Cette branche portait sa propre
+     copie de la mise en page — donc ses propres bords francs en haut, en
+     bas et à droite, la photo étant enfermée dans une colonne de la
+     grille. Constaté le 26/08/2026 en comparant Plomberie et Chauffage :
+     les deux montraient la même arête à la limite du conteneur. */
   if (fadePhoto) {
     return (
-      <section className="section bg-white">
-        <div className="container-pce">
-          <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-14">
-            {/* Photo en carte sur mobile / tablette, au-dessus du texte,
-                sans fondu (voir commentaire de la prop). */}
-            <div className="lg:hidden">
-              <Photo
-                tags={data.photo.tags}
-                lock={data.photo.lock}
-                alt={data.photo.alt || data.heading}
-                className="aspect-[4/3] w-full"
-                rounded="rounded-xl"
-                sizes="100vw"
-              />
-            </div>
-
-            <div className="min-w-0 lg:col-span-7">{text}</div>
-
-            <div className="relative hidden min-w-0 lg:col-span-5 lg:block">
-              <div
-                className="h-full w-full"
-                style={{ WebkitMaskImage: FADE_MASK, maskImage: FADE_MASK }}
-              >
-                <Photo
-                  tags={data.photo.tags}
-                  lock={data.photo.lock}
-                  alt={data.photo.alt || data.heading}
-                  rounded=""
-                  className="h-full w-full"
-                  sizes="42vw"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FadedPhotoSection
+        photo={data.photo}
+        alt={data.photo.alt || data.heading}
+      >
+        {text}
+      </FadedPhotoSection>
     )
   }
-
   return (
     <section className="section bg-white">
       <div className="container-pce">
