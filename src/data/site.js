@@ -152,7 +152,7 @@ export const guarantees = [
 /* ------------------------------------------------------------ TVA 5,5 % --*/
 export const tvaCard = {
   title: 'TVA réduite à 5,5 %*',
-  text: "Sur les travaux d’amélioration énergétique réalisés dans un logement achevé depuis plus de deux ans, la TVA s’applique au taux réduit de 5,5 % au lieu de 20 %. PCE établit l’attestation, la fait signer et applique le taux réduit directement sur votre devis : vous n’avez aucune démarche à effectuer.",
+  text: "Sur les travaux d’amélioration énergétique réalisés dans un logement achevé depuis plus de deux ans, la TVA s’applique au taux réduit de 5,5 % au lieu de 20 %. Depuis le 1er mars 2025, l’installation d’une chaudière à gaz en est exclue : seuls son entretien et ses réparations gardent le taux réduit. PCE établit l’attestation, la fait signer et applique le taux réduit directement sur votre devis : vous n’avez aucune démarche à effectuer.",
   note: "* Taux réduit applicable sous conditions (article 278-0 bis A du CGI) : logement à usage d’habitation achevé depuis plus de deux ans, matériel et pose facturés par la même entreprise, attestation simplifiée signée avant le début des travaux. Selon la législation en vigueur.",
 }
 
@@ -246,17 +246,21 @@ export const services = {
       { icon: 'euro', title: "Économies d’énergie", label: 'Des équipements performants pour réduire vos factures de chauffage.' },
       { icon: 'home', title: 'Confort optimal', label: 'Une chaleur homogène et constante pour votre bien-être au quotidien.' },
       { icon: 'shieldCheck', title: 'Sécurité assurée', label: 'Des installations fiables et conformes aux normes en vigueur.' },
-      { icon: 'handshake', title: 'Aides & subventions', label: 'Nous vous accompagnons dans vos démarches pour bénéficier des aides.' },
+      /* 26/08/2026 : « Aides & subventions » retiré. Cet avantage promettait
+         un accompagnement vers des aides auxquelles une chaudière à gaz —
+         le sujet principal de cette page — n'ouvre plus droit. Remplacé par
+         un engagement que PCE tient réellement sur tous les projets. */
+      { icon: 'handshake', title: 'Accompagnement complet', label: "De l’étude au suivi après installation, un seul interlocuteur." },
     ],
 
     /* Checklist « Nos solutions de chauffage » — pas de chaudière fioul :
        l'installation de nouvelles chaudières fioul est interdite depuis 2022. */
     solutions: [
       'Chaudières gaz à condensation',
+      'Remplacement de chaudière fioul par pompe à chaleur',
       'Pompes à chaleur air/eau et air/air',
       'Planchers chauffants & radiateurs',
       'Régulations & thermostats connectés',
-      'Chauffe-eau thermodynamiques et ballons',
       'Entretien annuel & contrats de maintenance',
       'Dépannage toutes marques',
     ],
@@ -284,15 +288,36 @@ export const services = {
       },
     ],
 
-    /* Chips « aides financières » — MaPrimeRénov' et la CEE ne sont plus
-       mobilisables pour une chaudière à gaz depuis 2023-2024 (voir `faq`
-       plus bas) : chaque chip porte donc son propre équipement cible, pour
-       qu'aucun visiteur ne lise ces aides comme applicables au gaz. */
+    /* Chips « aides financières ». Chaque chip porte son équipement cible :
+       aucun badge non qualifié, pour qu'aucun visiteur ne lise ces aides
+       comme applicables à une chaudière à gaz.
+       26/08/2026 : « TVA 5,5 % — Tous travaux » était devenu faux. Depuis
+       le 1er mars 2025, la TVA est à 20 % sur la fourniture et la pose
+       d'une chaudière à gaz ; seuls l'entretien et la réparation restent
+       à 5,5 %. Le détail du chip le dit désormais. */
     aids: [
       { icon: 'euro', label: "MaPrimeRénov’", detail: 'Pompe à chaleur' },
       { icon: 'leaf', label: 'CEE', detail: 'Pompe à chaleur' },
-      { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Tous travaux' },
+      { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Entretien de chaudière' },
     ],
+
+    /* Blocs rédactionnels de la page Chauffage (26/08/2026). Ils vivaient
+       en dur dans Chauffage.jsx ; déplacés ici pour que le contenu reste
+       modifiable sans toucher au composant. */
+    blocks: {
+      entretien: {
+        title: 'Entretien : une obligation, une sérénité',
+        text: "L’entretien annuel de votre chaudière est obligatoire et essentiel pour garantir sécurité, performance et longévité de votre installation.",
+        points: ['Meilleur rendement', 'Moins de pannes', 'Économies d’énergie', 'Respect des normes'],
+      },
+      /* Formulation volontairement sans promesse : elle dit ce que les aides
+         ciblent, pas ce à quoi le visiteur aurait droit. Aucun « des aides
+         peuvent être disponibles », aucun badge non qualifié. */
+      aides: {
+        title: 'Aides financières : pour quels équipements ?',
+        text: "Les aides de l’État ciblent aujourd’hui les équipements décarbonés. Nous vous disons dès l’étude ce à quoi votre projet donne droit.",
+      },
+    },
 
     prestations: [
       { icon: 'leaf', title: 'Pompe à chaleur', label: 'Air/eau et air/air, réversible' },
@@ -323,7 +348,7 @@ export const services = {
     process: [
       { title: "L’étude du logement", text: "Relevé des surfaces, de l’isolation, de l’orientation et des émetteurs en place. C’est cette étape qui détermine la puissance et le type de machine." },
       { title: 'Le comparatif chiffré', text: "Nous présentons deux à trois solutions avec, pour chacune, le coût d’installation, la consommation annuelle estimée et les aides mobilisables." },
-      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov’, certificats d’économie d’énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l’être du devis. Pour une chaudière à gaz, seule la TVA à 5,5 % et l’éco-PTZ restent mobilisables." },
+      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov’, certificats d’économie d’énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l’être du devis. Une chaudière à gaz n’ouvre plus droit ni à MaPrimeRénov’ ni aux CEE, et sa fourniture comme sa pose sont taxées à 20 % depuis le 1er mars 2025 : seul l’éco-PTZ reste mobilisable, le taux de 5,5 % ne valant plus que pour son entretien et ses réparations." },
       { title: "L’installation", text: "Dépose de l’ancien système, pose, raccordements hydrauliques et frigorifiques, mise en service et équilibrage des émetteurs." },
       { title: 'Le suivi dans le temps', text: "Entretien annuel, relevé des performances, attestation remise à chaque passage et intervention prioritaire en cas de panne." },
     ],
@@ -345,7 +370,7 @@ export const services = {
       { q: 'Puis-je garder mes radiateurs existants ?', a: "Souvent oui, à condition qu’ils soient suffisamment dimensionnés. Nous le vérifions pendant l’étude. Si un ou deux radiateurs sont trop justes, il est presque toujours moins coûteux de les remplacer que de renoncer à la pompe à chaleur." },
       { q: "L’entretien annuel est-il obligatoire ?", a: "Oui pour les pompes à chaleur de plus de 4 kW et pour les chaudières gaz. Au-delà de l’obligation, c’est ce qui préserve le rendement et la garantie constructeur. Nous proposons un contrat avec passage programmé et intervention prioritaire." },
       { q: 'Le groupe extérieur est-il bruyant ?', a: "Les machines récentes tournent autour de 35 à 45 dB à quelques mètres. L’essentiel se joue à l’implantation : nous étudions la distance aux chambres, aux voisins et aux murs réfléchissants avant de fixer l’emplacement." },
-      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov’, prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov’ et la prime CEE ne sont plus mobilisables depuis 2023-2024 : seules la TVA à 5,5 % et l’éco-PTZ restent disponibles. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
+      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov’, prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov’ et la prime CEE ne sont plus mobilisables, et la TVA est passée à 20 % sur la fourniture et la pose le 1er mars 2025 : seul l’éco-PTZ reste disponible, le taux de 5,5 % ne valant plus que pour l’entretien et la réparation. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
     ],
   },
 
