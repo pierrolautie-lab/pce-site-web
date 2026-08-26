@@ -1,10 +1,9 @@
 import PageHero from '../components/PageHero.jsx'
-import Photo from '../components/Photo.jsx'
 import Icon from '../components/Icon.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, FadedPhotoSection, SectionTitle } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
-import { company, services } from '../data/site.js'
+import { services } from '../data/site.js'
 
 const HERO_HIGHLIGHTS = [
   { icon: 'droplet', title: 'Installation', label: 'Neuf & rénovation' },
@@ -13,154 +12,37 @@ const HERO_HIGHLIGHTS = [
   { icon: 'handshake', title: 'Accompagnement', label: 'Conseils personnalisés' },
 ]
 
-/** Checklist « Nos solutions » + photo à droite, encart navy « Pourquoi choisir PCE » à droite. */
-function SolutionsWhyUs({ service }) {
+/* Cadrage de « Nos solutions » : son tiers gauche était occupé par une baie
+   vitrée en contre-jour (luminance mesurée 198, contre 121 à droite).
+   Un `object-position` décalé à droite n'y changeait rien : le conteneur
+   (ratio 1,48) et la source (1,50) ayant presque le même format,
+   `object-cover` ne recadre quasiment pas horizontalement, et le décalage
+   n'a aucune prise. La baie a donc été retirée à la source — 18 % du bord
+   gauche coupés dans public/img/, ce qui ramène le tiers gauche à 170. Les
+   trois photos gardent le centrage par défaut. */
+
+/** Liste à coches, reprise à l'identique sur les fonds clair et marine. */
+function CheckList({ items, tone = 'light' }) {
+  const dark = tone === 'dark'
   return (
-    /* Pas de padding-bottom : ce bloc est immédiatement suivi de
-       ServiceBrandsRow, qui partage le même bg-navy-50 et fournit déjà son
-       propre padding-top — un py- ici doublait l'espace vide entre les deux
-       (aucune limite de couleur pour signaler la transition). */
-    <section className="bg-navy-50 pt-14 sm:pt-16 lg:pt-20">
-      <div className="container-pce">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="min-w-0 overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-navy-100">
-            <div className="grid gap-0 sm:grid-cols-2">
-              <Photo
-                lock={service.expertise.photo.lock}
-                alt="Chaudière et ballon thermodynamique installés par PCE"
-                className="h-56 w-full sm:h-full"
-                rounded=""
-                sizes="(min-width: 640px) 50vw, 100vw"
-              />
-              <div className="p-7 sm:p-8">
-                <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-azure-500">
-                  Nos solutions de chauffage
-                </h2>
-                <p className="mt-2 text-body-sm text-navy-500">Des systèmes performants et économiques</p>
-                <ul className="mt-6 space-y-3.5">
-                  {service.solutions.map((s) => (
-                    <li key={s} className="flex items-start gap-3">
-                      <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                      <span className="text-body-sm text-navy-700">{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative min-w-0 overflow-hidden rounded-xl bg-navy-800 p-8 text-white sm:p-10">
-            {/* Filigrane décoratif (aria-hidden), hors échelle typographique
-                — voir la même exception dans Blocks.jsx. */}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black uppercase leading-none tracking-tighter text-white/[.05]"
-            >
-              {company.name}
-            </span>
-            <div className="relative">
-              <h2 className="text-kicker font-bold uppercase tracking-[.05em] text-white">
-                Pourquoi choisir PCE ?
-              </h2>
-              <ul className="mt-7 grid gap-6 sm:grid-cols-2">
-                {service.benefits.map((b) => (
-                  <li key={b.title} className="flex items-start gap-3.5">
-                    <Icon name={b.icon} className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.6} />
-                    <span className="min-w-0">
-                      <span className="block text-body-sm font-bold uppercase tracking-[.04em] text-white">
-                        {b.title}
-                      </span>
-                      <span className="mt-1.5 block text-caption text-white/70">{b.label}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/** Rangée de 3 blocs : entretien, aides financières, appel à l'action. */
-function EntretienAidesConseil({ service }) {
-  return (
-    <section className="bg-white pb-14 sm:pb-16 lg:pb-20">
-      <div className="container-pce">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Pas de photo technicien : aucune n'est disponible dans les
-              médias du site — un fond navy avec icône remplace la photo
-              de la maquette plutôt que de réutiliser une image sans rapport. */}
-          <div className="rounded-xl bg-navy-800 p-7 text-white sm:p-8">
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-gold-400">
-              <Icon name="settings" className="h-5 w-5" strokeWidth={1.6} />
-            </span>
-            <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.05em]">
-              Entretien : une obligation, une sérénité
-            </h3>
-            <p className="mt-3 text-body-sm text-white/70">
-              L'entretien annuel de votre chaudière est obligatoire et essentiel pour garantir sécurité,
-              performance et longévité de votre installation.
-            </p>
-            <ul className="mt-5 space-y-2.5">
-              {['Meilleur rendement', 'Moins de pannes', 'Économies d’énergie', 'Respect des normes'].map((b) => (
-                <li key={b} className="flex items-start gap-2.5">
-                  <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-400" strokeWidth={3.2} />
-                  <span className="text-body-sm text-white/85">{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
-            <h3 className="text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
-              Aides financières disponibles
-            </h3>
-            <p className="mt-3 text-body-sm text-navy-500">
-              Ces aides ciblent les équipements décarbonés : la pompe à chaleur en bénéficie pleinement, la
-              chaudière à gaz n'y est plus éligible depuis 2023-2024, hors TVA à 5,5 %.
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {service.aids.map((a) => (
-                <li
-                  key={a.label}
-                  className="flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-label font-bold uppercase text-navy-700 ring-1 ring-navy-100"
-                >
-                  <Icon name={a.icon} className="h-3.5 w-3.5 text-azure-500" strokeWidth={2.2} />
-                  {a.label}
-                  {a.detail && (
-                    <span className="normal-case tracking-normal font-normal text-navy-400">
-                      {' '}
-                      — {a.detail}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex flex-col rounded-xl bg-navy-50 p-7 ring-1 ring-navy-100 sm:p-8">
-            <h3 className="text-body-sm font-bold uppercase tracking-[.05em] text-navy-800">
-              Besoin d'un conseil ou d'un devis ?
-            </h3>
-            <p className="mt-3 text-body-sm text-navy-500">
-              Nos experts sont à votre écoute pour étudier votre projet et vous proposer la solution de chauffage
-              la plus adaptée.
-            </p>
-            <a href={company.phoneHref} className="btn-azure mt-6 w-full justify-center sm:w-auto sm:self-start">
-              Appelez-nous maintenant
-              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ul className="mt-7 space-y-3.5">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3.5">
+          <Icon
+            name="check"
+            className={`mt-0.5 h-4 w-4 shrink-0 ${dark ? 'text-gold-400' : 'text-azure-500'}`}
+            strokeWidth={3}
+          />
+          <span className={`text-body-sm ${dark ? 'text-white/85' : 'text-navy-700'}`}>{item}</span>
+        </li>
+      ))}
+    </ul>
   )
 }
 
 export default function Chauffage() {
   const service = services.chauffage
+  const { entretien, aides } = service.blocks
 
   return (
     <>
@@ -178,6 +60,9 @@ export default function Chauffage() {
         ]}
       />
 
+      {/* Pas de `gradientCoefficient` : le voile de texte partagé porte le
+          contraste depuis le 25/08/2026, sur les huit héros métier. Mesuré
+          conforme à 0 sur cette page comme sur les autres. */}
       <PageHero
         breadcrumb={service.title}
         icon="flame"
@@ -186,16 +71,93 @@ export default function Chauffage() {
         title="Chauffage"
         subtitle="Confort, performance et économies d'énergie"
         intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."
-        photo={{ ...service.hero, alt: 'Chaufferie installée par PCE' }}
+        photo={{ ...service.hero, alt: 'Chaudière murale, ballon et collecteurs installés par PCE en local technique' }}
         highlights={HERO_HIGHLIGHTS}
         fullBleed
       />
 
-      <SolutionsWhyUs service={service} />
+      {/* ------------------------------------------- Nos solutions (clair) */}
+      <FadedPhotoSection
+        photo={{ lock: 415 }}
+        alt="Chaudière murale à condensation et ballon d'eau chaude installés par PCE"
+      >
+        <SectionTitle title="Nos solutions de chauffage" align="left" />
+        <p className="mt-3 text-body-sm text-navy-500">
+          Des systèmes performants et économiques, dimensionnés pour votre logement.
+        </p>
+        <CheckList items={service.solutions} />
+      </FadedPhotoSection>
 
-      <ServiceBrandsRow title="Des marques de confiance pour votre chauffage" brands={service.brands} />
+      {/* --------------------------------- Pourquoi choisir PCE (navy-900) */}
+      <FadedPhotoSection
+        photo={{ lock: 416 }}
+        alt="Séjour chauffé par une chaudière et un radiateur installés par PCE"
+        tone="navy"
+      >
+        <SectionTitle title="Pourquoi choisir PCE ?" align="left" tone="dark" />
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+          {service.benefits.map((b) => (
+            <li key={b.title} className="flex items-start gap-3.5">
+              <Icon name={b.icon} className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.6} />
+              <span className="min-w-0">
+                <span className="block text-body-sm font-bold uppercase tracking-[.04em] text-white">
+                  {b.title}
+                </span>
+                <span className="mt-1.5 block text-caption text-white/70">{b.label}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </FadedPhotoSection>
 
-      <EntretienAidesConseil service={service} />
+      {/* ------------------------------------------------------ Les marques */}
+      {/* « installons », jamais « partenaires » : PCE n'a aucun accord de
+          distribution avec ces fabricants. La règle vaut sur tout le site. */}
+      <ServiceBrandsRow title="Les marques que nous installons" brands={service.brands} />
+
+      {/* ------------------------------------------- Entretien (navy-900) */}
+      <FadedPhotoSection
+        photo={{ lock: 417 }}
+        alt="Technicien PCE intervenant sur une chaudière ouverte"
+        tone="navy"
+      >
+        <SectionTitle title={entretien.title} align="left" tone="dark" />
+        <p className="mt-4 max-w-xl text-body text-white/75">{entretien.text}</p>
+        <CheckList items={entretien.points} tone="dark" />
+      </FadedPhotoSection>
+
+      {/* ------------------------------------------- Aides financières */}
+      <section className="section bg-navy-50">
+        <div className="container-pce">
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionTitle title={aides.title} />
+            <p className="mt-4 text-body text-navy-500">{aides.text}</p>
+            {/* Chaque badge porte son équipement cible : aucun badge nu, pour
+                qu'aucun visiteur ne lise ces aides comme acquises sur un
+                projet de chaudière à gaz. */}
+            <ul className="mt-9 flex flex-wrap justify-center gap-3">
+              {service.aids.map((a) => (
+                <li
+                  key={a.label}
+                  className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-label font-bold uppercase text-navy-700 shadow-card ring-1 ring-navy-100"
+                >
+                  <Icon name={a.icon} className="h-3.5 w-3.5 shrink-0 text-azure-500" strokeWidth={2.2} />
+                  {a.label}
+                  {/* navy-500 et non navy-400 : sur le blanc du badge,
+                      navy-400 plafonne à 3,43:1 pour un seuil de 4,5:1.
+                      Couleur reprise de l'ancienne version de cette page —
+                      le défaut est antérieur à cette refonte. */}
+                  {a.detail && (
+                    <span className="font-normal normal-case tracking-normal text-navy-500">
+                      — {a.detail}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <CtaBand />
     </>
