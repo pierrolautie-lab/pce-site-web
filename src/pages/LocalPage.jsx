@@ -69,6 +69,31 @@ export default function LocalPage({ tradeKey, cityKey }) {
         lead={`Ce que PCE prend en charge le plus souvent pour ce métier, ${inThisCity} comme dans le reste de notre zone d'intervention.`}
       />
 
+      {/* Section « terrain » du pilote d'enrichissement (27/08/2026) :
+          contenu réellement propre à la commune, écrit par couple
+          commune-métier dans local.js. Ne se rend que si la commune porte
+          `terrain` ET un angle pour CE métier — les pages hors pilote
+          restent strictement inchangées. */}
+      {city.terrain?.angles?.[tradeKey] && (
+        <section className="section bg-white">
+          <div className="container-pce">
+            <div className="mx-auto max-w-3xl">
+              <SectionTitle title={city.terrain.heading} align="left" />
+              <div className="mt-7 space-y-5">
+                {city.terrain.paragraphs.map((p) => (
+                  <p key={p.slice(0, 24)} className="text-body leading-[1.85] text-navy-600">
+                    {p}
+                  </p>
+                ))}
+                <p className="text-body leading-[1.85] text-navy-600">
+                  {city.terrain.angles[tradeKey]}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="section bg-navy-50">
         <div className="container-pce">
           <SectionTitle

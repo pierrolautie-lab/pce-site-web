@@ -121,6 +121,20 @@ const ORIGINAL_TRADES = ['plombier', 'chauffagiste', 'climatisation', 'electrici
    en plus un champ `trades` qui restreint les métiers disponibles (sinon,
    toute ville hérite par défaut des 7 métiers — voir `localPages`). */
 export const localCities = {
+  /* --- Pilote enrichissement (27/08/2026), 3 communes : Lorgues,
+     Saint-Tropez, Ampus. `terrain` porte du contenu réellement propre à
+     la commune, rendu par LocalPage dans une section dédiée, uniquement
+     pour les métiers listés dans `angles`. Trois règles d'écriture, pour
+     ne pas recréer le duplicate content avec plus de mots — c'est
+     l'écueil identifié dans la note de décision :
+     1. les paragraphes décrivent le bâti, l'eau, l'accès et la
+        saisonnalité de CETTE commune, jamais une phrase générique où
+        seul le nom changerait ;
+     2. `angles[métier]` relie ce terrain au métier, un paragraphe écrit
+        par couple commune-métier ;
+     3. aucun chiffre officiel invérifié — ce que PCE constate sur ses
+        chantiers, formulé comme tel. Les distances suivent `distanceKm`,
+        déjà vérifié par recherche routière. */
   Lorgues: {
     name: 'Lorgues',
     distanceKm: 0,
@@ -128,6 +142,17 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Basée à Lorgues depuis 2020 et forte de plus de vingt ans de métier, PCE intervient pour ${t.verb} directement dans votre commune : ${t.detail}. Devis gratuit et intervention rapide, sans trajet à facturer.`,
+    terrain: {
+      heading: 'Travailler là où l’on vit',
+      paragraphs: [
+        "Lorgues, c’est notre commune. L’atelier est ici, l’équipe y vit, et une bonne partie de nos chantiers se font à moins de dix minutes du dépôt. Le bâti y est double. D’un côté, le centre ancien et ses maisons de village aux murs épais, dont les réseaux datent parfois de plusieurs générations. De l’autre, les bastides et les maisons de campagne des collines, souvent agrandies par étapes, où chaque époque a laissé sa couche d’installations.",
+        "L’eau du secteur est parmi les plus calcaires que nous mesurons dans le Var. C’est la première chose que nous vérifions en arrivant chez un client lorguais, parce qu’elle conditionne la durée de vie de presque tout ce que nous posons.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, ce mélange de bâti ancien et d’eau très dure se lit dans nos journées. Dans le centre, nous reprenons des alimentations posées bien avant les normes actuelles, dans des murs de pierre qui ne pardonnent pas l’improvisation. Dans les campagnes, ce sont les chauffe-eau et les mitigeurs entartrés qui nous appellent le plus. Et être sur place change tout. Un robinet qui lâche le matin peut être remplacé l’après-midi même.",
+      },
+    },
   },
   Draguignan: {
     name: 'Draguignan',
@@ -277,6 +302,17 @@ export const localCities = {
     neighbors: ['Draguignan', 'Figanières'],
     intro: (t) =>
       `Village perché du haut Var, Ampus fait partie du territoire dracénois desservi par PCE pour ${t.verb} — ${t.detail}. Malgré son caractère rural, la commune bénéficie des mêmes délais d’intervention et d’un devis gratuit.`,
+    terrain: {
+      heading: 'Intervenir dans le haut Var',
+      paragraphs: [
+        "Ampus est un village perché du haut Var, à une vingtaine de minutes de notre atelier par la route de Draguignan. L’habitat y est dispersé, un centre ancien resserré et des hameaux et des fermes éparpillés sur le plateau. On y est sensiblement plus haut que dans la plaine de l’Argens, et cela se sent sur les saisons, les hivers y sont plus francs et les nuits froides s’attardent au printemps.",
+        "Ce caractère rural change notre façon de préparer une intervention. Pas question d’un aller-retour pour une pièce manquante, le fourgon part complet, et nous groupons volontiers plusieurs demandes du village sur la même demi-journée.",
+      ],
+      angles: {
+        plombier:
+          "Côté plomberie, le gel est ici un vrai sujet, bien plus qu’en bord de mer. Nous isolons les réseaux exposés, vidangeons les alimentations extérieures avant l’hiver et vérifions les abris de compteur. Les maisons anciennes du village posent, elles, les mêmes questions qu’à Lorgues, des réseaux d’époques mélangées qu’il faut savoir lire avant d’ouvrir un mur.",
+      },
+    },
   },
   Figanières: {
     name: 'Figanières',
@@ -307,6 +343,17 @@ export const localCities = {
     neighbors: ['Ramatuelle', 'Gassin'],
     intro: (t) =>
       `Sur la presqu’île, Saint-Tropez fait partie des communes du Golfe de Saint-Tropez où PCE se déplace pour ${t.verb} : ${t.detail}. Malgré la distance depuis Lorgues, nos artisans y interviennent avec la même exigence de qualité, devis gratuit inclus.`,
+    terrain: {
+      heading: 'Intervenir sur la presqu’île',
+      paragraphs: [
+        "À Saint-Tropez, nous travaillons surtout pour des résidences secondaires et des copropriétés, et c’est un parc à part. Les logements restent vides une partie de l’année, puis se remplissent d’un coup à la belle saison, et tout doit fonctionner le jour de l’arrivée. Le village ancien ajoute ses propres règles, des ruelles étroites, des accès malaisés, des immeubles où rien ne se décide sans le syndic ou le gardien.",
+        "Notre atelier de Lorgues est à environ trois quarts d’heure de route hors saison. Nous regroupons donc nos interventions sur la presqu’île, et nous planifions les gros travaux entre l’automne et le printemps, quand les logements sont libres et la circulation redevenue normale.",
+      ],
+      angles: {
+        plombier:
+          "Pour la plomberie, la maison secondaire est un cas d’école. Une installation qui dort plusieurs mois vieillit mal, les joints sèchent, le calcaire fige la robinetterie, et une petite fuite peut couler longtemps avant d’être découverte. Nous préparons les fermetures d’automne, assurons les remises en service au printemps, et faisons le lien avec les gardiens et les syndics pour intervenir hors de votre présence.",
+      },
+    },
   },
   Grimaud: {
     name: 'Grimaud',
