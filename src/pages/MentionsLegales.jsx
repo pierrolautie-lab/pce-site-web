@@ -103,8 +103,9 @@ export default function MentionsLegales() {
               </h2>
               <p className="mt-4 text-[14.5px] leading-[1.85] text-navy-600">
                 L'ensemble des éléments du site pcevar.fr (textes, photographies, logo, mise en
-                page, structure) est la propriété de {legal.denomination} ou de ses partenaires,
-                sauf mention contraire. Toute reproduction, représentation, modification ou
+                page, structure) est la propriété de {legal.denomination}, sauf mention
+                contraire. Les marques et logos des fabricants cités restent la propriété de
+                leurs titulaires respectifs. Toute reproduction, représentation, modification ou
                 adaptation, totale ou partielle, de ces éléments, par quelque procédé que ce soit,
                 sans l'autorisation préalable écrite de {legal.denomination}, est interdite et
                 constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du
