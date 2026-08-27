@@ -121,7 +121,13 @@ export const navServices = [
 
 /* Section « Pourquoi choisir PCE ? » de la page d'accueil. */
 export const whyChooseUs = [
-  { icon: 'award', title: "20 ans d’expérience", text: 'Depuis 2005, PCE intervient à Lorgues et dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
+  /* ⚠️ Chronologie : entreprise créée en 2005 en région parisienne,
+     installée à Lorgues en 2020. Ne pas écrire « depuis 2005 » à propos du
+     Var ou de Lorgues — c'est la contradiction relevée le 27/08/2026, deux
+     passages plaçant l'activité varoise à 2005 alors que le reste du site
+     dit 2020. La date de création reste 2005, celle de l'installation
+     locale 2020. */
+  { icon: 'award', title: "Depuis 2005", text: 'Entreprise créée en 2005 en région parisienne et installée à Lorgues depuis 2020 : PCE intervient dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
   { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, nous intervenons rapidement dans toute la Dracénie et le Golfe de Saint-Tropez.' },
   { icon: 'clipboard', title: 'Devis gratuit', text: 'Étude personnalisée et devis détaillé, sans engagement.' },
   { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans un rayon de 50 km autour de Lorgues.' },
@@ -182,11 +188,13 @@ export const services = {
 
     expertise: {
       eyebrow: 'Notre savoir-faire',
-      heading: 'De Paris au bâti varois, vingt ans de plomberie',
+      /* « vingt ans » était daté : vingt et un ans en 2026, et l'écart
+         grandit chaque année. Formulation qui ne vieillit plus. */
+      heading: 'De Paris au bâti varois, le métier fondateur de PCE',
       photo: { tags: 'plumbing', lock: 233, alt: 'Réseau de tuyauterie, raccords à sertir' },
       paragraphs: [
         "Avant le Var, il y a eu Paris. L’entreprise s’est construite sur une forte expérience du chauffage en région parisienne, puis sur l’apprentissage du métier dans sa forme la plus exigeante : le cuivre cintré et brasé, le zinc, le plomb des réseaux anciens. Ce sont des chantiers de rénovation d’immeubles haussmanniens, menés avec des architectes, qui ont formé notre façon de travailler.",
-        "La plomberie est le métier fondateur de PCE. Depuis 2005, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l’Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d’ouvrir une saignée.",
+        "La plomberie est le métier fondateur de PCE, exercé depuis 2005. Installés à Lorgues depuis 2020, nous intervenons sur un bâti local très particulier : bastides en pierre aux murs de soixante centimètres, mas rénovés par tranches successives, villas des années 1980 dont les réseaux en cuivre arrivent en fin de vie, constructions neuves de la plaine de l’Argens. Chaque typologie a ses pièges, et deux décennies de chantiers entre Lorgues et le Golfe nous ont appris à les reconnaître avant même d’ouvrir une saignée.",
         "Notre parti pris est simple : nous ne posons que du matériel que nous saurons réparer dans dix ans. Multicouche à sertir pour les réseaux encastrés, laiton sur les points sensibles, robinetterie de marques distribuées en France dont les pièces détachées restent disponibles. Chaque installation est repérée, chaque vanne d’arrêt reste accessible, et chaque chantier est livré avec un plan de réseau que vous conservez.",
         "L’eau du secteur est parmi les plus calcaires de France : nous relevons couramment plus de 30 °f autour de Lorgues. C’est la première cause de panne sur les chauffe-eau, les mitigeurs thermostatiques et les électroménagers. Nous mesurons donc systématiquement la qualité de votre eau avant de proposer un adoucisseur ou une solution de filtration adaptée à votre consommation réelle.",
       ],
@@ -1505,7 +1513,9 @@ export const milestones = [
 ]
 
 export const stats = [
-  { value: '20 ans', label: "d’expérience depuis 2005" },
+  /* « + de 20 » et non « 20 » : compté depuis 2005, le chiffre exact
+     change chaque année et serait faux dès le 1er janvier suivant. */
+  { value: '+ de 20 ans', label: "d’expérience depuis 2005" },
   { value: '1 800+', label: 'chantiers réalisés' },
   { value: '5', label: 'métiers sous le même toit' },
   { value: '10 ans', label: 'de garantie décennale' },
@@ -1525,7 +1535,7 @@ export const values = [
   {
     icon: 'building',
     title: 'Une entreprise locale',
-    text: "Installés à Lorgues depuis 2020 et forts de vingt ans de métier, nous connaissons le bâti, l’eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
+    text: "Installés à Lorgues depuis 2020 et forts de plus de vingt ans de métier, nous connaissons le bâti, l’eau et le climat de la région. Nous sommes toujours joignables, et jamais à plus de quarante minutes de chez vous.",
   },
   {
     icon: 'euro',
