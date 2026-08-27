@@ -509,11 +509,25 @@ export const imageManifest = {
       400
     ]
   },
+  "marque-hayward.png": {
+    "width": 407,
+    "height": 66,
+    "widths": [
+      400
+    ]
+  },
   "marque-zodiac.jpg": {
     "width": 293,
     "height": 220,
     "widths": [
       293
+    ]
+  },
+  "marque-zodiac.png": {
+    "width": 219,
+    "height": 42,
+    "widths": [
+      219
     ]
   },
   "piscine-hero-bassin.jpg": {

@@ -787,8 +787,8 @@ export const services = {
       marques: {
         label: ['Les marques', 'que nous installons', 'et entretenons'],
         items: [
-          { name: 'Hayward', src: '/img/marque-hayward.jpg' },
-          { name: 'Zodiac', src: '/img/marque-zodiac.jpg' },
+          { name: 'Hayward', src: '/img/marque-hayward.png' },
+          { name: 'Zodiac', src: '/img/marque-zodiac.png' },
           { name: 'Fluidra', src: '/img/marque-fluidra.jpg' },
         ],
       },

@@ -281,7 +281,7 @@ function Marques({ data }) {
           <ul className="grid grid-cols-3 items-center gap-6 sm:divide-x sm:divide-navy-100 lg:col-span-8">
             {data.items.map((m) => (
               <li key={m.name} className="flex h-12 min-w-0 items-center justify-center px-0 sm:px-6">
-                <BrandLogo name={m.name} src={m.src} grayscale className="max-h-12" />
+                <BrandLogo name={m.name} src={m.src} className="max-h-10" />
               </li>
             ))}
           </ul>
