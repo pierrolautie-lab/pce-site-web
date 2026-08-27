@@ -16,7 +16,7 @@ export default function ChaudiereCondensation() {
     <>
       <Seo
         title={data.title}
-        description="Chaudière à condensation gaz, fioul ou bois/granulés : fonctionnement, économies de combustible et bénéfices écologiques. Installation par PCE à Lorgues (83)."
+        description="Chaudière à condensation gaz ou bois/granulés : fonctionnement, économies et bénéfices écologiques. Installation par PCE à Lorgues (83)."
         path="/chauffage/chaudiere-condensation"
       />
       <PageHero

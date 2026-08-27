@@ -235,7 +235,7 @@ export const expertisePages = {
     servicePath: '/chauffage',
     h1: 'Installation de chauffe-eau thermodynamique dans le Var',
     metaDescription:
-      'Chauffe-eau thermodynamique dans le Var : COP élevé, économies sur la facture, aides à la rénovation énergétique. Installation par PCE, devis gratuit.',
+      'Chauffe-eau thermodynamique dans le Var : COP élevé, forte baisse de la facture d\'eau chaude. Installation et entretien par PCE, devis gratuit.',
     photo: { tags: 'water-heater', lock: 705 },
     intro: [
       "Le chauffe-eau thermodynamique utilise les calories de l'air ambiant pour chauffer l'eau sanitaire, avec une consommation électrique nettement inférieure à un cumulus classique. PCE installe ce type d'équipement dans le Var, en particulier dans les logements équipés d'un cellier, d'un garage ou d'une buanderie suffisamment ventilé pour alimenter la pompe à chaleur intégrée.",
@@ -260,9 +260,9 @@ export const expertisePages = {
         ],
       },
       {
-        h2: 'Aides financières pour un chauffe-eau thermodynamique',
+        h2: 'Ce qu\'un chauffe-eau thermodynamique change sur la facture',
         paragraphs: [
-          "Comme les pompes à chaleur, le chauffe-eau thermodynamique reste éligible à certaines aides à la rénovation énergétique selon votre situation. PCE vous accompagne dans la constitution du dossier et vous remet les justificatifs nécessaires.",
+          "L'eau chaude sanitaire représente une part importante de la consommation d'un logement. Un chauffe-eau thermodynamique puise l'essentiel de son énergie dans l'air ambiant et divise nettement cette part, pour un encombrement comparable à celui d'un ballon classique. Nous dimensionnons le volume selon le nombre d'occupants et la place disponible, et nous vous annonçons la consommation attendue avant travaux.",
         ],
       },
     ],
@@ -340,7 +340,7 @@ export const expertisePages = {
     servicePath: '/electricite',
     h1: 'Installation de borne de recharge pour véhicule électrique dans le Var',
     metaDescription:
-      'Installation de borne de recharge IRVE dans le Var : puissance adaptée, ligne dédiée, aides disponibles. Électricien qualifié PCE, devis gratuit.',
+      'Installation de borne de recharge dans le Var : puissance adaptée, ligne dédiée et différentiel conforme. Par PCE, électricien à Lorgues. Devis gratuit.',
     photo: { tags: 'ev-charger', lock: 707 },
     intro: [
       "Avec l'essor des véhicules électriques et hybrides rechargeables dans le Var, de plus en plus de particuliers et d'entreprises équipent leur garage ou leur parking d'une borne de recharge (IRVE). PCE, électricien basé à Lorgues, installe des bornes adaptées à votre véhicule et à la puissance disponible sur votre installation électrique.",
@@ -365,9 +365,9 @@ export const expertisePages = {
         ],
       },
       {
-        h2: 'Aides pour l\'installation d\'une borne de recharge',
+        h2: 'Recharger chez soi plutôt qu\'en borne publique',
         paragraphs: [
-          "Selon votre situation, plusieurs aides peuvent réduire le coût d'installation d'une borne de recharge, notamment via le crédit d'impôt ou des dispositifs spécifiques aux copropriétés. PCE vous oriente vers les justificatifs à conserver pour vos démarches.",
+          "Une recharge à domicile revient bien moins cher qu'une borne publique, et se fait pendant les heures creuses sans y penser. L'essentiel se joue à l'installation : une ligne dédiée, un différentiel adapté et une puissance calée sur ce que supporte réellement votre tableau. C'est ce que nous vérifions avant de proposer un modèle.",
         ],
       },
     ],

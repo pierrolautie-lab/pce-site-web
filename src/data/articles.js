@@ -9,7 +9,7 @@ export const articles = {
   'comment-choisir-pompe-a-chaleur': {
     title: 'Comment choisir sa pompe à chaleur ?',
     metaDescription:
-      "Comment choisir sa pompe à chaleur dans le Var : air/air, air/eau, puissance, COP et aides disponibles. Les conseils de PCE, installateur de pompes à chaleur.",
+      "Comment choisir sa pompe à chaleur dans le Var : air/air ou air/eau, puissance et COP. Les conseils de PCE, installateur à Lorgues.",
     photo: { tags: 'heating', lock: 801 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
@@ -38,7 +38,7 @@ export const articles = {
         ],
       },
       {
-        h2: 'Budget et aides disponibles',
+        h2: 'Budget et coût à l’usage',
         paragraphs: [
           "L’installation d’une pompe à chaleur ouvre droit à des aides publiques, contrairement aux chaudières à gaz qui ont perdu cette éligibilité. Ces dispositifs imposent toutefois de passer par une entreprise certifiée RGE : PCE ne l’étant pas, nous n’en montons aucun dossier et nous le disons avant l’étude. Notre apport est ailleurs — un dimensionnement juste et une consommation annoncée avant travaux.",
         ],
@@ -210,7 +210,7 @@ export const articles = {
   'comment-fonctionne-pompe-a-chaleur': {
     title: 'Comment fonctionne une pompe à chaleur ?',
     metaDescription:
-      "Comment fonctionne une pompe à chaleur air/air ou air/eau : cycle frigorifique, COP et rendement. Les explications de PCE, installateur de pompes à chaleur dans le Var.",
+      "Comment fonctionne une pompe à chaleur air/air ou air/eau : cycle frigorifique, COP et rendement, expliqués par PCE, installateur dans le Var.",
     photo: { tags: 'heating', lock: 1101 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
@@ -289,7 +289,7 @@ export const articles = {
   'pompe-a-chaleur-ou-chaudiere-gaz': {
     title: 'Pompe à chaleur ou chaudière gaz : que choisir ?',
     metaDescription:
-      "Pompe à chaleur ou chaudière à gaz : comparatif coût, aides financières et confort. Les conseils neutres de PCE, installateur des deux solutions dans le Var.",
+      "Pompe à chaleur ou chaudière à gaz : comparatif du coût à l’achat, à l’usage et du confort. Les conseils neutres de PCE, qui installe les deux.",
     photo: { tags: 'heating', lock: 1103 },
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     relatedService: '/chauffage',
@@ -298,7 +298,7 @@ export const articles = {
     ],
     sections: [
       {
-        h2: "Le coût à l’achat et les aides",
+        h2: "Le coût à l’achat et à l’usage",
         paragraphs: [
           "Une chaudière à gaz à condensation coûte moins cher à l’achat qu’une pompe à chaleur air/eau. L’écart se resserre à l’usage : la pompe à chaleur puise une large part de son énergie dans l’air extérieur, là où la chaudière paie chaque kilowattheure. Sur la durée de vie de l’installation, c’est la consommation annuelle, et non le prix d’achat, qui départage les deux solutions.",
         ],
@@ -328,7 +328,7 @@ export const articles = {
   'quelle-climatisation-choisir-maison-var': {
     title: 'Quelle climatisation choisir pour sa maison dans le Var ?',
     metaDescription:
-      "Quelle climatisation choisir dans le Var : mono-split, multi-split ou gainable selon votre logement. Les conseils de PCE, installateur climatisation certifié.",
+      "Quelle climatisation choisir dans le Var : mono-split, multi-split ou gainable selon votre logement. Les conseils de PCE, installateur à Lorgues.",
     photo: { tags: 'aircon', lock: 1104 },
     relatedExpertise: 'installation-climatisation-reversible-var',
     relatedService: '/climatisation',

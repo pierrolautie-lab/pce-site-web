@@ -27,6 +27,9 @@ export const localTrades = {
     detail:
       "installation sanitaire, rénovation de salle de bains, recherche de fuite non destructive et remplacement de chauffe-eau",
     relatedExpertise: 'depannage-plomberie-urgence-var',
+    /* Version courte, réservée à la méta-description : la balise doit
+       tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
+    metaDetail: "sanitaire, salle de bains, recherche de fuite et chauffe-eau",
   },
   chauffagiste: {
     urlSlug: 'chauffagiste',
@@ -36,6 +39,9 @@ export const localTrades = {
     detail:
       'pompes à chaleur, chaudières à gaz à condensation, planchers chauffants et entretien annuel',
     relatedExpertise: 'installation-pompe-a-chaleur-var',
+    /* Version courte, réservée à la méta-description : la balise doit
+       tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
+    metaDetail: "pompe à chaleur, chaudière gaz condensation et entretien",
   },
   climatisation: {
     urlSlug: 'climatisation',
@@ -45,6 +51,9 @@ export const localTrades = {
     detail:
       'mono-split, multi-split et gainable, posés avec soin pour rester discrets et silencieux',
     relatedExpertise: 'installation-climatisation-reversible-var',
+    /* Version courte, réservée à la méta-description : la balise doit
+       tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
+    metaDetail: "mono-split, multi-split et gainable, pose soignée",
   },
   electricien: {
     urlSlug: 'electricien',
@@ -53,6 +62,9 @@ export const localTrades = {
     verb: 'votre installation électrique',
     detail: 'tableaux électriques, mise aux normes NF C 15-100, bornes de recharge et dépannage',
     relatedExpertise: 'mise-aux-normes-electriques-var',
+    /* Version courte, réservée à la méta-description : la balise doit
+       tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
+    metaDetail: "tableaux, mise aux normes NF C 15-100 et bornes de recharge",
   },
   pisciniste: {
     urlSlug: 'pisciniste',
@@ -61,6 +73,9 @@ export const localTrades = {
     verb: 'votre piscine',
     detail: 'filtration, traitement au sel, chauffage du bassin et automatisation du local technique',
     relatedExpertise: 'entretien-piscine-var',
+    /* Version courte, réservée à la méta-description : la balise doit
+       tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
+    metaDetail: "filtration, traitement au sel et local technique",
   },
   /* --------------------------- Nouveaux métiers, ouverts aux 20 nouvelles villes */
   'traitement-eau': {
@@ -69,6 +84,7 @@ export const localTrades = {
     serviceKey: 'traitement-de-l-eau',
     verb: 'le traitement de votre eau',
     detail: 'filtration fine, filtration de forage, charbon actif et traitement UV',
+    metaDetail: 'filtration fine, forage, charbon actif et traitement UV',
   },
   'pompe-a-chaleur': {
     urlSlug: 'pompe-a-chaleur',
@@ -78,6 +94,7 @@ export const localTrades = {
     detail:
       'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
     relatedExpertise: 'installation-pompe-a-chaleur-var',
+    metaDetail: 'dimensionnement, pose et entretien air/eau et air/air',
   },
   vmc: {
     urlSlug: 'installateur-vmc',
@@ -86,6 +103,7 @@ export const localTrades = {
     verb: 'votre VMC',
     detail:
       'VMC simple flux autoréglable, hygroréglable ou double flux, en neuf comme en rénovation',
+    metaDetail: 'simple flux, hygroréglable ou double flux',
   },
 }
 
@@ -407,11 +425,15 @@ export const localCities = {
 /* 4 clôtures différentes pour les méta-descriptions, choisies en rotation
    par ville (voir `localCopy`) pour que deux villes voisines n'aient pas
    la même phrase de fin. */
+/* Quatre formules courtes, en rotation d'une ville à l'autre. Les
+   précédentes montaient jusqu'à 100 caractères à elles seules et
+   poussaient chaque description bien au-delà de la limite d'affichage de
+   Google : les 280 pages locales étaient tronquées. */
 const metaClosings = [
-  'Devis gratuit avec PCE, artisan basé à Lorgues depuis 2020, fort de plus de vingt ans de métier.',
-  'Intervention rapide et devis gratuit avec PCE, dans le Var depuis 2020, plus de vingt ans de métier.',
-  'PCE se déplace sur place pour un devis gratuit et sans engagement.',
-  'Devis gratuit, intervention rapide dans toute la Dracénie et le Golfe de Saint-Tropez.',
+  'Devis gratuit.',
+  'Devis gratuit, intervention rapide.',
+  'PCE, artisan à Lorgues.',
+  'Devis gratuit, déplacement rapide.',
 ]
 
 const cityKeysInOrder = Object.keys(localCities)
@@ -423,7 +445,7 @@ export function localCopy(tradeKey, cityKey) {
   const closing = metaClosings[cityKeysInOrder.indexOf(cityKey) % metaClosings.length]
   return {
     intro: city.intro(trade),
-    metaDescription: `${trade.label} ${inCity(city.name)} (83) : ${trade.detail}. ${closing}`,
+    metaDescription: `${trade.label} ${inCity(city.name)} (83) : ${trade.metaDetail}. ${closing}`,
   }
 }
 

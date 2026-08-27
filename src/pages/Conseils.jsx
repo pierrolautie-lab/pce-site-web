@@ -48,7 +48,7 @@ export default function Conseils() {
     <>
       <Seo
         title="Conseils"
-        description="Conseils pratiques de PCE sur la plomberie, le chauffage, la climatisation, l'électricité, la piscine et le traitement de l'eau, tirés de vingt ans de chantiers dans le Var."
+        description="Conseils de PCE sur la plomberie, le chauffage, la climatisation, l'électricité, la piscine et le traitement de l'eau, tirés de nos chantiers dans le Var."
         path="/conseils"
       />
       <PageHero
