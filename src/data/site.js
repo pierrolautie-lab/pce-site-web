@@ -1202,9 +1202,8 @@ export const services = {
 
 /* Alias : la page /traitement-de-l-eau utilise le slug complet comme clé de
    route, alors que l'objet ci-dessus est indexé sous `traitementEau`. Cet
-   alias permet à local.js (`services[trade.serviceKey]`) et à ServicePage.jsx
-   (`findLocalTrade`, qui compare au slug) de résoudre le même service sans
-   dupliquer son contenu. */
+   alias permet à local.js (`services[trade.serviceKey]`) de résoudre le même
+   service sans dupliquer son contenu. */
 services['traitement-de-l-eau'] = services.traitementEau
 
 /* ---------------------------------------------------------------------

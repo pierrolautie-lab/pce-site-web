@@ -8,8 +8,8 @@ import { chaudiereCondensation as data } from '../data/site.js'
 /**
  * Sous-page du métier Chauffage, consacrée à la chaudière à condensation.
  * Reprend le gabarit visuel du site (héros marine, cartes blanches, bandeau
- * de garanties) sans dupliquer le gabarit ServicePage, qui suppose un métier
- * complet (prestations, FAQ, autres métiers).
+ * de garanties) sans passer par un gabarit de page métier complet — les
+ * pages métier composent chacune leurs sections depuis Blocks.jsx.
  */
 export default function ChaudiereCondensation() {
   return (
