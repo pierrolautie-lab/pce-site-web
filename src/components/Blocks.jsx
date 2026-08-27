@@ -109,7 +109,7 @@ export function TvaCard({ className = '' }) {
 /* --------------------------------------- BLOC 2 COLONNES (bénéfices+TVA) -*/
 export function InfoBlock({ info }) {
   return (
-    <section className="bg-navy-50 py-14 sm:py-16 lg:py-20">
+    <section className="section bg-navy-50">
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-5">
           <div className="min-w-0 rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10 lg:col-span-3">
@@ -195,7 +195,7 @@ export function TvaBanner() {
 /* -------------------------------------------------- BLOC 3 COLONNES -----*/
 export function ThreeColumns({ columns, title, lead }) {
   return (
-    <section className="bg-navy-50 py-14 sm:py-16 lg:py-20">
+    <section className="section bg-navy-50">
       <div className="container-pce">
         {title && <SectionTitle title={title} lead={lead} />}
 

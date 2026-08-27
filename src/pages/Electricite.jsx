@@ -117,14 +117,14 @@ export default function Electricite() {
         checklistTitle="Nos services électricité"
         checklist={SERVICES_CHECKLIST}
         card={NORMES_CARD}
-        tightBottom
+        spacing="tight"
       />
 
       {/* La VMC a sa propre page métier depuis le 17/08/2026 (elle a rejoint
           la liste ci-dessus par le passé, ce qui n'a plus de sens
           maintenant) — renvoi plutôt que suppression sèche, pour qu'un
           lecteur qui la cherchait ici soit conduit vers la bonne page. */}
-      <section className="bg-navy-50 pb-14 sm:pb-16 lg:pb-20">
+      <section className="section section-tight-t bg-navy-50">
         <div className="container-pce">
           <Link
             to="/vmc"

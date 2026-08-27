@@ -116,6 +116,19 @@
   .section-tight {
     @apply py-[34px] sm:py-[38px] lg:py-12;
   }
+  /* Crans par bord. Une section n'a pas forcément le même voisinage en haut
+     et en bas : sur Électricité, le bloc « Nos services » change de fond
+     au-dessus (cran standard) mais partage le fond de la section suivante
+     (cran resserré). Une prop symétrique resserrait les deux côtés et
+     décalait le haut de 80 à 48 px — mesuré, puis corrigé par ces deux
+     utilitaires. Le cran resserré ne vaut que si les DEUX bords qui se
+     font face le portent, sinon l'écart obtenu n'est sur aucun cran. */
+  .section-tight-t {
+    @apply pt-[34px] sm:pt-[38px] lg:pt-12;
+  }
+  .section-tight-b {
+    @apply pb-[34px] sm:pb-[38px] lg:pb-12;
+  }
   .section-loose {
     @apply py-[84px] sm:py-24 lg:py-[120px];
   }

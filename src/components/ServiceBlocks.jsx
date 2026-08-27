@@ -13,13 +13,19 @@ import { company } from '../data/site.js'
 ---------------------------------------------------------------------------*/
 
 /** Colonne checklist blanche + encart navy (sujet approfondi + CTA).
- *  `tightBottom` : omet le padding bas quand la section suivante partage le
- *  même fond (navy-50) — évite un double espacement sans fond visible pour
- *  marquer la transition. Laisser à `false` (par défaut) quand la section
- *  suivante change de couleur : le padding bas reste alors nécessaire. */
-export function ServiceTwoColumn({ checklistTitle, checklist, card, tightBottom = false }) {
+ *
+ *  `spacing` : cran de l'échelle verticale partagée (voir index.css).
+ *  'standard' par défaut ; 'tight' quand la section suivante partage le
+ *  même fond et se lit avec celle-ci comme un seul ensemble — la section
+ *  suivante doit alors porter le même cran, sinon l'écart est bâtard.
+ *
+ *  Remplace l'ancienne prop booléenne `tightBottom`, qui supprimait
+ *  purement et simplement le padding bas : les deux blocs se touchaient
+ *  (écart mesuré 0 px sur Électricité), une valeur qui n'existe sur aucune
+ *  autre page et ne figure dans aucun cran de l'échelle. */
+export function ServiceTwoColumn({ checklistTitle, checklist, card, spacing = 'standard' }) {
   return (
-    <section className={`bg-navy-50 pt-14 sm:pt-16 lg:pt-20 ${tightBottom ? '' : 'pb-14 sm:pb-16 lg:pb-20'}`}>
+    <section className={`section bg-navy-50 ${spacing === 'tight' ? 'section-tight-b' : ''}`}>
       <div className="container-pce">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="min-w-0 rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-10">
