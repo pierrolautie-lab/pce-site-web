@@ -215,13 +215,13 @@ export default function PageHero({
                   {highlights.map((h) => (
                     <li key={h.title} className="flex flex-col items-start">
                       <Icon name={h.icon} className="h-8 w-8 text-white" strokeWidth={1.3} />
-                      <span className="mt-3 text-label font-bold uppercase">
+                      <span className="mt-3 text-balance text-label font-bold uppercase">
                         {h.title}
                       </span>
                       {/* /50 -> /70 (25/08/2026) : même défaut d'origine que
                           le fil d'Ariane — le blanc à 50 % plafonnait sous
                           4,5:1 même sur le fond du panneau. */}
-                      <span className="mt-1 text-caption text-white/70">{h.label}</span>
+                      <span className="mt-1 text-balance text-caption text-white/70">{h.label}</span>
                     </li>
                   ))}
                 </ul>
@@ -286,10 +286,10 @@ export function ReassuranceBar() {
                 <Icon name={r.icon} className="h-4 w-4 lg:h-[18px] lg:w-[18px]" strokeWidth={1.4} />
               </span>
               <span className="min-w-0">
-                <span className="block text-label font-bold uppercase">
+                <span className="block text-balance text-label font-bold uppercase">
                   {r.title}
                 </span>
-                <span className="mt-1 block text-caption text-white/50">
+                <span className="mt-1 block text-balance text-caption text-white/50">
                   {r.label}
                 </span>
               </span>

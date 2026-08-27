@@ -36,7 +36,7 @@ export function ServiceTwoColumn({ checklistTitle, checklist, card, spacing = 's
               {checklist.map((b) => (
                 <li key={b} className="flex items-start gap-3.5">
                   <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                  <span className="text-body-sm text-navy-700">{b}</span>
+                  <span className="text-balance text-body-sm text-navy-700">{b}</span>
                 </li>
               ))}
             </ul>
@@ -61,7 +61,7 @@ export function ServiceTwoColumn({ checklistTitle, checklist, card, spacing = 's
                 {card.checklist.map((b) => (
                   <li key={b} className="flex items-start gap-3.5">
                     <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" strokeWidth={3} />
-                    <span className="text-body-sm text-white/85">{b}</span>
+                    <span className="text-balance text-body-sm text-white/85">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -94,7 +94,7 @@ export function ServiceFeatureCards({ items }) {
               <h3 className="mt-5 text-body-sm font-bold uppercase tracking-[.04em] text-navy-800">
                 {c.title}
               </h3>
-              <p className="mt-3 text-body-sm text-navy-500">{c.text}</p>
+              <p className="mt-3 text-balance text-body-sm text-navy-500">{c.text}</p>
               <ul className="mt-4 space-y-2.5">
                 {c.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2.5">

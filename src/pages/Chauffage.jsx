@@ -33,7 +33,7 @@ function CheckList({ items, tone = 'light' }) {
             className={`mt-0.5 h-4 w-4 shrink-0 ${dark ? 'text-gold-400' : 'text-azure-500'}`}
             strokeWidth={3}
           />
-          <span className={`text-body-sm ${dark ? 'text-white/85' : 'text-navy-700'}`}>{item}</span>
+          <span className={`text-balance text-body-sm ${dark ? 'text-white/85' : 'text-navy-700'}`}>{item}</span>
         </li>
       ))}
     </ul>
@@ -100,10 +100,10 @@ export default function Chauffage() {
             <li key={b.title} className="flex items-start gap-3.5">
               <Icon name={b.icon} className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.6} />
               <span className="min-w-0">
-                <span className="block text-body-sm font-bold uppercase tracking-[.04em] text-white">
+                <span className="block text-balance text-body-sm font-bold uppercase tracking-[.04em] text-white">
                   {b.title}
                 </span>
-                <span className="mt-1.5 block text-caption text-white/70">{b.label}</span>
+                <span className="mt-1.5 block text-balance text-caption text-white/70">{b.label}</span>
               </span>
             </li>
           ))}

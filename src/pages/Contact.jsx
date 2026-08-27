@@ -413,7 +413,7 @@ function Hero() {
               Contact
             </h1>
 
-            <p className="mt-5 max-w-lg text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
+            <p className="mt-5 max-w-lg text-balance text-[18px] font-bold uppercase leading-[1.25] tracking-[.01em] text-azure-300 sm:text-[24px]">
               Un devis gratuit, détaillé et sans engagement
             </p>
 

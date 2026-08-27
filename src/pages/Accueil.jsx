@@ -355,7 +355,7 @@ function ProofRow() {
                         className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure-500"
                         strokeWidth={3}
                       />
-                      <span className="text-body-sm text-navy-600">{t}</span>
+                      <span className="text-balance text-body-sm text-navy-600">{t}</span>
                     </li>
                   ))}
                 </ul>

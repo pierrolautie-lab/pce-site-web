@@ -72,7 +72,7 @@ function SolutionsGrid({ items }) {
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5">
                       <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-azure-500" strokeWidth={3} />
-                      <span className="text-body-sm leading-[1.6] text-navy-600">{b}</span>
+                      <span className="text-balance text-body-sm leading-[1.6] text-navy-600">{b}</span>
                     </li>
                   ))}
                 </ul>

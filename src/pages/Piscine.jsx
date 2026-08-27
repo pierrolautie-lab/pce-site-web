@@ -258,8 +258,8 @@ function EntretienEtAccompagnement({ page }) {
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
                     <Icon name={item.icon} className="h-5 w-5" strokeWidth={1.5} />
                   </span>
-                  <span className="mt-4 break-words text-label font-bold uppercase text-navy-800">{item.title}</span>
-                  <span className="mt-2 break-words text-body-sm text-navy-500">{item.label}</span>
+                  <span className="mt-4 text-balance break-words text-label font-bold uppercase text-navy-800">{item.title}</span>
+                  <span className="mt-2 text-balance break-words text-body-sm text-navy-500">{item.label}</span>
                 </li>
               ))}
             </ul>

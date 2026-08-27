@@ -22,6 +22,15 @@
     text-wrap: balance;
   }
 
+  /* Empêche le mot seul en dernière ligne (ligne veuve) sans reformater le
+     paragraphe entier comme le ferait `balance`. Amélioration progressive :
+     les navigateurs qui l'ignorent gardent simplement la veuve. Les libellés
+     courts (cartes, bandeaux) préfèrent `text-balance`, posé au cas par cas —
+     l'utilitaire l'emporte sur cette règle de base. */
+  p {
+    text-wrap: pretty;
+  }
+
   ::selection {
     /* Suit la charte : pas de hex en dur, sinon la couleur se désynchronise
        de `navy.800` à chaque mise à jour de la palette. */

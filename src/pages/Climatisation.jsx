@@ -30,7 +30,7 @@ function CheckList({ items, tone = 'light', className = '' }) {
             className={`mt-1 h-3.5 w-3.5 shrink-0 ${dark ? 'text-azure-400' : 'text-azure-500'}`}
             strokeWidth={3}
           />
-          <span className={`text-body-sm ${dark ? 'text-white/80' : 'text-navy-600'}`}>{item}</span>
+          <span className={`text-balance text-body-sm ${dark ? 'text-white/80' : 'text-navy-600'}`}>{item}</span>
         </li>
       ))}
     </ul>
@@ -209,7 +209,7 @@ function Solutions({ data }) {
                 <h3 className="font-display text-kicker font-bold uppercase leading-tight text-navy-800">
                   {s.title}
                 </h3>
-                <p className="mt-2.5 text-body-sm leading-[1.55] text-navy-500">{s.text}</p>
+                <p className="mt-2.5 text-balance text-body-sm leading-[1.55] text-navy-500">{s.text}</p>
               </div>
             </div>
           ))}
@@ -229,8 +229,8 @@ function ArgBand({ items }) {
             <li key={a.title} className="flex items-start gap-3 px-0 py-3 lg:px-6 lg:py-1 lg:first:pl-0">
               <Icon name={a.icon} className="h-7 w-7 shrink-0" strokeWidth={1.3} />
               <span className="min-w-0">
-                <span className="block text-label font-bold uppercase leading-tight">{a.title}</span>
-                <span className="mt-1.5 block text-body-sm leading-snug text-white/55">{a.label}</span>
+                <span className="block text-balance text-label font-bold uppercase leading-tight">{a.title}</span>
+                <span className="mt-1.5 block text-balance text-body-sm leading-snug text-white/55">{a.label}</span>
               </span>
             </li>
           ))}

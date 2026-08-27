@@ -306,7 +306,7 @@ export function GuaranteeBar() {
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-navy-200 text-azure-500">
                 <Icon name={g.icon} className="h-5 w-5" strokeWidth={1.4} />
               </span>
-              <p className="text-label font-bold uppercase text-navy-800">
+              <p className="text-balance text-label font-bold uppercase text-navy-800">
                 {g.label}
               </p>
             </div>
@@ -441,7 +441,7 @@ export function Expertise({ data, fadePhoto = false }) {
                 className="mt-0.5 h-4 w-4 shrink-0 text-azure-500"
                 strokeWidth={3}
               />
-              <span className="text-body-sm font-semibold text-navy-700">
+              <span className="text-balance text-body-sm font-semibold text-navy-700">
                 {pt}
               </span>
             </li>
