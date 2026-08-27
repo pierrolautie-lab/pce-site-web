@@ -277,12 +277,14 @@ export const services = {
     brands: [
       {
         name: 'Frisquet',
+        src: '/img/marque-frisquet.png',
         color: 'text-[#E2001A]',
         text: "L’excellence française depuis 1868.",
         bullets: ['Chaudières gaz à haute performance', 'Fiabilité, durabilité et rendement', 'Fabrication française'],
       },
       {
         name: 'elm.leblanc',
+        src: '/img/marque-elm-leblanc.png',
         color: 'text-navy-900',
         swatch: 'bg-[#F5A623]',
         text: 'La référence du confort.',
@@ -290,6 +292,7 @@ export const services = {
       },
       {
         name: 'Chappée',
+        src: '/img/marque-chappee.png',
         color: 'text-[#C8102E]',
         text: "L’efficacité au service de votre confort.",
         bullets: ['Chaudières gaz, gammes complètes', 'Solutions adaptées à tous les besoins', 'Robustesse et performance'],
@@ -422,19 +425,19 @@ export const services = {
       brands: [
         {
           name: 'Daikin',
-          src: '/img/marque-daikin.jpg',
+          src: '/img/marque-daikin.png',
           text: "L’inventeur du climatiseur réversible.",
           bullets: ['Fiabilité éprouvée', 'Niveaux sonores parmi les plus bas', 'Réseau de pièces détachées dense'],
         },
         {
           name: 'Mitsubishi Electric',
-          src: '/img/marque-mitsubishi.jpg',
+          src: '/img/marque-mitsubishi.png',
           text: 'La référence du silencieux.',
           bullets: ['Unités intérieures très discrètes', 'Rendements élevés à basse température', 'Longévité reconnue'],
         },
         {
           name: 'Midea',
-          src: '/img/marque-midea.jpg',
+          src: '/img/marque-midea.png',
           text: 'Le meilleur rapport performance-prix.',
           bullets: ['Gamme complète du split au gainable', 'Bon niveau d’équipement de série', 'Solution adaptée aux budgets serrés'],
         },

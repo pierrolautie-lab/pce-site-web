@@ -495,11 +495,40 @@ export const imageManifest = {
       1200
     ]
   },
+  "marque-chappee.png": {
+    "width": 204,
+    "height": 74,
+    "widths": [
+      204
+    ]
+  },
+  "marque-daikin.png": {
+    "width": 800,
+    "height": 167,
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "marque-elm-leblanc.png": {
+    "width": 474,
+    "height": 115,
+    "widths": [
+      400
+    ]
+  },
   "marque-fluidra.jpg": {
     "width": 474,
     "height": 125,
     "widths": [
       400
+    ]
+  },
+  "marque-frisquet.png": {
+    "width": 220,
+    "height": 39,
+    "widths": [
+      220
     ]
   },
   "marque-hayward.jpg": {
@@ -514,6 +543,22 @@ export const imageManifest = {
     "height": 66,
     "widths": [
       400
+    ]
+  },
+  "marque-midea.png": {
+    "width": 800,
+    "height": 308,
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "marque-mitsubishi.png": {
+    "width": 800,
+    "height": 234,
+    "widths": [
+      400,
+      800
     ]
   },
   "marque-zodiac.jpg": {

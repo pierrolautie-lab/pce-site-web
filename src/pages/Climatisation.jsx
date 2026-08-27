@@ -12,11 +12,10 @@ import { photoMetaForPath } from '../data/photos.js'
 import { services } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
-/* Sur le modèle de `SHOW_GOOGLE_REVIEWS` : les fichiers logo Daikin,
-   Mitsubishi Electric et Midea ne sont pas encore livrés, le bloc marques
-   affiche donc trois cadres de repli. À repasser à `true` dès que les trois
-   logos sont déposés dans public/img/ et renseignés dans `site.js`. */
-const SHOW_CLIM_BRANDS = false
+/* Sur le modèle de `SHOW_GOOGLE_REVIEWS`. Passé à `true` le 27/08/2026 :
+   les trois logos (Daikin, Mitsubishi Electric, Midea) sont détourés dans
+   public/img/marque-*.png et renseignés dans `site.js`. */
+const SHOW_CLIM_BRANDS = true
 
 /** Liste à coches, réutilisée dans les deux tons de la page (cf. Piscine.jsx). */
 function CheckList({ items, tone = 'light', className = '' }) {
