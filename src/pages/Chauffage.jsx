@@ -42,7 +42,7 @@ function CheckList({ items, tone = 'light' }) {
 
 export default function Chauffage() {
   const service = services.chauffage
-  const { entretien, aides } = service.blocks
+  const { entretien, economies } = service.blocks
 
   return (
     <>
@@ -126,15 +126,16 @@ export default function Chauffage() {
         <CheckList items={entretien.points} tone="dark" />
       </FadedPhotoSection>
 
-      {/* ------------------------------------------- Aides financières */}
+      {/* --------------------------------------- Économies à l'usage */}
       <section className="section bg-navy-50">
         <div className="container-pce">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionTitle title={aides.title} />
-            <p className="mt-4 text-body text-navy-500">{aides.text}</p>
-            {/* Chaque badge porte son équipement cible : aucun badge nu, pour
-                qu'aucun visiteur ne lise ces aides comme acquises sur un
-                projet de chaudière à gaz. */}
+            <SectionTitle title={economies.title} />
+            <p className="mt-4 text-body text-navy-500">{economies.text}</p>
+            {/* Un seul badge, et il ne dépend pas du RGE : la TVA à 5,5 % sur
+                l'entretien est due quelle que soit la certification de
+                l'entreprise. MaPrimeRénov' et les CEE ont été retirés le
+                27/08/2026 — voir le commentaire dans site.js. */}
             <ul className="mt-9 flex flex-wrap justify-center gap-3">
               {service.aids.map((a) => (
                 <li

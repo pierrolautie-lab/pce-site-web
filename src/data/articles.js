@@ -40,7 +40,7 @@ export const articles = {
       {
         h2: 'Budget et aides disponibles',
         paragraphs: [
-          "L’installation d’une pompe à chaleur reste éligible à MaPrimeRénov’ et, selon votre profil, aux certificats d’économie d’énergie (CEE) — contrairement aux chaudières à gaz qui ont perdu cette éligibilité. Ces aides peuvent réduire sensiblement le reste à charge : PCE vous aide à identifier les dispositifs applicables à votre situation.",
+          "L’installation d’une pompe à chaleur ouvre droit à des aides publiques, contrairement aux chaudières à gaz qui ont perdu cette éligibilité. Ces dispositifs imposent toutefois de passer par une entreprise certifiée RGE : PCE ne l’étant pas, nous n’en montons aucun dossier et nous le disons avant l’étude. Notre apport est ailleurs — un dimensionnement juste et une consommation annoncée avant travaux.",
         ],
       },
     ],
@@ -300,7 +300,7 @@ export const articles = {
       {
         h2: "Le coût à l’achat et les aides",
         paragraphs: [
-          "Une chaudière à gaz à condensation coûte moins cher à l’achat qu’une pompe à chaleur air/eau, mais elle n’est plus éligible à MaPrimeRénov’ ni aux certificats d’économie d’énergie, contrairement à la pompe à chaleur. Sur un projet de rénovation, ces aides peuvent réduire significativement l’écart de prix initial entre les deux solutions.",
+          "Une chaudière à gaz à condensation coûte moins cher à l’achat qu’une pompe à chaleur air/eau. L’écart se resserre à l’usage : la pompe à chaleur puise une large part de son énergie dans l’air extérieur, là où la chaudière paie chaque kilowattheure. Sur la durée de vie de l’installation, c’est la consommation annuelle, et non le prix d’achat, qui départage les deux solutions.",
         ],
       },
       {

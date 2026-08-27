@@ -11,7 +11,7 @@ export const expertisePages = {
     servicePath: '/chauffage',
     h1: 'Installation de pompe à chaleur dans le Var',
     metaDescription:
-      "Installation de pompe à chaleur air/air ou air/eau dans le Var par PCE : étude thermique, dimensionnement, pose et aides MaPrimeRénov'. Devis gratuit.",
+      "Installation de pompe à chaleur air/air ou air/eau dans le Var par PCE : étude thermique, dimensionnement, pose et entretien. Devis gratuit.",
     photo: { tags: 'heating', lock: 701 },
     intro: [
       "Remplacer une chaudière au fioul ou au gaz par une pompe à chaleur est aujourd'hui l'un des projets de rénovation énergétique les plus demandés dans le Var. PCE, basé à Lorgues, accompagne particuliers et professionnels de la Dracénie au Golfe de Saint-Tropez dans le choix, le dimensionnement et la pose de leur pompe à chaleur.",
@@ -38,9 +38,10 @@ export const expertisePages = {
         ],
       },
       {
-        h2: "MaPrimeRénov' et aides pour votre pompe à chaleur",
+        h2: "Ce qu'une pompe à chaleur change sur votre facture",
         paragraphs: [
-          "Contrairement aux chaudières à gaz, l'installation d'une pompe à chaleur reste éligible à MaPrimeRénov' et, selon votre profil, aux certificats d'économie d'énergie (CEE). PCE vous aide à identifier les dispositifs auxquels vous pouvez prétendre et vous fournit les documents nécessaires pour constituer votre dossier.",
+          "Une pompe à chaleur restitue plusieurs fois l'énergie électrique qu'elle consomme, en puisant le reste dans l'air extérieur — un rendement que le climat varois rend particulièrement favorable. C'est là que se joue l'écart avec une chaudière, pas au moment de l'achat. Nous chiffrons cette consommation annuelle estimée dans l'étude, à partir du relevé de votre logement.",
+          "PCE n'est pas certifié RGE et ne monte donc aucun dossier MaPrimeRénov' ou CEE : nous préférons l'annoncer avant l'étude plutôt que de le découvrir au moment du devis.",
         ],
       },
     ],

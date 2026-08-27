@@ -288,16 +288,16 @@ export const services = {
       },
     ],
 
-    /* Chips « aides financières ». Chaque chip porte son équipement cible :
-       aucun badge non qualifié, pour qu'aucun visiteur ne lise ces aides
-       comme applicables à une chaudière à gaz.
-       26/08/2026 : « TVA 5,5 % — Tous travaux » était devenu faux. Depuis
-       le 1er mars 2025, la TVA est à 20 % sur la fourniture et la pose
-       d'une chaudière à gaz ; seuls l'entretien et la réparation restent
-       à 5,5 %. Le détail du chip le dit désormais. */
+    /* ⚠️ Un seul chip, et il ne dépend pas du RGE.
+       27/08/2026 : MaPrimeRénov’ et les CEE ont été retirés. Les qualifier
+       par équipement (« Pompe à chaleur ») ne suffisait pas : ces deux aides
+       exigent un installateur certifié RGE, quel que soit l’équipement, et
+       PCE ne l’est pas. Les afficher revenait à promettre au visiteur une
+       aide que PCE ne peut pas lui faire obtenir — c’est le raisonnement
+       déjà tenu sur VMC, qui n’avait pas été propagé ici.
+       La TVA à 5,5 % sur l’entretien reste vraie et ne dépend pas du RGE :
+       elle est conservée, seule et qualifiée. */
     aids: [
-      { icon: 'euro', label: "MaPrimeRénov’", detail: 'Pompe à chaleur' },
-      { icon: 'leaf', label: 'CEE', detail: 'Pompe à chaleur' },
       { icon: 'checkCircle', label: 'TVA 5,5 %', detail: 'Entretien de chaudière' },
     ],
 
@@ -310,12 +310,12 @@ export const services = {
         text: "L’entretien annuel de votre chaudière est obligatoire et essentiel pour garantir sécurité, performance et longévité de votre installation.",
         points: ['Meilleur rendement', 'Moins de pannes', 'Économies d’énergie', 'Respect des normes'],
       },
-      /* Formulation volontairement sans promesse : elle dit ce que les aides
-         ciblent, pas ce à quoi le visiteur aurait droit. Aucun « des aides
-         peuvent être disponibles », aucun badge non qualifié. */
-      aides: {
-        title: 'Aides financières : pour quels équipements ?',
-        text: "Les aides de l’État ciblent aujourd’hui les équipements décarbonés. Nous vous disons dès l’étude ce à quoi votre projet donne droit.",
+      /* Ce bloc parlait des aides de l’État. Il n’en parle plus : PCE n’est
+         pas certifié RGE et ne peut donc pas les faire obtenir. Le sujet
+         devient ce que PCE maîtrise réellement — le coût à l’usage. */
+      economies: {
+        title: 'Ce que vous économisez à l’usage',
+        text: "Le vrai écart entre deux installations ne se joue pas à l’achat, mais sur la facture des quinze années suivantes. Nous dimensionnons chaque équipement pour votre logement et nous vous annonçons, dès l’étude, la consommation annuelle estimée de chaque solution comparée.",
       },
     },
 
@@ -348,7 +348,7 @@ export const services = {
     process: [
       { title: "L’étude du logement", text: "Relevé des surfaces, de l’isolation, de l’orientation et des émetteurs en place. C’est cette étape qui détermine la puissance et le type de machine." },
       { title: 'Le comparatif chiffré', text: "Nous présentons deux à trois solutions avec, pour chacune, le coût d’installation, la consommation annuelle estimée et les aides mobilisables." },
-      { title: 'Le montage des aides', text: "Pour une pompe à chaleur : MaPrimeRénov’, certificats d’économie d’énergie, éco-PTZ — nous constituons le dossier avec vous et déduisons ce qui peut l’être du devis. Une chaudière à gaz n’ouvre plus droit ni à MaPrimeRénov’ ni aux CEE, et sa fourniture comme sa pose sont taxées à 20 % depuis le 1er mars 2025 : seul l’éco-PTZ reste mobilisable, le taux de 5,5 % ne valant plus que pour son entretien et ses réparations." },
+      { title: 'Le coût réel à l’usage', text: "Pour chaque solution comparée, nous chiffrons la consommation annuelle estimée d’après le bilan thermique, et non d’après une moyenne de catalogue. C’est ce chiffre, pas le prix d’achat, qui fait l’écart sur la durée de vie de l’installation." },
       { title: "L’installation", text: "Dépose de l’ancien système, pose, raccordements hydrauliques et frigorifiques, mise en service et équilibrage des émetteurs." },
       { title: 'Le suivi dans le temps', text: "Entretien annuel, relevé des performances, attestation remise à chaque passage et intervention prioritaire en cas de panne." },
     ],
@@ -370,7 +370,7 @@ export const services = {
       { q: 'Puis-je garder mes radiateurs existants ?', a: "Souvent oui, à condition qu’ils soient suffisamment dimensionnés. Nous le vérifions pendant l’étude. Si un ou deux radiateurs sont trop justes, il est presque toujours moins coûteux de les remplacer que de renoncer à la pompe à chaleur." },
       { q: "L’entretien annuel est-il obligatoire ?", a: "Oui pour les pompes à chaleur de plus de 4 kW et pour les chaudières gaz. Au-delà de l’obligation, c’est ce qui préserve le rendement et la garantie constructeur. Nous proposons un contrat avec passage programmé et intervention prioritaire." },
       { q: 'Le groupe extérieur est-il bruyant ?', a: "Les machines récentes tournent autour de 35 à 45 dB à quelques mètres. L’essentiel se joue à l’implantation : nous étudions la distance aux chambres, aux voisins et aux murs réfléchissants avant de fixer l’emplacement." },
-      { q: 'Quelles aides puis-je obtenir ?', a: "Pour une pompe à chaleur, selon vos revenus : MaPrimeRénov’, prime CEE, TVA à 5,5 % et éco-PTZ. Pour une chaudière à gaz, MaPrimeRénov’ et la prime CEE ne sont plus mobilisables, et la TVA est passée à 20 % sur la fourniture et la pose le 1er mars 2025 : seul l’éco-PTZ reste disponible, le taux de 5,5 % ne valant plus que pour l’entretien et la réparation. Nous chiffrons systématiquement le reste à charge réel sur le devis, aides déduites." },
+      { q: 'Proposez-vous des aides financières ?', a: "Non, et nous préférons le dire clairement : MaPrimeRénov’ et les certificats d’économie d’énergie exigent un installateur certifié RGE, ce que PCE n’est pas. Nous ne montons donc aucun dossier d’aide. Ce que nous garantissons en revanche, c’est un dimensionnement juste et une consommation annoncée avant travaux. La TVA à 5,5 % s’applique en revanche à l’entretien et aux réparations de votre chaudière, sans condition de certification." },
     ],
   },
 
@@ -509,12 +509,15 @@ export const services = {
         { icon: 'snowflake', title: 'Fonction réversible', label: 'Chauffe en hiver, rafraîchit en été : une solution 2-en-1 pour un confort toute l’année.' },
       ],
 
-      /* ⚠️ La pose d'une climatisation seule (PAC air/air) est exclue du
-         parcours d'aides MaPrimeRénov'/CEE depuis le 1er janvier 2025 :
-         texte volontairement conditionnel, aucun badge d'aide affiché. */
+      /* ⚠️ Plus aucune mention d'aide ici (27/08/2026). Le texte précédent
+         disait vrai sur la climatisation seule, mais laissait une porte
+         ouverte — « ces dispositifs restent mobilisables avec une PAC
+         air/eau, nous étudions votre éligibilité ». Or MaPrimeRénov' et les
+         CEE exigent un installateur RGE quel que soit l'équipement, et PCE
+         ne l'est pas. La promesse était donc intenable. */
       aids: {
-        heading: 'Aides & avantages',
-        text: "Le remplacement d’une climatisation seule ne bénéficie plus des aides MaPrimeRénov’ ni des CEE depuis le 1ᵉʳ janvier 2025. Ces dispositifs restent mobilisables lorsque le projet inclut une pompe à chaleur air/eau : nous étudions votre éligibilité au cas par cas.",
+        heading: 'Ce que vous y gagnez',
+        text: "Une climatisation réversible bien dimensionnée chauffe l’hiver et rafraîchit l’été avec un seul appareil, pour une consommation très inférieure à celle d’un convecteur électrique. Nous vous annonçons la consommation estimée avant travaux, et la TVA à 5,5 % s’applique à l’entretien de votre installation.",
       },
 
       zone: {
@@ -1221,7 +1224,7 @@ export const chaudiereCondensation = {
     bullets: [
       'Une consommation de combustible sensiblement plus faible pour un même confort, quelle que soit l’énergie (gaz, fioul, bois/granulés).',
       'Une TVA à taux réduit envisageable sur les contrats d’entretien, selon votre situation.',
-      "Un financement mobilisable via l’éco-PTZ, sans avance de trésorerie sur le prêt.",
+      "Un devis détaillé poste par poste, avec la consommation annuelle estimée de chaque solution comparée.",
     ],
   },
 
