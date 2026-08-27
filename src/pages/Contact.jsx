@@ -397,7 +397,7 @@ function Hero() {
                 (seuil 4,5:1), un défaut antérieur au changement d'image. */}
             <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
               <li>
-                <Link to="/" className="transition-colors hover:text-white">
+                <Link to="/" className="inline-block py-1.5 transition-colors hover:text-white">
                   Accueil
                 </Link>
               </li>

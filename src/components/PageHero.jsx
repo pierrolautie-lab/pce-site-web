@@ -151,7 +151,7 @@ export default function PageHero({
                   fil de Contact, qui a le même défaut d'origine. */}
               <ol className="flex flex-wrap items-center gap-2 text-label font-bold uppercase text-white/60">
                 <li>
-                  <Link to="/" className="transition-colors hover:text-white">
+                  <Link to="/" className="inline-block py-1.5 transition-colors hover:text-white">
                     Accueil
                   </Link>
                 </li>
@@ -159,7 +159,7 @@ export default function PageHero({
                   <li key={step.label} className="flex items-center gap-2">
                     <span aria-hidden="true">›</span>
                     {step.to && i < arr.length - 1 ? (
-                      <Link to={step.to} className="transition-colors hover:text-white">
+                      <Link to={step.to} className="inline-block py-1.5 transition-colors hover:text-white">
                         {step.label}
                       </Link>
                     ) : (

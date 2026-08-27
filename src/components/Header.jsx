@@ -157,7 +157,7 @@ export default function Header() {
             to="/"
             end
             className={({ isActive }) =>
-              `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
+              `rounded-lg border-l-[3px] px-4 py-4 font-display text-label font-bold uppercase transition-colors ${
                 isActive
                   ? 'border-gold-500 bg-navy-50 text-navy-800'
                   : 'border-transparent text-navy-600 hover:bg-navy-50'
@@ -172,7 +172,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
+                `rounded-lg border-l-[3px] px-4 py-4 font-display text-label font-bold uppercase transition-colors ${
                   isActive
                     ? 'border-gold-500 bg-navy-50 text-navy-800'
                     : 'border-transparent text-navy-600 hover:bg-navy-50'
@@ -188,7 +188,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `rounded-lg border-l-[3px] px-4 py-3.5 font-display text-label font-bold uppercase transition-colors ${
+                `rounded-lg border-l-[3px] px-4 py-4 font-display text-label font-bold uppercase transition-colors ${
                   isActive
                     ? 'border-gold-500 bg-navy-50 text-navy-800'
                     : 'border-transparent text-navy-600 hover:bg-navy-50'

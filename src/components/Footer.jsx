@@ -89,7 +89,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
+                    className="inline-block py-1 text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -108,7 +108,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
+                    className="inline-block py-1 text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -127,7 +127,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
+                    className="inline-block py-1 text-body-sm text-white/60 transition-colors hover:text-gold-400"
                   >
                     {l.label}
                   </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
               <li>
                 <a
                   href={company.phoneHref}
-                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 py-0.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="phone" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.phone}
@@ -155,7 +155,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${company.email}`}
-                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 py-0.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="mail" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.email}
@@ -164,7 +164,7 @@ export default function Footer() {
               <li>
                 <a
                   href={company.url}
-                  className="flex items-center gap-2.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
+                  className="flex items-center gap-2.5 py-0.5 text-body-sm text-white/70 transition-colors hover:text-gold-400"
                 >
                   <Icon name="globe" className="h-3.5 w-3.5 shrink-0 text-gold-500" strokeWidth={2} />
                   {company.domain}
@@ -227,7 +227,7 @@ export default function Footer() {
               <li key={c.cityKey}>
                 <Link
                   to={localPath('plombier', c.cityKey)}
-                  className="text-body-sm text-white/60 transition-colors hover:text-gold-400"
+                  className="inline-block py-1 text-body-sm text-white/60 transition-colors hover:text-gold-400"
                 >
                   {c.name}
                 </Link>
