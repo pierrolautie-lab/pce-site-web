@@ -435,6 +435,25 @@ export const localPages = Object.keys(localCities).flatMap((cityKey) => {
 })
 
 /**
+ * Une page locale existe-t-elle pour ce couple métier × ville ?
+ *
+ * Même règle que `localPages` ci-dessus, et c'est tout l'intérêt : elle est
+ * écrite une seule fois. Les liens « villes voisines » de LocalPage.jsx la
+ * dérivaient auparavant de leur côté, en supposant que toute ville portait
+ * tous les métiers. C'est faux depuis l'ouverture de `pompe-a-chaleur` et
+ * `traitement-eau` aux seules 23 villes historiques : les 16 autres n'ont
+ * pas ces deux pages. Résultat, 10 liens pointaient vers des routes
+ * inexistantes (Draguignan, Sainte-Maxime, Fréjus, Lorgues, Salernes),
+ * constaté le 27/08/2026 en croisant les liens internes et les routes
+ * réellement générées.
+ */
+export function hasLocalPage(tradeKey, cityKey) {
+  const city = localCities[cityKey]
+  if (!city) return false
+  return (city.trades || Object.keys(localTrades)).includes(tradeKey)
+}
+
+/**
  * « à » + nom de ville, avec la contraction française obligatoire :
  * à + Le → au, à + Les → aux. Sans ça on écrit « Plombier à Le Muy »
  * ou « à Les Arcs » dans les titres et les méta-descriptions.

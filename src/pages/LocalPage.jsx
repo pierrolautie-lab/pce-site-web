@@ -4,7 +4,7 @@ import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
 import { Prestations, GuaranteeBar, CtaSection, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import { services, whyChooseUs } from '../data/site.js'
-import { localTrades, localCities, localCopy, localPath, inCity } from '../data/local.js'
+import { localTrades, localCities, localCopy, localPath, inCity, hasLocalPage } from '../data/local.js'
 import { expertisePages } from '../data/expertise.js'
 
 /** Élision : "de plombier" mais "d'électricien" devant une voyelle. */
@@ -28,10 +28,16 @@ export default function LocalPage({ tradeKey, cityKey }) {
   const title = `${trade.label} ${inThisCity}`
   const path = localPath(tradeKey, cityKey)
   const expertise = expertisePages[trade.relatedExpertise]
-  const neighborLinks = city.neighbors.map((neighborKey) => ({
-    to: localPath(tradeKey, neighborKey),
-    label: `${trade.label} ${inCity(localCities[neighborKey].name)}`,
-  }))
+  /* On ne lie une ville voisine que si la page existe vraiment pour CE
+     métier : `pompe-a-chaleur` et `traitement-eau` ne couvrent que les 23
+     villes historiques, alors que les six autres métiers couvrent les 39.
+     Sans ce filtre, 10 liens pointaient vers des routes inexistantes. */
+  const neighborLinks = city.neighbors
+    .filter((neighborKey) => hasLocalPage(tradeKey, neighborKey))
+    .map((neighborKey) => ({
+      to: localPath(tradeKey, neighborKey),
+      label: `${trade.label} ${inCity(localCities[neighborKey].name)}`,
+    }))
 
   return (
     <>
