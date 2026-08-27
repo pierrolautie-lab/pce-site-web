@@ -8,6 +8,7 @@ import ZoneBadge from '../components/ZoneBadge.jsx'
 import { CtaBand } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
+import { photoMetaForPath } from '../data/photos.js'
 import { services } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
@@ -55,11 +56,23 @@ function SolutionPhoto({ src, alt, label, icon }) {
     )
   }
 
+  /* Passe par le manifeste plutôt que de servir le JPEG source : ces cartes
+     étaient les seules images du site à court-circuiter le pipeline WebP,
+     alors que leurs variantes existaient déjà. La page servait 2,6 Mo
+     d'images pour 4,2 s de chargement. `sizes` suit la grille : 5 colonnes
+     à partir de lg, 2 au palier sm, 1 en dessous. */
+  const meta = photoMetaForPath(src)
+
   return (
     <img
-      src={src}
+      src={meta?.src || src}
+      srcSet={meta?.srcSet || undefined}
+      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
+      width={meta?.width || undefined}
+      height={meta?.height || undefined}
       alt={alt}
       loading="lazy"
+      decoding="async"
       onError={() => setErrored(true)}
       className="h-40 w-full rounded-t-xl bg-navy-50 object-cover"
     />
@@ -129,7 +142,7 @@ function Hero({ page, hero }) {
       intro={page.intro}
       photo={{ ...hero, alt: 'Groupe extérieur de climatisation installé par PCE, terrasse et baie vitrée' }}
       photoBadge={<ZoneBadge />}
-      fullBleed
+      fullBleed
     >
       <CheckList items={page.heroChecklist} tone="dark" className="mt-6 max-w-sm" />
     </PageHero>

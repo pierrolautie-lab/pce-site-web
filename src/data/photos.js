@@ -434,6 +434,23 @@ export const clientPhoto = (slot) => clientPhotos[slot] || null
 export function clientPhotoMeta(slot) {
   const jpegPath = clientPhotos[slot]
   if (!jpegPath) return null
+  return photoMetaForPath(jpegPath)
+}
+
+/**
+ * Même chose, mais à partir d'un chemin `/img/...` plutôt que d'un numéro
+ * de slot — pour les quelques visuels référencés en dur, hors table des
+ * locks (les cartes « Nos solutions » de Climatisation, par exemple).
+ *
+ * Ces visuels-là échappaient au pipeline WebP alors que leurs variantes
+ * existaient déjà sur le disque : la page Climatisation servait 2,6 Mo de
+ * JPEG bruts, dont un fichier de 734 Ko, et mettait 4,2 s à se charger
+ * (mesuré le 27/08/2026 sur la production). Ce n'était pas un défaut de
+ * génération mais d'aiguillage — d'où cette fonction, pour que tout point
+ * d'entrée passe par la même logique.
+ */
+export function photoMetaForPath(jpegPath) {
+  if (!jpegPath) return null
 
   const filename = jpegPath.split('/').pop()
   const meta = imageManifest[filename]
