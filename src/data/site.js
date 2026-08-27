@@ -784,14 +784,16 @@ export const services = {
 
       /* ⚠️ PCE installe ces marques sans accord de distribution : ne jamais
          écrire « nos partenaires ». Libellé validé par le client. */
-      marques: {
-        label: ['Les marques', 'que nous installons', 'et entretenons'],
-        items: [
-          { name: 'Hayward', src: '/img/marque-hayward.png' },
-          { name: 'Zodiac', src: '/img/marque-zodiac.png' },
-          { name: 'Fluidra', src: '/img/marque-fluidra.jpg' },
-        ],
-      },
+      /* 27/08/2026 : passé de la bande à bordures compacte au format de
+         cartes de `ServiceBrandsRow`, comme Chauffage, Électricité et VMC.
+         La bande faisait diverger le rythme vertical de cette page (48 px
+         d’écart là où les autres en ont 80). Une ligne de description par
+         marque, sans puces : même forme que VMC. */
+      brands: [
+        { name: 'Hayward', src: '/img/marque-hayward.png', text: 'Filtration, pompes et électrolyseurs au sel.' },
+        { name: 'Zodiac', src: '/img/marque-zodiac.png', text: 'Robots nettoyeurs et pompes à chaleur de bassin.' },
+        { name: 'Fluidra', src: '/img/marque-fluidra.jpg', text: 'Équipements de local technique et pièces à sceller.' },
+      ],
     },
 
     prestations: [

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
-import BrandLogo from '../components/BrandLogo.jsx'
+import { CtaBand } from '../components/Blocks.jsx'
+import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import PageHero from '../components/PageHero.jsx'
 import { company, services } from '../data/site.js'
@@ -62,8 +63,13 @@ export default function Piscine() {
       <PrestationsEtAutomatisation page={p} hero={service.hero} />
       <Equipements data={p.equipements} />
       <EntretienEtAccompagnement page={p} />
-      <Marques data={p.marques} />
-      <BandeAppel />
+      {/* « installons et entretenons », jamais « partenaires » : PCE n'a
+          aucun accord de distribution avec ces fabricants. */}
+      <ServiceBrandsRow title="Les marques que nous installons et entretenons" brands={p.brands} />
+      {/* Bande d'appel partagée. Cette page en portait une copie locale, en
+          azure-500 et avec 32 px de padding propre : elle décalait l'écart
+          avant la bande à 112 px là où les quatre autres pages sont à 80. */}
+      <CtaBand />
     </>
   )
 }
@@ -264,49 +270,3 @@ function EntretienEtAccompagnement({ page }) {
   )
 }
 
-/* ================================================== MARQUES ============= */
-function Marques({ data }) {
-  return (
-    <section className="border-y border-navy-100 bg-white py-10 sm:py-12">
-      <div className="container-pce">
-        <div className="grid items-center gap-8 lg:grid-cols-12">
-          <h2 className="font-display text-kicker font-bold uppercase leading-tight text-navy-800 lg:col-span-4">
-            {data.label.map((l) => (
-              <span key={l} className="block">
-                {l}
-              </span>
-            ))}
-          </h2>
-
-          <ul className="grid grid-cols-3 items-center gap-6 sm:divide-x sm:divide-navy-100 lg:col-span-8">
-            {data.items.map((m) => (
-              <li key={m.name} className="flex h-12 min-w-0 items-center justify-center px-0 sm:px-6">
-                <BrandLogo name={m.name} src={m.src} className="max-h-10" />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ============================================== BANDE D'APPEL =========== */
-function BandeAppel() {
-  return (
-    <section className="bg-azure-500 py-8">
-      <div className="container-pce flex flex-col items-center justify-center gap-5 text-center sm:flex-row sm:gap-8">
-        <p className="font-display text-kicker font-bold uppercase text-white">
-          Besoin d'un conseil ou d'un devis ? Appelez-nous !
-        </p>
-        <a
-          href={company.phoneHref}
-          className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-gold-500 px-6 py-3.5 text-kicker font-bold text-navy-900 transition-colors hover:bg-gold-400"
-        >
-          <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
-          {company.phone}
-        </a>
-      </div>
-    </section>
-  )
-}
