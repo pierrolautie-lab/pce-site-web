@@ -33,8 +33,11 @@ export default function ArticlePage({ slug }) {
 
   return (
     <>
+      {/* `metaTitle` : version courte pour la balise <title> quand le titre
+          rédactionnel dépasse 60 caractères une fois « — PCE » ajouté. Le
+          h1 visible garde `title` intact. */}
       <Seo
-        title={data.title}
+        title={data.metaTitle || data.title}
         description={data.metaDescription}
         path={path}
         jsonLd={[

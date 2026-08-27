@@ -327,6 +327,8 @@ export const articles = {
 
   'quelle-climatisation-choisir-maison-var': {
     title: 'Quelle climatisation choisir pour sa maison dans le Var ?',
+    /* <title> court (48 avec « — PCE ») : le titre y dépassait 60. */
+    metaTitle: 'Quelle climatisation choisir dans le Var ?',
     metaDescription:
       "Quelle climatisation choisir dans le Var : mono-split, multi-split ou gainable selon votre logement. Les conseils de PCE, installateur à Lorgues.",
     photo: { tags: 'aircon', lock: 1104 },
@@ -367,6 +369,8 @@ export const articles = {
 
   'climatisation-gainable-ou-split': {
     title: 'Climatisation gainable ou split : quelles différences ?',
+    /* <title> court (55 avec « — PCE ») : le titre y dépassait 60. */
+    metaTitle: 'Climatisation gainable ou split : les différences',
     metaDescription:
       "Climatisation gainable ou split : discrétion, coût, faisabilité. Le comparatif de PCE pour bien choisir votre installation dans le Var.",
     photo: { tags: 'aircon', lock: 1105 },
@@ -482,6 +486,8 @@ export const articles = {
 
   'charbon-actif-que-filtre-t-il': {
     title: 'Filtration au charbon actif : que filtre-t-elle exactement ?',
+    /* <title> court (48 avec « — PCE ») : le titre y dépassait 60. */
+    metaTitle: 'Charbon actif : que filtre-t-il vraiment ?',
     metaDescription:
       "Charbon actif : chlore, pesticides, goûts et odeurs de l’eau. Ce que filtre réellement cette technologie, expliqué par PCE dans le Var.",
     photo: { tags: 'water-softener', lock: 1111 },
@@ -559,6 +565,8 @@ export const articles = {
 
   'pompe-piscine-vitesse-variable-avantages': {
     title: 'Pompe de piscine à vitesse variable : quels avantages ?',
+    /* <title> court (54 avec « — PCE ») : le titre y dépassait 60. */
+    metaTitle: 'Pompe de piscine à vitesse variable : les atouts',
     metaDescription:
       "Pompe à vitesse variable pour piscine : économies d’électricité, silence et longévité. Les avantages détaillés par PCE, pisciniste dans le Var.",
     photo: { tags: 'pool', lock: 1113 },
@@ -637,6 +645,8 @@ export const articles = {
 
   'a-quoi-sert-le-redox': {
     title: "À quoi sert le redox dans le traitement d’une piscine ?",
+    /* <title> court (47 avec « — PCE ») : le titre y dépassait 60. */
+    metaTitle: 'À quoi sert le redox pour votre piscine ?',
     metaDescription:
       "Le redox (ORP) en piscine : ce qu’il mesure, pourquoi il est plus fiable que le taux de chlore seul. Les explications de PCE, pisciniste dans le Var.",
     photo: { tags: 'pool', lock: 1115 },

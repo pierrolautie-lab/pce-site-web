@@ -132,7 +132,7 @@ export default function Seo({
        la page, pour ne pas laisser le titre d'une page métier « fuiter »
        sur la suivante avant que son propre Seo ne s'exécute. */
     return () => {
-      document.title = `${company.name} — Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83)`
+      document.title = `${company.name} — Plomberie, chauffage, climatisation à Lorgues (83)`
       setMeta('meta[name="robots"]', 'index, follow')
       if (scriptEl) scriptEl.remove()
     }

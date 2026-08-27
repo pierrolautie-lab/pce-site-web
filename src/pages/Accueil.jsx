@@ -71,9 +71,12 @@ const CARD_ICON_CLASS = {
 export default function Accueil() {
   return (
     <>
+      {/* Titre à 56 caractères : la version longue (80) était tronquée dans
+          les résultats de recherche. Électricité et piscine restent portés
+          par la description et les pages métier. */}
       <Seo
         standalone
-        title="PCE — Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83)"
+        title="PCE — Plomberie, chauffage, climatisation à Lorgues (83)"
         description="Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83). PCE, artisan dans le Var, plus de vingt ans de métier. Devis gratuit."
         path="/"
       />
@@ -194,6 +197,10 @@ function ServiceCards() {
   return (
     <section className="bg-navy-50 py-10 sm:py-12 lg:py-14">
       <div className="container-pce">
+        {/* Titre de section pour lecteurs d'écran uniquement : la maquette
+            enchaîne héros → cartes sans titre visible, mais les cartes
+            portent des h3 — sans ce h2, la page saute de h1 à h3. */}
+        <h2 className="sr-only">Nos métiers</h2>
         {/* 7 métiers + Dépannage = 8 : multiple de 2 et de 4, grille classique
             suffit — plus besoin du flex + largeurs calculées qu'imposait
             l'ancien compte de 7 (voir git history). */}

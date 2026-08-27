@@ -95,6 +95,10 @@ export default function Conseils() {
       {/* ================================================== GRILLE D'ARTICLES */}
       <section className="section bg-navy-50">
         <div className="container-pce">
+          {/* h2 pour lecteurs d'écran : les cartes d'article portent des h3
+              et la grille n'a pas de titre visible — sans lui, la page
+              saute de h1 à h3. */}
+          <h2 className="sr-only">Tous nos articles</h2>
           {visible.length === 0 ? (
             <p className="text-center text-body-sm text-navy-500">Aucun article dans cette catégorie pour le moment.</p>
           ) : (

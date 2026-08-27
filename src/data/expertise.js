@@ -234,6 +234,8 @@ export const expertisePages = {
     tradeKey: 'chauffagiste',
     servicePath: '/chauffage',
     h1: 'Installation de chauffe-eau thermodynamique dans le Var',
+    /* <title> court (45 avec « — PCE ») : le h1 y dépassait 60. */
+    metaTitle: 'Chauffe-eau thermodynamique dans le Var',
     metaDescription:
       'Chauffe-eau thermodynamique dans le Var : COP élevé, forte baisse de la facture d\'eau chaude. Installation et entretien par PCE, devis gratuit.',
     photo: { tags: 'water-heater', lock: 705 },
@@ -339,6 +341,8 @@ export const expertisePages = {
     tradeKey: 'electricien',
     servicePath: '/electricite',
     h1: 'Installation de borne de recharge pour véhicule électrique dans le Var',
+    /* <title> court (55 avec « — PCE ») : le h1 y dépassait 60. */
+    metaTitle: 'Borne de recharge véhicule électrique dans le Var',
     metaDescription:
       'Installation de borne de recharge dans le Var : puissance adaptée, ligne dédiée et différentiel conforme. Par PCE, électricien à Lorgues. Devis gratuit.',
     photo: { tags: 'ev-charger', lock: 707 },

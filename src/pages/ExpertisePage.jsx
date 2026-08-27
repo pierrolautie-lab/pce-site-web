@@ -21,8 +21,11 @@ export default function ExpertisePage({ slug }) {
 
   return (
     <>
+      {/* `metaTitle` : version courte pour la balise <title> quand le h1
+          dépasse 60 caractères une fois « — PCE » ajouté. Le h1 visible et
+          les données structurées gardent la version longue. */}
       <Seo
-        title={data.h1}
+        title={data.metaTitle || data.h1}
         description={data.metaDescription}
         path={path}
         jsonLd={[
