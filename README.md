@@ -372,6 +372,104 @@ métier ou une nouvelle commune apparaît dans le contenu :
 
 ---
 
+## Performance mobile — passe du 08/09/2026
+
+Point de départ : desktop 98, mobile 84 (PageSpeed, production). Deux
+diagnostics à 50 : *Improve image delivery* et *Use efficient cache
+lifetimes*. CLS 0 et TBT 80 ms, à ne pas dégrader.
+
+Quatre corrections, aucune ne touchant au rendu des héros (voile, fondus
+et contrastes validés client — captures locale et production superposées
+avant/après pour le vérifier).
+
+### 1. `sizes` des cartes métiers de l'accueil
+
+Se terminait par `100vw` alors que la grille est en `grid-cols-2` **dès
+le plus petit écran**. Les huit cartes tiraient la variante 800w (390 Ko)
+là où la 400w suffit (130 Ko).
+
+> Le piège est général : `sizes` doit décrire la grille réelle au palier
+> le plus étroit, pas « une colonne par défaut ». Vérifier le
+> `grid-cols-*` du conteneur avant d'écrire la dernière valeur.
+
+### 2. Préchargement du héros — pourquoi il porte un `media`
+
+`HeroBackgroundPhoto` pose son `<link rel="preload">` depuis un effet
+React. Le prérendu (Puppeteer) exécute cet effet : **la valeur calculée
+se retrouve figée dans le HTML servi à tous les visiteurs**, pas
+seulement à celui dont le navigateur l'a calculée. L'ancien calcul
+(`window.innerWidth × devicePixelRatio`, sans `media`) gravait donc la
+variante du viewport de Puppeteer — 800w — et tout appareil dont le
+`srcset` résolvait autrement téléchargeait l'image **deux fois**.
+
+Le préchargement est désormais déterministe : plus grande variante, sous
+`media="(min-width: 801px)"`. Au-delà de 800 px CSS, `largeur × DPR`
+dépasse toujours 800, donc `sizes="100vw"` choisit toujours la plus
+grande — le préchargement est exact pour tous ces écrans. Sous 801 px,
+volontairement rien : aucune variante unique n'est juste pour tout le
+parc mobile (375×2 → 800w, 412×3 → 1200w), et un préchargement erroné
+coûte une image entière en double.
+
+> ⚠️ Règle générale : **tout effet React qui écrit dans le `<head>` est
+> capturé par le prérendu**. Il ne doit dépendre d'aucune mesure du
+> navigateur (`innerWidth`, `devicePixelRatio`, `matchMedia`), sous peine
+> de figer la machine de build dans le HTML de production. Si le résultat
+> doit varier selon l'appareil, cela passe par un attribut que le
+> navigateur évalue lui-même — `media`, `srcset` — jamais par un calcul
+> au montage.
+
+### 3. GA4 non chargé tant que l'identifiant est le placeholder
+
+`gtag.js` se téléchargeait en entier (150 Ko, ~350 ms de processeur
+mobile) avec l'identifiant factice, sans rien collecter. Le garde
+disparaît de lui-même dès que le vrai identifiant est renseigné — c'est
+toujours la seule ligne à modifier.
+
+### 4. Polices auto-hébergées (`@fontsource`)
+
+La feuille Google Fonts était la ressource bloquante la plus coûteuse du
+premier rendu : une connexion cross-origin complète avant même de
+pouvoir la lire (786 ms mesurés en 4G lente, contre 150 ms pour le CSS
+du site). Mêmes fichiers WOFF2, mêmes graisses, même `font-display:
+swap`, servis depuis `pcevar.fr` et empreintés par Vite. Le CSS passe de
+61 à 80 Ko bruts (12 Ko transférés).
+
+> Les imports sont dans `src/main.jsx`, une ligne par graisse réellement
+> utilisée. En ajouter une n'a de sens que si un texte l'appelle : une
+> graisse importée mais jamais utilisée alourdit le CSS sans jamais
+> télécharger son WOFF2.
+
+### Durées de cache — ce que l'incident interdisait vraiment
+
+Les durées courtes du `.htaccess` venaient d'un incident où une réponse
+transitoire était restée en cache jusqu'à un mois. Cet incident portait
+sur du **HTML** servi par un cache de plateforme : ce qui protège les
+déploiements, c'est le `no-cache` strict sur le HTML et le
+`CacheDisable` de LiteSpeed — inchangés — pas la durée de vie des
+assets. Ceux-ci passent donc à un an, avec `immutable` pour les seules
+extensions réellement empreintées (`js`, `css`, `woff2`).
+
+Les images n'ont pas d'empreinte dans leur nom : leur durée d'un an
+repose sur la pratique du projet, qui est de **ne jamais réutiliser un
+nom de fichier pour un autre visuel**. Si cette pratique change,
+redescendre la durée en même temps.
+
+### Ce qui reste, et pourquoi
+
+- **Le CSS du site reste bloquant** (~150 ms). Inévitable sans extraction
+  de CSS critique, qui demanderait de générer un critique par gabarit
+  pour 323 pages — pour un gain que la connexion déjà ouverte rend
+  modeste.
+- **Vignettes des réalisations** : affichées à 157 px, elles tirent la
+  400w, la plus petite variante générée. Un palier 200w dans
+  `optimize-images.js` les couvrirait, mais elles sont en `lazy` et bien
+  sous la ligne de flottaison — aucun effet sur le LCP.
+- **Le LCP mobile est un bloc de texte**, pas une image : il est borné
+  par le TTFB du mutualisé et par le CSS bloquant, pas par le poids des
+  images. C'est le plancher de cette architecture.
+
+---
+
 ## Visuels de réalisations à refaire
 
 Ces six photos sont conservées en attendant un remplacement (décision
