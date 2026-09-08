@@ -49,18 +49,33 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
   const [bg, setBg] = useState(() => clientPhotoMeta(slot) || fallback)
   const onError = () => fallback?.src && bg?.src !== fallback.src && setBg(fallback)
 
-  /* `href` calculé une seule fois, au montage — pas de ré-écoute sur
-     `resize` : un navigateur qui ajuste ses métriques de viewport juste
-     après le premier rendu (fréquent en émulation, possible aussi lors
-     d'une rotation d'écran) déclencherait sinon un second téléchargement
-     quand `href` change de valeur après coup.
-     `imagesrcset`/`imagesizes` volontairement absents du <link> : posés en
-     plus de `href`, certains navigateurs commencent à précharger une
-     variante d'après `imagesrcset` dès que l'attribut est posé, avant même
-     que `imagesizes` (posé juste après) ne soit en place — la résolution
-     se fait alors sans largeur connue, sur la plus petite variante, puis
-     se corrige : deux téléchargements au lieu d'un. `href` seul, déjà
-     calculé à la bonne largeur, suffit et reste déterministe. */
+  /* Ce <link> est capturé par le prérendu (scripts/prerender.js) : la valeur
+     posée ici se retrouve figée dans le HTML servi à TOUS les visiteurs, pas
+     seulement à celui dont le navigateur exécute cet effet. L'ancien calcul
+     (`window.innerWidth × devicePixelRatio`, sans `media`) figeait donc la
+     variante du viewport de Puppeteer — 800w — et tout appareil dont le
+     srcset résout autrement payait un double téléchargement : la 800w
+     préchargée PLUS la variante réellement affichée (mesuré : 1200w sur
+     desktop et sur les téléphones à DPR ≥ 2,2).
+
+     Nouveau contrat, déterministe (aucune lecture de `window`, donc snapshot
+     et exécution client produisent le même HTML) :
+       — `media="(min-width: 801px)"`, plus grande variante. Au-delà de
+         800 px CSS, `needed = largeur × DPR > 800` quelle que soit la
+         densité : la résolution du srcset (sizes="100vw") choisit toujours
+         la plus grande variante — le préchargement est exact pour tous ces
+         écrans.
+       — en dessous de 801 px : pas de préchargement. Aucune variante unique
+         n'est juste pour tout le parc mobile (375×2 → 800w, 412×3 → 1200w…)
+         et un préchargement erroné coûte une image entière en double. Le
+         manque à gagner est faible : l'<img> eager/fetchpriority=high est
+         dans le HTML prérendu, le scanner de préchargement la découvre en
+         parsant — et sur mobile, l'élément LCP est le texte du héros, pas
+         la photo (Lighthouse, 09/2026).
+     `imagesrcset`/`imagesizes` restent volontairement absents : posés en
+     plus de `href`, certains navigateurs lancent un préchargement d'après
+     `imagesrcset` avant que `imagesizes` ne soit en place — deux
+     téléchargements au lieu d'un. */
   useEffect(() => {
     if (!bg?.srcSet) return
 
@@ -72,9 +87,7 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
       })
       .sort((a, b) => a.width - b.width)
 
-    const needed = window.innerWidth * (window.devicePixelRatio || 1)
-    const match = entries.find((e) => e.width >= needed)
-    const href = (match || entries[entries.length - 1]).url
+    const href = entries[entries.length - 1].url
 
     let link = document.head.querySelector('link[data-hero-preload]')
     if (!link) {
@@ -84,6 +97,7 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
       link.setAttribute('data-hero-preload', '')
       document.head.appendChild(link)
     }
+    link.media = '(min-width: 801px)'
     link.href = href
 
     return () => link?.remove()

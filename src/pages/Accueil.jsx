@@ -213,13 +213,18 @@ function ServiceCards() {
             >
               <div className="relative">
                 {c.photo ? (
+                  /* `sizes` : la grille est en 2 colonnes dès le plus petit
+                     écran (grid-cols-2 ci-dessus), jamais en pleine largeur.
+                     L'ancien `100vw` sous 640 px faisait télécharger la
+                     variante 800w (390 Ko pour les 8 cartes) là où la 400w
+                     suffit (130 Ko) — mesuré à 375 px, DPR 2. */
                   <Photo
                     lock={c.photo.lock}
                     alt={c.title}
                     rounded=""
                     className="aspect-[4/3] w-full"
                     imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"
-                    sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 25vw, 50vw"
                   />
                 ) : (
                   /* Repli défensif : les 8 cartes ont toutes une photo au
