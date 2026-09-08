@@ -2,6 +2,31 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
+
+/* Polices auto-hébergées (@fontsource), en remplacement de la feuille
+   Google Fonts qui était référencée dans index.html. Motif : cette feuille
+   était la ressource bloquante la plus coûteuse du premier rendu — une
+   connexion cross-origin complète (DNS + TCP + TLS) avant même de pouvoir
+   la lire, mesurée à ~600-780 ms sur le profil 4G lente de Lighthouse.
+   Ici, les mêmes fichiers WOFF2 (mêmes familles, mêmes graisses,
+   `font-display: swap` identique — l'italique de la signature reste
+   synthétisé par le navigateur, comme avant) sont servis par pcevar.fr :
+   les @font-face rejoignent le bundle CSS empreinté, déjà bloquant, et les
+   binaires se chargent sans bloquer, sur la connexion déjà ouverte.
+   Chaque graisse importée ci-dessous correspond à un usage réel
+   (font-normal/medium/semibold/bold/extrabold/black pour Inter ; le
+   font-display de tailwind.config.js n'utilise Archivo qu'en 600-900). */
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/inter/800.css'
+import '@fontsource/inter/900.css'
+import '@fontsource/archivo/600.css'
+import '@fontsource/archivo/700.css'
+import '@fontsource/archivo/800.css'
+import '@fontsource/archivo/900.css'
+
 import './index.css'
 
 /* L'ancien site (créé avec un website builder, avant celui-ci) a laissé un
