@@ -39,6 +39,12 @@ export function trackEvent(name, params = {}) {
  */
 export default function Analytics() {
   useEffect(() => {
+    /* Tant que l'ID est le placeholder, ne rien charger du tout : le script
+       gtag.js se télécharge et s'exécute intégralement (150 Ko, ~350 ms de
+       CPU mobile mesurés) même avec un ID inexistant — un coût payé par
+       chaque visiteur sans qu'aucune donnée ne soit collectée. Ce garde
+       disparaît de lui-même dès que le vrai ID remplace le placeholder. */
+    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return
     if (document.getElementById('ga4-script')) return
 
     const loader = document.createElement('script')
