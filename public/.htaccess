@@ -48,19 +48,29 @@
 </IfModule>
 
 
-# Durée volontairement courte (pas "1 month" comme un réglage plus classique
-# l'aurait suggéré) : un incident a montré qu'une réponse transitoire un peu
-# malheureuse (juste après un déploiement) pouvait rester mise en cache
-# beaucoup trop longtemps par endroits — jusqu'à un mois avec le réglage
-# précédent. Une durée courte fait qu'un aléa de ce genre se corrige de
-# lui-même rapidement plutôt que de perdurer.
+# Un an de cache pour tout ce qui est versionné par son nom de fichier.
+# L'incident qui avait motivé des durées courtes (une réponse transitoire
+# mise en cache jusqu'à un mois) concernait des réponses HTML servies par
+# un cache de plateforme — le HTML, lui, reste en no-cache strict (bloc
+# mod_headers ci-dessous) et LSCache reste désactivé : c'est cette paire-là
+# qui protège les déploiements, pas la durée de vie des assets.
+#   - /assets/*.js et *.css : empreinte de contenu dans le nom (Vite) + ?v=
+#     de cache-bust.js — un nouveau build produit de nouvelles URL, l'ancien
+#     cache ne peut jamais être servi à tort. `immutable` en prime.
+#   - polices woff2 : mêmes assets empreintés par Vite.
+#   - images : pas d'empreinte dans le nom, MAIS la pratique du projet est
+#     de ne jamais réutiliser un nom de fichier pour un autre visuel (chaque
+#     remplacement de photo introduit un nouveau nom + variantes régénérées,
+#     voir l'historique dans src/data/photos.js). Si cette pratique changeait
+#     un jour, redescendre cette durée en même temps.
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType image/jpeg "access plus 1 day"
-  ExpiresByType image/png "access plus 1 day"
-  ExpiresByType image/webp "access plus 1 week"
-  ExpiresByType text/css "access plus 1 week"
-  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 # Le cache pleine-page LiteSpeed (LSCache, activé par défaut sur Hostinger)
@@ -81,5 +91,11 @@
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires "0"
+  </FilesMatch>
+  # `immutable` réservé aux fichiers à empreinte de contenu (bundle Vite,
+  # polices) : le navigateur ne revalide jamais, même sur un rechargement.
+  # Pas sur les images, dont le nom n'est pas garanti par un hash.
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>
