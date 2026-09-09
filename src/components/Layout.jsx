@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import FloatingCall from './FloatingCall.jsx'
+import MobileCallBar, { MOBILE_CALL_BAR_HEIGHT } from './MobileCallBar.jsx'
 import Analytics from './Analytics.jsx'
 
 /** Remonte en haut de page à chaque navigation. */
@@ -14,7 +15,29 @@ function ScrollToTop() {
   return null
 }
 
+/* Les huit pages où un visiteur en urgence décide en quelques secondes —
+   dépannage et les sept pages métier (liste canonique des routes dans
+   App.jsx). Sur ces pages seulement, le bouton rond flottant global
+   (FloatingCall) cède la place à MobileCallBar, plus visible — les deux
+   superposés auraient fait doublon dans le même coin de l'écran. Les
+   sous-pages (ex. /chauffage/chaudiere-condensation) et les 280 pages
+   locales restent sur le bouton rond : ce ne sont pas les pages
+   d'atterrissage d'une recherche d'urgence. */
+const MOBILE_CALL_BAR_PATHS = [
+  '/plomberie',
+  '/chauffage',
+  '/climatisation',
+  '/electricite',
+  '/piscine',
+  '/traitement-de-l-eau',
+  '/vmc',
+  '/depannage',
+]
+
 export default function Layout() {
+  const { pathname } = useLocation()
+  const showMobileCallBar = MOBILE_CALL_BAR_PATHS.includes(pathname)
+
   return (
     <div className="flex min-h-screen flex-col bg-navy-50">
       <ScrollToTop />
@@ -41,7 +64,19 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <FloatingCall />
+      {showMobileCallBar ? (
+        <>
+          {/* Espace réservé, exactement de la hauteur de la barre fixe,
+              pour qu'elle ne recouvre jamais le bas du pied de page — posé
+              dès le premier rendu (jamais ajouté après coup une fois une
+              hauteur mesurée au runtime), donc sans risque de décalage de
+              mise en page. */}
+          <div aria-hidden="true" style={{ height: MOBILE_CALL_BAR_HEIGHT }} className="sm:hidden" />
+          <MobileCallBar />
+        </>
+      ) : (
+        <FloatingCall />
+      )}
     </div>
   )
 }
