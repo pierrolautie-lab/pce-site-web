@@ -6,7 +6,7 @@ import { ReassuranceBar } from '../components/PageHero.jsx'
 import { HeroBackgroundPhoto, HeroTextVeil } from '../components/HeroPhoto.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
-import { company, projects, serviceList } from '../data/site.js'
+import { company, projects, serviceList, values } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
 /* Photo de fond du héros (slot 100, fourgon PCE de nuit devant une villa) et
@@ -84,6 +84,7 @@ export default function Accueil() {
       <HomeHero />
       <ReassuranceBar />
       <ServiceCards />
+      <SingleContractor />
       <ProofRow />
     </>
   )
@@ -258,6 +259,49 @@ function ServiceCards() {
               </div>
             </Link>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ============================================= UN SEUL INTERLOCUTEUR ==== */
+/* Argument différenciant pour le visiteur en projet de rénovation :
+   plomberie, chauffage, climatisation et électricité par la même
+   entreprise, sans sous-traitance. Le message existe déjà, validé, dans
+   `values[0]` (src/data/site.js) — affiché sur la page À propos, section
+   « Nos engagements ». Repris ici à l'identique (titre et texte), jamais
+   réécrit : seule la mise en page change. */
+function SingleContractor() {
+  const [interlocutor] = values
+
+  return (
+    <section className="relative overflow-hidden bg-navy-800 py-14 text-white sm:py-16">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 select-none text-[220px] font-black uppercase leading-none tracking-tighter text-white/[.04]"
+      >
+        {company.name}
+      </span>
+
+      <div className="container-pce relative">
+        <div className="grid items-center gap-8 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-8">
+            <span className="grid h-14 w-14 place-items-center rounded-full border border-white/25 text-white">
+              <Icon name={interlocutor.icon} className="h-6 w-6" strokeWidth={1.5} />
+            </span>
+            <h2 className="mt-5 text-title-lg font-black uppercase">
+              {interlocutor.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-body text-white/70">{interlocutor.text}</p>
+          </div>
+
+          <div className="min-w-0 lg:col-span-4 lg:justify-self-end">
+            <Link to="/a-propos" className="btn-outline-gold w-full justify-center lg:w-auto">
+              Notre histoire
+              <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.2} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
