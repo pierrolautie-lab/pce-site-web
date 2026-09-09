@@ -27,6 +27,19 @@ import '@fontsource/archivo/700.css'
 import '@fontsource/archivo/800.css'
 import '@fontsource/archivo/900.css'
 
+/* Redéclare Archivo 700/900 en `font-display: optional` (voir le
+   commentaire du fichier) : `swap`, ci-dessus, causait un CLS mobile de
+   0,024 en 4G lente — mesuré par PageSpeed après le passage aux polices
+   auto-hébergées, et toujours mesuré à l'identique après le préchargement
+   de ces deux graisses (scripts/preload-fonts.js). Seules les deux graisses
+   réellement utilisées avec `font-display` dans le code (700 et 900 — voir
+   ce fichier pour le détail) sont concernées ; 600 et 800, importées
+   au-dessus mais jamais utilisées, ne le sont pas. DOIT rester après les
+   imports @fontsource/archivo ci-dessus : à combinaison famille/graisse/
+   style/plage unicode identique, le navigateur retient la déclaration la
+   plus récente dans l'ordre du document. */
+import './fonts-archivo-optional.css'
+
 import './index.css'
 
 /* L'ancien site (créé avec un website builder, avant celui-ci) a laissé un

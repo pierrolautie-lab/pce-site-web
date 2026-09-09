@@ -1,0 +1,100 @@
+/* Redéclare les six @font-face Archivo (700 et 900, un jeu de trois plages
+   unicode chacun) déjà importées via @fontsource/archivo dans main.jsx,
+   à l'identique SAUF `font-display: optional` au lieu de `swap`.
+
+   POURQUOI : PageSpeed a mesuré un CLS mobile de 0,024 après le passage aux
+   polices auto-hébergées (0 avant), attribué nommément à archivo-latin-*.woff2
+   — le bloc de boutons du héros se décale au moment où Archivo remplace la
+   police de repli. Précharger les deux graisses (scripts/preload-fonts.js,
+   09/09/2026) fait arriver le fichier plus vite mais ne change rien au fond :
+   `swap` PROMET un remplacement dès que la police arrive, aussi tardif
+   soit-il — sous 4G lente émulée, elle arrive après le premier rendu, donc
+   le remplacement (et le décalage qu'il cause) a lieu quand même. Mesuré
+   après ce préchargement : CLS inchangé à 0,024.
+
+   `optional` change la promesse : le navigateur utilise Archivo UNIQUEMENT
+   si elle est déjà en cache ou arrive dans les toutes premières dizaines de
+   millisecondes du rendu — passé ce délai, il garde la police de repli pour
+   TOUTE la vue, sans jamais basculer en cours d'affichage. Aucun décalage
+   n'est donc possible après le premier rendu, par construction. La police
+   reste mise en cache pour la visite suivante (grâce au préchargement et à
+   `immutable`, voir public/.htaccess), donc l'essentiel des visiteurs voit
+   Archivo dès la deuxième page vue.
+
+   Seul Archivo est concerné : Inter, mesurée dans le même rapport,
+   contribuait pour 0,000 au CLS — la retoucher n'aurait aucun effet et
+   ajouterait un risque de FOUC (police de secours visible en permanence
+   sur le corps de texte) sans contrepartie.
+
+   Ordre d'import déterminant : ce fichier doit être importé APRÈS
+   @fontsource/archivo/700.css et 900.css (voir main.jsx) — pour une même
+   combinaison famille/graisse/style/plage unicode, le navigateur retient la
+   déclaration la plus récente dans l'ordre du document, il ne fusionne pas
+   les propriétés entre les deux @font-face.
+
+   Chemins relatifs vers node_modules (et non un import de paquet) : la
+   seule façon fiable de réutiliser exactement les mêmes fichiers WOFF2/WOFF
+   déjà empreintés par Vite, sans dépendre de la résolution de specifiers nus
+   dans du CSS. */
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-vietnamese-700-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-vietnamese-700-normal.woff') format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-ext-700-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-ext-700-normal.woff') format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff') format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 900;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-vietnamese-900-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-vietnamese-900-normal.woff') format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 900;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-ext-900-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-ext-900-normal.woff') format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 900;
+  src:
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-900-normal.woff2') format('woff2'),
+    url('../node_modules/@fontsource/archivo/files/archivo-latin-900-normal.woff') format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
