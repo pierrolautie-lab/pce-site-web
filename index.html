@@ -14,6 +14,13 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="PCE — Lorgues (83)" />
 
+    <!-- Validation de la propriété dans Google Search Console. Google lit
+         cette balise sur la page en production : elle doit rester dans le
+         <head> tant que la propriété est validée. Seo.jsx ne la touche pas
+         (il ne modifie que des balises qu'il cible nommément), et le
+         prérendu la recopie dans les 323 pages. -->
+    <meta name="google-site-verification" content="UlfGLUAFv1ic7VHyR6vRCYsQvq0afIEpufGsExrpWp4" />
+
     <!-- Partage sur les réseaux et messageries -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PCE" />
