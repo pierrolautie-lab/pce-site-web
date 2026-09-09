@@ -32,6 +32,25 @@ export default function Depannage() {
         fullBleed
       />
 
+      {/* ---------------------------- Bandeau compact de réassurance ----
+          Les trois engagements les plus décisifs pour un visiteur pressé,
+          remontés juste sous le héros (donc sous son bouton d'appel) pour
+          être visibles sans dérouler toute la page — le même contenu que
+          le grand bandeau marine plus bas (depannage.quickFacts, site.js),
+          jamais réécrit. */}
+      <section className="border-b border-navy-100 bg-white py-5">
+        <div className="container-pce">
+          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {depannage.quickFacts.map((f) => (
+              <li key={f} className="flex items-center gap-2 text-[13px] font-semibold text-navy-700">
+                <Icon name="checkCircle" className="h-4 w-4 shrink-0 text-azure-500" strokeWidth={1.8} />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* -------------------------------- Les 4 engagements de dépannage */}
       <section className="section bg-white">
         <div className="container-pce">
@@ -112,14 +131,12 @@ export default function Depannage() {
               </p>
 
               <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
-                {['Créneau donné dès l’appel', 'Prix annoncé avant travaux', 'Lorgues · Dracénie · Golfe'].map(
-                  (t) => (
-                    <li key={t} className="flex items-center gap-2.5 text-[12px] text-white/70">
-                      <Icon name="checkCircle" className="h-4 w-4 text-white/50" strokeWidth={1.8} />
-                      {t}
-                    </li>
-                  )
-                )}
+                {depannage.quickFacts.map((t) => (
+                  <li key={t} className="flex items-center gap-2.5 text-[12px] text-white/70">
+                    <Icon name="checkCircle" className="h-4 w-4 text-white/50" strokeWidth={1.8} />
+                    {t}
+                  </li>
+                ))}
               </ul>
             </div>
 

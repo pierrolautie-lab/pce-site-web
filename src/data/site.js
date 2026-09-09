@@ -1305,6 +1305,11 @@ export const depannage = {
   intro:
     "Fuite d’eau, panne de chauffage en plein hiver, coupure électrique, climatisation à l’arrêt en pleine canicule, filtration de piscine hors service : nous savons que cela n’attend pas. Un appel suffit pour obtenir un créneau, un diagnostic clair et un prix annoncé avant toute intervention.",
   hero: { tags: 'plumbing', lock: 844 },
+  /* Les trois engagements les plus décisifs pour un visiteur en urgence —
+     source unique, consommée à la fois par le bandeau compact sous le
+     héros et par le grand bandeau marine en bas de page, pour qu'aucune
+     des deux copies ne puisse un jour diverger de l'autre. */
+  quickFacts: ['Créneau donné dès l’appel', 'Prix annoncé avant travaux', 'Lorgues · Dracénie · Golfe'],
   steps: [
     { icon: 'clock', title: 'Intervention rapide 7j/7', label: 'Créneau donné dès votre appel' },
     { icon: 'search', title: 'Diagnostic précis', label: "Origine de la panne identifiée sur place" },
