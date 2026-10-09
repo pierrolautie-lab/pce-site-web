@@ -228,7 +228,7 @@ export const services = {
     },
 
     faq: [
-      { q: 'Intervenez-vous en urgence pour une fuite ?', a: "Oui, sept jours sur sept. Un dégât des eaux ne peut pas attendre le lundi : appelez-nous, nous vous donnons un créneau dès l’appel et nous vous indiquons par téléphone comment couper l’arrivée d’eau en attendant." },
+      { q: 'Intervenez-vous en urgence pour une fuite ?', a: "Oui, sept jours sur sept. Un dégât des eaux ne peut pas attendre le lundi : appelez-nous, nous vous indiquons par téléphone comment couper l’arrivée d’eau et nous intervenons dans les meilleurs délais." },
       { q: 'Comment se déroule une recherche de fuite ?', a: "Nous travaillons sans casser : gaz traceur, caméra thermique, corrélation acoustique et inspection par caméra selon la configuration. Le point de fuite est localisé au centimètre, puis nous vous proposons la réparation dans la foulée." },
       { q: 'Quel délai pour une salle de bains complète ?', a: "Comptez de dix à quinze jours ouvrés selon l’ampleur de la dépose et le carrelage retenu. Nous coordonnons nous-mêmes le carreleur et l’électricien, ce qui évite les temps morts entre corps de métier." },
       { q: 'Faut-il traiter son eau dans le Var ?', a: "Dans notre secteur, très souvent oui. Mais nous mesurons toujours la qualité de l’eau avant de vous le dire : sur certains réseaux communaux, un simple filtre en tête d’installation suffit et coûte bien moins cher." },
@@ -1299,19 +1299,28 @@ export const serviceList = [
 ]
 
 /* ============================================================== DÉPANNAGE =*/
+/* ⚠️ 09/10/2026 — aucune promesse de créneau ferme nulle part sur le site.
+   Le client a confirmé qu'il n'en donne pas, et les CGV l'écrivent noir sur
+   blanc : « s'efforce d'intervenir dans les meilleurs délais, sans garantie
+   de créneau fixe » (ConditionsGenerales.jsx). Huit formulations du type
+   « créneau donné dès l'appel » ont été retirées ce jour-là, ici, dans la FAQ
+   Plomberie, dans le bandeau marine de Depannage.jsx et dans l'intro de
+   Port-Grimaud (local.js). Ce qui reste vrai et vendeur, et qui suffit :
+   PCE répond, guide sur les gestes conservatoires, intervient dans les
+   meilleurs délais sept jours sur sept, et annonce le prix avant travaux. */
 export const depannage = {
   title: 'Dépannage / Urgence',
   tagline: 'Une intervention rapide quand vous en avez besoin.',
   intro:
-    "Fuite d’eau, panne de chauffage en plein hiver, coupure électrique, climatisation à l’arrêt en pleine canicule, filtration de piscine hors service : nous savons que cela n’attend pas. Un appel suffit pour obtenir un créneau, un diagnostic clair et un prix annoncé avant toute intervention.",
+    "Fuite d’eau, panne de chauffage en plein hiver, coupure électrique, climatisation à l’arrêt en pleine canicule, filtration de piscine hors service : nous savons que cela n’attend pas. Un appel suffit pour obtenir des conseils immédiats, un diagnostic clair et un prix annoncé avant toute intervention.",
   hero: { tags: 'plumbing', lock: 844 },
   /* Les trois engagements les plus décisifs pour un visiteur en urgence —
      source unique, consommée à la fois par le bandeau compact sous le
      héros et par le grand bandeau marine en bas de page, pour qu'aucune
      des deux copies ne puisse un jour diverger de l'autre. */
-  quickFacts: ['Créneau donné dès l’appel', 'Prix annoncé avant travaux', 'Lorgues · Dracénie · Golfe'],
+  quickFacts: ['Conseils d’urgence dès l’appel', 'Prix annoncé avant travaux', 'Lorgues · Dracénie · Golfe'],
   steps: [
-    { icon: 'clock', title: 'Intervention rapide 7j/7', label: 'Créneau donné dès votre appel' },
+    { icon: 'clock', title: 'Intervention rapide 7j/7', label: 'Dans les meilleurs délais, week-end compris' },
     { icon: 'search', title: 'Diagnostic précis', label: "Origine de la panne identifiée sur place" },
     { icon: 'settings', title: 'Réparation durable', label: 'Pièces de qualité, pas de rustine' },
     { icon: 'clipboard', title: 'Devis avant intervention', label: 'Aucun travail sans votre accord' },
@@ -1329,11 +1338,11 @@ export const depannage = {
     photo: { tags: 'tools', lock: 845 },
     paragraphs: [
       "Depuis 2005, le dépannage représente une part constante de notre activité. C’est aussi la plus exigeante : quand une canalisation lâche un dimanche d’août ou qu’une pompe à chaleur s’arrête en janvier, il n’y a ni deuxième chance ni place pour l’approximation. Nous avons donc structuré notre organisation autour d’un principe unique : donner tout de suite une information fiable.",
-      "Concrètement, dès votre appel, nous cherchons à comprendre le symptôme, nous vous guidons sur les gestes conservatoires — couper l’eau, isoler un circuit, arrêter la filtration — et nous vous annonçons un créneau que nous tenons. Nos véhicules embarquent le stock courant des cinq métiers, ce qui permet de résoudre la majorité des interventions en une seule visite.",
+      "Concrètement, dès votre appel, nous cherchons à comprendre le symptôme, nous vous guidons sur les gestes conservatoires — couper l’eau, isoler un circuit, arrêter la filtration — et nous intervenons dans les meilleurs délais, sept jours sur sept. Nos véhicules embarquent le stock courant des cinq métiers, ce qui permet de résoudre la majorité des interventions en une seule visite.",
       "Enfin, aucun travail n’est engagé sans votre accord sur le prix. Le diagnostic est posé, la solution est expliquée, le montant est annoncé — et si la réparation peut attendre pour être faite correctement plutôt que dans l’urgence, nous vous le disons franchement.",
     ],
     points: [
-      'Un créneau annoncé dès le premier appel',
+      'Une réponse et des conseils dès le premier appel',
       'Gestes conservatoires expliqués au téléphone',
       'Véhicules équipés pour les cinq métiers',
       'Prix annoncé avant la moindre intervention',

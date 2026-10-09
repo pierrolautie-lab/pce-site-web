@@ -11,7 +11,7 @@ export default function Depannage() {
     <>
       <Seo
         title={depannage.title}
-        description="Dépannage 7j/7 à Lorgues (83) : plomberie, chauffage, climatisation, électricité et piscine. Créneau donné dès l'appel, prix annoncé avant intervention."
+        description="Dépannage 7j/7 à Lorgues (83) : plomberie, chauffage, climatisation, électricité et piscine. Conseils dès l'appel, prix annoncé avant intervention."
         path="/depannage"
       />
       {/* -------------------------------------------- Hero sur fond marine */}
@@ -126,8 +126,8 @@ export default function Depannage() {
               </h2>
               <p className="mt-5 max-w-lg text-[15px] leading-[1.8] text-white/65">
                 Un seul numéro pour la plomberie, le chauffage, la climatisation, l'électricité et la
-                piscine. Nous vous répondons, nous vous guidons sur les premiers gestes et nous vous
-                annonçons un créneau — sept jours sur sept, dans tout le Var.
+                piscine. Nous vous répondons, nous vous guidons sur les premiers gestes et nous
+                intervenons dans les meilleurs délais — sept jours sur sept, dans tout le Var.
               </p>
 
               <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
