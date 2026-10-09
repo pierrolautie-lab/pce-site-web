@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, LocalCitiesLinks } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
@@ -189,6 +189,8 @@ export default function VMC() {
       <HowItWorks data={service.howItWorks} />
 
       <ThreeBlocks entretien={service.blocks.entretien} solutions={service.blocks.solutions} brands={service.brands} />
+
+      <LocalCitiesLinks tradeKeys={['vmc']} />
 
       <CtaBand title="Besoin d'un conseil ou d'un devis ? Appelez-nous !" />
     </>

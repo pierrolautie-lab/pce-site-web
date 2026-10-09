@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Icon from '../components/Icon.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, LocalCitiesLinks } from '../components/Blocks.jsx'
 import { ServiceTwoColumn, ServiceFeatureCards, ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -149,6 +149,8 @@ export default function Electricite() {
       <ServiceBrandsRow title="Les marques que nous installons" brands={BRANDS} />
 
       <ServiceFeatureCards items={FEATURE_CARDS} />
+
+      <LocalCitiesLinks tradeKeys={['electricien']} />
 
       <CtaBand />
     </>

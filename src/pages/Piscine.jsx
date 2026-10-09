@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Photo from '../components/Photo.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, LocalCitiesLinks } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import PageHero from '../components/PageHero.jsx'
@@ -69,6 +69,7 @@ export default function Piscine() {
       {/* Bande d'appel partagée. Cette page en portait une copie locale, en
           azure-500 et avec 32 px de padding propre : elle décalait l'écart
           avant la bande à 112 px là où les quatre autres pages sont à 80. */}
+      <LocalCitiesLinks tradeKeys={['pisciniste']} />
       <CtaBand />
     </>
   )

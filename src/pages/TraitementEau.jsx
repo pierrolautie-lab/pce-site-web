@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Photo from '../components/Photo.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, LocalCitiesLinks } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -176,6 +176,8 @@ export default function TraitementEau() {
       <SolutionsGrid items={service.solutions} />
 
       <WhyTreatBenefits whyTreat={service.whyTreat} benefits={service.treatedBenefits} />
+
+      <LocalCitiesLinks tradeKeys={['traitement-eau']} />
 
       <CtaBand />
     </>

@@ -5,7 +5,7 @@ import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
-import { CtaBand } from '../components/Blocks.jsx'
+import { CtaBand, LocalCitiesLinks } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { photoMetaForPath } from '../data/photos.js'
@@ -106,6 +106,7 @@ export default function Climatisation() {
       <Solutions data={p.solutions} />
       <ArgBand items={p.argBand} />
       <AidesZoneAvis aids={p.aids} zone={p.zone} />
+      <LocalCitiesLinks tradeKeys={['climatisation']} />
       <CtaBand />
     </>
   )

@@ -1,5 +1,5 @@
 import PageHero from '../components/PageHero.jsx'
-import { CtaBand, Expertise, InfoBlock } from '../components/Blocks.jsx'
+import { CtaBand, Expertise, InfoBlock, LocalCitiesLinks } from '../components/Blocks.jsx'
 import { ServiceTwoColumn, ServiceFeatureCards } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -106,6 +106,7 @@ export default function Plomberie() {
 
       <ServiceFeatureCards items={FEATURE_CARDS} />
 
+      <LocalCitiesLinks tradeKeys={['plombier']} />
       <CtaBand />
     </>
   )

@@ -4,6 +4,7 @@ import Photo from './Photo.jsx'
 import { Wordmark } from './Brand.jsx'
 import { company, guarantees, tvaCard } from '../data/site.js'
 import { softFadeMask } from '../lib/fadeMask.js'
+import { localCities, localPages, localPath, localTrades, inCity } from '../data/local.js'
 
 const FADE_MASK = softFadeMask()
 
@@ -491,3 +492,48 @@ export function LinkGrid({ title, lead, links, tone = 'light' }) {
   )
 }
 
+
+/* ------------------------------------- MAILLAGE MÉTIER → PAGES LOCALES ----
+   Bas de chaque page métier : la liste des communes où ce métier a sa page
+   locale. Sans elle, les 280 pages locales ne recevaient aucun lien depuis
+   les pages métier — seulement du plan du site, du footer (plombier, 13
+   villes) et de leurs voisines. La liste vient de `localPages`, la même
+   source que les routes prérendues : aucun lien ne peut viser une page
+   inexistante (pompe-a-chaleur et traitement-eau ne couvrent pas toutes les
+   communes). Plusieurs métiers → un groupe par métier (page Chauffage :
+   chauffagiste + pompe à chaleur). */
+export function LocalCitiesLinks({ tradeKeys }) {
+  return (
+    <section className="section bg-navy-50">
+      <div className="container-pce">
+        <SectionTitle
+          title="Nos communes d'intervention"
+          lead="Une page par commune desservie, avec nos prestations sur place."
+        />
+        {tradeKeys.map((tradeKey) => (
+          <div key={tradeKey} className="mt-10">
+            {tradeKeys.length > 1 && (
+              <h3 className="mb-4 text-center text-body font-semibold text-navy-800">
+                {localTrades[tradeKey].label}
+              </h3>
+            )}
+            <ul className="flex flex-wrap justify-center gap-2.5">
+              {localPages
+                .filter((p) => p.tradeKey === tradeKey)
+                .map(({ cityKey }) => (
+                  <li key={cityKey}>
+                    <Link
+                      to={localPath(tradeKey, cityKey)}
+                      className="inline-flex items-center rounded-full bg-white px-5 py-3.5 text-body-sm font-semibold text-navy-700 ring-1 ring-navy-100 transition-colors duration-200 hover:bg-azure-500 hover:text-white"
+                    >
+                      {localTrades[tradeKey].label} {inCity(localCities[cityKey].name)}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

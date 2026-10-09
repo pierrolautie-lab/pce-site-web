@@ -1,6 +1,6 @@
 import PageHero from '../components/PageHero.jsx'
 import Icon from '../components/Icon.jsx'
-import { CtaBand, FadedPhotoSection, SectionTitle } from '../components/Blocks.jsx'
+import { CtaBand, FadedPhotoSection, LocalCitiesLinks, SectionTitle } from '../components/Blocks.jsx'
 import { ServiceBrandsRow } from '../components/ServiceBlocks.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
@@ -159,6 +159,8 @@ export default function Chauffage() {
           </div>
         </div>
       </section>
+
+      <LocalCitiesLinks tradeKeys={['chauffagiste', 'pompe-a-chaleur']} />
 
       <CtaBand />
     </>

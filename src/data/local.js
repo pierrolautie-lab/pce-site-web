@@ -423,7 +423,7 @@ export const localCities = {
     distanceKm: 40,
     neighbors: ['Grimaud', 'Sainte-Maxime'],
     intro: (t) =>
-      `Cité lacustre du Golfe de Saint-Tropez, Port-Grimaud regroupe de nombreuses résidences où PCE intervient pour ${t.verb} : ${t.detail}. Devis gratuit et créneaux adaptés aux résidences secondaires comme aux habitants à l’année.`,
+      `Cité lacustre du Golfe de Saint-Tropez, Port-Grimaud regroupe de nombreuses résidences où PCE intervient pour ${t.verb} : ${t.detail}. Devis gratuit et interventions organisées avec les résidences secondaires comme avec les habitants à l’année.`,
   },
   'Rayol-Canadel-sur-Mer': {
     name: 'Rayol-Canadel-sur-Mer',
@@ -467,6 +467,39 @@ export const localCities = {
     intro: (t) =>
       `Au pied du massif rouge qui domine la plaine de l’Argens, les quartiers du Rocher de Roquebrune mêlent villas récentes et mas restaurés, souvent à l’écart du centre. PCE y assure ${t.verb} : ${t.detail}. Devis gratuit et intervention organisée depuis Lorgues, y compris sur les accès un peu isolés.`,
   },
+}
+
+/* ----------------------------------------- Réciprocité du voisinage ------
+   Les listes `neighbors` ci-dessus sont écrites à la main, commune par
+   commune, et elles étaient orientées : une commune pouvait citer ses
+   voisines sans jamais être citée en retour. Mesuré le 09/10/2026 sur le
+   site déployé — cinq communes n'étaient citées par personne (Villecroze,
+   Saint-Aygulf, Ampus, Saint-Antonin-du-Var, La Môle) et leurs 14 pages
+   n'avaient qu'UN seul lien entrant, celui du plan du site.
+
+   Plutôt que de retoucher 39 tableaux à la main — qui se seraient
+   redésynchronisés au premier ajout de commune — la réciprocité est
+   calculée ici une fois pour toutes : si A cite B, B cite A. L'ordre reste
+   déterministe (voisines écrites à la main d'abord, puis les réciproques
+   par distance croissante depuis Lorgues, puis par nom) : le prérendu doit
+   produire exactement le même HTML à chaque build.
+
+   Le filtre par métier reste dans LocalPage.jsx : une voisine n'est liée
+   que si la page existe pour CE métier (pompe-a-chaleur et traitement-eau
+   ne couvrent que 23 des 39 communes). */
+for (const [key, city] of Object.entries(localCities)) {
+  for (const neighborKey of city.neighbors) {
+    const neighbor = localCities[neighborKey]
+    if (!neighbor) continue
+    if (!neighbor.neighbors.includes(key)) neighbor.neighbors.push(key)
+  }
+}
+for (const city of Object.values(localCities)) {
+  city.neighbors = [...new Set(city.neighbors)].sort((a, b) => {
+    const da = localCities[a]?.distanceKm ?? 999
+    const db = localCities[b]?.distanceKm ?? 999
+    return da - db || a.localeCompare(b, 'fr')
+  })
 }
 
 /* 4 clôtures différentes pour les méta-descriptions, choisies en rotation
