@@ -64,6 +64,15 @@ export const imageManifest = {
       1200
     ]
   },
+  "accueil-hero-jour.jpg": {
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      400,
+      800,
+      1200
+    ]
+  },
   "accueil-hero-reseaux.jpg": {
     "width": 1600,
     "height": 1071,

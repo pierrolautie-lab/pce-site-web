@@ -20,7 +20,8 @@ import { imageManifest } from './imageManifest.js'
 /** Inventaire lisible des emplacements — sert aussi de table de validation. */
 export const PHOTO_SLOTS = {
   /* --- Accueil ------------------------------------------------------- */
-  100: { page: 'Accueil + Contact', zone: 'Hero — fond', sujet: 'Fourgon PCE de nuit devant une villa éclairée' },
+  100: { page: 'Contact', zone: 'Hero — fond', sujet: 'Fourgon PCE de nuit devant une villa éclairée' },
+  104: { page: 'Accueil', zone: 'Hero — fond', sujet: 'Fourgon PCE de jour devant une villa, fin d’après-midi' },
   101: { page: 'Accueil', zone: 'Hero (repli)', sujet: 'Maison / villa provençale' },
   102: { page: 'Accueil', zone: "Bloc entreprise", sujet: 'Artisan en intervention' },
   103: { page: 'Accueil', zone: 'Bloc entreprise', sujet: 'Bastide, façade en pierre' },
@@ -150,9 +151,8 @@ export const PHOTO_SLOTS = {
  */
 export const clientPhotos = {
   /* --- Accueil --- */
-  /* Slot partagé par le héros de l'Accueil ET celui de Contact (même
-     mécanique HeroBackgroundPhoto) : toute substitution ici vaut pour les
-     deux pages.
+  /* Slot du héros de Contact. Partagé avec l'Accueil jusqu'au 09/10/2026
+     (voir slot 104 ci-dessous) : l'historique qui suit concerne les deux.
      21/08/2026 : le fichier d'origine (accueil-hero-vehicules.jpg) portait
      un vrai lettrage déformé sur deux des trois fourgons (« FLOMBERIE »,
      « CLIMATSATION »). Remplacé par un autre visuel du même lot, puis
@@ -170,6 +170,13 @@ export const clientPhotos = {
      accueil-hero-vehicules.jpg et accueil-hero-vehicules-retouche.jpg
      deviennent orphelines. */
   100: '/img/accueil-hero.jpg',
+  /* 09/10/2026 : à la demande du client, l'Accueil passe sur une scène de
+     jour (fin d'après-midi) et quitte le slot 100, que Contact garde avec
+     la photo nocturne. Même lettrage correct à la source (PCE, « Depuis
+     2005 », PLOMBERIE / CHAUFFAGE / ÉLECTRICITÉ, bandeau CLIMATISATION •
+     PISCINE • TOUT CORPS D'ÉTAT, 06 60 12 90 52). Format 16:9 et non plus
+     2:1. Nouveau nom de fichier : les images sont en cache un an. */
+  104: '/img/accueil-hero-jour.jpg',
   101: '/img/accueil-hero-reseaux.jpg',
   /* savoir-faire-cintrage.jpg écartée pour la même raison que le slot 845 :
      c'est le même fichier que depannage-outillage.jpg (md5 identique). */

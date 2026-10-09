@@ -9,15 +9,16 @@ import ZoneBadge from '../components/ZoneBadge.jsx'
 import { company, projects, serviceList, values } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
-/* Photo de fond du héros (slot 100, fourgon PCE de nuit devant une villa) et
+/* Photo de fond du héros (slot 104, fourgon PCE de jour devant une villa) et
    son repli (slot 101, photo d'accueil précédente) si le fichier venait à
    manquer. On ne passe pas par <Photo /> ici : son repli à lui est le logo
    PCE, qui serait illisible étiré en fond de héros.
-   Slot partagé avec le héros de Contact — cf. photos.js. */
-const HERO_SLOT = 100
+   Depuis le 09/10/2026, l'Accueil ne partage plus le slot 100 (nuit) avec
+   Contact — cf. photos.js. */
+const HERO_SLOT = 104
 const HERO_FALLBACK_SLOT = 101
 const HERO_ALT =
-  "Le fourgon d'intervention PCE stationné de nuit devant une villa éclairée dans le Var"
+  "Le fourgon d'intervention PCE stationné devant une villa en pierre dans le Var, en fin d'après-midi"
 
 /* Les 5 métiers mis en avant sous le titre du héros — même couleur que sur
    la page métier correspondante (icône des héros PageHero), pour que le
@@ -154,9 +155,18 @@ function HomeHero() {
               Demande de devis gratuit
               <Icon name="arrowRight" className="h-4 w-4 shrink-0" strokeWidth={2.4} />
             </Link>
+            {/* Fond marine translucide, comme la pastille de zone à sa droite
+                (ZoneBadge : bg-navy-900/70 + backdrop-blur) : cette rangée
+                d'actions est le seul texte du héros à vivre HORS du voile —
+                elle est posée après le bloc `max-w-3xl` qui le porte. Sur
+                la photo nocturne le défaut ne se voyait qu'à 1440 px
+                (2,82:1, mesuré) ; sur la photo de jour du 09/10/2026, le
+                numéro tombe sur du gravier en plein soleil et descend à
+                1,53:1 à 1024 px. Le bouton or voisin n'a jamais eu le
+                problème : son fond est opaque. */}
             <a
               href={company.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 px-6 py-4 text-center text-body-sm font-bold tracking-[.04em] text-white transition-colors hover:border-white hover:bg-white hover:text-navy-900"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/70 bg-navy-900/70 px-6 py-4 text-center text-body-sm font-bold tracking-[.04em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white hover:text-navy-900"
             >
               <Icon name="phone" className="h-4 w-4 shrink-0" strokeWidth={2} />
               {company.phone}

@@ -141,15 +141,14 @@ photo, et tient son seuil de 3:1 sans grande marge.
 
 | Héros | Minimum mesuré | Texte contraint |
 | --- | --- | --- |
-| Accueil (slot 100) | 3,51:1 | « Climatisation • Piscine », H1 azure |
+| Accueil (slot 104) | 3,26:1 | « Climatisation • Piscine », H1 azure |
 | Climatisation (slot 520) | 3,32:1 | « et économies d'énergie », sous-titre azure |
-| Contact (slot 100) | 3,30:1 | accroche azure |
+| Contact (slot 100) | 3,93:1 | accroche azure |
 
 > ⚠️ Si l'un de ces trois visuels est remplacé, **remesurer avant de livrer**.
 > Le point commun des trois est un texte **azure sur photo** : l'azure est un
 > ton moyen, il perd son contraste aussi bien sur un fond qui s'éclaircit que
-> sur un fond qui s'assombrit. Accueil et Contact partagent le slot 100 : une
-> seule photo, deux pages à vérifier.
+> sur un fond qui s'assombrit.
 
 La mesure se fait sur le rendu réel, au pixel de glyphe — pas sur la boîte
 englobante du texte, qui donne des faux positifs sur le vide à droite des
@@ -157,6 +156,67 @@ lignes. Méthode : capturer la page deux fois (rendu normal, puis avec
 `section * { color: transparent }`), ne retenir que les pixels où les deux
 diffèrent, et comparer la couleur calculée du texte au fond de la seconde
 capture.
+
+### Passage de l'accueil à une photo de jour — 09/10/2026
+
+Le client a demandé une scène de jour (« un grand soleil type Côte d'Azur ») à
+la place du fourgon de nuit. L'accueil quitte donc le slot 100, que **Contact
+garde** : les deux pages ne partagent plus de photo.
+
+Ce que la mesure a montré, et qui n'était pas prévisible à l'œil :
+
+- **Le tiers gauche de la photo de jour est plus sombre que celui de la photo
+  de nuit** (luminance relative moyenne 0,021 contre 0,046) — l'ombre de
+  cyprès au premier plan fait son travail. Ce n'est donc pas la luminosité
+  moyenne qui a posé problème.
+- **Le défaut venait de la géométrie du voile, pas de la photo.** Son plateau
+  s'arrêtait à 60 % de la largeur du bloc de texte, alors que la ligne la plus
+  longue du H1 (« Climatisation • Piscine ») va jusqu'à 80 %. Les 20 %
+  restants tombaient dans l'extinction du voile, donc sur la photo nue — du
+  ciel et une colline au soleil à partir de 1024 px. Mesuré : **1,57:1 à
+  1024 px, 1,92:1 à 1440 px** (seuil 3:1). Le même défaut existait avec la
+  photo de nuit, masqué par un fond nocturne : 3,08 et 4,14 — il tenait à la
+  photo, pas au réglage.
+
+Deux corrections, les deux sur des mécaniques partagées :
+
+1. **Voile unique pour les deux pages appelantes** — le paramètre `plateau`
+   (60 % Accueil / 72 % Contact) est supprimé, c'était le dernier coefficient
+   réglé page par page. Plateau à **85 %** (il couvre tout le texte, mesuré :
+   aucun pixel de glyphe au-delà), opacité **70 % → 75 %**.
+2. **Fond marine translucide sur le bouton téléphone du héros d'accueil.**
+   La rangée d'actions est posée *après* le bloc qui porte le voile : c'est le
+   seul texte du héros qui n'a jamais été couvert. Sur la photo de nuit le
+   défaut ne sortait qu'à 1440 px (2,82:1) ; sur la photo de jour le numéro
+   tombe sur du gravier en plein soleil — **1,53:1 à 1024 px**. Le bouton or
+   voisin n'a jamais eu le problème : son fond est opaque.
+
+Résultat, 68 mesures sur Accueil et Contact aux quatre paliers
+(375/768/1024/1440) : **aucun texte sous son seuil**. Minimum d'accueil
+3,26:1 (seuil 3:1, H1 azure), minimum de Contact 3,93:1.
+
+**Ce que le voile coûte en lumière** — la contrepartie à connaître avant d'y
+retoucher, luminance relative moyenne du héros rendu :
+
+| Palier | Avant (70 % / plateau 60 %) | Après (75 % / plateau 85 %) | Écart |
+| --- | --- | --- | --- |
+| 768 px | 0,0936 | 0,0751 | −19,8 % |
+| 1024 px | 0,1338 | 0,1193 | −10,9 % |
+| 1440 px | 0,1460 | 0,1369 | −6,2 % |
+
+L'écart est le plus fort à 768 px, où le bloc de texte occupe 92 % de la
+largeur : à ce palier, voiler le texte revient à voiler l'écran. Une variante
+a été mesurée pour récupérer cette lumière — garder le voile à 70 % et éclaircir
+la ligne azure du H1 (`azure-400` → `azure-300`) : elle ne rend que 3,7 points
+à 768 px, 1,8 à 1024 px, 0,8 à 1440 px. **Changer une couleur de la charte pour
+ça ne vaut pas le coup** : l'essentiel du coût vient de l'extension du plateau,
+qui est inévitable — le texte doit reposer sur un fond sombre.
+
+À 375 px, rien ne change : la photo est un bandeau au format natif posé sous le
+bloc de texte, qui est sur marine plein. La photo est en **16:9 (1672 × 941)**,
+exactement le format du bandeau `aspect-video` — elle s'affiche entière, sans
+recadrage, le fourgon reste intégralement visible. Aucun `object-position` à
+régler pour le mobile.
 
 ---
 
