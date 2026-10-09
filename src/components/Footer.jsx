@@ -239,7 +239,8 @@ export default function Footer() {
         {/* ------------------------------------------------ Bas de page */}
         <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-caption text-white/40">
-            © {year} {company.name} — {company.address.street}, {company.address.zip}{' '}
+            © {year} {company.name} — {company.address.street}, {company.address.street2},{' '}
+            {company.address.zip}{' '}
             {company.address.city}. Tous droits réservés.
           </p>
           <p className="text-caption text-white/40">
