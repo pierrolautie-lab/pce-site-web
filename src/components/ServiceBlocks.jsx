@@ -122,10 +122,14 @@ export function ServiceBrandsRow({ title = 'Marques que nous installons', brands
       <div className="container-pce">
         <h2 className="section-title">{title}</h2>
 
-        <div className={`mt-12 grid gap-6 ${brands.length >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
+        {/* Une seule marque (VMC) : carte centrée, largeur bornée — sinon la
+            grille à 2 colonnes la colle à gauche avec un vide à droite.
+            `'src' in p` : une marque déclarée avec `src: ''` passe par le repli
+            typographique de BrandLogo, pas par le nom coloré des marques sans logo. */}
+        <div className={`mt-12 grid gap-6 ${brands.length === 1 ? 'mx-auto max-w-xl' : brands.length >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
           {brands.map((p) => (
             <div key={p.name} className="rounded-xl bg-white p-8 shadow-card ring-1 ring-navy-100 sm:p-9">
-              {p.src ? (
+              {'src' in p ? (
                 <BrandLogo name={p.name} src={p.src} plain className="max-h-9 text-title" />
               ) : (
                 <div className="flex items-center gap-2.5">

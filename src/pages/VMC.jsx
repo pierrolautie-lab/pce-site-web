@@ -6,9 +6,9 @@ import Icon from '../components/Icon.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, offerSchema } from '../components/Seo.jsx'
 import { services } from '../data/site.js'
 
-/* Marques VMC confirmées par le client le 17/08/2026 (Eoliance, Panol) —
+/* Marque VMC confirmée par le client le 09/10/2026 (Eoliance Habitat) —
    voir le commentaire sur `services.vmc.brands` dans site.js. */
-const SHOW_VMC_BRANDS = true
+const SHOW_VMC_BRANDS = false
 
 /** Comparaison simple flux / double flux — maquette validée le 17/08/2026. */
 function FluxComparison({ flux }) {

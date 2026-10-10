@@ -1163,7 +1163,7 @@ export const services = {
       entretien: {
         title: 'Un entretien régulier, indispensable',
         icon: 'wrench',
-        text: 'Un entretien régulier de votre VMC garantit son efficacité et la qualité de l’air intérieur.',
+        text: 'Un entretien régulier de votre VMC garantit son efficacité et la qualité de l’air intérieur. Nous posons et entretenons notamment les centrales Eoliance Habitat.',
         bullets: [
           'Nettoyage des bouches et entrées d’air',
           'Vérification des débits',
@@ -1183,16 +1183,20 @@ export const services = {
       },
     },
 
-    /* Marques VMC installées — confirmées par le client le 17/08/2026
-       (Eoliance, Panol). Fichiers logo à déposer dans public/img/ :
-       marque-eoliance.png, marque-panol.png — BrandLogo bascule sur un
-       repli typographique tant qu'ils sont absents. Pas de texte marketing
-       fourni par le client : description volontairement factuelle, sans
-       allégation non vérifiée. Jamais « partenaires » (pas d'accord de
-       distribution) — voir garde-fous. */
+    /* Marque VMC installée — Eoliance Habitat, confirmée par le client le
+       09/10/2026. « Eoliance » seul est le nom du groupe, pas une marque de
+       VMC ; « Panol » (autre société du groupe : sécurité incendie, grilles,
+       collectif/industrie) venait d'une maquette et a été retiré.
+       Logo : `src` laissé vide VOLONTAIREMENT. Le seul logo officiel
+       (eoliance.com/wp-content/uploads/2023/11/habitat-logo.svg) est une
+       version pour fond sombre — le mot « EOLIANCE » y est blanc, invisible
+       sur la carte blanche. Pas de recoloration : ce serait fabriquer une
+       version qui n'existe pas officiellement. Repli typographique de
+       BrandLogo assumé (validé par le client) ; à rebrancher si Eoliance
+       fournit une version positive. Pas de texte marketing fourni : description
+       factuelle. Jamais « partenaires » (pas d'accord de distribution). */
     brands: [
-      { name: 'Eoliance', src: '/img/marque-eoliance.png', text: 'Centrales de VMC installées par PCE.' },
-      { name: 'Panol', src: '/img/marque-panol.png', text: 'Centrales de VMC installées par PCE.' },
+      { name: 'Eoliance Habitat', src: '', text: 'Centrales de VMC installées par PCE.' },
     ],
 
     faq: [
