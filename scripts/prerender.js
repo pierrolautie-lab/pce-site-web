@@ -100,6 +100,13 @@ const prerenderer = new Prerenderer({
           if (node.previousSibling?.nodeType === Node.TEXT_NODE) adjacent.push(node)
         }
         for (const node of adjacent) node.parentNode.insertBefore(document.createComment(' '), node)
+
+        // Les <link rel="modulepreload"> que Vite pose en chargeant le chunk
+        // de la page ne doivent pas être figés dans le HTML : ces chunks ne
+        // servent qu'à l'hydratation, et préchargés en tête de page, ils
+        // passaient avant la photo du héros. Mesuré sous réseau réellement
+        // ralenti : LCP de Contact 2,31 -> 1,65 s une fois retirés.
+        document.querySelectorAll('link[rel="modulepreload"]').forEach((link) => link.remove())
       })
     },
     // Bloque le script GA4 (googletagmanager.com) et toute autre requête

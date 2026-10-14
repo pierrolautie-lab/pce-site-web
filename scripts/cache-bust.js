@@ -24,9 +24,8 @@ for (const filePath of htmlFiles) {
   let html = readFileSync(filePath, 'utf8')
   /* Seuls le point d'entrée JS et la feuille de style reçoivent ?v=. Les
      autres chunks (code splitting, App.jsx) sont importés par le JS à leur
-     URL nue : un <link rel="modulepreload"> vers `chunk.js?v=…` — le
-     prérendu en capture, posés par Vite — désignerait une autre URL, et le
-     navigateur téléchargerait le fichier deux fois. */
+     URL nue : une référence vers `chunk.js?v=…` désignerait une autre URL,
+     et le navigateur téléchargerait le fichier deux fois. */
   const entry = html.match(/<script type="module"[^>]*src="(\/assets\/[^"?]+\.js)"/)?.[1]
   html = html.replace(
     /(src|href)="(\/assets\/[^"]+\.(?:js|css))"/g,
