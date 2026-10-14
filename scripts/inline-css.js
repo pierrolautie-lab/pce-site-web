@@ -65,9 +65,16 @@ for (const filePath of htmlFiles) {
   const match = html.match(LINK)
   if (!match) continue
   const { inline, deferred } = split(match[1])
+  /* Au chargement de la feuille, la classe `fi` est posée sur <html> dès
+     qu'Inter 900 est prête : elle révèle le filigrane des héros (voir
+     .hero-watermark dans src/index.css). Sans JS, <noscript> le révèle
+     d'emblée. */
+  const onload =
+    "this.media='all';var d=document.documentElement,f=function(){d.classList.add('fi')};" +
+    "document.fonts?document.fonts.load('900 1em Inter').then(f,f):f()"
   const lazySheet = deferred
-    ? `<link rel="stylesheet" href="${deferred}" media="print" onload="this.media='all'">` +
-      `<noscript><link rel="stylesheet" href="${deferred}"></noscript>`
+    ? `<link rel="stylesheet" href="${deferred}" media="print" onload="${onload}">` +
+      `<noscript><link rel="stylesheet" href="${deferred}"><style>.hero-watermark{visibility:visible}</style></noscript>`
     : ''
   writeFileSync(filePath, html.replace(match[0], () => `<style>${inline}</style>${lazySheet}`))
   count++

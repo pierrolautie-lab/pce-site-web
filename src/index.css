@@ -43,6 +43,19 @@
 }
 
 @layer components {
+  /* Filigrane « PCE » des héros (Brand.jsx) : affiché seulement une fois
+     Inter 900 chargée — classe `fi` posée sur <html> par le chargeur de la
+     feuille Inter (scripts/inline-css.js). Ce texte décoratif de 20rem
+     était le seul élément déplacé par l'arrivée de la police (CLS 0,002
+     sur ordinateur) ; un élément qui apparaît ne compte pas comme un
+     décalage. Le rendu final est inchangé. */
+  .hero-watermark {
+    visibility: hidden;
+  }
+  .fi .hero-watermark {
+    visibility: visible;
+  }
+
   .container-pce {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
   }

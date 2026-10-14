@@ -108,7 +108,7 @@ export function Watermark({ tone = 'white', className = '' }) {
   return (
     <span
       aria-hidden="true"
-      className={`pointer-events-none absolute select-none font-black uppercase leading-[.78]
+      className={`hero-watermark pointer-events-none absolute select-none font-black uppercase leading-[.78]
                   tracking-[-.045em] ${color} ${className}`}
     >
       {company.name}

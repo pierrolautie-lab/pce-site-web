@@ -36,6 +36,10 @@ if ('serviceWorker' in navigator) {
    Coquille vide (page non prérendue) : rendu client classique.
    `v7_startTransition` : en navigation interne, la page quittée reste
    affichée pendant le chargement du chunk suivant. */
+/* En développement, pas de feuille Inter différée (scripts/inline-css.js
+   n'intervient qu'au build) : on révèle le filigrane des héros d'emblée. */
+if (import.meta.env.DEV) document.documentElement.classList.add('fi')
+
 const container = document.getElementById('root')
 const app = (
   <React.StrictMode>
