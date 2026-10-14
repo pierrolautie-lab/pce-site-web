@@ -63,18 +63,23 @@ function SolutionPhoto({ src, alt, label, icon }) {
   const meta = photoMetaForPath(src)
 
   return (
-    <img
-      src={meta?.src || src}
-      srcSet={meta?.srcSet || undefined}
-      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-      width={meta?.width || undefined}
-      height={meta?.height || undefined}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      onError={() => setErrored(true)}
-      className="h-40 w-full rounded-t-xl bg-navy-50 object-cover"
-    />
+    <picture>
+      {meta?.avifSrcSet && (
+        <source type="image/avif" srcSet={meta.avifSrcSet} sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw" />
+      )}
+      <img
+        src={meta?.src || src}
+        srcSet={meta?.srcSet || undefined}
+        sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
+        width={meta?.width || undefined}
+        height={meta?.height || undefined}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onError={() => setErrored(true)}
+        className="h-40 w-full rounded-t-xl bg-navy-50 object-cover"
+      />
+    </picture>
   )
 }
 

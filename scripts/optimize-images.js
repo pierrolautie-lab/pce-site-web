@@ -1,5 +1,6 @@
 // Génère, pour chaque photo réelle de public/img/, trois variantes WebP
-// (400/800/1200 px de large, qualité 80) destinées au `srcset` du composant
+// (400/800/1200 px de large, qualité 80), doublées d'une variante AVIF à
+// chaque largeur, destinées au `srcset` du composant
 // Photo.jsx — 400 pour les vignettes, 800 pour les cartes, 1200 pour les
 // héros. Écrit aussi src/data/imageManifest.js (dimensions + largeurs
 // réellement générées) pour que le composant sache quel `srcset` construire
@@ -18,6 +19,18 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const imgDir = resolve(__dirname, '../public/img')
 const WIDTHS = [400, 800, 1200]
 const QUALITY = 80
+// AVIF à côté de chaque WebP, servi en priorité par un <source
+// type="image/avif"> (Photo.jsx, HeroPhoto.jsx). Qualité 60 et non 50 :
+// mesuré le 15/10/2026 sur trois visuels, q60 reste au niveau du WebP q80
+// (PSNR -0,3 à -2 dB) pour 63 à 73 % de son poids ; q50 pesait la moitié
+// mais lissait visiblement le feuillage et le gravier.
+const AVIF_QUALITY = 60
+
+// Logo de l'en-tête et du pied de page : affiché entre 92 et 148 px CSS de
+// large (Brand.jsx), soit jusqu'à ~450 px réels sur un écran de densité 3.
+// Variantes WebP/AVIF à ces largeurs ; le PNG reste le repli du <picture>.
+const LOGO = 'logo-pce-officiel.png'
+const LOGO_WIDTHS = [160, 320, 456]
 
 // Le logo n'est volontairement pas traité ici : le .jpg sert de favicon et
 // d'image OG/Twitter à une URL fixe référencée telle quelle dans index.html ;
@@ -57,6 +70,10 @@ async function run() {
         .webp({ quality: QUALITY })
         .toFile(outPath)
       totalAfter += statSync(outPath).size
+      await sharp(srcPath)
+        .resize({ width: w, withoutEnlargement: true })
+        .avif({ quality: AVIF_QUALITY, effort: 4 })
+        .toFile(resolve(imgDir, `${name}-${w}w.avif`))
     }
 
     manifest[file] = {
@@ -66,6 +83,13 @@ async function run() {
     }
 
     console.log(`${file} → ${widths.map((w) => `${w}w`).join(', ')}`)
+  }
+
+  for (const w of LOGO_WIDTHS) {
+    const srcPath = resolve(imgDir, LOGO)
+    const base = resolve(imgDir, `${basename(LOGO, extname(LOGO))}-${w}w`)
+    await sharp(srcPath).resize({ width: w, withoutEnlargement: true }).webp({ quality: 90 }).toFile(`${base}.webp`)
+    await sharp(srcPath).resize({ width: w, withoutEnlargement: true }).avif({ quality: 70, effort: 4 }).toFile(`${base}.avif`)
   }
 
   const manifestPath = resolve(__dirname, '../src/data/imageManifest.js')

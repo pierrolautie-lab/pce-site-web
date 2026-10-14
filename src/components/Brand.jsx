@@ -41,6 +41,11 @@ const SIZES = {
   header: 'h-[70px] w-[124px]',
 }
 
+/* Largeur d'affichage de chaque taille, pour `sizes` — doit suivre SIZES. */
+const LOGO_SIZES = { sm: '92px', md: '112px', lg: '148px', header: '124px' }
+const LOGO_SET = (ext) =>
+  [160, 320, 456].map((w) => `/img/logo-pce-officiel-${w}w.${ext} ${w}w`).join(', ')
+
 /* Mention « Depuis 2005 » sous l'ovale, en verrou avec le logo.
    Le PNG contient une marge transparente d'environ 17 % de sa hauteur en
    bas : la remontée négative compense ce vide pour que la mention reste
@@ -55,11 +60,20 @@ const SINCE_SIZES = {
 function Medallion({ size = 'md', className = '' }) {
   return (
     <span className={`inline-flex flex-col items-center ${className}`}>
-      <img
-        src="/img/logo-pce-officiel.png"
-        alt={`${company.name} — ${company.baselineShort}`}
-        className={`object-contain ${SIZES[size] || SIZES.md}`}
-      />
+      {/* Variantes à la taille d'affichage (scripts/optimize-images.js) : le
+          PNG d'origine, 456 px, pesait 20 Ko pour un logo de 92 à 148 px.
+          Il reste le repli des navigateurs sans WebP. */}
+      <picture>
+        <source type="image/avif" srcSet={LOGO_SET('avif')} sizes={LOGO_SIZES[size] || LOGO_SIZES.md} />
+        <source type="image/webp" srcSet={LOGO_SET('webp')} sizes={LOGO_SIZES[size] || LOGO_SIZES.md} />
+        <img
+          src="/img/logo-pce-officiel.png"
+          alt={`${company.name} — ${company.baselineShort}`}
+          width="456"
+          height="295"
+          className={`object-contain ${SIZES[size] || SIZES.md}`}
+        />
+      </picture>
       <span
         className={`font-bold uppercase leading-none text-current
                     ${SINCE_SIZES[size] || SINCE_SIZES.md}`}

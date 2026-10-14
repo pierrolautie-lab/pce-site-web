@@ -68,23 +68,32 @@ export default function Photo({
       {!loaded && (
         <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-navy-100 via-navy-200 to-navy-100" />
       )}
-      <img
-        src={src}
-        srcSet={src === real?.src ? real?.srcSet : undefined}
-        sizes={src === real?.src && real?.srcSet ? sizes : undefined}
-        width={intrinsicWidth}
-        height={intrinsicHeight}
-        alt={alt}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchpriority={priority ? 'high' : 'auto'}
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-        onError={handleError}
-        style={imgStyle}
-        className={`h-full w-full object-cover transition-opacity duration-700 ${
-          loaded ? 'opacity-100' : 'opacity-0'
-        } ${imgClassName}`}
-      />
+      {/* <picture> sans effet de mise en page : l'élément reste en ligne,
+          l'<img> garde le même bloc conteneur pour ses h-full / w-full. Le
+          <source> AVIF disparaît en même temps que le srcset dès qu'on
+          bascule sur le repli — sinon il continuerait de primer sur `src`. */}
+      <picture>
+        {src === real?.src && real?.avifSrcSet && (
+          <source type="image/avif" srcSet={real.avifSrcSet} sizes={sizes} />
+        )}
+        <img
+          src={src}
+          srcSet={src === real?.src ? real?.srcSet : undefined}
+          sizes={src === real?.src && real?.srcSet ? sizes : undefined}
+          width={intrinsicWidth}
+          height={intrinsicHeight}
+          alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+          onError={handleError}
+          style={imgStyle}
+          className={`h-full w-full object-cover transition-opacity duration-700 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          } ${imgClassName}`}
+        />
+      </picture>
     </div>
   )
 }
