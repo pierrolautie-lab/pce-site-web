@@ -16,16 +16,34 @@ import App from './App.jsx'
    Chaque graisse importée ci-dessous correspond à un usage réel
    (font-normal/medium/semibold/bold/extrabold/black pour Inter ; le
    font-display de tailwind.config.js n'utilise Archivo qu'en 600-900). */
-import '@fontsource/inter/400.css'
-import '@fontsource/inter/500.css'
-import '@fontsource/inter/600.css'
-import '@fontsource/inter/700.css'
-import '@fontsource/inter/800.css'
-import '@fontsource/inter/900.css'
-import '@fontsource/archivo/600.css'
-import '@fontsource/archivo/700.css'
-import '@fontsource/archivo/800.css'
-import '@fontsource/archivo/900.css'
+/* 15/10/2026 : seuls les jeux latin et latin-ext sont importés. Les cinq
+   autres (cyrillique, grec, vietnamien) ne servaient à aucun caractère du
+   site — vérifié sur le texte des 323 pages prérendues — mais ajoutaient
+   leurs @font-face au CSS, désormais intégré à chaque page
+   (scripts/inline-css.js). Un texte qui en aurait besoin retomberait sur la
+   police système pour ces seuls caractères. latin-ext avant latin, comme
+   dans les feuilles d'origine : leurs plages se recouvrent sur quelques
+   caractères, et c'est la dernière déclarée qui l'emporte. */
+import '@fontsource/inter/latin-ext-400.css'
+import '@fontsource/inter/latin-400.css'
+import '@fontsource/inter/latin-ext-500.css'
+import '@fontsource/inter/latin-500.css'
+import '@fontsource/inter/latin-ext-600.css'
+import '@fontsource/inter/latin-600.css'
+import '@fontsource/inter/latin-ext-700.css'
+import '@fontsource/inter/latin-700.css'
+import '@fontsource/inter/latin-ext-800.css'
+import '@fontsource/inter/latin-800.css'
+import '@fontsource/inter/latin-ext-900.css'
+import '@fontsource/inter/latin-900.css'
+import '@fontsource/archivo/latin-ext-600.css'
+import '@fontsource/archivo/latin-600.css'
+import '@fontsource/archivo/latin-ext-700.css'
+import '@fontsource/archivo/latin-700.css'
+import '@fontsource/archivo/latin-ext-800.css'
+import '@fontsource/archivo/latin-800.css'
+import '@fontsource/archivo/latin-ext-900.css'
+import '@fontsource/archivo/latin-900.css'
 
 /* Redéclare Archivo 700/900 en `font-display: optional` (voir le
    commentaire du fichier) : `swap`, ci-dessus, causait un CLS mobile de
