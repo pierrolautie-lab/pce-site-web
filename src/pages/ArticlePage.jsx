@@ -103,7 +103,7 @@ export default function ArticlePage({ slug }) {
                         <Icon name="star" className="h-5 w-5" strokeWidth={1.8} />
                       </span>
                       <div>
-                        <h3 className="text-label font-black uppercase text-gold-700">
+                        <h3 className="text-label font-black uppercase text-gold-800">
                           Le conseil PCE
                         </h3>
                         <p className="mt-2 text-body text-navy-700">{retenirText}</p>

@@ -100,7 +100,7 @@ export function TvaCard({ className = '' }) {
         <p className="mt-4 text-body-sm text-white/75">{tvaCard.text}</p>
       </div>
 
-      <p className="relative mt-auto pt-6 text-caption text-white/40">
+      <p className="relative mt-auto pt-6 text-caption text-white/50">
         {tvaCard.note}
       </p>
     </div>
@@ -455,7 +455,7 @@ export function CtaSection({
               <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
               {company.phone}
             </a>
-            <p className="mt-1 text-center text-label uppercase text-white/40 lg:text-right">
+            <p className="mt-1 text-center text-label uppercase text-white/50 lg:text-right">
               Devis gratuit · Réponse sous 24 h
             </p>
           </div>

@@ -94,7 +94,7 @@ export function Logo({ size = 'md' }) {
   return (
     <Link
       to="/"
-      aria-label={`${company.name} — accueil`}
+      aria-label={`${company.name} ${company.signature} — accueil`}
       className="inline-flex shrink-0 transition-opacity hover:opacity-85"
     >
       <Medallion size={size} />

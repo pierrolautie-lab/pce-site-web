@@ -284,7 +284,7 @@ export default function Contact() {
                           <Icon name="phone" className="h-4.5 w-4.5" strokeWidth={1.7} />
                         </span>
                         <span>
-                          <span className="block text-label font-bold uppercase text-white/45">
+                          <span className="block text-label font-bold uppercase text-white/50">
                             Téléphone — urgences 7j/7
                           </span>
                           <span className="mt-1 block text-[22px] font-black leading-tight tracking-tight">
@@ -300,7 +300,7 @@ export default function Contact() {
                           <Icon name="mail" className="h-4.5 w-4.5" strokeWidth={1.7} />
                         </span>
                         <span>
-                          <span className="block text-label font-bold uppercase text-white/45">
+                          <span className="block text-label font-bold uppercase text-white/50">
                             E-mail
                           </span>
                           <span className="mt-1 block text-[14.5px] font-semibold">
@@ -315,7 +315,7 @@ export default function Contact() {
                         <Icon name="mapPin" className="h-4.5 w-4.5" strokeWidth={1.7} />
                       </span>
                       <span>
-                        <span className="block text-label font-bold uppercase text-white/45">
+                        <span className="block text-label font-bold uppercase text-white/50">
                           Atelier
                         </span>
                         <span className="mt-1 block text-[14.5px] leading-relaxed">
@@ -330,7 +330,7 @@ export default function Contact() {
                   </ul>
 
                   <div className="mt-8 border-t border-white/12 pt-6">
-                    <p className="text-label font-bold uppercase text-white/45">
+                    <p className="text-label font-bold uppercase text-white/50">
                       Horaires d'ouverture
                     </p>
                     <ul className="mt-4 space-y-2.5">

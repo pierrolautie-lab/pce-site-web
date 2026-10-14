@@ -137,7 +137,7 @@ export default function MentionsLegales() {
               </p>
             </div>
 
-            <p className="text-[13px] text-navy-400">
+            <p className="text-[13px] text-navy-500">
               Voir aussi notre{' '}
               <Link to="/politique-de-confidentialite" className="font-semibold text-azure-500 underline">
                 politique de confidentialité
