@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Seo, { breadcrumbSchema, faqPageSchema } from '../components/Seo.jsx'
 import { GuaranteeBar } from '../components/Blocks.jsx'
@@ -6,6 +6,7 @@ import Icon from '../components/Icon.jsx'
 import { articles, articleSlugs } from '../data/articles.js'
 import { expertisePages } from '../data/expertise.js'
 import { categoryFor } from '../data/categories.js'
+import NotFound from './NotFound.jsx'
 
 /**
  * Gabarit des articles de conseils. Mise en page « blog » : sections en
@@ -216,4 +217,16 @@ export default function ArticlePage({ slug }) {
       <GuaranteeBar />
     </>
   )
+}
+
+/* Point d'entrée de la route `conseils/:slug` (App.jsx). Le slug est lu ici,
+   et non plus en dressant une <Route> par article dans App.jsx : la liste
+   des slugs vient de articles.js, qui embarque le texte de tous les
+   articles — l'importer dans App.jsx le mettait dans le bundle principal,
+   chargé par chaque page du site. `key` remonte la page d'un article à
+   l'autre, comme le faisait la <Route> dédiée. */
+export function ArticleRoute() {
+  const { slug } = useParams()
+  if (!articles[slug]) return <NotFound />
+  return <ArticlePage key={slug} slug={slug} />
 }

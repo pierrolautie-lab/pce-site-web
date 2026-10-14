@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import Seo, { serviceSchema, breadcrumbSchema, faqPageSchema } from '../components/Seo.jsx'
 import { Faq, GuaranteeBar, CtaSection, LinkGrid } from '../components/Blocks.jsx'
@@ -6,6 +6,7 @@ import Icon from '../components/Icon.jsx'
 import { expertisePages } from '../data/expertise.js'
 import { localPages, localTrades, localCities, localPath } from '../data/local.js'
 import { services } from '../data/site.js'
+import NotFound from './NotFound.jsx'
 
 /**
  * Gabarit des 10 pages « sous-expertise » (longue traîne technique).
@@ -117,4 +118,14 @@ export default function ExpertisePage({ slug }) {
       />
     </>
   )
+}
+
+/* Point d'entrée de la route `*` (App.jsx) : toute adresse de premier
+   niveau qui n'est ni une page fixe ni une page locale arrive ici, et
+   devient une page sous-expertise si son slug existe, la 404 sinon. Même
+   motif qu'ArticleRoute : garder expertise.js hors du bundle principal. */
+export function ExpertiseRoute() {
+  const slug = (useParams()['*'] || '').replace(/\/+$/, '')
+  if (!expertisePages[slug]) return <NotFound />
+  return <ExpertisePage key={slug} slug={slug} />
 }

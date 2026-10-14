@@ -75,7 +75,33 @@ const prerenderer = new Prerenderer({
     // servant un instantané vieux de plusieurs jours malgré des en-têtes
     // no-cache — le même mécanisme que l'incident documenté plus bas dans
     // public/.htaccess. Valeurs remises à leur réglage d'origine.
-    renderAfterTime: 1000,
+    //
+    // 15/10/2026 : l'attente d'une seconde a migré dans `pageHandler`
+    // ci-dessous, qui doit agir APRÈS le rendu complet ; `renderAfterTime`
+    // reste l'unique condition d'attente de la librairie (une seule
+    // promesse, cf. plus haut), réduite au minimum.
+    renderAfterTime: 1,
+    // Rend le HTML capturé hydratable (boot.jsx utilise hydrateRoot). Ce
+    // HTML est une copie du DOM construit par React côté client : deux
+    // textes JSX voisins (`{a} {b}`) y sont deux nœuds texte, que la
+    // sérialisation fusionne en un seul. Le rendu serveur de React les
+    // sépare par un commentaire vide, et l'hydratation compte sur ce
+    // séparateur — sans lui, React rejette tout le HTML (erreur #425) et
+    // reconstruit la page, ce qui repousse le LCP au chargement du JS.
+    // L'hydratation ignore ces commentaires : ils ne servent qu'à garder
+    // les nœuds texte distincts.
+    pageHandler: async (page) => {
+      await new Promise((r) => setTimeout(r, 1000))
+      await page.evaluate(() => {
+        const root = document.getElementById('root')
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
+        const adjacent = []
+        for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+          if (node.previousSibling?.nodeType === Node.TEXT_NODE) adjacent.push(node)
+        }
+        for (const node of adjacent) node.parentNode.insertBefore(document.createComment(' '), node)
+      })
+    },
     // Bloque le script GA4 (googletagmanager.com) et toute autre requête
     // externe pendant le crawl : évite à la fois de fausses métriques GA à
     // chaque build et un risque de lenteur/flakiness liée à des requêtes
