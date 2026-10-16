@@ -1,3 +1,8 @@
+// ⚠️ NON BRANCHÉ sur `npm run build` depuis le 16/10/2026 : les JPEG sources
+// restent en ligne tant que les anciennes URL .jpg n'ont pas été vérifiées
+// et qu'aucune redirection ne les couvre — voir le README, « JPEG sources
+// conservés sur le serveur ». À rebrancher uniquement avec cette redirection.
+//
 // Retire de dist/img/ les photos sources (JPEG/PNG) dont le site ne sert que
 // les variantes WebP/AVIF : elles restent dans public/img/ — c'est là que
 // scripts/optimize-images.js les relit — mais n'ont rien à faire en ligne.

@@ -6,7 +6,7 @@
   "description": "Site vitrine PCE — plomberie, chauffage, climatisation, electricite, piscine — Lorgues (83)",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/verify-images.js && node scripts/generate-sitemap.js && vite build && node scripts/preload-fonts.js && node scripts/prerender.js && node scripts/cache-bust.js && node scripts/inline-css.js && node scripts/prune-sources.js",
+    "build": "node scripts/verify-images.js && node scripts/generate-sitemap.js && vite build && node scripts/preload-fonts.js && node scripts/prerender.js && node scripts/cache-bust.js && node scripts/inline-css.js",
     "preview": "vite preview",
     "verify:live": "node scripts/verify-live.js",
     "check:images": "node scripts/verify-images.js",

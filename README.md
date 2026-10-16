@@ -548,15 +548,58 @@ Mécanismes à connaître avant de toucher au build :
   graisses passaient avant la photo du héros. Le filigrane « PCE » n'est
   affiché qu'une fois Inter 900 chargée (CLS).
 - **Images** : AVIF q60 à côté du WebP (`optimize-images.js`), servi par
-  `<source type="image/avif">`. Les sources JPEG/PNG restent dans
-  `public/img/` mais sont retirées de `dist/` (`prune-sources.js`) : le
-  `mirror --delete` du déploiement les supprimera du serveur.
+  `<source type="image/avif">`. Les JPEG sources restent dans `dist/` et
+  donc sur le serveur — voir ci-dessous.
 - **Polices** : jeux latin et latin-ext seulement.
 
 Restent hors de portée sans toucher au design : l'audit « taille de
 police lisible » (36 % du texte de l'accueil sous 12 px — légendes et
 étiquettes en 11 px) et le contraste du logotype Schneider (vert de la
 marque, exempté par le critère WCAG 1.4.3).
+
+### JPEG sources conservés sur le serveur (décision du 16/10/2026)
+
+Le site ne sert plus aucune photo en JPEG, sauf le logo
+(`logo-pce-officiel.jpg` : `og:image`, `twitter:image`, JSON-LD, favicon,
+repli des emplacements photo vides) et `marque-fluidra.jpg`. Les 84 autres
+JPEG de `public/img/` ne sont référencés par aucune page, aucun sitemap ni
+JSON-LD (vérifié sur les 323 pages, et en navigation réelle : aucun n'est
+demandé). Ils restent pourtant dans `dist/`, donc en ligne : **ne pas les
+retirer du build**.
+
+Pourquoi : `deploy.yml` synchronise en `mirror --delete`. Retirés de
+`dist/`, ils seraient supprimés du serveur au déploiement, et une ancienne
+URL `.jpg` connue hors du site (Google Images, partages ; la page
+Climatisation servait encore ses JPEG jusqu'au 27/08/2026) ne recevrait
+même pas une 404 : le repli SPA du `.htaccess` renverrait la page
+d'accueil en HTML, avec un code 200. Coût de la conservation : ~20 Mo sur
+le serveur, aucun effet sur les performances puisque rien ne les demande.
+
+`scripts/prune-sources.js` (retrait de ces JPEG de `dist/`) existe mais
+**n'est pas branché sur `npm run build`**. Le rebrancher seulement après
+avoir vérifié dans la Search Console les URL `.jpg` indexées, ET en même
+temps que la redirection ci-dessous — proposée, **non appliquée** : elle
+envoie une ancienne URL vers la plus grande variante WebP (une redirection
+ne peut pas choisir le format selon le navigateur ; le WebP est lu
+partout, l'AVIF pas encore). À placer dans `public/.htaccess` juste après
+la règle « Fichier réel demandé tel quel », à tester sur un Apache local
+avant mise en ligne :
+
+```apache
+  # Anciennes URL des photos sources (.jpg retirés du build) -> plus grande variante WebP
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} ^(.+)\.jpe?g$ [NC]
+  RewriteCond %1-1200w.webp -f
+  RewriteRule ^img/(.+)\.jpe?g$ /img/$1-1200w.webp [R=301,L,NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} ^(.+)\.jpe?g$ [NC]
+  RewriteCond %1-800w.webp -f
+  RewriteRule ^img/(.+)\.jpe?g$ /img/$1-800w.webp [R=301,L,NC]
+```
+
+Les JPEG du logo et de Fluidra ne doivent pas être convertis : Facebook,
+LinkedIn et WhatsApp ne lisent pas l'AVIF en `og:image`, et
+`apple-touch-icon` attend du PNG ou du JPEG.
 
 ---
 
