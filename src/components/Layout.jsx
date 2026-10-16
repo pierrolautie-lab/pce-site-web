@@ -64,19 +64,24 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      {showMobileCallBar ? (
-        <>
-          {/* Espace réservé, exactement de la hauteur de la barre fixe,
-              pour qu'elle ne recouvre jamais le bas du pied de page — posé
-              dès le premier rendu (jamais ajouté après coup une fois une
-              hauteur mesurée au runtime), donc sans risque de décalage de
-              mise en page. */}
-          <div aria-hidden="true" style={{ height: MOBILE_CALL_BAR_HEIGHT }} className="sm:hidden" />
-          <MobileCallBar />
-        </>
-      ) : (
-        <FloatingCall />
-      )}
+      {/* Repère <aside> : les boutons d'appel fixes étaient hors de tout
+          repère (règle axe « region »). Leur enfant étant en position
+          fixe, l'<aside> n'occupe aucune hauteur dans la colonne. */}
+      <aside aria-label="Appel rapide">
+        {showMobileCallBar ? (
+          <>
+            {/* Espace réservé, exactement de la hauteur de la barre fixe,
+                pour qu'elle ne recouvre jamais le bas du pied de page — posé
+                dès le premier rendu (jamais ajouté après coup une fois une
+                hauteur mesurée au runtime), donc sans risque de décalage de
+                mise en page. */}
+            <div aria-hidden="true" style={{ height: MOBILE_CALL_BAR_HEIGHT }} className="sm:hidden" />
+            <MobileCallBar />
+          </>
+        ) : (
+          <FloatingCall />
+        )}
+      </aside>
     </div>
   )
 }

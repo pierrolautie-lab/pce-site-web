@@ -57,9 +57,11 @@ for (const [slot, declaredPath] of Object.entries(clientPhotos)) {
 
   const base = declaredPath.replace(/\.(jpe?g|png)$/i, '')
   for (const w of meta.widths) {
-    const variantPath = resolve(PUBLIC_DIR, '.' + `${base}-${w}w.webp`)
-    if (!existsSync(variantPath)) {
-      errors.push(`slot ${slot} -> ${declaredPath} : variante ${w}w déclarée dans imageManifest.js mais absente de public/img/`)
+    for (const ext of ['webp', 'avif']) {
+      const variantPath = resolve(PUBLIC_DIR, '.' + `${base}-${w}w.${ext}`)
+      if (!existsSync(variantPath)) {
+        errors.push(`slot ${slot} -> ${declaredPath} : variante ${w}w .${ext} déclarée dans imageManifest.js mais absente de public/img/`)
+      }
     }
   }
 }

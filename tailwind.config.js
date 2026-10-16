@@ -33,7 +33,7 @@ export default {
           500: '#FFBA00', // or principal des CTA
           600: '#DB9A0C',
           700: '#B07A08',
-          800: '#8C6006', // variante foncée, réservée à l'icône Électricité sur fond clair
+          800: '#8C6006', // variante foncée pour fond clair : icône Électricité, et texte doré sur fond clair (5,1:1 sur navy-50, 5,5:1 sur blanc)
         },
         /* Extension provisoire de la charte (icône Climatisation) — hors des
            trois couleurs validées, en attente de confirmation client. */

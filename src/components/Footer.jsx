@@ -190,7 +190,7 @@ export default function Footer() {
                     {company.address.street2}
                     <br />
                     {company.address.zip} {company.address.city}
-                    <span className="mt-1 block text-label font-bold uppercase text-white/40 group-hover:text-gold-400">
+                    <span className="mt-1 block text-label font-bold uppercase text-white/50 group-hover:text-gold-400">
                       Voir sur Google Maps
                     </span>
                   </span>
@@ -238,12 +238,12 @@ export default function Footer() {
 
         {/* ------------------------------------------------ Bas de page */}
         <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-caption text-white/40">
+          <p className="text-caption text-white/50">
             © {year} {company.name} — {company.address.street}, {company.address.street2},{' '}
             {company.address.zip}{' '}
             {company.address.city}. Tous droits réservés.
           </p>
-          <p className="text-caption text-white/40">
+          <p className="text-caption text-white/50">
             {company.hoursShort} · Urgences 7j/7
           </p>
         </div>

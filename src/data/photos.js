@@ -465,11 +465,15 @@ export function photoMetaForPath(jpegPath) {
 
   const base = jpegPath.replace(/\.jpe?g$/i, '')
   const srcSet = meta.widths.map((w) => `${base}-${w}w.webp ${w}w`).join(', ')
+  /* Mêmes largeurs en AVIF (scripts/optimize-images.js), à servir dans un
+     <source type="image/avif"> devant le WebP. */
+  const avifSrcSet = meta.widths.map((w) => `${base}-${w}w.avif ${w}w`).join(', ')
   const largest = meta.widths[meta.widths.length - 1]
 
   return {
     src: `${base}-${largest}w.webp`,
     srcSet,
+    avifSrcSet,
     width: meta.width,
     height: meta.height,
   }

@@ -94,7 +94,7 @@ export default function Realisations() {
               gauche sur la dernière rangée. */}
           <div className="mt-10 flex flex-wrap justify-center gap-5">
             {visible.map((p) => (
-              <article
+              <div
                 key={p.title}
                 onClick={() => setLightbox(p)}
                 onKeyDown={(e) => {
@@ -105,9 +105,13 @@ export default function Realisations() {
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`Agrandir la photo : ${p.title}`}
                 className="group flex w-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-100 transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure-500 sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.334px)]"
               >
+                {/* Nom du bouton = son contenu visible, précédé de l'action pour
+                    les lecteurs d'écran. Un aria-label « Agrandir la photo : titre »
+                    masquait le reste du texte visible de la carte (critère
+                    WCAG 2.5.3), et `role="button"` n'est pas admis sur <article>. */}
+                <span className="sr-only">Agrandir la photo : </span>
                 <div className="relative">
                   <Photo
                     tags={p.tags}
@@ -135,7 +139,7 @@ export default function Realisations() {
                   </h3>
                   <p className="mt-2.5 flex-1 text-[13px] leading-[1.7] text-navy-500">{p.text}</p>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
 

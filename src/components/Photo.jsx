@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { clientPhotoMeta } from '../data/photos.js'
 
 /** Repli local si un emplacement photo n'a pas (encore) de vraie photo
@@ -50,6 +50,19 @@ export default function Photo({
     setLoaded(true)
   }
 
+  /* Hydratation (boot.jsx) : React reprend le HTML prérendu au lieu de le
+     reconstruire, et une image chargée avant que React ne s'y attache a
+     déjà émis son `load` — il ne sera plus reçu. On relit donc l'état réel
+     de l'<img> au montage. */
+  const imgRef = useRef(null)
+  useEffect(() => {
+    const img = imgRef.current
+    if (!img?.complete) return
+    if (img.naturalWidth > 0) setLoaded(true)
+    else if (img.currentSrc) handleError()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const intrinsicWidth = real?.width || w
   const intrinsicHeight = real?.height || h
 
@@ -65,26 +78,41 @@ export default function Photo({
 
   return (
     <div className={`relative overflow-hidden ${rounded} ${bgClassName} ${className}`}>
-      {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-navy-100 via-navy-200 to-navy-100" />
-      )}
-      <img
-        src={src}
-        srcSet={src === real?.src ? real?.srcSet : undefined}
-        sizes={src === real?.src && real?.srcSet ? sizes : undefined}
-        width={intrinsicWidth}
-        height={intrinsicHeight}
-        alt={alt}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchpriority={priority ? 'high' : 'auto'}
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-        onError={handleError}
-        style={imgStyle}
-        className={`h-full w-full object-cover transition-opacity duration-700 ${
-          loaded ? 'opacity-100' : 'opacity-0'
-        } ${imgClassName}`}
+      {/* Toujours rendu, masqué une fois l'image chargée : une structure
+          constante est ce qui permet l'hydratation du HTML prérendu, où le
+          prérendu a figé chaque image dans un état différent. */}
+      <div
+        className={`absolute inset-0 animate-pulse bg-gradient-to-br from-navy-100 via-navy-200 to-navy-100 ${
+          loaded ? 'hidden' : ''
+        }`}
       />
+      {/* <picture> sans effet de mise en page : l'élément reste en ligne,
+          l'<img> garde le même bloc conteneur pour ses h-full / w-full. Le
+          <source> AVIF disparaît en même temps que le srcset dès qu'on
+          bascule sur le repli — sinon il continuerait de primer sur `src`. */}
+      <picture>
+        {src === real?.src && real?.avifSrcSet && (
+          <source type="image/avif" srcSet={real.avifSrcSet} sizes={sizes} />
+        )}
+        <img
+          ref={imgRef}
+          src={src}
+          srcSet={src === real?.src ? real?.srcSet : undefined}
+          sizes={src === real?.src && real?.srcSet ? sizes : undefined}
+          width={intrinsicWidth}
+          height={intrinsicHeight}
+          alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+          onError={handleError}
+          style={imgStyle}
+          className={`h-full w-full object-cover transition-opacity duration-700 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          } ${imgClassName}`}
+        />
+      </picture>
     </div>
   )
 }

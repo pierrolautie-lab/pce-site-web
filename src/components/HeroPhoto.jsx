@@ -76,10 +76,15 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
      plus de `href`, certains navigateurs lancent un préchargement d'après
      `imagesrcset` avant que `imagesizes` ne soit en place — deux
      téléchargements au lieu d'un. */
+  /* 15/10/2026 : le préchargement vise la variante AVIF, celle que choisit
+     désormais le <picture> ci-dessous ; précharger le WebP ferait
+     télécharger la photo deux fois. `type` fait ignorer le préchargement
+     aux navigateurs sans AVIF, qui retombent sur le WebP de l'<img>. */
   useEffect(() => {
-    if (!bg?.srcSet) return
+    const set = bg?.avifSrcSet || bg?.srcSet
+    if (!set) return
 
-    const entries = bg.srcSet
+    const entries = set
       .split(',')
       .map((s) => {
         const [url, w] = s.trim().split(' ')
@@ -98,6 +103,8 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
       document.head.appendChild(link)
     }
     link.media = '(min-width: 801px)'
+    link.type = bg?.avifSrcSet ? 'image/avif' : ''
+    if (!link.type) link.removeAttribute('type')
     link.href = href
 
     return () => link?.remove()
@@ -106,6 +113,7 @@ export function HeroBackgroundPhoto({ slot, fallbackSlot, alt }) {
   return (
     <>
       <picture>
+        {bg?.avifSrcSet && <source type="image/avif" srcSet={bg.avifSrcSet} sizes="100vw" />}
         <source media="(min-width: 640px)" srcSet={bg?.srcSet || undefined} sizes="100vw" />
         <img
           src={bg?.src}

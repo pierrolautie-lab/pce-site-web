@@ -22,9 +22,14 @@ const htmlFiles = readdirSync(distDir, { recursive: true })
 
 for (const filePath of htmlFiles) {
   let html = readFileSync(filePath, 'utf8')
+  /* Seuls le point d'entrée JS et la feuille de style reçoivent ?v=. Les
+     autres chunks (code splitting, App.jsx) sont importés par le JS à leur
+     URL nue : une référence vers `chunk.js?v=…` désignerait une autre URL,
+     et le navigateur téléchargerait le fichier deux fois. */
+  const entry = html.match(/<script type="module"[^>]*src="(\/assets\/[^"?]+\.js)"/)?.[1]
   html = html.replace(
     /(src|href)="(\/assets\/[^"]+\.(?:js|css))"/g,
-    (_match, attr, url) => `${attr}="${url}?v=${v}"`
+    (match, attr, url) => (url === entry || url.endsWith('.css') ? `${attr}="${url}?v=${v}"` : match)
   )
   writeFileSync(filePath, html)
 }
