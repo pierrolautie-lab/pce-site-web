@@ -55,10 +55,32 @@ jobs:
         # plusieurs combinaisons de flags lftp ont échoué avant celle-ci.
         #
         # `mirror` compare déjà taille/date et ne renvoie que ce qui a changé
-        # (incrémental par défaut) — `--delete` retire du serveur ce qui n'a
-        # plus d'équivalent local, `--parallel=5` accélère l'envoi des 268
-        # dossiers en les transférant en parallèle plutôt qu'un par un. Le
-        # `put ./dist/.htaccess` après `mirror` est une sécurité explicite :
+        # (incrémental par défaut), `--parallel=5` accélère l'envoi des 268
+        # dossiers en les transférant en parallèle plutôt qu'un par un.
+        #
+        # ⚠️ 2026-10-16 — ordre d'envoi en quatre passes. Avec un seul
+        # `mirror --delete`, lftp envoyait les pages HTML avant img/ et
+        # assets/, et effaçait chaque fichier modifié avant d'envoyer sa
+        # nouvelle version : pendant tout le transfert (~12 min), des pages
+        # déjà à jour référençaient des images et des scripts pas encore
+        # arrivés, que le repli SPA du .htaccess remplaçait par la page
+        # d'accueil en HTML (constaté en production ce jour-là : logo et
+        # photo du héros absents). Désormais :
+        #   1. assets/ puis img/ d'abord, sans rien supprimer ;
+        #   2. tout le reste (pages, sitemaps…), toujours sans supprimer ;
+        #   3. `.htaccess` (voir plus bas) ;
+        #   4. une dernière passe `--delete --only-missing`, qui ne fait plus
+        #      que supprimer ce qui n'existe plus dans dist/.
+        # `--overwrite` + `xfer:make-backup no` : un fichier modifié est
+        # réécrit sur place, au lieu d'être effacé (ou renommé en sauvegarde)
+        # puis renvoyé — ce qui le rendait absent le temps de son envoi.
+        # Testé contre le passage réel du 16/10 (build d'avant -> build
+        # fusionné) en rejouant le journal lftp opération par opération :
+        # 7 319 références cassées en cours de transfert avec l'ancienne
+        # commande, 0 avec celle-ci ; 70 suppressions, toutes après le
+        # dernier envoi ; état final identique au build.
+        #
+        # Le `put ./dist/.htaccess` après les passes d'envoi est une sécurité explicite :
         # sans lui, un serveur FTP qui masque les fichiers point dans son
         # listing pourrait fausser la comparaison de `mirror` sur ce fichier
         # précis, dont dépend tout le routage des 268 pages.
@@ -96,8 +118,12 @@ jobs:
           user "$FTP_USERNAME" "$FTP_PASSWORD"
           cd ../domains/pcevar.fr/public_html
           pwd
-          mirror --reverse --delete --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
+          set xfer:make-backup no
+          mirror --reverse --overwrite --verbose --parallel=5 ./dist/assets/ assets
+          mirror --reverse --overwrite --verbose --parallel=5 ./dist/img/ img
+          mirror --reverse --overwrite --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json --exclude ^assets/ --exclude ^img/ ./dist/ .
           put ./dist/.htaccess
+          mirror --reverse --delete --only-missing --overwrite --verbose --parallel=5 --exclude-glob .git* --exclude-glob .ftp-deploy-sync-state.json ./dist/ .
           pwd
           ls -la
           echo "--- img/ ---"
