@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
-import Seo, { serviceSchema, breadcrumbSchema } from '../components/Seo.jsx'
-import { Prestations, GuaranteeBar, CtaSection, SectionTitle, LinkGrid } from '../components/Blocks.jsx'
+import Seo, { serviceSchema, breadcrumbSchema, faqPageSchema } from '../components/Seo.jsx'
+import { Prestations, GuaranteeBar, CtaSection, SectionTitle, LinkGrid, Faq } from '../components/Blocks.jsx'
 import Icon from '../components/Icon.jsx'
-import { services, whyChooseUs } from '../data/site.js'
-import { localTrades, localCities, localCopy, localPath, inCity, hasLocalPage } from '../data/local.js'
+import { company, services, whyChooseUs } from '../data/site.js'
+import { localTrades, localCities, localCopy, localFaq, localPath, inCity, hasLocalPage } from '../data/local.js'
 import { expertisePages } from '../data/expertise.js'
 
 /** Élision : "de plombier" mais "d'électricien" devant une voyelle. */
@@ -27,6 +27,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
   const inThisCity = inCity(city.name)
   const title = `${trade.label} ${inThisCity}`
   const path = localPath(tradeKey, cityKey)
+  const faq = localFaq(tradeKey, cityKey, company.phone)
   const expertise = expertisePages[trade.relatedExpertise]
   /* On ne lie une ville voisine que si la page existe vraiment pour CE
      métier : `pompe-a-chaleur` et `traitement-eau` ne couvrent que les 23
@@ -58,6 +59,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
             { name: trade.label, path: `/${trade.serviceKey}` },
             { name: title, path },
           ]),
+          faqPageSchema(faq),
         ]}
       />
 
@@ -122,6 +124,8 @@ export default function LocalPage({ tradeKey, cityKey }) {
           </div>
         </div>
       </section>
+
+      <Faq items={faq} title={`Questions fréquentes ${inThisCity}`} />
 
       <LinkGrid
         title="Pour aller plus loin"

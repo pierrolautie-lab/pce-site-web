@@ -616,6 +616,42 @@ export const localPages = Object.keys(localCities).flatMap((cityKey) => {
  * tous les métiers. C'est faux depuis l'ouverture de `pompe-a-chaleur` et
  * `traitement-eau` aux seules 23 villes historiques : les 16 autres n'ont
  * pas ces deux pages. Résultat, 10 liens pointaient vers des routes
+/**
+ * FAQ des pages locales (guide SEO du 25/11/2026, section 4b), rendue par
+ * LocalPage et reprise en FAQPage JSON-LD. Réponses volontairement sans
+ * délai chiffré ni promesse de créneau (CGV : « sans garantie de créneau
+ * fixe ») ; urgences 7j/7 et horaires de bureau confirmés par le client.
+ * `phone` est passé par l'appelant (company.phone, site.js) pour garder
+ * une seule source pour les coordonnées.
+ */
+export function localFaq(tradeKey, cityKey, phone) {
+  const trade = localTrades[tradeKey]
+  const loc = inCity(localCities[cityKey].name)
+  const detail = trade.detail.charAt(0).toUpperCase() + trade.detail.slice(1)
+  return [
+    {
+      q: `Dans quel délai intervenez-vous ${loc} ?`,
+      a: `Le délai dépend de la nature des travaux et de notre planning : nous vous proposons une date dès votre appel. Pour une urgence, nous répondons 7j/7 et intervenons dans les meilleurs délais, sans garantie de créneau fixe.`,
+    },
+    {
+      q: `Proposez-vous un service d’urgence ${loc} ?`,
+      a: `Oui. Fuite, panne de chauffage ou de climatisation : appelez le ${phone}. Nous répondons 7j/7, vous donnons les premiers conseils par téléphone et annonçons le prix avant toute intervention.`,
+    },
+    {
+      q: `Que prend en charge PCE pour ${trade.verb} ${loc} ?`,
+      a: `${detail}. PCE réunit aussi la plomberie, le chauffage, la climatisation, l’électricité, la piscine, le traitement de l’eau et la VMC : un seul interlocuteur pour tout le logement.`,
+    },
+    {
+      q: `Êtes-vous disponibles le week-end ${loc} ?`,
+      a: `Nos horaires de bureau vont du lundi au vendredi, de 7h30 à 18h00. Les urgences sont assurées 7j/7, week-end compris.`,
+    },
+    {
+      q: `Comment obtenir un devis ${loc} ?`,
+      a: `Appelez le ${phone} ou remplissez le formulaire de contact. Le devis est gratuit, sans engagement et détaillé poste par poste ; si besoin, nous passons d’abord sur place pour un relevé.`,
+    },
+  ]
+}
+
  * inexistantes (Draguignan, Sainte-Maxime, Fréjus, Lorgues, Salernes),
  * constaté le 27/08/2026 en croisant les liens internes et les routes
  * réellement générées.
