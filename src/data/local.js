@@ -515,10 +515,10 @@ export const localCities = {
   },
   /* --- Extension demandée par le client (27/11/2026, guide SEO du
      25/11) : Brignoles, Toulon, Hyères. Tous les métiers du catalogue.
-     ⚠️ `distanceKm` approximatif, NON vérifié par recherche routière :
-     il ne sert qu'à trier les liens « villes voisines », il n'est affiché
-     nulle part. Toulon et Hyères dépassent le « rayon de 50 km » cité dans
-     `whyChooseUs` (site.js) et le GeoCircle d'index.html : à harmoniser. */
+     `distanceKm` approximatif, validé tel quel par le client : il ne sert
+     qu'à trier les liens « villes voisines », il n'est affiché nulle part.
+     La zone affichée est passée de « 50 km autour de Lorgues » à « tout
+     le Var » à cette occasion (whyChooseUs, Organization.areaServed). */
   Brignoles: {
     name: 'Brignoles',
     distanceKm: 35,

@@ -130,7 +130,7 @@ export const whyChooseUs = [
   { icon: 'award', title: "Depuis 2005", text: 'Entreprise créée en 2005 en région parisienne et installée à Lorgues depuis 2020 : PCE intervient dans tout le Var pour vos travaux de plomberie, chauffage, climatisation, électricité et piscine.' },
   { icon: 'mapPin', title: 'Entreprise locale', text: 'Basée à Lorgues, nous intervenons rapidement dans toute la Dracénie et le Golfe de Saint-Tropez.' },
   { icon: 'clipboard', title: 'Devis gratuit', text: 'Étude personnalisée et devis détaillé, sans engagement.' },
-  { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans un rayon de 50 km autour de Lorgues.' },
+  { icon: 'truck', title: 'Intervention rapide', text: 'Disponibles du lundi au vendredi, 7h30-18h00, nous intervenons dans tout le Var.' },
   { icon: 'wrench', title: 'Matériel professionnel', text: 'Nous travaillons avec des marques reconnues pour garantir la qualité et la durabilité de nos installations.' },
   { icon: 'shieldCheck', title: 'Garantie des travaux', text: 'Tous nos chantiers sont couverts par la garantie décennale.' },
 ]
