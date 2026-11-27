@@ -10,6 +10,7 @@ export const expertisePages = {
     tradeKey: 'chauffagiste',
     servicePath: '/chauffage',
     h1: 'Installation de pompe à chaleur dans le Var',
+    metaTitle: 'Pompe à chaleur dans le Var | Étude, pose, entretien',
     metaDescription:
       "Installation de pompe à chaleur air/air ou air/eau dans le Var par PCE : étude thermique, dimensionnement, pose et entretien. Devis gratuit.",
     photo: { tags: 'heating', lock: 701 },
@@ -69,6 +70,7 @@ export const expertisePages = {
     tradeKey: 'climatisation',
     servicePath: '/climatisation',
     h1: 'Installation de climatisation réversible dans le Var',
+    metaTitle: 'Climatisation réversible dans le Var | Installation',
     metaDescription:
       'Climatisation réversible dans le Var : mono-split, multi-split, gainable. Bilan thermique, pose soignée et entretien réglementaire. Devis gratuit avec PCE.',
     photo: { tags: 'aircon', lock: 702 },
@@ -127,6 +129,7 @@ export const expertisePages = {
     tradeKey: 'plombier',
     servicePath: '/plomberie',
     h1: 'Rénovation de salle de bains dans le Var',
+    metaTitle: 'Rénovation de salle de bains dans le Var | Clé en main',
     metaDescription:
       'Rénovation de salle de bains dans le Var par PCE : douche italienne, double vasque, accessibilité PMR. Un seul interlocuteur, devis gratuit et détaillé.',
     photo: { tags: 'bathroom', lock: 703 },
@@ -181,6 +184,7 @@ export const expertisePages = {
     tradeKey: 'plombier',
     servicePath: '/plomberie',
     h1: 'Dépannage plomberie en urgence dans le Var',
+    metaTitle: 'Dépannage plomberie en urgence dans le Var | 7j/7',
     metaDescription:
       "Dépannage plomberie en urgence dans le Var : fuite, dégorgement, chauffe-eau en panne. PCE intervient rapidement depuis Lorgues. Devis gratuit.",
     photo: { tags: 'plumber', lock: 704 },
@@ -234,8 +238,8 @@ export const expertisePages = {
     tradeKey: 'chauffagiste',
     servicePath: '/chauffage',
     h1: 'Installation de chauffe-eau thermodynamique dans le Var',
+    metaTitle: 'Chauffe-eau thermodynamique dans le Var | Installation',
     /* <title> court (45 avec « — PCE ») : le h1 y dépassait 60. */
-    metaTitle: 'Chauffe-eau thermodynamique dans le Var',
     metaDescription:
       'Chauffe-eau thermodynamique dans le Var : COP élevé, forte baisse de la facture d\'eau chaude. Installation et entretien par PCE, devis gratuit.',
     photo: { tags: 'water-heater', lock: 705 },
@@ -288,6 +292,7 @@ export const expertisePages = {
     tradeKey: 'electricien',
     servicePath: '/electricite',
     h1: 'Mise aux normes électriques dans le Var',
+    metaTitle: 'Mise aux normes électriques dans le Var | NF C 15-100',
     metaDescription:
       'Mise aux normes électriques NF C 15-100 dans le Var : tableau, disjoncteurs différentiels, mise à la terre. Diagnostic et travaux par PCE, devis gratuit.',
     photo: { tags: 'electrical-panel', lock: 706 },
@@ -341,8 +346,8 @@ export const expertisePages = {
     tradeKey: 'electricien',
     servicePath: '/electricite',
     h1: 'Installation de borne de recharge pour véhicule électrique dans le Var',
+    metaTitle: 'Borne de recharge électrique dans le Var | Pose',
     /* <title> court (55 avec « — PCE ») : le h1 y dépassait 60. */
-    metaTitle: 'Borne de recharge véhicule électrique dans le Var',
     metaDescription:
       'Installation de borne de recharge dans le Var : puissance adaptée, ligne dédiée et différentiel conforme. Par PCE, électricien à Lorgues. Devis gratuit.',
     photo: { tags: 'ev-charger', lock: 707 },
@@ -395,6 +400,7 @@ export const expertisePages = {
     tradeKey: 'pisciniste',
     servicePath: '/piscine',
     h1: 'Entretien de piscine dans le Var',
+    metaTitle: 'Entretien de piscine dans le Var | Contrat annuel',
     metaDescription:
       'Entretien de piscine dans le Var : contrat annuel, traitement au sel ou au chlore, hivernage. PCE assure un suivi régulier de votre bassin, devis gratuit.',
     photo: { tags: 'pool', lock: 708 },
@@ -449,6 +455,7 @@ export const expertisePages = {
     tradeKey: 'chauffagiste',
     servicePath: '/chauffage',
     h1: 'Plancher chauffant dans le Var',
+    metaTitle: 'Plancher chauffant dans le Var | Neuf et rénovation',
     metaDescription:
       'Plancher chauffant hydraulique dans le Var : construction neuve ou rénovation, compatible pompe à chaleur. Conception et pose par PCE, devis gratuit.',
     photo: { tags: 'floor-heating', lock: 710 },

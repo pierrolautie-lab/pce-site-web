@@ -8,6 +8,7 @@
 export const articles = {
   'comment-choisir-pompe-a-chaleur': {
     title: 'Comment choisir sa pompe à chaleur ?',
+    metaTitle: "Comment choisir sa pompe à chaleur dans le Var ?",
     metaDescription:
       "Comment choisir sa pompe à chaleur dans le Var : air/air ou air/eau, puissance et COP. Les conseils de PCE, installateur à Lorgues.",
     photo: { tags: 'heating', lock: 801 },
@@ -154,6 +155,7 @@ export const articles = {
 
   'preparer-piscine-pour-ete': {
     title: "Préparer sa piscine pour l’été",
+    metaTitle: "Préparer sa piscine pour l’été dans le Var",
     metaDescription:
       "Préparer sa piscine pour l’été dans le Var : sortie d’hivernage, équilibrage de l’eau, vérification de la filtration. Les conseils de PCE, pisciniste.",
     photo: { tags: 'pool', lock: 805 },

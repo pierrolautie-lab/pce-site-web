@@ -15,7 +15,8 @@ export default function ChaudiereCondensation() {
   return (
     <>
       <Seo
-        title={data.title}
+        standalone
+        title="Chaudière à condensation dans le Var | Installation | PCE"
         description="Chaudière à condensation gaz ou bois/granulés : fonctionnement, économies et bénéfices écologiques. Installation par PCE à Lorgues (83)."
         path="/chauffage/chaudiere-condensation"
       />
