@@ -30,6 +30,9 @@ export const localTrades = {
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
     metaDetail: "sanitaire, salle de bains, recherche de fuite et chauffe-eau",
+    metaTitle: (loc) => `Plombier ${loc} | Dépannage 7j/7 | PCE`,
+    metaDescription: (loc) =>
+      `Installation, rénovation, recherche de fuite et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
   },
   chauffagiste: {
     urlSlug: 'chauffagiste',
@@ -42,6 +45,9 @@ export const localTrades = {
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
     metaDetail: "pompe à chaleur, chaudière gaz condensation et entretien",
+    metaTitle: (loc) => `Chauffagiste ${loc} | Pompe à chaleur | PCE`,
+    metaDescription: (loc) =>
+      `Pompe à chaleur, chaudière, plancher chauffant et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
   },
   climatisation: {
     urlSlug: 'climatisation',
@@ -54,6 +60,9 @@ export const localTrades = {
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
     metaDetail: "mono-split, multi-split et gainable, pose soignée",
+    metaTitle: (loc) => `Climatisation ${loc} | Installation | PCE`,
+    metaDescription: (loc) =>
+      `Climatisation réversible, gainable et multi-split ${loc} : pose, entretien et dépannage 7j/7. Devis gratuit, prix annoncé avant travaux.`,
   },
   electricien: {
     urlSlug: 'electricien',
@@ -65,6 +74,9 @@ export const localTrades = {
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
     metaDetail: "tableaux, mise aux normes NF C 15-100 et bornes de recharge",
+    metaTitle: (loc) => `Électricien ${loc} | Mise aux normes | PCE`,
+    metaDescription: (loc) =>
+      `Tableau électrique, mise aux normes, rénovation et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
   },
   pisciniste: {
     urlSlug: 'pisciniste',
@@ -76,6 +88,9 @@ export const localTrades = {
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
     metaDetail: "filtration, traitement au sel et local technique",
+    metaTitle: (loc) => `Pisciniste ${loc} | Entretien piscine | PCE`,
+    metaDescription: (loc) =>
+      `Filtration, pompe à chaleur, traitement de l’eau et entretien de piscine ${loc}. Devis gratuit, prix annoncé avant. PCE, artisan du Var.`,
   },
   /* --------------------------- Nouveaux métiers, ouverts aux 20 nouvelles villes */
   'traitement-eau': {
@@ -85,6 +100,12 @@ export const localTrades = {
     verb: 'le traitement de votre eau',
     detail: 'filtration fine, filtration de forage, charbon actif et traitement UV',
     metaDetail: 'filtration fine, forage, charbon actif et traitement UV',
+    metaTitle: (loc, cityName) =>
+      [...cityName].length <= 18
+        ? `Traitement de l’eau ${loc} | Adoucisseur | PCE`
+        : `Traitement de l’eau ${loc} | PCE`,
+    metaDescription: (loc) =>
+      `Adoucisseur, filtration et traitement UV ${loc}. L’eau du Var est calcaire : protégez vos équipements. Devis gratuit, PCE artisan du Var.`,
   },
   'pompe-a-chaleur': {
     urlSlug: 'pompe-a-chaleur',
@@ -95,6 +116,9 @@ export const localTrades = {
       'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     metaDetail: 'dimensionnement, pose et entretien air/eau et air/air',
+    metaTitle: (loc) => `Pompe à chaleur ${loc} | Installation | PCE`,
+    metaDescription: (loc) =>
+      `Installation de pompe à chaleur air/eau et air/air ${loc} : étude, pose et entretien. Devis gratuit, prix annoncé avant travaux. PCE, Var.`,
   },
   vmc: {
     urlSlug: 'installateur-vmc',
@@ -104,6 +128,12 @@ export const localTrades = {
     detail:
       'VMC simple flux autoréglable, hygroréglable ou double flux, en neuf comme en rénovation',
     metaDetail: 'simple flux, hygroréglable ou double flux',
+    metaTitle: (loc, cityName) =>
+      [...cityName].length <= 15
+        ? `Installateur VMC ${loc} | Pose et entretien | PCE`
+        : `Installateur VMC ${loc} | PCE`,
+    metaDescription: (loc) =>
+      `Pose et entretien de VMC simple et double flux ${loc}, en neuf comme en rénovation. Devis gratuit, prix annoncé avant travaux. PCE, Var.`,
   },
 }
 
@@ -518,14 +548,28 @@ const metaClosings = [
 
 const cityKeysInOrder = Object.keys(localCities)
 
-/** Génère l'intro et la méta-description d'une page locale, sans dupliquer le texte d'une combinaison à l'autre. */
+/**
+ * Génère l'intro, le titre et la méta-description d'une page locale.
+ *
+ * Titre et description viennent des gabarits `metaTitle` / `metaDescription`
+ * de chaque métier (27/11/2026) : métier + ville + raison d'appeler, la
+ * ville une seule fois. Limites 60 / 157 caractères, contrôlées sur les
+ * pages prérendues par `npm run check:meta`. VMC et traitement de l'eau
+ * raccourcissent leur titre au-delà de 15 / 18 caractères de nom de
+ * commune : seuils mesurés sur les 39 communes réelles (La Croix-Valmer,
+ * 15 caractères, tombe pile à 60 en version longue).
+ *
+ * `metaDetail` et `metaClosings` ne sont plus lus nulle part depuis ce
+ * changement (vérifié par grep) ; leur suppression attend validation.
+ */
 export function localCopy(tradeKey, cityKey) {
   const trade = localTrades[tradeKey]
   const city = localCities[cityKey]
-  const closing = metaClosings[cityKeysInOrder.indexOf(cityKey) % metaClosings.length]
+  const loc = inCity(city.name)
   return {
     intro: city.intro(trade),
-    metaDescription: `${trade.label} ${inCity(city.name)} (83) : ${trade.metaDetail}. ${closing}`,
+    metaTitle: trade.metaTitle(loc, city.name),
+    metaDescription: trade.metaDescription(loc),
   }
 }
 

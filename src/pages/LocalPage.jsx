@@ -23,7 +23,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
   const trade = localTrades[tradeKey]
   const city = localCities[cityKey]
   const service = services[trade.serviceKey]
-  const { intro, metaDescription } = localCopy(tradeKey, cityKey)
+  const { intro, metaTitle, metaDescription } = localCopy(tradeKey, cityKey)
   const inThisCity = inCity(city.name)
   const title = `${trade.label} ${inThisCity}`
   const path = localPath(tradeKey, cityKey)
@@ -42,7 +42,8 @@ export default function LocalPage({ tradeKey, cityKey }) {
   return (
     <>
       <Seo
-        title={title}
+        standalone
+        title={metaTitle}
         description={metaDescription}
         path={path}
         jsonLd={[
