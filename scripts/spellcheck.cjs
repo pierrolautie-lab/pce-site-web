@@ -73,7 +73,7 @@ const KNOWN_PLACES = [
   'La Garde-Freinet', 'Saint-Tropez', 'Les Issambres', 'Callas', 'Bagnols-en-Forêt',
   'Fréjus', 'Roquebrune-sur-Argens', 'Le Muy', 'Puget-sur-Argens', 'Trans',
   'Saint-Raphaël', 'Seillans', 'Fayence', 'Montauroux', 'Callian', 'Tourrettes',
-  'Saint-Antonin-du-Var',
+  'Saint-Antonin-du-Var', 'Brignoles', 'Toulon', 'Hyères', 'Giens',
 ];
 for (const p of KNOWN_PLACES) EXCEPTIONS.add(p.toLowerCase());
 

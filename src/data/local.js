@@ -497,6 +497,33 @@ export const localCities = {
     intro: (t) =>
       `Au pied du massif rouge qui domine la plaine de l’Argens, les quartiers du Rocher de Roquebrune mêlent villas récentes et mas restaurés, souvent à l’écart du centre. PCE y assure ${t.verb} : ${t.detail}. Devis gratuit et intervention organisée depuis Lorgues, y compris sur les accès un peu isolés.`,
   },
+  /* --- Extension demandée par le client (27/11/2026, guide SEO du
+     25/11) : Brignoles, Toulon, Hyères. Tous les métiers du catalogue.
+     ⚠️ `distanceKm` approximatif, NON vérifié par recherche routière :
+     il ne sert qu'à trier les liens « villes voisines », il n'est affiché
+     nulle part. Toulon et Hyères dépassent le « rayon de 50 km » cité dans
+     `whyChooseUs` (site.js) et le GeoCircle d'index.html : à harmoniser. */
+  Brignoles: {
+    name: 'Brignoles',
+    distanceKm: 35,
+    neighbors: ['Le Luc', 'Le Thoronet'],
+    intro: (t) =>
+      `Capitale de la Provence Verte, Brignoles réunit un centre ancien aux maisons de ville serrées et des quartiers pavillonnaires plus récents en périphérie. PCE y prend en charge ${t.verb} : ${t.detail}. Devis gratuit et sans engagement, intervention planifiée sur rendez-vous.`,
+  },
+  Toulon: {
+    name: 'Toulon',
+    distanceKm: 80,
+    neighbors: ['Hyères', 'Brignoles'],
+    intro: (t) =>
+      `Préfecture du Var, Toulon concentre appartements en copropriété, maisons de ville et villas des quartiers résidentiels. Pour ${t.verb}, PCE intervient sur rendez-vous : ${t.detail}. Devis gratuit, prix annoncé avant travaux.`,
+  },
+  'Hyères': {
+    name: 'Hyères',
+    distanceKm: 85,
+    neighbors: ['Toulon', 'La Môle'],
+    intro: (t) =>
+      `Entre la presqu’île de Giens et la vieille ville, Hyères mêle résidences principales et maisons secondaires occupées une partie de l’année. PCE y assure ${t.verb} — ${t.detail}. Devis gratuit et intervention organisée selon l’occupation du logement.`,
+  },
 }
 
 /* ----------------------------------------- Réciprocité du voisinage ------
