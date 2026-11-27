@@ -12,7 +12,7 @@ export const expertisePages = {
     h1: 'Installation de pompe à chaleur dans le Var',
     metaTitle: 'Pompe à chaleur dans le Var | Étude, pose, entretien',
     metaDescription:
-      "Installation de pompe à chaleur air/air ou air/eau dans le Var par PCE : étude thermique, dimensionnement, pose et entretien. Devis gratuit.",
+      "Pompe à chaleur air/air ou air/eau dans le Var : étude thermique, dimensionnement, pose et entretien par un artisan local. Devis gratuit, prix annoncé avant.",
     photo: { tags: 'heating', lock: 701 },
     intro: [
       "Remplacer une chaudière au fioul ou au gaz par une pompe à chaleur est aujourd'hui l'un des projets de rénovation énergétique les plus demandés dans le Var. PCE, basé à Lorgues, accompagne particuliers et professionnels de la Dracénie au Golfe de Saint-Tropez dans le choix, le dimensionnement et la pose de leur pompe à chaleur.",
@@ -72,7 +72,7 @@ export const expertisePages = {
     h1: 'Installation de climatisation réversible dans le Var',
     metaTitle: 'Climatisation réversible dans le Var | Installation',
     metaDescription:
-      'Climatisation réversible dans le Var : mono-split, multi-split, gainable. Bilan thermique, pose soignée et entretien réglementaire. Devis gratuit avec PCE.',
+      "Climatisation réversible dans le Var : mono-split, multi-split ou gainable. Bilan thermique, pose et entretien. Devis gratuit, prix annoncé avant travaux.",
     photo: { tags: 'aircon', lock: 702 },
     intro: [
       "Avec des étés de plus en plus chauds entre Lorgues, la Dracénie et le littoral varois, la climatisation réversible n'est plus un simple confort d'été : c'est aussi une solution de chauffage d'appoint économique en intersaison. PCE installe des systèmes mono-split, multi-split et gainable, dimensionnés pour rafraîchir efficacement sans faire exploser la facture d'électricité.",
@@ -131,7 +131,7 @@ export const expertisePages = {
     h1: 'Rénovation de salle de bains dans le Var',
     metaTitle: 'Rénovation de salle de bains dans le Var | Clé en main',
     metaDescription:
-      'Rénovation de salle de bains dans le Var par PCE : douche italienne, double vasque, accessibilité PMR. Un seul interlocuteur, devis gratuit et détaillé.',
+      "Rénovation de salle de bains clé en main dans le Var : douche à l’italienne, double vasque, accès PMR. Un seul interlocuteur, devis gratuit et détaillé.",
     photo: { tags: 'bathroom', lock: 703 },
     intro: [
       "Douche italienne, double vasque, accessibilité PMR : la rénovation de salle de bains est l'un des chantiers de plomberie les plus fréquents que PCE réalise à Lorgues et dans tout le Var. Contrairement à une simple réparation, ce type de projet touche à la fois la plomberie, l'étanchéité, l'électricité et parfois le carrelage — d'où l'intérêt d'avoir un seul interlocuteur du premier relevé jusqu'à la remise des clés.",
@@ -186,7 +186,7 @@ export const expertisePages = {
     h1: 'Dépannage plomberie en urgence dans le Var',
     metaTitle: 'Dépannage plomberie en urgence dans le Var | 7j/7',
     metaDescription:
-      "Dépannage plomberie en urgence dans le Var : fuite, dégorgement, chauffe-eau en panne. PCE intervient rapidement depuis Lorgues. Devis gratuit.",
+      "Fuite, canalisation bouchée, chauffe-eau en panne : dépannage plomberie 7j/7 dans le Var. Conseils dès l’appel et prix annoncé avant intervention.",
     photo: { tags: 'plumber', lock: 704 },
     intro: [
       "Fuite d'eau qui s'aggrave, chauffe-eau qui ne chauffe plus, canalisation bouchée un dimanche soir : PCE intervient dans le Var pour les urgences de plomberie qui ne peuvent pas attendre. Basée à Lorgues, notre équipe se déplace dans la Dracénie et jusqu'au Golfe de Saint-Tropez pour limiter les dégâts et remettre votre installation en état rapidement.",
@@ -241,7 +241,7 @@ export const expertisePages = {
     metaTitle: 'Chauffe-eau thermodynamique dans le Var | Installation',
     /* <title> court (45 avec « — PCE ») : le h1 y dépassait 60. */
     metaDescription:
-      'Chauffe-eau thermodynamique dans le Var : COP élevé, forte baisse de la facture d\'eau chaude. Installation et entretien par PCE, devis gratuit.',
+      "Chauffe-eau thermodynamique dans le Var : l’eau chaude chauffée par l’air ambiant, une facture en forte baisse. Pose et entretien par PCE, devis gratuit.",
     photo: { tags: 'water-heater', lock: 705 },
     intro: [
       "Le chauffe-eau thermodynamique utilise les calories de l'air ambiant pour chauffer l'eau sanitaire, avec une consommation électrique nettement inférieure à un cumulus classique. PCE installe ce type d'équipement dans le Var, en particulier dans les logements équipés d'un cellier, d'un garage ou d'une buanderie suffisamment ventilé pour alimenter la pompe à chaleur intégrée.",
@@ -294,7 +294,7 @@ export const expertisePages = {
     h1: 'Mise aux normes électriques dans le Var',
     metaTitle: 'Mise aux normes électriques dans le Var | NF C 15-100',
     metaDescription:
-      'Mise aux normes électriques NF C 15-100 dans le Var : tableau, disjoncteurs différentiels, mise à la terre. Diagnostic et travaux par PCE, devis gratuit.',
+      "Tableau, différentiels, mise à la terre : mise aux normes NF C 15-100 dans le Var par un électricien local. Devis gratuit, prix annoncé avant travaux.",
     photo: { tags: 'electrical-panel', lock: 706 },
     intro: [
       "Tableau électrique vétuste, absence de disjoncteur différentiel, prises non reliées à la terre : de nombreux logements anciens du Var ne répondent plus aux exigences de sécurité actuelles. PCE réalise des diagnostics et des mises aux normes électriques conformes à la norme NF C 15-100, que ce soit pour une vente, une location ou simplement votre sécurité au quotidien.",
@@ -349,7 +349,7 @@ export const expertisePages = {
     metaTitle: 'Borne de recharge électrique dans le Var | Pose',
     /* <title> court (55 avec « — PCE ») : le h1 y dépassait 60. */
     metaDescription:
-      'Installation de borne de recharge dans le Var : puissance adaptée, ligne dédiée et différentiel conforme. Par PCE, électricien à Lorgues. Devis gratuit.',
+      "Borne de recharge à domicile dans le Var : puissance adaptée, ligne dédiée et protection conforme. Pose par PCE, électricien local. Devis gratuit.",
     photo: { tags: 'ev-charger', lock: 707 },
     intro: [
       "Avec l'essor des véhicules électriques et hybrides rechargeables dans le Var, de plus en plus de particuliers et d'entreprises équipent leur garage ou leur parking d'une borne de recharge (IRVE). PCE, électricien basé à Lorgues, installe des bornes adaptées à votre véhicule et à la puissance disponible sur votre installation électrique.",
@@ -402,7 +402,7 @@ export const expertisePages = {
     h1: 'Entretien de piscine dans le Var',
     metaTitle: 'Entretien de piscine dans le Var | Contrat annuel',
     metaDescription:
-      'Entretien de piscine dans le Var : contrat annuel, traitement au sel ou au chlore, hivernage. PCE assure un suivi régulier de votre bassin, devis gratuit.',
+      "Entretien de piscine dans le Var : contrat annuel, traitement au sel ou au chlore, mise en route et hivernage. Un suivi régulier du bassin, devis gratuit.",
     photo: { tags: 'pool', lock: 708 },
     intro: [
       "Une piscine mal entretenue s'encrasse vite sous le soleil du Var, entre pollen, poussière et forte fréquentation estivale. PCE propose un entretien régulier de votre bassin — filtration, traitement de l'eau, hivernage — pour garder une eau saine toute la saison, avec ou sans contrat annuel selon vos besoins.",
@@ -457,7 +457,7 @@ export const expertisePages = {
     h1: 'Plancher chauffant dans le Var',
     metaTitle: 'Plancher chauffant dans le Var | Neuf et rénovation',
     metaDescription:
-      'Plancher chauffant hydraulique dans le Var : construction neuve ou rénovation, compatible pompe à chaleur. Conception et pose par PCE, devis gratuit.',
+      "Plancher chauffant hydraulique dans le Var, en neuf ou en rénovation, idéal avec une pompe à chaleur. Conception et pose par PCE, devis gratuit.",
     photo: { tags: 'floor-heating', lock: 710 },
     intro: [
       "Confort thermique homogène, absence de radiateurs visibles, compatibilité avec une pompe à chaleur basse température : le plancher chauffant hydraulique séduit de plus en plus de propriétaires du Var, en construction comme en rénovation. PCE conçoit et installe des systèmes de plancher chauffant adaptés à votre projet et à votre source de chaleur.",
