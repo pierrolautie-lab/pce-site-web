@@ -40,7 +40,7 @@ const EXCEPTIONS = new Set(
     'thermodynamique', 'thermodynamiques', 'frigorigènes', 'frigorigène',
     'haussmannien', 'haussmannienne', 'bastide', 'bastides',
     'piscinier', 'pisciniste', 'inverter', 'monovitesse', 'bi-énergie',
-    'scop', 'orp', 'vdi', "éco-ptz", 'physico-chimique', 'week-end', 'week-ends',
+    'scop', 'orp', 'vdi', 'mousseur', 'mousseurs', "éco-ptz", 'physico-chimique', 'week-end', 'week-ends',
     // Mot rare mais correct (Larousse : "attribuer une valeur superieure
     // a la valeur reelle"), remonte par erreur au premier passage --
     // dictionnaire general incomplet, pas une faute.
@@ -87,7 +87,7 @@ for (const p of KNOWN_PLACES) EXCEPTIONS.add(p.toLowerCase());
    remontaient comme faux positifs a chaque execution -- le prefixe
    "aujourd" n'etant pas une particule d'elision reconnue, le mot entier
    reste groupe et n'est plus jamais scinde. */
-const WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[-'’][A-Za-zÀ-ÖØ-öø-ÿ]+)*['’]?/g;
+const WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:[-'’][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*['’]?/g;
 const ELISION_RE = /^(l|d|j|m|t|s|c|n|qu|jusqu|lorsqu|puisqu|quoiqu)['’](.+)$/i;
 
 function tokenize(text) {

@@ -143,6 +143,10 @@ export const PHOTO_SLOTS = {
   1114: { page: 'Conseils', zone: 'Article', sujet: 'pH piscine' },
   1115: { page: 'Conseils', zone: 'Article', sujet: 'Redox piscine' },
   1116: { page: 'Conseils', zone: 'Article', sujet: 'Fuite d’eau' },
+  1117: { page: 'Conseils', zone: 'Article', sujet: 'Déboucher une canalisation' },
+  1118: { page: 'Conseils', zone: 'Article', sujet: 'Choisir son chauffe-eau' },
+  1119: { page: 'Conseils', zone: 'Article', sujet: 'Économiser l’eau' },
+  1120: { page: 'Conseils', zone: 'Article', sujet: 'Plomberie de piscine' },
 }
 
 /**
@@ -388,6 +392,10 @@ export const clientPhotos = {
   1114: '/img/piscine-hero-bassin.jpg', // pourquoi-ph-piscine-varie
   1115: '/img/piscine-hero-bassin.jpg', // a-quoi-sert-le-redox
   1116: '/img/accueil-carte-depannage.jpg', // fuite-d-eau-reperer-que-faire
+  1117: '/img/real-canalisation-obstruee.jpg', // deboucher-canalisation-sans-produit-chimique
+  1118: '/img/real-ballon-thermo.jpg', // choisir-son-chauffe-eau
+  1119: '/img/plomberie-hero-salle-de-bains.jpg', // economiser-eau-maison
+  1120: '/img/accueil-carte-piscine.jpg', // piscine-var-problemes-plomberie
 
   /* --- Nouveaux chantiers Électricité / Climatisation / bornes --- */
   910: '/img/electricite-galerie-tableau-cablage.jpg',

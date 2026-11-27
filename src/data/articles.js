@@ -747,6 +747,240 @@ export const articles = {
     closing:
       "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
   },
+
+  /* Articles blog du guide SEO client (27/11/2026). Aucun prix, délai,
+     aide financière ni certification cités. */
+  'deboucher-canalisation-sans-produit-chimique': {
+    title: 'Comment déboucher une canalisation sans produit chimique ?',
+    metaTitle: 'Déboucher une canalisation sans produit chimique',
+    metaDescription:
+      "Évier, lavabo ou douche bouchés : ventouse, siphon, furet, eau chaude. Les méthodes sans produit chimique, et quand appeler un plombier dans le Var.",
+    photo: { tags: 'plumbing', lock: 1117 },
+    relatedExpertise: 'depannage-plomberie-urgence-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Un évier qui se vide mal ou une douche qui stagne se règlent souvent sans déboucheur chimique. Ces produits, très corrosifs, attaquent les joints et les canalisations anciennes, sont dangereux en cas de projection et ne viennent pas toujours à bout d’un bouchon de cheveux ou de graisse. Voici les méthodes à essayer dans l’ordre, du plus simple au plus efficace.",
+    ],
+    sections: [
+      {
+        h2: '1. L’eau chaude et le bicarbonate',
+        paragraphs: [
+          "Pour un écoulement simplement ralenti par la graisse, versez une grande casserole d’eau très chaude dans l’évacuation. Sur des tuyaux en PVC, évitez l’eau bouillante, qui peut déformer les raccords : de l’eau chaude du robinet, en quantité, suffit.",
+          "Le mélange bicarbonate de soude et vinaigre blanc, laissé agir une demi-heure puis rincé à l’eau chaude, aide à décoller les dépôts légers. Il ne viendra pas à bout d’un vrai bouchon, mais c’est un bon entretien mensuel pour l’évier de cuisine.",
+        ],
+      },
+      {
+        h2: '2. La ventouse',
+        paragraphs: [
+          "Remplissez le bac de quelques centimètres d’eau pour que la ventouse fasse joint, bouchez le trop-plein avec un chiffon humide, puis actionnez-la franchement une dizaine de fois. Sur un évier double, bouchez le second bac : sans cela, la pression s’échappe par l’autre évacuation.",
+        ],
+      },
+      {
+        h2: '3. Le démontage du siphon',
+        paragraphs: [
+          "Sous un lavabo ou un évier, la plupart des bouchons se forment dans le siphon. Placez une bassine dessous, dévissez les deux écrous à la main, videz et rincez le siphon, puis remontez-le en vérifiant que les joints sont bien en place. C’est souvent la méthode la plus rapide et la plus propre.",
+        ],
+      },
+      {
+        h2: '4. Le furet',
+        paragraphs: [
+          "Si le bouchon est plus loin dans la canalisation, un furet manuel (un câble souple que l’on fait tourner) permet de l’atteindre et de le fragmenter. Introduisez-le sans forcer, tournez dans le sens horaire en avançant, puis rincez abondamment.",
+        ],
+      },
+      {
+        h2: 'Quand appeler un plombier',
+        paragraphs: [
+          "Plusieurs évacuations bouchées en même temps, des remontées d’eau dans la douche quand on tire la chasse, des glouglous ou des odeurs persistantes : le problème se situe en aval, sur la canalisation principale. Un bouchon qui revient tous les mois signale aussi un défaut de pente, un tuyau entartré ou une racine. PCE inspecte alors la canalisation à la caméra pour trouver la cause avant de la traiter.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Les déboucheurs chimiques abîment-ils les canalisations ?',
+        a: "Utilisés souvent, ils fragilisent les joints et les tuyaux anciens en fonte ou en cuivre, et ils restent dangereux pour la peau et les yeux. Ils sont aussi à proscrire avec une fosse septique, dont ils détruisent les bactéries.",
+      },
+      {
+        q: 'Comment éviter que l’évier se bouche à nouveau ?',
+        a: "Ne versez pas d’huile de cuisson dans l’évier, placez une grille sur les évacuations de douche pour retenir les cheveux et passez un peu d’eau chaude après chaque vaisselle grasse. Un démontage du siphon une ou deux fois par an fait le reste.",
+      },
+      {
+        q: 'Que faire si les WC sont bouchés ?',
+        a: "Essayez d’abord une ventouse spéciale WC (à collerette), puis un furet adapté à la cuvette. Si l’eau remonte ailleurs dans la maison, le bouchon est sur la canalisation principale : appelez un plombier.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'choisir-son-chauffe-eau': {
+    title: 'Choisir son chauffe-eau : cumulus, thermodynamique ou solaire ?',
+    metaTitle: 'Choisir son chauffe-eau : cumulus, thermo ou solaire',
+    metaDescription:
+      "Cumulus électrique, chauffe-eau thermodynamique ou solaire : fonctionnement, consommation, place et capacité. Le comparatif de PCE, plombier dans le Var.",
+    photo: { tags: 'plumbing', lock: 1118 },
+    relatedExpertise: 'installation-chauffe-eau-thermodynamique-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Le chauffe-eau est souvent le deuxième poste de consommation d’énergie d’un logement, après le chauffage. Au moment de le remplacer, trois grandes familles se présentent : le cumulus électrique, le chauffe-eau thermodynamique et le chauffe-eau solaire. Chacune a sa logique, selon votre logement, votre famille et l’emplacement disponible.",
+    ],
+    sections: [
+      {
+        h2: 'Le cumulus électrique : simple et compact',
+        paragraphs: [
+          "Une résistance chauffe l’eau stockée dans un ballon, le plus souvent la nuit en heures creuses. C’est l’appareil le plus simple à installer et le moins encombrant, qui trouve sa place dans un placard ou une salle de bains. En contrepartie, c’est aussi celui qui consomme le plus d’électricité pour la même quantité d’eau chaude.",
+          "Préférez une résistance stéatite (isolée de l’eau dans un fourreau) à une résistance blindée : elle s’entartre beaucoup moins, un vrai avantage avec l’eau calcaire de nombreuses communes du Var.",
+        ],
+      },
+      {
+        h2: 'Le chauffe-eau thermodynamique : la pompe à chaleur de l’eau chaude',
+        paragraphs: [
+          "Il récupère les calories de l’air ambiant ou extérieur pour chauffer l’eau, et consomme en général deux à trois fois moins d’électricité qu’un cumulus de même capacité. Il demande plus de place : il s’installe idéalement dans un garage, une buanderie ou un cellier d’au moins une dizaine de mètres cubes, ou avec une gaine vers l’extérieur.",
+          "Le climat varois lui est favorable : les températures douces une grande partie de l’année maintiennent un bon rendement. Le léger bruit du ventilateur incite à éviter la pose à côté d’une chambre.",
+        ],
+      },
+      {
+        h2: 'Le chauffe-eau solaire : l’énergie gratuite, avec une étude préalable',
+        paragraphs: [
+          "Des capteurs posés en toiture ou au sol chauffent un ballon, avec un appoint électrique ou raccordé à la chaudière pour les jours couverts. Avec l’ensoleillement du Var, il couvre une large part des besoins annuels. Son installation est plus lourde : orientation et inclinaison du toit, place pour le ballon, règles d’urbanisme parfois strictes en secteur protégé.",
+        ],
+      },
+      {
+        h2: 'Quelle capacité choisir ?',
+        paragraphs: [
+          "Comptez en ordre de grandeur 50 litres par personne pour un ballon électrique ou thermodynamique : un 100 litres pour une à deux personnes, un 200 litres pour trois à quatre, un 250 à 300 litres au-delà ou avec une baignoire. Un ballon trop petit oblige à le relancer en journée, un ballon trop grand chauffe de l’eau pour rien.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Quelle est la durée de vie d’un chauffe-eau ?',
+        a: "Généralement entre 10 et 15 ans pour un cumulus ou un chauffe-eau thermodynamique. Le contrôle de l’anode et la vidange du ballon tous les deux ans environ prolongent nettement sa vie, surtout avec une eau calcaire.",
+      },
+      {
+        q: 'Peut-on remplacer un cumulus par un chauffe-eau thermodynamique au même endroit ?',
+        a: "Pas toujours : le thermodynamique est plus haut et a besoin d’un volume d’air suffisant ou d’une gaine vers l’extérieur. PCE vérifie l’emplacement lors de la visite avant de vous proposer un modèle.",
+      },
+      {
+        q: 'Faut-il un groupe de sécurité ?',
+        a: "Oui, il est obligatoire sur tout chauffe-eau à accumulation. Il protège le ballon contre la surpression et doit être manœuvré une fois par mois pour éviter qu’il ne s’entartre.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'economiser-eau-maison': {
+    title: 'Économiser l’eau dans sa maison : les bons gestes et les bons équipements',
+    metaTitle: 'Économiser l’eau à la maison : gestes et équipements',
+    metaDescription:
+      "Mousseurs, chasse double commande, réducteur de pression, récupération d’eau de pluie : comment économiser l’eau dans le Var. Les conseils de PCE.",
+    photo: { tags: 'plumbing', lock: 1119 },
+    relatedExpertise: 'renovation-salle-de-bain-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Dans le Var, les arrêtés sécheresse qui restreignent l’arrosage et le remplissage des piscines sont devenus fréquents en été. Réduire sa consommation d’eau, c’est à la fois alléger sa facture et mieux traverser ces périodes. Bonne nouvelle : les équipements les plus efficaces sont aussi les moins chers.",
+    ],
+    sections: [
+      {
+        h2: 'Les petits équipements qui changent tout',
+        paragraphs: [
+          "Un mousseur (ou aérateur) vissé au bout du robinet mélange de l’air à l’eau et réduit nettement le débit sans perte de confort. Même principe pour la douche avec un pommeau économe. Ce sont les économies les plus rapides à obtenir, pour un investissement minime.",
+          "Aux toilettes, une chasse double commande remplace un mécanisme ancien à grand volume unique. Si vous changez de WC, choisissez un modèle à petit réservoir.",
+        ],
+      },
+      {
+        h2: 'Surveiller la pression et les fuites',
+        paragraphs: [
+          "Une pression trop forte augmente le débit de chaque robinet, fatigue les flexibles et provoque des coups de bélier. Au-delà de 3 bars, un réducteur de pression posé après le compteur protège l’installation et limite la consommation.",
+          "Une chasse d’eau qui coule en continu ou un robinet qui goutte peuvent représenter des dizaines de mètres cubes par an. Le test du compteur sur une nuit, décrit dans notre article sur les fuites d’eau, permet de vérifier que rien ne s’échappe.",
+        ],
+      },
+      {
+        h2: 'Récupérer l’eau de pluie',
+        paragraphs: [
+          "Une cuve de récupération d’eau de pluie alimente l’arrosage du jardin, et peut aussi servir aux WC et au lavage des sols avec un réseau séparé, clairement identifié et sans aucun lien avec le réseau d’eau potable. Dans le Var, où les pluies se concentrent à l’automne et au printemps, une cuve bien dimensionnée permet de constituer une réserve pour l’été.",
+        ],
+      },
+      {
+        h2: 'Les bons gestes au quotidien',
+        paragraphs: [
+          "Une douche courte consomme bien moins qu’un bain. Faites tourner lave-linge et lave-vaisselle à pleine charge, arrosez le jardin tôt le matin ou le soir pour limiter l’évaporation et couvrez la piscine hors baignade : une bâche réduit fortement l’évaporation du bassin en été.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Un mousseur réduit-il le confort au robinet ?',
+        a: "Non : l’air mélangé à l’eau donne un jet plus doux et volumineux, avec une sensation de débit proche d’un robinet classique. Il se nettoie simplement en le dévissant pour retirer le calcaire.",
+      },
+      {
+        q: 'Comment connaître la pression de mon installation ?',
+        a: "Un manomètre vissé sur un robinet extérieur ou sur la machine à laver donne la valeur en quelques secondes. PCE la contrôle à chaque intervention de plomberie et pose un réducteur si elle dépasse les valeurs recommandées.",
+      },
+      {
+        q: 'Peut-on utiliser l’eau de pluie dans la maison ?',
+        a: "Oui, pour les WC et le lavage des sols, avec un réseau totalement séparé du réseau d’eau potable et des robinets signalés. Elle ne doit jamais servir à la boisson, à la cuisine ni à la toilette.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'piscine-var-problemes-plomberie': {
+    title: 'Piscine dans le Var : les problèmes de plomberie les plus courants',
+    metaTitle: 'Piscine dans le Var : pannes de plomberie courantes',
+    metaDescription:
+      "Perte d’eau, prise d’air, pompe qui désamorce, local technique humide : les problèmes de plomberie de piscine les plus fréquents et comment les éviter.",
+    photo: { tags: 'pool', lock: 1120 },
+    relatedExpertise: 'entretien-piscine-var',
+    relatedService: '/piscine',
+    intro: [
+      "Une piscine, c’est avant tout un réseau hydraulique : skimmers, bonde de fond, pompe, filtre, refoulements et canalisations enterrées. Dans le Var, entre les fortes chaleurs, l’eau calcaire et les mouvements de terrain, certains problèmes reviennent souvent. Voici comment les reconnaître et les prévenir.",
+    ],
+    sections: [
+      {
+        h2: 'Le niveau d’eau baisse : évaporation ou fuite ?',
+        paragraphs: [
+          "En plein été, un bassin non couvert perd naturellement de l’eau par évaporation. Pour faire la différence avec une fuite, faites le test du seau : posez sur une marche un seau rempli à la même hauteur que la piscine, filtration coupée, et comparez les deux niveaux après 24 heures. Si la piscine baisse nettement plus que le seau, il y a une fuite.",
+          "Refaites ensuite le test filtration en marche : une perte plus forte pointe vers les canalisations de refoulement, une perte identique vers le liner, une pièce à sceller ou une canalisation d’aspiration. PCE recherche les fuites de bassin et de canalisations enterrées sans casser.",
+        ],
+      },
+      {
+        h2: 'La pompe désamorce ou fait des bulles',
+        paragraphs: [
+          "Des bulles au refoulement ou une pompe qui perd son amorçage signalent une prise d’air côté aspiration : niveau d’eau trop bas dans les skimmers, couvercle du préfiltre mal serré, joint torique sec ou fendu, vanne mal fermée. Commencez par vérifier le niveau et graisser le joint du couvercle avec une graisse silicone.",
+        ],
+      },
+      {
+        h2: 'La pression du filtre monte',
+        paragraphs: [
+          "Un manomètre qui grimpe au-dessus de sa valeur habituelle indique un filtre encrassé : un contre-lavage s’impose. Si la pression reste haute juste après, le média filtrant est colmaté par le calcaire ou les graisses et doit être nettoyé ou remplacé. Une pression anormalement basse, à l’inverse, oriente vers un problème d’aspiration.",
+        ],
+      },
+      {
+        h2: 'Le local technique, point faible souvent négligé',
+        paragraphs: [
+          "Humidité, raccords qui suintent, ventilation absente : le local technique vieillit vite. Une petite fuite sur une vanne ou un raccord collé finit par corroder la pompe, le coffret électrique et l’électrolyseur. Un contrôle visuel régulier et un local ventilé évitent la plupart des pannes coûteuses.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien d’eau une piscine perd-elle par évaporation dans le Var ?',
+        a: "En été, quelques millimètres par jour sont courants, davantage par mistral ou forte chaleur. Une bâche ou une couverture limite fortement cette perte.",
+      },
+      {
+        q: 'Faut-il vidanger les canalisations en hiver ?',
+        a: "Dans la majeure partie du Var, un hivernage actif (filtration réduite) suffit. Sur les communes de l’arrière-pays exposées au gel, le hors-gel de la filtration ou la purge des canalisations exposées protège le réseau.",
+      },
+      {
+        q: 'PCE intervient-il sur une piscine construite par un autre professionnel ?',
+        a: "Oui : diagnostic, réparation de canalisations, remplacement de pompe ou de filtre et rénovation du local technique, quel que soit le constructeur d’origine.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
 }
 
 export const articleSlugs = Object.keys(articles)
