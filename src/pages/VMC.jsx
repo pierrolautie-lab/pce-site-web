@@ -167,7 +167,7 @@ export default function VMC() {
           <>
             VMC
             <span className="mt-2 block text-title-lg font-bold text-white/85">
-              Ventilation mécanique contrôlée
+              Ventilation mécanique dans le Var
             </span>
           </>
         }

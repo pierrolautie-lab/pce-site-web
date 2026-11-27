@@ -106,7 +106,7 @@ export default function Electricite() {
         icon="bolt"
         iconClass="text-gold-400"
         haloClass="from-gold-400/[.18]"
-        title="Électricité"
+        title={<>Électricité<span className="mt-2 block text-title-lg font-bold text-white/85">dans le Var</span></>}
         subtitle="Sécurité, performance et mise aux normes"
         intro="Installation, rénovation, mise aux normes et dépannage électrique pour les particuliers dans tout le Var. Des solutions fiables, durables et conformes aux normes actuelles pour votre sécurité et votre confort."
         photo={{ ...service.hero, alt: 'Tableau électrique ouvert installé par PCE' }}

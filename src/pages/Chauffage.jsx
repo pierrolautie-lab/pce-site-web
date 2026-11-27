@@ -69,7 +69,7 @@ export default function Chauffage() {
         icon="flame"
         iconClass="text-gold-500"
         haloClass="from-gold-500/[.18]"
-        title="Chauffage"
+        title={<>Chauffage<span className="mt-2 block text-title-lg font-bold text-white/85">dans le Var</span></>}
         subtitle="Confort, performance et économies d'énergie"
         intro="PCE vous accompagne dans tous vos projets de chauffage : installation, rénovation, entretien et dépannage de vos équipements pour un confort optimal en toutes saisons dans tout le Var."
         photo={{ ...service.hero, alt: 'Chaudière murale, ballon et collecteurs installés par PCE en local technique' }}

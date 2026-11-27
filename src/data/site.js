@@ -438,7 +438,7 @@ export const services = {
        que `piscine.page` : regroupés ici plutôt qu'en dur dans le JSX.
     ------------------------------------------------------------------ */
     page: {
-      h1: ['Climatisation', 'Confort, performance', "et économies d’énergie"],
+      h1: ['Climatisation', 'dans le Var', 'Confort et économies'],
       intro:
         'Installation, entretien et dépannage de systèmes de climatisation pour les particuliers dans tout le Var.',
       heroChecklist: [
@@ -724,7 +724,7 @@ export const services = {
        dur dans le composant, pour rester modifiables sans toucher au JSX.
     ------------------------------------------------------------------ */
     page: {
-      h1: ['Piscine', "Des bassins d’exception,", 'Un service complet'],
+      h1: ['Piscine', 'dans le Var', 'Un service complet'],
       intro:
         "De la conception à l’entretien, en passant par l’équipement et l’automatisation, PCE vous accompagne pour profiter pleinement de votre piscine tout au long de l’année dans tout le Var.",
 

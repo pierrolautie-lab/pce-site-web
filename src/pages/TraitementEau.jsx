@@ -150,7 +150,7 @@ export default function TraitementEau() {
         icon="filter"
         iconClass="text-azure-300"
         haloClass="from-azure-300/[.18]"
-        title="Traitement de l'eau"
+        title={<>Traitement de l’eau<span className="mt-2 block text-title-lg font-bold text-white/85">dans le Var</span></>}
         subtitle="Pour un confort sain et durable"
         intro={
           <>
