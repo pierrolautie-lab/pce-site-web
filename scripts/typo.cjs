@@ -20,12 +20,6 @@
  * original, pour un diff limite aux seuls caracteres changes (voir
  * README.md pour pourquoi ce choix compte : il rend le diff relisible et
  * l'operation verifiable).
- *
- * Limite connue : `metaClosings` dans local.js (tableau de 4 phrases au
- * niveau racine du module, hors de toute cle d'objet) n'est pas couvert --
- * la resolution de cle gouvernante ne remonte pas jusqu'a un `const`
- * nomme. Verifie manuellement sans caractere concerne a ce jour ; a
- * surveiller si son contenu change.
  */
 const fs = require('fs');
 const path = require('path');

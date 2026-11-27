@@ -31,7 +31,6 @@ export const localTrades = {
     relatedExpertise: 'depannage-plomberie-urgence-var',
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
-    metaDetail: "sanitaire, salle de bains, recherche de fuite et chauffe-eau",
     metaTitle: (loc) => `Plombier ${loc} | Dépannage 7j/7 | PCE`,
     metaDescription: (loc) =>
       `Installation, rénovation, recherche de fuite et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
@@ -48,7 +47,6 @@ export const localTrades = {
     relatedExpertise: 'installation-pompe-a-chaleur-var',
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
-    metaDetail: "pompe à chaleur, chaudière gaz condensation et entretien",
     metaTitle: (loc) => `Chauffagiste ${loc} | Pompe à chaleur | PCE`,
     metaDescription: (loc) =>
       `Pompe à chaleur, chaudière, plancher chauffant et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
@@ -65,7 +63,6 @@ export const localTrades = {
     relatedExpertise: 'installation-climatisation-reversible-var',
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
-    metaDetail: "mono-split, multi-split et gainable, pose soignée",
     metaTitle: (loc) => `Climatisation ${loc} | Installation | PCE`,
     metaDescription: (loc) =>
       `Climatisation réversible, gainable et multi-split ${loc} : pose, entretien et dépannage 7j/7. Devis gratuit, prix annoncé avant travaux.`,
@@ -81,7 +78,6 @@ export const localTrades = {
     relatedExpertise: 'mise-aux-normes-electriques-var',
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
-    metaDetail: "tableaux, mise aux normes NF C 15-100 et bornes de recharge",
     metaTitle: (loc) => `Électricien ${loc} | Mise aux normes | PCE`,
     metaDescription: (loc) =>
       `Tableau électrique, mise aux normes, rénovation et dépannage 7j/7 ${loc}. Prix annoncé avant travaux, devis gratuit. PCE, artisan du Var.`,
@@ -97,7 +93,6 @@ export const localTrades = {
     relatedExpertise: 'entretien-piscine-var',
     /* Version courte, réservée à la méta-description : la balise doit
        tenir sous 155 caractères, et `detail` en fait déjà jusqu'à 119. */
-    metaDetail: "filtration, traitement au sel et local technique",
     metaTitle: (loc) => `Pisciniste ${loc} | Entretien piscine | PCE`,
     metaDescription: (loc) =>
       `Filtration, pompe à chaleur, traitement de l’eau et entretien de piscine ${loc}. Devis gratuit, prix annoncé avant. PCE, artisan du Var.`,
@@ -111,7 +106,6 @@ export const localTrades = {
     photoAlt: 'Local technique de traitement de l’eau installé par PCE',
     verb: 'le traitement de votre eau',
     detail: 'filtration fine, filtration de forage, charbon actif et traitement UV',
-    metaDetail: 'filtration fine, forage, charbon actif et traitement UV',
     metaTitle: (loc, cityName) =>
       [...cityName].length <= 18
         ? `Traitement de l’eau ${loc} | Adoucisseur | PCE`
@@ -129,7 +123,6 @@ export const localTrades = {
     detail:
       'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
     relatedExpertise: 'installation-pompe-a-chaleur-var',
-    metaDetail: 'dimensionnement, pose et entretien air/eau et air/air',
     metaTitle: (loc) => `Pompe à chaleur ${loc} | Installation | PCE`,
     metaDescription: (loc) =>
       `Installation de pompe à chaleur air/eau et air/air ${loc} : étude, pose et entretien. Devis gratuit, prix annoncé avant travaux. PCE, Var.`,
@@ -143,7 +136,6 @@ export const localTrades = {
     verb: 'votre VMC',
     detail:
       'VMC simple flux autoréglable, hygroréglable ou double flux, en neuf comme en rénovation',
-    metaDetail: 'simple flux, hygroréglable ou double flux',
     metaTitle: (loc, cityName) =>
       [...cityName].length <= 15
         ? `Installateur VMC ${loc} | Pose et entretien | PCE`
@@ -650,22 +642,6 @@ for (const city of Object.values(localCities)) {
   })
 }
 
-/* 4 clôtures différentes pour les méta-descriptions, choisies en rotation
-   par ville (voir `localCopy`) pour que deux villes voisines n'aient pas
-   la même phrase de fin. */
-/* Quatre formules courtes, en rotation d'une ville à l'autre. Les
-   précédentes montaient jusqu'à 100 caractères à elles seules et
-   poussaient chaque description bien au-delà de la limite d'affichage de
-   Google : les 280 pages locales étaient tronquées. */
-const metaClosings = [
-  'Devis gratuit.',
-  'Devis gratuit, intervention rapide.',
-  'PCE, artisan à Lorgues.',
-  'Devis gratuit, déplacement rapide.',
-]
-
-const cityKeysInOrder = Object.keys(localCities)
-
 /**
  * Génère l'intro, le titre et la méta-description d'une page locale.
  *
@@ -676,9 +652,6 @@ const cityKeysInOrder = Object.keys(localCities)
  * raccourcissent leur titre au-delà de 15 / 18 caractères de nom de
  * commune : seuils mesurés sur les 39 communes réelles (La Croix-Valmer,
  * 15 caractères, tombe pile à 60 en version longue).
- *
- * `metaDetail` et `metaClosings` ne sont plus lus nulle part depuis ce
- * changement (vérifié par grep) ; leur suppression attend validation.
  */
 export function localCopy(tradeKey, cityKey) {
   const trade = localTrades[tradeKey]
