@@ -23,6 +23,8 @@ export const localTrades = {
     urlSlug: 'plombier',
     label: 'Plombier',
     serviceKey: 'plomberie',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Salle de bains rénovée par PCE',
     verb: 'vos travaux de plomberie',
     detail:
       "installation sanitaire, rénovation de salle de bains, recherche de fuite non destructive et remplacement de chauffe-eau",
@@ -38,6 +40,8 @@ export const localTrades = {
     urlSlug: 'chauffagiste',
     label: 'Chauffagiste',
     serviceKey: 'chauffage',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Chaudière murale, ballon et collecteurs installés par PCE',
     verb: 'vos équipements de chauffage',
     detail:
       'pompes à chaleur, chaudières à gaz à condensation, planchers chauffants et entretien annuel',
@@ -53,6 +57,8 @@ export const localTrades = {
     urlSlug: 'climatisation',
     label: 'Climatisation',
     serviceKey: 'climatisation',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Groupe extérieur de climatisation installé par PCE',
     verb: 'votre climatisation',
     detail:
       'mono-split, multi-split et gainable, posés avec soin pour rester discrets et silencieux',
@@ -68,6 +74,8 @@ export const localTrades = {
     urlSlug: 'electricien',
     label: 'Électricien',
     serviceKey: 'electricite',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Tableau électrique installé par PCE',
     verb: 'votre installation électrique',
     detail: 'tableaux électriques, mise aux normes NF C 15-100, bornes de recharge et dépannage',
     relatedExpertise: 'mise-aux-normes-electriques-var',
@@ -82,6 +90,8 @@ export const localTrades = {
     urlSlug: 'pisciniste',
     label: 'Pisciniste',
     serviceKey: 'piscine',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Bassin éclairé, réalisation PCE',
     verb: 'votre piscine',
     detail: 'filtration, traitement au sel, chauffage du bassin et automatisation du local technique',
     relatedExpertise: 'entretien-piscine-var',
@@ -97,6 +107,8 @@ export const localTrades = {
     urlSlug: 'traitement-eau',
     label: "Traitement de l’eau",
     serviceKey: 'traitement-de-l-eau',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Local technique de traitement de l’eau installé par PCE',
     verb: 'le traitement de votre eau',
     detail: 'filtration fine, filtration de forage, charbon actif et traitement UV',
     metaDetail: 'filtration fine, forage, charbon actif et traitement UV',
@@ -111,6 +123,8 @@ export const localTrades = {
     urlSlug: 'pompe-a-chaleur',
     label: 'Pompe à chaleur',
     serviceKey: 'chauffage',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'Chaudière murale, ballon et collecteurs installés par PCE',
     verb: 'votre pompe à chaleur',
     detail:
       'étude de dimensionnement, installation et entretien de pompes à chaleur air/eau et air/air',
@@ -124,6 +138,8 @@ export const localTrades = {
     urlSlug: 'installateur-vmc',
     label: 'Installateur VMC',
     serviceKey: 'vmc',
+    /* Ce que montre la photo du héros (alt des pages locales). */
+    photoAlt: 'VMC double flux installée par PCE',
     verb: 'votre VMC',
     detail:
       'VMC simple flux autoréglable, hygroréglable ou double flux, en neuf comme en rénovation',
@@ -600,22 +616,6 @@ export function localCopy(tradeKey, cityKey) {
   }
 }
 
-/** Toutes les combinaisons publiées : chaque ville expose ses métiers propres
- *  (`city.trades`), ou par défaut l'ensemble des 7 métiers du catalogue. */
-export const localPages = Object.keys(localCities).flatMap((cityKey) => {
-  const tradeKeys = localCities[cityKey].trades || Object.keys(localTrades)
-  return tradeKeys.map((tradeKey) => ({ tradeKey, cityKey }))
-})
-
-/**
- * Une page locale existe-t-elle pour ce couple métier × ville ?
- *
- * Même règle que `localPages` ci-dessus, et c'est tout l'intérêt : elle est
- * écrite une seule fois. Les liens « villes voisines » de LocalPage.jsx la
- * dérivaient auparavant de leur côté, en supposant que toute ville portait
- * tous les métiers. C'est faux depuis l'ouverture de `pompe-a-chaleur` et
- * `traitement-eau` aux seules 23 villes historiques : les 16 autres n'ont
- * pas ces deux pages. Résultat, 10 liens pointaient vers des routes
 /**
  * FAQ des pages locales (guide SEO du 25/11/2026, section 4b), rendue par
  * LocalPage et reprise en FAQPage JSON-LD. Réponses volontairement sans
@@ -652,6 +652,22 @@ export function localFaq(tradeKey, cityKey, phone) {
   ]
 }
 
+/** Toutes les combinaisons publiées : chaque ville expose ses métiers propres
+ *  (`city.trades`), ou par défaut l'ensemble des 7 métiers du catalogue. */
+export const localPages = Object.keys(localCities).flatMap((cityKey) => {
+  const tradeKeys = localCities[cityKey].trades || Object.keys(localTrades)
+  return tradeKeys.map((tradeKey) => ({ tradeKey, cityKey }))
+})
+
+/**
+ * Une page locale existe-t-elle pour ce couple métier × ville ?
+ *
+ * Même règle que `localPages` ci-dessus, et c'est tout l'intérêt : elle est
+ * écrite une seule fois. Les liens « villes voisines » de LocalPage.jsx la
+ * dérivaient auparavant de leur côté, en supposant que toute ville portait
+ * tous les métiers. C'est faux depuis l'ouverture de `pompe-a-chaleur` et
+ * `traitement-eau` aux seules 23 villes historiques : les 16 autres n'ont
+ * pas ces deux pages. Résultat, 10 liens pointaient vers des routes
  * inexistantes (Draguignan, Sainte-Maxime, Fréjus, Lorgues, Salernes),
  * constaté le 27/08/2026 en croisant les liens internes et les routes
  * réellement générées.

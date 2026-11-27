@@ -927,7 +927,9 @@ export const services = {
     card: 'Filtration, purification et désinfection de votre eau.',
     metaTitle: "Traitement de l’eau dans le Var | Adoucisseur | PCE",
     metaDescription: "Adoucisseur, filtration, UV et eau de forage. L’eau du Var est calcaire : protégez vos équipements. Devis gratuit, prix annoncé avant travaux.",
-    hero: { tags: 'bathroom', lock: 300 },
+    /* 302 et non 300 : le slot 300 n’a jamais reçu de photo, et les pages
+       locales « traitement de l’eau » affichaient le logo à la place. */
+    hero: { tags: 'bathroom', lock: 302 },
 
     prestations: [
       { icon: 'filter', title: 'Filtration fine', label: 'Sous évier, eau de boisson' },
@@ -1123,6 +1125,9 @@ export const services = {
     card: 'VMC simple flux, hygroréglable et double flux, installation et entretien.',
     metaTitle: "Installateur VMC dans le Var | Simple et double flux | PCE",
     metaDescription: "Pose et entretien de VMC simple flux et double flux, en neuf comme en rénovation. Artisan local du Var. Devis gratuit, prix annoncé avant travaux.",
+    /* Photo du héros de la page VMC, reprise par les pages locales
+       « installateur VMC » (elles affichaient le logo faute de `hero`). */
+    hero: { tags: 'house', lock: 521 },
 
     prestations: [
       { icon: 'fan', title: 'VMC simple flux autoréglable', label: 'Débit constant, la solution la plus répandue' },
