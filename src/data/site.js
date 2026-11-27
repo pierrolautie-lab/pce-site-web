@@ -186,8 +186,8 @@ export const pageMeta = {
     metaDescription: "Guides pratiques d’un artisan du Var : entretien, pannes courantes, choix d’équipement et économies d’énergie. Des réponses claires, sans jargon.",
   },
   aPropos: {
-    metaTitle: 'PCE, artisan tout corps d’état dans le Var | Depuis 2005',
-    metaDescription: "Créée en 2005, installée dans le Var depuis 2020. Sept métiers réunis sous le même toit, sans sous-traitance. Garantie décennale et assurance RC Pro.",
+    metaTitle: 'PCE, artisan du Var | 20 ans de métier, 1 800 chantiers',
+    metaDescription: "Créée en 2005, installée dans le Var depuis 2020 : plus de 20 ans de métier et 1 800 chantiers réalisés. Sept métiers sous le même toit, garantie décennale.",
   },
   contact: {
     metaTitle: 'Contacter PCE | Devis gratuit plombier chauffagiste Var',
