@@ -47,7 +47,12 @@ export default function LocalPage({ tradeKey, cityKey }) {
         description={metaDescription}
         path={path}
         jsonLd={[
-          serviceSchema({ name: title, description: metaDescription, path }),
+          serviceSchema({
+            name: title,
+            description: metaDescription,
+            path,
+            areaServed: { '@type': 'City', name: city.name, addressRegion: 'Var', addressCountry: 'FR' },
+          }),
           breadcrumbSchema([
             { name: 'Accueil', path: '/' },
             { name: trade.label, path: `/${trade.serviceKey}` },

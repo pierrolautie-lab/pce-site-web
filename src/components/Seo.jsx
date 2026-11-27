@@ -36,8 +36,15 @@ export function breadcrumbSchema(items) {
   }
 }
 
-/** Construit la donnée structurée Service (schema.org) pour une page métier. */
-export function serviceSchema({ name, description, path }) {
+/** Zone desservie par défaut (pages métier) : la zone réelle d'intervention. */
+const DEFAULT_AREA = ['Lorgues', 'Dracénie', 'Golfe de Saint-Tropez']
+
+/**
+ * Construit la donnée structurée Service (schema.org) pour une page métier.
+ * `areaServed` : les pages locales passent leur commune (objet City), pour ne
+ * plus annoncer « Lorgues, Dracénie, Golfe » sur /plombier-draguignan.
+ */
+export function serviceSchema({ name, description, path, areaServed = DEFAULT_AREA }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -45,9 +52,10 @@ export function serviceSchema({ name, description, path }) {
     name: `${name} — PCE`,
     description,
     url: `${company.url}${path}`,
-    areaServed: ['Lorgues', 'Dracénie', 'Golfe de Saint-Tropez'],
+    areaServed,
     provider: {
       '@type': 'HomeAndConstructionBusiness',
+      '@id': `${company.url}/#localbusiness`,
       name: company.name,
       telephone: company.phoneHref.replace('tel:', ''),
       url: company.url,
