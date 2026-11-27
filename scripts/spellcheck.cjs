@@ -74,6 +74,8 @@ const KNOWN_PLACES = [
   'Fréjus', 'Roquebrune-sur-Argens', 'Le Muy', 'Puget-sur-Argens', 'Trans',
   'Saint-Raphaël', 'Seillans', 'Fayence', 'Montauroux', 'Callian', 'Tourrettes',
   'Saint-Antonin-du-Var', 'Brignoles', 'Toulon', 'Hyères', 'Giens',
+  // Rivières, lieux et architecte cités dans les paragraphes « terrain » (sourcés).
+  'Nartuby', 'Endre', 'Malpasset', 'Spoerry',
 ];
 for (const p of KNOWN_PLACES) EXCEPTIONS.add(p.toLowerCase());
 

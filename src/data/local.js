@@ -207,6 +207,21 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Draguignan et son agglomération font partie du cœur de notre zone d’intervention : à une dizaine de minutes de notre atelier, PCE y assure ${t.verb} au quotidien — ${t.detail}. Un devis gratuit, sans surcoût de déplacement.`,
+    terrain: {
+      heading: "Intervenir à Draguignan",
+      paragraphs: [
+        "Draguignan n’a pas une eau, mais plusieurs. La ville est desservie par plusieurs réseaux de distribution, et le contrôle sanitaire y mesure des duretés très différentes d’un quartier à l’autre, d’une eau moyennement calcaire à une eau très dure. Avant de conseiller un équipement, nous mesurons donc la dureté au robinet du logement, plutôt que de nous fier à une moyenne communale.",
+        "La ville garde aussi la mémoire de la crue de la Nartuby du 15 juin 2010, qui a touché Draguignan, Trans-en-Provence, Le Muy et Les Arcs. Dans les secteurs proches des cours d’eau, la position du tableau électrique, du compteur et de la chaudière n’est pas un détail.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, cette dureté variable se traduit par des chauffe-eau entartrés, des mitigeurs qui grippent et des débits qui baissent avec les années. Un relevé de dureté sur place permet de dire si un adoucisseur se justifie, ou si un simple entretien régulier du ballon suffit.",
+        chauffagiste:
+          "Pour le chauffage, le calcaire attaque d’abord les échangeurs et la production d’eau chaude. Dans les quartiers où l’eau est la plus dure, nous traitons l’eau du circuit à la mise en service et prévoyons un entretien adapté de la chaudière ou de la pompe à chaleur.",
+        electricien:
+          "En électricité, nous vérifions la hauteur du tableau et des prises dans les pièces les plus basses du logement, et nous proposons de séparer les circuits du rez-de-chaussée lorsque la configuration le permet, pour pouvoir les couper indépendamment.",
+      },
+    },
   },
   Vidauban: {
     name: 'Vidauban',
@@ -298,6 +313,21 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Sur le Golfe de Saint-Tropez, Sainte-Maxime fait partie des communes littorales où PCE se déplace pour ${t.verb} : ${t.detail}. Nous y planifions nos interventions à l’avance, avec un devis toujours gratuit.`,
+    terrain: {
+      heading: "Intervenir à Sainte-Maxime",
+      paragraphs: [
+        "Sainte-Maxime compte parmi les communes du littoral varois où les résidences secondaires forment la majorité des logements, selon l’INSEE. Beaucoup de maisons et d’appartements restent fermés plusieurs mois, puis se remplissent d’un coup à l’approche de l’été.",
+        "Cette saisonnalité change tout pour l’entretien. Une petite fuite qui coule pendant l’hiver dans un logement vide, ou une climatisation qui n’a pas tourné depuis un an, ne se découvrent souvent qu’au moment de l’arrivée. L’eau du réseau y est moyennement calcaire.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, nous proposons pour les résidences secondaires une vérification avant la saison, avec contrôle des fuites, du chauffe-eau et des robinets d’arrêt, et la pose d’une vanne générale facile à couper au départ.",
+        climatisation:
+          "Pour la climatisation, l’entretien se programme de préférence au printemps, avant l’arrivée des occupants et la période de forte demande. Nous vérifions le groupe extérieur, exposé à l’air marin, et l’évacuation des condensats.",
+        pisciniste:
+          "Pour la piscine, la remise en route après l’hivernage se planifie avant l’été, avec contrôle de la filtration, de l’équilibre de l’eau et des équipements du local technique, pour un bassin prêt à l’arrivée des occupants.",
+      },
+    },
   },
   Fréjus: {
     name: 'Fréjus',
@@ -306,6 +336,19 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Fréjus et son agglomération constituent l’une des zones les plus demandées de notre secteur d’intervention élargi. PCE y assure ${t.verb} — ${t.detail} — avec la même exigence de qualité que sur tout notre secteur. Devis gratuit, sans engagement.`,
+    terrain: {
+      heading: "Intervenir à Fréjus",
+      paragraphs: [
+        "Fréjus est une ville à plusieurs visages. Le centre historique, autour de la cité épiscopale, aligne des immeubles anciens aux réseaux souvent repris par morceaux. Port-Fréjus a été aménagé sur l’ancien quartier de Fréjus-Plage, en partie détruit en 1959 par la rupture du barrage de Malpasset. Saint-Aygulf, station balnéaire née à la fin du XIXe siècle, mêle villas anciennes et constructions récentes.",
+        "L’eau, distribuée par plusieurs réseaux, est moins calcaire qu’en Dracénie mais reste variable d’un quartier à l’autre. En bord de mer, l’air salin use plus vite tout ce qui est installé en extérieur.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, les immeubles du centre ancien demandent de lire un réseau avant d’y toucher, avec des colonnes communes et des raccords de matériaux différents. Sur les villas du littoral, nous privilégions des équipements extérieurs résistants à la corrosion.",
+        climatisation:
+          "Pour la climatisation, l’exposition à l’air salin du littoral impose un groupe extérieur protégé et placé à l’abri des embruns, avec un entretien plus suivi qu’à l’intérieur des terres. En copropriété, l’emplacement du groupe se valide d’abord avec le règlement de l’immeuble.",
+      },
+    },
   },
   /* Quartier balnéaire de Fréjus, traité à part avec un texte volontairement
      différent (résidences secondaires, remises en service saisonnières) pour
@@ -334,6 +377,23 @@ export const localCities = {
     neighbors: ['La Motte', 'Roquebrune-sur-Argens'],
     intro: (t) =>
       `Aux portes de l’autoroute A8, Le Muy fait partie du bassin dracénois où PCE intervient couramment pour ${t.verb} : ${t.detail}. Devis gratuit et intervention organisée, à une vingtaine de minutes de notre atelier.`,
+    terrain: {
+      heading: "Intervenir au Muy",
+      paragraphs: [
+        "Le Muy est traversé par l’Argens, la Nartuby et l’Endre, et fait partie des communes touchées par la crue de juin 2010. Dans les secteurs proches des cours d’eau, la place des équipements techniques au rez-de-chaussée mérite une attention particulière.",
+        "L’eau y est dure. Le contrôle sanitaire, sur les deux réseaux qui desservent la commune, mesure une eau nettement calcaire, qui entartre rapidement les chauffe-eau, les échangeurs et la robinetterie.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, cette dureté justifie souvent un adoucisseur, ou au minimum un entretien régulier du chauffe-eau. Nous mesurons la dureté au robinet avant de recommander quoi que ce soit.",
+        'traitement-eau':
+          "Pour le traitement de l’eau, la dureté mesurée au Muy fait de l’adoucisseur la solution la plus souvent pertinente. Nous le dimensionnons selon la consommation du foyer et la dureté relevée sur place, et nous prévoyons une prise d’eau non adoucie pour la boisson.",
+        electricien:
+          "En électricité, dans les maisons situées près des cours d’eau, nous vérifions la hauteur du tableau et des prises du rez-de-chaussée, et nous proposons de séparer les circuits des pièces basses pour pouvoir les couper indépendamment.",
+        chauffagiste:
+          "Pour le chauffage, l’eau dure impose de traiter l’eau du circuit à la mise en service et d’entretenir régulièrement la production d’eau chaude, que l’on installe une chaudière ou une pompe à chaleur.",
+      },
+    },
   },
   'La Motte': {
     name: 'La Motte',
@@ -407,6 +467,21 @@ export const localCities = {
     neighbors: ['Cogolin', 'Port-Grimaud'],
     intro: (t) =>
       `Grimaud et son arrière-pays font partie de notre zone d’intervention élargie sur le Golfe de Saint-Tropez. PCE y assure ${t.verb} — ${t.detail} — avec la réactivité d’un artisan varois. Devis gratuit, sans engagement.`,
+    terrain: {
+      heading: "Intervenir à Grimaud et Port-Grimaud",
+      paragraphs: [
+        "Grimaud, ce sont deux visages dans une même commune. Le village perché, dominé par son château du XIe siècle, garde des maisons anciennes aux murs épais et aux accès étroits. En contrebas, Port-Grimaud, la cité lacustre construite entre 1966 et 1972 par l’architecte François Spoerry sur d’anciens marécages, compte quelque 2 500 maisons le long des canaux.",
+        "Ces deux tissus n’appellent pas les mêmes précautions. Dans le village, il faut composer avec la pente et l’ancienneté des réseaux. À Port-Grimaud, avec la proximité immédiate de l’eau, l’humidité et des logements souvent occupés une partie de l’année seulement.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, nous conseillons, pour les maisons fermées une partie de l’année, une vanne d’arrêt générale facilement accessible et un contrôle des réseaux avant chaque réouverture. Dans le village, les réseaux anciens se diagnostiquent avant toute rénovation de salle de bains.",
+        climatisation:
+          "Pour la climatisation, l’emplacement du groupe extérieur se décide avec soin à Port-Grimaud comme dans le village, où l’architecture est encadrée. Nous proposons des solutions discrètes, et nous programmons l’entretien avant la saison d’occupation.",
+        electricien:
+          "En électricité, l’humidité ambiante de Port-Grimaud rend la protection différentielle et l’état des circuits extérieurs prioritaires. Dans le village, les installations anciennes justifient souvent un diagnostic avant tout ajout d’équipement.",
+      },
+    },
   },
   Cogolin: {
     name: 'Cogolin',
