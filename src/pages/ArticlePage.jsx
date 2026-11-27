@@ -228,6 +228,6 @@ export default function ArticlePage({ slug }) {
    l'autre, comme le faisait la <Route> dédiée. */
 export function ArticleRoute() {
   const { slug } = useParams()
-  if (!articles[slug]) return <NotFound />
+  if (!articleSlugs.includes(slug)) return <NotFound />
   return <ArticlePage key={slug} slug={slug} />
 }

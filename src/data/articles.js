@@ -870,6 +870,7 @@ export const articles = {
   },
 
   'economiser-eau-maison': {
+    publishAt: '2026-12-04',
     title: 'Économiser l’eau dans sa maison : les bons gestes et les bons équipements',
     metaTitle: 'Économiser l’eau à la maison : gestes et équipements',
     metaDescription:
@@ -927,6 +928,7 @@ export const articles = {
   },
 
   'piscine-var-problemes-plomberie': {
+    publishAt: '2026-12-04',
     title: 'Piscine dans le Var : les problèmes de plomberie les plus courants',
     metaTitle: 'Piscine dans le Var : pannes de plomberie courantes',
     metaDescription:
@@ -983,4 +985,11 @@ export const articles = {
   },
 }
 
-export const articleSlugs = Object.keys(articles)
+/* Publication programmée : un article portant `publishAt` (AAAA-MM-JJ)
+   n’apparaît (liste, plan du site, sitemap, prérendu, route) qu’à partir
+   de cette date, au build suivant. Le déploiement du jour est relancé
+   par une tâche programmée (workflow_dispatch de deploy.yml). */
+const today = new Date().toISOString().slice(0, 10)
+export const articleSlugs = Object.keys(articles).filter(
+  (slug) => !articles[slug].publishAt || articles[slug].publishAt <= today
+)
