@@ -6,6 +6,7 @@ import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar } from '../components/Blocks.jsx'
 import { articles, articleSlugs } from '../data/articles.js'
 import { CATEGORIES, categoryFor } from '../data/categories.js'
+import { pageMeta } from '../data/site.js'
 
 /* Icône propre à chaque article, pour casser la répétition visuelle au
    sein d'une même catégorie (sinon toutes les cartes « Piscine » par
@@ -47,8 +48,9 @@ export default function Conseils() {
   return (
     <>
       <Seo
-        title="Conseils"
-        description="Conseils de PCE sur la plomberie, le chauffage, la climatisation, l'électricité, la piscine et le traitement de l'eau, tirés de nos chantiers dans le Var."
+        standalone
+        title={pageMeta.conseils.metaTitle}
+        description={pageMeta.conseils.metaDescription}
         path="/conseils"
       />
       <PageHero

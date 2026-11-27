@@ -144,7 +144,8 @@ export default function VMC() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/vmc"
         jsonLd={[

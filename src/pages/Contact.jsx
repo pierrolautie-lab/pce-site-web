@@ -6,7 +6,7 @@ import { HeroBackgroundPhoto, HeroTextVeil } from '../components/HeroPhoto.jsx'
 import Seo from '../components/Seo.jsx'
 import { GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { trackEvent } from '../components/Analytics.jsx'
-import { company, serviceList } from '../data/site.js'
+import { company, pageMeta, serviceList } from '../data/site.js'
 
 /* Même photo, même mécanique que le héros de l'accueil (voir
    HeroPhoto.jsx) — le véhicule détouré posé directement sur le fond marine
@@ -83,8 +83,9 @@ export default function Contact() {
   return (
     <>
       <Seo
-        title="Contact"
-        description="Demandez un devis gratuit à PCE, artisan à Lorgues (83) : plomberie, chauffage, climatisation, électricité, piscine et traitement de l'eau. Réponse rapide."
+        standalone
+        title={pageMeta.contact.metaTitle}
+        description={pageMeta.contact.metaDescription}
         path="/contact"
       />
       <Hero />

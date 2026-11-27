@@ -70,7 +70,8 @@ export default function Plomberie() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/plomberie"
         jsonLd={[

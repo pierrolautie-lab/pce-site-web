@@ -47,7 +47,8 @@ export default function Chauffage() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/chauffage"
         jsonLd={[

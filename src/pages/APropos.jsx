@@ -5,14 +5,15 @@ import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
 import { Wordmark } from '../components/Brand.jsx'
-import { areasDetail, company, milestones, serviceList, stats, values } from '../data/site.js'
+import { areasDetail, company, milestones, pageMeta, serviceList, stats, values } from '../data/site.js'
 
 export default function APropos() {
   return (
     <>
       <Seo
-        title="À propos"
-        description="PCE, artisan à Lorgues (83) depuis 2020, fort de vingt ans de métier : cinq métiers réunis sous le même toit et plus de 1 800 interventions dans le Var."
+        standalone
+        title={pageMeta.aPropos.metaTitle}
+        description={pageMeta.aPropos.metaDescription}
         path="/a-propos"
       />
       <PageHero

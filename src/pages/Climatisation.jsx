@@ -90,7 +90,8 @@ export default function Climatisation() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/climatisation"
         jsonLd={[

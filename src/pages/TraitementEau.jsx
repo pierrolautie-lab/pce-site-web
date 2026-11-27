@@ -131,7 +131,8 @@ export default function TraitementEau() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/traitement-de-l-eau"
         jsonLd={[

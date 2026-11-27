@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { company } from '../data/site.js'
+import { company, pageMeta } from '../data/site.js'
 
 /** Met à jour une balise <meta> existante (par name ou property), sans en créer de nouvelle. */
 function setMeta(selector, content) {
@@ -98,9 +98,11 @@ export default function Seo({
   jsonLd = null,
 }) {
   useEffect(() => {
-    /* `standalone` : le titre est déjà complet (utilisé pour l'accueil, qui
-       reprend le <title> riche d'index.html plutôt que le gabarit
-       « Page — PCE » des autres pages). */
+    /* `standalone` : le titre est déjà complet et se termine par « | PCE »
+       (accueil, 7 pages métier, dépannage, réalisations, conseils, à propos,
+       contact, pages locales — voir `pageMeta`/`services` dans site.js et
+       `localCopy` dans local.js). Sans lui, gabarit « Page — PCE », que les
+       pages légales, articles et pages expertise utilisent encore. */
     const fullTitle = standalone ? title : `${title} — ${company.name}`
     const url = `${company.url}${path}`
 
@@ -132,7 +134,7 @@ export default function Seo({
        la page, pour ne pas laisser le titre d'une page métier « fuiter »
        sur la suivante avant que son propre Seo ne s'exécute. */
     return () => {
-      document.title = `${company.name} — Plomberie, chauffage, climatisation à Lorgues (83)`
+      document.title = pageMeta.accueil.metaTitle
       setMeta('meta[name="robots"]', 'index, follow')
       if (scriptEl) scriptEl.remove()
     }

@@ -87,7 +87,8 @@ export default function Electricite() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/electricite"
         jsonLd={[

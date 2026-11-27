@@ -4,7 +4,7 @@ import Photo from '../components/Photo.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Seo from '../components/Seo.jsx'
 import { CtaSection, GuaranteeBar, SectionTitle } from '../components/Blocks.jsx'
-import { projects, stats } from '../data/site.js'
+import { pageMeta, projects, stats } from '../data/site.js'
 
 /* Les filtres sont déduits des chantiers réellement publiés : inutile de
    proposer une catégorie vide au visiteur. */
@@ -29,8 +29,9 @@ export default function Realisations() {
   return (
     <>
       <Seo
-        title="Réalisations"
-        description="Chantiers réalisés par PCE à Lorgues, dans la Dracénie et sur le Golfe de Saint-Tropez : plomberie, chauffage, climatisation, électricité et piscine."
+        standalone
+        title={pageMeta.realisations.metaTitle}
+        description={pageMeta.realisations.metaDescription}
         path="/realisations"
       />
       <PageHero

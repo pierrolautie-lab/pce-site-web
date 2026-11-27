@@ -163,6 +163,38 @@ export const tvaCard = {
 }
 
 /* ================================================================ MÉTIERS =*/
+/* Titres et méta-descriptions des pages sans objet service dédié (titre
+   complet, affiché tel quel : `Seo` les reçoit avec `standalone`). Les
+   7 pages métier portent les leurs dans `services` (metaTitle /
+   metaDescription), séparés de `title`, qui sert au H1 et au fil d’Ariane.
+   Limites vérifiées par `npm run check:meta` : 60 / 157 caractères. */
+export const pageMeta = {
+  accueil: {
+    metaTitle: 'Plombier chauffagiste dans le Var | PCE depuis 2005',
+    metaDescription: "Plomberie, chauffage, climatisation, électricité et piscine par la même entreprise. Intervention de Lorgues au Golfe de Saint-Tropez. Devis gratuit.",
+  },
+  depannage: {
+    metaTitle: 'Dépannage plomberie et chauffage 7j/7 dans le Var | PCE',
+    metaDescription: `Fuite, panne de chauffage ou de climatisation : PCE répond 7j/7 et intervient dans les meilleurs délais. Prix annoncé avant travaux. ${company.phone}.`,
+  },
+  realisations: {
+    metaTitle: 'Nos réalisations de chantiers dans le Var | PCE',
+    metaDescription: "Salles de bain, chaufferies, climatisation, tableaux électriques et piscines : découvrez en photos des chantiers réalisés par PCE dans tout le Var.",
+  },
+  conseils: {
+    metaTitle: 'Conseils plomberie, chauffage et climatisation | PCE',
+    metaDescription: "Guides pratiques d’un artisan du Var : entretien, pannes courantes, choix d’équipement et économies d’énergie. Des réponses claires, sans jargon.",
+  },
+  aPropos: {
+    metaTitle: 'PCE, artisan tout corps d’état dans le Var | Depuis 2005',
+    metaDescription: "Créée en 2005, installée dans le Var depuis 2020. Sept métiers réunis sous le même toit, sans sous-traitance. Garantie décennale et assurance RC Pro.",
+  },
+  contact: {
+    metaTitle: 'Contacter PCE | Devis gratuit plombier chauffagiste Var',
+    metaDescription: `Un projet, une question ou une panne ? Réponse rapide, devis gratuit et sans engagement. Appelez le ${company.phone} — intervention dans tout le Var.`,
+  },
+}
+
 export const services = {
   /* ------------------------------------------------------------ PLOMBERIE */
   plomberie: {
@@ -174,7 +206,8 @@ export const services = {
     intro:
       "Depuis 2005, PCE prend en charge l’ensemble de vos travaux de plomberie, de la création d’un réseau neuf à la rénovation complète d’une salle de bains. Recherche de fuite non destructive, remplacement de chauffe-eau, traitement de l’eau : un seul interlocuteur, du premier relevé jusqu’à la mise en service.",
     card: "Réseaux neufs, salles de bains, recherche de fuite et traitement de l’eau.",
-    metaDescription: "Plombier à Lorgues (83) : réseaux neufs, rénovation de salle de bains, recherche de fuite et chauffe-eau. Devis gratuit dans tout le Var.",
+    metaTitle: "Plombier dans le Var | Installation et dépannage | PCE",
+    metaDescription: "Installation, rénovation, recherche de fuite et dépannage. Un artisan local qui intervient dans tout le Var. Prix annoncé avant travaux, devis gratuit.",
     hero: { tags: 'bathroom', lock: 231 },
 
     prestations: [
@@ -246,7 +279,8 @@ export const services = {
     intro:
       "Nous dimensionnons chaque installation en fonction de votre logement, de son isolation et du climat provençal — jamais sur catalogue. Étude préalable, choix du matériel, pose et entretien annuel : PCE vous accompagne sur toute la durée de vie de votre système de chauffage.",
     card: "Pompes à chaleur, chaudières et installations gaz, plancher chauffant et entretien.",
-    metaDescription: "Chauffagiste à Lorgues (83) : pompe à chaleur, chaudière gaz à condensation et entretien annuel. Étude thermique et devis gratuit dans le Var.",
+    metaTitle: "Chauffagiste dans le Var | Pompe à chaleur | PCE",
+    metaDescription: "Installation et entretien de pompes à chaleur, chaudières et planchers chauffants. Artisan local dans le Var. Prix annoncé avant travaux, devis gratuit.",
     hero: { tags: 'airconditioner', lock: 412 },
 
     /* Rangée de bénéfices, reprise du support « PCE, votre expert chauffage & gaz » */
@@ -395,7 +429,8 @@ export const services = {
     intro:
       "C’est en nous installant dans le Var que nous avons ajouté la climatisation à nos métiers, pour répondre à une demande que le climat local rend incontournable. Rafraîchir sans faire de bruit ni défigurer une façade, c’est tout l’enjeu d’une bonne installation. Nous étudions l’implantation des unités, l’acoustique et le tracé des liaisons frigorifiques avant de poser, puis nous assurons l’entretien réglementaire de votre équipement.",
     card: 'Mono-split, multi-split, gainable et entretien des unités.',
-    metaDescription: "Climatisation à Lorgues (83) : mono-split, multi-split, gainable et entretien réglementaire. Pose discrète et silencieuse, devis gratuit dans tout le Var.",
+    metaTitle: "Climatisation dans le Var | Pose et entretien | PCE",
+    metaDescription: "Climatisation réversible, gainable, multi-split. Installation et entretien par un artisan local du Var. Prix annoncé avant travaux, devis gratuit.",
     hero: { tags: 'airconditioner', lock: 520 },
 
     /* ------------------------------------------------------------------
@@ -611,7 +646,8 @@ export const services = {
     intro:
       "Tableau vétuste, disjoncteur qui saute, projet d’extension ou borne de recharge : nous reprenons votre installation électrique dans le respect de la norme NF C 15-100. Chaque chantier est repéré, étiqueté et livré avec un schéma de tableau lisible par n’importe quel électricien après nous.",
     card: 'Tableaux, mise aux normes NF C 15-100, dépannage et bornes de recharge.',
-    metaDescription: "Électricien à Lorgues (83) : tableaux, mise aux normes NF C 15-100, bornes de recharge et dépannage. Devis gratuit dans le Var.",
+    metaTitle: "Électricien dans le Var | Mise aux normes | PCE",
+    metaDescription: "Tableau électrique, mise aux normes NF C 15-100, rénovation et dépannage. Artisan local dans le Var. Prix annoncé avant travaux, devis gratuit.",
     hero: { tags: 'electricity', lock: 628 },
 
     prestations: [
@@ -679,7 +715,8 @@ export const services = {
     intro:
       "Une eau limpide sans y passer ses week-ends, c’est d’abord une affaire de réglages et de bon matériel. PCE assure la mise en route, l’hivernage, la rénovation du local technique et l’automatisation complète de votre bassin, à Lorgues comme sur tout le Golfe de Saint-Tropez.",
     card: 'Filtration, traitement au sel, chauffage du bassin et automatisation.',
-    metaDescription: "Piscinier à Lorgues (83) : filtration, traitement au sel, pompe à chaleur et automatisation. Diagnostic du local technique, devis gratuit.",
+    metaTitle: "Pisciniste dans le Var | Entretien et équipement | PCE",
+    metaDescription: "Filtration, pompe à chaleur, traitement de l’eau et entretien de bassin. Artisan local du Var, de Lorgues au Golfe. Devis gratuit, prix annoncé avant.",
     hero: { tags: 'swimmingpool', lock: 739 },
 
     /* ------------------------------------------------------------------
@@ -888,7 +925,8 @@ export const services = {
     intro:
       "L’eau du Var est parmi les plus calcaires de France. PCE installe des solutions complètes pour améliorer la qualité de votre eau au quotidien : filtration, purification et désinfection. Protégez votre santé, vos équipements et votre habitat avec du matériel performant et fiable.",
     card: 'Filtration, purification et désinfection de votre eau.',
-    metaDescription: "Traitement de l’eau à Lorgues (83) : filtration fine, forage, charbon actif et traitement UV. Analyse de votre eau et devis gratuit.",
+    metaTitle: "Traitement de l’eau dans le Var | Adoucisseur | PCE",
+    metaDescription: "Adoucisseur, filtration, UV et eau de forage. L’eau du Var est calcaire : protégez vos équipements. Devis gratuit, prix annoncé avant travaux.",
     hero: { tags: 'bathroom', lock: 300 },
 
     prestations: [
@@ -1083,7 +1121,8 @@ export const services = {
     intro:
       "PCE installe et entretient trois types de VMC : simple flux autoréglable, simple flux hygroréglable et double flux avec récupération de chaleur. En construction neuve comme en rénovation, nous dimensionnons le réseau selon votre logement plutôt que sur catalogue.",
     card: 'VMC simple flux, hygroréglable et double flux, installation et entretien.',
-    metaDescription: 'Installation VMC à Lorgues (83) : simple flux, hygroréglable et double flux à récupération de chaleur. Neuf et rénovation, devis gratuit.',
+    metaTitle: "Installateur VMC dans le Var | Simple et double flux | PCE",
+    metaDescription: "Pose et entretien de VMC simple flux et double flux, en neuf comme en rénovation. Artisan local du Var. Devis gratuit, prix annoncé avant travaux.",
 
     prestations: [
       { icon: 'fan', title: 'VMC simple flux autoréglable', label: 'Débit constant, la solution la plus répandue' },

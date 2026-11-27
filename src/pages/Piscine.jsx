@@ -46,7 +46,8 @@ export default function Piscine() {
   return (
     <>
       <Seo
-        title={service.title}
+        standalone
+        title={service.metaTitle}
         description={service.metaDescription}
         path="/piscine"
         jsonLd={[

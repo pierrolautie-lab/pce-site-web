@@ -6,7 +6,7 @@ import { ReassuranceBar } from '../components/PageHero.jsx'
 import { HeroBackgroundPhoto, HeroTextVeil } from '../components/HeroPhoto.jsx'
 import VarMap from '../components/VarMap.jsx'
 import ZoneBadge from '../components/ZoneBadge.jsx'
-import { company, projects, serviceList, values } from '../data/site.js'
+import { company, pageMeta, projects, serviceList, values } from '../data/site.js'
 import { SHOW_GOOGLE_REVIEWS, GOOGLE_REVIEWS, CLIENT_TYPES } from '../data/reviews.js'
 
 /* Photo de fond du héros (slot 104, fourgon PCE de jour devant une villa) et
@@ -77,8 +77,8 @@ export default function Accueil() {
           par la description et les pages métier. */}
       <Seo
         standalone
-        title="PCE — Plomberie, chauffage, climatisation à Lorgues (83)"
-        description="Plomberie, chauffage, climatisation, électricité et piscine à Lorgues (83). PCE, artisan dans le Var, plus de vingt ans de métier. Devis gratuit."
+        title={pageMeta.accueil.metaTitle}
+        description={pageMeta.accueil.metaDescription}
         path="/"
       />
 
