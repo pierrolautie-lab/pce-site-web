@@ -685,6 +685,68 @@ export const articles = {
     closing:
       "PCE intervient dans le Var (83), de Lorgues et Draguignan jusqu’à Sainte-Maxime, Les Issambres et l’ensemble du Golfe de Saint-Tropez.",
   },
+
+  /* Premier article plomberie (guide SEO client, rubrique blog). Aucun
+     délai d’intervention promis : seule l’astreinte 7j/7 est citée. */
+  'fuite-d-eau-reperer-que-faire': {
+    title: 'Fuite d’eau : comment la repérer et que faire en attendant le plombier ?',
+    metaTitle: 'Fuite d’eau : la repérer et que faire en attendant',
+    metaDescription:
+      "Fuite d’eau : le test du compteur pour la repérer, les bons gestes en attendant le plombier, l’assurance. Les conseils de PCE, plombier dans le Var.",
+    photo: { tags: 'plumbing', lock: 1116 },
+    relatedExpertise: 'depannage-plomberie-urgence-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Une fuite d’eau ne se voit pas toujours : une partie des fuites se cache dans un mur, sous une dalle ou dans une canalisation enterrée, et ne se révèle que sur la facture. Voici comment en confirmer une avec un simple relevé de compteur, puis les gestes qui limitent les dégâts en attendant l’intervention d’un plombier.",
+    ],
+    sections: [
+      {
+        h2: 'Les signes qui doivent alerter',
+        paragraphs: [
+          "Certains indices sont visibles : tache d’humidité au plafond ou au pied d’un mur, peinture qui cloque, joint de carrelage qui noircit, odeur de moisi dans un placard. D’autres sont plus discrets : bruit d’écoulement alors que rien n’est ouvert, baisse de pression, chasse d’eau qui coule en continu, ou facture d’eau nettement supérieure à celle de la même période l’an passé.",
+          "Dans le Var, pensez aussi aux réseaux extérieurs : arrosage enterré, alimentation d’un pool house ou robinet de jardin. Une zone de pelouse anormalement verte ou détrempée en plein été trahit souvent une canalisation enterrée qui fuit.",
+        ],
+      },
+      {
+        h2: 'Le test du compteur, pour être fixé',
+        paragraphs: [
+          "Le soir, une fois tous les usages terminés, notez l’index de votre compteur d’eau (ou prenez-le en photo). N’utilisez plus d’eau de la nuit (pas de lave-linge ni de lave-vaisselle programmé), puis relevez l’index le lendemain matin. S’il a bougé, l’eau s’échappe quelque part entre le compteur et vos robinets.",
+          "Pour savoir de quel côté chercher, fermez ensuite les robinets d’arrêt un par un (chasse d’eau, chauffe-eau, arrosage) et observez le compteur. Le petit rouage de contrôle, quand il existe, permet de voir un mouvement en quelques minutes. Pour la chasse d’eau, quelques gouttes de colorant alimentaire dans le réservoir suffisent : si la cuvette se colore sans tirer la chasse, le mécanisme fuit.",
+        ],
+      },
+      {
+        h2: 'En attendant le plombier : les bons gestes',
+        paragraphs: [
+          "Coupez d’abord l’eau : le robinet d’arrêt sous l’évier ou derrière les WC pour une fuite localisée, le robinet général (près du compteur) pour une fuite importante ou dont l’origine est inconnue. Si l’eau approche des prises, d’un tableau électrique ou d’appareils branchés, coupez aussi l’électricité au disjoncteur.",
+          "Ouvrez ensuite un robinet bas pour vider la pression restante dans les canalisations, épongez, mettez meubles et objets à l’abri et placez une bassine sous le point de fuite. En appartement, prévenez le voisin du dessous et le syndic : la fuite peut venir d’une partie commune ou d’un autre logement.",
+          "Enfin, photographiez les dégâts et l’origine de la fuite avant toute réparation : ces images servent à la déclaration auprès de votre assureur.",
+        ],
+      },
+      {
+        h2: 'Assurance et facture d’eau',
+        paragraphs: [
+          "Un dégât des eaux se déclare à l’assureur dans les cinq jours ouvrés suivant sa découverte. La facture du plombier, qui précise l’origine de la fuite, fait partie des pièces demandées.",
+          "Pour une fuite sur une canalisation située après le compteur d’un logement, la loi prévoit un plafonnement de la facture d’eau lorsque la consommation dépasse le double de la moyenne habituelle, à condition de fournir au service des eaux, dans le mois qui suit, une attestation de réparation établie par un plombier. Les fuites d’appareils (chauffe-eau, sanitaires, électroménager) en sont exclues.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Peut-on réparer soi-même une fuite d’eau ?',
+        a: "Un joint de robinet ou un flexible de raccordement se remplacent sans difficulté. Une fuite sur une canalisation encastrée, une soudure ou un raccord de chauffe-eau demande en revanche un plombier : une réparation de fortune peut céder et aggraver les dégâts.",
+      },
+      {
+        q: 'Que faire si la fuite vient de chez le voisin ?',
+        a: "Prévenez-le, ou le syndic s’il est absent, pour qu’il coupe son arrivée d’eau. Déclarez le sinistre à votre propre assureur, qui se charge du recours : en copropriété, un constat amiable dégât des eaux rempli avec le voisin facilite la suite.",
+      },
+      {
+        q: 'PCE intervient-il pour une fuite en dehors des heures de bureau ?',
+        a: "Oui : notre bureau répond du lundi au vendredi de 7h30 à 18h00, et les urgences de plomberie sont prises en charge 7j/7, week-end compris, dans tout le Var.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
 }
 
 export const articleSlugs = Object.keys(articles)

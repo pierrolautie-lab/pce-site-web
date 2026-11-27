@@ -142,6 +142,7 @@ export const PHOTO_SLOTS = {
   1113: { page: 'Conseils', zone: 'Article', sujet: 'Pompe à vitesse variable' },
   1114: { page: 'Conseils', zone: 'Article', sujet: 'pH piscine' },
   1115: { page: 'Conseils', zone: 'Article', sujet: 'Redox piscine' },
+  1116: { page: 'Conseils', zone: 'Article', sujet: 'Fuite d’eau' },
 }
 
 /**
@@ -386,6 +387,7 @@ export const clientPhotos = {
   1113: '/img/piscine-hero-bassin.jpg', // pompe-piscine-vitesse-variable-avantages
   1114: '/img/piscine-hero-bassin.jpg', // pourquoi-ph-piscine-varie
   1115: '/img/piscine-hero-bassin.jpg', // a-quoi-sert-le-redox
+  1116: '/img/accueil-carte-depannage.jpg', // fuite-d-eau-reperer-que-faire
 
   /* --- Nouveaux chantiers Électricité / Climatisation / bornes --- */
   910: '/img/electricite-galerie-tableau-cablage.jpg',
