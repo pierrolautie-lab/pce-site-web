@@ -68,6 +68,7 @@ export default function LocalPage({ tradeKey, cityKey }) {
         title={title}
         subtitle={`${trade.label} ${inThisCity} (83) — devis gratuit`}
         intro={intro}
+        quote={{ sujet: trade.label, ville: city.name }}
         photo={{ ...service.hero, alt: `${trade.photoAlt} — ${trade.label.charAt(0).toLowerCase()}${trade.label.slice(1)} ${inThisCity}` }}
       />
 

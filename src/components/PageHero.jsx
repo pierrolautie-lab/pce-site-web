@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { QuoteButton } from './QuoteModal.jsx'
 import Icon from './Icon.jsx'
 import Photo from './Photo.jsx'
 import { Watermark } from './Brand.jsx'
@@ -81,6 +82,9 @@ export default function PageHero({
   highlights,
   actions = true,
   primaryLabel = 'Demande de devis gratuit',
+  /* { sujet, ville } : le bouton principal ouvre le formulaire de devis
+     en fenêtre (pages locales) au lieu de mener à /contact. */
+  quote,
   showReassurance = true,
   photoBadge,
   children,
@@ -235,10 +239,14 @@ export default function PageHero({
 
               {actions && (
                 <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-9">
-                  <Link to="/contact" className="btn-azure">
-                    {primaryLabel}
-                    <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
-                  </Link>
+                  {quote ? (
+                    <QuoteButton label={primaryLabel} sujet={quote.sujet} ville={quote.ville} />
+                  ) : (
+                    <Link to="/contact" className="btn-azure">
+                      {primaryLabel}
+                      <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2.4} />
+                    </Link>
+                  )}
                   <a href={company.phoneHref} className="btn-outline-gold">
                     <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
                     {company.phone}
