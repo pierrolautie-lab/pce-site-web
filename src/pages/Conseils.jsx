@@ -77,7 +77,8 @@ export default function Conseils() {
             >
               Tous
             </button>
-            {CATEGORIES.map((c) => (
+            {/* Seules les catégories qui ont au moins un article publié. */}
+            {CATEGORIES.filter((c) => items.some((a) => a.category.key === c.key)).map((c) => (
               <button
                 key={c.key}
                 type="button"

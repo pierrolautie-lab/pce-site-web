@@ -73,6 +73,17 @@ export const CATEGORIES = [
     solid: 'bg-cyan-500',
     border: 'border-cyan-400',
   },
+  {
+    key: 'vmc',
+    match: '/vmc',
+    label: 'VMC',
+    icon: 'fan',
+    text: 'text-violet-700',
+    bg: 'bg-violet-50',
+    ring: 'ring-violet-200',
+    solid: 'bg-violet-500',
+    border: 'border-violet-400',
+  },
 ]
 
 /** Retrouve la catégorie d'un article à partir de son `relatedService`. */

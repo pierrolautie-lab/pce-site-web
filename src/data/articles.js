@@ -983,6 +983,356 @@ export const articles = {
     closing:
       "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
   },
+
+  /* Série décembre 2026 – janvier 2027 (6 sujets validés le 28/11/2026),
+     publication programmée deux par deux via publishAt. */
+  'purger-ses-radiateurs': {
+    publishAt: '2026-12-11',
+    title: 'Purger ses radiateurs : quand et comment le faire ?',
+    metaTitle: 'Purger ses radiateurs : quand et comment le faire',
+    metaDescription:
+      "Radiateur froid en haut, glouglous dans le circuit : comment purger vos radiateurs pas à pas et remettre la chaudière en pression. Les conseils de PCE.",
+    photo: { tags: 'heating', lock: 1121 },
+    relatedExpertise: 'plancher-chauffant-var',
+    relatedService: '/chauffage',
+    intro: [
+      "Un radiateur tiède en haut et chaud en bas, des bruits de glouglou dans les tuyaux : de l’air s’est accumulé dans votre circuit de chauffage. Purger les radiateurs prend quelques minutes, améliore le confort et évite à la chaudière de tourner pour rien. Voici comment faire, et quand le problème dépasse la simple purge.",
+    ],
+    sections: [
+      {
+        h2: 'Quand purger ses radiateurs ?',
+        paragraphs: [
+          "Le bon moment est le début de la saison de chauffe, à l’automne, puis dès qu’un radiateur chauffe mal dans sa partie haute ou que le circuit fait du bruit. Une purge est aussi nécessaire après toute intervention qui a vidé une partie de l’installation. Seuls les radiateurs à eau, reliés à une chaudière ou à une pompe à chaleur, sont concernés : les radiateurs électriques ne se purgent pas.",
+        ],
+      },
+      {
+        h2: 'La purge, pas à pas',
+        paragraphs: [
+          "Faites d’abord tourner le chauffage une demi-heure pour que l’air remonte vers les points hauts, puis coupez-le et laissez les radiateurs tiédir : l’eau qui sort d’un radiateur brûlant peut ébouillanter. Munissez-vous d’une clé de purge (ou d’un tournevis plat selon le modèle), d’un chiffon et d’un petit récipient.",
+          "Commencez par le rez-de-chaussée, en partant du radiateur le plus proche de la chaudière. Ouvrez la vis de purge, en haut du radiateur à l’opposé du robinet, d’un quart de tour : l’air s’échappe avec un sifflement. Refermez dès que l’eau coule de façon continue, sans bulles, puis passez au radiateur suivant, en finissant par l’étage.",
+        ],
+      },
+      {
+        h2: 'Contrôler la pression de la chaudière',
+        paragraphs: [
+          "Chaque purge fait baisser un peu la pression du circuit. Vérifiez le manomètre de la chaudière : à froid, il indique généralement entre 1 et 1,5 bar sur une maison individuelle, selon la notice. Si la pression est trop basse, ouvrez doucement le robinet de remplissage jusqu’à la valeur indiquée, puis refermez-le. Relancez ensuite le chauffage.",
+        ],
+      },
+      {
+        h2: 'Quand la purge ne suffit pas',
+        paragraphs: [
+          "Un radiateur froid en bas et chaud en haut ne souffre pas d’air mais de boues : des dépôts se sont accumulés dans le circuit au fil des années. Un désembouage, réalisé par un chauffagiste, nettoie l’installation. Une pression qui chute sans cesse ou un circuit qu’il faut purger toutes les semaines signalent quant à eux une fuite ou un vase d’expansion défaillant, à faire contrôler.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Faut-il couper la chaudière pour purger les radiateurs ?',
+        a: "Oui, il est préférable de l’arrêter : le circulateur à l’arrêt laisse l’air se rassembler en haut des radiateurs, et l’eau moins chaude évite les brûlures.",
+      },
+      {
+        q: 'Et pour un plancher chauffant ?',
+        a: "Un plancher chauffant se purge au niveau de son collecteur, avec une méthode propre à chaque installation. Mieux vaut confier l’opération à un chauffagiste.",
+      },
+      {
+        q: 'Mes radiateurs ont des purgeurs automatiques, dois-je purger quand même ?',
+        a: "Les purgeurs automatiques évacuent l’air sans intervention, mais ils s’entartrent avec le temps. S’ils ne jouent plus leur rôle, ils se remplacent facilement.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'proteger-canalisations-du-gel': {
+    publishAt: '2026-12-11',
+    title: 'Protéger ses canalisations du gel : les bons réflexes',
+    metaTitle: 'Protéger ses canalisations du gel : les bons réflexes',
+    metaDescription:
+      "Compteur, robinet extérieur, résidence secondaire : comment protéger vos canalisations du gel dans le Var, et que faire si un tuyau est déjà gelé.",
+    photo: { tags: 'plumbing', lock: 1122 },
+    relatedExpertise: 'depannage-plomberie-urgence-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Le Var n’est pas épargné par le gel : dans l’arrière-pays, du Haut-Var au pays de Fayence, les nuits sous zéro sont fréquentes en hiver, et même le littoral connaît quelques épisodes de froid. Une canalisation gelée peut éclater et provoquer un dégât des eaux au moment du dégel. Quelques précautions simples suffisent à l’éviter.",
+    ],
+    sections: [
+      {
+        h2: 'Repérer les points sensibles',
+        paragraphs: [
+          "Les canalisations à risque sont celles qui passent dans des endroits non chauffés : garage, cave, vide sanitaire, combles, murs extérieurs, ainsi que le compteur d’eau lorsqu’il est installé dans un regard au jardin. Les robinets extérieurs et l’arrosage enterré sont les premiers touchés.",
+        ],
+      },
+      {
+        h2: 'Les précautions avant l’hiver',
+        paragraphs: [
+          "Calorifugez les tuyaux exposés avec des manchons isolants en mousse, vendus au mètre et faciles à poser. Pour le compteur en regard, une plaque de polystyrène posée sur le compteur protège efficacement ; évitez la paille, la laine de verre ou les chiffons, qui retiennent l’humidité et finissent par geler.",
+          "Pour les robinets extérieurs, fermez la vanne d’arrêt intérieure qui les alimente, ouvrez le robinet pour vider la canalisation et laissez-le ouvert tout l’hiver. Purgez aussi le réseau d’arrosage automatique.",
+        ],
+      },
+      {
+        h2: 'Résidence secondaire ou absence prolongée',
+        paragraphs: [
+          "Si le logement reste inoccupé pendant les grands froids, coupez l’eau au robinet général et vidangez l’installation en ouvrant tous les robinets, en commençant par le plus haut. Laissez le chauffage en mode hors-gel : il maintient une température minimale qui protège les canalisations intérieures et, si vous avez un chauffage central, le circuit lui-même.",
+        ],
+      },
+      {
+        h2: 'Si une canalisation a déjà gelé',
+        paragraphs: [
+          "Plus d’eau au robinet par grand froid : coupez l’arrivée d’eau, ouvrez le robinet concerné et réchauffez doucement le tuyau avec un sèche-cheveux ou des linges chauds, en partant du robinet vers la zone gelée. N’utilisez jamais de flamme ni de décapeur thermique, qui peuvent faire éclater le tuyau ou provoquer un incendie.",
+          "Au dégel, surveillez l’apparition de fuites. Si le tuyau a fendu, laissez l’eau coupée et faites appel à un plombier.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Qui est responsable d’un compteur d’eau gelé ?',
+        a: "Le règlement du service des eaux de la plupart des communes met la protection du compteur contre le gel à la charge de l’abonné. Un compteur endommagé faute de protection peut donc vous être facturé.",
+      },
+      {
+        q: 'Faut-il laisser couler un filet d’eau pour éviter le gel ?',
+        a: "Un mince filet d’eau limite le risque sur une canalisation exposée lors d’une nuit très froide, mais il consomme de l’eau. Isoler les tuyaux reste la solution durable.",
+      },
+      {
+        q: 'Le mode hors-gel du chauffage suffit-il ?',
+        a: "Il protège les pièces chauffées, mais pas les canalisations situées dans un garage, un vide sanitaire ou à l’extérieur. Celles-ci doivent être isolées ou vidangées.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'entretenir-sa-vmc': {
+    publishAt: '2026-12-18',
+    title: 'Entretenir sa VMC : les gestes simples pour un air sain',
+    metaTitle: 'Entretenir sa VMC : les gestes pour un air sain',
+    metaDescription:
+      "Bouches encrassées, condensation, mauvaises odeurs : comment entretenir votre VMC simple ou double flux, et quand faire contrôler l’installation.",
+    photo: { tags: 'house', lock: 1123 },
+    relatedService: '/vmc',
+    intro: [
+      "La ventilation mécanique contrôlée renouvelle l’air de votre logement en continu, évacue l’humidité de la cuisine et de la salle de bains et limite moisissures et condensation. Une VMC encrassée tourne pourtant souvent à vide pendant des années sans que personne ne s’en aperçoive. Quelques gestes réguliers suffisent à la garder efficace.",
+    ],
+    sections: [
+      {
+        h2: 'Vérifier qu’elle fonctionne',
+        paragraphs: [
+          "Le test le plus simple : approchez une feuille de papier d’une bouche d’extraction, dans la cuisine ou la salle de bains. Elle doit être aspirée et rester plaquée. Si elle tombe, la bouche est bouchée, le moteur est à l’arrêt ou une gaine est écrasée ou débranchée dans les combles.",
+          "Buée persistante sur les vitres, odeurs qui stagnent, taches de moisissure dans les angles : ces signes indiquent aussi une ventilation insuffisante.",
+        ],
+      },
+      {
+        h2: 'Nettoyer les bouches d’extraction',
+        paragraphs: [
+          "Les bouches de la cuisine, de la salle de bains et des WC retiennent graisse et poussière. Démontez-les environ tous les trois mois (plus souvent en cuisine), lavez-les à l’eau savonneuse, séchez-les et remettez-les en place. Sur les bouches hygroréglables ou électriques, suivez la notice : certaines parties ne doivent pas être mouillées.",
+          "Dans les pièces sèches (séjour, chambres), dépoussiérez aussi les entrées d’air situées en haut des fenêtres. Ne les bouchez jamais : sans elles, la VMC ne peut pas renouveler l’air.",
+        ],
+      },
+      {
+        h2: 'Le cas de la VMC double flux',
+        paragraphs: [
+          "Une VMC double flux insuffle de l’air neuf filtré et réchauffé par l’air extrait. Ses filtres s’encrassent vite : ils se nettoient ou se remplacent plusieurs fois par an, selon le modèle et l’environnement (pollens, poussière, proximité d’une route). Des filtres colmatés font chuter le débit et augmentent la consommation du moteur.",
+        ],
+      },
+      {
+        h2: 'Le contrôle par un professionnel',
+        paragraphs: [
+          "Tous les trois ans environ, faites vérifier l’ensemble de l’installation : nettoyage du caisson et du moteur, état et fixation des gaines, mesure des débits aux bouches. C’est aussi l’occasion de vérifier que le système reste adapté au logement après des travaux, par exemple le changement des fenêtres.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Peut-on arrêter la VMC pour économiser de l’électricité ?',
+        a: "Non : une VMC est conçue pour fonctionner en continu. L’arrêter favorise l’humidité, la condensation et les moisissures, et dégrade la qualité de l’air. Sa consommation électrique reste faible.",
+      },
+      {
+        q: 'Ma VMC fait du bruit, est-ce normal ?',
+        a: "Un léger souffle est normal. Un bruit qui augmente, des vibrations ou un sifflement signalent un moteur fatigué, un caisson mal fixé ou des bouches encrassées.",
+      },
+      {
+        q: 'Faut-il nettoyer les gaines ?',
+        a: "Les gaines s’encrassent plus lentement que les bouches. Leur état est vérifié lors du contrôle périodique et un nettoyage ou un remplacement est proposé si nécessaire.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'disjoncteur-qui-saute': {
+    publishAt: '2026-12-18',
+    title: 'Le disjoncteur saute : causes et que faire ?',
+    metaTitle: 'Le disjoncteur saute : causes et que faire',
+    metaDescription:
+      "Disjoncteur général, différentiel ou disjoncteur de circuit : comment trouver la cause d’une coupure, réarmer en sécurité et quand appeler un électricien.",
+    photo: { tags: 'electrical-panel', lock: 1124 },
+    relatedExpertise: 'mise-aux-normes-electriques-var',
+    relatedService: '/electricite',
+    intro: [
+      "Une coupure de courant chez vous alors que les voisins sont éclairés : un dispositif de protection a fait son travail. Avant de le réarmer, il faut comprendre lequel a sauté et pourquoi. Voici comment identifier la cause, avec les précautions qui s’imposent.",
+    ],
+    sections: [
+      {
+        h2: 'Identifier ce qui a sauté',
+        paragraphs: [
+          "Le disjoncteur général, souvent placé près du compteur, coupe toute la maison quand la puissance appelée dépasse celle de votre abonnement. Les interrupteurs différentiels, en haut de chaque rangée du tableau, protègent les personnes contre les fuites de courant. Les disjoncteurs divisionnaires, un par circuit, coupent en cas de surcharge ou de court-circuit sur leur ligne.",
+        ],
+      },
+      {
+        h2: 'Le disjoncteur général : une surcharge',
+        paragraphs: [
+          "Four, plaques, lave-linge et radiateurs électriques en marche en même temps peuvent dépasser la puissance souscrite. Éteignez quelques appareils puis réarmez. Si la coupure se répète aux mêmes heures, décalez certains usages ou étudiez avec votre fournisseur un changement de puissance d’abonnement.",
+        ],
+      },
+      {
+        h2: 'Un interrupteur différentiel : une fuite de courant',
+        paragraphs: [
+          "Baissez tous les disjoncteurs de la rangée concernée, réarmez le différentiel, puis remontez les disjoncteurs un par un. Celui qui fait tout sauter désigne le circuit en cause. Débranchez alors les appareils de ce circuit et rebranchez-les un à un pour trouver le coupable : un électroménager défectueux est souvent en cause.",
+          "Une coupure après un orage ou de fortes pluies oriente vers l’humidité : prise ou éclairage extérieur, boîte de dérivation mal protégée, local de piscine.",
+        ],
+      },
+      {
+        h2: 'Un disjoncteur de circuit : surcharge ou court-circuit',
+        paragraphs: [
+          "Trop d’appareils branchés sur la même ligne, une multiprise surchargée ou un appareil en court-circuit font sauter le disjoncteur du circuit. Débranchez les appareils, réarmez, puis rebranchez progressivement.",
+        ],
+      },
+      {
+        h2: 'Quand appeler un électricien',
+        paragraphs: [
+          "Ne forcez jamais un disjoncteur qui refuse de se réarmer, et ne le remplacez pas par un calibre supérieur. Appelez un électricien si les coupures se répètent sans cause identifiée, si vous sentez une odeur de brûlé, si une prise ou le tableau chauffe, ou si votre tableau est ancien. Un diagnostic permet souvent de repérer une installation à remettre aux normes.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Est-il dangereux de réarmer un disjoncteur ?',
+        a: "Non, c’est prévu pour. Le danger serait de le réarmer en boucle sans chercher la cause, ou de le faire les mains mouillées. Si le dispositif saute aussitôt, arrêtez et cherchez la cause.",
+      },
+      {
+        q: 'Pourquoi le différentiel saute-t-il la nuit ?',
+        a: "Un appareil qui démarre seul la nuit peut être en cause : chauffe-eau en heures creuses, congélateur, pompe de piscine, chauffage programmé. Commencez par ces circuits.",
+      },
+      {
+        q: 'Mon tableau n’a pas d’interrupteur différentiel, est-ce grave ?',
+        a: "Les différentiels 30 mA sont obligatoires dans une installation aux normes. Sans eux, les occupants ne sont pas protégés contre l’électrocution : une mise aux normes du tableau s’impose.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'adoucisseur-eau-utile-var': {
+    publishAt: '2027-01-08',
+    title: 'Adoucisseur d’eau : est-ce utile dans le Var ?',
+    metaTitle: 'Adoucisseur d’eau : est-ce utile dans le Var ?',
+    metaDescription:
+      "Eau calcaire, chauffe-eau entartré, robinets blanchis : quand un adoucisseur se justifie dans le Var, comment il fonctionne et comment l’entretenir.",
+    photo: { tags: 'water-softener', lock: 1125 },
+    relatedService: '/traitement-de-l-eau',
+    intro: [
+      "Traces blanches sur la robinetterie, parois de douche ternies, bouilloire entartrée : dans une bonne partie du Var, l’eau du robinet est calcaire. Ce calcaire n’est pas dangereux pour la santé, mais il use les équipements. Un adoucisseur règle le problème, à condition d’être bien choisi et bien réglé.",
+    ],
+    sections: [
+      {
+        h2: 'Connaître la dureté de son eau',
+        paragraphs: [
+          "La dureté de l’eau se mesure en degrés français (°f). En dessous de 15 °f, l’eau est douce ; au-delà d’environ 25 à 30 °f, elle est dure et le calcaire devient gênant. La valeur de votre commune figure sur la fiche qualité de l’eau jointe une fois par an à la facture, et un test en bandelette donne une première idée en quelques secondes.",
+        ],
+      },
+      {
+        h2: 'Ce que le calcaire coûte',
+        paragraphs: [
+          "Le calcaire se dépose dans le chauffe-eau, autour de la résistance et au fond de la cuve, et réduit son rendement. Il encrasse le lave-linge et le lave-vaisselle, bouche les mousseurs et les pommeaux de douche, et oblige à utiliser davantage de lessive et de produits d’entretien.",
+        ],
+      },
+      {
+        h2: 'Comment fonctionne un adoucisseur',
+        paragraphs: [
+          "Installé sur l’arrivée d’eau, après le compteur, l’adoucisseur fait passer l’eau dans des résines qui retiennent le calcium et le magnésium. Les résines se régénèrent automatiquement grâce au sel stocké dans un bac, qu’il suffit de remplir régulièrement.",
+          "Un adoucisseur bien réglé ne descend pas à zéro : on conserve une dureté résiduelle d’environ 8 à 15 °f, car une eau trop douce devient agressive pour les canalisations métalliques. Il est aussi conseillé de garder un robinet d’eau non adoucie pour la boisson et la cuisine.",
+        ],
+      },
+      {
+        h2: 'L’entretien',
+        paragraphs: [
+          "Remplissez le bac de sel adapté (pastilles pour adoucisseur), contrôlez la dureté de l’eau adoucie de temps en temps et faites réaliser une désinfection des résines et une vérification des réglages une fois par an. Un adoucisseur négligé peut devenir un nid à bactéries.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Les anti-calcaires magnétiques ou électroniques sont-ils efficaces ?',
+        a: "Ils ne retirent pas le calcaire de l’eau et leur efficacité est plus discutée. Pour une eau très dure, l’adoucisseur à résines reste la solution de référence.",
+      },
+      {
+        q: 'Peut-on boire l’eau adoucie ?',
+        a: "L’eau adoucie contient un peu plus de sodium. Il est recommandé de conserver un robinet d’eau non adoucie pour la boisson, en particulier pour les personnes suivant un régime pauvre en sel et pour la préparation des biberons.",
+      },
+      {
+        q: 'Quelle place faut-il prévoir ?',
+        a: "Un adoucisseur domestique occupe à peu près l’encombrement d’un petit meuble, avec une évacuation à proximité pour les eaux de régénération. Il s’installe le plus souvent dans un garage, une buanderie ou un local technique.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'entretien-annuel-chaudiere-gaz': {
+    publishAt: '2027-01-08',
+    title: 'Entretien annuel de la chaudière gaz : ce qu’il faut savoir',
+    metaTitle: 'Entretien annuel de la chaudière gaz : l’essentiel',
+    metaDescription:
+      "Entretien de chaudière gaz : obligation annuelle, qui doit le faire, ce que vérifie le technicien, attestation et assurance. Les explications de PCE.",
+    photo: { tags: 'heating', lock: 1126 },
+    relatedService: '/chauffage',
+    intro: [
+      "L’entretien annuel d’une chaudière gaz n’est pas une option : c’est une obligation légale, et surtout une question de sécurité. Une chaudière mal réglée consomme davantage et peut produire du monoxyde de carbone, un gaz invisible et inodore. Voici ce que dit la règle et ce que comprend une visite d’entretien.",
+    ],
+    sections: [
+      {
+        h2: 'Une obligation chaque année',
+        paragraphs: [
+          "Depuis 2009, l’entretien annuel est obligatoire pour toutes les chaudières dont la puissance est comprise entre 4 et 400 kW, ce qui couvre la quasi-totalité des chaudières domestiques. Il doit être réalisé par un professionnel qualifié, qui remet ensuite une attestation d’entretien.",
+          "Dans un logement loué, l’entretien est en principe à la charge du locataire, sauf clause contraire du bail. Le propriétaire occupant, lui, s’en charge directement.",
+        ],
+      },
+      {
+        h2: 'Ce que vérifie le technicien',
+        paragraphs: [
+          "La visite comprend le nettoyage du corps de chauffe et du brûleur, le contrôle des organes de sécurité, la vérification de l’évacuation des fumées, la mesure du monoxyde de carbone et le réglage de la combustion. Sur une chaudière à condensation, l’évacuation des condensats est également contrôlée.",
+          "Le technicien vous donne enfin des conseils sur l’usage de l’installation et, si elle est ancienne, sur l’intérêt éventuel de la remplacer.",
+        ],
+      },
+      {
+        h2: 'L’attestation, à conserver',
+        paragraphs: [
+          "L’attestation d’entretien est remise dans les quinze jours suivant la visite. Conservez-la au moins deux ans : votre assureur peut la demander en cas de sinistre lié à la chaudière, et l’absence d’entretien peut réduire ou compromettre l’indemnisation.",
+        ],
+      },
+      {
+        h2: 'Les signes qui n’attendent pas la visite annuelle',
+        paragraphs: [
+          "Flamme jaune ou orangée au lieu de bleue, traces noires autour de la chaudière, mises en sécurité répétées, odeur de gaz : arrêtez la chaudière et faites-la contrôler sans attendre. En cas d’odeur de gaz, coupez l’arrivée au robinet de gaz, aérez, n’actionnez aucun interrupteur et appelez le numéro d’urgence de votre distributeur.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Quel est le meilleur moment pour faire entretenir sa chaudière ?',
+        a: "Avant la saison de chauffe, à la fin de l’été ou au début de l’automne : la chaudière est prête pour l’hiver et les plannings des chauffagistes sont plus souples qu’en pleine saison.",
+      },
+      {
+        q: 'Un contrat d’entretien est-il obligatoire ?',
+        a: "Non, seul l’entretien annuel l’est. Un contrat permet simplement de ne pas oublier la visite et de regrouper l’entretien et le dépannage auprès du même professionnel.",
+      },
+      {
+        q: 'Un détecteur de monoxyde de carbone est-il utile ?',
+        a: "Il n’est pas obligatoire, mais il est recommandé dans les logements équipés d’un appareil à combustion. Il complète l’entretien annuel sans le remplacer.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
 }
 
 /* Publication programmée : un article portant `publishAt` (AAAA-MM-JJ)

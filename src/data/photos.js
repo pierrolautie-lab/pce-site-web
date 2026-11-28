@@ -147,6 +147,12 @@ export const PHOTO_SLOTS = {
   1118: { page: 'Conseils', zone: 'Article', sujet: 'Choisir son chauffe-eau' },
   1119: { page: 'Conseils', zone: 'Article', sujet: 'Économiser l’eau' },
   1120: { page: 'Conseils', zone: 'Article', sujet: 'Plomberie de piscine' },
+  1121: { page: 'Conseils', zone: 'Article', sujet: 'Purger ses radiateurs' },
+  1122: { page: 'Conseils', zone: 'Article', sujet: 'Canalisations et gel' },
+  1123: { page: 'Conseils', zone: 'Article', sujet: 'Entretenir sa VMC' },
+  1124: { page: 'Conseils', zone: 'Article', sujet: 'Disjoncteur qui saute' },
+  1125: { page: 'Conseils', zone: 'Article', sujet: 'Adoucisseur d’eau' },
+  1126: { page: 'Conseils', zone: 'Article', sujet: 'Entretien chaudière gaz' },
 }
 
 /**
@@ -396,6 +402,12 @@ export const clientPhotos = {
   1118: '/img/real-ballon-thermo.jpg', // choisir-son-chauffe-eau
   1119: '/img/plomberie-hero-salle-de-bains.jpg', // economiser-eau-maison
   1120: '/img/accueil-carte-piscine.jpg', // piscine-var-problemes-plomberie
+  1121: '/img/chauffage-sejour-radiateur.jpg', // purger-ses-radiateurs
+  1122: '/img/plomberie-histoire-tuyauterie.jpg', // proteger-canalisations-du-gel
+  1123: '/img/vmc-hero-combles.jpg', // entretenir-sa-vmc
+  1124: '/img/electricite-hero-tableau.jpg', // disjoncteur-qui-saute
+  1125: '/img/eau-solution-adoucisseur.jpg', // adoucisseur-eau-utile-var
+  1126: '/img/chauffage-chaudiere-neuve.jpg', // entretien-annuel-chaudiere-gaz
 
   /* --- Nouveaux chantiers Électricité / Climatisation / bornes --- */
   910: '/img/electricite-galerie-tableau-cablage.jpg',
