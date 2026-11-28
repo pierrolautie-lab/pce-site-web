@@ -75,7 +75,8 @@ const KNOWN_PLACES = [
   'Saint-Raphaël', 'Seillans', 'Fayence', 'Montauroux', 'Callian', 'Tourrettes',
   'Saint-Antonin-du-Var', 'Brignoles', 'Toulon', 'Hyères', 'Giens',
   // Rivières, lieux et architecte cités dans les paragraphes « terrain » (sourcés).
-  'Nartuby', 'Endre', 'Malpasset', 'Spoerry',
+  'Nartuby', 'Endre', 'Malpasset', 'Spoerry', 'Agay', 'Anthéor', 'Trayas',
+  'Saint-Cassien', 'Giscle', 'Maurette', 'Caramy', 'Carcès', 'Porquerolles',
 ];
 for (const p of KNOWN_PLACES) EXCEPTIONS.add(p.toLowerCase());
 

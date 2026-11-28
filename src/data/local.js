@@ -222,6 +222,21 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `À quelques minutes de notre atelier, Vidauban bénéficie du même niveau de service que notre commune d’origine. PCE y intervient pour ${t.verb} : ${t.detail}. Déplacement rapide, devis gratuit.`,
+    terrain: {
+      heading: "Intervenir à Vidauban",
+      paragraphs: [
+        "À Vidauban, l’eau est très dure : le contrôle sanitaire mesure environ 45 °f, au village comme dans la campagne. C’est l’une des eaux les plus calcaires du secteur, et elle conditionne la durée de vie des équipements.",
+        "La commune garde aussi la trace de la crue de l’Argens du 15 juin 2010 : des repères officiels y indiquent jusqu’à 1,60 m d’eau. Entre le village, les domaines viticoles et les maisons de la plaine, la question de l’eau se pose donc dans les deux sens.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, une eau à 45 °f entartre vite résistances, mitigeurs et pommeaux. Nous mesurons la dureté sur place et nous expliquons s’il vaut mieux adoucir l’eau ou adapter l’entretien du chauffe-eau.",
+        electricien:
+          "En électricité, dans les maisons de la plaine de l’Argens, nous vérifions la hauteur du tableau et des prises dans les pièces basses, et nous séparons les circuits du rez-de-chaussée lorsque c’est possible.",
+        chauffagiste:
+          "Pour le chauffage, nous traitons l’eau du circuit à la mise en service et nous adaptons l’entretien de la chaudière ou de la pompe à chaleur à cette eau très calcaire.",
+      },
+    },
   },
   Flayosc: {
     name: 'Flayosc',
@@ -238,6 +253,21 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Sur l’axe de la Dracénie vers Les Arcs-sur-Argens, PCE couvre cette commune pour ${t.verb} : ${t.detail}. Nos artisans s’y déplacent régulièrement, devis gratuit à l’appui.`,
+    terrain: {
+      heading: "Intervenir aux Arcs",
+      paragraphs: [
+        "Les Arcs ont l’une des eaux les plus dures que nous rencontrons : le contrôle sanitaire mesure de 46 à 58 °f selon les réseaux de la commune. Le vieux village perché du Parage, aux maisons de pierre étroites, côtoie les quartiers plus récents et les domaines de la plaine.",
+        "La commune a aussi été touchée par les crues de juin 2010, qui ont frappé la Nartuby et l’Argens, de Draguignan jusqu’au Muy.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, une eau aussi dure impose de penser au calcaire dès l’installation : choix d’une résistance stéatite pour le chauffe-eau, accès facile aux organes à détartrer, conseil sur l’intérêt d’un adoucisseur. Dans le vieux village, nous composons avec des murs épais et des passages étroits.",
+        chauffagiste:
+          "Côté chauffage, le calcaire attaque échangeurs et ballons. Nous traitons l’eau du circuit et nous planifions un entretien régulier, indispensable avec une eau de cette dureté.",
+        electricien:
+          "En électricité, dans les secteurs exposés aux crues, nous vérifions la position du tableau et des prises dans les pièces basses, et nous proposons de séparer les circuits du rez-de-chaussée.",
+      },
+    },
   },
   'Le Thoronet': {
     name: 'Le Thoronet',
@@ -360,6 +390,21 @@ export const localCities = {
     trades: ORIGINAL_TRADES,
     intro: (t) =>
       `Jusqu’à Saint-Raphaël, à l’extrémité de notre zone de chalandise, PCE continue d’assurer ${t.verb} pour les particuliers et professionnels du secteur : ${t.detail}. Un devis gratuit et une intervention planifiée à l’avance.`,
+    terrain: {
+      heading: "Intervenir à Saint-Raphaël",
+      paragraphs: [
+        "Saint-Raphaël s’étire du centre-ville jusqu’aux calanques de l’Estérel, à Agay, Anthéor et au Trayas. Une grande partie de l’est varois est alimentée depuis le lac de Saint-Cassien, dont l’eau est moyennement minéralisée : sur certains réseaux de la commune, la dureté reste modérée, autour de 18 °f.",
+        "Le relief et la proximité de la mer font le reste : maisons accrochées aux pentes, accès parfois étroits, et équipements extérieurs exposés à l’air salin.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, une eau moins calcaire qu’à l’intérieur des terres ménage les chauffe-eau, mais les villas en pente posent d’autres questions : pression variable selon l’altitude, évacuations longues. Nous contrôlons la pression et posons un réducteur lorsqu’elle est trop forte.",
+        climatisation:
+          "Pour la climatisation, nous plaçons le groupe extérieur à l’abri des embruns et nous choisissons des modèles adaptés au bord de mer, avec un entretien plus suivi.",
+        pisciniste:
+          "Pour les piscines des villas de l’Estérel, l’accès au local technique et la longueur des canalisations comptent autant que le matériel. Nous adaptons pompe et filtration à la configuration réelle du terrain.",
+      },
+    },
   },
 
   /* --------------------------------------- Secteur Dracénie (6 nouvelles villes) */
@@ -481,6 +526,23 @@ export const localCities = {
     neighbors: ['Grimaud', 'Gassin'],
     intro: (t) =>
       `Cogolin, porte d’entrée du Golfe de Saint-Tropez, bénéficie des interventions régulières de PCE pour ${t.verb} : ${t.detail}. Un devis gratuit et une intervention planifiée, à environ quarante minutes de notre atelier.`,
+    terrain: {
+      heading: "Intervenir à Cogolin",
+      paragraphs: [
+        "Cogolin fait exception dans le Var : sur la plus grande partie de la commune, l’eau distribuée est douce, autour de 12 à 15 °f. Le calcaire y pose donc beaucoup moins de problèmes qu’en Dracénie.",
+        "La commune est en revanche traversée par la Giscle et la Môle, des cours d’eau aux crues soudaines, et Port Cogolin comme les Marines sont des secteurs sensibles au risque d’inondation.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, une eau douce ménage chauffe-eau et robinetterie : un adoucisseur n’est en général pas nécessaire. Dans les secteurs bas proches de la Giscle, nous plaçons les équipements sensibles en hauteur lorsque c’est possible.",
+        pisciniste:
+          "Pour les piscines, une eau douce se déséquilibre plus facilement : nous surveillons l’alcalinité et le pH, et nous réglons le traitement en conséquence plutôt que d’appliquer un réglage standard.",
+        climatisation:
+          "Pour la climatisation, près des marines et du golfe, le groupe extérieur doit être protégé de l’air salin, avec un entretien régulier de la batterie.",
+        electricien:
+          "En électricité, à Port Cogolin et dans les Marines, nous vérifions la position du tableau et des prises des pièces basses au regard du risque d’inondation.",
+      },
+    },
   },
   Gassin: {
     name: 'Gassin',
@@ -565,6 +627,21 @@ export const localCities = {
     neighbors: ['Puget-sur-Argens', 'Les Issambres', 'Le Rocher de Roquebrune'],
     intro: (t) =>
       `Au carrefour de la Dracénie et du Golfe de Saint-Tropez, Roquebrune-sur-Argens et son rocher rouge caractéristique font partie de notre zone d’intervention pour ${t.verb} : ${t.detail}. Devis gratuit et intervention planifiée.`,
+    terrain: {
+      heading: "Intervenir à Roquebrune-sur-Argens",
+      paragraphs: [
+        "Roquebrune-sur-Argens est une commune à plusieurs territoires : le village au pied du rocher, la plaine de l’Argens et, sur le littoral, Les Issambres. L’eau n’y est pas la même partout : moyennement dure aux Issambres, autour de 18 °f, elle approche les 30 °f au village.",
+        "La plaine a été fortement touchée par la crue de l’Argens du 15 juin 2010, dont les laisses ont été relevées jusque dans le quartier de la Maurette.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, nous mesurons la dureté au robinet, car elle change d’un quartier à l’autre de la commune. Dans la plaine, nous plaçons chauffe-eau et équipements sensibles en hauteur lorsque la configuration le permet.",
+        electricien:
+          "En électricité, dans les maisons de la plaine de l’Argens, nous vérifions la hauteur du tableau et nous proposons de séparer les circuits des pièces basses, pour pouvoir les couper indépendamment.",
+        pisciniste:
+          "Pour les piscines, la différence d’eau entre le village et le littoral change les réglages : nous adaptons l’équilibre de l’eau et l’entretien des équipements à la dureté réelle du bassin.",
+      },
+    },
   },
   'Les Issambres': {
     name: 'Les Issambres',
@@ -592,6 +669,23 @@ export const localCities = {
     neighbors: ['Le Luc', 'Le Thoronet'],
     intro: (t) =>
       `Capitale de la Provence Verte, Brignoles réunit un centre ancien aux maisons de ville serrées et des quartiers pavillonnaires plus récents en périphérie. PCE y prend en charge ${t.verb} : ${t.detail}. Devis gratuit et sans engagement, intervention planifiée sur rendez-vous.`,
+    terrain: {
+      heading: "Intervenir à Brignoles",
+      paragraphs: [
+        "Brignoles est alimentée par plusieurs réseaux, et l’eau y est dure : le contrôle sanitaire relève des valeurs proches de 37 à 40 °f selon les secteurs. Dans le centre ancien, les maisons de ville serrées cachent souvent des réseaux repris par étapes au fil des générations, quand les quartiers pavillonnaires de la périphérie ont des installations plus récentes mais déjà marquées par le calcaire.",
+        "La ville est aussi traversée par le Caramy, dont les crues ont laissé des repères dans la commune à plusieurs reprises, notamment en 1972, 1978, 1994 et 1999.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, une eau à près de 40 °f se lit vite : résistances de chauffe-eau entartrées, mitigeurs qui grippent, débits qui baissent au fil des années. Nous mesurons la dureté au robinet avant de proposer un équipement, et nous conseillons un entretien du ballon adapté à cette eau.",
+        "traitement-eau":
+          "Pour le traitement de l’eau, Brignoles fait partie des communes où un adoucisseur se justifie le plus souvent. Nous le réglons pour conserver une dureté résiduelle, et nous gardons un robinet d’eau non adoucie pour la boisson.",
+        chauffagiste:
+          "Côté chauffage, le calcaire attaque d’abord les échangeurs et la production d’eau chaude. Nous traitons l’eau du circuit à la mise en service, et nous adaptons la fréquence d’entretien à la dureté mesurée.",
+        electricien:
+          "En électricité, dans les rez-de-chaussée proches du Caramy, nous vérifions la hauteur du tableau et des prises, et nous séparons les circuits des pièces basses lorsque la configuration le permet.",
+      },
+    },
   },
   Toulon: {
     name: 'Toulon',
@@ -599,6 +693,23 @@ export const localCities = {
     neighbors: ['Hyères', 'Brignoles'],
     intro: (t) =>
       `Préfecture du Var, Toulon concentre appartements en copropriété, maisons de ville et villas des quartiers résidentiels. Pour ${t.verb}, PCE intervient sur rendez-vous : ${t.detail}. Devis gratuit, prix annoncé avant travaux.`,
+    terrain: {
+      heading: "Intervenir à Toulon",
+      paragraphs: [
+        "Toulon est surtout une ville de copropriétés : immeubles anciens de la haute ville, résidences des années 1950 à 1970, puis villas des quartiers résidentiels sur les hauteurs. L’eau y est dure, entre 29 et 36 °f environ selon le réseau qui dessert le quartier.",
+        "Une partie de cette eau vient de loin : la retenue de Carcès, construite en 1933-1934 pour alimenter Toulon, reste l’une des principales réserves d’eau potable de l’aire toulonnaise.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, les immeubles toulonnais demandent de distinguer ce qui relève des parties privatives et des colonnes communes avant toute intervention. Nous intervenons sur l’installation du logement et nous signalons au syndic ce qui dépend de la copropriété.",
+        climatisation:
+          "Pour la climatisation, l’emplacement du groupe extérieur se valide d’abord avec le règlement de copropriété, puis avec les règles d’urbanisme dans les secteurs protégés. Nous privilégions des appareils discrets et silencieux, adaptés aux balcons et aux cours.",
+        "traitement-eau":
+          "Pour le traitement de l’eau, la dureté varie d’un quartier à l’autre : une mesure au robinet indique si un adoucisseur est utile, ou si une filtration sous évier suffit en appartement.",
+        chauffagiste:
+          "Côté chauffage, de nombreux appartements toulonnais ont encore un chauffage individuel ancien. Nous étudions le remplacement en fonction des évacuations disponibles et des règles de l’immeuble.",
+      },
+    },
   },
   'Hyères': {
     name: 'Hyères',
@@ -606,6 +717,21 @@ export const localCities = {
     neighbors: ['Toulon', 'La Môle'],
     intro: (t) =>
       `Entre la presqu’île de Giens et la vieille ville, Hyères mêle résidences principales et maisons secondaires occupées une partie de l’année. PCE y assure ${t.verb} — ${t.detail}. Devis gratuit et intervention organisée selon l’occupation du logement.`,
+    terrain: {
+      heading: "Intervenir à Hyères",
+      paragraphs: [
+        "Hyères s’étend de la vieille ville aux hameaux de la plaine, jusqu’à la presqu’île de Giens. L’eau y est dure, d’environ 26 à 36 °f selon le réseau. Les îles sont, elles aussi, approvisionnées depuis le continent : depuis 2024, une conduite sous-marine relie la presqu’île de Giens à Porquerolles.",
+        "Une partie des logements sont des résidences secondaires, occupées quelques mois par an, et le littoral est exposé à l’air salin et au risque de submersion marine.",
+      ],
+      angles: {
+        plombier:
+          "En plomberie, les maisons occupées une partie de l’année demandent une attention particulière : coupure et vidange avant l’absence, contrôle des joints et des flexibles au retour. Nous organisons ces interventions selon les périodes d’occupation.",
+        pisciniste:
+          "Pour les piscines, l’eau dure d’Hyères favorise l’entartrage des cellules d’électrolyseur et des pièces à sceller. Nous ajustons l’équilibre de l’eau et la fréquence de nettoyage des équipements en conséquence.",
+        climatisation:
+          "Pour la climatisation, sur la presqu’île et en bord de mer, le groupe extérieur doit être protégé des embruns et entretenu plus souvent qu’à l’intérieur des terres.",
+      },
+    },
   },
 }
 
