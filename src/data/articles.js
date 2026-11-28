@@ -1333,6 +1333,124 @@ export const articles = {
     closing:
       "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
   },
+
+  /* Série du 15/01/2027 (sujets validés le 28/11/2026). */
+  'chauffe-eau-ne-chauffe-plus': {
+    publishAt: '2027-01-15',
+    title: 'Chauffe-eau qui ne chauffe plus : causes et solutions',
+    metaTitle: 'Chauffe-eau qui ne chauffe plus : causes et solutions',
+    metaDescription:
+      "Plus d’eau chaude ou une eau tiède : disjoncteur, heures creuses, thermostat, résistance entartrée. Les vérifications à faire et quand appeler un plombier.",
+    photo: { tags: 'plumbing', lock: 1127 },
+    relatedExpertise: 'depannage-plomberie-urgence-var',
+    relatedService: '/plomberie',
+    intro: [
+      "Une douche froide au réveil, ou une eau qui reste tiède malgré une nuit de chauffe : le chauffe-eau électrique tombe souvent en panne au pire moment, et plus encore en hiver quand il est le plus sollicité. Avant d’appeler, quelques vérifications simples permettent souvent de trouver la cause, voire de régler le problème.",
+    ],
+    sections: [
+      {
+        h2: 'Vérifier l’alimentation électrique',
+        paragraphs: [
+          "Commencez par le tableau électrique : le disjoncteur dédié au chauffe-eau a-t-il sauté ? Vérifiez ensuite le contacteur heures creuses, un petit module à trois positions (0, auto, marche forcée). S’il est sur 0, le ballon ne chauffe plus jamais ; s’il est sur auto, il ne chauffe que pendant les heures creuses.",
+          "Pour savoir si le problème vient de la commande ou du chauffe-eau lui-même, basculez le contacteur sur marche forcée pendant quelques heures. Si l’eau chauffe, le ballon fonctionne : c’est la commande heures creuses qu’il faut contrôler. Remettez ensuite le contacteur sur auto pour profiter du tarif heures creuses.",
+        ],
+      },
+      {
+        h2: 'Le thermostat et la sécurité de surchauffe',
+        paragraphs: [
+          "Un thermostat réglé trop bas donne une eau à peine tiède. La température conseillée se situe autour de 55 à 60 °C : assez pour limiter le développement des bactéries, sans entartrer inutilement le ballon.",
+          "Tous les chauffe-eau électriques ont aussi une sécurité qui coupe la chauffe en cas de surchauffe. Si elle s’est déclenchée, c’est le signe d’un défaut, souvent un thermostat fatigué : la réarmer sans chercher la cause ne fait que repousser le problème. Toute intervention sous le capot se fait courant coupé au tableau, et mieux vaut la confier à un professionnel.",
+        ],
+      },
+      {
+        h2: 'Une eau seulement tiède : le calcaire en cause',
+        paragraphs: [
+          "Dans une bonne partie du Var, l’eau est très calcaire. Le tartre s’accumule autour de la résistance et au fond de la cuve : la résistance chauffe moins bien, puis finit par griller. Le volume d’eau chaude disponible diminue aussi, puisque le calcaire occupe une partie du ballon.",
+          "Un détartrage du ballon, avec le remplacement de la résistance et le contrôle de l’anode, redonne souvent plusieurs années de service à un appareil qui n’a pas encore dix ans.",
+        ],
+      },
+      {
+        h2: 'Réparer ou remplacer ?',
+        paragraphs: [
+          "Une résistance, un thermostat ou un groupe de sécurité se remplacent sans changer tout l’appareil. En revanche, une cuve qui fuit ne se répare pas : c’est le signal du remplacement. Au-delà de dix à quinze ans, et surtout si les pannes se répètent, un appareil neuf est généralement plus raisonnable. C’est aussi l’occasion de se poser la question d’un chauffe-eau thermodynamique.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien de temps faut-il pour qu’un chauffe-eau chauffe ?',
+        a: "Plusieurs heures pour un ballon froid, selon sa capacité et la puissance de la résistance. Un ballon électrique est prévu pour chauffer pendant la nuit, en heures creuses.",
+      },
+      {
+        q: 'Le groupe de sécurité goutte, est-ce grave ?',
+        a: "Quelques gouttes pendant la chauffe sont normales : l’eau se dilate en chauffant. Un écoulement continu signale en revanche un groupe de sécurité entartré ou une pression trop forte, à faire contrôler.",
+      },
+      {
+        q: 'Mon eau chaude sent l’œuf pourri, pourquoi ?',
+        a: "Cette odeur vient d’une réaction entre certaines eaux et l’anode du ballon. Une vidange, un rinçage et le remplacement de l’anode règlent généralement le problème.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
+
+  'climatisation-reversible-chauffage-hiver': {
+    publishAt: '2027-01-15',
+    title: 'Climatisation réversible : bien l’utiliser pour chauffer l’hiver',
+    metaTitle: 'Climatisation réversible : bien chauffer en hiver',
+    metaDescription:
+      "Température, mode chauffage, dégivrage, entretien : comment utiliser votre climatisation réversible pour chauffer l’hiver dans le Var, sans surconsommer.",
+    photo: { tags: 'aircon', lock: 1128 },
+    relatedExpertise: 'installation-climatisation-reversible-var',
+    relatedService: '/climatisation',
+    intro: [
+      "Dans le Var, la climatisation réversible sert souvent autant l’hiver que l’été. C’est une pompe à chaleur air/air : elle puise les calories de l’air extérieur pour chauffer le logement, avec une consommation électrique bien inférieure à celle de radiateurs électriques classiques. Encore faut-il bien la régler.",
+    ],
+    sections: [
+      {
+        h2: 'Les bons réglages',
+        paragraphs: [
+          "Choisissez le mode chauffage plutôt que le mode automatique, qui peut basculer entre chaud et froid au fil de la journée. Une consigne de 19 à 20 °C dans les pièces de vie suffit : chaque degré de plus augmente nettement la consommation.",
+          "Orientez les volets vers le bas : l’air chaud monte naturellement, et soufflé vers le plafond, il réchauffe d’abord… le plafond. Laissez la ventilation en automatique, plus silencieuse et plus efficace qu’une vitesse forcée.",
+        ],
+      },
+      {
+        h2: 'Baisser plutôt qu’éteindre',
+        paragraphs: [
+          "Pour une absence de quelques heures ou pour la nuit, baisser la consigne de quelques degrés est souvent plus économique que de tout couper : relancer un logement froid demande un gros effort à l’appareil. La programmation intégrée à la plupart des télécommandes, ou un pilotage depuis le téléphone, simplifie ces réglages.",
+        ],
+      },
+      {
+        h2: 'Le dégivrage, un fonctionnement normal',
+        paragraphs: [
+          "Par temps froid et humide, du givre se forme sur le groupe extérieur. L’appareil s’arrête alors de souffler pendant quelques minutes pour dégivrer, et un nuage de vapeur peut s’échapper dehors. Ce n’est pas une panne : la chauffe reprend ensuite d’elle-même.",
+          "Sur les hauteurs du Var, où les gelées sont plus fréquentes, veillez à ce que l’évacuation des condensats du groupe extérieur ne gèle pas et ne forme pas de plaque de glace sur un passage.",
+        ],
+      },
+      {
+        h2: 'Un entretien qui compte aussi en hiver',
+        paragraphs: [
+          "Des filtres encrassés réduisent le débit d’air et la chaleur diffusée. Nettoyez-les environ une fois par mois pendant les périodes d’utilisation. Dehors, gardez le groupe dégagé : feuilles, végétation ou objets entreposés devant gênent son fonctionnement. Un entretien complet par un professionnel, une fois par an, contrôle le circuit et maintient le rendement.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Une climatisation réversible consomme-t-elle plus qu’un radiateur électrique ?',
+        a: "Non, nettement moins : pour une même quantité d’électricité, elle restitue en général plusieurs fois plus de chaleur qu’un radiateur électrique, grâce aux calories prises dans l’air extérieur.",
+      },
+      {
+        q: 'Fonctionne-t-elle quand il gèle ?',
+        a: "Oui, les modèles récents chauffent encore par températures négatives, avec un rendement qui baisse quand le froid s’intensifie. Sur le littoral varois, ce cas reste rare ; dans l’arrière-pays, un appoint peut être utile lors des jours les plus froids.",
+      },
+      {
+        q: 'Pourquoi l’air semble-t-il sec ?',
+        a: "Chauffer l’air fait baisser son humidité relative, comme avec tout mode de chauffage. Une consigne raisonnable et une aération quotidienne de quelques minutes limitent cette sensation.",
+      },
+    ],
+    closing:
+      "PCE intervient dans tout le Var (83), de Lorgues et Draguignan jusqu’au Golfe de Saint-Tropez, Fréjus, Brignoles, Toulon et Hyères.",
+  },
 }
 
 /* Publication programmée : un article portant `publishAt` (AAAA-MM-JJ)

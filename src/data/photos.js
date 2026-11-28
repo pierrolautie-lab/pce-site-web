@@ -153,6 +153,8 @@ export const PHOTO_SLOTS = {
   1124: { page: 'Conseils', zone: 'Article', sujet: 'Disjoncteur qui saute' },
   1125: { page: 'Conseils', zone: 'Article', sujet: 'Adoucisseur d’eau' },
   1126: { page: 'Conseils', zone: 'Article', sujet: 'Entretien chaudière gaz' },
+  1127: { page: 'Conseils', zone: 'Article', sujet: 'Chauffe-eau en panne' },
+  1128: { page: 'Conseils', zone: 'Article', sujet: 'Clim réversible en hiver' },
 }
 
 /**
@@ -408,6 +410,8 @@ export const clientPhotos = {
   1124: '/img/electricite-hero-tableau.jpg', // disjoncteur-qui-saute
   1125: '/img/eau-solution-adoucisseur.jpg', // adoucisseur-eau-utile-var
   1126: '/img/chauffage-chaudiere-neuve.jpg', // entretien-annuel-chaudiere-gaz
+  1127: '/img/real-chauffe-eau-fleck.jpg', // chauffe-eau-ne-chauffe-plus
+  1128: '/img/climatisation-galerie-split-chambre.jpg', // climatisation-reversible-chauffage-hiver
 
   /* --- Nouveaux chantiers Électricité / Climatisation / bornes --- */
   910: '/img/electricite-galerie-tableau-cablage.jpg',
